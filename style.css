@@ -1,0 +1,218 @@
+/* Importação das fontes do Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Lato:wght@400;700&display=swap');
+
+/* --- Variáveis de Cores --- */
+:root {
+    --primary-color: #3b82f6; /* Azul vibrante */
+    --secondary-color: #1a202c; /* Cinza escuro para texto */
+    --background-light: #5861c4; /* Fundo claro */
+    --background-dark: #ffffff; /* Fundo dos cards */
+    --text-color: #1f2937; /* Cor principal do texto */
+    --link-color: #3b82f6; /* Cor de links */
+    --link-hover-color: #1d4ed8; /* Cor do link ao passar o mouse */
+    --shadow-color: rgba(0, 0, 0, 0.05); /* Sombra suave */
+}
+
+/* --- Estilos Globais --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Lato', sans-serif;
+    background-color: var(--background-light);
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+main {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+}
+
+h1, h2, h3 {
+    font-family: 'Montserrat', sans-serif;
+    color: var(--secondary-color);
+    font-weight: 700;
+}
+
+p {
+    margin-bottom: 1rem;
+}
+
+a {
+    color: var(--link-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--link-hover-color);
+    text-decoration: underline;
+}
+
+/* --- Cabeçalho (Header) --- */
+header {
+    background-color: var(--background-dark);
+    padding: 1rem 2rem;
+    box-shadow: 0 2px 4px var(--shadow-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.logo a {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: var(--secondary-color);
+    text-decoration: none;
+}
+
+.teacher-photo {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 1.5rem;
+}
+
+/* --- Navegação (Navigation) --- */
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+}
+
+nav a {
+    color: var(--secondary-color);
+    font-weight: 700;
+    padding: 0.5rem 0;
+    position: relative;
+}
+
+nav a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: var(--primary-color);
+    transition: width 0.3s ease-in-out;
+}
+
+nav a:hover::after,
+nav .active a::after {
+    width: 100%;
+}
+
+/* --- Seções da Página (Main Content) --- */
+.page-header {
+    text-align: center;
+    margin-bottom: 3rem;
+    padding: 2rem;
+    background-color: var(--background-dark);
+    border-radius: 8px;
+    box-shadow: 0 4px 10px var(--shadow-color);
+}
+
+.page-header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.page-header p {
+    font-size: 1.1rem;
+    color: #4b5563;
+}
+
+.info-section {
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.info-card {
+    background-color: var(--background-dark);
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px var(--shadow-color);
+}
+
+.info-card h2 {
+    font-size: 1.5rem;
+    border-bottom: 2px solid var(--primary-color);
+    padding-bottom: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.info-card ul {
+    list-style: none;
+}
+
+.info-card li {
+    padding: 0.5rem 0;
+}
+
+.info-card li strong {
+    color: var(--primary-color);
+}
+
+/* --- Botões (Call to Action) --- */
+.cta-button, .cta-button-small {
+    display: inline-block;
+    background-color: var(--primary-color);
+    color: #ffffff;
+    font-weight: 700;
+    text-align: center;
+    border-radius: 9999px; /* Botões arredondados */
+    padding: 0.75rem 2rem;
+    transition: background-color 0.3s ease;
+    border: none;
+    cursor: pointer;
+}
+
+.cta-button:hover, .cta-button-small:hover {
+    background-color: var(--link-hover-color);
+    text-decoration: none;
+}
+
+.cta-button-small {
+    font-size: 0.9rem;
+    padding: 0.5rem 1.5rem;
+}
+
+/* --- Rodapé (Footer) --- */
+footer {
+    text-align: center;
+    padding: 1.5rem 1rem;
+    background-color: var(--secondary-color);
+    color: var(--background-light);
+    margin-top: 2rem;
+}
+
+/* --- Responsividade para telas menores --- */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    nav {
+        margin-top: 1rem;
+    }
+
+    nav ul {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .page-header h1 {
+        font-size: 2rem;
+    }
+}
