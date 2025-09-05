@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Início</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Paleta de Cores Vibrante e Moderna */
+        :root {
+            --primary-color: #3f51b5; /* Azul índigo vibrante */
+            --secondary-color: #f0f4f8; /* Cinza suave */
+            --background-color: #e3f2fd; /* Azul clarinho de fundo */
+            --card-bg: #ffffff; /* Branco para o container principal */
+            --text-dark: #333333;
+            --text-light: #666666;
+            --accent-red: #ef5350; /* Vermelho suave */
+            --accent-red-hover: #d32f2f;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            text-align: center;
+            padding: 2rem;
+            background-color: var(--background-color);
+            color: var(--text-dark);
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        h1 {
+            color: var(--primary-color);
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+        }
+
+        h2 {
+            font-size: 1.6rem;
+            color: var(--primary-color);
+            font-weight: 600;
+            margin-top: 0;
+        }
+
+        /* Estilos do cabeçalho e navegação */
+        .header-main {
+            background-color: var(--primary-color);
+            width: 100%;
+            padding: 1rem 0;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 960px;
+            margin: auto;
+            padding: 0 20px;
+        }
+
+        .header-content img {
+            height: 60px;
+        }
+
+        .main-nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 20px;
+        }
+
+        .main-nav a {
+            text-decoration: none;
+            color: var(--card-bg); /* Cor do texto do menu mudada para branco */
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .main-nav a:hover {
+            color: #5d6ed4;
+        }
+        
+        .main-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            max-width: 960px;
+            padding: 2rem;
+        }
+        
+        .content-section {
+            background-color: var(--card-bg);
+            border-radius: 16px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            padding: 2.5rem;
+            width: 95%;
+            margin-bottom: 2rem;
+            text-align: left;
+        }
+
+        .content-section img {
+            width: 100%;
+            border-radius: 12px;
+            margin-bottom: 1rem;
+        }
+        
+        blockquote {
+            background-color: var(--secondary-color);
+            border-left: 5px solid var(--primary-color);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+        }
+
+        blockquote p {
+            font-style: italic;
+            color: var(--text-dark);
+            margin: 0;
+            font-size: 1.1rem;
+        }
+        
+        blockquote cite {
+            display: block;
+            margin-top: 1rem;
+            font-style: normal;
+            font-weight: 600;
+            color: var(--text-light);
+            text-align: right;
+        }
+
+        .final-message {
+            margin-top: 2rem;
+            font-size: 1.2rem;
+            color: var(--primary-color);
+            font-weight: 700;
+        }
+        
+        .site-footer {
+            width: 100%;
+            padding: 1rem 0;
+            background-color: var(--primary-color);
+            color: white;
+            text-align: center;
+            margin-top: auto;
+        }
+        
+        .site-footer a {
+            color: white;
+            text-decoration: underline;
+        }
+
+        .menu-principal {
+            background-color: var(--card-bg);
+            border-radius: 16px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            padding: 2.5rem;
+            max-width: 450px;
+            width: 95%;
+            margin: auto;
+            transition: transform 0.3s ease;
+            text-align: center;
+        }
+
+        .menu-principal:hover {
+            transform: translateY(-5px);
+        }
+
+        .menu-principal ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .menu-principal li {
+            margin: 1.2rem 0;
+        }
+
+        hr {
+            border: 0;
+            height: 1px;
+            background-color: var(--secondary-color);
+            margin: 2rem 0;
+        }
+
+        /* Estilos das caixas de formulário */
+        .form-box {
+            background-color: var(--secondary-color);
+            padding: 2rem;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        #mensagem, #login-mensagem, #cadastro-mensagem, #admin-mensagem, #recuperar-mensagem {
+            margin-top: 1rem;
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--accent-red);
+        }
+
+        /* Estilos dos campos de input */
+        input[type="text"], input[type="password"] {
+            width: calc(100% - 24px);
+            padding: 12px;
+            margin: 0.8rem 0;
+            border: 1px solid var(--secondary-color);
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: box-shadow 0.3s ease, border-color 0.3s ease;
+        }
+
+        input:focus {
+            border-color: #00bcd4;
+            box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1);
+            outline: none;
+        }
+
+        /* Estilos dos botões */
+        .form-box button, .submenu button {
+            color: white;
+            padding: 12px 28px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            margin-top: 1.5rem;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Botões de Cadastre-se e Área do Administrador (texto e padding ajustados) */
+        .button-group button {
+            font-size: 0.9rem;
+            padding: 10px 20px;
+        }
+        
+        .form-box button.delete-btn {
+            background-color: var(--accent-red);
+            font-size: 0.9rem;
+            padding: 8px 16px;
+            margin-left: 0.8rem;
+        }
+        .form-box button.delete-btn:hover {
+            background-color: var(--accent-red-hover);
+        }
+
+        /* Cores Únicas para Cada Botão */
+        .button-indigo {
+            background-color: #3f51b5;
+        }
+        .button-indigo:hover {
+            background-color: #33449b;
+            transform: translateY(-2px);
+        }
+
+        .button-cyan {
+            background-color: #00bcd4;
+        }
+        .button-cyan:hover {
+            background-color: #008fa0;
+            transform: translateY(-2px);
+        }
+        
+        .button-purple {
+            background-color: #673ab7;
+        }
+        .button-purple:hover {
+            background-color: #512da8;
+            transform: translateY(-2px);
+        }
+
+        .button-teal {
+            background-color: #009688;
+        }
+        .button-teal:hover {
+            background-color: #00796b;
+            transform: translateY(-2px);
+        }
+
+        .button-orange {
+            background-color: #ff9800;
+        }
+        .button-orange:hover {
+            background-color: #f57c00;
+            transform: translateY(-2px);
+        }
+
+        .button-green {
+            background-color: #4caf50;
+        }
+        .button-green:hover {
+            background-color: #388e3c;
+            transform: translateY(-2px);
+        }
+        
+        .button-forgot {
+            background-color: #78909c;
+        }
+        .button-forgot:hover {
+            background-color: #546e7a;
+            transform: translateY(-2px);
+        }
+        
+        .submenu {
+            display: none;
+            list-style-type: none;
+            padding: 0;
+            text-align: left;
+        }
+        
+        .submenu li {
+            margin: 0.8rem 0;
+        }
+
+        .submenu a {
+            display: block;
+            padding: 1rem;
+            background-color: var(--secondary-color);
+            border-radius: 8px;
+            transition: background-color 0.3s ease;
+            color: var(--primary-color);
+            font-size: 1rem;
+            font-weight: 500;
+        }
+
+        .submenu a:hover {
+            background-color: #d4d4d4;
+            color: #4a4a4a;
+        }
+
+        #cadastro-box, #admin-login-box, #admin-panel-box, #recuperar-box {
+            display: none;
+        }
+        
+        #lista-pendentes, #lista-aprovados {
+            list-style: none;
+            padding: 0;
+            text-align: left;
+            margin: 1.5rem 0;
+        }
+        #lista-pendentes li, #lista-aprovados li {
+            background-color: #f0f0f0;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 500;
+        }
+        #lista-pendentes li:last-child, #lista-aprovados li:last-child {
+            margin-bottom: 0;
+        }
+        
+        .button-group {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+            justify-content: center;
+        }
+        
+        /* Media Queries para Responsividade */
+        @media (max-width: 600px) {
+            body {
+                padding: 1rem;
+            }
+
+            .header-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .main-nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 10px;
+            }
+
+            .menu-principal {
+                padding: 2rem 1.5rem;
+                border-radius: 12px;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            }
+
+            h1 {
+                font-size: 2rem;
+                margin-bottom: 1.5rem;
+            }
+
+            h2 {
+                font-size: 1.4rem;
+            }
+
+            .form-box {
+                padding: 1.5rem;
+                border-radius: 10px;
+            }
+
+            .button-group {
+                flex-direction: column;
+                gap: 0.5rem;
+                margin-top: 1rem;
+            }
+
+            .form-box button, .submenu button {
+                font-size: 0.9rem;
+                padding: 10px 18px;
+                margin-top: 1rem;
+            }
+
+            .form-box button.download-btn, .form-box button.delete-btn {
+                font-size: 0.8rem;
+                padding: 8px 16px;
+            }
+            
+            .button-group button {
+                font-size: 0.8rem;
+                padding: 8px 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header class="header-main">
+    <div class="header-content">
+        <img src="logn.png" alt="Foto do Professor Márcio" class="teacher-photo">
+        <nav class="main-nav">
+            <ul>
+                <li><a href="index.html" aria-current="page">Início</a></li>
+                <li><a href="aulasmat3bim.index.html">Matemática</a></li>
+                <li><a href="aulaspi3bim.index.html">Projeto Integrador</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<main class="main-content">
+    <section class="content-section">
+                                  <img src="iniciop.png" alt="Descrição da Imagem">
+
+        <h2>Bem-vindo(a)</h2>
+        <p>
+            Bem-vindo(a) ao nosso espaço de aprendizado! Aqui você encontrará conteúdos sobre Matemática, Tecnologia e vídeos educativos para aprofundar seus conhecimentos.
+        </p>
+    </section>
+
+    <section class="content-section">
+        <h2>Filosofia de Ensino</h2>
+        <blockquote>
+            <p>
+                "Ensinar não é transferir conhecimento, mas criar as possibilidades para a sua própria produção ou a sua construção."
+                <cite>— <a href="https://pt.wikipedia.org/wiki/Paulo_Freire" target="_blank" rel="noopener noreferrer" class="external-link">Paulo Freire</a></cite>
+            </p>
+        </blockquote>
+    </section>
+
+    <section class="content-section">
+        <h2>Matemática na Educação</h2>
+        <blockquote>
+            <p>
+                "...conhecimento em educação matemática. Busca-se dar conta do “por que” isso ocorre, em termos epistemológicos e aos concernentes à realidade do objeto investigado, que dizem respeito à concepção de educação.."
+                <cite>— <a href="https://periodicos.utfpr.edu.br" target="_blank" rel="noopener noreferrer" class="external-link">Maria Aparecida</a></cite>
+            </p>
+        </blockquote>
+    </section>
+    
+    <section class="content-section">
+        <h2>Aprendizagem em Matemática</h2>
+        <blockquote>
+            <p>
+                "A tendência histórico-crítica, concebe a matemática como 'um saber vivo, dinâmico, construído historicamente para atender às necessidades sociais e teóricas. Nessa tendência, a aprendizagem da matemática não consiste apenas em desenvolver habilidades, como calcular e resolver problemas ou fixar conceitos pela memorização ou listas de exercícios, mas criar estratégias que possibilitam ao aluno atribuir sentido e construir significado às idéias matemáticas de modo a tornar-se capaz de estabelecer relações, justificar, analisar, discutir e criar.'"
+                <cite>— <a href="http://www.gestaoescolar.diaadia.pr.gov.br/arquivos/File/producoes_pde/artigo_sucileiva_baldissera_piovesan.pdf" target="_blank" rel="noopener noreferrer" class="external-link">PIOVESAN, Sucileiva Baldissera e ZANARDINI, João Batista</a></cite>
+            </p>
+        </blockquote>
+    </section>
+    
+    <p class="final-message">Espero que você tenha gostado do site.</p>
+</main>
+
+<footer class="site-footer">
+    <p>
+        &copy; 2025. Site desenvolvido por <a href="https://prof-marcio.github.io/aprendendocommarcio.com.br/" target="_blank" rel="noopener noreferrer">Márcio L. da Silva.</a> Todos os direitos reservados.
+    </p>
+</footer>
+
+<script>
+    // ATENÇÃO: Os dados a seguir são armazenados apenas na memória do navegador.
+    // Se a página for fechada ou atualizada, todos os cadastros serão perdidos.
+    // Para um site real, você precisaria de um servidor e um banco de dados.
+
+    // Senha do Administrador
+    const ADMIN_SENHA = "admin123";
+
+    // "Banco de Dados" simulado de usuários aprovados
+    const usuariosDB = {
+        "admin1": "Admin1",
+    };
+    
+    // "Banco de Dados" simulado de usuários pendentes de aprovação
+    const usuariosPendentes = {};
+
+    /* --- Funções para Alternar Telas --- */
+    function mostrarCadastro() {
+        document.getElementById("login-box").style.display = "none";
+        document.getElementById("cadastro-box").style.display = "block";
+        document.getElementById("login-mensagem").textContent = "";
+    }
+
+    function mostrarRecuperar() {
+        document.getElementById("login-box").style.display = "none";
+        document.getElementById("recuperar-box").style.display = "block";
+        document.getElementById("recuperar-mensagem").textContent = "";
+    }
+    
+    function mostrarAdminLogin() {
+        document.getElementById("login-box").style.display = "none";
+        document.getElementById("admin-login-box").style.display = "block";
+    }
+    
+    function voltarParaInicio() {
+        document.getElementById("login-box").style.display = "block";
+        document.getElementById("cadastro-box").style.display = "none";
+        document.getElementById("admin-login-box").style.display = "none";
+        document.getElementById("admin-panel-box").style.display = "none";
+        document.getElementById("recuperar-box").style.display = "none";
+        document.getElementById("submenu-completo").style.display = "none";
+        
+        // Limpa os campos e mensagens
+        document.getElementById("login-usuario").value = "";
+        document.getElementById("login-senha").value = "";
+        document.getElementById("cadastro-usuario").value = "";
+        document.getElementById("cadastro-senha").value = "";
+        document.getElementById("admin-senha").value = "";
+        document.getElementById("recuperar-usuario").value = "";
+        
+        document.getElementById("login-mensagem").textContent = "";
+        document.getElementById("cadastro-mensagem").textContent = "";
+        document.getElementById("admin-mensagem").textContent = "";
+        document.getElementById("recuperar-mensagem").textContent = "";
+    }
+    
+    function logoutAdmin() {
+        document.getElementById("admin-panel-box").style.display = "none";
+        document.getElementById("admin-login-box").style.display = "block";
+        document.getElementById("admin-senha").value = "";
+    }
+    
+    function logout() {
+        document.getElementById("login-box").style.display = "block";
+        document.getElementById("submenu-completo").style.display = "none";
+        document.getElementById("login-usuario").value = "";
+        document.getElementById("login-senha").value = "";
+        document.getElementById("login-mensagem").textContent = "";
+    }
+
+    /* --- Funções de Lógica e Ação --- */
+    function recuperarSenha() {
+        const usuarioRecuperar = document.getElementById("recuperar-usuario").value.toLowerCase();
+        const mensagem = document.getElementById("recuperar-mensagem");
+        
+        if (usuariosDB[usuarioRecuperar]) {
+            const senhaRecuperada = usuariosDB[usuarioRecuperar];
+            mensagem.textContent = `Sua senha é: ${senhaRecuperada}. Você pode voltar para a tela de login.`;
+            mensagem.style.color = "var(--primary-color)";
+        } else if (usuariosPendentes[usuarioRecuperar]) {
+            mensagem.textContent = "Seu usuário ainda está pendente de aprovação.";
+            mensagem.style.color = "var(--accent-red)";
+        } else {
+            mensagem.textContent = "Usuário não encontrado. Verifique se o nome está correto.";
+            mensagem.style.color = "var(--accent-red)";
+        }
+    }
+
+    function verificarAdmin() {
+        const senhaDigitada = document.getElementById("admin-senha").value;
+        const mensagem = document.getElementById("admin-mensagem");
+        
+        if (senhaDigitada === ADMIN_SENHA) {
+            document.getElementById("admin-login-box").style.display = "none";
+            document.getElementById("admin-panel-box").style.display = "block";
+            mensagem.textContent = "";
+            atualizarListasAdmin(); // Agora chama uma função para atualizar ambas as listas
+        } else {
+            mensagem.textContent = "Senha de administrador incorreta.";
+        }
+    }
+    
+    function atualizarListasAdmin() {
+        atualizarListaPendentes();
+        atualizarListaAprovados();
+    }
+
+    function atualizarListaPendentes() {
+        const lista = document.getElementById("lista-pendentes");
+        lista.innerHTML = "";
+        const chaves = Object.keys(usuariosPendentes);
+        
+        document.getElementById("count-pendentes").textContent = chaves.length;
+
+        if (chaves.length === 0) {
+            lista.innerHTML = "<li>Nenhum usuário pendente.</li>";
+            return;
+        }
+        
+        chaves.forEach(usuario => {
+            const li = document.createElement("li");
+            li.textContent = usuario;
+
+            const botaoAprovar = document.createElement("button");
+            botaoAprovar.textContent = "Aprovar";
+            botaoAprovar.className = "button-green";
+            botaoAprovar.onclick = () => aprovarUsuario(usuario);
+
+            const botaoRemover = document.createElement("button");
+            botaoRemover.textContent = "Remover";
+            botaoRemover.className = "delete-btn";
+            botaoRemover.onclick = () => removerUsuarioPendente(usuario);
+            
+            const containerBotoes = document.createElement("div");
+            containerBotoes.appendChild(botaoAprovar);
+            containerBotoes.appendChild(botaoRemover);
+            
+            li.appendChild(containerBotoes);
+            lista.appendChild(li);
+        });
+    }
+
+    function atualizarListaAprovados() {
+        const lista = document.getElementById("lista-aprovados");
+        lista.innerHTML = "";
+        const chaves = Object.keys(usuariosDB);
+        
+        document.getElementById("count-aprovados").textContent = chaves.length;
+        
+        if (chaves.length === 0) {
+            lista.innerHTML = "<li>Nenhum usuário aprovado.</li>";
+            return;
+        }
+        
+        chaves.forEach(usuario => {
+            const li = document.createElement("li");
+            li.textContent = usuario;
+
+            const botaoRemover = document.createElement("button");
+            botaoRemover.textContent = "Remover";
+            botaoRemover.className = "delete-btn";
+            botaoRemover.onclick = () => removerUsuarioAprovado(usuario);
+            
+            li.appendChild(botaoRemover);
+            lista.appendChild(li);
+        });
+    }
+    
+    function aprovarUsuario(usuario) {
+        usuariosDB[usuario] = usuariosPendentes[usuario];
+        delete usuariosPendentes[usuario];
+        atualizarListasAdmin();
+    }
+    
+    function removerUsuarioPendente(usuario) {
+        delete usuariosPendentes[usuario];
+        atualizarListasAdmin();
+    }
+    
+    function removerUsuarioAprovado(usuario) {
+        delete usuariosDB[usuario];
+        atualizarListasAdmin();
+    }
+
+    function cadastrarUsuario() {
+        const novoUsuario = document.getElementById("cadastro-usuario").value.toLowerCase();
+        const novaSenha = document.getElementById("cadastro-senha").value;
+        const mensagem = document.getElementById("cadastro-mensagem");
+
+        if (novoUsuario === "" || novaSenha === "") {
+            mensagem.textContent = "Por favor, preencha todos os campos.";
+            mensagem.style.color = "var(--accent-red)";
+            return;
+        }
+
+        if (usuariosDB[novoUsuario] || usuariosPendentes[novoUsuario]) {
+            mensagem.textContent = "Nome de usuário já existe ou está pendente.";
+            mensagem.style.color = "var(--accent-red)";
+        } else {
+            usuariosPendentes[novoUsuario] = novaSenha;
+            mensagem.textContent = "Cadastro enviado para aprovação! Aguarde a liberação.";
+            mensagem.style.color = "var(--primary-color)";
+            
+            document.getElementById("cadastro-usuario").value = "";
+            document.getElementById("cadastro-senha").value = "";
+        }
+    }
+
+    function verificarLogin() {
+        const usuarioDigitado = document.getElementById("login-usuario").value.toLowerCase();
+        const senhaDigitada = document.getElementById("login-senha").value;
+        const mensagem = document.getElementById("login-mensagem");
+
+        if (usuariosDB[usuarioDigitado] === senhaDigitada) {
+            document.getElementById("login-box").style.display = "none";
+            document.getElementById("submenu-completo").style.display = "block";
+            mensagem.textContent = "";
+        } else {
+            mensagem.textContent = "Usuário ou senha incorretos ou não aprovados.";
+        }
+    }
+    
+    function salvarListaAprovados() {
+        let texto = "--- Lista de Usuários Aprovados ---\n\n";
+        let count = 0;
+        for (const usuario in usuariosDB) {
+            texto += `Usuário: ${usuario}, Senha: ${usuariosDB[usuario]}\n`;
+            count++;
+        }
+        if (count === 0) {
+            texto = "Nenhum usuário aprovado para salvar.";
+        }
+
+        const blob = new Blob([texto], { type: 'text/plain' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'lista_de_usuarios_aprovados.txt';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+    }
+    
+    function salvarListaRejeitados() {
+        let texto = "--- Lista de Usuários Pendentes ---\n\n";
+        let count = 0;
+        for (const usuario in usuariosPendentes) {
+            texto += `Usuário: ${usuario}, Senha: ${usuariosPendentes[usuario]}\n`;
+            count++;
+        }
+        if (count === 0) {
+            texto = "Nenhum usuário pendente para salvar.";
+        }
+
+        const blob = new Blob([texto], { type: 'text/plain' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'lista_de_usuarios_pendentes.txt';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+    }
+</script>
+
+</body>
+</html>

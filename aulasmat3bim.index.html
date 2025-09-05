@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>matemática</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /*==================================================
+        1. PALETA DE CORES E VARIÁVEIS CSS
+        (Para fácil personalização das cores e fontes)
+        ==================================================*/
+        :root {
+            --primary-color: #3f51b5; /* Azul índigo vibrante */
+            --secondary-color: #f0f4f8; /* Cinza suave */
+            --background-color: #e3f2fd; /* Azul clarinho de fundo */
+            --card-bg: #ffffff; /* Branco para o container principal */
+            --text-dark: #333333;
+            --text-light: #666666;
+            --accent-red: #ef5350; /* Vermelho suave */
+            --accent-red-hover: #d32f2f;
+        }
+
+        /*==================================================
+        2. ESTILOS GERAIS E LAYOUT
+        ==================================================*/
+        body {
+            font-family: 'Montserrat', sans-serif;
+            text-align: center;
+            padding: 2rem;
+            background-color: var(--background-color);
+            color: var(--text-dark);
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        h1 {
+            color: var(--primary-color);
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+        }
+
+        h2 {
+            font-size: 1.6rem;
+            color: var(--primary-color);
+            font-weight: 600;
+            margin-top: 0;
+        }
+        
+        /*==================================================
+        3. CABEÇALHO E NAVEGAÇÃO
+        ==================================================*/
+        .header-main {
+            background-color: var(--primary-color);
+            width: 100%;
+            padding: 1rem 0;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 960px;
+            margin: auto;
+            padding: 0 20px;
+        }
+
+        .header-content img {
+            height: 60px;
+        }
+
+        .main-nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 20px;
+        }
+
+        .main-nav a {
+            text-decoration: none;
+            color: var(--card-bg);
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .main-nav a:hover {
+            color: #5d6ed4;
+        }
+        
+        /*==================================================
+        4. CONTEÚDO PRINCIPAL E SECÇÕES
+        ==================================================*/
+        .main-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            max-width: 960px;
+            padding: 2rem;
+        }
+        
+        .content-section {
+            background-color: var(--card-bg);
+            border-radius: 16px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            padding: 2.5rem;
+            width: 95%;
+            margin-bottom: 2rem;
+            text-align: left;
+        }
+
+        .content-section img {
+            width: 100%;
+            border-radius: 12px;
+            margin-bottom: 1rem;
+        }
+        
+        /* Estilos para listas */
+        ol, ul {
+            text-align: left;
+            padding-left: 20px;
+        }
+
+        li {
+            margin-bottom: 1rem;
+        }
+
+        li a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        li a:hover {
+            text-decoration: underline;
+        }
+
+        hr {
+            border: 0;
+            height: 1px;
+            background-color: var(--secondary-color);
+            margin: 2rem 0;
+        }
+        
+        /*==================================================
+        5. RODAPÉ
+        ==================================================*/
+        .final-message {
+            margin-top: 2rem;
+            font-size: 1.2rem;
+            color: var(--primary-color);
+            font-weight: 700;
+        }
+        
+        .site-footer {
+            width: 100%;
+            padding: 1rem 0;
+            background-color: var(--primary-color);
+            color: white;
+            text-align: center;
+            margin-top: auto;
+        }
+        
+        .site-footer a {
+            color: white;
+            text-decoration: underline;
+        }
+
+        /*==================================================
+        6. RESPONSIVIDADE
+        ==================================================*/
+        @media (max-width: 600px) {
+            body { padding: 1rem; }
+            .header-content { flex-direction: column; gap: 1rem; }
+            .main-nav ul { flex-wrap: wrap; justify-content: center; gap: 10px; }
+            h1 { font-size: 2rem; margin-bottom: 1.5rem; }
+            h2 { font-size: 1.4rem; }
+            .content-section { padding: 1.5rem; border-radius: 12px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header-main">
+        <div class="header-content">
+            <img src="logn.png" alt="Foto do Professor Márcio" class="teacher-photo">
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html" aria-current="page">Início</a></li>
+                    <li><a href="aulasmat3bim.index.html">Matemática</a></li>
+                    <li><a href="aulaspi3bim.index.html">Projeto Integrador</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <section class="content-section">
+            <img src="matp.png" alt="Descrição da Imagem">
+            <h2>Matemática</h2>
+            <p>
+                Bem-vindo à página de Matemática! Aqui você encontrará diversos recursos para aprofundar seus estudos. Explore os links abaixo:
+            </p>
+        </section>
+
+        <section class="content-section">
+            <h2>3º Bimestre</h2>
+            <p><b>UNIDADE 5</b> - NÚMEROS RACIONAIS</p>
+            <hr>
+            
+            <p>CAPÍTULO 17</p>
+            <ol>
+                <li>
+                    <b>Noções de Fração:</b>
+                    <ul>
+                        <li><p>Leitura: <a href="1-C-NÚMEROS RACIONAIS - Noções de fração-termos de uma fração.pdf">Estude a seção sobre "Noções de Fração".</a></p></li>
+                        <li><p>Exercícios: <a href="1-E-NÚMEROS RACIONAIS - Noções de fração-termos de uma fração.pdf">Resolva as questões relacionadas a esse tema.</a></p></li>
+                    </ul>
+                </li>
+                <li>
+                    <b>Leitura de frações:</b>
+                    <ul>
+                        <li><p>Leitura: <a href="2-C-NÚMEROS RACIONAIS - Leitura de frações.pdf">Estude a seção sobre "Leitura de frações".</a></p></li>
+                        <li><p>Exercícios: <a href="2-E-NÚMEROS RACIONAIS - Leitura de frações.pdf">Resolva as questões relacionadas a esse tema.</a></p></li>
+                        <li>
+                            <p>Atividades do Livro:</p>
+                            <ul>
+                                <li>Leitura: Leia as páginas 154 a 156 do livro.</li>
+                                <li>Exercícios: Responda às questões das páginas 156 e 157.</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <b>Tipos de frações:</b>
+                    <ul>
+                        <li><p>Leitura: <a href="3-C-NÚMEROS RACIONAIS - Tipos de frações.pdf">Estude a seção sobre "Tipos de frações".</a></p></li>
+                        <li><p>Exercícios: <a href="3-E-NÚMEROS RACIONAIS - Tipos de frações.pdf">Resolva as questões relacionadas a esse tema.</a></p></li>
+                        <li>
+                            <p>Atividades do Livro:</p>
+                            <ul>
+                                <li>Leitura: Leia as páginas 158 a 159 do livro.</li>
+                                <li>Exercícios: Responda às questões das páginas 159 e 160.</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ol>
+            <hr>
+
+            <p>CAPÍTULO 18</p>
+            <ol start="4">
+                <li>
+                    <b>Frações equivalentes:</b>
+                    <ul>
+                        <li><p>Leitura: <a href="4-C-NÚMEROS RACIONAIS - Frações equivalentes.pdf">Estude a seção sobre "Frações equivalentes".</a></p></li>
+                        <li><p>Exercícios: <a href="4-E-NÚMEROS RACIONAIS - Frações equivalentes.pdf">Resolva as questões relacionadas a esse tema.</a></p></li>
+                        <li>
+                            <p>Atividades do Livro:</p>
+                            <ul>
+                                <li>Leitura: Leia as páginas 163 a 164 do livro.</li>
+                                <li>Exercícios: Responda às questões das páginas 164.</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <b>Simplificação de frações:</b>
+                    <ul>
+                        <li><p>Leitura: <a href="5-C-NÚMEROS RACIONAIS - Simplificação de frações.pdf">Estude a seção sobre "Simplificação de frações".</a></p></li>
+                        <li><p>Exercícios: <a href="5-E-NÚMEROS RACIONAIS - Simplificação de frações.pdf">Resolva as questões relacionadas a esse tema.</a></p></li>
+                        <li>
+                            <p>Atividades do Livro:</p>
+                            <ul>
+                                <li>Leitura: Leia as páginas 165 a 166 do livro.</li>
+                                <li>Exercícios: Responda às questões das páginas 166 e 167.</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <b>Comparação de frações:</b>
+                    <ul>
+                        <li><p>Leitura: <a href="6-C-NÚMEROS RACIONAIS - Comparação de frações.pdf">Estude a seção sobre "Comparação de frações".</a></p></li>
+                        <li><p>Exercícios: <a href="6-E-NÚMEROS RACIONAIS - Comparação de frações.pdf">Resolva as questões relacionadas a esse tema.</a></p></li>
+                        <li>
+                            <p>Atividades do Livro:</p>
+                            <ul>
+                                <li>Leitura: Leia as páginas 168 a 169 do livro.</li>
+                                <li>Exercícios: Responda às questões das páginas 169 e 171.</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ol>
+        </section>
+        
+    </main>  
+    
+    <p class="final-message">Espero que você tenha gostado do site.</p>
+
+    <footer class="site-footer">
+        <p>
+            &copy; 2025. Site desenvolvido por <a href="https://prof-marcio.github.io/aprendendocommarcio.com.br/" target="_blank" rel="noopener noreferrer">Márcio L. da Silva.</a> Todos os direitos reservados.
+        </p>
+    </footer>
+
+</body>
+</html>
