@@ -1,0 +1,68 @@
+/* Definição de cores e fontes para facilitar a mudança */
+:root {
+    --primary-color: #007bff;
+    --secondary-color: #f8f9fa;
+    --text-color: #343a40;
+    --link-color: #ffffff;
+    --font-family-body: Arial, sans-serif;
+}
+
+body {
+    font-family: var(--font-family-body);
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    background-color: #fff;
+    color: var(--text-color);
+}
+
+/* Estilo do cabeçalho */
+.header-container {
+    background-color: var(--primary-color);
+    color: var(--link-color);
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+.nav-menu {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.nav-link {
+    color: var(--link-color);
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+    color: var(--secondary-color);
+}
+
+/* Estilo do conteúdo principal */
+.main-content {
+    padding: 2rem;
+    text-align: center;
+}
+
+.hero-section, .about-section {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.hero-title, .about-title {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+}
+
+.hero-text, .about-text {
+    font-size: 1.2rem;
+}
