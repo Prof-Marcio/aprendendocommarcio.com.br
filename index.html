@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Consulta de Questões</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h1>Consulta de Questões de Línuga Portuguesa</h1>
+
+<section class="busca">
+
+  <!-- DISCIPLINA -->
+  <select id="filtro-disciplina">
+    <option value="">Disciplina</option>
+    <option value="Língua Portuguesa">Língua Portuguesa</option>
+  </select>
+
+  <!-- CONTEÚDO -->
+  <select id="filtro-conteudo">
+    <option value="">Conteúdo</option>
+    <option value="Conotação e denotação">Conotação e denotação</option>
+    <option value="Formação de palavras">Formação de palavras</option>
+    <option value="Colocação pronominal">Colocação pronominal</option>
+    <option value="Elementos da comunicação">Elementos da comunicação</option>
+    <option value="Emprego do hífen">Emprego do hífen</option>
+    <option value="Análise sintática">Análise sintática</option>
+    <option value="Novo Acordo Ortográfico">Novo Acordo Ortográfico</option>
+    <option value="Conjunções subordinativas">Conjunções subordinativas</option>
+    <option value="Concordância verbal">Concordância verbal</option>
+    <option value="Crase">Crase</option>
+  </select>
+
+  <!-- ENFOQUE -->
+  <select id="filtro-enfoque">
+    <option value="">Enfoque</option>
+    <option value="Identificação de sentido conotativo">
+  Identificação de sentido conotativo
+</option>
+    <option value="Identificação do processo de formação de palavras">
+  Identificação do processo de formação de palavras
+</option>
+    <option value="Identificação do emprego correto da crase">
+  Identificação do emprego correto da crase
+</option>
+    <option value="Identificação do tipo de colocação pronominal">
+      Identificação do tipo de colocação pronominal
+    </option>
+    <option value="Análise conceitual dos elementos da comunicação">
+  Análise conceitual dos elementos da comunicação
+</option>
+<option value="Identificação de erro no emprego do hífen">
+  Identificação de erro no emprego do hífen
+</option>
+<option value="Identificação da função sintática do sujeito">
+  Identificação da função sintática do sujeito
+</option>
+<option value="Análise das regras do novo acordo ortográfico">
+  Análise das regras do novo acordo ortográfico
+</option>
+<option value="Identificação de conjunção subordinativa concessiva">
+  Identificação de conjunção subordinativa concessiva
+</option>
+<option value="Identificação de erro de concordância verbal">
+  Identificação de erro de concordância verbal
+</option>
+  </select>
+
+  <!-- BANCA -->
+  <select id="filtro-banca">
+    <option value="">Banca</option>
+    <option value="IACP antiga (ADVISE)">IACP antiga (ADVISE)</option>
+  </select>
+
+  <!-- ANO -->
+  <select id="filtro-ano">
+    <option value="">Ano</option>
+    <option value="2018">2018</option>
+  </select>
+
+  <button id="btn-buscar">Buscar</button>
+
+</section>
+
+<hr>
+
+<div id="resultado"></div>
+
+<script src="questoes.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

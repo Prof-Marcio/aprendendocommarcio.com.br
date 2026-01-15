@@ -1,0 +1,27 @@
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background: #f4f6f8;
+  padding: 30px;
+}
+
+.busca {
+  margin-bottom: 20px;
+}
+
+select, button {
+  padding: 8px;
+  margin-right: 10px;
+}
+
+section {
+  background: #ffffff;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+}
+
+.texto-prova {
+  background: #f9f9f9;
+  padding: 15px;
+  white-space: pre-wrap;
+}
