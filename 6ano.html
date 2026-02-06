@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Missões 6º Ano | Math Boost</title>
+    <title>6º Ano | Matemática Ativa</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;700&family=Quicksand:wght@500;700&display=swap');
@@ -12,84 +12,98 @@
 
         body {
             font-family: 'Quicksand', sans-serif;
-            background-color: #f0f4f8; /* Cinza bem clarinho para destacar o branco */
-            color: #2d3436;
+            background-color: #f8fafc;
+            color: #1e293b;
             padding-bottom: 50px;
         }
 
-        /* Topo da Sala com Cor Vibrante */
+        /* Header Dinâmico com a cor da turma */
         header {
-            background: #38bdf8; /* Cor do 6º Ano */
+            background: #38bdf8; /* Altere esta cor para cada turma */
             color: white;
-            padding: 50px 20px;
+            padding: 40px 20px 80px;
             text-align: center;
-            border-bottom: 6px solid rgba(0,0,0,0.1);
-            border-radius: 0 0 50px 50px;
+            border-bottom-left-radius: 40px;
+            border-bottom-right-radius: 40px;
             box-shadow: 0 10px 20px rgba(56, 189, 248, 0.2);
         }
 
-        header h1 { font-family: 'Fredoka', sans-serif; font-size: 2.8rem; text-shadow: 2px 2px 0px rgba(0,0,0,0.1); }
-        
+        header h1 { 
+            font-family: 'Fredoka', sans-serif; 
+            font-size: clamp(2rem, 8vw, 3rem);
+            margin-bottom: 10px;
+        }
+
         .btn-voltar {
-            display: inline-block;
-            margin-top: 15px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
             color: white;
             text-decoration: none;
-            font-weight: bold;
-            background: rgba(0,0,0,0.15);
-            padding: 10px 25px;
-            border-radius: 30px;
-            transition: 0.2s;
+            font-weight: 700;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 10px 20px;
+            border-radius: 50px;
+            transition: 0.3s;
+            font-size: 0.9rem;
         }
-        .btn-voltar:hover { background: rgba(0,0,0,0.3); }
+        .btn-voltar:hover { background: rgba(255, 255, 255, 0.4); }
 
         .container {
-            max-width: 900px;
-            margin: -30px auto 0; /* Sobe um pouco para cima do header */
+            max-width: 1000px;
+            margin: -40px auto 0;
             padding: 0 20px;
         }
 
-        /* Card do Bimestre (Branco e Limpo) */
-        .bimestre-box {
+        /* Card do Bimestre */
+        .bimestre-card {
             background: white;
             border-radius: 35px;
             padding: 30px;
-            margin-bottom: 30px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.05);
-            border: 2px solid #e2e8f0;
+            margin-bottom: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            border: 2px solid #f1f5f9;
             transition: transform 0.3s ease;
         }
 
-        .bimestre-box:hover { transform: translateY(-5px); border-color: #38bdf8; }
+        .bimestre-card:hover { transform: translateY(-5px); border-color: #38bdf8; }
 
-        .bimestre-tag {
-            background: #38bdf8;
-            color: white;
-            display: inline-block;
-            padding: 6px 20px;
-            border-radius: 20px;
+        .bimestre-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .bimestre-titulo {
             font-family: 'Fredoka', sans-serif;
+            font-size: 1.5rem;
+            color: #334155;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .badge-status {
+            background: #f1f5f9;
+            color: #64748b;
+            padding: 5px 15px;
+            border-radius: 50px;
+            font-size: 0.8rem;
             font-weight: 700;
-            font-size: 0.9rem;
-            margin-bottom: 15px;
         }
 
-        .topicos {
-            color: #636e72;
-            margin-bottom: 25px;
-            font-size: 1.1rem;
-            font-weight: 500;
-        }
-
-        /* Botões de Ação Gigantes */
+        /* Grade de Botões de Conteúdo */
         .acoes-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 15px;
         }
 
         .btn-acao {
-            padding: 25px 15px;
+            padding: 20px 15px;
             border-radius: 25px;
             text-align: center;
             text-decoration: none;
@@ -98,96 +112,105 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 12px;
-            transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            box-shadow: 0 8px 0 rgba(0,0,0,0.1);
+            gap: 10px;
+            transition: all 0.2s;
+            box-shadow: 0 6px 0 rgba(0,0,0,0.1);
         }
 
-        /* Efeito de Clique Real */
-        .btn-acao:active { transform: translateY(6px); box-shadow: 0 2px 0 rgba(0,0,0,0.1); }
+        .btn-acao:active { transform: translateY(4px); box-shadow: 0 2px 0 rgba(0,0,0,0.1); }
 
-        .conteudo { background: #6c5ce7; }   /* Roxo Amigável */
-        .exercicios { background: #00b894; } /* Verde Água */
-        .avaliacoes { background: #fd9644; } /* Laranja Pastel */
+        /* Cores Lúdicas para cada tipo de material */
+        .btn-conteudo { background: #6366f1; } /* Roxo - Teoria */
+        .btn-exercicio { background: #22c55e; } /* Verde - Prática */
+        .btn-prova { background: #f59e0b; }    /* Laranja - Testes */
 
-        .btn-acao i { font-size: 2.2rem; filter: drop-shadow(2px 2px 0px rgba(0,0,0,0.1)); }
+        .btn-acao i { font-size: 2rem; }
+        .btn-acao span { font-size: 0.9rem; }
 
-        /* Estilo de Bloqueado (Cadeado) */
-        .bloqueado { background: #f8fafc; opacity: 0.7; }
-        .btn-lock { background: #b2bec3; cursor: not-allowed; }
+        /* Estilo para Bimestres ainda não iniciados */
+        .bloqueado { opacity: 0.6; filter: grayscale(0.8); pointer-events: none; }
 
-        footer { text-align: center; padding: 40px; color: #b2bec3; font-weight: bold; }
+        footer { text-align: center; padding: 50px; color: #94a3b8; font-size: 0.9rem; }
 
-        @media (max-width: 500px) {
-            header h1 { font-size: 2rem; }
+        /* Responsividade para Tablets e Celulares */
+        @media (max-width: 600px) {
             .acoes-grid { grid-template-columns: 1fr; }
+            .bimestre-card { padding: 20px; }
+            .btn-acao { flex-direction: row; justify-content: center; gap: 15px; padding: 15px; }
         }
     </style>
 </head>
 <body>
 
-    <header>
-        <h1>🚀 6º ANO: MISSÕES</h1>
-        <a href="index.html" class="btn-voltar"><i class="fas fa-chevron-left"></i> VOLTAR AO MENU</a>
-    </header>
+<header id="turma-header">
+    <a href="index.html" class="btn-voltar"><i class="fas fa-chevron-left"></i> VOLTAR</a>
+    <h1>6º ANO: SALA DE AULA</h1>
+</header>
 
-    <div class="container">
+<div class="container">
 
-        <div class="bimestre-box">
-            <span class="bimestre-tag">1º BIMESTRE: O INÍCIO</span>
-            <div class="topicos">📚 <strong>Explorando:</strong> Sistemas de Numeração e Geometria Plana.</div>
-            
-            <div class="acoes-grid">
-                <a href="#" class="btn-acao conteudo">
-                    <i class="fas fa-book-reader"></i>
-                    AULAS
-                </a>
-                <a href="#" class="btn-acao exercicios">
-                    <i class="fas fa-pencil-ruler"></i>
-                    TREINO
-                </a>
-                <a href="#" class="btn-acao avaliacoes">
-                    <i class="fas fa-check-double"></i>
-                    TESTES
-                </a>
-            </div>
+    <div class="bimestre-card">
+        <div class="bimestre-header">
+            <h2 class="bimestre-titulo"><span>🍎</span> 1º Bimestre</h2>
+            <span class="badge-status">DISPONÍVEL</span>
         </div>
-
-        <div class="bimestre-box">
-            <span class="bimestre-tag" style="background: #00b894;">2º BIMESTRE: DESAFIOS</span>
-            <div class="topicos">📚 <strong>Explorando:</strong> Frações, Decimais e Medidas.</div>
-            
-            <div class="acoes-grid">
-                <a href="#" class="btn-acao conteudo">
-                    <i class="fas fa-video"></i>
-                    AULAS
-                </a>
-                <a href="#" class="btn-acao exercicios">
-                    <i class="fas fa-brain"></i>
-                    TREINO
-                </a>
-                <a href="#" class="btn-acao avaliacoes">
-                    <i class="fas fa-medal"></i>
-                    TESTES
-                </a>
-            </div>
+        <div class="acoes-grid">
+            <a href="#" class="btn-acao btn-conteudo">
+                <i class="fas fa-book-open"></i>
+                <span>CONTEÚDOS</span>
+            </a>
+            <a href="#" class="btn-acao btn-exercicio">
+                <i class="fas fa-pencil-alt"></i>
+                <span>EXERCÍCIOS</span>
+            </a>
+            <a href="#" class="btn-acao btn-prova">
+                <i class="fas fa-file-signature"></i>
+                <span>AVALIAÇÕES</span>
+            </a>
         </div>
-
-        <div class="bimestre-box bloqueado">
-            <span class="bimestre-tag" style="background: #b2bec3;">3º BIMESTRE</span>
-            <div class="topicos">🔒 Conteúdo sendo preparado com carinho...</div>
-            <div class="acoes-grid">
-                <div class="btn-acao btn-lock"><i class="fas fa-lock"></i> ???</div>
-                <div class="btn-acao btn-lock"><i class="fas fa-lock"></i> ???</div>
-                <div class="btn-acao btn-lock"><i class="fas fa-lock"></i> ???</div>
-            </div>
-        </div>
-
     </div>
 
-    <footer>
-        <p>A Matemática é o seu superpoder! ✨</p>
-    </footer>
+    <div class="bimestre-card bloqueado">
+        <div class="bimestre-header">
+            <h2 class="bimestre-titulo"><span>📐</span> 2º Bimestre</h2>
+            <span class="badge-status">BLOQUEADO</span>
+        </div>
+        <div class="acoes-grid">
+            <div class="btn-acao btn-conteudo"><i class="fas fa-lock"></i><span>...</span></div>
+            <div class="btn-acao btn-exercicio"><i class="fas fa-lock"></i><span>...</span></div>
+            <div class="btn-acao btn-prova"><i class="fas fa-lock"></i><span>...</span></div>
+        </div>
+    </div>
+
+    <div class="bimestre-card bloqueado">
+        <div class="bimestre-header">
+            <h2 class="bimestre-titulo"><span>📐</span> 3º Bimestre</h2>
+            <span class="badge-status">BLOQUEADO</span>
+        </div>
+        <div class="acoes-grid">
+            <div class="btn-acao btn-conteudo"><i class="fas fa-lock"></i><span>...</span></div>
+            <div class="btn-acao btn-exercicio"><i class="fas fa-lock"></i><span>...</span></div>
+            <div class="btn-acao btn-prova"><i class="fas fa-lock"></i><span>...</span></div>
+        </div>
+    </div>
+
+    <div class="bimestre-card bloqueado">
+        <div class="bimestre-header">
+            <h2 class="bimestre-titulo"><span>📐</span> 4º Bimestre</h2>
+            <span class="badge-status">BLOQUEADO</span>
+        </div>
+        <div class="acoes-grid">
+            <div class="btn-acao btn-conteudo"><i class="fas fa-lock"></i><span>...</span></div>
+            <div class="btn-acao btn-exercicio"><i class="fas fa-lock"></i><span>...</span></div>
+            <div class="btn-acao btn-prova"><i class="fas fa-lock"></i><span>...</span></div>
+        </div>
+    </div>
+
+</div>
+
+<footer>
+    <p>Matemática Ativa &bull; 2026</p>
+</footer>
 
 </body>
 </html>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Math Boost | Portal do Aluno</title>
+    <title>Portal de Matemática | Prof. [Nome]</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;700&family=Quicksand:wght@500;700&display=swap');
@@ -22,11 +22,10 @@
             line-height: 1.5;
         }
 
-        /* Topo Dinâmico */
         header {
             background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
             color: white;
-            padding: 60px 20px 100px;
+            padding: 70px 20px 110px;
             text-align: center;
             border-bottom-left-radius: 50% 15%;
             border-bottom-right-radius: 50% 15%;
@@ -35,155 +34,150 @@
 
         header h1 { 
             font-family: 'Fredoka', sans-serif; 
-            font-size: clamp(2rem, 8vw, 3.5rem); /* Tamanho de fonte que se ajusta à tela */
+            font-size: clamp(2.2rem, 10vw, 3.8rem); 
             text-shadow: 3px 3px 0px rgba(0,0,0,0.1);
+            margin-bottom: 10px;
         }
 
-        header p { font-size: 1.2rem; opacity: 0.9; margin-top: 10px; }
+        header p { font-size: 1.2rem; opacity: 0.9; font-weight: 500; }
 
         .container {
             max-width: 1100px;
-            margin: -50px auto 50px;
+            margin: -60px auto 50px;
             padding: 0 20px;
         }
 
-        /* Grade que se adapta a QUALQUER aparelho */
+        /* Grade Dinâmica (Funciona em Celular, Tablet e PC) */
         .grid-home {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 25px;
         }
 
         .card-menu {
             background: white;
-            border-radius: 35px;
-            padding: 40px 20px;
+            border-radius: 40px;
+            padding: 50px 20px;
             text-align: center;
             text-decoration: none;
             color: #334155;
             box-shadow: 0 15px 35px rgba(0,0,0,0.05);
-            border: 3px solid transparent;
+            border: 4px solid transparent;
             transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             display: flex;
             flex-direction: column;
             align-items: center;
         }
 
-        /* Efeito de flutuar e cor ao passar o mouse */
         .card-menu:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 25px 45px rgba(0,0,0,0.1);
+            transform: translateY(-12px);
+            box-shadow: 0 30px 50px rgba(0,0,0,0.1);
         }
 
-        .card-menu i { font-size: 4.5rem; margin-bottom: 20px; transition: 0.3s; }
-        .card-menu h2 { font-family: 'Fredoka', sans-serif; font-size: 1.8rem; margin-bottom: 10px; }
-        .card-menu span { font-weight: 700; color: #94a3b8; font-size: 0.9rem; text-transform: uppercase; }
+        .card-menu i { font-size: 5rem; margin-bottom: 20px; }
+        .card-menu h2 { font-family: 'Fredoka', sans-serif; font-size: 2.2rem; }
 
-        /* Cores específicas dos ícones */
+        /* Cores Vibrantes sem rótulos de nível */
         .c6 i { color: var(--c6); } .c6:hover { border-color: var(--c6); }
         .c7 i { color: var(--c7); } .c7:hover { border-color: var(--c7); }
         .c8 i { color: var(--c8); } .c8:hover { border-color: var(--c8); }
         .c9 i { color: var(--c9); } .c9:hover { border-color: var(--c9); }
 
-        /* Banner OBMEP Estilo Especial */
-        .banner-especial {
-            grid-column: 1 / -1; /* Ocupa a linha toda */
+        /* Banner OBMEP */
+        .banner-obmep {
+            grid-column: 1 / -1;
             background: white;
-            border-radius: 35px;
-            padding: 30px;
+            border-radius: 40px;
+            padding: 35px;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 20px;
+            gap: 25px;
             text-decoration: none;
             color: #1e293b;
-            border: 4px dashed var(--obmep);
-            margin-top: 10px;
+            border: 4px solid #f1f5f9;
+            margin-top: 15px;
             transition: 0.3s;
         }
 
-        .banner-especial:hover { background: #fffdf0; transform: scale(1.02); border-style: solid; }
-        .banner-especial i { font-size: 3rem; color: var(--obmep); animation: pulo 2s infinite; }
-
-        @keyframes pulo {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
+        .banner-obmep:hover { 
+            border-color: var(--obmep);
+            background: #fffef0;
         }
 
-        /* Mural de Recados Clean */
+        .banner-obmep i { font-size: 3.5rem; color: var(--obmep); }
+        .banner-obmep h2 { font-family: 'Fredoka', sans-serif; font-size: 1.8rem; }
+
+        /* Mural simplificado */
         .mural {
             background: white;
             margin-top: 40px;
-            padding: 30px;
-            border-radius: 35px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.03);
+            padding: 35px;
+            border-radius: 40px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.02);
         }
 
-        .mural h3 { color: #ef4444; margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
-        .mural-item { background: #f1f5f9; padding: 15px; border-radius: 20px; margin-bottom: 10px; border-left: 6px solid #ef4444; }
+        .mural h3 { color: #6366f1; margin-bottom: 20px; font-family: 'Fredoka', sans-serif; font-size: 1.5rem; }
+        .mural-item { background: #f8fafc; padding: 18px; border-radius: 25px; margin-bottom: 12px; font-weight: 500; display: flex; align-items: center; gap: 10px; }
 
-        footer { text-align: center; padding: 50px; color: #94a3b8; font-weight: bold; }
+        footer { text-align: center; padding: 60px; color: #cbd5e1; font-weight: bold; }
 
-        /* Ajustes para telas bem pequenas (celulares antigos) */
-        @media (max-width: 400px) {
-            .grid-home { grid-template-columns: 1fr; }
-            header h1 { font-size: 1.8rem; }
-            .banner-especial { flex-direction: column; text-align: center; }
+        /* Ajustes de tela */
+        @media (max-width: 500px) {
+            header { padding-top: 50px; }
+            .banner-obmep { flex-direction: column; text-align: center; }
+            .card-menu { padding: 40px 15px; }
         }
     </style>
 </head>
 <body>
 
     <header>
-        <h1>🚀 MATH BOOST</h1>
-        <p>Escolha sua turma e comece a diversão!</p>
+        <h1>MATEMÁTICA ATIVA</h1>
+        <p>Escolha sua turma e vamos aos estudos!</p>
     </header>
 
     <div class="container">
         <div class="grid-home">
             
             <a href="6ano.html" class="card-menu c6">
-                <i class="fas fa-rocket"></i>
-                <span>Nível Básico</span>
-                <h2>6º Ano</h2>
+                <i class="fas fa-cubes"></i>
+                <h2>6º ANO</h2>
             </a>
 
             <a href="7ano.html" class="card-menu c7">
-                <i class="fas fa-gamepad"></i>
-                <span>Nível Intermediário</span>
-                <h2>7º Ano</h2>
+                <i class="fas fa-shapes"></i>
+                <h2>7º ANO</h2>
             </a>
 
             <a href="8ano.html" class="card-menu c8">
-                <i class="fas fa-brain"></i>
-                <span>Nível Avançado</span>
-                <h2>8º Ano</h2>
+                <i class="fas fa-calculator"></i>
+                <h2>8º ANO</h2>
             </a>
 
             <a href="9ano.html" class="card-menu c9">
-                <i class="fas fa-trophy"></i>
-                <span>Nível Mestre</span>
-                <h2>9º Ano</h2>
+                <i class="fas fa-graduation-cap"></i>
+                <h2>9º ANO</h2>
             </a>
 
-            <a href="obmep.html" class="banner-especial">
-                <i class="fas fa-medal"></i>
-                <div style="text-align: left;">
-                    <h2 style="font-family: 'Fredoka', sans-serif;">MISSÃO OBMEP 2026</h2>
-                    <p style="font-weight: 700; color: #64748b;">Treine agora e conquiste sua medalha!</p>
+            <a href="obmep.html" class="banner-obmep">
+                <i class="fas fa-award"></i>
+                <div>
+                    <h2>DESAFIOS OBMEP 2026</h2>
+                    <p>Prepare-se para as Olimpíadas de Matemática!</p>
                 </div>
             </a>
         </div>
 
         <div class="mural">
-            <h3><i class="fas fa-bullhorn"></i> MURAL DE RECADOS</h3>
-            <div class="mural-item">📝 <b>Novidade:</b> Aulas de revisão do 1º Bimestre postadas!</div>
-            <div class="mural-item">📅 <b>Atenção:</b> Simulado da OBMEP na próxima sexta.</div>
+            <h3><i class="fas fa-bullhorn"></i> AVISOS GERAIS</h3>
+            <div class="mural-item"><span>🚀</span> Conteúdos do 1º Bimestre já estão disponíveis.</div>
+            <div class="mural-item"><span>📅</span> Calendário de avaliações atualizado na página de cada turma.</div>
         </div>
     </div>
 
     <footer>
-        <p>Feito com ❤️ para os futuros gênios da Matemática.</p>
+        <p>Desenvolvido com carinho para os nossos alunos ✨</p>
     </footer>
 
 </body>
