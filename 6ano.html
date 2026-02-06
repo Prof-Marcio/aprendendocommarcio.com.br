@@ -1,77 +1,193 @@
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Matérias 6º Ano</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>Missões 6º Ano | Math Boost</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        :root { --main: #3498db; --bg: #f0f4f8; }
-        body { font-family: 'Segoe UI', sans-serif; background: var(--bg); margin: 0; }
-        
-        header { background: var(--main); color: white; padding: 2rem; text-align: center; }
-        
-        .nav-back { padding: 10px 20px; display: inline-block; text-decoration: none; color: var(--main); font-weight: bold; }
+        @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;700&family=Quicksand:wght@500;700&display=swap');
 
-        .container { max-width: 1000px; margin: auto; padding: 20px; }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
 
-        .bimestre-card {
-            background: white; border-radius: 15px; padding: 25px;
-            margin-bottom: 30px; box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-            border-left: 10px solid var(--main);
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background-color: #f0f4f8; /* Cinza bem clarinho para destacar o branco */
+            color: #2d3436;
+            padding-bottom: 50px;
         }
 
-        .bimestre-title { font-size: 1.5rem; color: #2c3e50; margin-bottom: 20px; border-bottom: 2px solid #eee; padding-bottom: 10px; }
-
-        .btn-group { display: flex; flex-wrap: wrap; gap: 10px; }
-
-        .btn-content {
-            flex: 1; min-width: 150px; text-align: center; padding: 15px;
-            border-radius: 10px; text-decoration: none; font-weight: bold; color: white;
-            transition: opacity 0.2s;
+        /* Topo da Sala com Cor Vibrante */
+        header {
+            background: #38bdf8; /* Cor do 6º Ano */
+            color: white;
+            padding: 50px 20px;
+            text-align: center;
+            border-bottom: 6px solid rgba(0,0,0,0.1);
+            border-radius: 0 0 50px 50px;
+            box-shadow: 0 10px 20px rgba(56, 189, 248, 0.2);
         }
 
-        .btn-video { background: #e74c3c; }   /* Vermelho */
-        .btn-pdf { background: #2ecc71; }     /* Verde */
-        .btn-test { background: #f39c12; }    /* Amarelo/Laranja */
+        header h1 { font-family: 'Fredoka', sans-serif; font-size: 2.8rem; text-shadow: 2px 2px 0px rgba(0,0,0,0.1); }
+        
+        .btn-voltar {
+            display: inline-block;
+            margin-top: 15px;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            background: rgba(0,0,0,0.15);
+            padding: 10px 25px;
+            border-radius: 30px;
+            transition: 0.2s;
+        }
+        .btn-voltar:hover { background: rgba(0,0,0,0.3); }
 
-        .btn-content:hover { opacity: 0.8; }
-        .btn-content i { display: block; font-size: 1.5rem; margin-bottom: 5px; }
+        .container {
+            max-width: 900px;
+            margin: -30px auto 0; /* Sobe um pouco para cima do header */
+            padding: 0 20px;
+        }
+
+        /* Card do Bimestre (Branco e Limpo) */
+        .bimestre-box {
+            background: white;
+            border-radius: 35px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.05);
+            border: 2px solid #e2e8f0;
+            transition: transform 0.3s ease;
+        }
+
+        .bimestre-box:hover { transform: translateY(-5px); border-color: #38bdf8; }
+
+        .bimestre-tag {
+            background: #38bdf8;
+            color: white;
+            display: inline-block;
+            padding: 6px 20px;
+            border-radius: 20px;
+            font-family: 'Fredoka', sans-serif;
+            font-weight: 700;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+
+        .topicos {
+            color: #636e72;
+            margin-bottom: 25px;
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+
+        /* Botões de Ação Gigantes */
+        .acoes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 20px;
+        }
+
+        .btn-acao {
+            padding: 25px 15px;
+            border-radius: 25px;
+            text-align: center;
+            text-decoration: none;
+            color: white;
+            font-weight: 700;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+            transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 8px 0 rgba(0,0,0,0.1);
+        }
+
+        /* Efeito de Clique Real */
+        .btn-acao:active { transform: translateY(6px); box-shadow: 0 2px 0 rgba(0,0,0,0.1); }
+
+        .conteudo { background: #6c5ce7; }   /* Roxo Amigável */
+        .exercicios { background: #00b894; } /* Verde Água */
+        .avaliacoes { background: #fd9644; } /* Laranja Pastel */
+
+        .btn-acao i { font-size: 2.2rem; filter: drop-shadow(2px 2px 0px rgba(0,0,0,0.1)); }
+
+        /* Estilo de Bloqueado (Cadeado) */
+        .bloqueado { background: #f8fafc; opacity: 0.7; }
+        .btn-lock { background: #b2bec3; cursor: not-allowed; }
+
+        footer { text-align: center; padding: 40px; color: #b2bec3; font-weight: bold; }
+
+        @media (max-width: 500px) {
+            header h1 { font-size: 2rem; }
+            .acoes-grid { grid-template-columns: 1fr; }
+        }
     </style>
 </head>
 <body>
 
-<header>
-    <h1>📚 Sala de Aula: 6º Ano</h1>
-    <p>Todos os conteúdos organizados por bimestre</p>
-</header>
+    <header>
+        <h1>🚀 6º ANO: MISSÕES</h1>
+        <a href="index.html" class="btn-voltar"><i class="fas fa-chevron-left"></i> VOLTAR AO MENU</a>
+    </header>
 
-<a href="index.html" class="nav-back">← Voltar ao Início</a>
+    <div class="container">
 
-<div class="container">
-
-    <div class="bimestre-card">
-        <div class="bimestre-title">1º Bimestre: O Mundo dos Números</div>
-        <p><strong>Temas:</strong> Sistemas de numeração, Operações fundamentais e Geometria básica.</p>
-        
-        <div class="btn-group">
-            <a href="#" class="btn-content btn-video"><i class="fas fa-play-circle"></i> Conteúdos</a>
-            <a href="#" class="btn-content btn-pdf"><i class="fas fa-file-pdf"></i> Exercícios</a>
-            <a href="#" class="btn-content btn-test"><i class="fas fa-edit"></i> Avaliação</a>
+        <div class="bimestre-box">
+            <span class="bimestre-tag">1º BIMESTRE: O INÍCIO</span>
+            <div class="topicos">📚 <strong>Explorando:</strong> Sistemas de Numeração e Geometria Plana.</div>
+            
+            <div class="acoes-grid">
+                <a href="#" class="btn-acao conteudo">
+                    <i class="fas fa-book-reader"></i>
+                    AULAS
+                </a>
+                <a href="#" class="btn-acao exercicios">
+                    <i class="fas fa-pencil-ruler"></i>
+                    TREINO
+                </a>
+                <a href="#" class="btn-acao avaliacoes">
+                    <i class="fas fa-check-double"></i>
+                    TESTES
+                </a>
+            </div>
         </div>
-    </div>
 
-    <div class="bimestre-card">
-        <div class="bimestre-title">2º Bimestre: Divisibilidade e Frações</div>
-        <p><strong>Temas:</strong> MMC, MDC, Frações e Números Decimais.</p>
-        <div class="btn-group">
-            <a href="#" class="btn-content btn-video"><i class="fas fa-play-circle"></i> Conteúdos</a>
-            <a href="#" class="btn-content btn-pdf"><i class="fas fa-file-pdf"></i> Exercícios</a>
-            <a href="#" class="btn-content btn-test"><i class="fas fa-edit"></i> Avaliação</a>
+        <div class="bimestre-box">
+            <span class="bimestre-tag" style="background: #00b894;">2º BIMESTRE: DESAFIOS</span>
+            <div class="topicos">📚 <strong>Explorando:</strong> Frações, Decimais e Medidas.</div>
+            
+            <div class="acoes-grid">
+                <a href="#" class="btn-acao conteudo">
+                    <i class="fas fa-video"></i>
+                    AULAS
+                </a>
+                <a href="#" class="btn-acao exercicios">
+                    <i class="fas fa-brain"></i>
+                    TREINO
+                </a>
+                <a href="#" class="btn-acao avaliacoes">
+                    <i class="fas fa-medal"></i>
+                    TESTES
+                </a>
+            </div>
         </div>
-    </div>
+
+        <div class="bimestre-box bloqueado">
+            <span class="bimestre-tag" style="background: #b2bec3;">3º BIMESTRE</span>
+            <div class="topicos">🔒 Conteúdo sendo preparado com carinho...</div>
+            <div class="acoes-grid">
+                <div class="btn-acao btn-lock"><i class="fas fa-lock"></i> ???</div>
+                <div class="btn-acao btn-lock"><i class="fas fa-lock"></i> ???</div>
+                <div class="btn-acao btn-lock"><i class="fas fa-lock"></i> ???</div>
+            </div>
+        </div>
 
     </div>
+
+    <footer>
+        <p>A Matemática é o seu superpoder! ✨</p>
+    </footer>
 
 </body>
 </html>
