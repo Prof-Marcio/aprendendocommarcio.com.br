@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        /* ENGINE DE VISUALIZAÇÃO PDF - V5.1 ELITE 01 */
+        body { 
+            background-color: #525659; 
+            margin: 0; 
+            padding: 20px; 
+            display: flex; 
+            justify-content: center; 
+        }
+
+        .documento-pdf {
+            background: #ffffff;
+            width: 210mm;
+            min-height: 297mm;
+            padding: 20mm 25mm;
+            box-shadow: 0 0 15px rgba(0,0,0,0.5);
+            font-family: "Times New Roman", Times, serif;
+            color: #000;
+            line-height: 1.4;
+            box-sizing: border-box;
+            position: relative;
+        }
+
+        .marca-dagua {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(-45deg);
+            font-size: 8rem;
+            color: rgba(0,0,0,0.03);
+            font-weight: bold;
+            pointer-events: none;
+            white-space: nowrap;
+            z-index: 0;
+        }
+
+        .header-institucional {
+            text-align: center;
+            text-transform: uppercase;
+            font-weight: bold;
+            border-bottom: 2px solid #000;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+
+        .identificacao-tecnica {
+            text-align: right;
+            font-size: 0.9rem;
+            margin-bottom: 30px;
+            line-height: 1.2;
+        }
+
+        .titulo-principal {
+            text-align: center;
+            font-size: 1.4rem;
+            font-weight: bold;
+            text-decoration: underline;
+            margin-bottom: 25px;
+            text-transform: uppercase;
+        }
+
+        .secao-titulo {
+            background: #f2f2f2;
+            padding: 5px 10px;
+            font-weight: bold;
+            display: block;
+            border-left: 5px solid #000;
+            margin: 25px 0 10px 0;
+            text-transform: uppercase;
+            font-size: 1.05rem;
+        }
+
+        .tabela-deck {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+            z-index: 1;
+            position: relative;
+            page-break-inside: auto;
+        }
+
+        .tabela-deck th, .tabela-deck td {
+            border: 1px solid #000;
+            padding: 12px;
+            font-size: 1rem;
+            text-align: left;
+            vertical-align: middle;
+        }
+
+        .tabela-deck th { 
+            background: #000; 
+            color: #fff;
+            text-align: center;
+            text-transform: uppercase;
+        }
+
+        .tabela-deck tr:nth-child(even) { background: #f9f9f9; }
+
+        .gatilho-destaque {
+            color: #d9534f;
+            font-weight: bold;
+        }
+
+        .box-alerta {
+            border: 2px dashed #000;
+            padding: 15px;
+            margin: 20px 0;
+            background: #fff9c4;
+            font-weight: bold;
+        }
+
+        .footer-pdf {
+            margin-top: 50px;
+            text-align: center;
+            font-size: 0.8rem;
+            border-top: 1px solid #000;
+            padding-top: 10px;
+            text-transform: uppercase;
+        }
+
+        @media print {
+            body { background: none; padding: 0; }
+            .documento-pdf { box-shadow: none; margin: 0; border: none; }
+            @page { size: A4; margin: 0; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="documento-pdf">
+    <div class="marca-dagua">MPAL 2026</div>
+
+    <div class="header-institucional">
+        Ministério Público do Estado de Alagoas<br>
+        Laboratório de Redação e Revisão Gramatical
+    </div>
+
+    <div class="identificacao-tecnica">
+        <b>CONCURSO:</b> MPAL 2026 | <b>CARGO:</b> Analista<br>
+        <b>DISCIPLINA:</b> Língua Portuguesa | <b>FOCO:</b> Ortografia e Acentuação
+    </div>
+
+    <div class="titulo-principal">🗂️ DECK DE REVISÃO INFINITA (MPAL/FCC)</div>
+
+    <span class="secao-titulo">1. ⚡ FLASHCARDS DE ORTOGRAFIA (REGRAS DE OURO)</span>
+    
+    <table class="tabela-deck">
+        <thead>
+            <tr>
+                <th style="width: 45%;">Frente do Card (A Pergunta)</th>
+                <th style="width: 55%;">Verso do Card (O Gatilho/Resposta)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><b>Gatilho -DER / -NDER:</b><br>Pretender, Estender, Ascender...</td>
+                <td>Gera substantivos com <span class="gatilho-destaque">S</span><br>(Pretensão, Extensão, Ascensão).</td>
+            </tr>
+            <tr>
+                <td><b>Gatilho -CEDER:</b><br>Conceder, Exceder, Proceder...</td>
+                <td>Gera substantivos com <span class="gatilho-destaque">SS</span><br>(Concessão, Excesso, Processo).</td>
+            </tr>
+            <tr>
+                <td><b>Gatilho -TER:</b><br>Deter, Manter, Conter...</td>
+                <td>Gera substantivos com <span class="gatilho-destaque">Ç</span><br>(Detenção, Manutenção, Contenção).</td>
+            </tr>
+            <tr>
+                <td><b>Novo Acordo (Gêmeos):</b><br>Como se escreve VOO e LEEM?</td>
+                <td><span class="gatilho-destaque">Voo e Leem</span> (Sem acento - ficaram carecas).</td>
+            </tr>
+            <tr>
+                <td><b>Novo Acordo (Ditongos):</b><br>Ideia e Assembleia têm acento?</td>
+                <td><span class="gatilho-destaque">Não</span>. Paroxítonas com ditongo aberto ÉI/ÓI perderam o acento.</td>
+            </tr>
+            <tr>
+                <td><b>Acento Diferencial (Plural):</b><br>Qual o plural de "Ele tem" e "Ele vem"?</td>
+                <td><span class="gatilho-destaque">Eles têm / Eles vêm</span><br>(Circunflexo = Plural).</td>
+            </tr>
+            <tr>
+                <td><b>Casca de Banana:</b><br>Qual a grafia de RESCISÃO?</td>
+                <td><span class="gatilho-destaque">RESCISÃO</span> (SC + S).</td>
+            </tr>
+            <tr>
+                <td><b>Parônimos:</b><br>Qual a diferença entre RATIFICAR e RETIFICAR?</td>
+                <td><b>RAtificar</b> = RAvalidar (Confirmar)<br><b>REtificar</b> = REmendar (Corrigir).</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="box-alerta">
+        🚨 O DISTRATOR (PEGADINHA): A banca dirá que "Gratuíto" e "Rubrica" têm acento. <br>
+        FALSO. São palavras átonas nesse ponto. Gratuito é paroxítona (u-i). Rubrica é paroxítona (bri).
+    </div>
+
+    <span class="secao-titulo">2. 💼 CONTEXTO INSTITUCIONAL MPAL</span>
+    <p><b>Cenário de Prova:</b> Como o Analista deve grafar a troca de membros em um processo jurídico?</p>
+    <p><b>Resposta de Elite:</b> Através da <span class="gatilho-destaque">Indivisibilidade</span> (Grafado com "S" e "I" - Princípio fundamental da LC 15/96).</p>
+
+    <div class="footer-pdf">
+        Página 1 de 1 - Protocolo de Revisão Gramatical MPAL 2026 - Engine V5.1
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        /* ENGINE DE VISUALIZAÇÃO PDF - V5.1 ELITE 01 */
+        body { 
+            background-color: #525659; 
+            margin: 0; padding: 20px; 
+            display: flex; justify-content: center; 
+        }
+
+        .documento-pdf {
+            background: #ffffff;
+            width: 210mm;
+            min-height: 297mm;
+            padding: 20mm 25mm;
+            box-shadow: 0 0 15px rgba(0,0,0,0.5);
+            font-family: "Times New Roman", Times, serif;
+            color: #000;
+            line-height: 1.4;
+            box-sizing: border-box;
+            position: relative;
+        }
+
+        .marca-dagua {
+            position: absolute; top: 50%; left: 50%;
+            transform: translate(-50%, -50%) rotate(-45deg);
+            font-size: 8rem; color: rgba(0,0,0,0.03);
+            font-weight: bold; pointer-events: none;
+            white-space: nowrap; z-index: 0;
+        }
+
+        .header-institucional {
+            text-align: center;
+            text-transform: uppercase;
+            font-weight: bold;
+            border-bottom: 2px solid #000;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+
+        .identificacao-tecnica {
+            text-align: right;
+            font-size: 0.9rem;
+            margin-bottom: 25px;
+        }
+
+        .titulo-principal {
+            text-align: center;
+            font-size: 1.3rem;
+            font-weight: bold;
+            text-decoration: underline;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        .meta-box {
+            border: 1px solid #000;
+            padding: 5px 15px;
+            display: inline-block;
+            margin-bottom: 20px;
+            font-weight: bold;
+            background: #f2f2f2;
+        }
+
+        .secao-titulo {
+            background: #f2f2f2;
+            padding: 5px 10px;
+            font-weight: bold;
+            display: block;
+            border-left: 5px solid #000;
+            margin: 20px 0 10px 0;
+            text-transform: uppercase;
+        }
+
+        .questao-bloco {
+            margin-bottom: 15px;
+            page-break-inside: avoid;
+        }
+
+        .questao-enunciado {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+            text-align: justify;
+        }
+
+        .alternativas {
+            margin-left: 15px;
+            list-style: none;
+            padding: 0;
+        }
+
+        .alternativas li {
+            margin-bottom: 3px;
+        }
+
+        .box-gabarito {
+            border: 2px solid #000;
+            padding: 10px;
+            background: #f9f9f9;
+            margin-top: 30px;
+            font-weight: bold;
+            text-align: center;
+            page-break-before: auto;
+        }
+
+        .flashcards-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .card-revisao {
+            border: 1px solid #333;
+            padding: 10px;
+            font-size: 0.9rem;
+            background: #fff;
+        }
+
+        @media print {
+            body { background: none; padding: 0; }
+            .documento-pdf { box-shadow: none; margin: 0; width: 100%; }
+            @page { size: A4; margin: 15mm; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="documento-pdf">
+    <div class="marca-dagua">MPAL 2026</div>
+
+    <div class="header-institucional">
+        Ministério Público do Estado de Alagoas<br>
+        Lei Complementar Estadual nº 15/96
+    </div>
+
+    <div class="identificacao-tecnica">
+        <b>ASSUNTO:</b> Princípios, Autonomia e Natureza Jurídica<br>
+        <b>PROTOCOLO:</b> 02 - SIMULADO DE EXAUSTÃO
+    </div>
+
+    <div class="titulo-principal">📝 SIMULADO DE EXAUSTÃO (STRESS COGNITIVO)</div>
+
+    <div class="meta-box">META: 12 MINUTOS | FOCO: LC 15/96</div>
+
+    <div class="questao-bloco">
+        <span class="questao-enunciado">01. São princípios institucionais do Ministério Público de Alagoas:</span>
+        <ul class="alternativas">
+            <li>A) Unidade, indivisibilidade e hierarquia funcional.</li>
+            <li>B) Unidade, indivisibilidade e independência funcional.</li>
+            <li>C) Unidade, periodicidade e autonomia administrativa.</li>
+            <li>D) Indivisibilidade, independência funcional e subordinação política.</li>
+            <li>E) Unidade, indivisibilidade e vitaliciedade funcional.</li>
+        </ul>
+    </div>
+
+    <div class="questao-bloco">
+        <span class="questao-enunciado">02. O princípio que permite que um membro do Ministério Público substitua outro em um processo, sem que haja interrupção da atividade, denomina-se:</span>
+        <ul class="alternativas">
+            <li>A) Unidade.</li>
+            <li>B) Independência Funcional.</li>
+            <li>C) Autonomia Administrativa.</li>
+            <li>D) Indivisibilidade.</li>
+            <li>E) Hierarquia de Substituição.</li>
+        </ul>
+    </div>
+
+    <div class="questao-bloco">
+        <span class="questao-enunciado">03. No que tange à autonomia do MPAL, é correto afirmar que a instituição:</span>
+        <ul class="alternativas">
+            <li>A) É subordinada ao Governador do Estado.</li>
+            <li>B) Possui autonomia apenas funcional e administrativa.</li>
+            <li>C) Elabora sua proposta orçamentária dentro dos limites da LDO.</li>
+            <li>D) Não possui iniciativa legislativa para criar seus cargos auxiliares.</li>
+            <li>E) Depende da autorização do Tribunal de Justiça para praticar atos de gestão.</li>
+        </ul>
+    </div>
+
+    <div class="questao-bloco">
+        <span class="questao-enunciado">04. De acordo com o Art. 1º da LC 15/96, o Ministério Público é instituição:</span>
+        <ul class="alternativas">
+            <li>A) Temporária e auxiliar do Poder Judiciário.</li>
+            <li>B) Permanente e essencial à função jurisdicional do Estado.</li>
+            <li>C) Vinculada à Secretaria de Segurança Pública.</li>
+            <li>D) Subordinada ao Ministério Público da União.</li>
+            <li>E) Destinada exclusivamente à advocacia pública do Estado.</li>
+        </ul>
+    </div>
+
+    <div class="questao-bloco">
+        <span class="questao-enunciado">05. O princípio da Unidade significa que:</span>
+        <ul class="alternativas">
+            <li>A) Todos os membros devem ter a mesma opinião jurídica.</li>
+            <li>B) Os membros do MP integram um só órgão sob a direção de um só chefe.</li>
+            <li>C) O Ministério Público é o único órgão que pode propor ações civis públicas.</li>
+            <li>D) O MPAL e o Ministério Público Federal são uma única instituição.</li>
+            <li>E) É proibida a divisão do MP em promotorias especializadas.</li>
+        </ul>
+    </div>
+
+    <div class="questao-bloco">
+        <span class="questao-enunciado">06. A autonomia funcional assegura ao Ministério Público:</span>
+        <ul class="alternativas">
+            <li>A) O direito de não prestar contas ao Tribunal de Contas.</li>
+            <li>B) A capacidade de julgar seus próprios membros criminalmente.</li>
+            <li>C) O exercício de suas atribuições sem subordinação a outros Poderes.</li>
+            <li>D) A livre criação de impostos para custeio institucional.</li>
+            <li>E) A indicação direta do Governador sem lista tríplice.</li>
+        </ul>
+    </div>
+
+    <div class="questao-bloco">
+        <span class="questao-enunciado">07. Sobre a prestação de assistência judiciária pelo Ministério Público, a lei dispõe que:</span>
+        <ul class="alternativas">
+            <li>A) É dever do MP prestá-la aos necessitados em Alagoas.</li>
+            <li>B) É vedado ao Estado a sua prestação pelo Ministério Público.</li>
+            <li>C) É facultativo ao Promotor decidir se presta assistência ou não.</li>
+            <li>D) Deve ser feita apenas em casos de crimes hediondos.</li>
+            <li>E) O MPAL deve atuar como defensor público onde não houver Defensoria.</li>
+        </ul>
+    </div>
+
+    <div class="questao-bloco">
+        <span class="questao-enunciado">08. No exercício de sua autonomia administrativa, cabe ao MPAL, EXCETO:</span>
+        <ul class="alternativas">
+            <li>A) Praticar atos de gestão.</li>
+            <li>B) Organizar suas secretarias e serviços auxiliares.</li>
+            <li>C) Prover os cargos de sua estrutura orgânica.</li>
+            <li>D) Julgar a constitucionalidade das leis municipais.</li>
+            <li>E) Elaborar seus regimentos internos.</li>
+        </ul>
+    </div>
+
+    <div class="questao-bloco">
+        <span class="questao-enunciado">09. (Nível Black) A independência funcional garante ao membro do MPAL:</span>
+        <ul class="alternativas">
+            <li>A) Desobedecer a prazos processuais por convicção pessoal.</li>
+            <li>B) Liberdade de convicção, observadas a Constituição e as leis.</li>
+            <li>C) Imunidade absoluta contra processos de corregedoria.</li>
+            <li>D) O direito de atuar em qualquer comarca, independente de lotação.</li>
+            <li>E) Subordinação às ordens jurídicas do Procurador-Geral de Justiça.</li>
+        </ul>
+    </div>
+
+    <div class="questao-bloco">
+        <span class="questao-enunciado">10. (Nível Black) O Ministério Público de Alagoas tem sede e foro em:</span>
+        <ul class="alternativas">
+            <li>A) Arapiraca.</li>
+            <li>B) Brasília.</li>
+            <li>C) Maceió.</li>
+            <li>D) Qualquer cidade onde houver comarca.</li>
+            <li>E) Penedo.</li>
+        </ul>
+    </div>
+
+    <div class="box-gabarito">
+        GABARITO OCULTO: 1.B | 2.D | 3.C | 4.B | 5.B | 6.C | 7.B | 8.D | 9.B | 10.C
+    </div>
+
+    <span class="secao-titulo">🔍 RAIO-X DE GATILHOS (BI-FEEDBACK)</span>
+    <div class="flashcards-grid">
+        <div class="card-revisao"><b>Gatilho Q1:</b> Hierarquia é apenas administrativa. No mérito, vigora a <b>Independência</b>.</div>
+        <div class="card-revisao"><b>Gatilho Q8:</b> MP propõe ações (legitimidade), mas <b>Julgar</b> é função exclusiva do Judiciário.</div>
+        <div class="card-revisao"><b>Distinção Crítica:</b> <u>Unidade</u> = 1 Chefe / <u>Indivisibilidade</u> = Substituição fluida entre membros.</div>
+        <div class="card-revisao"><b>Independência:</b> Liberdade de convicção <u>nos limites da lei</u> (não é poder absoluto).</div>
+    </div>
+
+    <p style="font-size: 0.8rem; text-align: center; margin-top: 20px;">
+        <i>Protocolo de Elite: Erros em princípios institucionais são fatais. Revise os Arts. 1º a 5º da LC 15/96.</i>
+    </p>
+
+</div>
+
+</body>
+</html>

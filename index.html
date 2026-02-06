@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal de Estudos - Analista Pedagogia</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f4f7f6; margin: 0; padding: 40px 20px; display: flex; flex-direction: column; align-items: center; }
+        h1 { color: #2c3e50; margin-bottom: 30px; text-align: center; }
+        
+        .container-disciplinas { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; width: 100%; max-width: 1000px; }
+        
+        .card { background: white; border-radius: 12px; padding: 30px; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.1); transition: transform 0.3s ease; text-decoration: none; color: inherit; border-top: 8px solid; }
+        .card:hover { transform: translateY(-10px); }
+        
+        /* Cores por Disciplina */
+        .portugues { border-top-color: #3498db; }
+        .legislacao { border-top-color: #e74c3c; }
+        .especificos { border-top-color: #9b59b6; }
+        
+        .icon { font-size: 50px; margin-bottom: 15px; display: block; }
+        h2 { margin: 10px 0; font-size: 1.4em; color: #34495e; }
+        p { color: #7f8c8d; font-size: 0.9em; }
+    </style>
+</head>
+<body>
+
+    <h1>📚 Painel de Estudos: Analista em Pedagogia</h1>
+
+    <div class="container-disciplinas">
+        <a href="portugues.html" class="card portugues">
+            <span class="icon">✍️</span>
+            <h2>Língua Portuguesa</h2>
+            <p>Gramática, Interpretação e Sintaxe.</p>
+        </a>
+
+        <a href="legislacao.html" class="card legislacao">
+            <span class="icon">⚖️</span>
+            <h2>Legislação</h2>
+            <p>LDB, ECA e Constituição Federal.</p>
+        </a>
+
+        <a href="pedagogia.html" class="card especificos">
+            <span class="icon">🎓</span>
+            <h2>Específicos</h2>
+            <p>Teorias da Aprendizagem e Didática.</p>
+        </a>
+    </div>
+<div style="font-family: 'Segoe UI', Roboto, sans-serif; max-width: 1000px; margin: 40px auto; padding: 30px; background: #fdfdfd; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.05);">
+    
+    <header style="text-align: center; margin-bottom: 30px;">
+        <h2 style="color: #2c3e50; margin: 0; font-size: 28px;">📚 Master Planner de Revisões</h2>
+        <p style="color: #7f8c8d; font-size: 14px;">Ciclo de Repetição Espaçada Infinito</p>
+    </header>
+
+    <div id="zonaAlertas"></div>
+    
+    <div style="background: #ffffff; padding: 25px; border-radius: 12px; border: 1px solid #e0e6ed; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; align-items: end; margin-bottom: 30px;">
+        <div>
+            <label style="display: block; font-size: 13px; font-weight: 600; color: #34495e; margin-bottom: 5px;">Matéria / Tópico</label>
+            <input type="text" id="materia" placeholder="Ex: LDB Art. 24" style="width: 100%; padding: 10px; border: 1px solid #dcdde1; border-radius: 6px; box-sizing: border-box;">
+        </div>
+        <div>
+            <label style="display: block; font-size: 13px; font-weight: 600; color: #34495e; margin-bottom: 5px;">Disciplina</label>
+            <select id="disciplina" style="width: 100%; padding: 10px; border: 1px solid #dcdde1; border-radius: 6px; background: white;">
+                <option value="Português">Português</option>
+                <option value="Legislação">Legislação</option>
+                <option value="Específicos-Pedagogia">Específicos-Pedagogia</option>
+            </select>
+        </div>
+        <div>
+            <label style="display: block; font-size: 13px; font-weight: 600; color: #34495e; margin-bottom: 5px;">Data do Estudo Inicial</label>
+            <input type="date" id="dataEstudo" style="width: 100%; padding: 10px; border: 1px solid #dcdde1; border-radius: 6px; box-sizing: border-box;">
+        </div>
+        <button onclick="adicionarRevisao()" style="background: #27ae60; color: white; border: none; padding: 11px; border-radius: 6px; font-weight: 600; cursor: pointer; transition: 0.3s;">🚀 Iniciar Ciclo</button>
+    </div>
+
+    <div style="margin-bottom: 20px; display: flex; gap: 8px; flex-wrap: wrap; justify-content: center;">
+        <button onclick="mostrarRevisoes('todas')" style="padding: 8px 16px; border-radius: 20px; border: 1px solid #3498db; background: #3498db; color: white; cursor: pointer;">Todas</button>
+        <button onclick="mostrarRevisoes('Português')" style="padding: 8px 16px; border-radius: 20px; border: 1px solid #bdc3c7; background: white; cursor: pointer;">Português</button>
+        <button onclick="mostrarRevisoes('Legislação')" style="padding: 8px 16px; border-radius: 20px; border: 1px solid #bdc3c7; background: white; cursor: pointer;">Legislação</button>
+        <button onclick="mostrarRevisoes('Específicos-Pedagogia')" style="padding: 8px 16px; border-radius: 20px; border: 1px solid #bdc3c7; background: white; cursor: pointer;">Pedagogia</button>
+    </div>
+
+    <div style="overflow-x: auto; background: white; border-radius: 12px; border: 1px solid #e0e6ed;">
+        <table style="width: 100%; border-collapse: collapse; min-width: 800px;">
+            <thead>
+                <tr style="background: #f8f9fa; color: #2c3e50; text-align: left; border-bottom: 2px solid #edf2f7;">
+                    <th style="padding: 15px; width: 20%;">Matéria</th>
+                    <th style="padding: 15px; width: 15%;">Disciplina</th>
+                    <th style="padding: 15px; width: 55%;">Ciclo de Revisões (Clique para concluir)</th>
+                    <th style="padding: 15px; text-align: center; width: 10%;">Ação</th>
+                </tr>
+            </thead>
+            <tbody id="corpoTabela"></tbody>
+        </table>
+    </div>
+
+    <div style="text-align: center; margin-top: 40px;">
+        <button onclick="limparTudo()" style="background: none; border: 1px solid #ff7675; color: #ff7675; padding: 6px 12px; border-radius: 4px; cursor: pointer; font-size: 12px;">Resetar Tudo</button>
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    validarDadosAntigos();
+    mostrarRevisoes('todas');
+    verificarAlertas();
+});
+
+function somarDias(dataObjeto, dias) {
+    let d = new Date(dataObjeto);
+    d.setDate(d.getDate() + dias);
+    return d.toLocaleDateString('pt-PT');
+}
+
+function adicionarRevisao() {
+    const elMateria = document.getElementById('materia');
+    const elDisciplina = document.getElementById('disciplina');
+    const elData = document.getElementById('dataEstudo');
+
+    if (!elMateria.value || !elData.value) {
+        alert("Atenção: Preencha o nome da matéria e escolha uma data!");
+        return;
+    }
+
+    const dataBase = new Date(elData.value + "T12:00:00");
+    
+    const novaRevisao = {
+        id: Date.now(),
+        materia: elMateria.value,
+        disciplina: elDisciplina.value,
+        datas: [
+            { rotulo: '24h', data: somarDias(dataBase, 1), feito: false },
+            { rotulo: '7d',  data: somarDias(dataBase, 7), feito: false },
+            { rotulo: '30d', data: somarDias(dataBase, 30), feito: false }
+        ]
+    };
+
+    let revisoes = JSON.parse(localStorage.getItem('minhasRevisoes')) || [];
+    revisoes.push(novaRevisao);
+    localStorage.setItem('minhasRevisoes', JSON.stringify(revisoes));
+    
+    elMateria.value = "";
+    mostrarRevisoes('todas');
+    verificarAlertas();
+}
+
+function expandirCiclo(revisaoId) {
+    let revisoes = JSON.parse(localStorage.getItem('minhasRevisoes')) || [];
+    const idx = revisoes.findIndex(r => r.id === revisaoId);
+    
+    if (idx !== -1) {
+        const ultimasDatas = revisoes[idx].datas;
+        const ultimaDataStr = ultimasDatas[ultimasDatas.length - 1].data;
+        const [dia, mes, ano] = ultimaDataStr.split('/');
+        const dataBase = new Date(`${ano}-${mes}-${dia}T12:00:00`);
+        
+        const novaData = somarDias(dataBase, 30);
+        revisoes[idx].datas.push({ rotulo: '+30d', data: novaData, feito: false });
+        
+        localStorage.setItem('minhasRevisoes', JSON.stringify(revisoes));
+        mostrarRevisoes('todas');
+        verificarAlertas();
+    }
+}
+
+function marcarComoFeito(revisaoId, indiceData) {
+    let revisoes = JSON.parse(localStorage.getItem('minhasRevisoes')) || [];
+    const idx = revisoes.findIndex(r => r.id === revisaoId);
+    
+    if (idx !== -1) {
+        revisoes[idx].datas[indiceData].feito = !revisoes[idx].datas[indiceData].feito;
+        localStorage.setItem('minhasRevisoes', JSON.stringify(revisoes));
+        mostrarRevisoes('todas');
+        verificarAlertas();
+    }
+}
+
+function mostrarRevisoes(filtro) {
+    const corpo = document.getElementById('corpoTabela');
+    let revisoes = JSON.parse(localStorage.getItem('minhasRevisoes')) || [];
+    
+    if (filtro !== 'todas') {
+        revisoes = revisoes.filter(r => r.disciplina === filtro);
+    }
+
+    revisoes.sort((a, b) => b.id - a.id);
+
+    const cores = {
+        'Português': '#3498db',
+        'Legislação': '#f1c40f',
+        'Específicos-Pedagogia': '#2ecc71'
+    };
+
+    corpo.innerHTML = revisoes.map(rev => `
+        <tr style="border-bottom: 1px solid #f1f2f6;">
+            <td style="padding: 15px; font-weight: 600; color: #2f3640;">${rev.materia}</td>
+            <td style="padding: 15px;">
+                <span style="background: ${cores[rev.disciplina] || '#eee'}; color: white; padding: 4px 10px; border-radius: 12px; font-size: 10px; font-weight: bold; text-transform: uppercase;">
+                    ${rev.disciplina}
+                </span>
+            </td>
+            <td style="padding: 15px;">
+                <div style="display: flex; gap: 8px; flex-wrap: wrap; align-items: center;">
+                    ${rev.datas.map((d, i) => `
+                        <div onclick="marcarComoFeito(${rev.id}, ${i})" 
+                             style="cursor: pointer; padding: 6px 12px; border-radius: 8px; border: 1px solid #e0e6ed; transition: 0.2s; display: flex; align-items: center; gap: 5px; font-size: 12px;
+                             ${d.feito ? 'background: #f8f9fa; color: #bdc3c7; text-decoration: line-through;' : 'background: #fff; color: #2c3e50; font-weight: 600; box-shadow: 0 2px 4px rgba(0,0,0,0.02);'}">
+                            <span>${d.feito ? '✅' : '⭕'}</span>
+                            <span>${d.rotulo}: ${d.data}</span>
+                        </div>
+                    `).join('')}
+                    <button onclick="expandirCiclo(${rev.id})" 
+                            style="background: #ebf5ff; color: #3498db; border: 1px dashed #3498db; padding: 6px 12px; border-radius: 8px; cursor: pointer; font-size: 12px; font-weight: bold;">
+                        + Próximo
+                    </button>
+                </div>
+            </td>
+            <td style="padding: 15px; text-align: center;">
+                <button onclick="apagar(${rev.id})" style="background: none; border: none; cursor: pointer; font-size: 16px; opacity: 0.5;">🗑️</button>
+            </td>
+        </tr>
+    `).join('');
+}
+
+function verificarAlertas() {
+    const hoje = new Date().toLocaleDateString('pt-PT');
+    let revisoes = JSON.parse(localStorage.getItem('minhasRevisoes')) || [];
+    const zona = document.getElementById('zonaAlertas');
+
+    const urgentes = revisoes.filter(r => 
+        r.datas && r.datas.some(d => d.data === hoje && !d.feito)
+    );
+
+    if (urgentes.length > 0) {
+        zona.innerHTML = `
+            <div style="background: #fff5f5; border-left: 5px solid #ff7675; padding: 20px; border-radius: 8px; margin-bottom: 25px; box-shadow: 0 4px 12px rgba(255,118,117,0.15);">
+                <h4 style="margin: 0 0 10px 0; color: #d63031;">🔥 Revisões Pendentes para Hoje (${hoje}):</h4>
+                <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+                    ${urgentes.map(u => `<span style="background: #ff7675; color: white; padding: 5px 12px; border-radius: 20px; font-size: 11px; font-weight: bold;">${u.materia}</span>`).join('')}
+                </div>
+            </div>`;
+    } else {
+        zona.innerHTML = `<div style="background: #f0fff4; border-left: 5px solid #2ecc71; padding: 15px; border-radius: 8px; margin-bottom: 25px; text-align: center; color: #27ae60; font-weight: 600;">✨ Estás em dia com os teus ciclos!</div>`;
+    }
+}
+
+function apagar(id) {
+    if(confirm("Deseja excluir este tópico e todo o seu histórico de revisões?")) {
+        let revisoes = JSON.parse(localStorage.getItem('minhasRevisoes')) || [];
+        revisoes = revisoes.filter(r => r.id !== id);
+        localStorage.setItem('minhasRevisoes', JSON.stringify(revisoes));
+        mostrarRevisoes('todas');
+        verificarAlertas();
+    }
+}
+
+function validarDadosAntigos() {
+    let revisoes = JSON.parse(localStorage.getItem('minhasRevisoes')) || [];
+    const dadosValidos = revisoes.filter(r => r.datas && Array.isArray(r.datas));
+    localStorage.setItem('minhasRevisoes', JSON.stringify(dadosValidos));
+}
+
+function limparTudo() {
+    if(confirm("AVISO: Isto apagará permanentemente todos os seus estudos e revisões. Continuar?")) {
+        localStorage.clear();
+        window.location.reload();
+    }
+}
+</script>
+</body>
+</html>

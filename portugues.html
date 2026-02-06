@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Língua Portuguesa - Conteúdos</title>
+    <style>
+        :root {
+            --primary: #3498db;
+            --dark: #2c3e50;
+            --bg: #f8f9fa;
+            --teoria: #3498db;
+            --pratica: #2ecc71;
+            --revisao: #f39c12;
+        }
+
+        body { 
+            font-family: 'Segoe UI', system-ui, sans-serif; 
+            background-color: var(--bg); 
+            margin: 0; 
+            padding: 20px; 
+            color: #333;
+        }
+
+        .container { 
+            max-width: 900px; 
+            margin: 0 auto; 
+            background: white; 
+            padding: 30px; 
+            border-radius: 15px; 
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+        }
+
+        .header-area { 
+            display: flex; 
+            align-items: center; 
+            justify-content: space-between; 
+            margin-bottom: 30px; 
+            border-bottom: 2px solid #eee;
+            padding-bottom: 20px;
+        }
+
+        .btn-voltar { 
+            text-decoration: none; 
+            color: var(--primary); 
+            font-weight: bold; 
+            font-size: 0.9em;
+        }
+
+        h1 { margin: 0; color: var(--dark); font-size: 1.8em; }
+
+        table { 
+            width: 100%; 
+            border-collapse: collapse; 
+            margin-top: 10px;
+        }
+
+        th { 
+            text-align: left; 
+            padding: 15px; 
+            background: #fdfdfd; 
+            color: #7f8c8d; 
+            text-transform: uppercase; 
+            font-size: 0.8em; 
+            letter-spacing: 1px;
+        }
+
+        td { 
+            padding: 15px; 
+            border-bottom: 1px solid #f1f1f1; 
+            vertical-align: middle;
+        }
+
+        tr:hover { background-color: #fafafa; }
+
+        /* Estilo das Tags */
+        .tag { 
+            padding: 5px 12px; 
+            border-radius: 20px; 
+            font-size: 0.75em; 
+            font-weight: 700; 
+            color: white; 
+            display: inline-block;
+        }
+        .teoria { background: var(--teoria); }
+        .pratica { background: var(--pratica); }
+        .revisao { background: var(--revisao); }
+
+        /* Botão de Ação */
+        .btn-abrir { 
+            text-decoration: none; 
+            background: var(--dark); 
+            color: white; 
+            padding: 8px 16px; 
+            border-radius: 6px; 
+            font-size: 0.85em; 
+            transition: 0.3s;
+            display: inline-block;
+        }
+        .btn-abrir:hover { background: var(--primary); transform: scale(1.05); }
+
+        /* Responsividade para telemóveis */
+        @media (max-width: 600px) {
+            th:nth-child(2), td:nth-child(2) { display: none; } /* Esconde a coluna 'Tipo' em telas muito pequenas */
+            h1 { font-size: 1.4em; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="header-area">
+            <h1>✍️ Língua Portuguesa</h1>
+            <a href="index.html" class="btn-voltar">← Voltar ao Menu</a>
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Conteúdo</th>
+                    <th><span class="tag pratica">📖 PRÁTICA</span></th>
+                    <th><span class="tag revisao">✍️ REVISÃO</span></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>1. Ortografia e Acentuação</strong></td>
+                    <td><a href="port_1_sim_1_ortografia_acentuacao.html" class="btn-abrir">Simulado </a></td>
+                    <td><a href="port_1_rev_1_ortografia_acentuacao.html" class="btn-abrir">Revisão</a></td>                  
+                </tr> 
+                <tr>
+                    <td><strong>2. Compreensão e interpretação de textos de gêneros variados.</strong></td>
+                    <td><a href="port_2_sim_2_compreensao_interpretacao.html" class="btn-abrir">Simulado</a></td>
+                    <td><a href="port_1_rev_1_ortografia_acentuacao.html" class="btn-abrir">Revisão</a></td>                  
+                </tr>                     
+    </div>
+    
+</body>
+</html>
