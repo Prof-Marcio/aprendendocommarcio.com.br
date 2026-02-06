@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conteúdos | Matemática Ativa</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;700&family=Quicksand:wght@500;700&display=swap');
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background-color: #f0f4f8;
+            color: #1e293b;
+            padding-bottom: 50px;
+        }
+
+        header {
+            background: #6c5ce7; /* Cor Roxa para Conteúdos */
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+            border-bottom-left-radius: 40px;
+            border-bottom-right-radius: 40px;
+            box-shadow: 0 10px 20px rgba(108, 92, 231, 0.2);
+        }
+
+        .btn-voltar {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: white;
+            text-decoration: none;
+            font-weight: 700;
+            background: rgba(0, 0, 0, 0.15);
+            padding: 8px 18px;
+            border-radius: 50px;
+            margin-bottom: 15px;
+            font-size: 0.8rem;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+
+        .secao-titulo {
+            font-family: 'Fredoka', sans-serif;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: #4834d4;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* Card de Aula/Tópico */
+        .card-aula {
+            background: white;
+            border-radius: 25px;
+            padding: 20px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            text-decoration: none;
+            color: inherit;
+            border: 2px solid transparent;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            transition: 0.3s;
+        }
+
+        .card-aula:hover {
+            border-color: #6c5ce7;
+            transform: translateX(10px);
+            background: #fdfdff;
+        }
+
+        .aula-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .aula-icon {
+            width: 50px;
+            height: 50px;
+            background: #efecff;
+            color: #6c5ce7;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+        }
+
+        .aula-texto h3 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 2px;
+        }
+
+        .aula-texto p {
+            font-size: 0.85rem;
+            color: #64748b;
+        }
+
+        .btn-play {
+            color: #6c5ce7;
+            font-size: 1.2rem;
+            opacity: 0.5;
+            transition: 0.3s;
+        }
+
+        .card-aula:hover .btn-play {
+            opacity: 1;
+            transform: scale(1.2);
+        }
+
+        footer { text-align: center; padding: 30px; color: #b2bec3; font-size: 0.9rem; }
+
+        @media (max-width: 500px) {
+            .aula-texto h3 { font-size: 1rem; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <a href="6ano.html" class="btn-voltar"><i class="fas fa-arrow-left"></i> VOLTAR PARA A TURMA</a>
+    <h1>📚 CONTEÚDOS</h1>
+    <p>Prepare sua mente para novos conhecimentos!</p>
+</header>
+
+<div class="container">
+    
+    <h2 class="secao-titulo"><i class="fas fa-star"></i> Tópicos do Bimestre</h2>
+
+    <a href="link-do-pdf-ou-video.html" class="card-aula">
+        <div class="aula-info">
+            <div class="aula-icon"><i class="fas fa-file-pdf"></i></div>
+            <div class="aula-texto">
+                <h3>01. Sistemas de Numeração</h3>
+                <p>Resumo em PDF e Explicação</p>
+            </div>
+        </div>
+        <div class="btn-play"><i class="fas fa-chevron-right"></i></div>
+    </a>
+
+    <a href="#" class="card-aula">
+        <div class="aula-info">
+            <div class="aula-icon"><i class="fas fa-video"></i></div>
+            <div class="aula-texto">
+                <h3>02. Operações Fundamentais</h3>
+                <p>Vídeo-aula Dinâmica</p>
+            </div>
+        </div>
+        <div class="btn-play"><i class="fas fa-play-circle"></i></div>
+    </a>
+
+    <a href="#" class="card-aula">
+        <div class="aula-info">
+            <div class="aula-icon"><i class="fas fa-shapes"></i></div>
+            <div class="aula-texto">
+                <h3>03. Introdução à Geometria</h3>
+                <p>Slides e Imagens 3D</p>
+            </div>
+        </div>
+        <div class="btn-play"><i class="fas fa-chevron-right"></i></div>
+    </a>
+
+</div>
+
+<footer>
+    <p>O conhecimento é o seu maior tesouro! 💎</p>
+</footer>
+
+</body>
+</html>
