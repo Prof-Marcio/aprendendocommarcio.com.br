@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>9º Ano | Matemática Ativa</title>
+    <style>
+        :root {
+            --primary: #27ae60; /* Verde */
+            --dark: #2c3e50;
+            --light: #f1f9f5;
+            --white: #ffffff;
+        }
+
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background-color: var(--light);
+            margin: 0;
+            color: var(--dark);
+        }
+
+        header {
+            background-color: var(--primary);
+            color: var(--white);
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .nav-back {
+            display: inline-block;
+            margin: 1rem;
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: bold;
+        }
+
+        .main-content {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .grid-recursos {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .resource-card {
+            background: var(--white);
+            padding: 20px;
+            border-radius: 12px;
+            border-left: 5px solid var(--primary);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .resource-card h3 {
+            margin-top: 0;
+            color: var(--primary);
+        }
+
+        .btn {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 10px 15px;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 10px;
+            font-size: 0.9rem;
+        }
+
+        .btn:hover {
+            background: #219150;
+        }
+
+        .temas-lista {
+            background: #e8f6ed;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 20px;
+            border: 1px solid var(--primary);
+        }
+
+        .highlight-bhaskara {
+            font-family: 'Courier New', Courier, monospace;
+            background: #fff;
+            padding: 5px;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Líderes do 9º Ano 🎓</h1>
+        <p>Reta Final e Preparação para o Futuro</p>
+    </header>
+
+    <a href="index.html" class="nav-back">← Voltar ao Início</a>
+
+    <div class="main-content">
+        <div class="temas-lista">
+            <strong>Missão do Ano:</strong> 
+            Equações de 2º Grau • Função Afim e Quadrática • Teorema de Pitágoras • Trigonometria
+        </div>
+
+        <div class="grid-recursos">
+            <div class="resource-card">
+                <h3>📝 Banco de Questões</h3>
+                <p>Simulados e provas anteriores para treinar o ritmo.</p>
+                <a href="#" class="btn">Abrir Repositório</a>
+            </div>
+
+            <div class="resource-card">
+                <h3>🎥 Maratona de Revisão</h3>
+                <p>Vídeos detalhados sobre as fórmulas fundamentais.</p>
+                <a href="#" class="btn">Aceder Playlist</a>
+            </div>
+
+            <div class="resource-card">
+                <h3>📐 Laboratório de Triângulos</h3>
+                <p>Aplicações práticas de Pitágoras e Trigonometria.</p>
+                <a href="#" class="btn">Explorar</a>
+            </div>
+
+            <div class="resource-card">
+                <h3>📌 Fórmula do Dia</h3>
+                <p>Bhaskara: <span class="highlight-bhaskara">x = (-b ± √Δ) / 2a</span></p>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
