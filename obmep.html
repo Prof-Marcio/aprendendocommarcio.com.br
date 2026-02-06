@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Treino OBMEP | Matemática Ativa</title>
+    <style>
+        :root {
+            --primary: #f1c40f; /* Dourado/Amarelo */
+            --dark: #2c3e50;
+            --light: #fefdf0;
+            --white: #ffffff;
+        }
+
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background-color: var(--light);
+            margin: 0;
+            color: var(--dark);
+        }
+
+        header {
+            background-color: var(--primary);
+            color: var(--dark);
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .nav-back {
+            display: inline-block;
+            margin: 1rem;
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: bold;
+            border: 2px solid var(--primary);
+            padding: 5px 15px;
+            border-radius: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .intro-obmep {
+            background: var(--white);
+            padding: 25px;
+            border-radius: 15px;
+            border: 2px solid var(--primary);
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .grid-niveis {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .nivel-card {
+            background: var(--white);
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            text-align: center;
+        }
+
+        .nivel-card h2 {
+            color: var(--dark);
+            border-bottom: 3px solid var(--primary);
+            display: inline-block;
+            padding-bottom: 5px;
+        }
+
+        .links-treino {
+            list-style: none;
+            padding: 0;
+            margin: 20px 0;
+        }
+
+        .links-treino li {
+            margin: 10px 0;
+        }
+
+        .links-treino a {
+            text-decoration: none;
+            color: #d4ac0d;
+            font-weight: 600;
+        }
+
+        .medal-icon {
+            font-size: 3rem;
+            display: block;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Centro de Treinamento OBMEP 🏅</h1>
+        <p>Rumo à Medalha: Desafia o teu raciocínio!</p>
+    </header>
+
+    <div class="container">
+        <a href="index.html" class="nav-back">← Voltar ao Início</a>
+
+        <div class="intro-obmep">
+            <h2>O que é a OBMEP?</h2>
+            <p>A Olimpíada Brasileira de Matemática das Escolas Públicas avalia o raciocínio lógico e a criatividade. Aqui encontras o caminho para te tornares um medalhista!</p>
+        </div>
+
+        <div class="grid-niveis">
+            <div class="nivel-card">
+                <span class="medal-icon">🥉</span>
+                <h2>Nível 1</h2>
+                <p><strong>6º e 7º anos</strong></p>
+                <ul class="links-treino">
+                    <li><a href="#">Provas Anteriores</a></li>
+                    <li><a href="#">Banco de Questões N1</a></li>
+                    <li><a href="#">Vídeos: Problemas de Lógica</a></li>
+                </ul>
+            </div>
+
+            <div class="nivel-card">
+                <span class="medal-icon">🥈</span>
+                <h2>Nível 2</h2>
+                <p><strong>8º e 9º anos</strong></p>
+                <ul class="links-treino">
+                    <li><a href="#">Provas Anteriores</a></li>
+                    <li><a href="#">Banco de Questões N2</a></li>
+                    <li><a href="#">Vídeos: Geometria e Álgebra</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div style="margin-top: 40px; text-align: center; font-style: italic;">
+            "O importante não é apenas ganhar, mas o quanto aprendes no processo!"
+        </div>
+    </div>
+
+</body>
+</html>
