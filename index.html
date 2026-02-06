@@ -7,10 +7,11 @@
     <style>
         :root {
             --primary: #2c3e50;
-            --sec-6ano: #3498db; /* Azul */
-            --sec-7ano: #e67e22; /* Laranja */
-            --sec-8ano: #9b59b6; /* Roxo */
-            --sec-9ano: #27ae60; /* Verde */
+            --sec-6ano: #3498db;
+            --sec-7ano: #e67e22;
+            --sec-8ano: #9b59b6;
+            --sec-9ano: #27ae60;
+            --obmep: #f1c40f;
             --light: #f4f7f6;
         }
 
@@ -21,90 +22,156 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+            color: var(--primary);
         }
 
         header {
-            background-color: var(--primary);
+            background: linear-gradient(135deg, #2c3e50, #4ca1af);
             color: white;
             width: 100%;
-            padding: 2rem 0;
+            padding: 3rem 0;
             text-align: center;
             box-shadow: 0 4px 10px rgba(0,0,0,0.1);
         }
 
+        .welcome-text {
+            max-width: 600px;
+            margin: 1rem auto;
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
         .container {
-            max-width: 1000px;
+            max-width: 1100px;
             padding: 2rem;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 25px;
             width: 100%;
             box-sizing: border-box;
         }
 
         .card {
             background: white;
-            border-radius: 15px;
-            padding: 2rem;
+            border-radius: 20px;
+            padding: 2rem 1.5rem;
             text-align: center;
             text-decoration: none;
             color: var(--primary);
-            font-weight: bold;
-            font-size: 1.5rem;
-            transition: transform 0.3s, box-shadow 0.3s;
-            border-bottom: 8px solid;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
 
         .card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            box-shadow: 0 12px 20px rgba(0,0,0,0.1);
         }
 
-        /* Cores específicas por turma */
-        .c6 { border-color: var(--sec-6ano); }
-        .c7 { border-color: var(--sec-7ano); }
-        .c8 { border-color: var(--sec-8ano); }
-        .c9 { border-color: var(--sec-9ano); }
+        .card h2 { margin: 10px 0; font-size: 1.8rem; }
+        .card p { margin: 0; font-size: 0.95rem; color: #7f8c8d; font-weight: normal; }
+        .card .icon { font-size: 3rem; margin-bottom: 10px; }
+
+        /* Cores e bordas didáticas */
+        .c6 { border-bottom: 8px solid var(--sec-6ano); }
+        .c6:hover { border-color: var(--sec-6ano); }
+        
+        .c7 { border-bottom: 8px solid var(--sec-7ano); }
+        .c7:hover { border-color: var(--sec-7ano); }
+
+        .c8 { border-bottom: 8px solid var(--sec-8ano); }
+        .c8:hover { border-color: var(--sec-8ano); }
+
+        .c9 { border-bottom: 8px solid var(--sec-9ano); }
+        .c9:hover { border-color: var(--sec-9ano); }
+
+        /* Seção OBMEP Especial */
+        .obmep-banner {
+            background: var(--obmep);
+            width: 90%;
+            max-width: 1000px;
+            margin: 1rem 0;
+            padding: 1.5rem;
+            border-radius: 15px;
+            text-align: center;
+            text-decoration: none;
+            color: #444;
+            font-weight: bold;
+            font-size: 1.3rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            transition: transform 0.2s;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .obmep-banner:hover { transform: scale(1.02); }
 
         .info-section {
             background: #fff;
-            margin: 20px;
-            padding: 20px;
-            border-radius: 10px;
+            margin: 2rem;
+            padding: 2rem;
+            border-radius: 15px;
             max-width: 800px;
-            text-align: center;
+            width: 90%;
+            border-left: 10px solid #e74c3c; /* Vermelho para avisos */
         }
 
         footer {
-            margin-top: auto;
-            padding: 20px;
-            font-size: 0.9rem;
-            color: #7f8c8d;
+            margin-top: 2rem;
+            padding: 2rem;
+            color: #95a5a6;
         }
     </style>
 </head>
 <body>
 
     <header>
-        <h1>Matemática Ativa</h1>
-        <p>Escolhe a tua turma e vamos explorar os números!</p>
+        <h1>📐 Matemática Ativa</h1>
+        <p class="welcome-text">Bem-vindo ao nosso portal! Aqui a matemática ganha vida. Selecione o seu ano e bons estudos!</p>
     </header>
 
     <div class="container">
-        <a href="6ano.html" class="card c6">6º Ano</a>
-        <a href="7ano.html" class="card c7">7º Ano</a>
-        <a href="8ano.html" class="card c8">8º Ano</a>
-        <a href="9ano.html" class="card c9">9º Ano</a>
+        <a href="6ano.html" class="card c6">
+            <span class="icon">🚀</span>
+            <h2>6º Ano</h2>
+            <p>Números Naturais e Formas</p>
+        </a>
+        <a href="7ano.html" class="card c7">
+            <span class="icon">🔍</span>
+            <h2>7º Ano</h2>
+            <p>Inteiros e Equações</p>
+        </a>
+        <a href="8ano.html" class="card c8">
+            <span class="icon">🧠</span>
+            <h2>8º Ano</h2>
+            <p>Potências e Polinómios</p>
+        </a>
+        <a href="9ano.html" class="card c9">
+            <span class="icon">🎓</span>
+            <h2>9º Ano</h2>
+            <p>Funções e Pitágoras</p>
+        </a>
     </div>
-    <div><a href="obmep.html"></a>OBMRP</div>
+
+    <a href="obmep.html" class="obmep-banner">
+        <span>🏅</span> ESPAÇO OBMEP: Treino e Desafios <span>🏅</span>
+    </a>
+
     <div class="info-section">
-        <h3>Avisos Gerais</h3>
-        <p>Fiquem atentos às datas das Olimpíadas de Matemática e aos novos materiais de apoio disponíveis em cada turma.</p>
+        <h3>📢 Quadro de Avisos</h3>
+        <ul>
+            <li>Não percam as novas fichas de exercícios do 2º bimestre.</li>
+            <li>Inscrições para a Olimpíada abertas até sexta-feira!</li>
+        </ul>
     </div>
 
     <footer>
-        &copy; 2026 - Criado com &hearts; para as turmas de Matemática
+        &copy; 2026 - Criado para inspirar futuros matemáticos.
     </footer>
 
 </body>
