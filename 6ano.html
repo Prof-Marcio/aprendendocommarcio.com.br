@@ -3,126 +3,74 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>6º Ano | Matemática Ativa</title>
+    <title>Matérias 6º Ano</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        :root {
-            --primary: #3498db;
-            --dark: #2c3e50;
-            --light: #f4f7f6;
-            --white: #ffffff;
+        :root { --main: #3498db; --bg: #f0f4f8; }
+        body { font-family: 'Segoe UI', sans-serif; background: var(--bg); margin: 0; }
+        
+        header { background: var(--main); color: white; padding: 2rem; text-align: center; }
+        
+        .nav-back { padding: 10px 20px; display: inline-block; text-decoration: none; color: var(--main); font-weight: bold; }
+
+        .container { max-width: 1000px; margin: auto; padding: 20px; }
+
+        .bimestre-card {
+            background: white; border-radius: 15px; padding: 25px;
+            margin-bottom: 30px; box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            border-left: 10px solid var(--main);
         }
 
-        body {
-            font-family: 'Segoe UI', sans-serif;
-            background-color: var(--light);
-            margin: 0;
-            color: var(--dark);
+        .bimestre-title { font-size: 1.5rem; color: #2c3e50; margin-bottom: 20px; border-bottom: 2px solid #eee; padding-bottom: 10px; }
+
+        .btn-group { display: flex; flex-wrap: wrap; gap: 10px; }
+
+        .btn-content {
+            flex: 1; min-width: 150px; text-align: center; padding: 15px;
+            border-radius: 10px; text-decoration: none; font-weight: bold; color: white;
+            transition: opacity 0.2s;
         }
 
-        header {
-            background-color: var(--primary);
-            color: var(--white);
-            padding: 1.5rem;
-            text-align: center;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
+        .btn-video { background: #e74c3c; }   /* Vermelho */
+        .btn-pdf { background: #2ecc71; }     /* Verde */
+        .btn-test { background: #f39c12; }    /* Amarelo/Laranja */
 
-        .nav-back {
-            display: inline-block;
-            margin: 1rem;
-            text-decoration: none;
-            color: var(--primary);
-            font-weight: bold;
-        }
-
-        .main-content {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-
-        .grid-recursos {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            margin-top: 20px;
-        }
-
-        .resource-card {
-            background: var(--white);
-            padding: 20px;
-            border-radius: 12px;
-            border-left: 5px solid var(--primary);
-            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-        }
-
-        .resource-card h3 {
-            margin-top: 0;
-            color: var(--primary);
-        }
-
-        .btn {
-            display: inline-block;
-            background: var(--primary);
-            color: white;
-            padding: 10px 15px;
-            text-decoration: none;
-            border-radius: 5px;
-            margin-top: 10px;
-            font-size: 0.9rem;
-        }
-
-        .btn:hover {
-            opacity: 0.9;
-        }
-
-        .temas-lista {
-            background: #e1f0fa;
-            padding: 15px;
-            border-radius: 8px;
-            margin-top: 20px;
-        }
+        .btn-content:hover { opacity: 0.8; }
+        .btn-content i { display: block; font-size: 1.5rem; margin-bottom: 5px; }
     </style>
 </head>
 <body>
 
-    <header>
-        <h1>Exploradores do 6º Ano 🚀</h1>
-        <p>Números, Formas e Descobertas</p>
-    </header>
+<header>
+    <h1>📚 Sala de Aula: 6º Ano</h1>
+    <p>Todos os conteúdos organizados por bimestre</p>
+</header>
 
-    <a href="index.html" class="nav-back">← Voltar ao Início</a>
+<a href="index.html" class="nav-back">← Voltar ao Início</a>
 
-    <div class="main-content">
-        <div class="temas-lista">
-            <strong>O que estamos a estudar:</strong> 
-            Números Naturais • Frações • Sistema Decimal • Introdução à Geometria
+<div class="container">
+
+    <div class="bimestre-card">
+        <div class="bimestre-title">1º Bimestre: O Mundo dos Números</div>
+        <p><strong>Temas:</strong> Sistemas de numeração, Operações fundamentais e Geometria básica.</p>
+        
+        <div class="btn-group">
+            <a href="#" class="btn-content btn-video"><i class="fas fa-play-circle"></i> Conteúdos</a>
+            <a href="#" class="btn-content btn-pdf"><i class="fas fa-file-pdf"></i> Exercícios</a>
+            <a href="#" class="btn-content btn-test"><i class="fas fa-edit"></i> Avaliação</a>
         </div>
+    </div>
 
-        <div class="grid-recursos">
-            <div class="resource-card">
-                <h3>📝 Fichas e Exercícios</h3>
-                <p>Descarrega aqui as listas de exercícios semanais em PDF.</p>
-                <a href="#" class="btn">Abrir Pasta</a>
-            </div>
-
-            <div class="resource-card">
-                <h3>🎥 Vídeo-Aulas</h3>
-                <p>Explicações visuais sobre frações e operações básicas.</p>
-                <a href="#" class="btn">Ver Vídeos</a>
-            </div>
-
-            <div class="resource-card">
-                <h3>🎮 Jogos de Lógica</h3>
-                <p>Treina o teu raciocínio de forma divertida.</p>
-                <a href="#" class="btn">Jogar Agora</a>
-            </div>
-
-            <div class="resource-card">
-                <h3>📅 Datas Importantes</h3>
-                <p>Próximo Teste: [Inserir Data]<br>Entrega de Trabalho: [Inserir Data]</p>
-            </div>
+    <div class="bimestre-card">
+        <div class="bimestre-title">2º Bimestre: Divisibilidade e Frações</div>
+        <p><strong>Temas:</strong> MMC, MDC, Frações e Números Decimais.</p>
+        <div class="btn-group">
+            <a href="#" class="btn-content btn-video"><i class="fas fa-play-circle"></i> Conteúdos</a>
+            <a href="#" class="btn-content btn-pdf"><i class="fas fa-file-pdf"></i> Exercícios</a>
+            <a href="#" class="btn-content btn-test"><i class="fas fa-edit"></i> Avaliação</a>
         </div>
+    </div>
+
     </div>
 
 </body>
