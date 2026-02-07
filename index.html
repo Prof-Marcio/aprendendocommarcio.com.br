@@ -128,6 +128,26 @@
             .banner-obmep { flex-direction: column; text-align: center; }
             .card-menu { padding: 40px 15px; }
         }
+            .btn-admin {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        margin: 40px auto;
+        padding: 15px 30px;
+        background: #1e293b;
+        color: white;
+        text-decoration: none;
+        border-radius: 50px;
+        font-weight: bold;
+        font-size: 0.9rem;
+        width: fit-content;
+        transition: 0.3s;
+    }
+    .btn-admin:hover {
+        background: #0f172a;
+        transform: scale(1.05);
+    }
     </style>
 </head>
 <body>
@@ -175,6 +195,9 @@
             <div class="mural-item"><span>📅</span> Calendário de avaliações atualizado na página de cada turma.</div>
         </div>
     </div>
+    <a href="login.html" class="btn-admin">
+    <i class="fas fa-lock"></i> ÁREA DO PROFESSOR
+</a>
 
     <footer>
         <p>Desenvolvido com carinho para os nossos alunos ✨</p>
