@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laboratório de Prática | Matemática Ativa</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;700&family=Quicksand:wght@500;700&display=swap');
+
+        :root {
+            --primary: #22c55e;
+            --accent: #6366f1;
+            --bg: #f0fdf4;
+            --text: #1e293b;
+            --error: #ef4444;
+        }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container { max-width: 800px; margin: 0 auto; position: relative; }
+
+        /* Botão Sair Estilizado */
+        .btn-sair {
+            position: absolute;
+            top: 0;
+            left: 0;
+            text-decoration: none;
+            color: #64748b;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 15px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            transition: 0.3s;
+        }
+
+        .btn-sair:hover {
+            color: var(--error);
+            background: #fff1f2;
+        }
+
+        header {
+            text-align: center;
+            padding: 60px 0 30px;
+        }
+
+        header h1 { font-family: 'Fredoka', sans-serif; color: #166534; font-size: 2.2rem; }
+
+        /* Estilo dos Cards de Questão */
+        .quest-card {
+            background: white;
+            padding: 25px;
+            border-radius: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+            border: 3px solid transparent;
+            transition: 0.3s;
+        }
+
+        .quest-card.locked {
+            background: #f8fafc;
+            border-color: #cbd5e1;
+            opacity: 0.8;
+        }
+
+        .quest-header {
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .enunciado {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .options-list { display: flex; flex-direction: column; gap: 10px; }
+
+        .opt-btn {
+            background: white;
+            border: 2px solid #e2e8f0;
+            padding: 15px;
+            border-radius: 12px;
+            cursor: pointer;
+            text-align: left;
+            font-family: 'Quicksand', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: 0.2s;
+        }
+
+        .opt-btn:hover:not(.disabled) {
+            border-color: var(--accent);
+            background: #f5f3ff;
+        }
+
+        .opt-btn.selected {
+            background: var(--accent);
+            color: white;
+            border-color: var(--accent);
+        }
+
+        .opt-btn.disabled { cursor: default; }
+
+        .send-btn {
+            margin-top: 20px;
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 12px;
+            background: #94a3b8;
+            color: white;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .send-btn.active { background: var(--primary); }
+
+        #resultado-final {
+            display: none;
+            background: white;
+            padding: 40px;
+            border-radius: 30px;
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            margin-top: 40px;
+        }
+
+        .score-box {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin: 20px 0;
+        }
+
+        .feedback-line {
+            padding: 12px;
+            margin: 8px 0;
+            border-radius: 10px;
+            text-align: left;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .correct-bg { background: #dcfce7; color: #166534; }
+        .wrong-bg { background: #fee2e2; color: #991b1b; }
+
+        .btn-finish {
+            display: none;
+            width: 100%;
+            padding: 20px;
+            background: #1e293b;
+            color: white;
+            border: none;
+            border-radius: 15px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <a href="index.html" class="btn-sair" onclick="return confirm('Sair agora perderá seu progresso nesta prática. Deseja continuar?')">
+        <i class="fas fa-times"></i> SAIR
+    </a>
+
+    <header id="main-header">
+        <h1>🧪 Prática de Laboratório</h1>
+        <p>Responda com calma. Após enviar a questão, não poderá mudar.</p>
+    </header>
+
+    <main id="questoes-container">
+        <div class="quest-card" id="card-1">
+            <span class="quest-header">QUESTÃO 01</span>
+            <p class="enunciado">Um conjunto de números naturais é representado pela letra $\mathbb{N}$. Qual é o sucessor do número zero neste conjunto?</p>
+            <div class="options-list">
+                <button class="opt-btn" onclick="selecionar(1, 'A', this)">A) 0</button>
+                <button class="opt-btn" onclick="selecionar(1, 'B', this)">B) 1</button>
+                <button class="opt-btn" onclick="selecionar(1, 'C', this)">C) Não existe</button>
+            </div>
+            <button class="send-btn" id="btn-send-1" onclick="enviarQuestao(1, 'B')">Enviar Resposta</button>
+        </div>
+
+        <div class="quest-card" id="card-2">
+            <span class="quest-header">QUESTÃO 02</span>
+            <p class="enunciado">Se retirarmos o zero do conjunto dos naturais, usamos o símbolo $\mathbb{N}^*$. Como chamamos esse conjunto?</p>
+            <div class="options-list">
+                <button class="opt-btn" onclick="selecionar(2, 'A', this)">A) Naturais Estelares</button>
+                <button class="opt-btn" onclick="selecionar(2, 'B', this)">B) Naturais Nulos</button>
+                <button class="opt-btn" onclick="selecionar(2, 'C', this)">C) Naturais não nulos</button>
+            </div>
+            <button class="send-btn" id="btn-send-2" onclick="enviarQuestao(2, 'C')">Enviar Resposta</button>
+        </div>
+
+        <button id="btn-finalizar-tudo" class="btn-finish" onclick="mostrarResultado()">FINALIZAR PRÁTICA</button>
+    </main>
+
+    <section id="resultado-final">
+        <h2>🔬 Relatório de Desempenho</h2>
+        <div class="score-box" id="nota-texto">0/0</div>
+        <div id="lista-feedback"></div>
+        <br>
+        <button class="send-btn active" onclick="location.reload()">TENTAR NOVAMENTE</button>
+        <a href="index.html" style="display:block; margin-top:15px; color:#64748b; font-weight:700; text-decoration:none;">VOLTAR AO INÍCIO</a>
+    </section>
+</div>
+
+<script>
+    let escolhas = {};
+    let gabarito = { 1: 'B', 2: 'C' };
+    let totalConfirmadas = 0;
+    let totalPerguntas = 2;
+
+    function selecionar(qId, letra, elemento) {
+        const card = document.getElementById('card-' + qId);
+        if(card.classList.contains('locked')) return;
+
+        const botoes = card.querySelectorAll('.opt-btn');
+        botoes.forEach(b => b.classList.remove('selected'));
+
+        elemento.classList.add('selected');
+        escolhas[qId] = letra;
+
+        document.getElementById('btn-send-' + qId).classList.add('active');
+    }
+
+    function enviarQuestao(qId, correta) {
+        if(!escolhas[qId]) return alert("Escolha uma alternativa primeiro!");
+
+        const card = document.getElementById('card-' + qId);
+        card.classList.add('locked');
+        
+        const botoes = card.querySelectorAll('.opt-btn');
+        botoes.forEach(b => b.classList.add('disabled'));
+        
+        document.getElementById('btn-send-' + qId).style.display = 'none';
+
+        totalConfirmadas++;
+        if(totalConfirmadas === totalPerguntas) {
+            document.getElementById('btn-finalizar-tudo').style.display = 'block';
+        }
+    }
+
+    function mostrarResultado() {
+        let acertos = 0;
+        let htmlFeedback = "";
+
+        for(let i=1; i<=totalPerguntas; i++) {
+            if(escolhas[i] === gabarito[i]) {
+                acertos++;
+                htmlFeedback += `<div class="feedback-line correct-bg"><i class="fas fa-check-circle"></i> Questão ${i}: Você acertou! (Alternativa ${gabarito[i]})</div>`;
+            } else {
+                htmlFeedback += `<div class="feedback-line wrong-bg"><i class="fas fa-times-circle"></i> Questão ${i}: Errado. Sua escolha: ${escolhas[i]} | Correta: ${gabarito[i]}</div>`;
+            }
+        }
+
+        document.getElementById('main-header').style.display = 'none';
+        document.getElementById('questoes-container').style.display = 'none';
+        document.getElementById('resultado-final').style.display = 'block';
+
+        document.getElementById('nota-texto').innerText = `${acertos} / ${totalPerguntas}`;
+        document.getElementById('lista-feedback').innerHTML = htmlFeedback;
+    }
+</script>
+
+</body>
+</html>

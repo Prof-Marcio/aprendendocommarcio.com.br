@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teoria | Matemática Ativa</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&family=Quicksand:wght@400;700&display=swap');
+
+        :root {
+            --primary: #6366f1;
+            --bg: #f8fafc;
+            --text-main: #1e293b;
+        }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background-color: var(--bg);
+            color: var(--text-main);
+            margin: 0;
+            padding: 0;
+        }
+
+        /* --- CABEÇALHO COMPACTO --- */
+        .dashboard-header {
+            background: white;
+            padding: 10px 5%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid #e2e8f0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .brand-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .class-badge {
+            background: var(--primary);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 8px;
+            font-family: 'Fredoka', sans-serif;
+            font-size: 1rem;
+        }
+
+        .dashboard-title {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: #64748b;
+            margin: 0;
+        }
+
+        .btn-exit {
+            text-decoration: none;
+            color: #ef4444;
+            font-weight: 700;
+            font-size: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            transition: 0.3s;
+        }
+
+        /* --- TÍTULO DA AULA DISCRETO --- */
+        .lesson-banner {
+            padding: 20px 5%;
+            background: white;
+            border-bottom: 1px solid #e2e8f0;
+            margin-bottom: 25px;
+        }
+
+        .lesson-banner h1 {
+            margin: 0;
+            font-family: 'Fredoka', sans-serif;
+            font-size: 1.6rem; /* Tamanho reduzido */
+            color: var(--text-main);
+        }
+
+        .lesson-banner p {
+            margin: 5px 0 0 0;
+            font-size: 0.9rem;
+            color: #64748b;
+        }
+
+        /* --- CONTEÚDO --- */
+        .main-grid {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+            gap: 20px;
+        }
+
+        .video-container {
+            background: #000;
+            border-radius: 15px;
+            overflow: hidden;
+            aspect-ratio: 16/9;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .info-card {
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .info-card h3 {
+            margin-top: 0;
+            font-family: 'Fredoka', sans-serif;
+            color: var(--primary);
+            font-size: 1.2rem;
+        }
+
+        .btn-next {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        .btn-start-practice {
+            background: #22c55e;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: 0.3s;
+        }
+
+        .btn-start-practice:hover { transform: scale(1.05); }
+
+        @media (max-width: 768px) {
+            .main-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="dashboard-header">
+        <div class="brand-info">
+            <div class="class-badge">6º ANO A</div>
+            <p class="dashboard-title">Dashboard de Estudos • 2026</p>
+        </div>
+        <a href="index.html" class="btn-exit">
+            <i class="fas fa-sign-out-alt"></i> SAIR
+        </a>
+    </header>
+
+    <section class="lesson-banner">
+        <h1>Números Naturais</h1>
+        <p>AULA 01 • Introdução ao sistema de contagem</p>
+    </section>
+
+    <main class="main-grid">
+        <div class="video-container">
+            <iframe width="100%" height="100%" src="https://www.youtube.com/embed/fS6reZ9N5Sg" frameborder="0" allowfullscreen></iframe>
+        </div>
+
+        <div class="info-card">
+            <h3><i class="fas fa-lightbulb"></i> Conceito Chave</h3>
+            <p>Os números naturais ($\mathbb{N}$) servem para contagem. Lembre-se:</p>
+            <ul style="padding-left: 20px; font-size: 0.95rem; line-height: 1.6;">
+                <li>Começa em 0.</li>
+                <li>Não tem fim (infinito).</li>
+                <li>Não possui vírgulas.</li>
+            </ul>
+        </div>
+
+        <div class="btn-next">
+            <a href="pratica.html" class="btn-start-practice">
+                PRATICAR CONTEÚDO <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+    </main>
+
+</body>
+</html>
