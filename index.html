@@ -20,10 +20,10 @@
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Fredoka', sans-serif; }
         body { background: var(--bg-body); color: var(--primary); line-height: 1.6; }
 
-        /* --- CABEÇALHO COM LOGO AMPLIADA --- */
+        /* --- CABEÇALHO --- */
         header {
             background: var(--white);
-            padding: 30px 8%; /* Aumentei um pouco o respiro vertical */
+            padding: 30px 8%;
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -31,20 +31,17 @@
             box-shadow: var(--shadow);
         }
 
-        .brand { display: flex; align-items: center; gap: 40px; } /* Aumentei o espaço entre logo e texto */
+        .brand { display: flex; align-items: center; gap: 40px; }
 
         .logo-area img {
-            height: 220px; /* Dobro do tamanho original (110px -> 220px) */
+            height: 220px; /* Logo Ampliada */
             width: auto;
-            max-width: 500px; /* Dobro da largura máxima (250px -> 500px) */
+            max-width: 500px;
             object-fit: contain;
-            transition: transform 0.3s ease;
         }
 
-        .logo-area img:hover { transform: scale(1.02); }
-
-        .title-area h1 { font-size: 2.2rem; color: var(--primary); font-weight: 700; line-height: 1.2; }
-        .title-area p { color: var(--accent); font-weight: 600; font-size: 1rem; text-transform: uppercase; letter-spacing: 1px; margin-top: 5px; }
+        .title-area h1 { font-size: 2.2rem; color: var(--primary); font-weight: 700; }
+        .title-area p { color: var(--accent); font-weight: 600; font-size: 1rem; text-transform: uppercase; }
 
         /* --- NAVEGAÇÃO --- */
         nav { 
@@ -75,9 +72,8 @@
         }
 
         .nav-link.active { background: var(--accent); color: var(--white); border-color: var(--accent); }
-        .nav-link:hover:not(.active) { background: #E2E8F0; }
 
-        /* --- GRID PRINCIPAL --- */
+        /* --- LAYOUT --- */
         .container {
             max-width: 1300px;
             margin: 40px auto;
@@ -90,76 +86,60 @@
         .card { 
             background: var(--white); 
             border-radius: 25px; 
-            padding: 35px; 
+            padding: 30px; 
             margin-bottom: 30px; 
             box-shadow: var(--shadow);
-            border: 1px solid rgba(0,0,0,0.02);
         }
 
-        .card h2 { font-size: 1.5rem; margin-bottom: 25px; display: flex; align-items: center; gap: 12px; color: var(--primary); }
-        .card h2 i { color: var(--accent); }
+        .card h2 { font-size: 1.4rem; margin-bottom: 20px; color: var(--accent); border-bottom: 2px solid #f1f1f1; padding-bottom: 10px; }
 
         .item-link {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 20px 25px;
+            padding: 15px 20px;
             background: #F8FAFC;
-            border-radius: 18px;
+            border-radius: 15px;
             text-decoration: none;
             color: var(--primary);
-            font-weight: 600;
-            margin-bottom: 15px;
+            font-weight: 500;
+            margin-bottom: 10px;
             transition: 0.2s;
-            border-left: 6px solid transparent;
         }
 
-        .item-link:hover { 
-            background: #EFF6FF; 
-            border-left-color: var(--accent);
-            transform: translateX(8px);
-        }
+        .item-link:hover { background: #EFF6FF; transform: translateX(5px); }
 
-        .badge { font-size: 0.7rem; padding: 6px 12px; border-radius: 10px; font-weight: 800; text-transform: uppercase; }
+        .badge { font-size: 0.6rem; padding: 4px 8px; border-radius: 6px; font-weight: 800; }
         .b-pdf { background: #FEE2E2; color: #EF4444; }
         .b-vid { background: #DBEAFE; color: #3B82F6; }
         .b-int { background: #DCFCE7; color: #10B981; }
-        .b-new { background: #FEF3C7; color: #D97706; border: 1px solid #F59E0B; }
 
         /* --- MURAL --- */
         .mural { background: #FFFBEB; border-radius: 25px; padding: 30px; border: 2px dashed var(--warning); }
-        .mural h3 { color: #92400E; margin-bottom: 20px; display: flex; align-items: center; gap: 10px; font-size: 1.2rem; }
-        .aviso { background: var(--white); padding: 18px; border-radius: 15px; margin-bottom: 15px; box-shadow: 0 2px 5px rgba(0,0,0,0.03); font-size: 0.95rem; line-height: 1.5; }
+        .aviso { background: var(--white); padding: 15px; border-radius: 12px; margin-bottom: 10px; font-size: 0.9rem; }
 
-        /* --- BOTÃO WHATSAPP --- */
         .wa-button {
             position: fixed; bottom: 30px; right: 30px; background: #22C55E; color: white;
             width: 70px; height: 70px; border-radius: 50%; display: flex; align-items: center;
             justify-content: center; font-size: 35px; box-shadow: 0 10px 25px rgba(34,197,94,0.4);
-            text-decoration: none; transition: 0.3s; z-index: 2000;
+            text-decoration: none; z-index: 2000;
         }
 
-        .wa-button:hover { transform: scale(1.1) rotate(10deg); }
-
         @media (max-width: 1000px) {
-            header { flex-direction: column; text-align: center; padding: 30px 5%; }
-            .brand { flex-direction: column; gap: 20px; }
-            .logo-area img { height: 180px; } /* Reduz um pouco no mobile para não ocupar a tela toda */
+            header { flex-direction: column; text-align: center; }
             .container { grid-template-columns: 1fr; }
+            .logo-area img { height: 150px; }
         }
 
         .panel { display: none; }
-        .panel.active { display: block; animation: slideUp 0.5s ease; }
-        @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        .panel.active { display: block; }
     </style>
 </head>
 <body>
 
 <header>
     <div class="brand">
-        <div class="logo-area">
-            <img src="logo-marcio.png" alt="Professor Márcio">
-        </div>
+        <div class="logo-area"><img src="logo-marcio.png" alt="Logo Prof. Márcio"></div>
         <div class="title-area">
             <h1>Prof. Márcio L. da Silva</h1>
             <p>Conectando Conhecimento • 2026</p>
@@ -177,46 +157,74 @@
     <main>
         <section id="mat" class="panel active">
             <div class="card">
-                <h2><i class="fas fa-folder-open"></i> Materiais de Apoio</h2>
-                <a href="#" class="item-link"><span>Roteiro 1ª Quinzena: Introdução</span><span class="badge b-pdf">PDF</span></a>
-                <a href="#" class="item-link"><span>Lista de Exercícios: Revisão de Álgebra</span><span class="badge b-new">URGENTE</span></a>
-                <a href="#" class="item-link"><span>Tabela de Fórmulas e Constantes</span><span class="badge b-pdf">PDF</span></a>
-                <a href="#" class="item-link"><span>Simulado Preparatório Bimestral</span><span class="badge b-int">TESTE</span></a>
+                <h2><i class="fas fa-book"></i> Teoria e Roteiros</h2>
+                <a href="#" class="item-link"><span>Roteiro 01 - Conjuntos Numéricos</span><span class="badge b-pdf">PDF</span></a>
+                <a href="#" class="item-link"><span>Roteiro 02 - Funções de 1º Grau</span><span class="badge b-pdf">PDF</span></a>
+                <a href="#" class="item-link"><span>Roteiro 03 - Funções Quadráticas</span><span class="badge b-pdf">PDF</span></a>
+                <a href="#" class="item-link"><span>Resumo: Geometria Plana</span><span class="badge b-pdf">REVISÃO</span></a>
             </div>
             <div class="card">
-                <h2><i class="fas fa-video"></i> Videoaulas e Labs</h2>
-                <a href="#" class="item-link"><span>Aula Online: Domínios de Função</span><span class="badge b-vid">ASSISTIR</span></a>
-                <a href="#" class="item-link"><span>Laboratório Virtual Geogebra</span><span class="badge b-int">INTERATIVO</span></a>
+                <h2><i class="fas fa-edit"></i> Prática e Exercícios</h2>
+                <a href="#" class="item-link"><span>Lista 01: Nivelamento Matemático</span><span class="badge b-int">ATIVIDADE</span></a>
+                <a href="#" class="item-link"><span>Lista 02: Problemas do Cotidiano</span><span class="badge b-int">ATIVIDADE</span></a>
+                <a href="#" class="item-link"><span>Desafio da Semana: Lógica</span><span class="badge b-int">PREMIAÇÃO</span></a>
+                <a href="#" class="item-link"><span>Banco de Questões ENEM (2020-2025)</span><span class="badge b-pdf">BANCO</span></a>
+            </div>
+            <div class="card">
+                <h2><i class="fas fa-laptop-code"></i> Ferramentas Digitais</h2>
+                <a href="#" class="item-link"><span>Calculadora Gráfica Desmos</span><span class="badge b-int">LINK</span></a>
+                <a href="#" class="item-link"><span>Simulador Geogebra: Triângulos</span><span class="badge b-int">WEB</span></a>
+                <a href="#" class="item-link"><span>Khan Academy: Módulos de Reforço</span><span class="badge b-vid">PLATAFORMA</span></a>
             </div>
         </section>
 
         <section id="int" class="panel">
             <div class="card">
-                <h2><i class="fas fa-microscope"></i> Gestão do Projeto</h2>
-                <a href="#" class="item-link"><span>Manual de Normas ABNT 2026</span><span class="badge b-pdf">PDF</span></a>
-                <a href="#" class="item-link"><span>Cronograma de Pesquisa (Fases)</span><span class="badge b-int">DOCS</span></a>
-                <a href="#" class="item-link"><span>Modelo de Relatório Estruturado</span><span class="badge b-pdf">BAIXAR</span></a>
+                <h2><i class="fas fa-file-signature"></i> Documentação Base</h2>
+                <a href="#" class="item-link"><span>Edital do Projeto 2026</span><span class="badge b-pdf">OBRIGATÓRIO</span></a>
+                <a href="#" class="item-link"><span>Manual de Escrita Científica</span><span class="badge b-pdf">PDF</span></a>
+                <a href="#" class="item-link"><span>Modelo de Slide para Apresentação</span><span class="badge b-int">PPTX</span></a>
+            </div>
+            <div class="card">
+                <h2><i class="fas fa-tasks"></i> Etapas e Prazos</h2>
+                <a href="#" class="item-link"><span>Etapa 1: Definição do Tema</span><span class="badge b-int">FORM</span></a>
+                <a href="#" class="item-link"><span>Etapa 2: Levantamento Bibliográfico</span><span class="badge b-int">LINK</span></a>
+                <a href="#" class="item-link"><span>Etapa 3: Entrega do Protótipo</span><span class="badge b-int">VÍDEO</span></a>
+            </div>
+            <div class="card">
+                <h2><i class="fas fa-lightbulb"></i> Exemplos de Sucesso</h2>
+                <a href="#" class="item-link"><span>Repositório de Projetos de 2025</span><span class="badge b-pdf">INSPIRAÇÃO</span></a>
+                <a href="#" class="item-link"><span>Galeria de Fotos: Feira de Ciências</span><span class="badge b-vid">FOTOS</span></a>
             </div>
         </section>
 
         <section id="vida" class="panel">
             <div class="card">
-                <h2><i class="fas fa-user-circle"></i> Autoconhecimento</h2>
-                <a href="#" class="item-link"><span>Caderno de Metas Pessoais</span><span class="badge b-pdf">PDF</span></a>
-                <a href="#" class="item-link"><span>Teste Vocacional Online</span><span class="badge b-int">LINK</span></a>
+                <h2><i class="fas fa-compass"></i> Autoconhecimento</h2>
+                <a href="#" class="item-link"><span>Teste de Temperamentos</span><span class="badge b-int">LINK</span></a>
+                <a href="#" class="item-link"><span>Diário de Bordo Digital</span><span class="badge b-pdf">DOCS</span></a>
+                <a href="#" class="item-link"><span>Roda da Vida: Diagnóstico</span><span class="badge b-int">INTERATIVO</span></a>
+            </div>
+            <div class="card">
+                <h2><i class="fas fa-briefcase"></i> Carreira e Mundo do Trabalho</h2>
+                <a href="#" class="item-link"><span>Como montar seu primeiro Currículo</span><span class="badge b-pdf">GUIA</span></a>
+                <a href="#" class="item-link"><span>Entrevista com Profissionais da Área</span><span class="badge b-vid">VÍDEOS</span></a>
+                <a href="#" class="item-link"><span>Calendário de Vestibulares e SISU</span><span class="badge b-int">INFO</span></a>
+            </div>
+            <div class="card">
+                <h2><i class="fas fa-heart"></i> Habilidades Socioemocionais</h2>
+                <a href="#" class="item-link"><span>Workshop: Gestão do Tempo</span><span class="badge b-vid">AULA</span></a>
+                <a href="#" class="item-link"><span>E-book: Comunicação Assertiva</span><span class="badge b-pdf">LEITURA</span></a>
             </div>
         </section>
     </main>
 
     <aside>
         <div class="mural">
-            <h3><i class="fas fa-bullhorn"></i> AVISOS GERAIS</h3>
-            <div class="aviso">
-                <strong>📅 Prova:</strong> A avaliação de matemática será na próxima terça. Estudem pela lista!
-            </div>
-            <div class="aviso">
-                <strong>📝 Entrega:</strong> O Projeto Integrador deve ser postado até sexta-feira às 23:59.
-            </div>
+            <h3><i class="fas fa-bullhorn"></i> MURAL DE AVISOS</h3>
+            <div class="aviso"><strong>📍 Atendimento:</strong> Estarei no laboratório todas as quartas às 14h.</div>
+            <div class="aviso"><strong>📌 Recuperação:</strong> O prazo para envio de tarefas atrasadas é dia 20.</div>
+            <div class="aviso"><strong>🏆 Olimpíada:</strong> Inscrições abertas para a OBMEP!</div>
         </div>
     </aside>
 </div>
@@ -227,13 +235,8 @@
     function openTab(tabId, btn) {
         document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
         document.querySelectorAll('.nav-link').forEach(b => b.classList.remove('active'));
-        
         document.getElementById(tabId).classList.add('active');
         btn.classList.add('active');
-        
-        if(window.innerWidth < 1000) {
-            window.scrollTo({ top: 450, behavior: 'smooth' });
-        }
     }
 </script>
 
