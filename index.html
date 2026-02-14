@@ -12,120 +12,170 @@
             --azul-claro: #3182CE;
             --verde-logo: #48BB78;
             --laranja-alerta: #F6AD55;
-            --bg-site: #EDF2F7;
+            --bg-site: #F7FAFC;
             --card-bg: #FFFFFF;
             --text-main: #2D3748;
-            --shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            --shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Fredoka', sans-serif; }
         
         body { 
             background: var(--bg-site); 
-            background-image: radial-gradient(var(--azul-claro) 0.5px, transparent 0.5px);
-            background-size: 30px 30px;
             color: var(--text-main); 
             line-height: 1.6; 
+            overflow-x: hidden;
         }
 
+        /* --- CABEÇALHO PROFISSIONAL --- */
         header {
             background: linear-gradient(135deg, #1A365D 0%, #2B6CB0 100%);
-            padding: 50px 5%; text-align: center;
-            border-bottom: 8px solid var(--verde-logo);
+            padding: 40px 5%;
             color: white;
-            position: relative;
-            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 30px;
+            border-bottom: 8px solid var(--verde-logo);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
         }
 
         .logo-container img { 
-            height: 130px; background: white; padding: 10px; 
-            border-radius: 25px; box-shadow: 0 8px 20px rgba(0,0,0,0.4);
-            margin-bottom: 20px;
-            border: 3px solid var(--verde-logo);
+            height: 140px; /* Tamanho maior para destaque */
+            width: auto;
+            filter: drop-shadow(0 5px 15px rgba(0,0,0,0.3)); /* Sombra suave para logos transparentes */
+            transition: transform 0.3s ease;
         }
-        header h1 { font-size: 2.2rem; font-weight: 700; text-shadow: 2px 2px 4px rgba(0,0,0,0.3); }
 
+        .header-text h1 { 
+            font-size: clamp(1.8rem, 5vw, 2.8rem); 
+            margin-bottom: 5px;
+            text-shadow: 2px 2px 0px rgba(0,0,0,0.2);
+        }
+
+        .header-text p { 
+            font-size: 1.1rem; 
+            background: var(--verde-logo);
+            display: inline-block;
+            padding: 2px 12px;
+            border-radius: 8px;
+            font-weight: 600;
+        }
+
+        /* --- NAVEGAÇÃO STICKY --- */
         .nav-main { 
-            display: flex; justify-content: center; gap: 15px; 
-            padding: 20px; background: white; position: sticky; top: 0; z-index: 1000;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            display: flex; 
+            justify-content: center; 
+            gap: 15px; 
+            padding: 20px; 
+            background: white; 
+            position: sticky; 
+            top: 0; 
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            overflow-x: auto;
         }
+
         .btn-materia {
-            background: var(--bg-site); color: var(--azul-escudo); padding: 12px 25px;
-            border: 2px solid transparent; border-radius: 15px; font-weight: 700; cursor: pointer;
-            transition: 0.3s; font-size: 0.9rem; display: flex; align-items: center; gap: 8px;
+            background: var(--bg-site); 
+            color: var(--azul-escudo); 
+            padding: 12px 25px;
+            border: 2px solid transparent; 
+            border-radius: 15px; 
+            font-weight: 700; 
+            cursor: pointer;
+            transition: 0.3s; 
+            display: flex; align-items: center; gap: 10px;
+            white-space: nowrap;
         }
-        .btn-materia.active { background: var(--azul-escudo); color: white; transform: translateY(-3px); }
 
-        /* BIMESTRES */
-        .bimestre-bar { display: flex; justify-content: center; gap: 10px; margin: 30px 0; flex-wrap: wrap; }
-        .btn-bim {
-            padding: 10px 20px; border: 3px solid #CBD5E0; border-radius: 50px;
-            background: white; color: #4A5568; font-weight: 700; cursor: pointer; transition: 0.3s;
+        .btn-materia.active { 
+            background: var(--azul-escudo); 
+            color: white; 
+            box-shadow: 0 4px 12px rgba(26, 54, 93, 0.3);
         }
-        .btn-bim.active { border-color: var(--verde-logo); color: white; background: var(--verde-logo); }
-        
-        /* ESTILO PARA BIMESTRES BLOQUEADOS */
-        .btn-bim.blocked {
-            background: #E2E8F0;
-            color: #A0AEC0;
-            cursor: not-allowed;
-            border-color: #CBD5E0;
-            opacity: 0.7;
-        }
-        .btn-bim.blocked:hover { transform: none; }
 
+        /* --- CONTEÚDO --- */
         .dashboard { 
-            display: grid; grid-template-columns: 1fr 340px; 
-            gap: 30px; padding: 0 5% 50px; max-width: 1300px; margin: 0 auto; 
+            display: grid; 
+            grid-template-columns: 1fr 350px; 
+            gap: 30px; 
+            padding: 40px 5%; 
+            max-width: 1400px; 
+            margin: 0 auto; 
         }
 
-        .subject-panel { display: none; }
-        .subject-panel.active { display: block; animation: fadeIn 0.5s ease; }
-
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .bimestre-bar { display: flex; gap: 10px; margin-bottom: 25px; flex-wrap: wrap; }
+        
+        .btn-bim {
+            padding: 10px 20px; border-radius: 50px; border: 2px solid #CBD5E0;
+            background: white; font-weight: 700; cursor: pointer; transition: 0.3s;
+        }
+        .btn-bim.active { background: var(--verde-logo); color: white; border-color: var(--verde-logo); }
+        .btn-bim.blocked { opacity: 0.5; cursor: not-allowed; background: #EDF2F7; }
 
         .card { 
-            background: var(--card-bg); border-radius: 20px; padding: 30px; 
-            margin-bottom: 25px; box-shadow: var(--shadow);
-            border-top: 5px solid var(--azul-claro);
+            background: white; border-radius: 20px; padding: 30px; 
+            box-shadow: var(--shadow); margin-bottom: 30px;
+            border-top: 6px solid var(--azul-claro);
         }
-        .card h2 { margin-bottom: 25px; color: var(--azul-escudo); font-size: 1.4rem; display: flex; align-items: center; gap: 12px; }
 
-        .link-list { display: flex; flex-direction: column; gap: 12px; }
-        
+        .link-list { display: grid; gap: 15px; }
+
         .link-line {
             display: flex; align-items: center; justify-content: space-between;
-            padding: 18px 25px; border-radius: 15px; text-decoration: none; 
+            padding: 20px; border-radius: 15px; text-decoration: none; 
             color: var(--text-main); font-weight: 700;
-            transition: all 0.3s ease; border: 2px solid #EDF2F7;
+            border: 2px solid #EDF2F7; transition: 0.3s;
         }
 
-        .link-roteiro { background: #EBF8FF; border-left: 8px solid #3182CE; }
-        .link-livro { background: #F0FFF4; border-left: 8px solid #38A169; }
-        .link-lista { background: #FFF5F5; border-left: 8px solid #E53E3E; }
-        .link-video { background: #FFFAF0; border-left: 8px solid #DD6B20; }
-        .link-slides { background: #FAF5FF; border-left: 8px solid #805AD5; }
+        .link-line:hover { transform: translateX(10px); border-color: var(--azul-claro); background: #F0F9FF; }
 
-        .link-line:hover { transform: translateX(10px); box-shadow: 5px 5px 15px rgba(0,0,0,0.08); background: white; }
-        .link-content { display: flex; align-items: center; gap: 15px; }
-        .btn-acessar { background: white; padding: 5px 12px; border-radius: 8px; font-size: 0.75rem; border: 1px solid #CBD5E0; }
+        /* Estilização por tipo */
+        .link-roteiro { border-left: 8px solid #3182CE; }
+        .link-livro { border-left: 8px solid #38A169; }
+        .link-video { border-left: 8px solid #DD6B20; }
 
-        .mural { background: white; border-radius: 20px; padding: 25px; box-shadow: var(--shadow); border-bottom: 5px solid var(--laranja-alerta); }
-        .post-it { background: #FFFFF0; padding: 15px; border-radius: 12px; border: 1px solid #FAF089; position: relative; }
+        .btn-acessar { background: white; padding: 6px 15px; border-radius: 8px; border: 1px solid #CBD5E0; font-size: 0.8rem; }
 
-        .whatsapp-btn { position: fixed; bottom: 30px; right: 30px; background: #25D366; color: white; width: 65px; height: 65px; border-radius: 20px; display: flex; align-items: center; justify-content: center; font-size: 35px; z-index: 1000; transition: 0.3s; }
+        /* --- MURAL --- */
+        .mural { background: #FFFEF0; border-radius: 20px; padding: 25px; border: 2px dashed #F6AD55; }
+        .post-it { margin-top: 15px; }
 
-        footer { text-align: center; padding: 50px; background: white; margin-top: 40px; border-top: 1px solid #E2E8F0; }
+        /* --- WHATSAPP --- */
+        .whatsapp-btn { 
+            position: fixed; bottom: 30px; right: 30px; 
+            background: #25D366; color: white; width: 65px; height: 65px; 
+            border-radius: 50%; display: flex; align-items: center; justify-content: center; 
+            font-size: 35px; z-index: 2000; box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
 
-        @media (max-width: 900px) { .dashboard { grid-template-columns: 1fr; } }
+        /* --- RESPONSIVIDADE --- */
+        @media (max-width: 1024px) {
+            header { flex-direction: column; text-align: center; }
+            .dashboard { grid-template-columns: 1fr; }
+        }
+
+        @media (max-width: 600px) {
+            .nav-main { justify-content: flex-start; padding: 10px; }
+            .link-line { flex-direction: column; text-align: center; gap: 10px; }
+        }
+
+        /* Controle de Seções */
+        .subject-panel { display: none; }
+        .subject-panel.active { display: block; animation: fadeIn 0.4s ease-in-out; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
     </style>
 </head>
 <body>
 
 <header>
     <div class="logo-container">
-        <img src="logo-marcio.png" alt="Prof. Márcio">
+        <img src="logo-marcio.png" alt="Logo Márcio">
+    </div>
+    <div class="header-text">
+        <h1>Professor Márcio L. da Silva</h1>
+        <p>CONECTANDO CONHECIMENTO • 2026</p>
     </div>
 </header>
 
@@ -138,35 +188,23 @@
 <div class="dashboard">
     <main>
         <div class="bimestre-bar">
-            <button class="btn-bim active" onclick="setBimestre(1, this)">1º BIMESTRE</button>
-            <button class="btn-bim blocked" onclick="avisoBloqueio()"><i class="fas fa-lock"></i> 2º BIMESTRE</button>
-            <button class="btn-bim blocked" onclick="avisoBloqueio()"><i class="fas fa-lock"></i> 3º BIMESTRE</button>
-            <button class="btn-bim blocked" onclick="avisoBloqueio()"><i class="fas fa-lock"></i> 4º BIMESTRE</button>
+            <button class="btn-bim active">1º BIMESTRE</button>
+            <button class="btn-bim blocked" onclick="avisoBloqueio()">2º BIM</button>
+            <button class="btn-bim blocked" onclick="avisoBloqueio()">3º BIM</button>
+            <button class="btn-bim blocked" onclick="avisoBloqueio()">4º BIM</button>
         </div>
 
         <section id="mat" class="subject-panel active">
             <div class="card">
-                <h2><i class="fas fa-folder-open" style="color: var(--azul-claro);"></i> Materiais da Quinzena (1º Bimestre)</h2>
+                <h2><i class="fas fa-folder-open" style="color: var(--azul-claro);"></i> Matemática - Materiais</h2>
                 <div class="link-list">
-                    <a href="#" class="link-line link-roteiro" target="_blank">
-                        <div class="link-content"><i class="fas fa-map-signs" style="color: #3182CE;"></i><span>Roteiro de Estudos</span></div>
-                        <div class="btn-acessar">BAIXAR PDF</div>
+                    <a href="#" class="link-line link-roteiro">
+                        <span><i class="fas fa-file-pdf"></i> Roteiro de Estudos</span>
+                        <div class="btn-acessar">BAIXAR</div>
                     </a>
-                    <a href="#" class="link-line link-livro" target="_blank">
-                        <div class="link-content"><i class="fas fa-book-reader" style="color: #38A169;"></i><span>Livro Digital (Cap. 4)</span></div>
-                        <div class="btn-acessar">LER ONLINE</div>
-                    </a>
-                    <a href="#" class="link-line link-lista" target="_blank">
-                        <div class="link-content"><i class="fas fa-tasks" style="color: #E53E3E;"></i><span>Lista de Exercícios</span></div>
-                        <div class="btn-acessar">ABRIR LISTA</div>
-                    </a>
-                    <a href="#" class="link-line link-video" target="_blank">
-                        <div class="link-content"><i class="fab fa-youtube" style="color: #DD6B20;"></i><span>Vídeo-Aula Apoio</span></div>
+                    <a href="#" class="link-line link-video">
+                        <span><i class="fab fa-youtube"></i> Videoaula de Funções</span>
                         <div class="btn-acessar">ASSISTIR</div>
-                    </a>
-                    <a href="#" class="link-line link-slides" target="_blank">
-                        <div class="link-content"><i class="fas fa-file-powerpoint" style="color: #805AD5;"></i><span>Slides da Semana</span></div>
-                        <div class="btn-acessar">VER SLIDES</div>
                     </a>
                 </div>
             </div>
@@ -176,17 +214,9 @@
             <div class="card">
                 <h2><i class="fas fa-microscope" style="color: var(--azul-claro);"></i> Projeto Integrador</h2>
                 <div class="link-list">
-                    <a href="#" class="link-line link-roteiro" target="_blank">
-                        <div class="link-content"><i class="fas fa-file-alt" style="color: #3182CE;"></i><span>Roteiro do Projeto</span></div>
-                        <div class="btn-acessar">BAIXAR PDF</div>
-                    </a>
-                    <a href="#" class="link-line link-video" target="_blank">
-                        <div class="link-content"><i class="fas fa-vial" style="color: #DD6B20;"></i><span>Guia Prático / Experimento</span></div>
-                        <div class="btn-acessar">ASSISTIR</div>
-                    </a>
-                    <a href="#" class="link-line link-slides" target="_blank">
-                        <div class="link-content"><i class="fas fa-project-diagram" style="color: #805AD5;"></i><span>Apresentação do Tema</span></div>
-                        <div class="btn-acessar">VER SLIDES</div>
+                    <a href="#" class="link-line link-livro">
+                        <span><i class="fas fa-book"></i> Guia do Projeto 2026</span>
+                        <div class="btn-acessar">LER AGORA</div>
                     </a>
                 </div>
             </div>
@@ -196,17 +226,9 @@
             <div class="card">
                 <h2><i class="fas fa-compass" style="color: var(--azul-claro);"></i> Projeto de Vida</h2>
                 <div class="link-list">
-                    <a href="#" class="link-line link-roteiro" target="_blank">
-                        <div class="link-content"><i class="fas fa-pencil-alt" style="color: #3182CE;"></i><span>Atividade de Reflexão</span></div>
-                        <div class="btn-acessar">BAIXAR PDF</div>
-                    </a>
-                    <a href="#" class="link-line link-livro" target="_blank">
-                        <div class="link-content"><i class="fas fa-lightbulb" style="color: #38A169;"></i><span>Leitura Complementar</span></div>
-                        <div class="btn-acessar">LER ONLINE</div>
-                    </a>
-                    <a href="#" class="link-line link-video" target="_blank">
-                        <div class="link-content"><i class="fas fa-video" style="color: #DD6B20;"></i><span>Vídeo Motivacional</span></div>
-                        <div class="btn-acessar">ASSISTIR</div>
+                    <a href="#" class="link-line link-roteiro">
+                        <span><i class="fas fa-lightbulb"></i> Atividade de Reflexão</span>
+                        <div class="btn-acessar">ABRIR</div>
                     </a>
                 </div>
             </div>
@@ -215,12 +237,9 @@
 
     <aside>
         <div class="mural">
-            <h3><i class="fas fa-bullhorn" style="color: var(--laranja-alerta);"></i> RECADO</h3>
-            <div id="mural-content">
-                <div class="post-it">
-                    <strong>Atenção:</strong>
-                    <p style="margin-top: 5px; font-size: 0.9rem;">Sejam bem-vindos! Os materiais do 1º Bimestre já estão disponíveis.</p>
-                </div>
+            <h3><i class="fas fa-bullhorn"></i> MURAL DE RECADOS</h3>
+            <div class="post-it">
+                <p><strong>Atenção:</strong> Os roteiros da quinzena já foram liberados. Não deixem para a última hora!</p>
             </div>
         </div>
     </aside>
@@ -228,28 +247,27 @@
 
 <a href="https://wa.me/5582999999999" class="whatsapp-btn" target="_blank"><i class="fab fa-whatsapp"></i></a>
 
-<footer>
-    <p>Professor Márcio L. da Silva</p>
+<footer style="text-align: center; padding: 50px; background: #fff; border-top: 1px solid #eee;">
+    <p><strong>Professor Márcio L. da Silva</strong><br>© 2026 - Maceió, Alagoas</p>
 </footer>
 
 <script>
     function setMateria(id, btn) {
+        // Esconde todos os painéis
         document.querySelectorAll('.subject-panel').forEach(p => p.classList.remove('active'));
+        // Desativa todos os botões
         document.querySelectorAll('.btn-materia').forEach(b => b.classList.remove('active'));
-        document.getElementById(id).classList.add('active');
-        btn.classList.add('active');
-    }
-
-    function setBimestre(num, btn) {
-        // Apenas permite mudar se não for um botão bloqueado
-        if (!btn.classList.contains('blocked')) {
-            document.querySelectorAll('.btn-bim').forEach(b => b.classList.remove('active'));
+        
+        // Ativa o selecionado
+        const target = document.getElementById(id);
+        if(target) {
+            target.classList.add('active');
             btn.classList.add('active');
         }
     }
 
     function avisoBloqueio() {
-        alert("Este conteúdo ainda não foi liberado. Aguarde o início do bimestre correspondente!");
+        alert("Acesso disponível em breve!");
     }
 </script>
 
