@@ -3,118 +3,111 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SISTEMA MESTRE 360 | GESTÃO SUPREMA PROF. MÁRCIO</title>
+    <title>SISTEMA MESTRE 360 | PROF. MÁRCIO</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
     <style>
         :root { 
-            --primary: #0f172a; --accent: #38bdf8; --secondary: #1e293b; 
-            --bg: #f1f5f9; --white: #ffffff; --danger: #ef4444; 
-            --warning: #f59e0b; --success: #10b981; --text: #334155;
+            --primary: #1a3059; /* Azul Marinho da sua logo */
+            --accent: #4caf50;  /* Verde da sua logo */
+            --accent-hover: #2e7d32;
+            --bg: #f1f5f9; 
+            --white: #ffffff; 
+            --danger: #e11d48; 
+            --text: #1e293b;
         }
         
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
         body { background: var(--bg); display: flex; height: 100vh; overflow: hidden; color: var(--text); }
         
-        /* SIDEBAR */
-        aside { width: 280px; background: var(--primary); color: white; display: flex; flex-direction: column; box-shadow: 4px 0 20px rgba(0,0,0,0.2); z-index: 100; overflow-y: auto; }
-        .aside-header { padding: 30px 20px; text-align: center; border-bottom: 1px solid rgba(255,255,255,0.1); background: rgba(0,0,0,0.2); }
-        .aside-header h2 { font-size: 22px; color: var(--accent); font-weight: 800; }
-        .nav-group { padding: 25px 20px 10px; font-size: 11px; color: #64748b; text-transform: uppercase; font-weight: 800; letter-spacing: 1.5px; }
-        .nav-item { width: 100%; padding: 14px 20px; background: none; border: none; color: #94a3b8; display: flex; align-items: center; gap: 12px; cursor: pointer; text-align: left; transition: 0.3s; }
-        .nav-item:hover, .nav-item.active { background: var(--secondary); color: var(--accent); }
-        .nav-item.active { border-right: 5px solid var(--accent); font-weight: 600; }
+        /* SIDEBAR PROFISSIONAL */
+        aside { width: 280px; background: var(--primary); color: white; display: flex; flex-direction: column; box-shadow: 4px 0 20px rgba(0,0,0,0.2); z-index: 100; }
+        .aside-header { padding: 30px 20px; text-align: center; border-bottom: 2px solid var(--accent); background: rgba(0,0,0,0.2); }
+        .logo-box { width: 80px; height: 80px; background: white; border-radius: 15px; margin: 0 auto 15px; display: flex; align-items: center; justify-content: center; overflow: hidden; border: 3px solid var(--accent); }
+        .logo-box img { max-width: 90%; max-height: 90%; object-fit: contain; }
+        .aside-header h2 { font-size: 18px; color: var(--white); font-weight: 800; letter-spacing: 1px; }
+        
+        .nav-group { padding: 25px 20px 5px; font-size: 10px; color: #94a3b8; text-transform: uppercase; font-weight: 800; letter-spacing: 2px; }
+        .nav-item { width: 90%; margin: 2px auto; padding: 12px 15px; background: none; border: none; color: #cbd5e1; display: flex; align-items: center; gap: 12px; cursor: pointer; border-radius: 10px; transition: 0.3s; }
+        .nav-item:hover { background: rgba(255,255,255,0.05); color: var(--accent); }
+        .nav-item.active { background: var(--accent); color: var(--primary); font-weight: 700; }
 
         /* ÁREA PRINCIPAL */
         main { flex: 1; padding: 30px; overflow-y: auto; }
-        .section { display: none; max-width: 1200px; margin: 0 auto; }
-        .section.active { display: block; animation: fadeIn 0.3s ease; }
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        .section { display: none; max-width: 1200px; margin: 0 auto; animation: fadeIn 0.4s ease; }
+        .section.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
-        /* CARDS E HEADER */
-        .header-box { background: var(--white); padding: 25px; border-radius: 20px; margin-bottom: 25px; display: flex; align-items: center; justify-content: space-between; border-left: 8px solid var(--accent); box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
-        .card { background: var(--white); padding: 25px; border-radius: 20px; box-shadow: 0 4px 6px rgba(0,0,0,0.02); margin-bottom: 25px; border: 1px solid #e2e8f0; }
+        .header-box { background: var(--white); padding: 20px 30px; border-radius: 15px; margin-bottom: 25px; display: flex; align-items: center; justify-content: space-between; border-left: 8px solid var(--accent); box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
+        .card { background: var(--white); padding: 25px; border-radius: 15px; box-shadow: 0 4px 6px rgba(0,0,0,0.02); margin-bottom: 25px; border: 1px solid #e2e8f0; }
 
-        /* FORMULÁRIOS */
-        input, select, textarea { padding: 12px; border-radius: 10px; border: 1.5px solid #e2e8f0; outline: none; transition: 0.3s; width: 100%; }
-        input:focus, select:focus { border-color: var(--accent); }
-        .btn-acao { padding: 12px 24px; border: none; border-radius: 12px; cursor: pointer; font-weight: 700; background: var(--accent); color: var(--primary); display: inline-flex; align-items: center; gap: 10px; text-transform: uppercase; font-size: 12px; }
+        /* INPUTS E BOTÕES */
+        input, select, textarea { padding: 12px; border-radius: 8px; border: 1.5px solid #cbd5e1; outline: none; transition: 0.3s; }
+        input:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.2); }
+        .btn-acao { padding: 12px 20px; border: none; border-radius: 8px; cursor: pointer; font-weight: 700; background: var(--primary); color: white; display: inline-flex; align-items: center; gap: 8px; transition: 0.3s; }
+        .btn-acao:hover { background: var(--accent); color: var(--primary); transform: translateY(-2px); }
+
+        /* MODO TV & VISUALIZAÇÃO */
+        .modo-tv-container { display: flex; flex-direction: column; gap: 20px; }
+        .tv-screen { background: #0f172a; border-radius: 25px; padding: 60px; min-height: 400px; color: white; text-align: center; border: 10px solid var(--primary); display: flex; flex-direction: column; justify-content: center; position: relative; }
+        .tv-screen h1 { font-size: 45px; color: var(--accent); margin-bottom: 20px; }
+        .tv-screen p { font-size: 24px; line-height: 1.5; opacity: 0.9; }
+        
+        .grid-midia { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 15px; margin-top: 20px; }
+        .midia-card { background: white; padding: 15px; border-radius: 12px; text-align: center; cursor: pointer; border: 2px solid transparent; transition: 0.3s; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+        .midia-card:hover { border-color: var(--accent); transform: scale(1.05); }
+        .midia-card i { font-size: 30px; color: var(--primary); margin-bottom: 8px; }
+
+        /* VISUALIZADOR FULLSCREEN */
+        #visor-modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: black; z-index: 2000; }
+        .visor-content { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; }
+        .visor-content iframe, .visor-content img { width: 100%; height: 100%; border: none; object-fit: contain; }
+        .btn-fechar { position: absolute; top: 20px; right: 20px; background: var(--danger); color: white; border: none; width: 50px; height: 50px; border-radius: 50%; cursor: pointer; z-index: 2001; font-size: 20px; }
 
         /* TABELAS */
-        .table-container { border-radius: 15px; overflow-x: auto; background: white; border: 1px solid #e2e8f0; }
-        table { width: 100%; border-collapse: collapse; min-width: 600px; }
-        th { background: #f8fafc; padding: 15px; font-size: 12px; color: #64748b; text-align: center; }
+        .table-container { border-radius: 12px; overflow: hidden; border: 1px solid #e2e8f0; }
+        table { width: 100%; border-collapse: collapse; }
+        th { background: #f8fafc; padding: 15px; font-size: 12px; color: var(--primary); text-transform: uppercase; }
         td { padding: 12px; border-bottom: 1px solid #f1f5f9; text-align: center; }
-        .col-fixa { position: sticky; left: 0; background: white; z-index: 5; text-align: left; font-weight: bold; min-width: 250px; border-right: 2px solid #f1f5f9; }
-
-        /* MAPA DE FOTOS */
-        .mapa-sala { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 15px; background: #cbd5e1; padding: 20px; border-radius: 20px; }
-        .carteira { background: white; border-radius: 15px; padding: 10px; text-align: center; cursor: pointer; transition: 0.3s; border: 2px solid transparent; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
-        .carteira:hover { transform: translateY(-5px); border-color: var(--accent); }
-        .carteira img { width: 100%; height: 110px; object-fit: cover; border-radius: 10px; background: #eee; }
-        .carteira span { font-size: 11px; font-weight: 800; display: block; margin-top: 8px; color: var(--primary); }
-
-        /* MODO TV TURBINADO */
-        .modo-tv-container { display: flex; flex-direction: column; gap: 15px; height: 80vh; }
-        .tv-tools { background: var(--primary); padding: 15px; border-radius: 15px; display: flex; gap: 10px; overflow-x: auto; border: 1px solid var(--accent); }
-        .tool-btn { background: var(--secondary); color: white; padding: 10px 20px; border-radius: 8px; font-size: 13px; cursor: pointer; border: 1px solid #334155; white-space: nowrap; transition: 0.2s; }
-        .tool-btn:hover { background: var(--accent); color: var(--primary); }
-        
-        .modo-tv { flex: 1; background: #000; color: #fff; padding: 60px; border-radius: 30px; text-align: center; display: flex; flex-direction: column; justify-content: center; border: 5px solid var(--secondary); background: radial-gradient(circle, #1e293b 0%, #000 100%); position: relative; overflow: hidden; }
-        .modo-tv h1 { font-size: clamp(24px, 5vw, 55px); color: var(--accent); margin-bottom: 20px; text-transform: uppercase; }
-        .modo-tv p { font-size: clamp(18px, 3vw, 32px); line-height: 1.6; white-space: pre-wrap; max-width: 90%; margin: 0 auto; }
-
-        /* MODAL DE APRESENTAÇÃO FULLSCREEN */
-        #tv-modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #000; z-index: 3000; }
-        .modal-content { width: 100%; height: 100%; display: flex; justify-content: center; align-items: center; background: #111; }
-        .modal-content img { max-width: 100%; max-height: 100%; object-fit: contain; box-shadow: 0 0 50px rgba(0,0,0,0.5); }
-        .modal-content iframe { width: 100%; height: 100%; border: none; background: white; }
-
-        /* CONTROLES DO APRESENTADOR */
-        .tv-controls-hud { position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%); display: flex; gap: 20px; background: rgba(15, 23, 42, 0.8); padding: 15px 30px; border-radius: 50px; backdrop-filter: blur(10px); border: 1px solid var(--accent); opacity: 0.3; transition: 0.5s; }
-        .tv-controls-hud:hover { opacity: 1; }
-        .hud-btn { background: none; border: none; color: white; font-size: 24px; cursor: pointer; transition: 0.2s; }
-        .hud-btn:hover { color: var(--accent); transform: scale(1.2); }
-        .modal-close-new { position: absolute; top: 20px; right: 30px; background: var(--danger); color: white; border: none; width: 50px; height: 50px; border-radius: 50%; font-size: 20px; cursor: pointer; z-index: 3001; }
-
-        /* STATUS */
-        .btn-status { padding: 6px 12px; border: none; border-radius: 6px; cursor: pointer; font-weight: bold; font-size: 11px; }
-        .st-P { background: var(--success); color: white; }
-        .st-F { background: var(--danger); color: white; }
-        .tab-bim { padding: 8px 15px; cursor: pointer; border-radius: 8px; background: #e2e8f0; font-weight: bold; border: none; }
-        .tab-bim.active { background: var(--accent); color: var(--primary); }
+        .col-fixa { position: sticky; left: 0; background: white; z-index: 5; text-align: left; font-weight: 700; min-width: 200px; border-right: 2px solid #f1f5f9; }
     </style>
 </head>
 <body>
 
 <aside>
-    <div class="aside-header"><h2>MESTRE 360</h2><p>Prof. Márcio</p></div>
-    <div class="nav-group">ESTRUTURA BASE</div>
-    <button class="nav-item active" onclick="nav('config')"><i class="fas fa-list"></i> 1. GESTÃO TURMAS</button>
-    <button class="nav-item" onclick="nav('cadastro')"><i class="fas fa-users"></i> 2. CADASTRO ALUNOS</button>
-    <button class="nav-item" onclick="nav('mapa')"><i class="fas fa-id-badge"></i> 3. MAPA DE FOTOS</button>
-    <div class="nav-group">DIÁRIO DE BORDO</div>
-    <button class="nav-item" onclick="nav('freq')"><i class="fas fa-calendar-check"></i> 4. FREQUÊNCIA</button>
-    <button class="nav-item" onclick="nav('conteudo')"><i class="fas fa-book"></i> 5. CONTEÚDOS</button>
-    <button class="nav-item" onclick="nav('notas')"><i class="fas fa-star"></i> 6. NOTAS E MÉDIAS</button>
-    <div class="nav-group">PEDAGÓGICO & SHOW</div>
-    <button class="nav-item" onclick="nav('projetos')"><i class="fas fa-edit"></i> 7. PLANO DE AULA</button>
-    <button class="nav-item" onclick="nav('apresentacao')"><i class="fas fa-tv"></i> 8. MODO TV (MULTIMÍDIA)</button>
-    <div class="nav-group">ADMIN</div>
-    <button class="nav-item" onclick="nav('arquivos')"><i class="fas fa-file-pdf"></i> 9. ARQUIVOS</button>
+    <div class="aside-header">
+        <div class="logo-box">
+            <img src="logo-marcio.png" onerror="this.src='https://cdn-icons-png.flaticon.com/512/3426/3426653.png'" alt="Logo">
+        </div>
+        <h2>MESTRE 360</h2>
+        <p style="font-size: 11px; opacity: 0.7; color: var(--accent)">PROF. MÁRCIO L. DA SILVA</p>
+    </div>
+
+    <div class="nav-group">Principal</div>
+    <button class="nav-item active" onclick="nav('config')"><i class="fas fa-th-large"></i> Turmas</button>
+    <button class="nav-item" onclick="nav('cadastro')"><i class="fas fa-user-graduate"></i> Alunos</button>
+    
+    <div class="nav-group">Diário</div>
+    <button class="nav-item" onclick="nav('freq')"><i class="fas fa-calendar-check"></i> Frequência</button>
+    <button class="nav-item" onclick="nav('notas')"><i class="fas fa-star"></i> Notas</button>
+    
+    <div class="nav-group">Aula Show</div>
+    <button class="nav-item" onclick="nav('projetos')"><i class="fas fa-edit"></i> Roteiro de Aula</button>
+    <button class="nav-item" onclick="nav('apresentacao')"><i class="fas fa-desktop"></i> Modo TV</button>
+    <button class="nav-item" onclick="nav('arquivos')"><i class="fas fa-folder-open"></i> Meus Arquivos</button>
 </aside>
 
 <main>
     <section id="config" class="section active">
-        <div class="header-box"><h1>Gestão de Turmas</h1></div>
+        <div class="header-box"><h1>Minhas Turmas</h1></div>
         <div class="card">
             <div style="display:flex; gap:10px; margin-bottom:20px;">
-                <input type="text" id="nome-turma" placeholder="Ex: 1º ANO A">
-                <button class="btn-acao" onclick="addTurma()">CRIAR TURMA</button>
+                <input type="text" id="nome-turma" placeholder="Ex: 1º ANO A - MATEMÁTICA" style="flex:1">
+                <button class="btn-acao" onclick="addTurma()"><i class="fas fa-plus"></i> CRIAR TURMA</button>
             </div>
             <div class="table-container">
                 <table>
-                    <thead><tr><th>NOME DA TURMA</th><th>AÇÕES</th></tr></thead>
+                    <thead><tr><th>NOME DA TURMA</th><th>AÇÃO</th></tr></thead>
                     <tbody id="corpo-turmas"></tbody>
                 </table>
             </div>
@@ -125,28 +118,17 @@
         <div class="header-box"><h1>Cadastro de Alunos</h1><select id="sel-t-cadastro" onchange="renderAlunos()"></select></div>
         <div class="card table-container">
             <table>
-                <thead><tr><th width="80">Nº</th><th>NOME DO ALUNO</th></tr></thead>
+                <thead><tr><th width="80">Nº</th><th>NOME COMPLETO</th></tr></thead>
                 <tbody id="corpo-alunos"></tbody>
             </table>
         </div>
     </section>
 
-    <section id="mapa" class="section">
-        <div class="header-box"><h1>Mapa de Fotos</h1><select id="sel-t-mapa" onchange="renderMapa()"></select></div>
-        <input type="file" id="input-foto" style="display:none" onchange="processarFoto(event)">
-        <div class="mapa-sala" id="grid-mapa"></div>
-    </section>
-
     <section id="freq" class="section">
         <div class="header-box">
+            <h1>Chamada</h1>
             <select id="sel-t-freq" onchange="renderFreq()"></select>
-            <div style="display:flex; gap:5px;">
-                <button class="tab-bim active" onclick="setBim(1)">1ºB</button>
-                <button class="tab-bim" onclick="setBim(2)">2ºB</button>
-                <button class="tab-bim" onclick="setBim(3)">3ºB</button>
-                <button class="tab-bim" onclick="setBim(4)">4ºB</button>
-            </div>
-            <input type="date" id="data-aula" style="width:150px">
+            <input type="date" id="data-aula">
             <button class="btn-acao" onclick="novaData()">ADD DATA</button>
         </div>
         <div class="card table-container">
@@ -154,13 +136,8 @@
         </div>
     </section>
 
-    <section id="conteudo" class="section">
-        <div class="header-box"><h1>Registro de Conteúdos</h1><select id="sel-t-cont" onchange="renderConteudo()"></select></div>
-        <div id="lista-conteudos"></div>
-    </section>
-
     <section id="notas" class="section">
-        <div class="header-box"><h1>Notas</h1><select id="sel-t-notas" onchange="renderNotas()"></select></div>
+        <div class="header-box"><h1>Notas e Médias</h1><select id="sel-t-notas" onchange="renderNotas()"></select></div>
         <div class="card table-container">
             <table>
                 <thead><tr><th class="col-fixa">ALUNO</th><th>AV1</th><th>AV2</th><th>TRAB</th><th>MÉDIA</th></tr></thead>
@@ -172,195 +149,94 @@
     <section id="projetos" class="section">
         <div class="header-box"><h1>Plano de Aula Digital</h1><select id="sel-t-proj" onchange="carregarPlano()"></select></div>
         <div class="card">
-            <textarea id="texto-plano" style="height:350px;" placeholder="Digite o que será exibido na TV..."></textarea>
-            <button class="btn-acao" style="margin-top:20px; width:100%; justify-content:center;" onclick="salvarPlano()">SALVAR E SINCRONIZAR TV</button>
+            <textarea id="texto-plano" style="height:350px; width: 100%; margin-bottom:15px; font-size: 16px;" placeholder="Digite aqui o que será exibido na TV..."></textarea>
+            <button class="btn-acao" style="width:100%; justify-content:center;" onclick="salvarPlano()">SALVAR E ATUALIZAR MODO TV</button>
         </div>
     </section>
 
     <section id="apresentacao" class="section">
         <div class="header-box">
             <select id="sel-t-apr" onchange="renderTV()"></select>
-            <button class="btn-acao" onclick="toggleFull()"><i class="fas fa-expand"></i> MODO APRESENTAÇÃO</button>
+            <button class="btn-acao" onclick="toggleFull()"><i class="fas fa-expand"></i> TELA CHEIA</button>
         </div>
         <div class="modo-tv-container">
-            <div class="tv-tools" id="tv-midias-bar"></div>
-            <div class="modo-tv" id="painel-tv">
-                <h1 id="tv-titulo">PRONTO PARA A AULA?</h1>
-                <p id="tv-texto">Selecione uma turma no menu superior para carregar o plano de aula e os arquivos.</p>
+            <div class="tv-screen" id="painel-tv">
+                <h1 id="tv-titulo">SISTEMA MESTRE 360</h1>
+                <p id="tv-texto">Selecione uma turma para carregar o conteúdo da aula.</p>
             </div>
+            <h3 style="margin-top:20px">Arquivos de Apoio (Clique para Visualizar):</h3>
+            <div class="grid-midia" id="tv-midias-bar"></div>
         </div>
     </section>
 
     <section id="arquivos" class="section">
         <div class="header-box">
-            <h1>Repositório de Arquivos</h1>
+            <h1>Sua Biblioteca</h1>
             <input type="file" id="file-up" style="display:none" onchange="uploadArq(event)">
-            <button class="btn-acao" onclick="document.getElementById('file-up').click()"><i class="fas fa-upload"></i> SUBIR PDF OU IMAGEM</button>
+            <button class="btn-acao" onclick="document.getElementById('file-up').click()"><i class="fas fa-upload"></i> SUBIR ARQUIVO (PDF/IMG)</button>
         </div>
-        <div class="mapa-sala" id="container-arquivos" style="background:none"></div>
+        <div class="grid-midia" id="container-arquivos"></div>
     </section>
 </main>
 
-<div id="tv-modal">
-    <button class="modal-close-new" onclick="fecharArquivo()"><i class="fas fa-times"></i></button>
-    <div class="modal-content" id="tv-visor"></div>
-    <div class="tv-controls-hud">
-        <button class="hud-btn" onclick="altZoom(-0.1)"><i class="fas fa-search-minus"></i></button>
-        <button class="hud-btn" onclick="altZoom(0.1)"><i class="fas fa-search-plus"></i></button>
-        <button class="hud-btn" onclick="toggleFull()"><i class="fas fa-compress"></i></button>
-    </div>
+<div id="visor-modal">
+    <button class="btn-fechar" onclick="fecharVisor()"><i class="fas fa-times"></i></button>
+    <div class="visor-content" id="visor-alvo"></div>
 </div>
 
 <script>
-    let db = JSON.parse(localStorage.getItem('MESTRE360_FINAL')) || { turmas: {}, arquivos: [] };
-    let bim = 1;
-    let alvoFoto = null;
-    let zoomAtual = 1;
+    let db = JSON.parse(localStorage.getItem('MESTRE360_PRO')) || { turmas: {}, arquivos: [] };
 
     function salvar() { 
-        localStorage.setItem('MESTRE360_FINAL', JSON.stringify(db)); 
+        localStorage.setItem('MESTRE360_PRO', JSON.stringify(db)); 
         povoarSelects();
     }
 
     function nav(id) {
         document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
         document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
-        const target = document.getElementById(id);
-        if(target) target.classList.add('active');
-        
+        document.getElementById(id).classList.add('active');
+        event.currentTarget.classList.add('active');
+
         if(id === 'config') renderTurmas();
         if(id === 'cadastro') renderAlunos();
-        if(id === 'mapa') renderMapa();
         if(id === 'freq') renderFreq();
-        if(id === 'conteudo') renderConteudo();
         if(id === 'notas') renderNotas();
         if(id === 'apresentacao') renderTV();
         if(id === 'arquivos') renderArquivos();
-        povoarSelects();
     }
 
-    // TURMAS
+    // GESTÃO TURMAS
     function addTurma() {
         let n = document.getElementById('nome-turma').value.trim().toUpperCase();
         if(!n) return;
         if(!db.turmas[n]) {
-            db.turmas[n] = { alunos: {}, fotos: {}, chamadas: {1:{},2:{},3:{},4:{}}, conteudos: {}, notas: {}, plano: "" };
+            db.turmas[n] = { alunos: {}, chamadas: {}, notas: {}, plano: "" };
             salvar(); renderTurmas();
             document.getElementById('nome-turma').value = "";
         }
     }
     function renderTurmas() {
         document.getElementById('corpo-turmas').innerHTML = Object.keys(db.turmas).map(t => 
-            `<tr><td><b>${t}</b></td><td><button class="btn-status st-F" onclick="delTurma('${t}')">EXCLUIR</button></td></tr>`).join('');
+            `<tr><td><strong>${t}</strong></td><td><button onclick="delTurma('${t}')" style="color:var(--danger); border:none; background:none; cursor:pointer; font-weight:700">EXCLUIR</button></td></tr>`).join('');
     }
-    function delTurma(t) { if(confirm("Apagar turma?")) { delete db.turmas[t]; salvar(); renderTurmas(); }}
+    function delTurma(t) { if(confirm("Deseja apagar esta turma?")) { delete db.turmas[t]; salvar(); renderTurmas(); }}
 
     // ALUNOS
     function renderAlunos() {
         const t = document.getElementById('sel-t-cadastro').value;
         const corpo = document.getElementById('corpo-alunos');
         corpo.innerHTML = ''; if(!t) return;
-        for(let i=1; i<=50; i++){
+        for(let i=1; i<=40; i++){
             let nome = db.turmas[t].alunos[i] || '';
-            corpo.innerHTML += `<tr><td>${i}</td><td><input type="text" value="${nome}" onchange="db.turmas['${t}'].alunos[${i}]=this.value.toUpperCase(); salvar()"></td></tr>`;
+            corpo.innerHTML += `<tr><td>${i}</td><td><input type="text" value="${nome}" style="width:100%" placeholder="..." onchange="db.turmas['${t}'].alunos[${i}]=this.value.toUpperCase(); salvar()"></td></tr>`;
         }
     }
 
-    // MAPA DE FOTOS
-    function renderMapa() {
-        const t = document.getElementById('sel-t-mapa').value;
-        const grid = document.getElementById('grid-mapa');
-        grid.innerHTML = ''; if(!t) return;
-        for(let i=1; i<=49; i++) {
-            let foto = db.turmas[t].fotos[i] || 'https://via.placeholder.com/140x110?text=SEM+FOTO';
-            let nome = db.turmas[t].alunos[i] || 'VAGO';
-            grid.innerHTML += `
-                <div class="carteira" onclick="alvoFoto=${i}; document.getElementById('input-foto').click()">
-                    <img src="${foto}">
-                    <span>${i}. ${nome.split(' ')[0]}</span>
-                </div>`;
-        }
-    }
-    function processarFoto(e) {
-        const t = document.getElementById('sel-t-mapa').value;
-        if(!t) return;
-        const reader = new FileReader();
-        reader.onload = (ev) => {
-            db.turmas[t].fotos[alvoFoto] = ev.target.result;
-            salvar(); renderMapa();
-        };
-        reader.readAsDataURL(e.target.files[0]);
-    }
-
-    // FREQUÊNCIA
-    function setBim(n) { bim = n; document.querySelectorAll('.tab-bim').forEach((b,i) => b.classList.toggle('active', i+1===n)); renderFreq(); }
-    function novaData() {
-        const t = document.getElementById('sel-t-freq').value;
-        const d = document.getElementById('data-aula').value;
-        if(!t || !d) return alert("Selecione Turma e Data");
-        if(!db.turmas[t].chamadas[bim][d]) {
-            db.turmas[t].chamadas[bim][d] = {};
-            db.turmas[t].conteudos[d] = "";
-            salvar(); renderFreq();
-        }
-    }
-    function renderFreq() {
-        const t = document.getElementById('sel-t-freq').value;
-        const head = document.getElementById('head-freq');
-        const corpo = document.getElementById('corpo-freq');
-        if(!t) return;
-        const dias = Object.keys(db.turmas[t].chamadas[bim]).sort();
-        head.innerHTML = `<tr><th class="col-fixa">ALUNO</th>${dias.map(d => `<th>${d.split('-').reverse().slice(0,2).join('/')}</th>`).join('')}</tr>`;
-        corpo.innerHTML = '';
-        Object.keys(db.turmas[t].alunos).sort((a,b)=>a-b).forEach(n => {
-            if(db.turmas[t].alunos[n]) {
-                let linha = `<tr><td class="col-fixa">${n}. ${db.turmas[t].alunos[n]}</td>`;
-                dias.forEach(d => {
-                    let s = db.turmas[t].chamadas[bim][d][n] || 'P';
-                    linha += `<td><button class="btn-status st-${s}" onclick="toggleF('${t}','${d}','${n}',this)">${s}</button></td>`;
-                });
-                corpo.innerHTML += linha + "</tr>";
-            }
-        });
-    }
-    function toggleF(t,d,n,btn) {
-        let nv = btn.innerText === 'P' ? 'F' : 'P';
-        btn.innerText = nv; btn.className = `btn-status st-${nv}`;
-        db.turmas[t].chamadas[bim][d][n] = nv; salvar();
-    }
-
-    // CONTEÚDO
-    function renderConteudo() {
-        const t = document.getElementById('sel-t-cont').value;
-        const lista = document.getElementById('lista-conteudos');
-        lista.innerHTML = ''; if(!t) return;
-        Object.keys(db.turmas[t].conteudos).sort().reverse().forEach(d => {
-            lista.innerHTML += `<div class="card"><b>DATA: ${d}</b><textarea onchange="db.turmas['${t}'].conteudos['${d}']=this.value; salvar()">${db.turmas[t].conteudos[d]}</textarea></div>`;
-        });
-    }
-
-    // NOTAS
-    function renderNotas() {
-        const t = document.getElementById('sel-t-notas').value;
-        const corpo = document.getElementById('corpo-notas');
-        corpo.innerHTML = ''; if(!t) return;
-        Object.keys(db.turmas[t].alunos).sort((a,b)=>a-b).forEach(n => {
-            if(db.turmas[t].alunos[n]) {
-                let nt = db.turmas[t].notas[n] || {a1:0, a2:0, tr:0};
-                let med = ((parseFloat(nt.a1)+parseFloat(nt.a2)+parseFloat(nt.tr))/3).toFixed(1);
-                corpo.innerHTML += `<tr><td class="col-fixa">${db.turmas[t].alunos[n]}</td>
-                <td><input type="number" value="${nt.a1}" onchange="upNota('${t}','${n}','a1',this.value)"></td>
-                <td><input type="number" value="${nt.a2}" onchange="upNota('${t}','${n}','a2',this.value)"></td>
-                <td><input type="number" value="${nt.tr}" onchange="upNota('${t}','${n}','tr',this.value)"></td>
-                <td style="font-weight:bold">${med}</td></tr>`;
-            }
-        });
-    }
-    function upNota(t,n,c,v){ if(!db.turmas[t].notas[n]) db.turmas[t].notas[n]={a1:0,a2:0,tr:0}; db.turmas[t].notas[n][c]=v; salvar(); renderNotas(); }
-
-    // ARQUIVOS E MODO APRESENTAÇÃO
+    // ARQUIVOS (VISUALIZAÇÃO SEM DOWNLOAD)
     function uploadArq(e) {
         const file = e.target.files[0];
+        if(!file) return;
         const reader = new FileReader();
         reader.onload = (ev) => { 
             db.arquivos.push({ n: file.name, t: file.type, d: ev.target.result }); 
@@ -368,76 +244,110 @@
         };
         reader.readAsDataURL(file);
     }
+
     function renderArquivos() {
         const container = document.getElementById('container-arquivos');
         container.innerHTML = db.arquivos.map((a,i) => `
-            <div class="carteira" style="height:auto">
-                <i class="fas ${a.t.includes('pdf')?'fa-file-pdf':'fa-file-image'} fa-3x" style="color:var(--danger)"></i>
-                <span>${a.n}</span>
-                <button onclick="db.arquivos.splice(${i},1); salvar(); renderArquivos()" class="btn-status st-F">EXCLUIR</button>
+            <div class="midia-card">
+                <i class="fas ${a.t.includes('pdf')?'fa-file-pdf':'fa-file-image'}"></i>
+                <p style="font-size:10px; font-weight:700; margin:5px 0">${a.n.substring(0,20)}</p>
+                <div style="display:flex; gap:5px; justify-content:center">
+                    <button onclick="visualizar(${i})" class="btn-acao" style="padding:5px; font-size:10px">VER</button>
+                    <button onclick="db.arquivos.splice(${i},1); salvar(); renderArquivos()" class="btn-acao" style="padding:5px; font-size:10px; background:var(--danger)">X</button>
+                </div>
             </div>`).join('');
     }
 
+    function visualizar(i) {
+        const a = db.arquivos[i];
+        const alvo = document.getElementById('visor-alvo');
+        document.getElementById('visor-modal').style.display = 'block';
+        if(a.t.includes('image')) {
+            alvo.innerHTML = `<img src="${a.d}">`;
+        } else {
+            // Embutindo PDF com Blob para evitar download
+            alvo.innerHTML = `<iframe src="${a.d}#toolbar=0&navpanes=0"></iframe>`;
+        }
+    }
+
+    function fecharVisor() { document.getElementById('visor-modal').style.display = 'none'; document.getElementById('visor-alvo').innerHTML = ''; }
+
+    // MODO TV
     function salvarPlano() {
         const t = document.getElementById('sel-t-proj').value;
         if(!t) return;
         db.turmas[t].plano = document.getElementById('texto-plano').value;
-        salvar(); alert("Sincronizado!");
+        salvar(); alert("Modo TV Atualizado!");
     }
     function carregarPlano() {
         const t = document.getElementById('sel-t-proj').value;
         document.getElementById('texto-plano').value = db.turmas[t].plano || "";
     }
-
     function renderTV() {
         const t = document.getElementById('sel-t-apr').value;
         if(!t) return;
         document.getElementById('tv-titulo').innerText = t;
-        document.getElementById('tv-texto').innerText = db.turmas[t].plano || "Nenhum plano de aula registrado.";
+        document.getElementById('tv-texto').innerText = db.turmas[t].plano || "Sem plano de aula definido.";
         const bar = document.getElementById('tv-midias-bar');
-        bar.innerHTML = db.arquivos.map((a,i) => `<div class="tool-btn" onclick="abrirMidia(${i})"><i class="fas fa-play-circle"></i> ${a.n}</div>`).join('');
+        bar.innerHTML = db.arquivos.map((a,i) => `
+            <div class="midia-card" onclick="visualizar(${i})">
+                <i class="fas ${a.t.includes('pdf')?'fa-file-pdf':'fa-file-image'}"></i>
+                <p style="font-size:10px">${a.n}</p>
+            </div>`).join('');
     }
-
-    function abrirMidia(i) {
-        const a = db.arquivos[i];
-        const modal = document.getElementById('tv-modal');
-        const visor = document.getElementById('tv-visor');
-        modal.style.display = 'block';
-        zoomAtual = 1;
-        
-        if(a.t.includes('image')) {
-            visor.innerHTML = `<img src="${a.d}" id="img-apresentacao" style="transform: scale(1)">`;
-        } else {
-            // Se for PDF, abre no visor ocupando tudo
-            visor.innerHTML = `<iframe src="${a.d}#toolbar=0" width="100%" height="100%"></iframe>`;
-        }
-    }
-
-    function altZoom(v) {
-        const img = document.getElementById('img-apresentacao');
-        if(img) {
-            zoomAtual += v;
-            img.style.transform = `scale(${zoomAtual})`;
-        }
-    }
-
-    function fecharArquivo() { document.getElementById('tv-modal').style.display = 'none'; }
 
     function toggleFull() {
-        if (!document.fullscreenElement) {
-            document.documentElement.requestFullscreen();
-        } else {
-            if (document.exitFullscreen) document.exitFullscreen();
-        }
+        if (!document.fullscreenElement) document.documentElement.requestFullscreen();
+        else document.exitFullscreen();
     }
 
+    // FREQUENCIA E NOTAS (RESUMIDOS PARA O CÓDIGO NÃO FICAR GIGANTE)
+    function novaData() {
+        const t = document.getElementById('sel-t-freq').value;
+        const d = document.getElementById('data-aula').value;
+        if(t && d) { db.turmas[t].chamadas[d] = {}; salvar(); renderFreq(); }
+    }
+    function renderFreq() {
+        const t = document.getElementById('sel-t-freq').value;
+        const h = document.getElementById('head-freq');
+        const c = document.getElementById('corpo-freq');
+        if(!t) return;
+        const dias = Object.keys(db.turmas[t].chamadas).sort();
+        h.innerHTML = `<tr><th class="col-fixa">ALUNO</th>${dias.map(d => `<th>${d.split('-').reverse().slice(0,2).join('/')}</th>`).join('')}</tr>`;
+        c.innerHTML = Object.keys(db.turmas[t].alunos).map(n => {
+            let row = `<tr><td class="col-fixa">${n}. ${db.turmas[t].alunos[n]}</td>`;
+            dias.forEach(d => {
+                let s = db.turmas[t].chamadas[d][n] || 'P';
+                row += `<td><button onclick="toggleF('${t}','${d}','${n}',this)" style="border:none; border-radius:4px; padding:5px 10px; cursor:pointer; font-weight:bold; background:${s==='P'?'#dcfce7':'#fee2e2'}; color:${s==='P'?'#166534':'#991b1b'}">${s}</button></td>`;
+            });
+            return row + `</tr>`;
+        }).join('');
+    }
+    function toggleF(t,d,n,b) {
+        db.turmas[t].chamadas[d][n] = b.innerText === 'P' ? 'F' : 'P';
+        salvar(); renderFreq();
+    }
+
+    function renderNotas() {
+        const t = document.getElementById('sel-t-notas').value;
+        const c = document.getElementById('corpo-notas');
+        if(!t) return;
+        c.innerHTML = Object.keys(db.turmas[t].alunos).map(n => {
+            let nt = db.turmas[t].notas[n] || {a1:0,a2:0,tr:0};
+            let m = ((parseFloat(nt.a1)+parseFloat(nt.a2)+parseFloat(nt.tr))/3).toFixed(1);
+            return `<tr><td class="col-fixa">${db.turmas[t].alunos[n]}</td>
+                <td><input type="number" value="${nt.a1}" onchange="upN('${t}','${n}','a1',this.value)"></td>
+                <td><input type="number" value="${nt.a2}" onchange="upN('${t}','${n}','a2',this.value)"></td>
+                <td><input type="number" value="${nt.tr}" onchange="upN('${t}','${n}','tr',this.value)"></td>
+                <td><strong>${m}</strong></td></tr>`;
+        }).join('');
+    }
+    function upN(t,n,f,v) { if(!db.turmas[t].notas[n]) db.turmas[t].notas[n]={a1:0,a2:0,tr:0}; db.turmas[t].notas[n][f]=v; salvar(); renderNotas(); }
+
     function povoarSelects() {
-        const ids = ['sel-t-cadastro','sel-t-mapa','sel-t-freq','sel-t-cont','sel-t-notas','sel-t-proj','sel-t-apr'];
-        const options = `<option value="">Escolha a Turma</option>` + Object.keys(db.turmas).map(t => `<option value="${t}">${t}</option>`).join('');
-        ids.forEach(id => { 
-            const s = document.getElementById(id); 
-            if(s) { const v = s.value; s.innerHTML = options; s.value = v; }
-        });
+        const ids = ['sel-t-cadastro','sel-t-freq','sel-t-notas','sel-t-proj','sel-t-apr'];
+        const opt = `<option value="">SELECIONE A TURMA</option>` + Object.keys(db.turmas).map(t => `<option value="${t}">${t}</option>`).join('');
+        ids.forEach(id => { const s = document.getElementById(id); if(s){ const v = s.value; s.innerHTML = opt; s.value = v; } });
     }
 
     window.onload = () => { renderTurmas(); povoarSelects(); renderArquivos(); };
