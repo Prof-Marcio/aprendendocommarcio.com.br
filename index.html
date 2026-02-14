@@ -28,7 +28,6 @@
             line-height: 1.6; 
         }
 
-        /* HEADER */
         header {
             background: linear-gradient(135deg, #1A365D 0%, #2B6CB0 100%);
             padding: 50px 5%; text-align: center;
@@ -46,7 +45,6 @@
         }
         header h1 { font-size: 2.2rem; font-weight: 700; text-shadow: 2px 2px 4px rgba(0,0,0,0.3); }
 
-        /* NAVEGAÇÃO MATÉRIAS */
         .nav-main { 
             display: flex; justify-content: center; gap: 15px; 
             padding: 20px; background: white; position: sticky; top: 0; z-index: 1000;
@@ -66,8 +64,17 @@
             background: white; color: #4A5568; font-weight: 700; cursor: pointer; transition: 0.3s;
         }
         .btn-bim.active { border-color: var(--verde-logo); color: white; background: var(--verde-logo); }
+        
+        /* ESTILO PARA BIMESTRES BLOQUEADOS */
+        .btn-bim.blocked {
+            background: #E2E8F0;
+            color: #A0AEC0;
+            cursor: not-allowed;
+            border-color: #CBD5E0;
+            opacity: 0.7;
+        }
+        .btn-bim.blocked:hover { transform: none; }
 
-        /* DASHBOARD */
         .dashboard { 
             display: grid; grid-template-columns: 1fr 340px; 
             gap: 30px; padding: 0 5% 50px; max-width: 1300px; margin: 0 auto; 
@@ -78,7 +85,6 @@
 
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
-        /* CARDS E LISTAS */
         .card { 
             background: var(--card-bg); border-radius: 20px; padding: 30px; 
             margin-bottom: 25px; box-shadow: var(--shadow);
@@ -95,7 +101,6 @@
             transition: all 0.3s ease; border: 2px solid #EDF2F7;
         }
 
-        /* CORES DAS LINHAS */
         .link-roteiro { background: #EBF8FF; border-left: 8px solid #3182CE; }
         .link-livro { background: #F0FFF4; border-left: 8px solid #38A169; }
         .link-lista { background: #FFF5F5; border-left: 8px solid #E53E3E; }
@@ -106,11 +111,9 @@
         .link-content { display: flex; align-items: center; gap: 15px; }
         .btn-acessar { background: white; padding: 5px 12px; border-radius: 8px; font-size: 0.75rem; border: 1px solid #CBD5E0; }
 
-        /* MURAL */
         .mural { background: white; border-radius: 20px; padding: 25px; box-shadow: var(--shadow); border-bottom: 5px solid var(--laranja-alerta); }
         .post-it { background: #FFFFF0; padding: 15px; border-radius: 12px; border: 1px solid #FAF089; position: relative; }
 
-        /* WHATSAPP */
         .whatsapp-btn { position: fixed; bottom: 30px; right: 30px; background: #25D366; color: white; width: 65px; height: 65px; border-radius: 20px; display: flex; align-items: center; justify-content: center; font-size: 35px; z-index: 1000; transition: 0.3s; }
 
         footer { text-align: center; padding: 50px; background: white; margin-top: 40px; border-top: 1px solid #E2E8F0; }
@@ -122,7 +125,7 @@
 
 <header>
     <div class="logo-container">
-        <img src="logo-marcio.png"Prof. Márcio">
+        <img src="https://cdn-icons-png.flaticon.com/512/3426/3426653.png" alt="Prof. Márcio">
     </div>
     <h1>Estação de Aprendizagem 2026</h1>
     <p style="margin-top: 10px; opacity: 0.9;">Plataforma Oficial de Estudos - Prof. Márcio</p>
@@ -138,14 +141,14 @@
     <main>
         <div class="bimestre-bar">
             <button class="btn-bim active" onclick="setBimestre(1, this)">1º BIMESTRE</button>
-            <button class="btn-bim" onclick="setBimestre(2, this)">2º BIMESTRE</button>
-            <button class="btn-bim" onclick="setBimestre(3, this)">3º BIMESTRE</button>
-            <button class="btn-bim" onclick="setBimestre(4, this)">4º BIMESTRE</button>
+            <button class="btn-bim blocked" onclick="avisoBloqueio()"><i class="fas fa-lock"></i> 2º BIMESTRE</button>
+            <button class="btn-bim blocked" onclick="avisoBloqueio()"><i class="fas fa-lock"></i> 3º BIMESTRE</button>
+            <button class="btn-bim blocked" onclick="avisoBloqueio()"><i class="fas fa-lock"></i> 4º BIMESTRE</button>
         </div>
 
         <section id="mat" class="subject-panel active">
             <div class="card">
-                <h2><i class="fas fa-folder-open" style="color: var(--azul-claro);"></i> Materiais da Quinzena</h2>
+                <h2><i class="fas fa-folder-open" style="color: var(--azul-claro);"></i> Materiais da Quinzena (1º Bimestre)</h2>
                 <div class="link-list">
                     <a href="#" class="link-line link-roteiro" target="_blank">
                         <div class="link-content"><i class="fas fa-map-signs" style="color: #3182CE;"></i><span>Roteiro de Estudos</span></div>
@@ -218,7 +221,7 @@
             <div id="mural-content">
                 <div class="post-it">
                     <strong>Atenção:</strong>
-                    <p style="margin-top: 5px; font-size: 0.9rem;">Links de todas as matérias já atualizados para 2026!</p>
+                    <p style="margin-top: 5px; font-size: 0.9rem;">Sejam bem-vindos! Os materiais do 1º Bimestre já estão disponíveis.</p>
                 </div>
             </div>
         </div>
@@ -241,8 +244,15 @@
     }
 
     function setBimestre(num, btn) {
-        document.querySelectorAll('.btn-bim').forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
+        // Apenas permite mudar se não for um botão bloqueado
+        if (!btn.classList.contains('blocked')) {
+            document.querySelectorAll('.btn-bim').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+        }
+    }
+
+    function avisoBloqueio() {
+        alert("Este conteúdo ainda não foi liberado. Aguarde o início do bimestre correspondente!");
     }
 </script>
 
