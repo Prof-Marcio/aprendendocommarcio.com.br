@@ -2,98 +2,119 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SISTEMA MESTRE 360 | GESTÃO SUPREMA PROF. MÁRCIO</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
     <style>
-        :root { --primary: #0f172a; --accent: #38bdf8; --secondary: #1e293b; --bg: #f8fafc; --white: #ffffff; --danger: #ef4444; --warning: #f59e0b; --success: #10b981; --purple: #8b5cf6; }
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', 'Segoe UI', sans-serif; }
-        body { background: var(--bg); display: flex; height: 100vh; overflow: hidden; color: #334155; }
+        :root { 
+            --primary: #0f172a; --accent: #38bdf8; --secondary: #1e293b; 
+            --bg: #f1f5f9; --white: #ffffff; --danger: #ef4444; 
+            --warning: #f59e0b; --success: #10b981; --text: #334155;
+        }
         
-        /* SIDEBAR PREMIUM */
-        aside { width: 280px; background: var(--primary); color: white; display: flex; flex-direction: column; box-shadow: 4px 0 20px rgba(0,0,0,0.2); z-index: 100; }
-        .aside-header { padding: 30px 20px; text-align: center; border-bottom: 1px solid rgba(255,255,255,0.1); background: linear-gradient(to bottom, rgba(56,189,248,0.1), transparent); }
-        .aside-header h2 { font-size: 20px; font-weight: 800; letter-spacing: 1px; color: var(--accent); }
-        .nav-group { padding: 20px 15px 5px; font-size: 10px; color: #64748b; text-transform: uppercase; font-weight: 700; }
-        .nav-item { width: 100%; padding: 12px 20px; background: none; border: none; color: #94a3b8; display: flex; align-items: center; gap: 12px; cursor: pointer; font-weight: 500; transition: 0.3s; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+        body { background: var(--bg); display: flex; height: 100vh; overflow: hidden; color: var(--text); }
+        
+        /* SIDEBAR */
+        aside { width: 280px; background: var(--primary); color: white; display: flex; flex-direction: column; box-shadow: 4px 0 20px rgba(0,0,0,0.2); z-index: 100; overflow-y: auto; }
+        .aside-header { padding: 30px 20px; text-align: center; border-bottom: 1px solid rgba(255,255,255,0.1); background: rgba(0,0,0,0.2); }
+        .aside-header h2 { font-size: 22px; color: var(--accent); font-weight: 800; }
+        .nav-group { padding: 25px 20px 10px; font-size: 11px; color: #64748b; text-transform: uppercase; font-weight: 800; letter-spacing: 1.5px; }
+        .nav-item { width: 100%; padding: 14px 20px; background: none; border: none; color: #94a3b8; display: flex; align-items: center; gap: 12px; cursor: pointer; text-align: left; transition: 0.3s; }
         .nav-item:hover, .nav-item.active { background: var(--secondary); color: var(--accent); }
-        .nav-item.active { border-right: 4px solid var(--accent); background: rgba(56,189,248,0.05); }
+        .nav-item.active { border-right: 5px solid var(--accent); font-weight: 600; }
 
-        main { flex: 1; padding: 30px; overflow-y: auto; scroll-behavior: smooth; }
-        .section { display: none; animation: slideUp 0.4s ease-out; }
-        .section.active { display: block; }
-        @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        /* ÁREA PRINCIPAL */
+        main { flex: 1; padding: 30px; overflow-y: auto; }
+        .section { display: none; max-width: 1200px; margin: 0 auto; }
+        .section.active { display: block; animation: fadeIn 0.3s ease; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
-        /* WIDGETS E CARDS */
-        .grid-dashboard { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; margin-bottom: 30px; }
-        .stat-card { background: var(--white); padding: 20px; border-radius: 16px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); border-left: 5px solid var(--accent); }
-        .header-box { background: var(--white); padding: 20px; border-radius: 16px; margin-bottom: 25px; display: flex; align-items: center; gap: 20px; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); border: 1px solid #e2e8f0; }
-        
-        /* TABELAS E BOTÕES */
-        .table-container { background: white; border-radius: 16px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); overflow: hidden; border: 1px solid #e2e8f0; }
-        table { width: 100%; border-collapse: collapse; text-align: left; }
-        th { background: #f1f5f9; padding: 15px; font-size: 12px; text-transform: uppercase; color: #475569; }
-        td { padding: 15px; border-top: 1px solid #f1f5f9; font-size: 14px; }
-        .col-fixa { position: sticky; left: 0; background: white; font-weight: 700; border-right: 2px solid #f1f5f9; z-index: 10; }
-        
-        .btn-status { padding: 6px 12px; border: none; border-radius: 8px; cursor: pointer; font-weight: 700; transition: 0.2s; }
-        .st-P { background: #dcfce7; color: #166534; }
-        .st-F { background: #fee2e2; color: #991b1b; }
-        .btn-acao { padding: 10px 20px; border: none; border-radius: 10px; cursor: pointer; font-weight: 600; background: var(--accent); color: var(--primary); display: flex; align-items: center; gap: 8px; }
-        
-        /* APRESENTAÇÃO DE AULA (MODO PROJETOR) */
-        .projetor-container { background: var(--primary); color: white; padding: 40px; border-radius: 20px; min-height: 400px; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; border: 4px solid var(--accent); }
-        .projetor-slide { font-size: 32px; font-weight: 300; line-height: 1.5; }
+        /* CARDS E HEADER */
+        .header-box { background: var(--white); padding: 25px; border-radius: 20px; margin-bottom: 25px; display: flex; align-items: center; justify-content: space-between; border-left: 8px solid var(--accent); box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
+        .card { background: var(--white); padding: 25px; border-radius: 20px; box-shadow: 0 4px 6px rgba(0,0,0,0.02); margin-bottom: 25px; border: 1px solid #e2e8f0; }
+
+        /* FORMULÁRIOS */
+        input, select, textarea { padding: 12px; border-radius: 10px; border: 1.5px solid #e2e8f0; outline: none; transition: 0.3s; width: 100%; }
+        input:focus, select:focus { border-color: var(--accent); }
+        .btn-acao { padding: 12px 24px; border: none; border-radius: 12px; cursor: pointer; font-weight: 700; background: var(--accent); color: var(--primary); display: inline-flex; align-items: center; gap: 10px; text-transform: uppercase; font-size: 12px; }
+
+        /* TABELAS */
+        .table-container { border-radius: 15px; overflow-x: auto; background: white; border: 1px solid #e2e8f0; }
+        table { width: 100%; border-collapse: collapse; min-width: 600px; }
+        th { background: #f8fafc; padding: 15px; font-size: 12px; color: #64748b; text-align: center; }
+        td { padding: 12px; border-bottom: 1px solid #f1f5f9; text-align: center; }
+        .col-fixa { position: sticky; left: 0; background: white; z-index: 5; text-align: left; font-weight: bold; min-width: 250px; border-right: 2px solid #f1f5f9; }
 
         /* MAPA DE FOTOS */
-        .mapa-sala { display: grid; grid-template-columns: repeat(7, 1fr); gap: 15px; background: #e2e8f0; padding: 20px; border-radius: 20px; }
-        .carteira { background: white; border-radius: 12px; padding: 5px; text-align: center; cursor: pointer; border: 2px solid transparent; transition: 0.3s; }
-        .carteira:hover { border-color: var(--accent); transform: scale(1.05); }
-        .carteira img { width: 100%; aspect-ratio: 1/1; object-fit: cover; border-radius: 8px; margin-bottom: 5px; }
-        .carteira span { font-size: 10px; font-weight: 800; color: var(--primary); }
+        .mapa-sala { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 15px; background: #cbd5e1; padding: 20px; border-radius: 20px; }
+        .carteira { background: white; border-radius: 15px; padding: 10px; text-align: center; cursor: pointer; transition: 0.3s; border: 2px solid transparent; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+        .carteira:hover { transform: translateY(-5px); border-color: var(--accent); }
+        .carteira img { width: 100%; height: 110px; object-fit: cover; border-radius: 10px; background: #eee; }
+        .carteira span { font-size: 11px; font-weight: 800; display: block; margin-top: 8px; color: var(--primary); }
 
-        /* CRONÔMETRO */
-        .timer-box { position: fixed; bottom: 20px; right: 20px; background: var(--white); padding: 15px; border-radius: 50px; box-shadow: 0 10px 25px rgba(0,0,0,0.2); display: flex; align-items: center; gap: 15px; border: 2px solid var(--accent); z-index: 999; }
+        /* MODO TV TURBINADO */
+        .modo-tv-container { display: flex; flex-direction: column; gap: 15px; height: 80vh; }
+        .tv-tools { background: var(--primary); padding: 15px; border-radius: 15px; display: flex; gap: 10px; overflow-x: auto; border: 1px solid var(--accent); }
+        .tool-btn { background: var(--secondary); color: white; padding: 10px 20px; border-radius: 8px; font-size: 13px; cursor: pointer; border: 1px solid #334155; white-space: nowrap; transition: 0.2s; }
+        .tool-btn:hover { background: var(--accent); color: var(--primary); }
+        
+        .modo-tv { flex: 1; background: #000; color: #fff; padding: 60px; border-radius: 30px; text-align: center; display: flex; flex-direction: column; justify-content: center; border: 5px solid var(--secondary); background: radial-gradient(circle, #1e293b 0%, #000 100%); position: relative; overflow: hidden; }
+        .modo-tv h1 { font-size: clamp(24px, 5vw, 55px); color: var(--accent); margin-bottom: 20px; text-transform: uppercase; }
+        .modo-tv p { font-size: clamp(18px, 3vw, 32px); line-height: 1.6; white-space: pre-wrap; max-width: 90%; margin: 0 auto; }
+
+        /* MODAL DE APRESENTAÇÃO FULLSCREEN */
+        #tv-modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #000; z-index: 3000; }
+        .modal-content { width: 100%; height: 100%; display: flex; justify-content: center; align-items: center; background: #111; }
+        .modal-content img { max-width: 100%; max-height: 100%; object-fit: contain; box-shadow: 0 0 50px rgba(0,0,0,0.5); }
+        .modal-content iframe { width: 100%; height: 100%; border: none; background: white; }
+
+        /* CONTROLES DO APRESENTADOR */
+        .tv-controls-hud { position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%); display: flex; gap: 20px; background: rgba(15, 23, 42, 0.8); padding: 15px 30px; border-radius: 50px; backdrop-filter: blur(10px); border: 1px solid var(--accent); opacity: 0.3; transition: 0.5s; }
+        .tv-controls-hud:hover { opacity: 1; }
+        .hud-btn { background: none; border: none; color: white; font-size: 24px; cursor: pointer; transition: 0.2s; }
+        .hud-btn:hover { color: var(--accent); transform: scale(1.2); }
+        .modal-close-new { position: absolute; top: 20px; right: 30px; background: var(--danger); color: white; border: none; width: 50px; height: 50px; border-radius: 50%; font-size: 20px; cursor: pointer; z-index: 3001; }
+
+        /* STATUS */
+        .btn-status { padding: 6px 12px; border: none; border-radius: 6px; cursor: pointer; font-weight: bold; font-size: 11px; }
+        .st-P { background: var(--success); color: white; }
+        .st-F { background: var(--danger); color: white; }
+        .tab-bim { padding: 8px 15px; cursor: pointer; border-radius: 8px; background: #e2e8f0; font-weight: bold; border: none; }
+        .tab-bim.active { background: var(--accent); color: var(--primary); }
     </style>
 </head>
 <body>
 
 <aside>
-    <div class="aside-header">
-        <h2>MESTRE 360 v.SUPREMA</h2>
-        <p style="font-size: 10px; opacity: 0.7;">BEM-VINDO PROF. MÁRCIO</p>
-    </div>
-    
+    <div class="aside-header"><h2>MESTRE 360</h2><p>Prof. Márcio</p></div>
     <div class="nav-group">ESTRUTURA BASE</div>
-    <button class="nav-item active" onclick="nav('config')"><i class="fas fa-layer-group"></i> 1. GESTÃO TURMAS</button>
-    <button class="nav-item" onclick="nav('cadastro')"><i class="fas fa-user-plus"></i> 2. CADASTRO ALUNOS</button>
-    <button class="nav-item" onclick="nav('mapa')"><i class="fas fa-th-large"></i> 3. MAPA DE FOTOS</button>
-    
+    <button class="nav-item active" onclick="nav('config')"><i class="fas fa-list"></i> 1. GESTÃO TURMAS</button>
+    <button class="nav-item" onclick="nav('cadastro')"><i class="fas fa-users"></i> 2. CADASTRO ALUNOS</button>
+    <button class="nav-item" onclick="nav('mapa')"><i class="fas fa-id-badge"></i> 3. MAPA DE FOTOS</button>
     <div class="nav-group">DIÁRIO DE BORDO</div>
-    <button class="nav-item" onclick="nav('freq')"><i class="fas fa-check-double"></i> 4. FREQUÊNCIA/BIMESTRE</button>
-    <button class="nav-item" onclick="nav('conteudo')"><i class="fas fa-pen-nib"></i> 5. REGISTRO CONTEÚDOS</button>
-    <button class="nav-item" onclick="nav('notas')"><i class="fas fa-graduation-cap"></i> 6. NOTAS E MÉDIAS</button>
-    
+    <button class="nav-item" onclick="nav('freq')"><i class="fas fa-calendar-check"></i> 4. FREQUÊNCIA</button>
+    <button class="nav-item" onclick="nav('conteudo')"><i class="fas fa-book"></i> 5. CONTEÚDOS</button>
+    <button class="nav-item" onclick="nav('notas')"><i class="fas fa-star"></i> 6. NOTAS E MÉDIAS</button>
     <div class="nav-group">PEDAGÓGICO & SHOW</div>
-    <button class="nav-item" onclick="nav('projetos')"><i class="fas fa-lightbulb"></i> 7. PLANO DE AULA</button>
-    <button class="nav-item" onclick="nav('apresentacao')"><i class="fas fa-desktop"></i> 8. APRESENTAÇÃO (TV)</button>
-    
-    <div class="nav-group">ADMINISTRATIVO</div>
-    <button class="nav-item" onclick="nav('arquivos')"><i class="fas fa-cloud-upload-alt"></i> 9. ARQUIVOS/DOCS</button>
-    <button class="nav-item" onclick="nav('stats')"><i class="fas fa-chart-bar"></i> 10. ESTATÍSTICAS</button>
+    <button class="nav-item" onclick="nav('projetos')"><i class="fas fa-edit"></i> 7. PLANO DE AULA</button>
+    <button class="nav-item" onclick="nav('apresentacao')"><i class="fas fa-tv"></i> 8. MODO TV (MULTIMÍDIA)</button>
+    <div class="nav-group">ADMIN</div>
+    <button class="nav-item" onclick="nav('arquivos')"><i class="fas fa-file-pdf"></i> 9. ARQUIVOS</button>
 </aside>
 
 <main>
     <section id="config" class="section active">
-        <div class="header-box"><h1>Minhas Turmas</h1></div>
+        <div class="header-box"><h1>Gestão de Turmas</h1></div>
         <div class="card">
-            <div style="display:flex; gap:15px;">
-                <input type="text" id="nome-turma" style="flex:1" placeholder="Ex: 3º ANO B - ENSINO MÉDIO">
-                <button class="btn-acao" onclick="addTurma()">CRIAR NOVA TURMA</button>
+            <div style="display:flex; gap:10px; margin-bottom:20px;">
+                <input type="text" id="nome-turma" placeholder="Ex: 1º ANO A">
+                <button class="btn-acao" onclick="addTurma()">CRIAR TURMA</button>
             </div>
-            <div class="table-container" style="margin-top:20px;">
+            <div class="table-container">
                 <table>
-                    <thead><tr><th>Identificação da Turma</th><th>Qtd. Alunos</th><th>Ações</th></tr></thead>
+                    <thead><tr><th>NOME DA TURMA</th><th>AÇÕES</th></tr></thead>
                     <tbody id="corpo-turmas"></tbody>
                 </table>
             </div>
@@ -101,241 +122,325 @@
     </section>
 
     <section id="cadastro" class="section">
-        <div class="header-box">
-            <span>Turma Selecionada:</span>
-            <select id="sel-t-cadastro" onchange="renderAlunos()"></select>
-        </div>
-        <div class="table-container">
+        <div class="header-box"><h1>Cadastro de Alunos</h1><select id="sel-t-cadastro" onchange="renderAlunos()"></select></div>
+        <div class="card table-container">
             <table>
-                <thead><tr><th width="80">Chamada</th><th>Nome Completo do Estudante</th><th>Status</th></tr></thead>
+                <thead><tr><th width="80">Nº</th><th>NOME DO ALUNO</th></tr></thead>
                 <tbody id="corpo-alunos"></tbody>
             </table>
         </div>
     </section>
 
     <section id="mapa" class="section">
-        <div class="header-box">
-            <select id="sel-t-mapa" onchange="renderMapa()"></select>
-            <p>Toque na carteira para adicionar a foto do aluno.</p>
-        </div>
-        <input type="file" id="input-foto" style="display:none" accept="image/*" onchange="processarFoto(event)">
+        <div class="header-box"><h1>Mapa de Fotos</h1><select id="sel-t-mapa" onchange="renderMapa()"></select></div>
+        <input type="file" id="input-foto" style="display:none" onchange="processarFoto(event)">
         <div class="mapa-sala" id="grid-mapa"></div>
     </section>
 
     <section id="freq" class="section">
         <div class="header-box">
             <select id="sel-t-freq" onchange="renderFreq()"></select>
-            <div style="display:flex; gap:5px; background:#e2e8f0; padding:5px; border-radius:10px;">
-                <button class="tab active" onclick="setBim(1)">1ºB</button>
-                <button class="tab" onclick="setBim(2)">2ºB</button>
-                <button class="tab" onclick="setBim(3)">3ºB</button>
-                <button class="tab" onclick="setBim(4)">4ºB</button>
+            <div style="display:flex; gap:5px;">
+                <button class="tab-bim active" onclick="setBim(1)">1ºB</button>
+                <button class="tab-bim" onclick="setBim(2)">2ºB</button>
+                <button class="tab-bim" onclick="setBim(3)">3ºB</button>
+                <button class="tab-bim" onclick="setBim(4)">4ºB</button>
             </div>
-            <input type="date" id="data-aula">
-            <button class="btn-acao" onclick="novaData()"><i class="fas fa-calendar-plus"></i></button>
+            <input type="date" id="data-aula" style="width:150px">
+            <button class="btn-acao" onclick="novaData()">ADD DATA</button>
         </div>
-        <div class="table-container">
-            <table id="tabela-freq">
-                <thead id="head-freq"></thead>
-                <tbody id="corpo-freq"></tbody>
-            </table>
+        <div class="card table-container">
+            <table><thead id="head-freq"></thead><tbody id="corpo-freq"></tbody></table>
         </div>
     </section>
 
+    <section id="conteudo" class="section">
+        <div class="header-box"><h1>Registro de Conteúdos</h1><select id="sel-t-cont" onchange="renderConteudo()"></select></div>
+        <div id="lista-conteudos"></div>
+    </section>
+
     <section id="notas" class="section">
-        <div class="header-box"><h1>Notas e Avaliações</h1><select id="sel-t-notas" onchange="renderNotas()"></select></div>
-        <div class="table-container">
+        <div class="header-box"><h1>Notas</h1><select id="sel-t-notas" onchange="renderNotas()"></select></div>
+        <div class="card table-container">
             <table>
-                <thead><tr><th class="col-fixa">ALUNO</th><th>AVAL. 1</th><th>AVAL. 2</th><th>TRABALHO</th><th>MÉDIA</th></tr></thead>
+                <thead><tr><th class="col-fixa">ALUNO</th><th>AV1</th><th>AV2</th><th>TRAB</th><th>MÉDIA</th></tr></thead>
                 <tbody id="corpo-notas"></tbody>
             </table>
         </div>
     </section>
 
-    <section id="apresentacao" class="section">
-        <div class="header-box"><h1>Modo Projetor: Aula de Hoje</h1><select id="sel-t-apr" onchange="renderApresentacao()"></select></div>
-        <div class="projetor-container" id="painel-projetor">
-            <div class="projetor-slide">Selecione uma turma para carregar o Plano de Aula e apresentar aos alunos.</div>
+    <section id="projetos" class="section">
+        <div class="header-box"><h1>Plano de Aula Digital</h1><select id="sel-t-proj" onchange="carregarPlano()"></select></div>
+        <div class="card">
+            <textarea id="texto-plano" style="height:350px;" placeholder="Digite o que será exibido na TV..."></textarea>
+            <button class="btn-acao" style="margin-top:20px; width:100%; justify-content:center;" onclick="salvarPlano()">SALVAR E SINCRONIZAR TV</button>
         </div>
     </section>
 
-    <section id="stats" class="section">
-        <div class="grid-dashboard">
-            <div class="stat-card"><h4>Frequência Geral</h4><p id="stat-freq">0%</p></div>
-            <div class="stat-card"><h4>Média da Turma</h4><p id="stat-media">0.0</p></div>
+    <section id="apresentacao" class="section">
+        <div class="header-box">
+            <select id="sel-t-apr" onchange="renderTV()"></select>
+            <button class="btn-acao" onclick="toggleFull()"><i class="fas fa-expand"></i> MODO APRESENTAÇÃO</button>
         </div>
-        <div class="card"><canvas id="graficoTurma" height="100"></canvas></div>
+        <div class="modo-tv-container">
+            <div class="tv-tools" id="tv-midias-bar"></div>
+            <div class="modo-tv" id="painel-tv">
+                <h1 id="tv-titulo">PRONTO PARA A AULA?</h1>
+                <p id="tv-texto">Selecione uma turma no menu superior para carregar o plano de aula e os arquivos.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="arquivos" class="section">
+        <div class="header-box">
+            <h1>Repositório de Arquivos</h1>
+            <input type="file" id="file-up" style="display:none" onchange="uploadArq(event)">
+            <button class="btn-acao" onclick="document.getElementById('file-up').click()"><i class="fas fa-upload"></i> SUBIR PDF OU IMAGEM</button>
+        </div>
+        <div class="mapa-sala" id="container-arquivos" style="background:none"></div>
     </section>
 </main>
 
-<div class="timer-box">
-    <i class="fas fa-stopwatch fa-2x" style="color:var(--accent)"></i>
-    <span id="display-timer" style="font-size:20px; font-weight:800; font-family:monospace;">00:00</span>
-    <button onclick="startTimer()" class="btn-status st-P">START</button>
+<div id="tv-modal">
+    <button class="modal-close-new" onclick="fecharArquivo()"><i class="fas fa-times"></i></button>
+    <div class="modal-content" id="tv-visor"></div>
+    <div class="tv-controls-hud">
+        <button class="hud-btn" onclick="altZoom(-0.1)"><i class="fas fa-search-minus"></i></button>
+        <button class="hud-btn" onclick="altZoom(0.1)"><i class="fas fa-search-plus"></i></button>
+        <button class="hud-btn" onclick="toggleFull()"><i class="fas fa-compress"></i></button>
+    </div>
 </div>
 
 <script>
-    // BANCO DE DADOS SUPREMO
-    let db = JSON.parse(localStorage.getItem('M360_SUPREMO_V1')) || { turmas: {}, arquivos: [] };
-    let bimAtual = 1;
-    let cartAlvo = null;
+    let db = JSON.parse(localStorage.getItem('MESTRE360_FINAL')) || { turmas: {}, arquivos: [] };
+    let bim = 1;
+    let alvoFoto = null;
+    let zoomAtual = 1;
+
+    function salvar() { 
+        localStorage.setItem('MESTRE360_FINAL', JSON.stringify(db)); 
+        povoarSelects();
+    }
 
     function nav(id) {
         document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
         document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
         const target = document.getElementById(id);
         if(target) target.classList.add('active');
-        event.currentTarget.classList.add('active');
-        povoarSelects();
         
         if(id === 'config') renderTurmas();
         if(id === 'cadastro') renderAlunos();
         if(id === 'mapa') renderMapa();
         if(id === 'freq') renderFreq();
+        if(id === 'conteudo') renderConteudo();
         if(id === 'notas') renderNotas();
-        if(id === 'apresentacao') renderApresentacao();
+        if(id === 'apresentacao') renderTV();
+        if(id === 'arquivos') renderArquivos();
+        povoarSelects();
     }
 
-    // --- TURMAS ---
+    // TURMAS
     function addTurma() {
-        let n = document.getElementById('nome-turma').value.toUpperCase().trim();
+        let n = document.getElementById('nome-turma').value.trim().toUpperCase();
         if(!n) return;
-        db.turmas[n] = { 
-            alunos: {}, fotos: {}, 
-            chamadas: { 1: {}, 2: {}, 3: {}, 4: {} },
-            notas: {}, conteudos: {}, plano: "Bem-vindos à aula de hoje! \n Objetivo: Introdução ao tema..."
-        };
-        salvar(); renderTurmas();
+        if(!db.turmas[n]) {
+            db.turmas[n] = { alunos: {}, fotos: {}, chamadas: {1:{},2:{},3:{},4:{}}, conteudos: {}, notas: {}, plano: "" };
+            salvar(); renderTurmas();
+            document.getElementById('nome-turma').value = "";
+        }
     }
-
     function renderTurmas() {
-        const corpo = document.getElementById('corpo-turmas');
-        corpo.innerHTML = Object.keys(db.turmas).map(t => {
-            let total = Object.keys(db.turmas[t].alunos).filter(k => db.turmas[t].alunos[k]).length;
-            return `<tr><td><b>${t}</b></td><td>${total} Alunos</td>
-            <td><button class="btn-status st-F" onclick="delTurma('${t}')">Remover</button></td></tr>`;
-        }).join('');
+        document.getElementById('corpo-turmas').innerHTML = Object.keys(db.turmas).map(t => 
+            `<tr><td><b>${t}</b></td><td><button class="btn-status st-F" onclick="delTurma('${t}')">EXCLUIR</button></td></tr>`).join('');
     }
+    function delTurma(t) { if(confirm("Apagar turma?")) { delete db.turmas[t]; salvar(); renderTurmas(); }}
 
-    function delTurma(t) { if(confirm("Apagar turma permanentemente?")) { delete db.turmas[t]; salvar(); renderTurmas(); } }
-
-    // --- ALUNOS ---
+    // ALUNOS
     function renderAlunos() {
         const t = document.getElementById('sel-t-cadastro').value;
         const corpo = document.getElementById('corpo-alunos');
         corpo.innerHTML = ''; if(!t) return;
-        for(let i=1; i<=49; i++) {
-            let n = db.turmas[t].alunos[i] || '';
-            corpo.innerHTML += `<tr><td>${i}</td>
-            <td><input type="text" style="width:100%; border:none;" value="${n}" onchange="salvarAluno('${t}',${i},this.value)"></td>
-            <td><i class="fas fa-circle" style="color:${n?'var(--success)':'#eee'}"></i></td></tr>`;
-        }
-    }
-    function salvarAluno(t, i, v) { db.turmas[t].alunos[i] = v.toUpperCase(); salvar(); }
-
-    // --- FREQUÊNCIA ---
-    function setBim(b) {
-        bimAtual = b;
-        document.querySelectorAll('.tab').forEach((t, i) => t.classList.toggle('active', i+1 === b));
-        renderFreq();
-    }
-
-    function renderFreq() {
-        const t = document.getElementById('sel-t-freq').value;
-        if(!t) return;
-        const head = document.getElementById('head-freq');
-        const corpo = document.getElementById('corpo-freq');
-        const chamadas = db.turmas[t].chamadas[bimAtual];
-        const datas = Object.keys(chamadas).sort();
-
-        head.innerHTML = `<tr><th class="col-fixa">Estudante</th>${datas.map(d => `<th>${d.split('-').reverse().slice(0,2).join('/')}</th>`).join('')}</tr>`;
-        
-        corpo.innerHTML = '';
-        Object.keys(db.turmas[t].alunos).forEach(num => {
-            if(db.turmas[t].alunos[num]) {
-                let r = `<tr><td class="col-fixa">${num}. ${db.turmas[t].alunos[num]}</td>`;
-                datas.forEach(d => {
-                    let s = chamadas[d][num] || 'P';
-                    r += `<td><button class="btn-status st-${s}" onclick="toggleFreq(this, '${t}', '${d}', '${num}')">${s}</button></td>`;
-                });
-                corpo.innerHTML += r + `</tr>`;
-            }
-        });
-    }
-
-    function toggleFreq(btn, t, d, num) {
-        let n = btn.innerText === 'P' ? 'F' : 'P';
-        btn.innerText = n; btn.className = `btn-status st-${n}`;
-        db.turmas[t].chamadas[bimAtual][d][num] = n; salvar();
-    }
-
-    function novaData() {
-        const t = document.getElementById('sel-t-freq').value;
-        const d = document.getElementById('data-aula').value;
-        if(!t || !d) return alert("Defina a data!");
-        if(!db.turmas[t].chamadas[bimAtual][d]) {
-            db.turmas[t].chamadas[bimAtual][d] = {};
-            Object.keys(db.turmas[t].alunos).forEach(n => { if(db.turmas[t].alunos[n]) db.turmas[t].chamadas[bimAtual][d][n] = 'P'; });
-            salvar(); renderFreq();
+        for(let i=1; i<=50; i++){
+            let nome = db.turmas[t].alunos[i] || '';
+            corpo.innerHTML += `<tr><td>${i}</td><td><input type="text" value="${nome}" onchange="db.turmas['${t}'].alunos[${i}]=this.value.toUpperCase(); salvar()"></td></tr>`;
         }
     }
 
-    // --- MAPA ---
+    // MAPA DE FOTOS
     function renderMapa() {
         const t = document.getElementById('sel-t-mapa').value;
         const grid = document.getElementById('grid-mapa');
         grid.innerHTML = ''; if(!t) return;
         for(let i=1; i<=49; i++) {
-            const f = db.turmas[t].fotos[i] || 'https://via.placeholder.com/100?text=FOTO';
-            const n = db.turmas[t].alunos[i] || 'VAGO';
-            grid.innerHTML += `<div class="carteira" onclick="cartAlvo=${i}; document.getElementById('input-foto').click()">
-                <img src="${f}"><span>${i}. ${n.split(' ')[0]}</span></div>`;
+            let foto = db.turmas[t].fotos[i] || 'https://via.placeholder.com/140x110?text=SEM+FOTO';
+            let nome = db.turmas[t].alunos[i] || 'VAGO';
+            grid.innerHTML += `
+                <div class="carteira" onclick="alvoFoto=${i}; document.getElementById('input-foto').click()">
+                    <img src="${foto}">
+                    <span>${i}. ${nome.split(' ')[0]}</span>
+                </div>`;
         }
     }
-
     function processarFoto(e) {
         const t = document.getElementById('sel-t-mapa').value;
-        const r = new FileReader();
-        r.onload = (ev) => { db.turmas[t].fotos[cartAlvo] = ev.target.result; salvar(); renderMapa(); };
-        r.readAsDataURL(e.target.files[0]);
-    }
-
-    // --- APRESENTAÇÃO ---
-    function renderApresentacao() {
-        const t = document.getElementById('sel-t-apr').value;
-        const painel = document.getElementById('painel-projetor');
         if(!t) return;
-        painel.innerHTML = `<div class="projetor-slide"><h1>${t}</h1><hr style="margin:20px; border-color:var(--accent)"><p>${db.turmas[t].plano || 'Sem plano cadastrado'}</p></div>`;
+        const reader = new FileReader();
+        reader.onload = (ev) => {
+            db.turmas[t].fotos[alvoFoto] = ev.target.result;
+            salvar(); renderMapa();
+        };
+        reader.readAsDataURL(e.target.files[0]);
     }
 
-    // --- AUXILIARES ---
-    function salvar() { localStorage.setItem('M360_SUPREMO_V1', JSON.stringify(db)); }
-    
-    function povoarSelects() {
-        const ids = ['sel-t-cadastro', 'sel-t-mapa', 'sel-t-freq', 'sel-t-notas', 'sel-t-apr'];
-        const opt = Object.keys(db.turmas).map(t => `<option value="${t}">${t}</option>`).join('');
-        ids.forEach(id => {
-            const s = document.getElementById(id);
-            if(s) { 
-                const valAntigo = s.value;
-                s.innerHTML = opt; 
-                if(valAntigo && opt.includes(valAntigo)) s.value = valAntigo;
+    // FREQUÊNCIA
+    function setBim(n) { bim = n; document.querySelectorAll('.tab-bim').forEach((b,i) => b.classList.toggle('active', i+1===n)); renderFreq(); }
+    function novaData() {
+        const t = document.getElementById('sel-t-freq').value;
+        const d = document.getElementById('data-aula').value;
+        if(!t || !d) return alert("Selecione Turma e Data");
+        if(!db.turmas[t].chamadas[bim][d]) {
+            db.turmas[t].chamadas[bim][d] = {};
+            db.turmas[t].conteudos[d] = "";
+            salvar(); renderFreq();
+        }
+    }
+    function renderFreq() {
+        const t = document.getElementById('sel-t-freq').value;
+        const head = document.getElementById('head-freq');
+        const corpo = document.getElementById('corpo-freq');
+        if(!t) return;
+        const dias = Object.keys(db.turmas[t].chamadas[bim]).sort();
+        head.innerHTML = `<tr><th class="col-fixa">ALUNO</th>${dias.map(d => `<th>${d.split('-').reverse().slice(0,2).join('/')}</th>`).join('')}</tr>`;
+        corpo.innerHTML = '';
+        Object.keys(db.turmas[t].alunos).sort((a,b)=>a-b).forEach(n => {
+            if(db.turmas[t].alunos[n]) {
+                let linha = `<tr><td class="col-fixa">${n}. ${db.turmas[t].alunos[n]}</td>`;
+                dias.forEach(d => {
+                    let s = db.turmas[t].chamadas[bim][d][n] || 'P';
+                    linha += `<td><button class="btn-status st-${s}" onclick="toggleF('${t}','${d}','${n}',this)">${s}</button></td>`;
+                });
+                corpo.innerHTML += linha + "</tr>";
             }
         });
     }
-
-    // TIMER
-    let tSeg = 0;
-    function startTimer() {
-        setInterval(() => {
-            tSeg++;
-            let m = Math.floor(tSeg / 60);
-            let s = tSeg % 60;
-            document.getElementById('display-timer').innerText = `${m.toString().padStart(2,'0')}:${s.toString().padStart(2,'0')}`;
-        }, 1000);
+    function toggleF(t,d,n,btn) {
+        let nv = btn.innerText === 'P' ? 'F' : 'P';
+        btn.innerText = nv; btn.className = `btn-status st-${nv}`;
+        db.turmas[t].chamadas[bim][d][n] = nv; salvar();
     }
 
-    window.onload = () => { povoarSelects(); renderTurmas(); };
+    // CONTEÚDO
+    function renderConteudo() {
+        const t = document.getElementById('sel-t-cont').value;
+        const lista = document.getElementById('lista-conteudos');
+        lista.innerHTML = ''; if(!t) return;
+        Object.keys(db.turmas[t].conteudos).sort().reverse().forEach(d => {
+            lista.innerHTML += `<div class="card"><b>DATA: ${d}</b><textarea onchange="db.turmas['${t}'].conteudos['${d}']=this.value; salvar()">${db.turmas[t].conteudos[d]}</textarea></div>`;
+        });
+    }
+
+    // NOTAS
+    function renderNotas() {
+        const t = document.getElementById('sel-t-notas').value;
+        const corpo = document.getElementById('corpo-notas');
+        corpo.innerHTML = ''; if(!t) return;
+        Object.keys(db.turmas[t].alunos).sort((a,b)=>a-b).forEach(n => {
+            if(db.turmas[t].alunos[n]) {
+                let nt = db.turmas[t].notas[n] || {a1:0, a2:0, tr:0};
+                let med = ((parseFloat(nt.a1)+parseFloat(nt.a2)+parseFloat(nt.tr))/3).toFixed(1);
+                corpo.innerHTML += `<tr><td class="col-fixa">${db.turmas[t].alunos[n]}</td>
+                <td><input type="number" value="${nt.a1}" onchange="upNota('${t}','${n}','a1',this.value)"></td>
+                <td><input type="number" value="${nt.a2}" onchange="upNota('${t}','${n}','a2',this.value)"></td>
+                <td><input type="number" value="${nt.tr}" onchange="upNota('${t}','${n}','tr',this.value)"></td>
+                <td style="font-weight:bold">${med}</td></tr>`;
+            }
+        });
+    }
+    function upNota(t,n,c,v){ if(!db.turmas[t].notas[n]) db.turmas[t].notas[n]={a1:0,a2:0,tr:0}; db.turmas[t].notas[n][c]=v; salvar(); renderNotas(); }
+
+    // ARQUIVOS E MODO APRESENTAÇÃO
+    function uploadArq(e) {
+        const file = e.target.files[0];
+        const reader = new FileReader();
+        reader.onload = (ev) => { 
+            db.arquivos.push({ n: file.name, t: file.type, d: ev.target.result }); 
+            salvar(); renderArquivos(); 
+        };
+        reader.readAsDataURL(file);
+    }
+    function renderArquivos() {
+        const container = document.getElementById('container-arquivos');
+        container.innerHTML = db.arquivos.map((a,i) => `
+            <div class="carteira" style="height:auto">
+                <i class="fas ${a.t.includes('pdf')?'fa-file-pdf':'fa-file-image'} fa-3x" style="color:var(--danger)"></i>
+                <span>${a.n}</span>
+                <button onclick="db.arquivos.splice(${i},1); salvar(); renderArquivos()" class="btn-status st-F">EXCLUIR</button>
+            </div>`).join('');
+    }
+
+    function salvarPlano() {
+        const t = document.getElementById('sel-t-proj').value;
+        if(!t) return;
+        db.turmas[t].plano = document.getElementById('texto-plano').value;
+        salvar(); alert("Sincronizado!");
+    }
+    function carregarPlano() {
+        const t = document.getElementById('sel-t-proj').value;
+        document.getElementById('texto-plano').value = db.turmas[t].plano || "";
+    }
+
+    function renderTV() {
+        const t = document.getElementById('sel-t-apr').value;
+        if(!t) return;
+        document.getElementById('tv-titulo').innerText = t;
+        document.getElementById('tv-texto').innerText = db.turmas[t].plano || "Nenhum plano de aula registrado.";
+        const bar = document.getElementById('tv-midias-bar');
+        bar.innerHTML = db.arquivos.map((a,i) => `<div class="tool-btn" onclick="abrirMidia(${i})"><i class="fas fa-play-circle"></i> ${a.n}</div>`).join('');
+    }
+
+    function abrirMidia(i) {
+        const a = db.arquivos[i];
+        const modal = document.getElementById('tv-modal');
+        const visor = document.getElementById('tv-visor');
+        modal.style.display = 'block';
+        zoomAtual = 1;
+        
+        if(a.t.includes('image')) {
+            visor.innerHTML = `<img src="${a.d}" id="img-apresentacao" style="transform: scale(1)">`;
+        } else {
+            // Se for PDF, abre no visor ocupando tudo
+            visor.innerHTML = `<iframe src="${a.d}#toolbar=0" width="100%" height="100%"></iframe>`;
+        }
+    }
+
+    function altZoom(v) {
+        const img = document.getElementById('img-apresentacao');
+        if(img) {
+            zoomAtual += v;
+            img.style.transform = `scale(${zoomAtual})`;
+        }
+    }
+
+    function fecharArquivo() { document.getElementById('tv-modal').style.display = 'none'; }
+
+    function toggleFull() {
+        if (!document.fullscreenElement) {
+            document.documentElement.requestFullscreen();
+        } else {
+            if (document.exitFullscreen) document.exitFullscreen();
+        }
+    }
+
+    function povoarSelects() {
+        const ids = ['sel-t-cadastro','sel-t-mapa','sel-t-freq','sel-t-cont','sel-t-notas','sel-t-proj','sel-t-apr'];
+        const options = `<option value="">Escolha a Turma</option>` + Object.keys(db.turmas).map(t => `<option value="${t}">${t}</option>`).join('');
+        ids.forEach(id => { 
+            const s = document.getElementById(id); 
+            if(s) { const v = s.value; s.innerHTML = options; s.value = v; }
+        });
+    }
+
+    window.onload = () => { renderTurmas(); povoarSelects(); renderArquivos(); };
 </script>
 </body>
 </html>
