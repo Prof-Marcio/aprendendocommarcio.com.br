@@ -9,246 +9,238 @@
     <style>
         :root {
             --azul-escudo: #1A365D;
+            --azul-claro: #3182CE;
             --verde-logo: #48BB78;
-            --bg-site: #F8FAFC;
+            --laranja-alerta: #F6AD55;
+            --bg-site: #EDF2F7;
             --card-bg: #FFFFFF;
             --text-main: #2D3748;
-            --accent: #3182CE;
+            --shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
         }
 
-        /* Estilo Dark Mode Opcional */
-        body.dark-mode {
-            --bg-site: #1A202C;
-            --card-bg: #2D3748;
-            --text-main: #F7FAFC;
-            --azul-escudo: #63B3ED;
-        }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Fredoka', sans-serif; transition: all 0.3s ease; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Fredoka', sans-serif; }
         
-        body { background: var(--bg-site); color: var(--text-main); line-height: 1.6; overflow-x: hidden; }
+        body { 
+            background: var(--bg-site); 
+            background-image: radial-gradient(var(--azul-claro) 0.5px, transparent 0.5px);
+            background-size: 30px 30px;
+            color: var(--text-main); 
+            line-height: 1.6; 
+        }
 
         header {
-            background: linear-gradient(135deg, #D9DDE2 0%, #BFC6D0 100%);
-            padding: 40px 5%; text-align: center;
-            border-bottom: 6px solid var(--verde-logo);
-            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            background: linear-gradient(135deg, #1A365D 0%, #2B6CB0 100%);
+            padding: 50px 5%; text-align: center;
+            border-bottom: 8px solid var(--verde-logo);
+            color: white;
+            position: relative;
+            overflow: hidden;
         }
 
-        .logo-container img { height: 120px; filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.1)); }
+        .logo-container img { 
+            height: 130px; background: white; padding: 10px; 
+            border-radius: 25px; box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+            margin-bottom: 20px;
+            border: 3px solid var(--verde-logo);
+        }
+        header h1 { font-size: 2.2rem; font-weight: 700; text-shadow: 2px 2px 4px rgba(0,0,0,0.3); }
 
-        /* Navegação Estilizada */
-        .nav-main { display: flex; justify-content: center; gap: 20px; padding: 30px 5%; flex-wrap: wrap; }
+        .nav-main { 
+            display: flex; justify-content: center; gap: 15px; 
+            padding: 20px; background: white; position: sticky; top: 0; z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
         .btn-materia {
-            background: var(--card-bg); color: var(--azul-escudo); padding: 15px 30px;
-            border: 2px solid var(--azul-escudo); border-radius: 20px; font-weight: 700; 
-            cursor: pointer; display: flex; align-items: center; gap: 10px; font-size: 1rem;
+            background: var(--bg-site); color: var(--azul-escudo); padding: 12px 25px;
+            border: 2px solid transparent; border-radius: 15px; font-weight: 700; cursor: pointer;
+            transition: 0.3s; font-size: 0.9rem; display: flex; align-items: center; gap: 8px;
         }
-        .btn-materia.active { background: var(--azul-escudo); color: white; transform: translateY(-5px); box-shadow: 0 10px 20px rgba(26, 54, 93, 0.2); }
+        .btn-materia.active { background: var(--azul-escudo); color: white; transform: translateY(-3px); }
 
-        /* Dashboard Layout */
-        .dashboard { display: grid; grid-template-columns: 1fr 380px; gap: 30px; padding: 0 5% 50px; max-width: 1400px; margin: 0 auto; }
+        .bimestre-bar { display: flex; justify-content: center; gap: 10px; margin: 30px 0; flex-wrap: wrap; }
+        .btn-bim {
+            padding: 10px 20px; border: 3px solid #CBD5E0; border-radius: 50px;
+            background: white; color: #4A5568; font-weight: 700; cursor: pointer; transition: 0.3s;
+        }
+        .btn-bim.active { border-color: var(--verde-logo); color: white; background: var(--verde-logo); }
 
-        .subject-panel { display: none; animation: fadeIn 0.5s ease; }
-        .subject-panel.active { display: block; }
+        .dashboard { 
+            display: grid; grid-template-columns: 1fr 340px; 
+            gap: 30px; padding: 0 5% 50px; max-width: 1300px; margin: 0 auto; 
+        }
+
+        .subject-panel { display: none; }
+        .subject-panel.active { display: block; animation: fadeIn 0.5s ease; }
 
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
-        /* Cards e Roteiro */
         .card { 
-            background: var(--card-bg); border-radius: 25px; padding: 30px; 
-            margin-bottom: 25px; box-shadow: 0 10px 25px rgba(0,0,0,0.05);
-            border-left: 8px solid var(--azul-escudo);
+            background: var(--card-bg); border-radius: 20px; padding: 30px; 
+            margin-bottom: 25px; box-shadow: var(--shadow);
+            border-top: 5px solid var(--azul-claro);
         }
+        .card h2 { margin-bottom: 25px; color: var(--azul-escudo); font-size: 1.4rem; display: flex; align-items: center; gap: 12px; }
 
-        .plan-item { background: #f1f5f9; padding: 15px; border-radius: 15px; margin-bottom: 15px; border: 1px solid #e2e8f0; }
-        body.dark-mode .plan-item { background: #4A5568; }
+        .link-list { display: flex; flex-direction: column; gap: 12px; }
         
-        .plan-item h4 { color: var(--verde-logo); font-size: 0.85rem; text-transform: uppercase; margin-bottom: 5px; display: flex; align-items: center; gap: 8px; }
-        
-        /* Links Materiais */
-        .grid-links { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
-        .btn-link { 
-            display: flex; align-items: center; justify-content: center; gap: 10px;
-            padding: 15px; border-radius: 15px; text-decoration: none; font-weight: 600;
-            background: #EDF2F7; color: var(--azul-escudo); border: 2px solid transparent;
-        }
-        .btn-link:hover { border-color: var(--verde-logo); background: white; transform: scale(1.03); }
-
-        /* Widget de Bhaskara (O DIFERENCIAL) */
-        .bhaskara-widget { background: var(--azul-escudo); color: white; padding: 20px; border-radius: 20px; margin-top: 20px; }
-        .bhaskara-inputs { display: flex; gap: 10px; margin: 15px 0; }
-        .bhaskara-inputs input { width: 60px; padding: 8px; border-radius: 8px; border: none; text-align: center; font-weight: bold; }
-        .calc-btn { background: var(--verde-logo); color: white; border: none; padding: 8px 15px; border-radius: 8px; cursor: pointer; font-weight: bold; }
-
-        /* Mural Lateral */
-        .mural { background: var(--card-bg); border-radius: 25px; padding: 25px; border: 2px solid #E2E8F0; position: sticky; top: 20px; }
-        .post-it { 
-            background: #fff9c4; padding: 15px; border-radius: 15px; 
-            border-left: 6px solid #fbc02d; margin-bottom: 15px; 
-            color: #5d4037; font-size: 0.9rem;
+        .link-line {
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 18px 25px; border-radius: 15px; text-decoration: none; 
+            color: var(--text-main); font-weight: 700;
+            transition: all 0.3s ease; border: 2px solid #EDF2F7;
         }
 
-        footer { text-align: center; padding: 50px; background: var(--azul-escudo); color: white; margin-top: 50px; }
+        .link-roteiro { background: #EBF8FF; border-left: 8px solid #3182CE; }
+        .link-livro { background: #F0FFF4; border-left: 8px solid #38A169; }
+        .link-lista { background: #FFF5F5; border-left: 8px solid #E53E3E; }
+        .link-video { background: #FFFAF0; border-left: 8px solid #DD6B20; }
+        .link-slides { background: #FAF5FF; border-left: 8px solid #805AD5; }
 
-        /* Botão Flutuante WhatsApp */
-        .float-btn {
-            position: fixed; bottom: 30px; right: 30px; width: 60px; height: 60px;
-            background: #25D366; color: white; border-radius: 50%;
-            display: flex; align-items: center; justify-content: center;
-            font-size: 30px; box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-            cursor: pointer; z-index: 1000; text-decoration: none;
-        }
+        .link-line:hover { transform: translateX(10px); box-shadow: 5px 5px 15px rgba(0,0,0,0.08); background: white; }
+        .link-content { display: flex; align-items: center; gap: 15px; }
+        .btn-acessar { background: white; padding: 5px 12px; border-radius: 8px; font-size: 0.75rem; border: 1px solid #CBD5E0; }
 
-        @media (max-width: 1000px) { .dashboard { grid-template-columns: 1fr; } .grid-links { grid-template-columns: 1fr; } }
+        .bhaskara-box { background: var(--azul-escudo); color: white; padding: 30px; border-radius: 20px; text-align: center; }
+        .bh-inputs { display: flex; gap: 15px; margin: 20px 0; justify-content: center; }
+        .bh-inputs input { width: 80px; padding: 15px; border-radius: 12px; border: none; text-align: center; font-weight: 700; font-size: 1.2rem; }
+        .btn-calc { background: var(--verde-logo); color: white; border: none; padding: 15px; border-radius: 12px; cursor: pointer; font-weight: 700; width: 100%; }
+
+        .mural { background: white; border-radius: 20px; padding: 25px; box-shadow: var(--shadow); border-bottom: 5px solid var(--laranja-alerta); }
+        .post-it { background: #FFFFF0; padding: 15px; border-radius: 12px; border: 1px solid #FAF089; position: relative; }
+
+        .whatsapp-btn { position: fixed; bottom: 30px; right: 30px; background: #25D366; color: white; width: 65px; height: 65px; border-radius: 20px; display: flex; align-items: center; justify-content: center; font-size: 35px; z-index: 1000; transition: 0.3s; }
+
+        footer { text-align: center; padding: 50px; background: white; margin-top: 40px; border-top: 1px solid #E2E8F0; }
+
+        @media (max-width: 900px) { .dashboard { grid-template-columns: 1fr; } }
     </style>
 </head>
 <body>
 
 <header>
     <div class="logo-container">
-        <img src="logo-marcio.png" alt="Prof. Márcio">
-        <h1 style="margin-top: 15px;">Estação de Aprendizagem 2026</h1>
-        <button onclick="toggleDarkMode()" style="background: none; border: 1px solid #718096; padding: 5px 10px; border-radius: 10px; cursor: pointer; font-size: 0.8rem; margin-top: 10px;">
-            <i class="fas fa-moon"></i> Alternar Modo
-        </button>
+        <img src="https://cdn-icons-png.flaticon.com/512/3426/3426653.png" alt="Prof. Márcio">
     </div>
+    <h1>Estação de Aprendizagem 2026</h1>
+    <p style="margin-top: 10px; opacity: 0.9;">Plataforma Oficial de Estudos - Prof. Márcio</p>
 </header>
 
 <nav class="nav-main">
-    <button class="btn-materia active" onclick="showTab('mat', this)"><i class="fas fa-square-root-variable"></i> Matemática</button>
-    <button class="btn-materia" onclick="showTab('int', this)"><i class="fas fa-flask"></i> Integrador</button>
-    <button class="btn-materia" onclick="showTab('vida', this)"><i class="fas fa-compass"></i> Projeto de Vida</button>
+    <button class="btn-materia active" onclick="setMateria('mat', this)"><i class="fas fa-calculator"></i> MATEMÁTICA</button>
+    <button class="btn-materia" onclick="setMateria('int', this)"><i class="fas fa-flask"></i> INTEGRADOR</button>
+    <button class="btn-materia" onclick="setMateria('vida', this)"><i class="fas fa-seedling"></i> PROJETO DE VIDA</button>
 </nav>
 
 <div class="dashboard">
     <main>
+        <div class="bimestre-bar">
+            <button class="btn-bim active" onclick="setBimestre(1, this)">1º BIMESTRE</button>
+            <button class="btn-bim" onclick="setBimestre(2, this)">2º BIMESTRE</button>
+            <button class="btn-bim" onclick="setBimestre(3, this)">3º BIMESTRE</button>
+            <button class="btn-bim" onclick="setBimestre(4, this)">4º BIMESTRE</button>
+        </div>
+
         <section id="mat" class="subject-panel active">
             <div class="card">
-                <h2 style="margin-bottom: 20px;"><i class="fas fa-tasks"></i> Roteiro da Quinzena</h2>
-                
-                <div class="plan-item">
-                    <h4><i class="fas fa-bookmark"></i> Assunto</h4>
-                    <p>Equações de 2º Grau: Dominando a Fórmula de Bhaskara.</p>
-                </div>
-
-                <div class="plan-item">
-                    <h4><i class="fas fa-book-open"></i> Atividade do Livro</h4>
-                    <p>Páginas 112 a 115. Foco nos exemplos resolvidos e propriedades do Delta ($\Delta$).</p>
-                </div>
-
-                <div class="plan-item">
-                    <h4><i class="fas fa-pencil-alt"></i> Exercícios Obrigatórios</h4>
-                    <p>Capítulo 4: Questões 1, 4, 7 e 10. (Para entregar na sexta-feira).</p>
-                </div>
-            </div>
-
-            <div class="card" style="border-left-color: var(--verde-logo);">
-                <h2 style="margin-bottom: 20px;"><i class="fas fa-cloud-download-alt"></i> Repositório de Materiais</h2>
-                <div class="grid-links">
-                    <a href="#" class="btn-link"><i class="fas fa-file-pdf" style="color: #e53e3e;"></i> Lista de Exercícios</a>
-                    <a href="#" class="btn-link"><i class="fas fa-chalkboard-teacher" style="color: #3182ce;"></i> Slides da Aula</a>
-                    <a href="#" class="btn-link"><i class="fas fa-video" style="color: #38a169;"></i> Vídeo Aula Extra</a>
-                    <a href="#" class="btn-link"><i class="fas fa-check-double" style="color: #ed8936;"></i> Gabarito Comentado</a>
+                <h2><i class="fas fa-folder-open" style="color: var(--azul-claro);"></i> Materiais da Quinzena</h2>
+                <div class="link-list">
+                    <a href="#" class="link-line link-roteiro" target="_blank">
+                        <div class="link-content"><i class="fas fa-map-signs" style="color: #3182CE;"></i><span>Roteiro de Estudos</span></div>
+                        <div class="btn-acessar">BAIXAR PDF</div>
+                    </a>
+                    <a href="#" class="link-line link-livro" target="_blank">
+                        <div class="link-content"><i class="fas fa-book-reader" style="color: #38A169;"></i><span>Livro Digital (Cap. 4)</span></div>
+                        <div class="btn-acessar">LER ONLINE</div>
+                    </a>
+                    <a href="#" class="link-line link-lista" target="_blank">
+                        <div class="link-content"><i class="fas fa-tasks" style="color: #E53E3E;"></i><span>Lista de Exercícios</span></div>
+                        <div class="btn-acessar">ABRIR LISTA</div>
+                    </a>
+                    <a href="#" class="link-line link-video" target="_blank">
+                        <div class="link-content"><i class="fab fa-youtube" style="color: #DD6B20;"></i><span>Vídeo-Aula Apoio</span></div>
+                        <div class="btn-acessar">ASSISTIR</div>
+                    </a>
+                    <a href="#" class="link-line link-slides" target="_blank">
+                        <div class="link-content"><i class="fas fa-file-powerpoint" style="color: #805AD5;"></i><span>Slides da Semana</span></div>
+                        <div class="btn-acessar">VER SLIDES</div>
+                    </a>
                 </div>
             </div>
 
-            <div class="bhaskara-widget">
-                <h3><i class="fas fa-calculator"></i> Testador de Equações</h3>
-                <p style="font-size: 0.8rem; opacity: 0.9;">Use para conferir suas respostas!</p>
-                <div class="bhaskara-inputs">
-                    <input type="number" id="a" placeholder="a">
-                    <input type="number" id="b" placeholder="b">
-                    <input type="number" id="c" placeholder="c">
-                    <button class="calc-btn" onclick="calcBhaskara()">Calcular</button>
+            <div class="bhaskara-box">
+                <h3><i class="fas fa-robot"></i> Assistente de Cálculo</h3>
+                <div class="bh-inputs">
+                    <input type="number" id="valA" placeholder="a">
+                    <input type="number" id="valB" placeholder="b">
+                    <input type="number" id="valC" placeholder="c">
                 </div>
-                <div id="res-bhaskara" style="font-weight: bold; font-size: 0.9rem;"></div>
+                <button class="btn-calc" onclick="bhaskara()">CALCULAR AGORA</button>
+                <div id="res-bh" style="margin-top: 15px; font-weight: 700;">Resultado aqui...</div>
             </div>
         </section>
 
         <section id="int" class="subject-panel">
             <div class="card">
-                <h2><i class="fas fa-microscope"></i> Projeto Integrador</h2>
-                <div class="plan-item" style="margin-top: 20px;">
-                    <h4>Projeto Atual</h4>
-                    <p>Sustentabilidade e Tecnologia: Criando soluções para a escola.</p>
+                <h2><i class="fas fa-microscope" style="color: var(--azul-claro);"></i> Projeto Integrador</h2>
+                <div class="link-list">
+                    <a href="#" class="link-line link-roteiro" target="_blank">
+                        <div class="link-content"><i class="fas fa-file-alt" style="color: #3182CE;"></i><span>Roteiro do Projeto</span></div>
+                        <div class="btn-acessar">BAIXAR PDF</div>
+                    </a>
+                    <a href="#" class="link-line link-video" target="_blank">
+                        <div class="link-content"><i class="fas fa-vial" style="color: #DD6B20;"></i><span>Guia Prático / Experimento</span></div>
+                        <div class="btn-acessar">ASSISTIR</div>
+                    </a>
+                    <a href="#" class="link-line link-slides" target="_blank">
+                        <div class="link-content"><i class="fas fa-project-diagram" style="color: #805AD5;"></i><span>Apresentação do Tema</span></div>
+                        <div class="btn-acessar">VER SLIDES</div>
+                    </a>
                 </div>
             </div>
         </section>
-    </div>
+
+        <section id="vida" class="subject-panel">
+            <div class="card">
+                <h2><i class="fas fa-compass" style="color: var(--azul-claro);"></i> Projeto de Vida</h2>
+                <div class="link-list">
+                    <a href="#" class="link-line link-roteiro" target="_blank">
+                        <div class="link-content"><i class="fas fa-pencil-alt" style="color: #3182CE;"></i><span>Atividade de Reflexão</span></div>
+                        <div class="btn-acessar">BAIXAR PDF</div>
+                    </a>
+                    <a href="#" class="link-line link-livro" target="_blank">
+                        <div class="link-content"><i class="fas fa-lightbulb" style="color: #38A169;"></i><span>Leitura Complementar</span></div>
+                        <div class="btn-acessar">LER ONLINE</div>
+                    </a>
+                    <a href="#" class="link-line link-video" target="_blank">
+                        <div class="link-content"><i class="fas fa-video" style="color: #DD6B20;"></i><span>Vídeo Motivacional</span></div>
+                        <div class="btn-acessar">ASSISTIR</div>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
 
     <aside>
         <div class="mural">
-            <h2 style="text-align: center; margin-bottom: 20px;"><i class="fas fa-thumbtack"></i> MURAL DO MESTRE</h2>
-            <div id="container-recados">
+            <h3><i class="fas fa-bullhorn" style="color: var(--laranja-alerta);"></i> RECADO</h3>
+            <div id="mural-content">
                 <div class="post-it">
-                    <strong>📢 PROVA CHEGANDO!</strong>
-                    <p>Nossa avaliação do 1º bimestre será no dia 25/03. Comecem a revisão pelo capítulo 2.</p>
-                    <small>📅 13/02/2026</small>
+                    <strong>Atenção:</strong>
+                    <p style="margin-top: 5px; font-size: 0.9rem;">Links de todas as matérias já atualizados!</p>
                 </div>
-            </div>
-            <button class="btn-mestre-acao" onclick="novoAviso()">+ Adicionar Lembrete</button>
-            
-            <div style="margin-top: 30px; border-top: 1px solid #eee; padding-top: 20px; font-size: 0.8rem;">
-                <p><strong>Dica de Estudo:</strong> Tente explicar a matéria para um colega. Quem ensina, aprende duas vezes!</p>
             </div>
         </div>
     </aside>
 </div>
 
-<a href="https://wa.me/SEUNUMERO" class="float-btn" target="_blank" title="Dúvida rápida no WhatsApp">
-    <i class="fab fa-whatsapp"></i>
-</a>
+<a href="https://wa.me/5582999999999" class="whatsapp-btn" target="_blank"><i class="fab fa-whatsapp"></i></a>
 
 <footer>
-    <p>© 2026 - Estação de Aprendizagem | Professor Márcio L. da Silva</p>
-    <p style="font-size: 0.8rem; opacity: 0.6; margin-top: 10px;">Desenvolvido para inspirar o conhecimento.</p>
+    <p><strong>Estação de Aprendizagem 2026</strong></p>
+    <p>Professor Márcio L. da Silva</p>
 </footer>
 
-<script>
-    function showTab(id, btn) {
-        document.querySelectorAll('.subject-panel').forEach(p => p.classList.remove('active'));
-        document.querySelectorAll('.btn-materia').forEach(b => b.classList.remove('active'));
-        document.getElementById(id).classList.add('active');
-        btn.classList.add('active');
-        window.scrollTo({ top: header.offsetHeight, behavior: 'smooth' });
-    }
 
-    function toggleDarkMode() {
-        document.body.classList.toggle('dark-mode');
-    }
 
-    function calcBhaskara() {
-        const a = parseFloat(document.getElementById('a').value);
-        const b = parseFloat(document.getElementById('b').value);
-        const c = parseFloat(document.getElementById('c').value);
-        const res = document.getElementById('res-bhaskara');
-
-        if(isNaN(a) || isNaN(b) || isNaN(c)) {
-            res.innerHTML = "Preencha a, b e c!";
-            return;
-        }
-
-        const delta = (b * b) - (4 * a * c);
-        if(delta < 0) {
-            res.innerHTML = `Δ = ${delta}. Não existem raízes reais.`;
-        } else {
-            const x1 = (-b + Math.sqrt(delta)) / (2 * a);
-            const x2 = (-b - Math.sqrt(delta)) / (2 * a);
-            res.innerHTML = `Δ = ${delta} | x' = ${x1.toFixed(2)} | x'' = ${x2.toFixed(2)}`;
-        }
-    }
-
-    function novoAviso() {
-        const t = prompt("Título do Aviso:").toUpperCase();
-        const x = prompt("Mensagem:");
-        if(t && x) {
-            const div = document.createElement('div');
-            div.className = 'post-it';
-            div.innerHTML = `<strong>📌 ${t}</strong><p>${x}</p><small>📅 Hoje</small>`;
-            document.getElementById('container-recados').prepend(div);
-        }
-    }
-</script>
 </body>
 </html>
