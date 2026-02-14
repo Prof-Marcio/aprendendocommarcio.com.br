@@ -7,109 +7,94 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        /* --- AJUSTE AS CORES DO SEU LOGO AQUI --- */
         :root {
             --bg-body: #F4F7FE;
-            --mat-color: #006AFF; /* Azul Royal */
-            --int-color: #8E44AD; /* Roxo */
-            --vida-color: #FF3E3E; /* Vermelho Vivo */
-            --accent-gold: #FFD700;
+            --mat-color: #006AFF; 
+            --int-color: #8E44AD; 
+            --vida-color: #FF3E3E; 
             --text-dark: #1A1C20;
-            --card-bg: #FFFFFF;
+            --locked-color: #A0AEC0;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Fredoka', sans-serif; }
         body { background: var(--bg-body); color: var(--text-dark); overflow-x: hidden; }
 
-        /* --- HEADER COM CORES DO LOGO --- */
+        /* --- HEADER DINÂMICO --- */
         header {
-            background: #FFF;
-            padding: 50px 5%;
-            text-align: center;
-            border-bottom: 10px solid var(--mat-color);
-            border-radius: 0 0 80px 80px;
-            box-shadow: 0 15px 40px rgba(0,106,255,0.1);
-            transition: border-color 0.5s ease;
+            background: #FFF; padding: 30px 5%; text-align: center;
+            border-bottom: 8px solid var(--mat-color);
+            border-radius: 0 0 50px 50px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            transition: 0.5s;
         }
+        .logo-area img { height: clamp(100px, 15vw, 160px); animation: float 4s ease-in-out infinite; }
+        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
+        .title-area h1 { font-size: clamp(1.8rem, 5vw, 3rem); color: var(--mat-color); margin-top: 10px; }
 
-        .logo-area img {
-            height: 200px;
-            animation: heroFloat 4s ease-in-out infinite;
-            filter: drop-shadow(0 8px 20px rgba(0,0,0,0.1));
+        /* --- NAV PRINCIPAL --- */
+        nav { 
+            display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; 
+            padding: 20px; position: sticky; top: 0; z-index: 1000; 
+            background: rgba(244,247,254,0.95); backdrop-filter: blur(10px); 
         }
-
-        @keyframes heroFloat {
-            0%, 100% { transform: translateY(0) rotate(-1deg); }
-            50% { transform: translateY(-25px) rotate(1deg); }
-        }
-
-        .title-area h1 { font-size: 3.8rem; color: var(--mat-color); margin-top: 15px; text-shadow: 2px 2px 0px rgba(0,0,0,0.05); }
-
-        /* --- NAVEGAÇÃO ESTILIZADA --- */
-        nav { display: flex; justify-content: center; gap: 25px; padding: 30px; position: sticky; top: 0; z-index: 1000; background: rgba(244,247,254,0.9); backdrop-filter: blur(15px); }
-
         .nav-link {
-            border: none; padding: 18px 40px; border-radius: 30px;
-            font-weight: 700; cursor: pointer; transition: 0.4s;
-            display: flex; align-items: center; gap: 12px; font-size: 1.2rem;
-            background: white; box-shadow: 0 10px 20px rgba(0,0,0,0.05);
-            color: #666;
+            border: none; padding: 12px 25px; border-radius: 20px;
+            font-weight: 700; cursor: pointer; transition: 0.3s;
+            display: flex; align-items: center; gap: 8px; font-size: 1rem;
+            background: white; box-shadow: 0 5px 15px rgba(0,0,0,0.05); color: #666;
         }
+        .nav-link.active { color: white !important; }
+        .nav-link.active.btn-mat { background: var(--mat-color); }
+        .nav-link.active.btn-int { background: var(--int-color); }
+        .nav-link.active.btn-vida { background: var(--vida-color); }
 
-        /* Cores de Hover Dinâmicas */
-        .btn-mat:hover { color: var(--mat-color); transform: scale(1.05); }
-        .btn-int:hover { color: var(--int-color); transform: scale(1.05); }
-        .btn-vida:hover { color: var(--vida-color); transform: scale(1.05); }
+        /* --- SELETOR DE BIMESTRES --- */
+        .bimestre-nav { display: flex; justify-content: center; gap: 10px; margin: 25px 0; flex-wrap: wrap; }
+        .bim-btn {
+            background: #E2E8F0; border: none; padding: 10px 20px; border-radius: 15px;
+            font-weight: 600; cursor: pointer; transition: 0.3s; color: #444;
+        }
+        .bim-btn.active { background: var(--text-dark); color: white; }
+        .bim-btn.locked { background: #CBD5E0; color: #718096; cursor: not-allowed; opacity: 0.7; }
 
-        .nav-link.active.btn-mat { background: var(--mat-color); color: white; }
-        .nav-link.active.btn-int { background: var(--int-color); color: white; }
-        .nav-link.active.btn-vida { background: var(--vida-color); color: white; }
-
-        /* --- GRID DE 3 COLUNAS --- */
-        .container { max-width: 1400px; margin: 0 auto; padding: 40px 20px; }
-
-        .card { background: var(--card-bg); border-radius: 50px; padding: 40px; margin-bottom: 40px; box-shadow: 0 20px 50px rgba(0,0,0,0.04); border: 2px solid rgba(0,0,0,0.02); }
-        .card h2 { margin-bottom: 30px; font-size: 2.2rem; display: flex; align-items: center; gap: 15px; }
+        /* --- GRID E CARDS --- */
+        .container { max-width: 1300px; margin: 0 auto; padding: 0 20px 40px; }
+        .card-container { display: none; }
+        .card-container.active { display: block; animation: fadeIn 0.5s ease; }
+        
+        .card { background: #FFF; border-radius: 35px; padding: 30px; margin-bottom: 30px; border: 1px solid #E2E8F0; }
+        .card h2 { font-size: 1.8rem; margin-bottom: 25px; display: flex; align-items: center; gap: 12px; }
 
         .resource-grid { 
             display: grid; 
-            grid-template-columns: repeat(3, 1fr); 
-            gap: 25px; 
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+            gap: 20px; 
         }
 
         .item-link {
             display: flex; flex-direction: column; justify-content: space-between;
-            padding: 25px; border-radius: 35px; text-decoration: none;
-            font-weight: 600; transition: 0.4s;
-            background: #F9FBFF; border: 2px solid transparent;
-            min-height: 160px;
+            padding: 22px; border-radius: 25px; text-decoration: none;
+            background: #F8F9FF; border: 2px solid transparent; transition: 0.3s;
+            min-height: 140px;
         }
+        .item-link:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.08); border-color: currentColor; }
+        .item-link span { font-weight: 700; color: var(--text-dark); font-size: 1.05rem; }
 
-        .item-link:hover { 
-            transform: translateY(-10px); 
-            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
-            background: white;
-            border-color: currentColor;
-        }
-
-        .item-link span { font-size: 1.1rem; color: var(--text-dark); margin-bottom: 15px; }
-
-        .badge { align-self: flex-start; padding: 8px 16px; border-radius: 15px; font-size: 0.8rem; color: white; font-weight: 800; }
+        .badge { align-self: flex-start; padding: 6px 12px; border-radius: 10px; font-size: 0.7rem; color: white; font-weight: 800; text-transform: uppercase; margin-top: 10px; }
         .bg-game { background: #27AE60; }
         .bg-video { background: #E74C3C; }
         .bg-pdf { background: #2980B9; }
         .bg-star { background: #F1C40F; }
 
-        /* --- RESPONSIVIDADE --- */
-        @media (max-width: 1200px) { .resource-grid { grid-template-columns: repeat(2, 1fr); } }
-        @media (max-width: 800px) { .resource-grid { grid-template-columns: 1fr; } .title-area h1 { font-size: 2.5rem; } }
+        /* --- ESTILO BLOQUEADO --- */
+        .locked-panel { text-align: center; padding: 60px 20px; color: var(--locked-color); }
+        .locked-panel i { font-size: 4rem; margin-bottom: 20px; }
 
-        .panel { display: none; }
-        .panel.active { display: block; animation: zoomIn 0.5s ease; }
-        @keyframes zoomIn { from { opacity: 0; transform: scale(0.98); } to { opacity: 1; transform: scale(1); } }
+        .wa-button { position: fixed; bottom: 25px; right: 25px; background: #25D366; color: white; width: 65px; height: 65px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 35px; box-shadow: 0 10px 25px rgba(0,0,0,0.2); z-index: 2000; }
 
-        .wa-button { position: fixed; bottom: 40px; right: 40px; background: #25D366; color: white; width: 80px; height: 80px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 40px; box-shadow: 0 15px 30px rgba(37,211,102,0.3); text-decoration: none; z-index: 2000; transition: 0.3s; }
-        .wa-button:hover { transform: scale(1.1) rotate(10deg); }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+        @media (min-width: 1024px) { .resource-grid { grid-template-columns: repeat(3, 1fr); } }
     </style>
 </head>
 <body>
@@ -117,110 +102,122 @@
 <header id="mainHeader">
     <div class="logo-area"><img src="logo-marcio.png" alt="Logo Prof. Márcio"></div>
     <div class="title-area">
-        <h1 id="mainTitle">Clube do Prof. Márcio ⚡</h1>
-        <p>A aventura do conhecimento começa aqui!</p>
+        <h1 id="mainTitle">Portal do Prof. Márcio ⚡</h1>
+        <p>Aventura, Conhecimento e Tecnologia!</p>
     </div>
 </header>
 
 <nav>
-    <button class="nav-link btn-mat active" onclick="openTab('mat', this, 'var(--mat-color)')">
-        <i class="fas fa-calculator"></i> Matemática
-    </button>
-    <button class="nav-link btn-int" onclick="openTab('int', this, 'var(--int-color)')">
-        <i class="fas fa-flask"></i> Integrador
-    </button>
-    <button class="nav-link btn-vida" onclick="openTab('vida', this, 'var(--vida-color)')">
-        <i class="fas fa-rocket"></i> Vida
-    </button>
+    <button class="nav-link btn-mat active" onclick="openSubject('mat', this, 'var(--mat-color)')"><i class="fas fa-calculator"></i> Matemática</button>
+    <button class="nav-link btn-int" onclick="openSubject('int', this, 'var(--int-color)')"><i class="fas fa-flask"></i> Integrador</button>
+    <button class="nav-link btn-vida" onclick="openSubject('vida', this, 'var(--vida-color)')"><i class="fas fa-rocket"></i> Vida</button>
 </nav>
 
 <div class="container">
-    <section id="mat" class="panel active">
+    <div class="bimestre-nav">
+        <button class="bim-btn active" onclick="switchBim(1, this)">1º Bimestre</button>
+        <button class="bim-btn locked" onclick="switchBim(2, this)"><i class="fas fa-lock"></i> 2º Bimestre</button>
+        <button class="bim-btn locked" onclick="switchBim(3, this)"><i class="fas fa-lock"></i> 3º Bimestre</button>
+        <button class="bim-btn locked" onclick="switchBim(4, this)"><i class="fas fa-lock"></i> 4º Bimestre</button>
+    </div>
+
+    <div id="locked-msg" class="card-container">
+        <div class="locked-panel">
+            <i class="fas fa- hourglass-half"></i>
+            <h2>Conteúdo em Breve!</h2>
+            <p>Aguarde o início do próximo bimestre para desbloquear novas missões.</p>
+        </div>
+    </div>
+
+    <div id="mat-content" class="card-container active">
         <div class="card">
-            <h2 style="color: var(--mat-color);"><i class="fas fa-gamepad"></i> Missões de Jogo</h2>
+            <h2 style="color: var(--mat-color);"><i class="fas fa-gamepad"></i> Jogos e Desafios</h2>
             <div class="resource-grid">
                 <a href="#" class="item-link" style="color: var(--mat-color);"><span>🏰 O Castelo das Frações</span><span class="badge bg-game">JOGAR</span></a>
                 <a href="#" class="item-link" style="color: var(--mat-color);"><span>🏎️ Corrida da Tabuada 3D</span><span class="badge bg-game">START</span></a>
                 <a href="#" class="item-link" style="color: var(--mat-color);"><span>💣 Campo Minado Lógico</span><span class="badge bg-game">NEW</span></a>
                 <a href="#" class="item-link" style="color: var(--mat-color);"><span>🧩 Desafio de Pitágoras</span><span class="badge bg-star">GOLD</span></a>
                 <a href="#" class="item-link" style="color: var(--mat-color);"><span>⚖️ Balança de Equações</span><span class="badge bg-game">PLAY</span></a>
-                <a href="#" class="item-link" style="color: var(--mat-color);"><span>🏃 Parkour dos Números</span><span class="badge bg-game">START</span></a>
+                <a href="#" class="item-link" style="color: var(--mat-color);"><span>🏃 Parkour dos Números</span><span class="badge bg-game">OPEN</span></a>
             </div>
         </div>
         <div class="card">
-            <h2 style="color: var(--mat-color);"><i class="fas fa-video"></i> Cine-Aula & Materiais</h2>
+            <h2 style="color: var(--mat-color);"><i class="fas fa-book-open"></i> Estudos e Vídeos</h2>
             <div class="resource-grid">
                 <a href="#" class="item-link" style="color: var(--mat-color);"><span>🎬 O Segredo do Zero</span><span class="badge bg-video">VER</span></a>
                 <a href="#" class="item-link" style="color: var(--mat-color);"><span>📑 Geometria Turbo</span><span class="badge bg-pdf">PDF</span></a>
-                <a href="#" class="item-link" style="color: var(--mat-color);"><span>🎬 Aula: Números Primos</span><span class="badge bg-video">ASSISTIR</span></a>
-                <a href="#" class="item-link" style="color: var(--mat-color);"><span>📝 Treino de Mestre</span><span class="badge bg-pdf">TREINO</span></a>
-                <a href="#" class="item-link" style="color: var(--mat-color);"><span>🎨 Mapa dos Conjuntos</span><span class="badge bg-pdf">VER</span></a>
-                <a href="#" class="item-link" style="color: var(--mat-color);"><span>🎬 Dicas de Divisão</span><span class="badge bg-video">DICA</span></a>
+                <a href="#" class="item-link" style="color: var(--mat-color);"><span>🎬 Números Primos</span><span class="badge bg-video">AULA</span></a>
+                <a href="#" class="item-link" style="color: var(--mat-color);"><span>📝 Treino de Mestre</span><span class="badge bg-pdf">TESTE</span></a>
+                <a href="#" class="item-link" style="color: var(--mat-color);"><span>🎨 Mapa dos Conjuntos</span><span class="badge bg-pdf">BAIXAR</span></a>
+                <a href="#" class="item-link" style="color: var(--mat-color);"><span>🎬 Truques de Divisão</span><span class="badge bg-video">DICA</span></a>
             </div>
         </div>
-    </section>
+    </div>
 
-    <section id="int" class="panel">
+    <div id="int-content" class="card-container">
         <div class="card">
-            <h2 style="color: var(--int-color);"><i class="fas fa-microscope"></i> Lab Maker</h2>
+            <h2 style="color: var(--int-color);"><i class="fas fa-robot"></i> Laboratório Maker</h2>
             <div class="resource-grid">
-                <a href="#" class="item-link" style="color: var(--int-color);"><span>🌋 Vulcão Caseiro</span><span class="badge bg-star">EXPERIÊNCIA</span></a>
+                <a href="#" class="item-link" style="color: var(--int-color);"><span>🌋 Vulcão Caseiro</span><span class="badge bg-star">MAKER</span></a>
                 <a href="#" class="item-link" style="color: var(--int-color);"><span>💻 Programação Scratch</span><span class="badge bg-game">CRIAR</span></a>
-                <a href="#" class="item-link" style="color: var(--int-color);"><span>🤖 Robô de Recicláveis</span><span class="badge bg-video">VÍDEO</span></a>
-                <a href="#" class="item-link" style="color: var(--int-color);"><span>🧪 Química Divertida</span><span class="badge bg-star">LAB</span></a>
-                <a href="#" class="item-link" style="color: var(--int-color);"><span>🌱 Horta Hidropônica</span><span class="badge bg-pdf">GUIA</span></a>
-                <a href="#" class="item-link" style="color: var(--int-color);"><span>🎬 Como o Wi-Fi viaja?</span><span class="badge bg-video">INFO</span></a>
+                <a href="#" class="item-link" style="color: var(--int-color);"><span>🤖 Robô de Papelão</span><span class="badge bg-video">DIY</span></a>
+                <a href="#" class="item-link" style="color: var(--int-color);"><span>🧪 Simulação Química</span><span class="badge bg-star">LAB</span></a>
+                <a href="#" class="item-link" style="color: var(--int-color);"><span>🌱 Horta Automática</span><span class="badge bg-pdf">GUIA</span></a>
+                <a href="#" class="item-link" style="color: var(--int-color);"><span>🌍 Tour Amazônia 360°</span><span class="badge bg-star">360°</span></a>
             </div>
         </div>
-        <div class="card">
-            <h2 style="color: var(--int-color);"><i class="fas fa-leaf"></i> Sustentabilidade</h2>
-            <div class="resource-grid">
-                <a href="#" class="item-link" style="color: var(--int-color);"><span>🌍 Tour Virtual 360°</span><span class="badge bg-star">TOUR</span></a>
-                <a href="#" class="item-link" style="color: var(--int-color);"><span>♻️ Game da Reciclagem</span><span class="badge bg-game">PLAY</span></a>
-                <a href="#" class="item-link" style="color: var(--int-color);"><span>💡 10 Invenções Verdes</span><span class="badge bg-pdf">LER</span></a>
-            </div>
-        </div>
-    </section>
+    </div>
 
-    <section id="vida" class="panel">
+    <div id="vida-content" class="card-container">
         <div class="card">
-            <h2 style="color: var(--vida-color);"><i class="fas fa-user-astronaut"></i> Futuro & Carreira</h2>
+            <h2 style="color: var(--vida-color);"><i class="fas fa-bullseye"></i> Projeto de Vida</h2>
             <div class="resource-grid">
-                <a href="#" class="item-link" style="color: var(--vida-color);"><span>🕵️ Quiz dos Talentos</span><span class="badge bg-star">TESTE</span></a>
-                <a href="#" class="item-link" style="color: var(--vida-color);"><span>🎮 Ser Desenvolvedor</span><span class="badge bg-video">VER</span></a>
-                <a href="#" class="item-link" style="color: var(--vida-color);"><span>🚀 Guia das Profissões</span><span class="badge bg-star">INFO</span></a>
-                <a href="#" class="item-link" style="color: var(--vida-color);"><span>🎬 Oratória para Jovens</span><span class="badge bg-video">VÍDEO</span></a>
-                <a href="#" class="item-link" style="color: var(--vida-color);"><span>🎨 Mural dos Sonhos</span><span class="badge bg-pdf">CRIAR</span></a>
-                <a href="#" class="item-link" style="color: var(--vida-color);"><span>🧠 Mapeando Minha Vida</span><span class="badge bg-pdf">MAPA</span></a>
+                <a href="#" class="item-link" style="color: var(--vida-color);"><span>🕵️ Quiz dos Talentos</span><span class="badge bg-star">FAZER</span></a>
+                <a href="#" class="item-link" style="color: var(--vida-color);"><span>🚀 Guia de Profissões</span><span class="badge bg-pdf">LER</span></a>
+                <a href="#" class="item-link" style="color: var(--vida-color);"><span>🧘 Meditação Pró-Prova</span><span class="badge bg-video">OUVIR</span></a>
+                <a href="#" class="item-link" style="color: var(--vida-color);"><span>📅 Planner de Estudos</span><span class="badge bg-pdf">BAIXAR</span></a>
+                <a href="#" class="item-link" style="color: var(--vida-color);"><span>🎨 Mural dos Sonhos</span><span class="badge bg-star">CRIAR</span></a>
+                <a href="#" class="item-link" style="color: var(--vida-color);"><span>🍏 Dicas de Energia</span><span class="badge bg-pdf">INFO</span></a>
             </div>
         </div>
-        <div class="card">
-            <h2 style="color: var(--vida-color);"><i class="fas fa-heart"></i> Autocuidado</h2>
-            <div class="resource-grid">
-                <a href="#" class="item-link" style="color: var(--vida-color);"><span>🧘 Meditação de 1 min</span><span class="badge bg-video">OUVIR</span></a>
-                <a href="#" class="item-link" style="color: var(--vida-color);"><span>📅 Planner Semanal</span><span class="badge bg-pdf">BAIXAR</span></a>
-                <a href="#" class="item-link" style="color: var(--vida-color);"><span>🍏 Lanche Saudável</span><span class="badge bg-pdf">DICAS</span></a>
-            </div>
-        </div>
-    </section>
+    </div>
 </div>
 
 <a href="https://wa.me/5582999999999" class="wa-button" target="_blank"><i class="fab fa-whatsapp"></i></a>
 
 <script>
-    function openTab(tabId, btn, color) {
-        // Esconde painéis
-        document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
-        // Limpa botões
+    let currentSubject = 'mat';
+
+    function openSubject(subject, btn, color) {
+        currentSubject = subject;
+        
+        // Reset botões nav
         document.querySelectorAll('.nav-link').forEach(b => b.classList.remove('active'));
-        
-        // Ativa atual
-        document.getElementById(tabId).classList.add('active');
         btn.classList.add('active');
-        
-        // Sincroniza cores
+
+        // Sincroniza Cores
         document.getElementById('mainHeader').style.borderColor = color;
         document.getElementById('mainTitle').style.color = color;
+
+        // Volta para o 1º Bimestre sempre que trocar de matéria (para evitar bug de tela vazia)
+        switchBim(1, document.querySelector('.bim-btn:first-child'));
+    }
+
+    function switchBim(bimNum, btn) {
+        // Reset botões bimestre
+        document.querySelectorAll('.bim-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        // Esconde tudo
+        document.querySelectorAll('.card-container').forEach(c => c.classList.remove('active'));
+
+        if(bimNum === 1) {
+            // Mostra o conteúdo da disciplina atual
+            document.getElementById(currentSubject + '-content').classList.add('active');
+        } else {
+            // Mostra mensagem de bloqueado
+            document.getElementById('locked-msg').classList.add('active');
+        }
     }
 </script>
 
