@@ -7,127 +7,232 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
-        :root { --azul: #1A365D; --verde: #48BB78; --bg: #F1F5F9; --header: #D9DDE2; }
+        :root {
+            --azul-escudo: #1A365D;
+            --verde-logo: #48BB78;
+            --bg-site: #F1F5F9;
+            --bg-header: #D9DDE2; 
+        }
+
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Fredoka', sans-serif; }
-        body { background: var(--bg); color: var(--azul); }
+        body { background: var(--bg-site); color: var(--azul-escudo); line-height: 1.6; }
 
-        header { background: var(--header); padding: 20px; text-align: center; border-bottom: 5px solid var(--verde); }
-        .logo { height: 120px; width: auto; object-fit: contain; margin-bottom: 10px; }
+        header {
+            background: var(--bg-header); padding: 25px 5%; text-align: center;
+            border-bottom: 6px solid var(--verde-logo); box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
 
-        .dashboard { display: grid; grid-template-columns: 1fr 380px; gap: 20px; padding: 20px; }
+        .logo-container img { height: 140px; width: auto; max-width: 100%; object-fit: contain; display: block; margin: 0 auto 10px; }
+
+        .nav-main { display: flex; justify-content: center; gap: 15px; padding: 20px 5%; flex-wrap: wrap; }
+        .btn-materia {
+            background: var(--azul-escudo); color: white; padding: 15px 25px;
+            border: none; border-radius: 15px; font-weight: 700; cursor: pointer;
+            box-shadow: 0 5px 0 #0d1a2d; transition: 0.2s; display: flex; align-items: center; gap: 10px;
+        }
+        .btn-materia.active { background: var(--verde-logo); box-shadow: none; transform: translateY(5px); }
+
+        .dashboard { display: grid; grid-template-columns: 1fr 400px; gap: 25px; padding: 0 5% 50px; }
+        .subject-panel { display: none; animation: fadeIn 0.4s ease; }
+        .subject-panel.active { display: block; }
+
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+        .bimestres { display: flex; justify-content: center; gap: 8px; margin-bottom: 25px; flex-wrap: wrap; }
+        .b-tag { padding: 8px 15px; background: white; border: 2px solid var(--azul-escudo); border-radius: 50px; font-weight: 700; cursor: pointer; }
+        .b-tag.active { background: var(--azul-escudo); color: white; }
+        .b-tag.locked { background: #cbd5e0; color: #718096; cursor: not-allowed; opacity: 0.7; border-color: #a0aec0; }
+
+        .grid-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+        .card { background: white; border-radius: 20px; padding: 20px; border-top: 8px solid var(--azul-escudo); box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+        .card h3 { margin-bottom: 15px; display: flex; align-items: center; gap: 10px; }
+
+        .plan-box { background: #fdfdfd; border: 1px solid #e2e8f0; padding: 15px; border-radius: 10px; margin-top: 10px; }
+        .plan-box h4 { font-size: 0.9rem; color: var(--verde-logo); text-transform: uppercase; margin-bottom: 5px; }
+        .plan-box p { font-size: 0.85rem; color: #4a5568; border-left: 3px solid #cbd5e0; padding-left: 10px; margin-bottom: 8px; }
+
+        .link-item { display: flex; align-items: center; justify-content: space-between; padding: 10px; background: #F8FAFC; border-radius: 10px; text-decoration: none; color: #334155; font-weight: 600; margin-bottom: 8px; border: 1px solid #E2E8F0; }
+
+        /* MURAL PROFISSIONAL */
+        .mural { background: white; border-radius: 25px; padding: 25px; border: 3px solid var(--azul-escudo); height: fit-content; }
+        .post-it { background: #FEFCBF; padding: 18px; border-radius: 10px; border-left: 6px solid #ECC94B; margin-bottom: 15px; position: relative; box-shadow: 3px 3px 6px rgba(0,0,0,0.05); }
+        .controles-aviso { position: absolute; top: 8px; right: 8px; display: flex; gap: 5px; }
+        .btn-mural-ctrl { border: none; background: white; padding: 4px 7px; border-radius: 4px; cursor: pointer; font-size: 0.8rem; box-shadow: 1px 1px 3px rgba(0,0,0,0.1); }
         
-        .nav-main { display: flex; justify-content: center; gap: 10px; margin: 20px 0; }
-        .btn-materia { background: var(--azul); color: white; padding: 12px 20px; border: none; border-radius: 10px; cursor: pointer; font-weight: bold; }
-        .btn-materia.active { background: var(--verde); }
+        .data-hora { font-size: 0.7rem; color: #975A16; display: block; border-top: 1px dashed #ECC94B; margin-top: 10px; padding-top: 5px; font-weight: bold; }
+        .btn-add-mural { width: 100%; padding: 15px; background: var(--azul-escudo); color: white; border: none; border-radius: 15px; font-weight: 700; cursor: pointer; margin-top: 10px; }
 
-        .bimestres { display: flex; justify-content: center; gap: 5px; margin-bottom: 20px; }
-        .b-tag { padding: 8px 12px; border: 2px solid var(--azul); border-radius: 20px; background: white; font-weight: bold; cursor: pointer; }
-        .b-tag.locked { background: #cbd5e0; color: #718096; cursor: not-allowed; border-color: #a0aec0; }
-
-        .card { background: white; padding: 20px; border-radius: 15px; border-top: 6px solid var(--azul); box-shadow: 0 4px 6px rgba(0,0,0,0.05); margin-bottom: 20px; }
-
-        /* MURAL */
-        .mural { background: white; padding: 20px; border-radius: 20px; border: 3px solid var(--azul); }
-        .post-it { background: #FEFCBF; padding: 15px; border-radius: 10px; border-left: 5px solid #ECC94B; margin-bottom: 15px; position: relative; }
-        .btn-del { position: absolute; top: 5px; right: 5px; background: none; border: none; color: #C53030; cursor: pointer; }
-        .data-hora { font-size: 0.7rem; color: #975A16; display: block; margin-top: 10px; font-weight: bold; }
-
-        .btn-add { width: 100%; padding: 12px; background: var(--azul); color: white; border: none; border-radius: 10px; cursor: pointer; font-weight: bold; }
-
-        @media (max-width: 900px) { .dashboard { grid-template-columns: 1fr; } }
+        @media (max-width: 1000px) { .dashboard { grid-template-columns: 1fr; } }
     </style>
 </head>
 <body>
 
 <header>
-    <img src="logo-marcio.png" alt="Logo" class="logo">
-    <p><strong>ESTAÇÃO DE APRENDIZAGEM 2026</strong></p>
+    <div class="logo-container">
+        <img src="logo-marcio.png" alt="Prof. Márcio L. da Silva">
+        <p style="text-transform: uppercase; font-weight: 700; letter-spacing: 2px;">Estação de Aprendizagem 2026</p>
+    </div>
 </header>
 
-<div class="nav-main">
-    <button class="btn-materia active" onclick="aba('mat')">Matemática</button>
-    <button class="btn-materia" onclick="aba('int')">Integrador</button>
-    <button class="btn-materia" onclick="aba('vida')">Projeto de Vida</button>
-</div>
+<nav class="nav-main">
+    <button class="btn-materia active" onclick="showTab('mat', this)"><i class="fas fa-calculator"></i> Matemática</button>
+    <button class="btn-materia" onclick="showTab('int', this)"><i class="fas fa-flask"></i> Integrador</button>
+    <button class="btn-materia" onclick="showTab('vida', this)"><i class="fas fa-seedling"></i> Projeto de Vida</button>
+</nav>
 
 <div class="dashboard">
     <main>
-        <div id="mat" class="aba-item">
+        <section id="mat" class="subject-panel active">
             <div class="bimestres">
-                <button class="b-tag">1º Bimestre</button>
-                <button class="b-tag locked" onclick="alert('Bloqueado!')">2º Bim 🔒</button>
-                <button class="b-tag locked" onclick="alert('Bloqueado!')">3º Bim 🔒</button>
-                <button class="b-tag locked" onclick="alert('Bloqueado!')">4º Bim 🔒</button>
+                <button class="b-tag active">1º Bimestre</button>
+                <button class="b-tag locked" onclick="avisarBloqueio()">2º Bim 🔒</button>
+                <button class="b-tag locked" onclick="avisarBloqueio()">3º Bim 🔒</button>
+                <button class="b-tag locked" onclick="avisarBloqueio()">4º Bim 🔒</button>
             </div>
-            <div class="card">
-                <h3><i class="fas fa-book"></i> Conteúdo Atual</h3>
-                <p>Matéria: Equações de 2º Grau</p>
-                <p>Status: 1º Bimestre em andamento.</p>
+            <div class="grid-cards">
+                <div class="card">
+                    <h3><i class="fas fa-file-signature"></i> Planejamento do Mestre</h3>
+                    <div class="plan-box">
+                        <h4>Objetivo:</h4>
+                        <p>Equações de 2º Grau e Bhaskara.</p>
+                        <a href="javascript:validar()" class="link-item">Acessar Planos 🔒</a>
+                    </div>
+                </div>
+                <div class="card" style="border-top-color: var(--verde-logo);">
+                    <h3><i class="fas fa-book-reader"></i> Material do Aluno</h3>
+                    <a href="#" class="link-item">Lista de Exercícios <i class="fas fa-download"></i></a>
+                </div>
             </div>
-        </div>
-        <div id="int" class="aba-item" style="display:none"></div>
-        <div id="vida" class="aba-item" style="display:none"></div>
+        </section>
+
+        <section id="int" class="subject-panel">
+            <div class="bimestres">
+                <button class="b-tag active">1º Bimestre</button>
+                <button class="b-tag locked" onclick="avisarBloqueio()">2º Bim 🔒</button>
+                <button class="b-tag locked" onclick="avisarBloqueio()">3º Bim 🔒</button>
+                <button class="b-tag locked" onclick="avisarBloqueio()">4º Bim 🔒</button>
+            </div>
+            <div class="grid-cards">
+                <div class="card">
+                    <h3><i class="fas fa-project-diagram"></i> Projeto Integrador</h3>
+                    <div class="plan-box">
+                        <h4>Tema:</h4>
+                        <p>Inovação e Tecnologia Sustentável.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="vida" class="subject-panel">
+            <div class="bimestres">
+                <button class="b-tag active">1º Bimestre</button>
+                <button class="b-tag locked" onclick="avisarBloqueio()">2º Bim 🔒</button>
+                <button class="b-tag locked" onclick="avisarBloqueio()">3º Bim 🔒</button>
+                <button class="b-tag locked" onclick="avisarBloqueio()">4º Bim 🔒</button>
+            </div>
+            <div class="grid-cards">
+                <div class="card">
+                    <h3><i class="fas fa-user-graduate"></i> Futuro e Carreira</h3>
+                    <div class="plan-box">
+                        <h4>Foco:</h4>
+                        <p>Autoconhecimento e Plano de Ação.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
 
     <aside>
         <div class="mural">
-            <h3 style="text-align: center; margin-bottom: 15px;">MURAL DE AVISOS</h3>
-            <div id="lista-avisos"></div>
-            <button class="btn-add" onclick="novoAviso()">+ Postar Recado (Senha)</button>
+            <h2 style="text-align: center; margin-bottom: 20px;"><i class="fas fa-bullhorn"></i> MURAL OFICIAL</h2>
+            <div id="mural-recados"></div>
+            <button class="btn-add-mural" onclick="addRecado()">+ Adicionar Aviso (Senha)</button>
         </div>
     </aside>
 </div>
 
 <script>
-    const senhaMestre = "1234";
+    const SENHA_MESTRE = "1234";
 
-    // Carregar avisos salvos ao abrir o site
+    // CARREGA TUDO AO INICIAR
     window.onload = function() {
-        const salvos = JSON.parse(localStorage.getItem('meusAvisos')) || [];
-        salvos.forEach(a => criarElementoAviso(a));
+        const salvos = JSON.parse(localStorage.getItem('muralMarcio2026')) || [];
+        salvos.forEach(a => renderizarAviso(a));
     };
 
-    function aba(id) {
-        document.querySelectorAll('.aba-item').forEach(a => a.style.display = 'none');
-        document.getElementById(id).style.display = 'block';
+    function obterDataHora() {
+        const agora = new Date();
+        return agora.toLocaleDateString('pt-BR') + " às " + agora.toLocaleTimeString('pt-BR', {hour:'2-digit', minute:'2-digit'});
     }
 
-    function novoAviso() {
-        if(prompt("Digite a senha:") === senhaMestre) {
-            const txt = prompt("Escreva o aviso:");
-            if(txt) {
-                const agora = new Date();
-                const dataStr = agora.toLocaleDateString() + " às " + agora.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
-                const avisoObj = { id: Date.now(), texto: txt, data: dataStr };
-                
-                const salvos = JSON.parse(localStorage.getItem('meusAvisos')) || [];
-                salvos.push(avisoObj);
-                localStorage.setItem('meusAvisos', JSON.stringify(salvos));
-                
-                criarElementoAviso(avisoObj);
+    function showTab(id, btn) {
+        document.querySelectorAll('.subject-panel').forEach(p => p.classList.remove('active'));
+        document.querySelectorAll('.btn-materia').forEach(b => b.classList.remove('active'));
+        document.getElementById(id).classList.add('active');
+        btn.classList.add('active');
+    }
+
+    function avisarBloqueio() {
+        alert("🔒 Conteúdo restrito. Este bimestre ainda não foi liberado pelo Professor Márcio.");
+    }
+
+    function renderizarAviso(aviso) {
+        const mural = document.getElementById('mural-recados');
+        const div = document.createElement('div');
+        div.className = 'post-it';
+        div.id = aviso.id;
+        div.innerHTML = `
+            <div class="controles-aviso">
+                <button class="btn-mural-ctrl" onclick="editarAviso('${aviso.id}')"><i class="fas fa-edit" style="color:#2b6cb0"></i></button>
+                <button class="btn-mural-ctrl" onclick="excluirAviso('${aviso.id}')"><i class="fas fa-trash" style="color:#c53030"></i></button>
+            </div>
+            <strong>📌 ${aviso.titulo}</strong>
+            <p id="txt-${aviso.id}">${aviso.texto}</p>
+            <span class="data-hora"><i class="far fa-clock"></i> Postado em: ${aviso.data}</span>
+        `;
+        mural.prepend(div);
+    }
+
+    function addRecado() {
+        if(prompt("Senha do Mestre:") === SENHA_MESTRE) {
+            const tit = prompt("Título do Aviso:").toUpperCase();
+            const msg = prompt("Mensagem do Aviso:");
+            if(msg) {
+                const novo = { id: 'av' + Date.now(), titulo: tit, texto: msg, data: obterDataHora() };
+                const salvos = JSON.parse(localStorage.getItem('muralMarcio2026')) || [];
+                salvos.push(novo);
+                localStorage.setItem('muralMarcio2026', JSON.stringify(salvos));
+                renderizarAviso(novo);
             }
         } else { alert("Senha incorreta!"); }
     }
 
-    function criarElementoAviso(obj) {
-        const div = document.createElement('div');
-        div.className = 'post-it';
-        div.id = obj.id;
-        div.innerHTML = `
-            <button class="btn-del" onclick="apagar('${obj.id}')"><i class="fas fa-trash"></i></button>
-            <p>${obj.texto}</p>
-            <span class="data-hora">📅 ${obj.data}</span>
-        `;
-        document.getElementById('lista-avisos').prepend(div);
-    }
-
-    function apagar(id) {
-        if(prompt("Senha para apagar:") === senhaMestre) {
-            let salvos = JSON.parse(localStorage.getItem('meusAvisos')) || [];
-            salvos = salvos.filter(a => a.id != id);
-            localStorage.setItem('meusAvisos', JSON.stringify(salvos));
+    function excluirAviso(id) {
+        if(prompt("Senha para EXCLUIR:") === SENHA_MESTRE) {
+            let salvos = JSON.parse(localStorage.getItem('muralMarcio2026')) || [];
+            salvos = salvos.filter(a => a.id !== id);
+            localStorage.setItem('muralMarcio2026', JSON.stringify(salvos));
             document.getElementById(id).remove();
         }
+    }
+
+    function editarAviso(id) {
+        if(prompt("Senha para EDITAR:") === SENHA_MESTRE) {
+            const p = document.getElementById('txt-' + id);
+            const novoTxt = prompt("Edite o texto:", p.innerText);
+            if(novoTxt) {
+                let salvos = JSON.parse(localStorage.getItem('muralMarcio2026')) || [];
+                const aviso = salvos.find(a => a.id === id);
+                aviso.texto = novoTxt;
+                localStorage.setItem('muralMarcio2026', JSON.stringify(salvos));
+                p.innerText = novoTxt;
+            }
+        }
+    }
+
+    function validar() {
+        if(prompt("Senha de Acesso:") === SENHA_MESTRE) alert("Acesso autorizado em " + obterDataHora());
+        else alert("Senha incorreta.");
     }
 </script>
 
