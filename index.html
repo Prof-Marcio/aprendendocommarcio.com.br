@@ -3,288 +3,345 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mundo Mágico do Prof. Márcio 🚀</title>
+    <title>SISTEMA MESTRE 360 | PROF. MÁRCIO</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --bg-body: #F4F7FE;
-            --mat-color: #06af39; 
-            --int-color: #8E44AD; 
-            --vida-color: #FF3E3E; 
-            --text-dark: #1A1C20;
-            --locked-color: #A0AEC0;
-        }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Fredoka', sans-serif; }
-        body { background: var(--bg-body); color: var(--text-dark); overflow-x: hidden; }
-
-        header {
-            background: #FFF; padding: 25px 5%; text-align: center;
-            border-bottom: 8px solid var(--mat-color);
-            border-radius: 0 0 40px 40px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-            transition: 0.5s;
-        }
-        .logo-area img { height: clamp(80px, 12vw, 130px); }
-        .title-area h1 { font-size: clamp(1.5rem, 4vw, 2.5rem); color: var(--mat-color); margin-top: 10px; }
-
-        nav { 
-            display: flex; justify-content: center; flex-wrap: wrap; gap: 8px; 
-            padding: 15px; position: sticky; top: 0; z-index: 1000; 
-            background: rgba(244,247,254,0.95); backdrop-filter: blur(10px); 
-        }
-        .nav-link {
-            border: none; padding: 10px 20px; border-radius: 15px;
-            font-weight: 700; cursor: pointer; transition: 0.3s;
-            display: flex; align-items: center; gap: 8px; font-size: 0.95rem;
-            background: white; box-shadow: 0 4px 10px rgba(0,0,0,0.05); color: #666;
-        }
-        .nav-link.active { color: white !important; }
-        .nav-link.active.btn-mat { background: var(--mat-color); }
-        .nav-link.active.btn-int { background: var(--int-color); }
-        .nav-link.active.btn-vida { background: var(--vida-color); }
-
-        .bimestre-nav { display: flex; justify-content: center; gap: 8px; margin: 20px 0; flex-wrap: wrap; }
-        .bim-btn {
-            background: #E2E8F0; border: none; padding: 8px 16px; border-radius: 12px;
-            font-weight: 600; cursor: pointer; transition: 0.3s; color: #444; font-size: 0.9rem;
-        }
-        .bim-btn.active { background: var(--text-dark); color: white; }
-        .bim-btn.locked { opacity: 0.5; cursor: not-allowed; }
-
-        .container { max-width: 900px; margin: 0 auto; padding: 0 15px 40px; }
-        .card-container { display: none; }
-        .card-container.active { display: block; animation: fadeIn 0.4s ease; }
-
-        .activity-list { display: flex; flex-direction: column; gap: 15px; }
-
-        .activity-item {
-            background: white; padding: 18px; border-radius: 20px;
-            display: flex; align-items: center; gap: 15px;
-            text-decoration: none; color: inherit; transition: 0.3s;
-            border-left: 6px solid transparent;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
-        }
-        .activity-item:hover { transform: translateX(8px); background: #fdfdfd; }
-
-        .mat-item { border-left-color: var(--mat-color); }
-        .int-item { border-left-color: var(--int-color); }
-        .vida-item { border-left-color: var(--vida-color); }
-
-        .date-box {
-            text-align: center; min-width: 65px;
-            padding-right: 15px; border-right: 2px solid #F0F2F5;
-        }
-        .date-box .day { display: block; font-size: 1.3rem; font-weight: 700; color: #333; }
-        .date-box .month { display: block; font-size: 0.75rem; color: #888; text-transform: uppercase; }
-
-        .info-box { flex-grow: 1; }
-        .info-box h3 { font-size: 1.05rem; margin-bottom: 5px; color: var(--text-dark); }
+        :root { --primary: #122b54; --accent: #4caf50; --secondary: #1a4180; --bg: #e9ecef; --white: #ffffff; --danger: #d32f2f; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Montserrat', sans-serif; }
+        body { background: var(--bg); display: flex; height: 100vh; color: var(--primary); overflow: hidden; }
         
-        /* BADGES DOS 5 RECURSOS */
-        .type-badge {
-            display: inline-block; padding: 4px 10px; border-radius: 8px;
-            font-size: 0.7rem; font-weight: 700; color: white; text-transform: uppercase;
-        }
-        .bg-video { background: #8E44AD; }      /* 1. VÍDEO */
-        .bg-conteudo { background: #3498db; }   /* 2. CONTEÚDO */
-        .bg-atividade { background: #27ae60; }  /* 3. ATIVIDADE DO LIVRO */
-        .bg-exercicio { background: #f39c12; }  /* 4. EXERCÍCIO */
-        .bg-avaliacao { background: #e74c3c; }  /* 5. AVALIAÇÃO */
+        /* LOGIN SCREEN */
+        #login-screen { position: fixed; inset: 0; background: var(--primary); z-index: 10000; display: flex; align-items: center; justify-content: center; flex-direction: column; color: white; }
+        .login-box { background: white; padding: 30px; border-radius: 15px; text-align: center; color: var(--primary); width: 320px; box-shadow: 0 10px 25px rgba(0,0,0,0.3); }
+        .login-box input { width: 100%; padding: 12px; margin: 15px 0; border: 1px solid #ccc; border-radius: 8px; text-align: center; font-size: 1.1rem; }
 
-        .resource-icon { font-size: 1.2rem; }
+        /* UI ELEMENTS */
+        aside { width: 260px; background: var(--primary); color: white; display: flex; flex-direction: column; }
+        .aside-header { padding: 15px; text-align: center; background: white; border-bottom: 4px solid var(--accent); }
+        .logo-img { max-width: 120px; height: auto; margin-bottom: 5px; }
+        
+        .nav { flex: 1; padding: 15px; }
+        .nav-item { width: 100%; padding: 12px; background: none; border: none; color: #cbd5e1; display: flex; align-items: center; gap: 12px; cursor: pointer; border-radius: 8px; margin-bottom: 5px; transition: 0.3s; font-weight: 500; }
+        .nav-item:hover, .nav-item.active { background: var(--accent); color: white; }
+        
+        main { flex: 1; padding: 25px; overflow-y: auto; }
+        .section { display: none; } 
+        .section.active { display: block; }
+        
+        .card { background: var(--white); padding: 20px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); margin-bottom: 20px; }
+        .turma-header { background: var(--secondary); color: white; padding: 15px; border-radius: 10px; margin-bottom: 15px; display: flex; align-items: center; justify-content: space-between; }
+        .turma-header select { padding: 8px; border-radius: 5px; font-weight: bold; cursor: pointer; }
 
-        .locked-panel { text-align: center; padding: 50px; color: #A0AEC0; }
-        .wa-button { position: fixed; bottom: 20px; right: 20px; background: #25D366; color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 30px; box-shadow: 0 10px 20px rgba(0,0,0,0.1); z-index: 2000; }
+        .sala-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 12px; background: #bdc3c7; padding: 20px; border-radius: 10px; }
+        .carteira { background: white; padding: 10px; border-radius: 8px; text-align: center; cursor: pointer; border-bottom: 4px solid #7f8c8d; transition: 0.2s; }
+        .carteira:hover { transform: translateY(-3px); border-color: var(--accent); }
+        
+        .img-container { width: 55px; height: 55px; margin: 0 auto 8px; border-radius: 50%; overflow: hidden; border: 2px solid #eee; background: #f8f9fa; }
+        .img-container img { width: 100%; height: 100%; object-fit: cover; }
+        .carteira b { font-size: 0.65rem; display: block; text-transform: uppercase; color: var(--primary); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        /* PROJETOR */
+        #lousa { display: none; position: fixed; inset: 0; background: #000; z-index: 9999; color: white; padding: 10px; flex-direction: column; }
+        .lousa-controls { display: flex; gap: 10px; align-items: center; background: #222; padding: 10px; border-radius: 8px; margin-bottom: 10px; }
+        #view-lousa { flex: 1; background: #111; border-radius: 10px; display: flex; align-items: center; justify-content: center; overflow: hidden; position: relative; }
+        #view-lousa img, #view-lousa iframe { max-width: 100%; max-height: 100%; border: none; }
+
+        table { width: 100%; border-collapse: collapse; }
+        th { text-align: left; background: #f8f9fa; padding: 12px; border-bottom: 2px solid var(--accent); font-size: 0.8rem; }
+        td { padding: 10px; border-bottom: 1px solid #eee; }
+        
+        .btn-gold { background: var(--accent); color: white; border: none; padding: 10px 20px; border-radius: 6px; cursor: pointer; font-weight: bold; display: inline-flex; align-items: center; gap: 8px; }
+        .admin-only { display: none; } /* Escondido por padrão */
     </style>
 </head>
 <body>
 
-<header id="mainHeader">
-    <div class="logo-area"><img src="logo-marcio.png" alt="Logo"></div>
-    <div class="title-area">
-        <h1 id="mainTitle">Portal do Prof. Márcio ⚡</h1>
+<div id="login-screen">
+    <div class="login-box">
+        <img src="logo-marcio.png" style="width: 100px; margin-bottom: 10px;">
+        <h2>Acesso Mestre 360</h2>
+        <input type="password" id="pass-input" placeholder="Digite a senha">
+        <button class="btn-gold" style="width:100%; justify-content:center" onclick="checkLogin()">ENTRAR</button>
+        <button onclick="acessoVisitante()" style="margin-top:15px; background:none; border:none; color:#666; cursor:pointer; text-decoration:underline;">Entrar como Visitante</button>
     </div>
-</header>
+</div>
 
-<nav>
-    <button class="nav-link btn-mat active" onclick="openSubject('mat', this, 'var(--mat-color)')"><i class="fas fa-calculator"></i> Matemática</button>
-    <button class="nav-link btn-int" onclick="openSubject('int', this, 'var(--int-color)')"><i class="fas fa-flask"></i> Integrador</button>
-    <button class="nav-link btn-vida" onclick="openSubject('vida', this, 'var(--vida-color)')"><i class="fas fa-rocket"></i> Vida</button>
-</nav>
-
-<div class="container">
-    <div class="bimestre-nav">
-        <button class="bim-btn active" onclick="switchBim(1, this)">1º Bimestre</button>
-        <button class="bim-btn locked" onclick="switchBim(2, this)"><i class="fas fa-lock"></i> 2º Bim</button>
-        <button class="bim-btn locked" onclick="switchBim(3, this)"><i class="fas fa-lock"></i> 3º Bim</button>
-        <button class="bim-btn locked" onclick="switchBim(4, this)"><i class="fas fa-lock"></i> 4º Bim</button>
+<aside>
+    <div class="aside-header">
+        <img src="logo-marcio.png" alt="Logo" class="logo-img">
+        <h4 style="color:var(--primary); font-size: 0.8rem;">MESTRE 360</h4>
     </div>
+    <nav class="nav">
+        <button class="nav-item active" onclick="nav('dashboard')"><i class="fas fa-chart-line"></i> Dashboard</button>
+        <button class="nav-item" onclick="nav('aula')"><i class="fas fa-folder-open"></i> Banco de Aulas</button>
+        <button class="nav-item" onclick="nav('mapa')"><i class="fas fa-th"></i> Mapa de Turmas</button>
+        <button class="nav-item" onclick="nav('notas')"><i class="fas fa-file-signature"></i> Notas e Médias</button>
+        <button class="btn-gold admin-only" id="btn-admin-view" style="width:100%; margin-top:20px; background:var(--danger); justify-content:center" onclick="logout()">
+            <i class="fas fa-lock"></i> BLOQUEAR
+        </button>
+        <button class="btn-gold" style="width:100%; margin-top:10px; justify-content: center;" onclick="abrirLousa()">
+            <i class="fas fa-projector"></i> PROJETAR
+        </button>
+    </nav>
+</aside>
 
-    <div id="locked-msg" class="card-container">
-        <div class="locked-panel">
-            <i class="fas fa-lock" style="font-size: 3rem; margin-bottom: 10px;"></i>
-            <h3>Conteúdo em Breve!</h3>
-            <p>Os recursos deste bimestre ainda serão postados.</p>
+<main>
+    <section id="dashboard" class="section active">
+        <div class="card">
+            <h1>Painel do Prof. Márcio</h1>
+            <p id="status-acesso">Modo: Carregando...</p>
         </div>
-    </div>
+    </section>
 
-    <div id="mat-content" class="card-container active">
-        <div class="activity-list">
-            <a href="#" class="activity-item mat-item">
-                <div class="date-box"><span class="day">22</span><span class="month">Fev</span></div>
-                <div class="info-box">
-                    <span class="type-badge bg-video">🎥 Vídeo de Apoio</span><h3>Aprenda Frações de forma fácil</h3>               
-                    <span class="type-badge bg-conteudo">📖 Conteúdo</span>
-                    <h3>Apostila: Introdução à Geometria</h3>
-                    <span class="type-badge bg-atividade">🚀 Atividade do Livro</span>
-                    <h3>Páginas 45 a 50 - Prática</h3>
-                    <span class="type-badge bg-exercicio">📝 Exercício</span>
-                    <h3>Lista de Questões Objetivas</h3>
-                    <span class="type-badge bg-avaliacao">🏆 Avaliação</span>
-                    <h3>Teste Mensal de Matemática</h3>
+    <section id="aula" class="section">
+        <div class="card">
+            <div class="admin-only">
+                <h2><i class="fas fa-upload"></i> Salvar Nova Aula</h2>
+                <div style="display: flex; gap: 10px; margin: 15px 0;">
+                    <input type="text" id="up-nome" placeholder="Título da Aula" style="flex:1; padding: 10px;">
+                    <input type="file" id="up-file" accept="image/*,application/pdf">
+                    <button class="btn-gold" onclick="uploadAula()">Salvar</button>
                 </div>
-            </a>
+            </div>
+            <table>
+                <thead><tr><th>Aula</th><th>Tipo</th><th class="admin-only">Excluir</th></tr></thead>
+                <tbody id="lista-aula"></tbody>
+            </table>
         </div>
-        <div class="activity-list">
-            <a href="#" class="activity-item mat-item">
-                <div class="date-box"><span class="day">29</span><span class="month">Fev</span></div>
-                <div class="info-box">
-                    <span class="type-badge bg-video">🎥 Vídeo de Apoio</span>
-                    <h3>Aprenda Frações de forma fácil</h3>               
-                    <span class="type-badge bg-conteudo">📖 Conteúdo</span>
-                    <h3>Apostila: Introdução à Geometria</h3>
-                    <span class="type-badge bg-atividade">🚀 Atividade do Livro</span>
-                    <h3>Páginas 45 a 50 - Prática</h3>
-                    <span class="type-badge bg-exercicio">📝 Exercício</span>
-                    <h3>Lista de Questões Objetivas</h3>
-                    <span class="type-badge bg-avaliacao">🏆 Avaliação</span>
-                    <h3>Teste Mensal de Matemática</h3>
-                </div>
-            </a>
-        </div>
-    </div>
+    </section>
 
-    <div id="int-content" class="card-container">
-        <div class="activity-list">
-            <a href="#" class="activity-item int-item">
-                <div class="date-box"><span class="day">22</span><span class="month">Fev</span></div>
-                <div class="info-box">
-                    <span class="type-badge bg-video">🎥 Vídeo de Apoio</span>
-                    <h3>Sustentabilidade Urbana</h3>
-                </div>
-                <i class="fas fa-play-circle resource-icon" style="color:#8E44AD"></i>
-            </a>
-            <a href="#" class="activity-item int-item">
-                <div class="date-box"><span class="day">20</span><span class="month">Fev</span></div>
-                <div class="info-box">
-                    <span class="type-badge bg-conteudo">📖 Conteúdo</span>
-                    <h3>PDF: ODS da ONU explicadas</h3>
-                </div>
-                <i class="fas fa-book-open resource-icon" style="color:#3498db"></i>
-            </a>
-            <a href="#" class="activity-item int-item">
-                <div class="date-box"><span class="day">18</span><span class="month">Fev</span></div>
-                <div class="info-box">
-                    <span class="type-badge bg-atividade">🚀 Atividade do Livro</span>
-                    <h3>Projeto Prático - Página 12</h3>
-                </div>
-                <i class="fas fa-rocket resource-icon" style="color:#27ae60"></i>
-            </a>
-            <a href="#" class="activity-item int-item">
-                <div class="date-box"><span class="day">15</span><span class="month">Fev</span></div>
-                <div class="info-box">
-                    <span class="type-badge bg-exercicio">📝 Exercício</span>
-                    <h3>Questionário de Pesquisa</h3>
-                </div>
-                <i class="fas fa-pen-to-square resource-icon" style="color:#f39c12"></i>
-            </a>
-            <a href="#" class="activity-item int-item">
-                <div class="date-box"><span class="day">10</span><span class="month">Fev</span></div>
-                <div class="info-box">
-                    <span class="type-badge bg-avaliacao">🏆 Avaliação</span>
-                    <h3>Defesa do Projeto Integrador</h3>
-                </div>
-                <i class="fas fa-trophy resource-icon" style="color:#e74c3c"></i>
-            </a>
+    <section id="mapa" class="section">
+        <div class="turma-header">
+            <span><i class="fas fa-users"></i> MAPA DE ASSENTOS</span>
+            <select id="sel-t-mapa" onchange="mudarTurmaGlobal(this.value)">
+                <option value="A">TURMA A</option><option value="B">TURMA B</option>
+                <option value="C">TURMA C</option><option value="D">TURMA D</option>
+            </select>
         </div>
-    </div>
+        <div class="card"><div class="sala-grid" id="grid-mapa"></div></div>
+    </section>
 
-    <div id="vida-content" class="card-container">
-        <div class="activity-list">
-            <a href="#" class="activity-item vida-item">
-                <div class="date-box"><span class="day">22</span><span class="month">Fev</span></div>
-                <div class="info-box">
-                    <span class="type-badge bg-video">🎥 Vídeo de Apoio</span>
-                    <h3>Inteligência Emocional</h3>
-                </div>
-                <i class="fas fa-play-circle resource-icon" style="color:#8E44AD"></i>
-            </a>
-            <a href="#" class="activity-item vida-item">
-                <div class="date-box"><span class="day">20</span><span class="month">Fev</span></div>
-                <div class="info-box">
-                    <span class="type-badge bg-conteudo">📖 Conteúdo</span>
-                    <h3>Ebook: Planejando o Futuro</h3>
-                </div>
-                <i class="fas fa-book-open resource-icon" style="color:#3498db"></i>
-            </a>
-            <a href="#" class="activity-item vida-item">
-                <div class="date-box"><span class="day">18</span><span class="month">Fev</span></div>
-                <div class="info-box">
-                    <span class="type-badge bg-atividade">🚀 Atividade do Livro</span>
-                    <h3>Autoavaliação - Unidade 2</h3>
-                </div>
-                <i class="fas fa-rocket resource-icon" style="color:#27ae60"></i>
-            </a>
-            <a href="#" class="activity-item vida-item">
-                <div class="date-box"><span class="day">15</span><span class="month">Fev</span></div>
-                <div class="info-box">
-                    <span class="type-badge bg-exercicio">📝 Exercício</span>
-                    <h3>Roda da Vida: Exercício Prático</h3>
-                </div>
-                <i class="fas fa-pen-to-square resource-icon" style="color:#f39c12"></i>
-            </a>
-            <a href="#" class="activity-item vida-item">
-                <div class="date-box"><span class="day">10</span><span class="month">Fev</span></div>
-                <div class="info-box">
-                    <span class="type-badge bg-avaliacao">🏆 Avaliação</span>
-                    <h3>Relatório de Competências</h3>
-                </div>
-                <i class="fas fa-trophy resource-icon" style="color:#e74c3c"></i>
-            </a>
+    <section id="notas" class="section">
+        <div class="turma-header">
+            <span><i class="fas fa-list-ol"></i> RELATÓRIO DE NOTAS</span>
+            <select id="sel-t-notas" onchange="mudarTurmaGlobal(this.value)">
+                <option value="A">TURMA A</option><option value="B">TURMA B</option>
+                <option value="C">TURMA C</option><option value="D">TURMA D</option>
+            </select>
+        </div>
+        <div class="card">
+            <div style="overflow-x: auto;">
+                <table>
+                    <thead><tr><th>Estudante</th><th>N1</th><th>N2</th><th>Proj</th><th>Média</th></tr></thead>
+                    <tbody id="corpo-notas"></tbody>
+                </table>
+            </div>
+            <button class="btn-gold admin-only" onclick="salvarNotas()" style="margin-top:20px; width:100%; justify-content: center;">GRAVAR NOTAS</button>
+        </div>
+    </section>
+</main>
+
+<div id="lousa">
+    <div class="lousa-controls">
+        <select id="pj-selecionar-aula" onchange="exibirNaLousa(this.value)" style="flex:1; padding:8px;">
+            <option value="">Escolha a aula...</option>
+        </select>
+        <button class="btn-gold" style="background:#555" onclick="toggleFullScreen()"><i class="fas fa-expand"></i> TELA CHEIA</button>
+        <button class="btn-gold" style="background:var(--danger)" onclick="fecharLousa()"><i class="fas fa-times"></i> SAIR</button>
+    </div>
+    <div id="view-lousa"></div>
+</div>
+
+<div id="modal-aluno" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.85); z-index:2000; align-items:center; justify-content:center;">
+    <div class="card" style="width:380px;">
+        <h3 id="modal-titulo">Dados do Aluno</h3>
+        <div class="admin-only">
+            <label>Nome:</label>
+            <input type="text" id="ed-nome" style="width:100%; padding:10px; margin:10px 0;">
+            <label>Foto:</label>
+            <input type="file" id="ed-foto" accept="image/*" style="width:100%; margin-bottom:15px;">
+        </div>
+        <div id="view-aluno-visitante" style="text-align:center; margin:15px 0;"></div>
+        <input type="hidden" id="ed-idx">
+        <div style="display:flex; gap:10px;">
+            <button class="btn-gold admin-only" style="flex:1; justify-content: center;" onclick="confirmarAluno()">SALVAR</button>
+            <button onclick="fecharModal()" style="flex:1; cursor:pointer;">FECHAR</button>
         </div>
     </div>
 </div>
 
-<a href="https://wa.me/5582999999999" class="wa-button" target="_blank"><i class="fab fa-whatsapp"></i></a>
-
 <script>
-    let currentSubject = 'mat';
+    const SENHA_MESTRE = "123"; // ALTERE SUA SENHA AQUI
+    let isAdmin = false;
 
-    function openSubject(subject, btn, color) {
-        currentSubject = subject;
-        document.querySelectorAll('.nav-link').forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        document.getElementById('mainHeader').style.borderColor = color;
-        document.getElementById('mainTitle').style.color = color;
-        switchBim(1, document.querySelector('.bim-btn:first-child'));
-    }
+    let db = JSON.parse(localStorage.getItem('M360_FINAL')) || {
+        aulas: [], tAtual: 'A',
+        turmas: { A: { alunos: {}, notas: {} }, B: { alunos: {}, notas: {} }, C: { alunos: {}, notas: {} }, D: { alunos: {}, notas: {} } }
+    };
 
-    function switchBim(bimNum, btn) {
-        document.querySelectorAll('.bim-btn').forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        document.querySelectorAll('.card-container').forEach(c => c.classList.remove('active'));
-
-        if(bimNum === 1) {
-            document.getElementById(currentSubject + '-content').classList.add('active');
+    // --- SISTEMA DE LOGIN ---
+    function checkLogin() {
+        const pass = document.getElementById('pass-input').value;
+        if(pass === SENHA_MESTRE) {
+            isAdmin = true;
+            document.getElementById('login-screen').style.display = 'none';
+            liberarAdmin();
         } else {
-            document.getElementById('locked-msg').classList.add('active');
+            alert("Senha Incorreta!");
         }
     }
-</script>
 
+    function acessoVisitante() {
+        isAdmin = false;
+        document.getElementById('login-screen').style.display = 'none';
+        document.getElementById('status-acesso').innerText = "Modo: VISITANTE (Apenas Leitura)";
+        mudarTurmaGlobal('A');
+    }
+
+    function liberarAdmin() {
+        document.querySelectorAll('.admin-only').forEach(el => el.style.display = 'inline-flex');
+        document.getElementById('status-acesso').innerText = "Modo: ADMINISTRADOR (Acesso Total)";
+        mudarTurmaGlobal('A');
+    }
+
+    function logout() { location.reload(); }
+
+    // --- CORE ---
+    function salvar() { if(isAdmin) localStorage.setItem('M360_FINAL', JSON.stringify(db)); }
+
+    function nav(id) {
+        document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+        document.getElementById(id).classList.add('active');
+        if(id === 'mapa') renderizarMapa();
+        if(id === 'notas') renderizarNotas();
+        if(id === 'aula') renderizarListaAulas();
+    }
+
+    function mudarTurmaGlobal(v) {
+        db.tAtual = v;
+        document.getElementById('sel-t-mapa').value = v;
+        document.getElementById('sel-t-notas').value = v;
+        renderizarMapa(); renderizarNotas(); salvar();
+    }
+
+    // --- AULAS ---
+    function uploadAula() {
+        const nome = document.getElementById('up-nome').value;
+        const file = document.getElementById('up-file').files[0];
+        if(!nome || !file) return;
+        const reader = new FileReader();
+        reader.onload = (e) => {
+            db.aulas.push({ nome: nome, data: e.target.result, tipo: file.type });
+            salvar(); renderizarListaAulas();
+        };
+        reader.readAsDataURL(file);
+    }
+
+    function renderizarListaAulas() {
+        const lista = document.getElementById('lista-aula');
+        lista.innerHTML = db.aulas.map((a, i) => `
+            <tr><td>${a.nome}</td><td>${a.tipo.split('/')[1].toUpperCase()}</td>
+            <td class="admin-only"><button onclick="delAula(${i})" style="color:red; background:none; border:none; cursor:pointer;"><i class="fas fa-trash"></i></button></td></tr>
+        `).join('');
+        const selPj = document.getElementById('pj-selecionar-aula');
+        selPj.innerHTML = '<option value="">Escolha a aula...</option>' + db.aulas.map((a, i) => `<option value="${i}">${a.nome}</option>`).join('');
+        if(!isAdmin) document.querySelectorAll('.admin-only').forEach(el => el.style.display = 'none');
+    }
+
+    function delAula(i) { if(isAdmin && confirm("Excluir?")) { db.aulas.splice(i,1); salvar(); renderizarListaAulas(); } }
+
+    // --- PROJETOR ---
+    function abrirLousa() { document.getElementById('lousa').style.display = 'flex'; renderizarListaAulas(); }
+    function fecharLousa() { document.getElementById('lousa').style.display = 'none'; }
+    function exibirNaLousa(idx) {
+        const view = document.getElementById('view-lousa');
+        if(!idx) return view.innerHTML = '';
+        const a = db.aulas[idx];
+        view.innerHTML = a.tipo.includes('pdf') ? `<iframe src="${a.data}" width="100%" height="100%"></iframe>` : `<img src="${a.data}">`;
+    }
+    function toggleFullScreen() {
+        let el = document.getElementById("lousa");
+        if (!document.fullscreenElement) el.requestFullscreen(); else document.exitFullscreen();
+    }
+
+    // --- ALUNOS ---
+    function renderizarMapa() {
+        const grid = document.getElementById('grid-mapa');
+        grid.innerHTML = '';
+        const t = db.turmas[db.tAtual];
+        for(let i=1; i<=42; i++) {
+            const alu = t.alunos[i] || { n: 'LIVRE', p: '' };
+            grid.innerHTML += `
+                <div class="carteira" onclick="abrirEdicao(${i})">
+                    <div class="img-container"><img src="${alu.p || 'https://cdn-icons-png.flaticon.com/512/3135/3135715.png'}"></div>
+                    <b>${alu.n}</b>
+                </div>`;
+        }
+    }
+
+    function abrirEdicao(i) {
+        const alu = db.turmas[db.tAtual].alunos[i] || { n: 'LIVRE', p: 'https://cdn-icons-png.flaticon.com/512/3135/3135715.png' };
+        document.getElementById('ed-idx').value = i;
+        document.getElementById('ed-nome').value = alu.n;
+        document.getElementById('view-aluno-visitante').innerHTML = `<img src="${alu.p}" style="width:100px; border-radius:50%"><br><h3>${alu.n}</h3>`;
+        document.getElementById('modal-aluno').style.display = 'flex';
+        if(!isAdmin) {
+            document.querySelectorAll('.admin-only').forEach(el => el.style.display = 'none');
+            document.getElementById('view-aluno-visitante').style.display = 'block';
+        } else {
+            document.getElementById('view-aluno-visitante').style.display = 'none';
+        }
+    }
+
+    function fecharModal() { document.getElementById('modal-aluno').style.display = 'none'; }
+
+    function confirmarAluno() {
+        if(!isAdmin) return;
+        const i = document.getElementById('ed-idx').value;
+        const nome = document.getElementById('ed-nome').value.toUpperCase();
+        const foto = document.getElementById('ed-foto').files[0];
+        if(foto) {
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                db.turmas[db.tAtual].alunos[i] = { n: nome, p: e.target.result };
+                salvar(); renderizarMapa(); fecharModal();
+            };
+            reader.readAsDataURL(foto);
+        } else {
+            db.turmas[db.tAtual].alunos[i] = { n: nome, p: db.turmas[db.tAtual].alunos[i]?.p || '' };
+            salvar(); renderizarMapa(); fecharModal();
+        }
+    }
+
+    // --- NOTAS ---
+    function renderizarNotas() {
+        const corpo = document.getElementById('corpo-notas');
+        corpo.innerHTML = '';
+        const t = db.turmas[db.tAtual];
+        for(let i=1; i<=42; i++) {
+            const aluNome = t.alunos[i]?.n || 'Aluno '+i;
+            const nt = t.notas[i] || { n1: 0, n2: 0, n3: 0 };
+            const m = ((parseFloat(nt.n1) + parseFloat(nt.n2) + parseFloat(nt.n3)) / 3).toFixed(1);
+            corpo.innerHTML += `
+                <tr><td><b>${aluNome}</b></td>
+                <td><input type="number" step="0.1" class="in-nota" data-i="${i}" data-n="n1" value="${nt.n1}" ${!isAdmin?'disabled':''}></td>
+                <td><input type="number" step="0.1" class="in-nota" data-i="${i}" data-n="n2" value="${nt.n2}" ${!isAdmin?'disabled':''}></td>
+                <td><input type="number" step="0.1" class="in-nota" data-i="${i}" data-n="n3" value="${nt.n3}" ${!isAdmin?'disabled':''}></td>
+                <td style="font-weight:bold; color:${m >= 6 ? 'green' : 'red'}">${m}</td></tr>`;
+        }
+    }
+
+    function salvarNotas() {
+        if(!isAdmin) return;
+        document.querySelectorAll('.in-nota').forEach(input => {
+            const i = input.dataset.i;
+            const campo = input.dataset.n;
+            if(!db.turmas[db.tAtual].notas[i]) db.turmas[db.tAtual].notas[i] = { n1: 0, n2: 0, n3: 0 };
+            db.turmas[db.tAtual].notas[i][campo] = input.value || 0;
+        });
+        salvar(); renderizarNotas(); alert("Salvo!");
+    }
+</script>
 </body>
 </html>
