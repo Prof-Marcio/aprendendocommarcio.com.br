@@ -7,80 +7,79 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
-        :root { --primary: #122b54; --accent: #4caf50; --secondary: #1a4180; --bg: #e9ecef; --white: #ffffff; --danger: #d32f2f; }
+        :root { --primary: #122b54; --accent: #4caf50; --secondary: #1a4180; --bg: #e9ecef; --white: #ffffff; --danger: #d32f2f; --warning: #ff9800; }
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Montserrat', sans-serif; }
         body { background: var(--bg); display: flex; height: 100vh; color: var(--primary); overflow: hidden; }
         
-        /* LOGIN SCREEN */
+        /* TELA DE LOGIN */
         #login-screen { position: fixed; inset: 0; background: var(--primary); z-index: 10000; display: flex; align-items: center; justify-content: center; flex-direction: column; color: white; }
         .login-box { background: white; padding: 30px; border-radius: 15px; text-align: center; color: var(--primary); width: 320px; box-shadow: 0 10px 25px rgba(0,0,0,0.3); }
         .login-box input { width: 100%; padding: 12px; margin: 15px 0; border: 1px solid #ccc; border-radius: 8px; text-align: center; font-size: 1.1rem; }
+        #btn-visitante-login { display: none; margin-top:15px; background:none; border:none; color:#666; cursor:pointer; text-decoration:underline; width: 100%; }
 
-        /* UI ELEMENTS */
+        /* NAVEGAÇÃO E UI */
         aside { width: 260px; background: var(--primary); color: white; display: flex; flex-direction: column; }
         .aside-header { padding: 15px; text-align: center; background: white; border-bottom: 4px solid var(--accent); }
         .logo-img { max-width: 120px; height: auto; margin-bottom: 5px; }
-        
         .nav { flex: 1; padding: 15px; }
-        .nav-item { width: 100%; padding: 12px; background: none; border: none; color: #cbd5e1; display: flex; align-items: center; gap: 12px; cursor: pointer; border-radius: 8px; margin-bottom: 5px; transition: 0.3s; font-weight: 500; }
+        .nav-item { width: 100%; padding: 12px; background: none; border: none; color: #cbd5e1; display: flex; align-items: center; gap: 12px; cursor: pointer; border-radius: 8px; margin-bottom: 5px; transition: 0.3s; font-weight: 500; text-align: left; }
         .nav-item:hover, .nav-item.active { background: var(--accent); color: white; }
         
         main { flex: 1; padding: 25px; overflow-y: auto; }
         .section { display: none; } 
         .section.active { display: block; }
-        
         .card { background: var(--white); padding: 20px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); margin-bottom: 20px; }
+        
+        /* TABELAS E GRIDS */
         .turma-header { background: var(--secondary); color: white; padding: 15px; border-radius: 10px; margin-bottom: 15px; display: flex; align-items: center; justify-content: space-between; }
-        .turma-header select { padding: 8px; border-radius: 5px; font-weight: bold; cursor: pointer; }
-
         .sala-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 12px; background: #bdc3c7; padding: 20px; border-radius: 10px; }
-        .carteira { background: white; padding: 10px; border-radius: 8px; text-align: center; cursor: pointer; border-bottom: 4px solid #7f8c8d; transition: 0.2s; }
-        .carteira:hover { transform: translateY(-3px); border-color: var(--accent); }
-        
-        .img-container { width: 55px; height: 55px; margin: 0 auto 8px; border-radius: 50%; overflow: hidden; border: 2px solid #eee; background: #f8f9fa; }
+        .carteira { background: white; padding: 10px; border-radius: 8px; text-align: center; cursor: pointer; border-bottom: 4px solid #7f8c8d; }
+        .img-container { width: 50px; height: 50px; margin: 0 auto 5px; border-radius: 50%; overflow: hidden; background: #eee; }
         .img-container img { width: 100%; height: 100%; object-fit: cover; }
-        .carteira b { font-size: 0.65rem; display: block; text-transform: uppercase; color: var(--primary); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-
-        /* PROJETOR */
-        #lousa { display: none; position: fixed; inset: 0; background: #000; z-index: 9999; color: white; padding: 10px; flex-direction: column; }
-        .lousa-controls { display: flex; gap: 10px; align-items: center; background: #222; padding: 10px; border-radius: 8px; margin-bottom: 10px; }
-        #view-lousa { flex: 1; background: #111; border-radius: 10px; display: flex; align-items: center; justify-content: center; overflow: hidden; position: relative; }
-        #view-lousa img, #view-lousa iframe { max-width: 100%; max-height: 100%; border: none; }
-
-        table { width: 100%; border-collapse: collapse; }
-        th { text-align: left; background: #f8f9fa; padding: 12px; border-bottom: 2px solid var(--accent); font-size: 0.8rem; }
-        td { padding: 10px; border-bottom: 1px solid #eee; }
         
-        .btn-gold { background: var(--accent); color: white; border: none; padding: 10px 20px; border-radius: 6px; cursor: pointer; font-weight: bold; display: inline-flex; align-items: center; gap: 8px; }
-        .admin-only { display: none; } /* Escondido por padrão */
+        .btn-gold { background: var(--accent); color: white; border: none; padding: 10px 15px; border-radius: 6px; cursor: pointer; font-weight: bold; display: inline-flex; align-items: center; gap: 8px; }
+        .admin-only { display: none; }
+
+        /* LOUSA/PROJETOR */
+        #lousa { display: none; position: fixed; inset: 0; background: #000; z-index: 9999; color: white; padding: 10px; flex-direction: column; }
+        #view-lousa { flex: 1; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+        #view-lousa img, #view-lousa iframe { max-width: 100%; max-height: 100%; border: none; }
     </style>
 </head>
 <body>
 
 <div id="login-screen">
     <div class="login-box">
-        <img src="logo-marcio.png" style="width: 100px; margin-bottom: 10px;">
-        <h2>Acesso Mestre 360</h2>
-        <input type="password" id="pass-input" placeholder="Digite a senha">
-        <button class="btn-gold" style="width:100%; justify-content:center" onclick="checkLogin()">ENTRAR</button>
-        <button onclick="acessoVisitante()" style="margin-top:15px; background:none; border:none; color:#666; cursor:pointer; text-decoration:underline;">Entrar como Visitante</button>
+        <img src="logo-marcio.png" style="width: 80px; margin-bottom: 10px;">
+        <h2 style="font-size: 1.2rem;">SISTEMA MESTRE 360</h2>
+        <input type="password" id="pass-input" placeholder="Senha do Professor">
+        <button class="btn-gold" style="width:100%; justify-content:center" onclick="checkLogin()">ACESSAR</button>
+        <button id="btn-visitante-login" onclick="acessoVisitante()">Entrar como Visitante</button>
     </div>
 </div>
 
 <aside>
     <div class="aside-header">
-        <img src="logo-marcio.png" alt="Logo" class="logo-img">
-        <h4 style="color:var(--primary); font-size: 0.8rem;">MESTRE 360</h4>
+        <img src="logo-marcio.png" class="logo-img">
+        <h4 style="color:var(--primary); font-size: 0.7rem;">PROF. MÁRCIO</h4>
     </div>
     <nav class="nav">
-        <button class="nav-item active" onclick="nav('dashboard')"><i class="fas fa-chart-line"></i> Dashboard</button>
-        <button class="nav-item" onclick="nav('aula')"><i class="fas fa-folder-open"></i> Banco de Aulas</button>
-        <button class="nav-item" onclick="nav('mapa')"><i class="fas fa-th"></i> Mapa de Turmas</button>
-        <button class="nav-item" onclick="nav('notas')"><i class="fas fa-file-signature"></i> Notas e Médias</button>
-        <button class="btn-gold admin-only" id="btn-admin-view" style="width:100%; margin-top:20px; background:var(--danger); justify-content:center" onclick="logout()">
-            <i class="fas fa-lock"></i> BLOQUEAR
-        </button>
-        <button class="btn-gold" style="width:100%; margin-top:10px; justify-content: center;" onclick="abrirLousa()">
+        <button class="nav-item active" onclick="nav('dashboard')"><i class="fas fa-home"></i> Início</button>
+        <button class="nav-item" onclick="nav('aula')"><i class="fas fa-book"></i> Aulas</button>
+        <button class="nav-item" onclick="nav('mapa')"><i class="fas fa-th"></i> Mapa</button>
+        <button class="nav-item" onclick="nav('notas')"><i class="fas fa-star"></i> Notas</button>
+        
+        <div class="admin-only" style="flex-direction: column; width: 100%; gap: 10px; margin-top: 20px; border-top: 1px solid #444; padding-top: 15px;">
+            <p style="font-size: 0.6rem; color: #aaa; margin-bottom: 5px;">CONTROLE DE ACESSO</p>
+            <button id="btn-toggle-visitante" class="btn-gold" style="width:100%; background: var(--warning); font-size: 0.7rem;" onclick="toggleVisitanteModo()">
+                <i class="fas fa-user-plus"></i> LIBERAR VISITANTE
+            </button>
+            <button class="btn-gold" style="width:100%; background: var(--danger); font-size: 0.7rem;" onclick="logout()">
+                <i class="fas fa-power-off"></i> SAIR E BLOQUEAR
+            </button>
+        </div>
+
+        <button class="btn-gold" style="width:100%; margin-top:20px; justify-content: center;" onclick="abrirLousa()">
             <i class="fas fa-projector"></i> PROJETAR
         </button>
     </nav>
@@ -89,23 +88,23 @@
 <main>
     <section id="dashboard" class="section active">
         <div class="card">
-            <h1>Painel do Prof. Márcio</h1>
-            <p id="status-acesso">Modo: Carregando...</p>
+            <h1>Bem-vindo, Professor.</h1>
+            <p id="status-acesso" style="margin-top:10px; font-weight: bold; color: var(--accent);">Aguardando login...</p>
         </div>
     </section>
 
     <section id="aula" class="section">
         <div class="card">
             <div class="admin-only">
-                <h2><i class="fas fa-upload"></i> Salvar Nova Aula</h2>
+                <h3>Novo Material</h3>
                 <div style="display: flex; gap: 10px; margin: 15px 0;">
-                    <input type="text" id="up-nome" placeholder="Título da Aula" style="flex:1; padding: 10px;">
+                    <input type="text" id="up-nome" placeholder="Título" style="flex:1; padding: 8px;">
                     <input type="file" id="up-file" accept="image/*,application/pdf">
                     <button class="btn-gold" onclick="uploadAula()">Salvar</button>
                 </div>
             </div>
-            <table>
-                <thead><tr><th>Aula</th><th>Tipo</th><th class="admin-only">Excluir</th></tr></thead>
+            <table style="width:100%">
+                <thead><tr><th style="width:70%">Aula</th><th>Tipo</th><th class="admin-only">Ação</th></tr></thead>
                 <tbody id="lista-aula"></tbody>
             </table>
         </div>
@@ -113,102 +112,113 @@
 
     <section id="mapa" class="section">
         <div class="turma-header">
-            <span><i class="fas fa-users"></i> MAPA DE ASSENTOS</span>
+            <span>MAPA DE ASSENTOS</span>
             <select id="sel-t-mapa" onchange="mudarTurmaGlobal(this.value)">
                 <option value="A">TURMA A</option><option value="B">TURMA B</option>
-                <option value="C">TURMA C</option><option value="D">TURMA D</option>
             </select>
         </div>
         <div class="card"><div class="sala-grid" id="grid-mapa"></div></div>
     </section>
 
     <section id="notas" class="section">
-        <div class="turma-header">
-            <span><i class="fas fa-list-ol"></i> RELATÓRIO DE NOTAS</span>
-            <select id="sel-t-notas" onchange="mudarTurmaGlobal(this.value)">
-                <option value="A">TURMA A</option><option value="B">TURMA B</option>
-                <option value="C">TURMA C</option><option value="D">TURMA D</option>
-            </select>
-        </div>
+        <div class="turma-header"><span>RELATÓRIO DE NOTAS</span></div>
         <div class="card">
             <div style="overflow-x: auto;">
-                <table>
-                    <thead><tr><th>Estudante</th><th>N1</th><th>N2</th><th>Proj</th><th>Média</th></tr></thead>
+                <table style="width:100%">
+                    <thead><tr><th>Aluno</th><th>N1</th><th>N2</th><th>Proj</th><th>Média</th></tr></thead>
                     <tbody id="corpo-notas"></tbody>
                 </table>
             </div>
-            <button class="btn-gold admin-only" onclick="salvarNotas()" style="margin-top:20px; width:100%; justify-content: center;">GRAVAR NOTAS</button>
+            <button class="btn-gold admin-only" onclick="salvarNotas()" style="margin-top:15px; width:100%; justify-content:center;">SALVAR NOTAS</button>
         </div>
     </section>
 </main>
 
 <div id="lousa">
-    <div class="lousa-controls">
-        <select id="pj-selecionar-aula" onchange="exibirNaLousa(this.value)" style="flex:1; padding:8px;">
-            <option value="">Escolha a aula...</option>
-        </select>
-        <button class="btn-gold" style="background:#555" onclick="toggleFullScreen()"><i class="fas fa-expand"></i> TELA CHEIA</button>
-        <button class="btn-gold" style="background:var(--danger)" onclick="fecharLousa()"><i class="fas fa-times"></i> SAIR</button>
+    <div style="display:flex; gap:10px; padding: 10px; background:#222;">
+        <select id="pj-selecionar-aula" onchange="exibirNaLousa(this.value)" style="flex:1; padding:8px;"></select>
+        <button class="btn-gold" onclick="fecharLousa()">FECHAR</button>
     </div>
     <div id="view-lousa"></div>
 </div>
 
-<div id="modal-aluno" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.85); z-index:2000; align-items:center; justify-content:center;">
-    <div class="card" style="width:380px;">
-        <h3 id="modal-titulo">Dados do Aluno</h3>
-        <div class="admin-only">
-            <label>Nome:</label>
-            <input type="text" id="ed-nome" style="width:100%; padding:10px; margin:10px 0;">
-            <label>Foto:</label>
-            <input type="file" id="ed-foto" accept="image/*" style="width:100%; margin-bottom:15px;">
+<div id="modal-aluno" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.8); z-index:2000; align-items:center; justify-content:center;">
+    <div class="card" style="width:320px; text-align:center;">
+        <h3 id="modal-titulo">Informações</h3>
+        <div id="area-edit-aluno" class="admin-only" style="text-align:left; margin-top:10px;">
+            <label>Nome:</label><input type="text" id="ed-nome" style="width:100%; padding:8px; margin-bottom:10px;">
+            <label>Foto:</label><input type="file" id="ed-foto" accept="image/*" style="width:100%;">
         </div>
-        <div id="view-aluno-visitante" style="text-align:center; margin:15px 0;"></div>
+        <div id="view-aluno-vis" style="margin: 20px 0;"></div>
         <input type="hidden" id="ed-idx">
-        <div style="display:flex; gap:10px;">
-            <button class="btn-gold admin-only" style="flex:1; justify-content: center;" onclick="confirmarAluno()">SALVAR</button>
-            <button onclick="fecharModal()" style="flex:1; cursor:pointer;">FECHAR</button>
+        <div style="display:flex; gap:10px; margin-top:15px;">
+            <button class="btn-gold admin-only" style="flex:1; justify-content:center;" onclick="confirmarAluno()">SALVAR</button>
+            <button class="btn-gold" style="flex:1; justify-content:center; background:#666;" onclick="fecharModal()">VOLTAR</button>
         </div>
     </div>
 </div>
 
 <script>
-    const SENHA_MESTRE = "123"; // ALTERE SUA SENHA AQUI
+    const SENHA_MESTRE = "123";
     let isAdmin = false;
 
     let db = JSON.parse(localStorage.getItem('M360_FINAL')) || {
-        aulas: [], tAtual: 'A',
-        turmas: { A: { alunos: {}, notas: {} }, B: { alunos: {}, notas: {} }, C: { alunos: {}, notas: {} }, D: { alunos: {}, notas: {} } }
+        aulas: [], tAtual: 'A', visitanteLiberado: false,
+        turmas: { A: { alunos: {}, notas: {} }, B: { alunos: {}, notas: {} } }
     };
 
-    // --- SISTEMA DE LOGIN ---
+    // --- LOGIN E PERMISSÕES ---
+    window.onload = () => {
+        verificarBotaoVisitante();
+    };
+
+    function verificarBotaoVisitante() {
+        const btn = document.getElementById('btn-visitante-login');
+        btn.style.display = db.visitanteLiberado ? "block" : "none";
+    }
+
     function checkLogin() {
-        const pass = document.getElementById('pass-input').value;
-        if(pass === SENHA_MESTRE) {
+        if(document.getElementById('pass-input').value === SENHA_MESTRE) {
             isAdmin = true;
             document.getElementById('login-screen').style.display = 'none';
-            liberarAdmin();
-        } else {
-            alert("Senha Incorreta!");
-        }
+            document.querySelectorAll('.admin-only').forEach(el => el.style.display = 'flex');
+            document.getElementById('status-acesso').innerText = "MODO: PROFESSOR (ADMIN)";
+            atualizarBotaoToggle();
+            mudarTurmaGlobal('A');
+        } else { alert("Senha incorreta!"); }
     }
 
     function acessoVisitante() {
+        if(!db.visitanteLiberado) return;
         isAdmin = false;
         document.getElementById('login-screen').style.display = 'none';
-        document.getElementById('status-acesso').innerText = "Modo: VISITANTE (Apenas Leitura)";
+        document.querySelectorAll('.admin-only').forEach(el => el.style.display = 'none');
+        document.getElementById('status-acesso').innerText = "MODO: VISITANTE (APENAS LEITURA)";
         mudarTurmaGlobal('A');
     }
 
-    function liberarAdmin() {
-        document.querySelectorAll('.admin-only').forEach(el => el.style.display = 'inline-flex');
-        document.getElementById('status-acesso').innerText = "Modo: ADMINISTRADOR (Acesso Total)";
-        mudarTurmaGlobal('A');
+    function toggleVisitanteModo() {
+        db.visitanteLiberado = !db.visitanteLiberado;
+        salvar();
+        atualizarBotaoToggle();
+        alert(db.visitanteLiberado ? "Acesso para alunos LIBERADO na tela inicial!" : "Acesso para alunos BLOQUEADO!");
+    }
+
+    function atualizarBotaoToggle() {
+        const btn = document.getElementById('btn-toggle-visitante');
+        if(db.visitanteLiberado) {
+            btn.innerHTML = '<i class="fas fa-user-slash"></i> BLOQUEAR VISITANTE';
+            btn.style.background = "var(--danger)";
+        } else {
+            btn.innerHTML = '<i class="fas fa-user-plus"></i> LIBERAR VISITANTE';
+            btn.style.background = "var(--warning)";
+        }
     }
 
     function logout() { location.reload(); }
 
-    // --- CORE ---
-    function salvar() { if(isAdmin) localStorage.setItem('M360_FINAL', JSON.stringify(db)); }
+    // --- FUNÇÕES CORE ---
+    function salvar() { localStorage.setItem('M360_FINAL', JSON.stringify(db)); }
 
     function nav(id) {
         document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
@@ -220,9 +230,7 @@
 
     function mudarTurmaGlobal(v) {
         db.tAtual = v;
-        document.getElementById('sel-t-mapa').value = v;
-        document.getElementById('sel-t-notas').value = v;
-        renderizarMapa(); renderizarNotas(); salvar();
+        renderizarMapa(); renderizarNotas(); renderizarListaAulas();
     }
 
     // --- AULAS ---
@@ -242,30 +250,17 @@
         const lista = document.getElementById('lista-aula');
         lista.innerHTML = db.aulas.map((a, i) => `
             <tr><td>${a.nome}</td><td>${a.tipo.split('/')[1].toUpperCase()}</td>
-            <td class="admin-only"><button onclick="delAula(${i})" style="color:red; background:none; border:none; cursor:pointer;"><i class="fas fa-trash"></i></button></td></tr>
+            <td class="admin-only"><button onclick="delAula(${i})" style="color:red; border:none; background:none; cursor:pointer;"><i class="fas fa-trash"></i></button></td></tr>
         `).join('');
+        
         const selPj = document.getElementById('pj-selecionar-aula');
-        selPj.innerHTML = '<option value="">Escolha a aula...</option>' + db.aulas.map((a, i) => `<option value="${i}">${a.nome}</option>`).join('');
+        selPj.innerHTML = '<option value="">Projetar aula...</option>' + db.aulas.map((a, i) => `<option value="${i}">${a.nome}</option>`).join('');
         if(!isAdmin) document.querySelectorAll('.admin-only').forEach(el => el.style.display = 'none');
     }
 
     function delAula(i) { if(isAdmin && confirm("Excluir?")) { db.aulas.splice(i,1); salvar(); renderizarListaAulas(); } }
 
-    // --- PROJETOR ---
-    function abrirLousa() { document.getElementById('lousa').style.display = 'flex'; renderizarListaAulas(); }
-    function fecharLousa() { document.getElementById('lousa').style.display = 'none'; }
-    function exibirNaLousa(idx) {
-        const view = document.getElementById('view-lousa');
-        if(!idx) return view.innerHTML = '';
-        const a = db.aulas[idx];
-        view.innerHTML = a.tipo.includes('pdf') ? `<iframe src="${a.data}" width="100%" height="100%"></iframe>` : `<img src="${a.data}">`;
-    }
-    function toggleFullScreen() {
-        let el = document.getElementById("lousa");
-        if (!document.fullscreenElement) el.requestFullscreen(); else document.exitFullscreen();
-    }
-
-    // --- ALUNOS ---
+    // --- MAPA ---
     function renderizarMapa() {
         const grid = document.getElementById('grid-mapa');
         grid.innerHTML = '';
@@ -275,7 +270,7 @@
             grid.innerHTML += `
                 <div class="carteira" onclick="abrirEdicao(${i})">
                     <div class="img-container"><img src="${alu.p || 'https://cdn-icons-png.flaticon.com/512/3135/3135715.png'}"></div>
-                    <b>${alu.n}</b>
+                    <b style="font-size:0.5rem">${alu.n}</b>
                 </div>`;
         }
     }
@@ -284,20 +279,21 @@
         const alu = db.turmas[db.tAtual].alunos[i] || { n: 'LIVRE', p: 'https://cdn-icons-png.flaticon.com/512/3135/3135715.png' };
         document.getElementById('ed-idx').value = i;
         document.getElementById('ed-nome').value = alu.n;
-        document.getElementById('view-aluno-visitante').innerHTML = `<img src="${alu.p}" style="width:100px; border-radius:50%"><br><h3>${alu.n}</h3>`;
+        document.getElementById('view-aluno-vis').innerHTML = `<img src="${alu.p}" style="width:80px; border-radius:50%"><br><h4>${alu.n}</h4>`;
         document.getElementById('modal-aluno').style.display = 'flex';
+        
         if(!isAdmin) {
+            document.getElementById('view-aluno-vis').style.display = 'block';
             document.querySelectorAll('.admin-only').forEach(el => el.style.display = 'none');
-            document.getElementById('view-aluno-visitante').style.display = 'block';
         } else {
-            document.getElementById('view-aluno-visitante').style.display = 'none';
+            document.getElementById('view-aluno-vis').style.display = 'none';
+            document.querySelectorAll('.admin-only').forEach(el => el.style.display = 'flex');
         }
     }
 
     function fecharModal() { document.getElementById('modal-aluno').style.display = 'none'; }
 
     function confirmarAluno() {
-        if(!isAdmin) return;
         const i = document.getElementById('ed-idx').value;
         const nome = document.getElementById('ed-nome').value.toUpperCase();
         const foto = document.getElementById('ed-foto').files[0];
@@ -324,23 +320,31 @@
             const nt = t.notas[i] || { n1: 0, n2: 0, n3: 0 };
             const m = ((parseFloat(nt.n1) + parseFloat(nt.n2) + parseFloat(nt.n3)) / 3).toFixed(1);
             corpo.innerHTML += `
-                <tr><td><b>${aluNome}</b></td>
-                <td><input type="number" step="0.1" class="in-nota" data-i="${i}" data-n="n1" value="${nt.n1}" ${!isAdmin?'disabled':''}></td>
-                <td><input type="number" step="0.1" class="in-nota" data-i="${i}" data-n="n2" value="${nt.n2}" ${!isAdmin?'disabled':''}></td>
-                <td><input type="number" step="0.1" class="in-nota" data-i="${i}" data-n="n3" value="${nt.n3}" ${!isAdmin?'disabled':''}></td>
+                <tr><td><small>${aluNome}</small></td>
+                <td><input type="number" step="0.1" class="in-nota" data-i="${i}" data-n="n1" value="${nt.n1}" ${!isAdmin?'disabled':''} style="width:40px"></td>
+                <td><input type="number" step="0.1" class="in-nota" data-i="${i}" data-n="n2" value="${nt.n2}" ${!isAdmin?'disabled':''} style="width:40px"></td>
+                <td><input type="number" step="0.1" class="in-nota" data-i="${i}" data-n="n3" value="${nt.n3}" ${!isAdmin?'disabled':''} style="width:40px"></td>
                 <td style="font-weight:bold; color:${m >= 6 ? 'green' : 'red'}">${m}</td></tr>`;
         }
     }
 
     function salvarNotas() {
-        if(!isAdmin) return;
         document.querySelectorAll('.in-nota').forEach(input => {
-            const i = input.dataset.i;
-            const campo = input.dataset.n;
+            const i = input.dataset.i; const campo = input.dataset.n;
             if(!db.turmas[db.tAtual].notas[i]) db.turmas[db.tAtual].notas[i] = { n1: 0, n2: 0, n3: 0 };
             db.turmas[db.tAtual].notas[i][campo] = input.value || 0;
         });
-        salvar(); renderizarNotas(); alert("Salvo!");
+        salvar(); renderizarNotas(); alert("Notas salvas!");
+    }
+
+    // --- PROJETOR ---
+    function abrirLousa() { document.getElementById('lousa').style.display = 'flex'; }
+    function fecharLousa() { document.getElementById('lousa').style.display = 'none'; }
+    function exibirNaLousa(idx) {
+        const view = document.getElementById('view-lousa');
+        if(!idx) return view.innerHTML = '';
+        const a = db.aulas[idx];
+        view.innerHTML = a.tipo.includes('pdf') ? `<iframe src="${a.data}" width="100%" height="100%"></iframe>` : `<img src="${a.data}">`;
     }
 </script>
 </body>
