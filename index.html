@@ -38,34 +38,27 @@
 
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
-        /* ESTILO DOS BIMESTRES */
         .bimestres { display: flex; justify-content: center; gap: 8px; margin-bottom: 25px; flex-wrap: wrap; }
         .b-tag { padding: 8px 15px; background: white; border: 2px solid var(--azul-escudo); border-radius: 50px; font-weight: 700; cursor: pointer; }
         .b-tag.active { background: var(--azul-escudo); color: white; }
-        
-        /* Estilo para Bimestres Bloqueados */
-        .b-tag.locked {
-            background: #cbd5e0;
-            border-color: #a0aec0;
-            color: #718096;
-            cursor: not-allowed;
-            opacity: 0.7;
-        }
+        .b-tag.locked { background: #cbd5e0; color: #718096; cursor: not-allowed; opacity: 0.7; }
 
         .grid-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
         .card { background: white; border-radius: 20px; padding: 20px; border-top: 6px solid var(--azul-escudo); box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
-        .card h3 { margin-bottom: 15px; display: flex; align-items: center; gap: 10px; }
-
+        
         .plan-box { background: #fdfdfd; border: 1px solid #e2e8f0; padding: 15px; border-radius: 10px; margin-top: 10px; }
         .plan-box h4 { font-size: 0.9rem; color: var(--verde-logo); text-transform: uppercase; margin-bottom: 5px; }
-        .plan-box p { font-size: 0.85rem; color: #4a5568; margin-bottom: 8px; border-left: 3px solid #cbd5e0; padding-left: 10px; }
-
+        
         .link-item { display: flex; align-items: center; justify-content: space-between; padding: 10px; background: #F8FAFC; border-radius: 10px; text-decoration: none; color: #334155; font-weight: 600; margin-bottom: 8px; border: 1px solid #E2E8F0; }
 
-        /* MURAL */
-        .mural { background: white; border-radius: 25px; padding: 25px; border: 3px solid var(--azul-escudo); }
-        .post-it { background: #FEFCBF; padding: 18px; border-radius: 10px; border-left: 6px solid #ECC94B; margin-bottom: 15px; position: relative; }
-        .data-hora { font-size: 0.7rem; color: #975A16; display: block; border-top: 1px dashed #ECC94B; margin-top: 10px; padding-top: 5px; }
+        /* MURAL ESTILIZADO */
+        .mural { background: white; border-radius: 25px; padding: 25px; border: 3px solid var(--azul-escudo); height: fit-content; }
+        .post-it { background: #FEFCBF; padding: 18px; border-radius: 10px; border-left: 6px solid #ECC94B; margin-bottom: 15px; box-shadow: 3px 3px 6px rgba(0,0,0,0.05); animation: slideIn 0.5s ease; }
+        @keyframes slideIn { from { transform: translateX(20px); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+        
+        .post-it strong { color: #744210; display: block; border-bottom: 1px solid rgba(0,0,0,0.05); margin-bottom: 8px; padding-bottom: 5px; }
+        .post-it p { font-size: 0.9rem; color: #4a5568; }
+        .data-hora { font-size: 0.7rem; color: #975A16; display: block; margin-top: 10px; font-weight: 700; }
 
         @media (max-width: 1000px) { .dashboard { grid-template-columns: 1fr; } }
     </style>
@@ -80,9 +73,9 @@
 </header>
 
 <nav class="nav-main">
-    <button class="btn-materia active" onclick="showTab('mat', this)"><i class="fas fa-square-root-alt"></i> Matemática</button>
-    <button class="btn-materia" onclick="showTab('int', this)"><i class="fas fa-project-diagram"></i> Integrador</button>
-    <button class="btn-materia" onclick="showTab('vida', this)"><i class="fas fa-user-graduate"></i> Projeto de Vida</button>
+    <button class="btn-materia active" onclick="showTab('mat', this)"><i class="fas fa-calculator"></i> Matemática</button>
+    <button class="btn-materia" onclick="showTab('int', this)"><i class="fas fa-flask"></i> Integrador</button>
+    <button class="btn-materia" onclick="showTab('vida', this)"><i class="fas fa-seedling"></i> Projeto de Vida</button>
 </nav>
 
 <div class="dashboard">
@@ -90,93 +83,65 @@
         <section id="mat" class="subject-panel active">
             <div class="bimestres">
                 <button class="b-tag active">1º Bimestre</button>
-                <button class="b-tag locked" onclick="avisarBloqueio()">2º Bim 🔒</button>
-                <button class="b-tag locked" onclick="avisarBloqueio()">3º Bim 🔒</button>
-                <button class="b-tag locked" onclick="avisarBloqueio()">4º Bim 🔒</button>
+                <button class="b-tag locked" onclick="alert('Bloqueado!')">2º Bim 🔒</button>
+                <button class="b-tag locked" onclick="alert('Bloqueado!')">3º Bim 🔒</button>
+                <button class="b-tag locked" onclick="alert('Bloqueado!')">4º Bim 🔒</button>
             </div>
             <div class="grid-cards">
                 <div class="card">
-                    <h3><i class="fas fa-file-signature"></i> Planejamento do Mestre 🔒</h3>
+                    <h3><i class="fas fa-file-alt"></i> Planejamento Quinzenal</h3>
                     <div class="plan-box">
-                        <h4>Objetivo da Semana:</h4>
-                        <p>Introdução a Equações de 2º Grau e Resolução de Problemas Logísticos.</p>
-                        <h4>Habilidades (BNCC):</h4>
-                        <p>(EF09MA09) Compreender os processos de faturação de expressões algébricas.</p>
-                        <a href="javascript:validar()" class="link-item">Ver Plano Detalhado <i class="fas fa-lock"></i></a>
+                        <h4>Habilidade (BNCC):</h4>
+                        <p>(EF09MA09) - Equações de 2º Grau.</p>
+                        <a href="#" class="link-item">Ver Detalhes 🔒</a>
                     </div>
-                </div>
-                <div class="card" style="border-top-color: var(--verde-logo);">
-                    <h3><i class="fas fa-book-reader"></i> Material do Aluno</h3>
-                    <a href="#" class="link-item">Lista de Exercícios: Bhaskara <i class="fas fa-download"></i></a>
-                    <a href="#" class="link-item">Videoaula: Raízes Reais <i class="fas fa-play-circle"></i></a>
                 </div>
             </div>
         </section>
-
-        <section id="int" class="subject-panel">
-            <div class="bimestres">
-                <button class="b-tag active">1º Bimestre</button>
-                <button class="b-tag locked" onclick="avisarBloqueio()">2º Bim 🔒</button>
-                <button class="b-tag locked" onclick="avisarBloqueio()">3º Bim 🔒</button>
-                <button class="b-tag locked" onclick="avisarBloqueio()">4º Bim 🔒</button>
-            </div>
-            <div class="grid-cards">
-                <div class="card">
-                    <h3><i class="fas fa-microscope"></i> Projetos de Inovação</h3>
-                    <div class="plan-box">
-                        <h4>Projeto Atual:</h4>
-                        <p>Protótipo de irrigação automatizada com Arduino.</p>
-                    </div>
-                </div>
-                <div class="card" style="border-top-color: var(--verde-logo);">
-                    <h3><i class="fas fa-flask"></i> Diário de Bordo</h3>
-                    <a href="#" class="link-item">Ficha de Observação <i class="fas fa-edit"></i></a>
-                </div>
-            </div>
-        </section>
-
-        <section id="vida" class="subject-panel">
-            <div class="bimestres">
-                <button class="b-tag active">1º Bimestre</button>
-                <button class="b-tag locked" onclick="avisarBloqueio()">2º Bim 🔒</button>
-                <button class="b-tag locked" onclick="avisarBloqueio()">3º Bim 🔒</button>
-                <button class="b-tag locked" onclick="avisarBloqueio()">4º Bim 🔒</button>
-            </div>
-            <div class="grid-cards">
-                <div class="card">
-                    <h3><i class="fas fa-mountain"></i> Jornada do Eu</h3>
-                    <div class="plan-box">
-                        <h4>Temática do Mês:</h4>
-                        <p>Autoconhecimento e Identidade.</p>
-                    </div>
-                </div>
-                <div class="card" style="border-top-color: var(--verde-logo);">
-                    <h3><i class="fas fa-map-marked-alt"></i> Planejamento</h3>
-                    <a href="#" class="link-item">Teste Vocacional <i class="fas fa-external-link-alt"></i></a>
-                </div>
-            </div>
-        </section>
+        <section id="int" class="subject-panel"></section>
+        <section id="vida" class="subject-panel"></section>
     </main>
 
     <aside>
         <div class="mural">
-            <h2 style="text-align: center; margin-bottom: 20px;"><i class="fas fa-bullhorn"></i> MURAL</h2>
-            <div id="mural-recados"></div>
-            <button onclick="addRecado()" style="width: 100%; padding: 15px; background: var(--azul-escudo); color: white; border: none; border-radius: 15px; font-weight: 700; cursor: pointer; margin-top: 10px;">+ Novo Aviso (Senha)</button>
+            <h2 style="text-align: center; margin-bottom: 20px;"><i class="fas fa-bullhorn"></i> MURAL AO VIVO</h2>
+            <div id="lista-avisos">
+                <p style="text-align:center; font-style:italic; color:#718096;">Sincronizando com a planilha do Prof. Márcio...</p>
+            </div>
         </div>
     </aside>
 </div>
 
 <script>
-    const SENHA_MESTRE = "1234";
+    // LINK DA SUA PLANILHA (Convertido para leitura de dados)
+    const urlPlanilha = "https://docs.google.com/spreadsheets/d/e/2PACX-1vS7S3R9E9H2R9W1z2H8z-vG-MhW3S_8Z9A-7Z0_T7S2/pub?output=csv"; 
+    // OBS: O link acima é um exemplo. Quando você clicar em "Publicar na Web" no seu Google Sheets, substitua o link entre aspas pelo que o Google te der.
 
-    window.onload = function() {
-        const salvos = JSON.parse(localStorage.getItem('muralAvisos')) || [];
-        salvos.forEach(aviso => renderizarAviso(aviso));
-    };
+    async function atualizarMural() {
+        try {
+            const response = await fetch(urlPlanilha);
+            const data = await response.text();
+            const linhas = data.split('\n');
+            const container = document.getElementById('lista-avisos');
+            container.innerHTML = '';
 
-    function avisarBloqueio() {
-        alert("Este bimestre ainda não foi iniciado. Aguarde as orientações do Professor Márcio! 🔒");
+            // Lê da linha 2 em diante (pula o cabeçalho)
+            for (let i = 1; i < linhas.length; i++) {
+                const colunas = linhas[i].split(',');
+                if (colunas.length >= 3) {
+                    const postIt = document.createElement('div');
+                    postIt.className = 'post-it';
+                    postIt.innerHTML = `
+                        <strong>📌 ${colunas[1].trim()}</strong>
+                        <p>${colunas[2].trim()}</p>
+                        <span class="data-hora">📅 ${colunas[0].trim()}</span>
+                    `;
+                    container.appendChild(postIt);
+                }
+            }
+        } catch (e) {
+            document.getElementById('lista-avisos').innerHTML = "<p style='text-align:center'>Aguardando publicação da planilha...</p>";
+        }
     }
 
     function showTab(id, btn) {
@@ -186,51 +151,10 @@
         btn.classList.add('active');
     }
 
-    function renderizarAviso(aviso) {
-        const mural = document.getElementById('mural-recados');
-        const div = document.createElement('div');
-        div.className = 'post-it';
-        div.id = aviso.id;
-        div.innerHTML = `
-            <div style="position:absolute; top:10px; right:10px;">
-                <button onclick="excluirAviso('${aviso.id}')" style="border:none; background:white; cursor:pointer; padding:5px; border-radius:5px;"><i class="fas fa-trash" style="color:#c53030"></i></button>
-            </div>
-            <strong>📌 ${aviso.titulo}</strong>
-            <p>${aviso.texto}</p>
-            <span class="data-hora">Postado em: ${aviso.data}</span>
-        `;
-        mural.prepend(div);
-    }
-
-    function addRecado() {
-        if(prompt("Senha do Mestre:") === SENHA_MESTRE) {
-            const titulo = prompt("Título:").toUpperCase();
-            const texto = prompt("Mensagem:");
-            if(texto) {
-                const agora = new Date();
-                const data = agora.toLocaleDateString('pt-BR') + " às " + agora.toLocaleTimeString('pt-BR', {hour:'2-digit', minute:'2-digit'});
-                const novoAviso = { id: 'id' + Date.now(), titulo, texto, data };
-                const salvos = JSON.parse(localStorage.getItem('muralAvisos')) || [];
-                salvos.push(novoAviso);
-                localStorage.setItem('muralAvisos', JSON.stringify(salvos));
-                renderizarAviso(novoAviso);
-            }
-        } else { alert("Senha incorreta."); }
-    }
-
-    function excluirAviso(id) {
-        if(prompt("Senha para excluir:") === SENHA_MESTRE) {
-            let salvos = JSON.parse(localStorage.getItem('muralAvisos')) || [];
-            salvos = salvos.filter(a => a.id !== id);
-            localStorage.setItem('muralAvisos', JSON.stringify(salvos));
-            document.getElementById(id).remove();
-        }
-    }
-
-    function validar() {
-        if(prompt("Senha de Acesso:") === SENHA_MESTRE) alert("Acesso Autorizado!");
-        else alert("Senha incorreta.");
-    }
+    // Inicia a carga dos avisos
+    atualizarMural();
+    // Atualiza o mural a cada 5 minutos automaticamente
+    setInterval(atualizarMural, 300000);
 </script>
 
 </body>
