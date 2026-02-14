@@ -3,58 +3,95 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Estação Mestre | Márcio L. da Silva</title>
+    <title>Estação de Aprendizagem 2026 | Prof. Márcio</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
-        :root { --azul: #1A365D; --verde: #48BB78; --bg: #F1F5F9; --header: #D9DDE2; }
+        :root {
+            --azul-escudo: #1A365D;
+            --verde-logo: #48BB78;
+            --bg-site: #F1F5F9;
+            --bg-header: #D9DDE2; 
+            --accent: #ED8936;
+        }
+
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Fredoka', sans-serif; }
-        body { background: var(--bg); color: var(--azul); line-height: 1.6; }
+        body { background: var(--bg-site); color: var(--azul-escudo); line-height: 1.6; }
 
-        header { background: var(--header); padding: 30px; text-align: center; border-bottom: 6px solid var(--verde); box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
-        .logo { height: 130px; margin-bottom: 10px; }
-
-        .nav-main { display: flex; justify-content: center; gap: 15px; padding: 20px; flex-wrap: wrap; }
-        .btn-materia { background: var(--azul); color: white; padding: 15px 25px; border: none; border-radius: 15px; font-weight: 700; cursor: pointer; transition: 0.3s; display: flex; align-items: center; gap: 10px; }
-        .btn-materia.active { background: var(--verde); transform: scale(1.05); }
+        header {
+            background: var(--bg-header); padding: 30px 5%; text-align: center;
+            border-bottom: 6px solid var(--verde-logo); box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        .logo-container img { height: 130px; margin-bottom: 10px; transition: transform 0.3s; }
+        .logo-container img:hover { transform: scale(1.05); }
+        
+        .nav-main { display: flex; justify-content: center; gap: 15px; padding: 25px 5%; flex-wrap: wrap; }
+        .btn-materia {
+            background: var(--azul-escudo); color: white; padding: 15px 25px;
+            border: none; border-radius: 15px; font-weight: 700; cursor: pointer;
+            box-shadow: 0 5px 0 #0d1a2d; transition: 0.2s; display: flex; align-items: center; gap: 10px;
+        }
+        .btn-materia:hover { transform: translateY(-2px); }
+        .btn-materia.active { background: var(--verde-logo); box-shadow: none; transform: translateY(5px); }
 
         .dashboard { display: grid; grid-template-columns: 1fr 400px; gap: 25px; padding: 0 5% 50px; }
-        
-        .card { background: white; border-radius: 20px; padding: 25px; border-top: 8px solid var(--azul); box-shadow: 0 4px 10px rgba(0,0,0,0.05); margin-bottom: 20px; }
-        .card h3 { margin-bottom: 20px; color: var(--azul); border-bottom: 2px solid var(--bg); padding-bottom: 10px; }
+        .subject-panel { display: none; animation: slideUp 0.4s ease; }
+        .subject-panel.active { display: block; }
+        @keyframes slideUp { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
 
-        .bimestres { display: flex; justify-content: center; gap: 10px; margin-bottom: 25px; }
-        .b-tag { padding: 10px 20px; background: white; border: 2px solid var(--azul); border-radius: 50px; font-weight: 700; cursor: pointer; }
-        .b-tag.active { background: var(--azul); color: white; }
-        .b-tag.locked { background: #cbd5e0; color: #718096; border-color: #a0aec0; cursor: not-allowed; }
+        /* BIMESTRES */
+        .bimestres { display: flex; justify-content: center; gap: 8px; margin-bottom: 30px; flex-wrap: wrap; }
+        .b-tag { padding: 10px 18px; background: white; border: 2px solid var(--azul-escudo); border-radius: 50px; font-weight: 700; cursor: pointer; transition: 0.3s; }
+        .b-tag.active { background: var(--azul-escudo); color: white; transform: scale(1.1); }
+        .b-tag.locked { background: #cbd5e0; color: #718096; border-color: #a0aec0; cursor: not-allowed; opacity: 0.7; }
 
-        /* BOTÃO DE LINK ESTILIZADO */
-        .btn-drive {
-            display: flex; align-items: center; justify-content: space-between;
-            padding: 15px; background: #f8fafc; border: 1px solid #e2e8f0;
-            border-radius: 12px; text-decoration: none; color: #334155;
-            font-weight: 600; margin-bottom: 12px; transition: 0.2s;
+        .grid-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 25px; }
+        .card { 
+            background: white; border-radius: 20px; padding: 25px; 
+            border-top: 8px solid var(--azul-escudo); 
+            box-shadow: 0 6px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
         }
-        .btn-drive:hover { background: #edf2f7; border-color: var(--verde); color: var(--verde); transform: translateX(5px); }
-        .btn-drive i { font-size: 1.2rem; }
+        .card:hover { transform: translateY(-5px); box-shadow: 0 12px 20px rgba(0,0,0,0.1); }
+        .card h3 { margin-bottom: 18px; display: flex; align-items: center; gap: 10px; color: var(--azul-escudo); }
+
+        .plan-box { background: #f8fafc; border: 1px solid #e2e8f0; padding: 15px; border-radius: 12px; margin-top: 10px; position: relative; }
+        .plan-box h4 { font-size: 0.8rem; color: var(--verde-logo); text-transform: uppercase; margin-bottom: 5px; display: flex; align-items: center; gap: 5px; }
+        .plan-box p { font-size: 0.95rem; color: #2d3748; border-left: 3px solid var(--verde-logo); padding-left: 10px; margin-bottom: 15px; font-weight: 500; }
+        
+        .status-badge { position: absolute; top: 10px; right: 10px; font-size: 0.65rem; background: var(--accent); color: white; padding: 4px 10px; border-radius: 20px; font-weight: 700; }
+
+        /* LINKS COLORIDOS */
+        .btn-link { display: flex; align-items: center; justify-content: space-between; padding: 14px; background: #fff; border-radius: 12px; text-decoration: none; color: #334155; font-weight: 700; margin-top: 12px; border: 2px solid #E2E8F0; transition: 0.3s; }
+        .link-pdf:hover { border-color: #e53e3e; color: #e53e3e; background: #fff5f5; }
+        .link-slide:hover { border-color: #3182ce; color: #3182ce; background: #ebf8ff; }
+        .link-video:hover { border-color: #38a169; color: #38a169; background: #f0fff4; }
 
         /* MURAL */
-        .mural { background: white; border-radius: 25px; padding: 25px; border: 3px solid var(--azul); }
-        .mural-frame { width: 100%; height: 500px; border: none; border-radius: 15px; }
+        .mural { background: white; border-radius: 25px; padding: 25px; border: 3px solid var(--azul-escudo); position: sticky; top: 20px; }
+        .post-it { background: #FEFCBF; padding: 15px; border-radius: 10px; border-left: 6px solid #ECC94B; margin-bottom: 15px; position: relative; box-shadow: 2px 2px 5px rgba(0,0,0,0.1); }
+        .data-hora { font-size: 0.7rem; color: #975A16; display: block; margin-top: 8px; font-weight: bold; border-top: 1px dashed #ECC94B; padding-top: 5px; }
+        .btn-mestre-acao { width: 100%; padding: 12px; background: var(--azul-escudo); color: white; border: none; border-radius: 15px; font-weight: 700; cursor: pointer; margin-top: 10px; transition: 0.3s; }
+        .btn-mestre-acao:hover { background: #2c5282; }
 
-        @media (max-width: 1000px) { .dashboard { grid-template-columns: 1fr; } }
+        footer { text-align: center; padding: 40px; background: var(--azul-escudo); color: white; margin-top: 50px; }
+
+        @media (max-width: 1000px) { .dashboard { grid-template-columns: 1fr; } .mural { position: static; } }
     </style>
 </head>
 <body>
 
 <header>
-    <img src="logo-marcio.png" alt="Prof. Márcio" class="logo">
-    <p style="text-transform: uppercase; font-weight: 700; letter-spacing: 2px;">Estação de Aprendizagem 2026</p>
+    <div class="logo-container">
+        <img src="logo-marcio.png" alt="Prof. Márcio L. da Silva">
+        <h1 style="font-size: 1.8rem; margin-top: 10px;">Estação de Aprendizagem 2026</h1>
+        <p><i class="fas fa-user-tie"></i> Professor Márcio L. da Silva</p>
+    </div>
 </header>
 
 <nav class="nav-main">
     <button class="btn-materia active" onclick="showTab('mat', this)"><i class="fas fa-calculator"></i> Matemática</button>
-    <button class="btn-materia" onclick="showTab('int', this)"><i class="fas fa-flask"></i> Integrador</button>
+    <button class="btn-materia" onclick="showTab('int', this)"><i class="fas fa-microscope"></i> Integrador</button>
     <button class="btn-materia" onclick="showTab('vida', this)"><i class="fas fa-seedling"></i> Projeto de Vida</button>
 </nav>
 
@@ -68,45 +105,94 @@
                 <button class="b-tag locked">4º Bim 🔒</button>
             </div>
 
-            <div class="card">
-                <h3><i class="fab fa-google-drive"></i> Documentos de Aula</h3>
-                <a href="COLE_AQUI_LINK_DO_PLANTO_DE_AULA" target="_blank" class="btn-drive">
-                    <span><i class="fas fa-file-alt"></i> Plano de Aula Semanal</span>
-                    <i class="fas fa-external-link-alt"></i>
-                </a>
-                <a href="COLE_AQUI_LINK_DA_LISTA" target="_blank" class="btn-drive">
-                    <span><i class="fas fa-edit"></i> Lista de Exercícios (PDF)</span>
-                    <i class="fas fa-download"></i>
-                </a>
-                <a href="COLE_AQUI_LINK_DOS_SLIDES" target="_blank" class="btn-drive">
-                    <span><i class="fas fa-presentation"></i> Slides da Aula</span>
-                    <i class="fas fa-play-circle"></i>
-                </a>
+            <div class="grid-cards">
+                <div class="card">
+                    <span class="status-badge">EM ANDAMENTO</span>
+                    <h3><i class="fas fa-map-signs"></i> Roteiro de Estudo</h3>
+                    <div class="plan-box">
+                        <h4><i class="fas fa-tag"></i> Assunto:</h4>
+                        <p>Equações de 2º Grau: O Método de Bhaskara.</p>
+                        
+                        <h4><i class="fas fa-book"></i> Atividade do Livro:</h4>
+                        <p>Páginas 112 a 115 - Leitura e exemplos resolvidos.</p>
+                        
+                        <h4><i class="fas fa-pen-fancy"></i> Exercícios:</h4>
+                        <p>Questões 1, 4, 7 e 10 do capítulo 4.</p>
+
+                        <div style="margin-top: 15px; font-size: 0.8rem; color: #e53e3e; font-weight: bold;">
+                           <i class="fas fa-calendar-check"></i> PREVISÃO DE VISTO: 20/02/2026
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" style="border-top-color: var(--verde-logo);">
+                    <h3><i class="fab fa-google-drive"></i> Materiais de Apoio</h3>
+                    <p style="font-size: 0.8rem; margin-bottom: 10px; color: #718096;">Clique para baixar ou visualizar:</p>
+                    
+                    <a href="LINK_AQUI" target="_blank" class="btn-link link-pdf">
+                        <span>Lista de Exercícios #01</span> <i class="fas fa-file-pdf"></i>
+                    </a>
+                    
+                    <a href="LINK_AQUI" target="_blank" class="btn-link link-slide">
+                        <span>Slides da Aula (PPT)</span> <i class="fas fa-file-powerpoint"></i>
+                    </a>
+                    
+                    <a href="LINK_AQUI" target="_blank" class="btn-link link-video">
+                        <span>Vídeo de Apoio / Gabarito</span> <i class="fas fa-video"></i>
+                    </a>
+                </div>
             </div>
         </section>
 
         <section id="int" class="subject-panel">
-            <div class="card">
-                <h3><i class="fas fa-flask"></i> Projetos Integradores</h3>
-                <a href="#" target="_blank" class="btn-drive"><span>Guia do Projeto</span><i class="fas fa-link"></i></a>
+            <div class="grid-cards">
+                <div class="card">
+                    <h3><i class="fas fa-microscope"></i> Conteúdo Integrador</h3>
+                    <div class="plan-box">
+                        <h4>Assunto:</h4>
+                        <p>Ciência e Tecnologia no Cotidiano.</p>
+                    </div>
+                </div>
             </div>
         </section>
 
         <section id="vida" class="subject-panel">
-            <div class="card">
-                <h3><i class="fas fa-heart"></i> Projeto de Vida</h3>
-                <a href="#" target="_blank" class="btn-drive"><span>Atividade de Autoconhecimento</span><i class="fas fa-link"></i></a>
+            <div class="grid-cards">
+                <div class="card">
+                    <h3><i class="fas fa-seedling"></i> Planejando o Futuro</h3>
+                    <div class="plan-box">
+                        <h4>Assunto:</h4>
+                        <p>Autoconhecimento e Identidade.</p>
+                    </div>
+                </div>
             </div>
         </section>
     </main>
 
     <aside>
         <div class="mural">
-            <h3 style="text-align: center; margin-bottom: 15px;">MURAL DE RECADOS</h3>
-            <iframe class="mural-frame" src="LINK_DO_SEU_GOOGLE_DOCS_PUBLICADO"></iframe>
+            <h2 style="text-align: center; margin-bottom: 20px;"><i class="fas fa-bullhorn"></i> MURAL DO MESTRE</h2>
+            <div id="container-recados">
+                <div class="post-it">
+                    <strong>📌 ATENÇÃO TURMA!</strong>
+                    <p>Não esqueçam de trazer o livro didático na próxima aula de quarta-feira.</p>
+                    <span class="data-hora">📅 13/02/2026</span>
+                </div>
+            </div>
+            <button class="btn-mestre-acao" onclick="novoAviso()">+ Novo Recado Rápido</button>
+            
+            <div style="margin-top: 20px; padding: 15px; background: #edf2f7; border-radius: 15px; font-size: 0.8rem;">
+                <p><strong><i class="fas fa-question-circle"></i> Dúvidas?</strong></p>
+                <p>Mande um e-mail para: prof.marcio@escola.com</p>
+            </div>
         </div>
     </aside>
 </div>
+
+<footer>
+    <p>© 2026 - Estação de Aprendizagem | Professor Márcio L. da Silva</p>
+    <p style="font-size: 0.7rem; opacity: 0.7; margin-top: 10px;">Educação que Transforma</p>
+</footer>
 
 <script>
     function showTab(id, btn) {
@@ -115,7 +201,32 @@
         document.getElementById(id).classList.add('active');
         btn.classList.add('active');
     }
-</script>
 
+    window.onload = function() {
+        const salvos = JSON.parse(localStorage.getItem('muralV6')) || [];
+        salvos.forEach(a => renderAviso(a));
+    };
+
+    function renderAviso(aviso) {
+        const div = document.createElement('div');
+        div.className = 'post-it';
+        div.style.background = "#e6fffa"; 
+        div.innerHTML = `<strong>📌 ${aviso.titulo}</strong><p>${aviso.texto}</p><span class="data-hora">📅 ${aviso.data} (Temporário)</span>`;
+        document.getElementById('container-recados').prepend(div);
+    }
+
+    function novoAviso() {
+        const t = prompt("Título do Recado:").toUpperCase();
+        const x = prompt("O que quer dizer para os alunos?");
+        if(t && x) {
+            const d = new Date().toLocaleDateString();
+            const obj = { titulo: t, texto: x, data: d };
+            const s = JSON.parse(localStorage.getItem('muralV6')) || [];
+            s.push(obj);
+            localStorage.setItem('muralV6', JSON.stringify(s));
+            renderAviso(obj);
+        }
+    }
+</script>
 </body>
 </html>
