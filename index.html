@@ -82,14 +82,16 @@
         .info-box { flex-grow: 1; }
         .info-box h3 { font-size: 1.05rem; margin-bottom: 5px; color: var(--text-dark); }
         
+        /* BADGES DOS 5 RECURSOS */
         .type-badge {
             display: inline-block; padding: 4px 10px; border-radius: 8px;
             font-size: 0.7rem; font-weight: 700; color: white; text-transform: uppercase;
         }
-        .bg-conteudo { background: #3498db; }
-        .bg-atividade { background: #27ae60; }
-        .bg-exercicio { background: #f39c12; }
-        .bg-avaliacao { background: #e74c3c; }
+        .bg-video { background: #8E44AD; }      /* 1. VÍDEO */
+        .bg-conteudo { background: #3498db; }   /* 2. CONTEÚDO */
+        .bg-atividade { background: #27ae60; }  /* 3. ATIVIDADE DO LIVRO */
+        .bg-exercicio { background: #f39c12; }  /* 4. EXERCÍCIO */
+        .bg-avaliacao { background: #e74c3c; }  /* 5. AVALIAÇÃO */
 
         .locked-panel { text-align: center; padding: 50px; color: #A0AEC0; }
         .wa-button { position: fixed; bottom: 20px; right: 20px; background: #25D366; color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 30px; box-shadow: 0 10px 20px rgba(0,0,0,0.1); z-index: 2000; }
@@ -131,34 +133,42 @@
     <div id="mat-content" class="card-container active">
         <div class="activity-list">
             <a href="#" class="activity-item mat-item">
+                <div class="date-box"><span class="day">22</span><span class="month">Fev</span></div>
+                <div class="info-box">
+                    <span class="type-badge bg-video">🎥 Vídeo de Apoio</span>
+                    <h3>Aprenda Frações de forma fácil</h3>
+                </div>
+                <i class="fas fa-play-circle" style="color:#8E44AD"></i>
+            </a>
+            <a href="#" class="activity-item mat-item">
+                <div class="date-box"><span class="day">20</span><span class="month">Fev</span></div>
+                <div class="info-box">
+                    <span class="type-badge bg-conteudo">📖 Conteúdo</span>
+                    <h3>Apostila: Introdução à Geometria</h3>
+                </div>
+                <i class="fas fa-chevron-right" style="color:#CCC"></i>
+            </a>
+            <a href="#" class="activity-item mat-item">
                 <div class="date-box"><span class="day">18</span><span class="month">Fev</span></div>
                 <div class="info-box">
-                    <span class="type-badge bg-avaliacao">🏆 Avaliação</span>
-                    <h3>Teste de Desempenho: Frações</h3>
+                    <span class="type-badge bg-atividade">🚀 Atividade do Livro</span>
+                    <h3>Páginas 45 a 50 - Exercícios Fixação</h3>
                 </div>
-                <i class="fas fa-chevron-right" style="color:#CCC"></i>
+                <i class="fas fa-book" style="color:#27ae60"></i>
             </a>
             <a href="#" class="activity-item mat-item">
-                <div class="date-box"><span class="day">16</span><span class="month">Fev</span></div>
-                <div class="info-box">
-                    <span class="type-badge bg-atividade">🚀 Atividade</span>
-                    <h3>Laboratório de Geometria Plana</h3>
-                </div>
-                <i class="fas fa-chevron-right" style="color:#CCC"></i>
-            </a>
-            <a href="#" class="activity-item mat-item">
-                <div class="date-box"><span class="day">14</span><span class="month">Fev</span></div>
+                <div class="date-box"><span class="day">15</span><span class="month">Fev</span></div>
                 <div class="info-box">
                     <span class="type-badge bg-exercicio">📝 Exercício</span>
-                    <h3>Lista: Expressões Numéricas</h3>
+                    <h3>Lista de Questões Objetivas</h3>
                 </div>
                 <i class="fas fa-chevron-right" style="color:#CCC"></i>
             </a>
             <a href="#" class="activity-item mat-item">
                 <div class="date-box"><span class="day">10</span><span class="month">Fev</span></div>
                 <div class="info-box">
-                    <span class="type-badge bg-conteudo">📖 Conteúdo</span>
-                    <h3>Vídeo: A História da Matemática</h3>
+                    <span class="type-badge bg-avaliacao">🏆 Avaliação</span>
+                    <h3>Teste Mensal de Matemática</h3>
                 </div>
                 <i class="fas fa-chevron-right" style="color:#CCC"></i>
             </a>
@@ -168,34 +178,42 @@
     <div id="int-content" class="card-container">
         <div class="activity-list">
             <a href="#" class="activity-item int-item">
+                <div class="date-box"><span class="day">22</span><span class="month">Fev</span></div>
+                <div class="info-box">
+                    <span class="type-badge bg-video">🎥 Vídeo de Apoio</span>
+                    <h3>O que é Projeto Integrador?</h3>
+                </div>
+                <i class="fas fa-play-circle" style="color:#8E44AD"></i>
+            </a>
+            <a href="#" class="activity-item int-item">
                 <div class="date-box"><span class="day">20</span><span class="month">Fev</span></div>
                 <div class="info-box">
-                    <span class="type-badge bg-avaliacao">🏆 Avaliação</span>
-                    <h3>Apresentação: Cidades Sustentáveis</h3>
+                    <span class="type-badge bg-conteudo">📖 Conteúdo</span>
+                    <h3>Texto Base: Sustentabilidade</h3>
                 </div>
                 <i class="fas fa-chevron-right" style="color:#CCC"></i>
             </a>
             <a href="#" class="activity-item int-item">
                 <div class="date-box"><span class="day">18</span><span class="month">Fev</span></div>
                 <div class="info-box">
-                    <span class="type-badge bg-atividade">🚀 Atividade</span>
-                    <h3>Oficina Maker: Reciclagem Eletrônica</h3>
+                    <span class="type-badge bg-atividade">🚀 Atividade do Livro</span>
+                    <h3>Análise de Caso - Página 12</h3>
                 </div>
-                <i class="fas fa-chevron-right" style="color:#CCC"></i>
+                <i class="fas fa-book" style="color:#27ae60"></i>
             </a>
             <a href="#" class="activity-item int-item">
                 <div class="date-box"><span class="day">15</span><span class="month">Fev</span></div>
                 <div class="info-box">
                     <span class="type-badge bg-exercicio">📝 Exercício</span>
-                    <h3>Quiz Interativo: Energias Limpas</h3>
+                    <h3>Quiz sobre Meio Ambiente</h3>
                 </div>
                 <i class="fas fa-chevron-right" style="color:#CCC"></i>
             </a>
             <a href="#" class="activity-item int-item">
-                <div class="date-box"><span class="day">12</span><span class="month">Fev</span></div>
+                <div class="date-box"><span class="day">10</span><span class="month">Fev</span></div>
                 <div class="info-box">
-                    <span class="type-badge bg-conteudo">📖 Conteúdo</span>
-                    <h3>Leitura: O que é Pensamento Crítico?</h3>
+                    <span class="type-badge bg-avaliacao">🏆 Avaliação</span>
+                    <h3>Entrega do Projeto Parcial</h3>
                 </div>
                 <i class="fas fa-chevron-right" style="color:#CCC"></i>
             </a>
@@ -207,32 +225,40 @@
             <a href="#" class="activity-item vida-item">
                 <div class="date-box"><span class="day">22</span><span class="month">Fev</span></div>
                 <div class="info-box">
-                    <span class="type-badge bg-avaliacao">🏆 Avaliação</span>
-                    <h3>Meu Ikigai: Relatório Final</h3>
+                    <span class="type-badge bg-video">🎥 Vídeo de Apoio</span>
+                    <h3>Vídeo: Descobrindo seu Propósito</h3>
+                </div>
+                <i class="fas fa-play-circle" style="color:#8E44AD"></i>
+            </a>
+            <a href="#" class="activity-item vida-item">
+                <div class="date-box"><span class="day">20</span><span class="month">Fev</span></div>
+                <div class="info-box">
+                    <span class="type-badge bg-conteudo">📖 Conteúdo</span>
+                    <h3>Leitura: Liderança e Ética</h3>
                 </div>
                 <i class="fas fa-chevron-right" style="color:#CCC"></i>
             </a>
             <a href="#" class="activity-item vida-item">
-                <div class="date-box"><span class="day">19</span><span class="month">Fev</span></div>
+                <div class="date-box"><span class="day">18</span><span class="month">Fev</span></div>
                 <div class="info-box">
-                    <span class="type-badge bg-atividade">🚀 Atividade</span>
-                    <h3>Dinâmica: Roda das Competências</h3>
+                    <span class="type-badge bg-atividade">🚀 Atividade do Livro</span>
+                    <h3>Plano de Carreira - Unidade 2</h3>
                 </div>
-                <i class="fas fa-chevron-right" style="color:#CCC"></i>
-            </a>
-            <a href="#" class="activity-item vida-item">
-                <div class="date-box"><span class="day">17</span><span class="month">Fev</span></div>
-                <div class="info-box">
-                    <span class="type-badge bg-exercicio">📝 Exercício</span>
-                    <h3>Autoavaliação: Gestão do Tempo</h3>
-                </div>
-                <i class="fas fa-chevron-right" style="color:#CCC"></i>
+                <i class="fas fa-book" style="color:#27ae60"></i>
             </a>
             <a href="#" class="activity-item vida-item">
                 <div class="date-box"><span class="day">15</span><span class="month">Fev</span></div>
                 <div class="info-box">
-                    <span class="type-badge bg-conteudo">📖 Conteúdo</span>
-                    <h3>Guia: Como Organizar seus Estudos</h3>
+                    <span class="type-badge bg-exercicio">📝 Exercício</span>
+                    <h3>Mapa Mental de Sonhos</h3>
+                </div>
+                <i class="fas fa-chevron-right" style="color:#CCC"></i>
+            </a>
+            <a href="#" class="activity-item vida-item">
+                <div class="date-box"><span class="day">10</span><span class="month">Fev</span></div>
+                <div class="info-box">
+                    <span class="type-badge bg-avaliacao">🏆 Avaliação</span>
+                    <h3>Autoavaliação Trimestral</h3>
                 </div>
                 <i class="fas fa-chevron-right" style="color:#CCC"></i>
             </a>
