@@ -2,355 +2,263 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SISTEMA MESTRE 360 | PROF. MÁRCIO</title>
+    <title>SISTEMA MESTRE 360 | CLOUD GOLD</title>
+    
+    <script src="https://www.gstatic.com/firebasejs/9.17.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.17.1/firebase-database-compat.js"></script>
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
     <style>
-        :root { 
-            --primary: #1a3059; /* Azul Marinho da sua logo */
-            --accent: #4caf50;  /* Verde da sua logo */
-            --accent-hover: #2e7d32;
-            --bg: #f1f5f9; 
-            --white: #ffffff; 
-            --danger: #e11d48; 
-            --text: #1e293b;
-        }
+        :root { --primary: #0f172a; --accent: #10b981; --bg: #f1f5f9; --white: #ffffff; --danger: #ef4444; }
+        body { font-family: 'Inter', sans-serif; background: var(--bg); display: flex; height: 100vh; margin: 0; color: #1e293b; overflow: hidden; }
         
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
-        body { background: var(--bg); display: flex; height: 100vh; overflow: hidden; color: var(--text); }
+        aside { width: 260px; background: var(--primary); color: white; display: flex; flex-direction: column; padding: 20px; }
+        .status-cloud { font-size: 11px; color: var(--accent); margin-bottom: 20px; border: 1px solid var(--accent); padding: 8px; border-radius: 4px; text-align: center; background: rgba(16, 185, 129, 0.1); }
         
-        /* SIDEBAR PROFISSIONAL */
-        aside { width: 280px; background: var(--primary); color: white; display: flex; flex-direction: column; box-shadow: 4px 0 20px rgba(0,0,0,0.2); z-index: 100; }
-        .aside-header { padding: 30px 20px; text-align: center; border-bottom: 2px solid var(--accent); background: rgba(0,0,0,0.2); }
-        .logo-box { width: 80px; height: 80px; background: white; border-radius: 15px; margin: 0 auto 15px; display: flex; align-items: center; justify-content: center; overflow: hidden; border: 3px solid var(--accent); }
-        .logo-box img { max-width: 90%; max-height: 90%; object-fit: contain; }
-        .aside-header h2 { font-size: 18px; color: var(--white); font-weight: 800; letter-spacing: 1px; }
-        
-        .nav-group { padding: 25px 20px 5px; font-size: 10px; color: #94a3b8; text-transform: uppercase; font-weight: 800; letter-spacing: 2px; }
-        .nav-item { width: 90%; margin: 2px auto; padding: 12px 15px; background: none; border: none; color: #cbd5e1; display: flex; align-items: center; gap: 12px; cursor: pointer; border-radius: 10px; transition: 0.3s; }
-        .nav-item:hover { background: rgba(255,255,255,0.05); color: var(--accent); }
-        .nav-item.active { background: var(--accent); color: var(--primary); font-weight: 700; }
-
-        /* ÁREA PRINCIPAL */
         main { flex: 1; padding: 30px; overflow-y: auto; }
-        .section { display: none; max-width: 1200px; margin: 0 auto; animation: fadeIn 0.4s ease; }
+        .section { display: none; }
         .section.active { display: block; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-
-        .header-box { background: var(--white); padding: 20px 30px; border-radius: 15px; margin-bottom: 25px; display: flex; align-items: center; justify-content: space-between; border-left: 8px solid var(--accent); box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
-        .card { background: var(--white); padding: 25px; border-radius: 15px; box-shadow: 0 4px 6px rgba(0,0,0,0.02); margin-bottom: 25px; border: 1px solid #e2e8f0; }
-
-        /* INPUTS E BOTÕES */
-        input, select, textarea { padding: 12px; border-radius: 8px; border: 1.5px solid #cbd5e1; outline: none; transition: 0.3s; }
-        input:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.2); }
-        .btn-acao { padding: 12px 20px; border: none; border-radius: 8px; cursor: pointer; font-weight: 700; background: var(--primary); color: white; display: inline-flex; align-items: center; gap: 8px; transition: 0.3s; }
-        .btn-acao:hover { background: var(--accent); color: var(--primary); transform: translateY(-2px); }
-
-        /* MODO TV & VISUALIZAÇÃO */
-        .modo-tv-container { display: flex; flex-direction: column; gap: 20px; }
-        .tv-screen { background: #0f172a; border-radius: 25px; padding: 60px; min-height: 400px; color: white; text-align: center; border: 10px solid var(--primary); display: flex; flex-direction: column; justify-content: center; position: relative; }
-        .tv-screen h1 { font-size: 45px; color: var(--accent); margin-bottom: 20px; }
-        .tv-screen p { font-size: 24px; line-height: 1.5; opacity: 0.9; }
+        .card { background: var(--white); padding: 25px; border-radius: 12px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); margin-bottom: 20px; }
         
-        .grid-midia { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 15px; margin-top: 20px; }
-        .midia-card { background: white; padding: 15px; border-radius: 12px; text-align: center; cursor: pointer; border: 2px solid transparent; transition: 0.3s; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
-        .midia-card:hover { border-color: var(--accent); transform: scale(1.05); }
-        .midia-card i { font-size: 30px; color: var(--primary); margin-bottom: 8px; }
+        .nav-btn { width: 100%; padding: 12px; margin-bottom: 8px; border: none; border-radius: 8px; background: transparent; color: #94a3b8; text-align: left; cursor: pointer; transition: 0.3s; font-weight: 600; }
+        .nav-btn.active { background: var(--accent); color: var(--primary); }
+        .nav-btn:hover:not(.active) { background: rgba(255,255,255,0.05); color: white; }
+        
+        table { width: 100%; border-collapse: collapse; margin-top: 15px; }
+        th, td { padding: 12px; border-bottom: 1px solid #e2e8f0; text-align: left; font-size: 14px; }
+        input, select { padding: 8px; border: 1px solid #cbd5e1; border-radius: 6px; outline: none; }
+        input:focus { border-color: var(--accent); }
 
-        /* VISUALIZADOR FULLSCREEN */
-        #visor-modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: black; z-index: 2000; }
-        .visor-content { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; }
-        .visor-content iframe, .visor-content img { width: 100%; height: 100%; border: none; object-fit: contain; }
-        .btn-fechar { position: absolute; top: 20px; right: 20px; background: var(--danger); color: white; border: none; width: 50px; height: 50px; border-radius: 50%; cursor: pointer; z-index: 2001; font-size: 20px; }
+        /* Estilo para as notas */
+        .nota-input { width: 60px; text-align: center; font-weight: bold; }
+        .media-bad { color: var(--danger); font-weight: bold; }
+        .media-good { color: var(--accent); font-weight: bold; }
 
-        /* TABELAS */
-        .table-container { border-radius: 12px; overflow: hidden; border: 1px solid #e2e8f0; }
-        table { width: 100%; border-collapse: collapse; }
-        th { background: #f8fafc; padding: 15px; font-size: 12px; color: var(--primary); text-transform: uppercase; }
-        td { padding: 12px; border-bottom: 1px solid #f1f5f9; text-align: center; }
-        .col-fixa { position: sticky; left: 0; background: white; z-index: 5; text-align: left; font-weight: 700; min-width: 200px; border-right: 2px solid #f1f5f9; }
+        /* Mapa de Sala */
+        .grid-mapa { display: grid; grid-template-columns: repeat(6, 1fr); gap: 10px; margin-top: 20px; }
+        .assento { aspect-ratio: 1/1; border: 2px dashed #cbd5e1; border-radius: 8px; display: flex; flex-direction: column; align-items: center; justify-content: center; font-size: 10px; text-align: center; padding: 5px; }
+        .assento.ocupado { border-style: solid; border-color: var(--primary); background: #f8fafc; }
     </style>
 </head>
 <body>
 
 <aside>
-    <div class="aside-header">
-        <div class="logo-box">
-            <img src="logo-marcio.png" onerror="this.src='https://cdn-icons-png.flaticon.com/512/3426/3426653.png'" alt="Logo">
-        </div>
-        <h2>MESTRE 360</h2>
-        <p style="font-size: 11px; opacity: 0.7; color: var(--accent)">PROF. MÁRCIO L. DA SILVA</p>
-    </div>
-
-    <div class="nav-group">Principal</div>
-    <button class="nav-item active" onclick="nav('config')"><i class="fas fa-th-large"></i> Turmas</button>
-    <button class="nav-item" onclick="nav('cadastro')"><i class="fas fa-user-graduate"></i> Alunos</button>
+    <h2 style="color: var(--accent); margin-bottom: 5px;">MESTRE 360</h2>
+    <p style="font-size: 10px; margin-bottom: 20px; opacity: 0.7;">Versão Nuvem v2.0</p>
+    <div id="cloud-info" class="status-cloud"><i class="fas fa-sync fa-spin"></i> Sincronizando...</div>
     
-    <div class="nav-group">Diário</div>
-    <button class="nav-item" onclick="nav('freq')"><i class="fas fa-calendar-check"></i> Frequência</button>
-    <button class="nav-item" onclick="nav('notas')"><i class="fas fa-star"></i> Notas</button>
-    
-    <div class="nav-group">Aula Show</div>
-    <button class="nav-item" onclick="nav('projetos')"><i class="fas fa-edit"></i> Roteiro de Aula</button>
-    <button class="nav-item" onclick="nav('apresentacao')"><i class="fas fa-desktop"></i> Modo TV</button>
-    <button class="nav-item" onclick="nav('arquivos')"><i class="fas fa-folder-open"></i> Meus Arquivos</button>
+    <nav>
+        <button class="nav-btn active" onclick="app.nav('turmas', this)"><i class="fas fa-school"></i> Turmas</button>
+        <button class="nav-btn" onclick="app.nav('alunos', this)"><i class="fas fa-users"></i> Alunos</button>
+        <button class="nav-btn" onclick="app.nav('notas', this)"><i class="fas fa-star"></i> Notas e Médias</button>
+        <button class="nav-btn" onclick="app.nav('freq', this)"><i class="fas fa-check-double"></i> Frequência</button>
+        <button class="nav-btn" onclick="app.nav('mapa', this)"><i class="fas fa-th"></i> Mapa de Sala</button>
+    </nav>
 </aside>
 
 <main>
-    <section id="config" class="section active">
-        <div class="header-box"><h1>Minhas Turmas</h1></div>
+    <section id="turmas" class="section active">
         <div class="card">
-            <div style="display:flex; gap:10px; margin-bottom:20px;">
-                <input type="text" id="nome-turma" placeholder="Ex: 1º ANO A - MATEMÁTICA" style="flex:1">
-                <button class="btn-acao" onclick="addTurma()"><i class="fas fa-plus"></i> CRIAR TURMA</button>
+            <h3>Gerenciar Turmas</h3>
+            <div style="display:flex; gap:10px; margin: 20px 0;">
+                <input type="text" id="in-turma" placeholder="Ex: 3º ANO C" style="flex:1">
+                <button onclick="app.addTurma()" class="nav-btn" style="background:var(--primary); color:white; width:auto; padding: 0 25px;">Criar Turma</button>
             </div>
-            <div class="table-container">
-                <table>
-                    <thead><tr><th>NOME DA TURMA</th><th>AÇÃO</th></tr></thead>
-                    <tbody id="corpo-turmas"></tbody>
-                </table>
-            </div>
+            <table id="tab-turmas">
+                <thead><tr><th>Nome da Turma</th><th width="100">Ações</th></tr></thead>
+                <tbody></tbody>
+            </table>
         </div>
     </section>
 
-    <section id="cadastro" class="section">
-        <div class="header-box"><h1>Cadastro de Alunos</h1><select id="sel-t-cadastro" onchange="renderAlunos()"></select></div>
-        <div class="card table-container">
-            <table>
-                <thead><tr><th width="80">Nº</th><th>NOME COMPLETO</th></tr></thead>
-                <tbody id="corpo-alunos"></tbody>
+    <section id="alunos" class="section">
+        <div class="card">
+            <h3>Lista de Alunos: <select id="sel-turma-alunos" onchange="app.renderAlunos()"></select></h3>
+            <table id="tab-alunos">
+                <thead><tr><th width="50">Nº</th><th>Nome do Aluno</th></tr></thead>
+                <tbody id="lista-alunos"></tbody>
+            </table>
+        </div>
+    </section>
+
+    <section id="notas" class="section">
+        <div class="card">
+            <h3>Notas e Médias: <select id="sel-turma-notas" onchange="app.renderNotas()"></select></h3>
+            <table id="tab-notas">
+                <thead><tr><th>Aluno</th><th>AV1</th><th>AV2</th><th>TRAB</th><th>MÉDIA</th></tr></thead>
+                <tbody id="lista-notas"></tbody>
             </table>
         </div>
     </section>
 
     <section id="freq" class="section">
-        <div class="header-box">
-            <h1>Chamada</h1>
-            <select id="sel-t-freq" onchange="renderFreq()"></select>
-            <input type="date" id="data-aula">
-            <button class="btn-acao" onclick="novaData()">ADD DATA</button>
-        </div>
-        <div class="card table-container">
-            <table><thead id="head-freq"></thead><tbody id="corpo-freq"></tbody></table>
-        </div>
-    </section>
-
-    <section id="notas" class="section">
-        <div class="header-box"><h1>Notas e Médias</h1><select id="sel-t-notas" onchange="renderNotas()"></select></div>
-        <div class="card table-container">
-            <table>
-                <thead><tr><th class="col-fixa">ALUNO</th><th>AV1</th><th>AV2</th><th>TRAB</th><th>MÉDIA</th></tr></thead>
-                <tbody id="corpo-notas"></tbody>
-            </table>
-        </div>
-    </section>
-
-    <section id="projetos" class="section">
-        <div class="header-box"><h1>Plano de Aula Digital</h1><select id="sel-t-proj" onchange="carregarPlano()"></select></div>
         <div class="card">
-            <textarea id="texto-plano" style="height:350px; width: 100%; margin-bottom:15px; font-size: 16px;" placeholder="Digite aqui o que será exibido na TV..."></textarea>
-            <button class="btn-acao" style="width:100%; justify-content:center;" onclick="salvarPlano()">SALVAR E ATUALIZAR MODO TV</button>
+            <h3>Chamada Online: <select id="sel-turma-freq" onchange="app.renderFreq()"></select></h3>
+            <div id="corpo-freq">Selecione uma turma...</div>
         </div>
     </section>
 
-    <section id="apresentacao" class="section">
-        <div class="header-box">
-            <select id="sel-t-apr" onchange="renderTV()"></select>
-            <button class="btn-acao" onclick="toggleFull()"><i class="fas fa-expand"></i> TELA CHEIA</button>
+    <section id="mapa" class="section">
+        <div class="card">
+            <h3>Mapa de Sala: <select id="sel-turma-mapa" onchange="app.renderMapa()"></select></h3>
+            <div class="grid-mapa" id="grid-mapa"></div>
         </div>
-        <div class="modo-tv-container">
-            <div class="tv-screen" id="painel-tv">
-                <h1 id="tv-titulo">SISTEMA MESTRE 360</h1>
-                <p id="tv-texto">Selecione uma turma para carregar o conteúdo da aula.</p>
-            </div>
-            <h3 style="margin-top:20px">Arquivos de Apoio (Clique para Visualizar):</h3>
-            <div class="grid-midia" id="tv-midias-bar"></div>
-        </div>
-    </section>
-
-    <section id="arquivos" class="section">
-        <div class="header-box">
-            <h1>Sua Biblioteca</h1>
-            <input type="file" id="file-up" style="display:none" onchange="uploadArq(event)">
-            <button class="btn-acao" onclick="document.getElementById('file-up').click()"><i class="fas fa-upload"></i> SUBIR ARQUIVO (PDF/IMG)</button>
-        </div>
-        <div class="grid-midia" id="container-arquivos"></div>
     </section>
 </main>
 
-<div id="visor-modal">
-    <button class="btn-fechar" onclick="fecharVisor()"><i class="fas fa-times"></i></button>
-    <div class="visor-content" id="visor-alvo"></div>
-</div>
-
 <script>
-    let db = JSON.parse(localStorage.getItem('MESTRE360_PRO')) || { turmas: {}, arquivos: [] };
+const firebaseConfig = {
+    apiKey: "AIzaSyAn1Eja_qa81xRhzn3lYy_X7t7ML2DKxkg",
+    authDomain: "mestre-360.firebaseapp.com",
+    databaseURL: "https://mestre-360-default-rtdb.firebaseio.com",
+    projectId: "mestre-360",
+    storageBucket: "mestre-360.firebasestorage.app",
+    messagingSenderId: "894952532346",
+    appId: "1:894952532346:web:881d00bdc0f6ffd6a38ec3"
+};
 
-    function salvar() { 
-        localStorage.setItem('MESTRE360_PRO', JSON.stringify(db)); 
-        povoarSelects();
-    }
+firebase.initializeApp(firebaseConfig);
+const database = firebase.database();
 
-    function nav(id) {
+const app = {
+    db: { turmas: {} },
+
+    init() {
+        database.ref('mestre360_data').on('value', (snapshot) => {
+            const data = snapshot.val();
+            if (data) this.db = data;
+            this.updateUI();
+            document.getElementById('cloud-info').innerHTML = '<i class="fas fa-cloud"></i> Google Cloud: Ativo';
+        }, error => {
+            alert("Erro de Permissão: Verifique se ativou o 'Modo de Teste' nas Regras do Firebase.");
+        });
+    },
+
+    save() {
+        database.ref('mestre360_data').set(this.db)
+            .catch(e => alert("Falha ao salvar: " + e.message));
+    },
+
+    nav(id, btn) {
         document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
-        document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+        document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
         document.getElementById(id).classList.add('active');
-        event.currentTarget.classList.add('active');
+        btn.classList.add('active');
+        this.updateUI();
+    },
 
-        if(id === 'config') renderTurmas();
-        if(id === 'cadastro') renderAlunos();
-        if(id === 'freq') renderFreq();
-        if(id === 'notas') renderNotas();
-        if(id === 'apresentacao') renderTV();
-        if(id === 'arquivos') renderArquivos();
-    }
+    // TURMAS
+    addTurma() {
+        const input = document.getElementById('in-turma');
+        const nome = input.value.trim().toUpperCase();
+        if(!nome) return;
+        if(!this.db.turmas[nome]) {
+            this.db.turmas[nome] = { alunos: {}, notas: {}, freq: {} };
+            this.save();
+            input.value = "";
+        }
+    },
 
-    // GESTÃO TURMAS
-    function addTurma() {
-        let n = document.getElementById('nome-turma').value.trim().toUpperCase();
-        if(!n) return;
-        if(!db.turmas[n]) {
-            db.turmas[n] = { alunos: {}, chamadas: {}, notas: {}, plano: "" };
-            salvar(); renderTurmas();
-            document.getElementById('nome-turma').value = "";
+    delTurma(t) { if(confirm(`Excluir a turma ${t}?`)) { delete this.db.turmas[t]; this.save(); } },
+
+    // RENDERIZADORES
+    updateUI() {
+        this.renderTurmasList();
+        this.syncSelectors();
+        // Atualiza a seção atual
+        if(document.getElementById('alunos').classList.contains('active')) this.renderAlunos();
+        if(document.getElementById('notas').classList.contains('active')) this.renderNotas();
+        if(document.getElementById('mapa').classList.contains('active')) this.renderMapa();
+    },
+
+    renderTurmasList() {
+        const tbody = document.querySelector('#tab-turmas tbody');
+        tbody.innerHTML = Object.keys(this.db.turmas).map(t => `
+            <tr><td><strong>${t}</strong></td>
+            <td><button onclick="app.delTurma('${t}')" style="color:var(--danger); border:none; background:none; cursor:pointer;"><i class="fas fa-trash-alt"></i></button></td></tr>
+        `).join('');
+    },
+
+    syncSelectors() {
+        const selects = ['sel-turma-alunos', 'sel-turma-freq', 'sel-turma-notas', 'sel-turma-mapa'];
+        const options = '<option value="">Selecione a Turma...</option>' + Object.keys(this.db.turmas).map(t => `<option value="${t}">${t}</option>`).join('');
+        selects.forEach(s => {
+            const el = document.getElementById(s);
+            const val = el.value;
+            el.innerHTML = options;
+            el.value = val;
+        });
+    },
+
+    renderAlunos() {
+        const t = document.getElementById('sel-turma-alunos').value;
+        const body = document.getElementById('lista-alunos');
+        body.innerHTML = ""; if(!t) return;
+        for(let i=1; i<=40; i++) {
+            const nome = this.db.turmas[t].alunos[i] || "";
+            body.innerHTML += `<tr><td>${i}</td><td><input type="text" value="${nome}" onchange="app.upStudent('${t}',${i},this.value)" style="width:100%"></td></tr>`;
+        }
+    },
+
+    upStudent(t, i, v) { 
+        if(!this.db.turmas[t].alunos) this.db.turmas[t].alunos = {};
+        this.db.turmas[t].alunos[i] = v.toUpperCase(); 
+        this.save(); 
+    },
+
+    // NOTAS
+    renderNotas() {
+        const t = document.getElementById('sel-turma-notas').value;
+        const body = document.getElementById('lista-notas');
+        body.innerHTML = ""; if(!t) return;
+        Object.entries(this.db.turmas[t].alunos).forEach(([i, nome]) => {
+            if(!nome) return;
+            const n = (this.db.turmas[t].notas && this.db.turmas[t].notas[i]) ? this.db.turmas[t].notas[i] : {a1:0, a2:0, tr:0};
+            const media = ((parseFloat(n.a1)||0) + (parseFloat(n.a2)||0) + (parseFloat(n.tr)||0)) / 3;
+            body.innerHTML += `<tr>
+                <td>${nome}</td>
+                <td><input type="number" class="nota-input" value="${n.a1}" onchange="app.upNota('${t}',${i},'a1',this.value)"></td>
+                <td><input type="number" class="nota-input" value="${n.a2}" onchange="app.upNota('${t}',${i},'a2',this.value)"></td>
+                <td><input type="number" class="nota-input" value="${n.tr}" onchange="app.upNota('${t}',${i},'tr',this.value)"></td>
+                <td class="${media >= 6 ? 'media-good' : 'media-bad'}">${media.toFixed(1)}</td>
+            </tr>`;
+        });
+    },
+
+    upNota(t, i, campo, valor) {
+        if(!this.db.turmas[t].notas) this.db.turmas[t].notas = {};
+        if(!this.db.turmas[t].notas[i]) this.db.turmas[t].notas[i] = {a1:0, a2:0, tr:0};
+        this.db.turmas[t].notas[i][campo] = valor;
+        this.save();
+    },
+
+    // FREQUÊNCIA
+    renderFreq() {
+        const t = document.getElementById('sel-turma-freq').value;
+        const corpo = document.getElementById('corpo-freq');
+        if(!t) return;
+        corpo.innerHTML = `<table><thead><tr><th>Aluno</th><th>Presença</th></tr></thead><tbody>
+            ${Object.entries(this.db.turmas[t].alunos).filter(a => a[1]).map(([i, nome]) => `
+                <tr><td>${nome}</td><td><input type="checkbox"></td></tr>
+            `).join('')}
+        </tbody></table>`;
+    },
+
+    // MAPA
+    renderMapa() {
+        const t = document.getElementById('sel-turma-mapa').value;
+        const grid = document.getElementById('grid-mapa');
+        grid.innerHTML = ""; if(!t) return;
+        for(let i=1; i<=30; i++) {
+            const aluno = this.db.turmas[t].alunos[i] || "";
+            grid.innerHTML += `<div class="assento ${aluno ? 'ocupado' : ''}">
+                <i class="fas fa-chair"></i><br>${aluno ? aluno.split(' ')[0] : i}
+            </div>`;
         }
     }
-    function renderTurmas() {
-        document.getElementById('corpo-turmas').innerHTML = Object.keys(db.turmas).map(t => 
-            `<tr><td><strong>${t}</strong></td><td><button onclick="delTurma('${t}')" style="color:var(--danger); border:none; background:none; cursor:pointer; font-weight:700">EXCLUIR</button></td></tr>`).join('');
-    }
-    function delTurma(t) { if(confirm("Deseja apagar esta turma?")) { delete db.turmas[t]; salvar(); renderTurmas(); }}
+};
 
-    // ALUNOS
-    function renderAlunos() {
-        const t = document.getElementById('sel-t-cadastro').value;
-        const corpo = document.getElementById('corpo-alunos');
-        corpo.innerHTML = ''; if(!t) return;
-        for(let i=1; i<=40; i++){
-            let nome = db.turmas[t].alunos[i] || '';
-            corpo.innerHTML += `<tr><td>${i}</td><td><input type="text" value="${nome}" style="width:100%" placeholder="..." onchange="db.turmas['${t}'].alunos[${i}]=this.value.toUpperCase(); salvar()"></td></tr>`;
-        }
-    }
-
-    // ARQUIVOS (VISUALIZAÇÃO SEM DOWNLOAD)
-    function uploadArq(e) {
-        const file = e.target.files[0];
-        if(!file) return;
-        const reader = new FileReader();
-        reader.onload = (ev) => { 
-            db.arquivos.push({ n: file.name, t: file.type, d: ev.target.result }); 
-            salvar(); renderArquivos(); 
-        };
-        reader.readAsDataURL(file);
-    }
-
-    function renderArquivos() {
-        const container = document.getElementById('container-arquivos');
-        container.innerHTML = db.arquivos.map((a,i) => `
-            <div class="midia-card">
-                <i class="fas ${a.t.includes('pdf')?'fa-file-pdf':'fa-file-image'}"></i>
-                <p style="font-size:10px; font-weight:700; margin:5px 0">${a.n.substring(0,20)}</p>
-                <div style="display:flex; gap:5px; justify-content:center">
-                    <button onclick="visualizar(${i})" class="btn-acao" style="padding:5px; font-size:10px">VER</button>
-                    <button onclick="db.arquivos.splice(${i},1); salvar(); renderArquivos()" class="btn-acao" style="padding:5px; font-size:10px; background:var(--danger)">X</button>
-                </div>
-            </div>`).join('');
-    }
-
-    function visualizar(i) {
-        const a = db.arquivos[i];
-        const alvo = document.getElementById('visor-alvo');
-        document.getElementById('visor-modal').style.display = 'block';
-        if(a.t.includes('image')) {
-            alvo.innerHTML = `<img src="${a.d}">`;
-        } else {
-            // Embutindo PDF com Blob para evitar download
-            alvo.innerHTML = `<iframe src="${a.d}#toolbar=0&navpanes=0"></iframe>`;
-        }
-    }
-
-    function fecharVisor() { document.getElementById('visor-modal').style.display = 'none'; document.getElementById('visor-alvo').innerHTML = ''; }
-
-    // MODO TV
-    function salvarPlano() {
-        const t = document.getElementById('sel-t-proj').value;
-        if(!t) return;
-        db.turmas[t].plano = document.getElementById('texto-plano').value;
-        salvar(); alert("Modo TV Atualizado!");
-    }
-    function carregarPlano() {
-        const t = document.getElementById('sel-t-proj').value;
-        document.getElementById('texto-plano').value = db.turmas[t].plano || "";
-    }
-    function renderTV() {
-        const t = document.getElementById('sel-t-apr').value;
-        if(!t) return;
-        document.getElementById('tv-titulo').innerText = t;
-        document.getElementById('tv-texto').innerText = db.turmas[t].plano || "Sem plano de aula definido.";
-        const bar = document.getElementById('tv-midias-bar');
-        bar.innerHTML = db.arquivos.map((a,i) => `
-            <div class="midia-card" onclick="visualizar(${i})">
-                <i class="fas ${a.t.includes('pdf')?'fa-file-pdf':'fa-file-image'}"></i>
-                <p style="font-size:10px">${a.n}</p>
-            </div>`).join('');
-    }
-
-    function toggleFull() {
-        if (!document.fullscreenElement) document.documentElement.requestFullscreen();
-        else document.exitFullscreen();
-    }
-
-    // FREQUENCIA E NOTAS (RESUMIDOS PARA O CÓDIGO NÃO FICAR GIGANTE)
-    function novaData() {
-        const t = document.getElementById('sel-t-freq').value;
-        const d = document.getElementById('data-aula').value;
-        if(t && d) { db.turmas[t].chamadas[d] = {}; salvar(); renderFreq(); }
-    }
-    function renderFreq() {
-        const t = document.getElementById('sel-t-freq').value;
-        const h = document.getElementById('head-freq');
-        const c = document.getElementById('corpo-freq');
-        if(!t) return;
-        const dias = Object.keys(db.turmas[t].chamadas).sort();
-        h.innerHTML = `<tr><th class="col-fixa">ALUNO</th>${dias.map(d => `<th>${d.split('-').reverse().slice(0,2).join('/')}</th>`).join('')}</tr>`;
-        c.innerHTML = Object.keys(db.turmas[t].alunos).map(n => {
-            let row = `<tr><td class="col-fixa">${n}. ${db.turmas[t].alunos[n]}</td>`;
-            dias.forEach(d => {
-                let s = db.turmas[t].chamadas[d][n] || 'P';
-                row += `<td><button onclick="toggleF('${t}','${d}','${n}',this)" style="border:none; border-radius:4px; padding:5px 10px; cursor:pointer; font-weight:bold; background:${s==='P'?'#dcfce7':'#fee2e2'}; color:${s==='P'?'#166534':'#991b1b'}">${s}</button></td>`;
-            });
-            return row + `</tr>`;
-        }).join('');
-    }
-    function toggleF(t,d,n,b) {
-        db.turmas[t].chamadas[d][n] = b.innerText === 'P' ? 'F' : 'P';
-        salvar(); renderFreq();
-    }
-
-    function renderNotas() {
-        const t = document.getElementById('sel-t-notas').value;
-        const c = document.getElementById('corpo-notas');
-        if(!t) return;
-        c.innerHTML = Object.keys(db.turmas[t].alunos).map(n => {
-            let nt = db.turmas[t].notas[n] || {a1:0,a2:0,tr:0};
-            let m = ((parseFloat(nt.a1)+parseFloat(nt.a2)+parseFloat(nt.tr))/3).toFixed(1);
-            return `<tr><td class="col-fixa">${db.turmas[t].alunos[n]}</td>
-                <td><input type="number" value="${nt.a1}" onchange="upN('${t}','${n}','a1',this.value)"></td>
-                <td><input type="number" value="${nt.a2}" onchange="upN('${t}','${n}','a2',this.value)"></td>
-                <td><input type="number" value="${nt.tr}" onchange="upN('${t}','${n}','tr',this.value)"></td>
-                <td><strong>${m}</strong></td></tr>`;
-        }).join('');
-    }
-    function upN(t,n,f,v) { if(!db.turmas[t].notas[n]) db.turmas[t].notas[n]={a1:0,a2:0,tr:0}; db.turmas[t].notas[n][f]=v; salvar(); renderNotas(); }
-
-    function povoarSelects() {
-        const ids = ['sel-t-cadastro','sel-t-freq','sel-t-notas','sel-t-proj','sel-t-apr'];
-        const opt = `<option value="">SELECIONE A TURMA</option>` + Object.keys(db.turmas).map(t => `<option value="${t}">${t}</option>`).join('');
-        ids.forEach(id => { const s = document.getElementById(id); if(s){ const v = s.value; s.innerHTML = opt; s.value = v; } });
-    }
-
-    window.onload = () => { renderTurmas(); povoarSelects(); renderArquivos(); };
+app.init();
 </script>
 </body>
 </html>
