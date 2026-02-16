@@ -4,9 +4,15 @@
 <meta charset="UTF-8">
 <title>Projeto Integrador - 7º Ano</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 
 <style>
+
+/* ===================================================== */
+/* TEMA PROJETO INTEGRADOR */
+/* ===================================================== */
+
 body.tema-integrador {
     background-color: #f5f0ff;
     color: #3a0f72;
@@ -14,34 +20,157 @@ body.tema-integrador {
     line-height: 1.6;
 }
 
-h1, h2, h3 { color: #5f2c82; }
-
-nav {
-    background-color: #e0d4ff;
-    padding: 1em;
-    margin-bottom: 2em;
-    border-radius: 8px;
+h1, h2, h3 { 
+    color: #5f2c82; 
 }
 
-nav ul { list-style: none; padding-left:0; }
-nav ul li { margin:0.5em 0; }
-nav ul li a { text-decoration: none; color: #5f2c82; font-weight: bold; }
-nav ul li a:hover { text-decoration: underline; }
+/* ===================================================== */
+/* ESTRUTURA LIVRO */
+/* ===================================================== */
 
-.livro-container { display: flex; min-height: 100vh; }
+.livro-container { 
+    display: flex; 
+    min-height: 100vh; 
+}
+
+/* ===================================================== */
+/* MENU LATERAL */
+/* ===================================================== */
+
 .menu-lateral {
-    width: 260px; background: #5f2c82; color:white; padding:25px; position:fixed; height:100%; overflow-y:auto;
+    width: 260px;
+    background: linear-gradient(180deg, #4a1e6d, #5f2c82);
+    color: white;
+    padding: 25px;
+    position: fixed;
+    height: 100%;
+    overflow-y: auto;
+    box-shadow: 4px 0 20px rgba(0,0,0,0.25);
 }
-.menu-lateral h2 { color: #ffd369; margin-bottom:20px; }
-.menu-lateral nav a { display:block; margin:6px 0; color:white; }
-.menu-lateral nav a:hover { color: #ffd369; }
-.menu-lateral nav strong { display:block; margin-top:15px; margin-bottom:5px; }
 
-.conteudo-livro { margin-left:260px; padding:50px; flex:1; }
-.capitulo { background: #f0e6ff; padding:40px; border-radius:15px; margin-bottom:50px; box-shadow:0 0 20px rgba(95,44,130,0.2); }
-.capitulo h1 { border-bottom:3px solid #ffd369; padding-bottom:10px; }
+.menu-lateral h2 { 
+    color: #ffd369; 
+    margin-bottom: 20px; 
+    font-size: 1.3rem;
+}
 
-ul.conteudos li { margin-left:15px; }
+/* ===================================================== */
+/* ÍNDICE ESTILO PDF */
+/* ===================================================== */
+
+.indice-pdf .item-indice,
+.indice-pdf .subitem {
+    margin-bottom: 10px;
+}
+
+.indice-pdf a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: white;
+    font-weight: 500;
+}
+
+.indice-pdf .subitem {
+    padding-left: 12px;
+    font-size: 0.9rem;
+    opacity: 0.95;
+}
+
+.indice-pdf .linha {
+    flex: 1;
+    border-bottom: 1px dotted rgba(255,255,255,0.6);
+    margin: 0 8px;
+}
+
+.indice-pdf .pagina {
+    font-weight: 600;
+    font-size: 0.85rem;
+}
+
+.indice-pdf a:hover {
+    color: #ffd369;
+}
+
+/* ===================================================== */
+/* CONTEÚDO */
+/* ===================================================== */
+
+.conteudo-livro { 
+    margin-left: 260px; 
+    padding: 50px; 
+    flex: 1; 
+}
+
+.capitulo { 
+    background: #f0e6ff; 
+    padding: 40px; 
+    border-radius: 15px; 
+    margin-bottom: 50px; 
+    box-shadow: 0 0 20px rgba(95,44,130,0.2); 
+    transition: 0.3s ease;
+}
+
+.capitulo:hover {
+    transform: translateY(-4px);
+}
+
+.capitulo h1 { 
+    border-bottom: 3px solid #ffd369; 
+    padding-bottom: 10px; 
+    margin-bottom: 20px;
+}
+
+ul.conteudos li { 
+    margin-left: 15px; 
+    margin-bottom: 8px;
+}
+
+ul.conteudos li a {
+    color: #5f2c82;
+    font-weight: 600;
+}
+
+ul.conteudos li a:hover {
+    text-decoration: underline;
+}
+
+/* ===================================================== */
+/* RESPONSIVIDADE */
+/* ===================================================== */
+
+@media (max-width: 1100px) {
+
+    .conteudo-livro {
+        margin-left: 0;
+        padding: 40px 25px;
+    }
+
+    .menu-lateral {
+        position: relative;
+        width: 100%;
+        height: auto;
+    }
+}
+
+@media (max-width: 900px) {
+
+    .livro-container {
+        flex-direction: column;
+    }
+
+    .menu-lateral {
+        position: relative;
+        width: 100%;
+        height: auto;
+    }
+
+    .conteudo-livro {
+        margin-left: 0;
+        padding: 30px 20px;
+    }
+}
+
 </style>
 </head>
 
@@ -51,59 +180,87 @@ ul.conteudos li { margin-left:15px; }
 
     <aside class="menu-lateral">
         <h2>🧩 Projeto Integrador</h2>
-        <nav>
-            <a href="#capa">Capa</a>
-            <a href="#sumario">Sumário</a>
 
-            <strong>Capítulo 1</strong>
-            <a href="#cap1">1. Planejamento</a>
-            <strong>Capítulo 2</strong>
-            <a href="#cap2">2. Execução</a>
-            <strong>Capítulo 3</strong>
-            <a href="#cap3">3. Avaliação</a>
+        <nav class="indice-pdf">
 
-            <a href="index.html">⬅ Voltar</a>
+            <div class="item-indice">
+                <a href="#introducao">
+                    <span>1. Introdução ao Projeto</span>
+                    <span class="linha"></span>
+                    <span class="pagina">01</span>
+                </a>
+            </div>
+
+            <div class="subitem">
+                <a href="pdfs/integrador_cap1.pdf" target="_blank">
+                    <span>1.1 Tema e Problema</span>
+                    <span class="linha"></span>
+                    <span class="pagina">03</span>
+                </a>
+            </div>
+
+            <div class="subitem">
+                <a href="pdfs/integrador_cap2.pdf" target="_blank">
+                    <span>1.2 Justificativa</span>
+                    <span class="linha"></span>
+                    <span class="pagina">06</span>
+                </a>
+            </div>
+
+            <div class="item-indice">
+                <a href="#metodologia">
+                    <span>2. Metodologia</span>
+                    <span class="linha"></span>
+                    <span class="pagina">12</span>
+                </a>
+            </div>
+
+            <div class="subitem">
+                <a href="pdfs/integrador_cap3.pdf" target="_blank">
+                    <span>2.1 Pesquisa de Campo</span>
+                    <span class="linha"></span>
+                    <span class="pagina">15</span>
+                </a>
+            </div>
+
+            <div class="item-indice">
+                <a href="#resultado">
+                    <span>3. Resultados</span>
+                    <span class="linha"></span>
+                    <span class="pagina">22</span>
+                </a>
+            </div>
+
+            <div class="item-indice voltar">
+                <a href="index.html">
+                    <span>Voltar</span>
+                    <span class="linha"></span>
+                    <span>⟵</span>
+                </a>
+            </div>
+
         </nav>
     </aside>
 
     <main class="conteudo-livro">
 
-        <!-- CAPA -->
-        <section id="capa" class="capitulo">
-            <h1>Projeto Integrador – 7º Ano</h1>
-            <p><strong>Professor:</strong> Márcio L. da Silva</p>
-            <p>Este livro digital organiza o projeto integrador, com links para cada atividade ou PDF correspondente.</p>
-        </section>
-
-        <!-- SUMÁRIO -->
-        <section id="sumario" class="capitulo">
-            <h1>Sumário</h1>
-            <ul>
-                <li><a href="#cap1">Capítulo 1 – Planejamento</a></li>
-                <li><a href="#cap2">Capítulo 2 – Execução</a></li>
-                <li><a href="#cap3">Capítulo 3 – Avaliação</a></li>
-            </ul>
-        </section>
-
-        <!-- Capítulos com links -->
-        <section id="cap1" class="capitulo">
-            <h1>Capítulo 1 – Planejamento</h1>
+        <section id="introducao" class="capitulo">
+            <h1>Introdução ao Projeto</h1>
             <ul class="conteudos">
-                <li><a href="pdfs/integrador_planejamento_1.pdf" target="_blank">Introdução ao Planejamento</a></li>
-                <li><a href="pdfs/integrador_planejamento_2.pdf" target="_blank">Exemplo de Cronograma</a></li>
+                <li><a href="pdfs/integrador_cap1.pdf" target="_blank">Tema e Problema</a></li>
+                <li><a href="pdfs/integrador_cap2.pdf" target="_blank">Justificativa</a></li>
             </ul>
         </section>
 
-        <section id="cap2" class="capitulo">
-            <h1>Capítulo 2 – Execução</h1>
+        <section id="metodologia" class="capitulo">
+            <h1>Metodologia</h1>
             <ul class="conteudos">
-                <li><a href="pdfs/integrador_execucao_1.pdf" target="_blank">Guia de Execução</a></li>
-                <li><a href="pdfs/integrador_execucao_2.pdf" target="_blank">Modelo de Registro</a></li>
+                <li><a href="pdfs/integrador_cap3.pdf" target="_blank">Pesquisa de Campo</a></li>
             </ul>
         </section>
 
-        <section id="cap3" class="capitulo">
-            <h1>Capítulo 3 – Avaliação</h1>
+        <section id="resultado" class="capitulo">
+            <h1>Resultados</h1>
             <ul class="conteudos">
                 <li><a href="pdfs/integrador_avaliacao_1.pdf" target="_blank">Rubrica de Avaliação</a></li>
                 <li><a href="pdfs/integrador_avaliacao_2.pdf" target="_blank">Relatórios e Feedback</a></li>
@@ -119,7 +276,9 @@ document.querySelectorAll('.menu-lateral nav a[href^="#"]').forEach(link=>{
     link.addEventListener('click',e=>{
         e.preventDefault();
         const target=document.querySelector(link.getAttribute('href'));
-        if(target){ window.scrollTo({top:target.offsetTop-20, behavior:'smooth'}); }
+        if(target){
+            window.scrollTo({top:target.offsetTop-20,behavior:'smooth'});
+        }
     });
 });
 </script>

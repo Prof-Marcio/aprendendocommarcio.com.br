@@ -1,139 +1,219 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <title>Biblioteca Digital | Professor Márcio</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <!-- CSS Principal -->
     <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
 
-<!-- HERO -->
-<header class="header-azul">
-    <div class="container hero-container">
-        <div class="hero-texto">
-            <h1>📚 Plataforma Educacional</h1>
-            <p>Ambiente Oficial de Estudos — Professor Márcio L. da Silva</p>
-        </div>
-        <div class="hero-badge">
-            <span>Ensino Estruturado</span>
-            <span>Conteúdo Organizado</span>
-            <span>Livro Digital Interativo</span>
-        </div>
-    </div>
-</header>
+    <!-- ===================================================== -->
+    <!-- HERO / CABEÇALHO PRINCIPAL -->
+    <!-- ===================================================== -->
 
-<main class="container">
+    <header class="header-azul">
+        <div class="container hero-container">
 
-<!-- APRESENTAÇÃO -->
-<section class="secao">
-    <h2>Bem-vindo à Biblioteca Digital</h2>
-    <p>
-        Este ambiente foi desenvolvido para organizar as disciplinas em formato
-        de livros digitais interativos, proporcionando uma experiência moderna,
-        estruturada e eficiente para o aprendizado.
-    </p>
-</section>
-
-<!-- DISCIPLINAS -->
-<section class="secao">
-    <h2>📖 Disciplinas Disponíveis</h2>
-
-    <div class="grid-livros">
-
-        <!-- MATEMÁTICA -->
-        <div class="livro livro-azul">
-            <div class="livro-estrutura">
-                <div class="lombada"></div>
-                <div class="capa-conteudo">
-                    <div class="capa-icone">📐</div>
-                    <h3>Matemática</h3>
-                    <p>6º anos A e B</p>
-                    <div class="livro-info">
-                        <span>Capítulos Organizados</span>
-                        <span>Exercícios Práticos</span>
-                    </div>
-                </div>
+            <div class="hero-texto">
+                <h1>📚 Plataforma Educacional</h1>
+                <p>Ambiente Oficial de Estudos — Professor Márcio L. da Silva</p>
             </div>
-            <a href="matematica.html" class="btn-livro">Abrir Livro</a>
-        </div>
 
-        <!-- PROJETO INTEGRADOR -->
-        <div class="livro livro-vermelho">
-            <div class="livro-estrutura">
-                <div class="lombada"></div>
-                <div class="capa-conteudo">
-                    <div class="capa-icone">🧩</div>
-                    <h3>Projeto Integrador</h3>
-                    <p>7º ano B</p>
-                    <div class="livro-info">
-                        <span>Projetos Interdisciplinares</span>
-                        <span>Trabalho em Equipe</span>
-                    </div>
-                </div>
+            <div class="hero-badge">
+                <span>Ensino Estruturado</span>
+                <span>Conteúdo Organizado</span>
+                <span>Livro Digital Interativo</span>
             </div>
-            <a href="integrador.html" class="btn-livro">Abrir Livro</a>
-        </div>
 
-        <!-- PROJETO DE VIDA -->
-        <div class="livro livro-verde">
-            <div class="livro-estrutura">
-                <div class="lombada"></div>
-                <div class="capa-conteudo">
-                    <div class="capa-icone">🌱</div>
-                    <h3>Projeto de Vida</h3>
-                    <p>7º ano B</p>
-                    <div class="livro-info">
-                        <span>Planejamento Pessoal</span>
-                        <span>Autoconhecimento</span>
+        </div>
+    </header>
+
+    <!-- ===================================================== -->
+    <!-- CONTEÚDO PRINCIPAL -->
+    <!-- ===================================================== -->
+
+    <main class="container">
+
+        <!-- ======================== -->
+        <!-- APRESENTAÇÃO -->
+        <!-- ======================== -->
+
+        <section class="secao" id="apresentacao">
+            <h2>Bem-vindo à Biblioteca Digital</h2>
+
+            <p>
+                Este ambiente foi desenvolvido para organizar as disciplinas em formato
+                de livros digitais interativos, proporcionando uma experiência moderna,
+                estruturada e eficiente para o aprendizado.
+            </p>
+        </section>
+
+
+        <!-- ======================== -->
+        <!-- DISCIPLINAS -->
+        <!-- ======================== -->
+
+        <section class="secao" id="disciplinas">
+            <h2>📖 Disciplinas Disponíveis</h2>
+
+            <div class="grid-livros">
+
+                <!-- =================================== -->
+                <!-- MATEMÁTICA -->
+                <!-- =================================== -->
+
+                <article class="livro livro-azul">
+
+                    <div class="livro-estrutura">
+                        <div class="lombada"></div>
+
+                        <div class="capa-conteudo">
+                            <div class="capa-icone">📐</div>
+
+                            <h3>Matemática</h3>
+                            <p>6º anos A e B</p>
+
+                            <div class="livro-info">
+                                <span>Capítulos Organizados</span>
+                                <span>Exercícios Práticos</span>
+                            </div>
+                        </div>
                     </div>
-                </div>
+
+                    <a href="matematica.html" class="btn-livro">
+                        Abrir Livro
+                    </a>
+
+                </article>
+
+
+                <!-- =================================== -->
+                <!-- PROJETO INTEGRADOR -->
+                <!-- =================================== -->
+
+                <article class="livro livro-vermelho">
+
+                    <div class="livro-estrutura">
+                        <div class="lombada"></div>
+
+                        <div class="capa-conteudo">
+                            <div class="capa-icone">🧩</div>
+
+                            <h3>Projeto Integrador</h3>
+                            <p>7º ano B</p>
+
+                            <div class="livro-info">
+                                <span>Projetos Interdisciplinares</span>
+                                <span>Trabalho em Equipe</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="integrador.html" class="btn-livro">
+                        Abrir Livro
+                    </a>
+
+                </article>
+
+
+                <!-- =================================== -->
+                <!-- PROJETO DE VIDA -->
+                <!-- =================================== -->
+
+                <article class="livro livro-verde">
+
+                    <div class="livro-estrutura">
+                        <div class="lombada"></div>
+
+                        <div class="capa-conteudo">
+                            <div class="capa-icone">🌱</div>
+
+                            <h3>Projeto de Vida</h3>
+                            <p>7º ano B</p>
+
+                            <div class="livro-info">
+                                <span>Planejamento Pessoal</span>
+                                <span>Autoconhecimento</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="projetovida.html" class="btn-livro">
+                        Abrir Livro
+                    </a>
+
+                </article>
+
             </div>
-            <a href="projetovida.html" class="btn-livro">Abrir Livro</a>
+        </section>
+
+
+        <!-- ======================== -->
+        <!-- METODOLOGIA -->
+        <!-- ======================== -->
+
+        <section class="secao" id="metodologia">
+            <h2>🎯 Metodologia</h2>
+
+            <p>
+                As disciplinas são organizadas por capítulos estruturados,
+                com navegação lateral fixa, leitura confortável e conteúdo progressivo.
+                O modelo foi pensado para funcionar como um livro digital moderno,
+                facilitando revisão, acompanhamento e organização.
+            </p>
+        </section>
+
+
+        <!-- ======================== -->
+        <!-- AVISOS -->
+        <!-- ======================== -->
+
+        <section class="secao" id="avisos">
+            <h2>📢 Avisos Gerais</h2>
+
+            <ul>
+                <li>Atualizações de conteúdo são feitas semanalmente.</li>
+                <li>As avaliações seguem o cronograma bimestral.</li>
+                <li>Materiais complementares serão adicionados em cada livro.</li>
+            </ul>
+        </section>
+
+    </main>
+
+
+    <!-- ===================================================== -->
+    <!-- RODAPÉ -->
+    <!-- ===================================================== -->
+
+    <footer>
+        <div class="container footer-container">
+
+            <div>
+                <strong>Professor Márcio L. da Silva</strong><br>
+                Plataforma Educacional Digital
+            </div>
+
+            <div>
+                © 2026 — Todos os direitos reservados
+            </div>
+
         </div>
+    </footer>
 
-    </div>
-</section>
 
-<!-- METODOLOGIA -->
-<section class="secao">
-    <h2>🎯 Metodologia</h2>
-    <p>
-        As disciplinas são organizadas por capítulos estruturados,
-        com navegação lateral fixa, leitura confortável e conteúdo progressivo.
-        O modelo foi pensado para funcionar como um livro digital moderno,
-        facilitando revisão, acompanhamento e organização.
-    </p>
-</section>
+    <!-- ===================================================== -->
+    <!-- SCRIPT -->
+    <!-- ===================================================== -->
 
-<!-- AVISOS -->
-<section class="secao">
-    <h2>📢 Avisos Gerais</h2>
-    <ul>
-        <li>Atualizações de conteúdo são feitas semanalmente.</li>
-        <li>As avaliações seguem o cronograma bimestral.</li>
-        <li>Materiais complementares serão adicionados em cada livro.</li>
-    </ul>
-</section>
-
-</main>
-
-<footer>
-    <div class="container footer-container">
-        <div>
-            <strong>Professor Márcio L. da Silva</strong><br>
-            Plataforma Educacional Digital
-        </div>
-        <div>
-            © 2026 — Todos os direitos reservados
-        </div>
-    </div>
-</footer>
-
-<script src="js/script.js"></script>
+    <script src="js/script.js"></script>
 
 </body>
 </html>

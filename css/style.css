@@ -469,3 +469,424 @@ footer {
     transform: rotateY(-25deg) rotateX(5deg) scale(1.02);
     transition: transform 0.5s ease;
 }
+
+/* ===================================================== */
+/* RESPONSIVIDADE PROFISSIONAL */
+/* ===================================================== */
+
+@media (max-width: 1024px) {
+
+    .conteudo-livro {
+        padding: 40px;
+    }
+
+    .capitulo {
+        padding: 30px;
+    }
+
+}
+
+/* TABLET */
+
+@media (max-width: 900px) {
+
+    .livro-container {
+        flex-direction: column;
+    }
+
+    .menu-lateral {
+        position: relative;
+        width: 100%;
+        height: auto;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .menu-lateral nav a,
+    .menu-lateral nav strong {
+        display: inline-block;
+        margin: 8px 12px;
+    }
+
+    .conteudo-livro {
+        margin-left: 0;
+        padding: 30px 20px;
+    }
+
+}
+
+/* CELULAR */
+
+@media (max-width: 600px) {
+
+    body {
+        font-size: 15px;
+    }
+
+    .menu-lateral h2 {
+        font-size: 18px;
+    }
+
+    .menu-lateral nav a {
+        font-size: 14px;
+    }
+
+    .capitulo {
+        padding: 20px;
+        margin-bottom: 30px;
+    }
+
+    .capitulo h1 {
+        font-size: 20px;
+    }
+
+    ul.conteudos a {
+        font-size: 14px;
+    }
+
+}
+
+/* ===================================================== */
+/* MENU HAMBÚRGUER RESPONSIVO */
+/* ===================================================== */
+
+.menu-toggle {
+    display: none;
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    background: #111;
+    color: white;
+    border: none;
+    font-size: 22px;
+    padding: 10px 14px;
+    border-radius: 8px;
+    cursor: pointer;
+    z-index: 9999;
+}
+
+/* Animação lateral */
+.menu-lateral {
+    transition: transform 0.3s ease;
+}
+
+/* Mobile */
+@media (max-width: 900px) {
+
+    .menu-toggle {
+        display: block;
+    }
+
+    .menu-lateral {
+        position: fixed;
+        left: 0;
+        top: 0;
+        height: 100%;
+        transform: translateX(-100%);
+        z-index: 9998;
+    }
+
+    .menu-lateral.ativo {
+        transform: translateX(0);
+    }
+
+    .conteudo-livro {
+        margin-left: 0;
+        padding-top: 70px;
+    }
+}
+
+/* ========================= */
+/* CONFIGURAÇÃO GLOBAL */
+/* ========================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: #f0f8ff;
+    color: #003366;
+    line-height: 1.6;
+}
+
+/* ========================= */
+/* HEADER */
+/* ========================= */
+
+header {
+    text-align: center;
+    padding: 60px 20px;
+    background: linear-gradient(135deg, #004080, #2563eb);
+    color: white;
+    margin-left: 260px;
+}
+
+header h1 {
+    font-size: 2.2rem;
+    margin-bottom: 10px;
+}
+
+/* ========================= */
+/* MENU LATERAL */
+/* ========================= */
+
+.menu-toggle {
+    display: none;
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    background: #004080;
+    color: white;
+    border: none;
+    font-size: 22px;
+    padding: 10px 14px;
+    border-radius: 8px;
+    cursor: pointer;
+    z-index: 1001;
+}
+
+.menu-lateral {
+    width: 260px;
+    background: #004080;
+    color: white;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    padding: 30px 20px;
+    overflow-y: auto;
+    transition: transform 0.3s ease;
+    box-shadow: 4px 0 20px rgba(0,0,0,0.2);
+}
+
+.menu-lateral h2 {
+    margin-bottom: 20px;
+    font-size: 1.3rem;
+}
+
+.menu-lateral a {
+    display: block;
+    color: white;
+    text-decoration: none;
+    margin: 10px 0;
+    transition: 0.3s;
+}
+
+.menu-lateral a:hover {
+    color: #a5d8ff;
+    padding-left: 5px;
+}
+
+/* ========================= */
+/* CONTEÚDO */
+/* ========================= */
+
+.conteudo {
+    margin-left: 260px;
+    padding: 50px;
+}
+
+section {
+    background: #e6f0ff;
+    padding: 30px;
+    border-radius: 12px;
+    margin-bottom: 40px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+    transition: 0.3s ease;
+}
+
+section:hover {
+    transform: translateY(-3px);
+}
+
+section h2 {
+    margin-bottom: 15px;
+    color: #004080;
+    font-size: 1.5rem;
+}
+
+section ul {
+    margin-top: 10px;
+    padding-left: 20px;
+}
+
+section ul li {
+    margin-bottom: 8px;
+}
+
+section ul li a {
+    color: #003366;
+    font-weight: 600;
+}
+
+section ul li a:hover {
+    text-decoration: underline;
+}
+
+/* ========================= */
+/* FOOTER */
+/* ========================= */
+
+footer {
+    text-align: center;
+    padding: 25px;
+    background: #cce0ff;
+    margin-left: 260px;
+}
+
+/* ========================= */
+/* RESPONSIVIDADE */
+/* ========================= */
+
+@media (max-width: 1100px) {
+
+    header {
+        margin-left: 0;
+    }
+
+    footer {
+        margin-left: 0;
+    }
+
+    .conteudo {
+        margin-left: 0;
+        padding: 40px 25px;
+    }
+
+}
+
+@media (max-width: 900px) {
+
+    .menu-toggle {
+        display: block;
+    }
+
+    .menu-lateral {
+        transform: translateX(-100%);
+        z-index: 1000;
+    }
+
+    .menu-lateral.ativo {
+        transform: translateX(0);
+    }
+
+    header {
+        margin-left: 0;
+        padding-top: 80px;
+    }
+
+    footer {
+        margin-left: 0;
+    }
+
+    .conteudo {
+        margin-left: 0;
+        padding: 30px 20px;
+    }
+
+}
+
+@media (max-width: 600px) {
+
+    header h1 {
+        font-size: 1.6rem;
+    }
+
+    section {
+        padding: 20px;
+    }
+
+    section h2 {
+        font-size: 1.2rem;
+    }
+
+}
+/* ===================================================== */
+/* ÍNDICE ESTILO PDF */
+/* ===================================================== */
+
+.indice-pdf {
+    margin-top: 20px;
+}
+
+.indice-pdf .item-indice,
+.indice-pdf .subitem {
+    margin-bottom: 12px;
+}
+
+.indice-pdf a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: white;
+    font-size: 0.95rem;
+}
+
+.indice-pdf .subitem a {
+    padding-left: 15px;
+    font-size: 0.85rem;
+    opacity: 0.9;
+}
+
+.indice-pdf .linha {
+    flex: 1;
+    border-bottom: 1px dotted rgba(255,255,255,0.6);
+    margin: 0 8px;
+    transform: translateY(-3px);
+}
+
+.indice-pdf .pagina {
+    font-weight: 600;
+}
+
+.indice-pdf a:hover {
+    color: #a5d8ff;
+}
+
+.indice-pdf {
+    margin-top: 20px;
+}
+
+.indice-pdf .item-indice,
+.indice-pdf .subitem {
+    margin-bottom: 12px;
+}
+
+.indice-pdf a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: white;
+    font-size: 0.95rem;
+}
+
+.indice-pdf .subitem a {
+    padding-left: 15px;
+    font-size: 0.85rem;
+    opacity: 0.9;
+}
+
+.indice-pdf .linha {
+    flex: 1;
+    border-bottom: 1px dotted rgba(255,255,255,0.6);
+    margin: 0 8px;
+    transform: translateY(-3px);
+}
+
+.indice-pdf .pagina {
+    font-weight: 600;
+}
+
+.indice-pdf a:hover {
+    color: #a5d8ff;
+}
