@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Projeto de Vida - 7º Ano</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+<style>
+body.tema-projetovida {
+    background-color: #f0fdf4;
+    color: #064e3b;
+    font-family: "Georgia", serif;
+    line-height: 1.6;
+}
+
+h1, h2, h3 { color: #065f46; }
+
+.livro-container { display: flex; min-height: 100vh; }
+
+/* MENU LATERAL */
+.menu-lateral {
+    width: 260px;
+    background: #064e3b;
+    color: white;
+    padding: 25px;
+    position: fixed;
+    height: 100%;
+    overflow-y: auto;
+}
+
+.menu-lateral h2 {
+    color: #a7f3d0;
+    margin-bottom: 20px;
+}
+
+.menu-lateral nav a {
+    display: block;
+    margin: 6px 0;
+    color: white;
+    text-decoration: none;
+}
+
+.menu-lateral nav a:hover {
+    color: #a7f3d0;
+}
+
+.menu-lateral nav strong {
+    display: block;
+    margin-top: 15px;
+    margin-bottom: 5px;
+}
+
+/* CONTEÚDO */
+.conteudo-livro {
+    margin-left: 260px;
+    padding: 50px;
+    flex: 1;
+}
+
+.capitulo {
+    background: #dcfce7;
+    padding: 40px;
+    border-radius: 15px;
+    margin-bottom: 50px;
+    box-shadow: 0 0 20px rgba(6,95,70,0.15);
+}
+
+.capitulo h1 {
+    border-bottom: 3px solid #10b981;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+/* SUMÁRIO */
+nav.sumario {
+    background-color: #bbf7d0;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 30px;
+}
+
+nav.sumario ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+nav.sumario li {
+    margin: 6px 0;
+}
+
+nav.sumario a {
+    text-decoration: none;
+    color: #065f46;
+    font-weight: bold;
+}
+
+nav.sumario a:hover {
+    text-decoration: underline;
+}
+
+/* LINKS DOS PDFs */
+ul.conteudos {
+    list-style: none;
+    padding-left: 15px;
+}
+
+ul.conteudos li {
+    margin: 8px 0;
+}
+
+ul.conteudos a {
+    color: #047857;
+    font-weight: 600;
+}
+
+ul.conteudos a:hover {
+    text-decoration: underline;
+}
+</style>
+</head>
+
+<body class="tema-projetovida">
+
+<div class="livro-container">
+
+    <!-- MENU LATERAL -->
+    <aside class="menu-lateral">
+        <h2>🌱 Projeto de Vida</h2>
+
+        <nav>
+            <a href="#capa">Capa</a>
+            <a href="#sumario">Sumário</a>
+
+            <strong>Capítulo 1</strong>
+            <a href="#cap1">1. Autoconhecimento</a>
+
+            <strong>Capítulo 2</strong>
+            <a href="#cap2">2. Planejamento</a>
+
+            <strong>Capítulo 3</strong>
+            <a href="#cap3">3. Futuro</a>
+
+            <a href="index.html">⬅ Voltar</a>
+        </nav>
+    </aside>
+
+    <!-- CONTEÚDO -->
+    <main class="conteudo-livro">
+
+        <!-- CAPA -->
+        <section id="capa" class="capitulo">
+            <h1>Projeto de Vida – 7º Ano</h1>
+            <p><strong>Professor:</strong> Márcio L. da Silva</p>
+            <p>Disciplina voltada ao desenvolvimento pessoal, planejamento e construção de objetivos.</p>
+        </section>
+
+        <!-- SUMÁRIO -->
+        <section id="sumario" class="capitulo">
+            <h1>Sumário</h1>
+
+            <nav class="sumario">
+                <ul>
+                    <li><a href="#cap1">Capítulo 1 – Autoconhecimento</a></li>
+                    <li><a href="#cap2">Capítulo 2 – Planejamento de Metas</a></li>
+                    <li><a href="#cap3">Capítulo 3 – Construindo o Futuro</a></li>
+                </ul>
+            </nav>
+        </section>
+
+        <!-- CAPÍTULO 1 -->
+        <section id="cap1" class="capitulo">
+            <h1>Capítulo 1 – Autoconhecimento</h1>
+            <ul class="conteudos">
+                <li><a href="pdfs/projetovida_autoconhecimento_1.pdf" target="_blank">Reflexão sobre Identidade</a></li>
+                <li><a href="pdfs/projetovida_autoconhecimento_2.pdf" target="_blank">Valores e Princípios</a></li>
+                <li><a href="pdfs/projetovida_autoconhecimento_3.pdf" target="_blank">Habilidades e Potenciais</a></li>
+            </ul>
+        </section>
+
+        <!-- CAPÍTULO 2 -->
+        <section id="cap2" class="capitulo">
+            <h1>Capítulo 2 – Planejamento de Metas</h1>
+            <ul class="conteudos">
+                <li><a href="pdfs/projetovida_planejamento_1.pdf" target="_blank">Definição de Metas</a></li>
+                <li><a href="pdfs/projetovida_planejamento_2.pdf" target="_blank">Organização de Objetivos</a></li>
+                <li><a href="pdfs/projetovida_planejamento_3.pdf" target="_blank">Plano de Ação</a></li>
+            </ul>
+        </section>
+
+        <!-- CAPÍTULO 3 -->
+        <section id="cap3" class="capitulo">
+            <h1>Capítulo 3 – Construindo o Futuro</h1>
+            <ul class="conteudos">
+                <li><a href="pdfs/projetovida_futuro_1.pdf" target="_blank">Projeto Profissional</a></li>
+                <li><a href="pdfs/projetovida_futuro_2.pdf" target="_blank">Persistência e Resiliência</a></li>
+                <li><a href="pdfs/projetovida_futuro_3.pdf" target="_blank">Planejamento de Longo Prazo</a></li>
+            </ul>
+        </section>
+
+    </main>
+
+</div>
+
+<script>
+document.querySelectorAll('.menu-lateral nav a[href^="#"]').forEach(link=>{
+    link.addEventListener('click',e=>{
+        e.preventDefault();
+        const target=document.querySelector(link.getAttribute('href'));
+        if(target){
+            window.scrollTo({top:target.offsetTop-20, behavior:'smooth'});
+        }
+    });
+});
+</script>
+
+</body>
+</html>

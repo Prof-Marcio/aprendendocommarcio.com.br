@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Projeto Integrador - 7º Ano</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+<style>
+body.tema-integrador {
+    background-color: #f5f0ff;
+    color: #3a0f72;
+    font-family: "Georgia", serif;
+    line-height: 1.6;
+}
+
+h1, h2, h3 { color: #5f2c82; }
+
+nav {
+    background-color: #e0d4ff;
+    padding: 1em;
+    margin-bottom: 2em;
+    border-radius: 8px;
+}
+
+nav ul { list-style: none; padding-left:0; }
+nav ul li { margin:0.5em 0; }
+nav ul li a { text-decoration: none; color: #5f2c82; font-weight: bold; }
+nav ul li a:hover { text-decoration: underline; }
+
+.livro-container { display: flex; min-height: 100vh; }
+.menu-lateral {
+    width: 260px; background: #5f2c82; color:white; padding:25px; position:fixed; height:100%; overflow-y:auto;
+}
+.menu-lateral h2 { color: #ffd369; margin-bottom:20px; }
+.menu-lateral nav a { display:block; margin:6px 0; color:white; }
+.menu-lateral nav a:hover { color: #ffd369; }
+.menu-lateral nav strong { display:block; margin-top:15px; margin-bottom:5px; }
+
+.conteudo-livro { margin-left:260px; padding:50px; flex:1; }
+.capitulo { background: #f0e6ff; padding:40px; border-radius:15px; margin-bottom:50px; box-shadow:0 0 20px rgba(95,44,130,0.2); }
+.capitulo h1 { border-bottom:3px solid #ffd369; padding-bottom:10px; }
+
+ul.conteudos li { margin-left:15px; }
+</style>
+</head>
+
+<body class="tema-integrador">
+
+<div class="livro-container">
+
+    <aside class="menu-lateral">
+        <h2>🧩 Projeto Integrador</h2>
+        <nav>
+            <a href="#capa">Capa</a>
+            <a href="#sumario">Sumário</a>
+
+            <strong>Capítulo 1</strong>
+            <a href="#cap1">1. Planejamento</a>
+            <strong>Capítulo 2</strong>
+            <a href="#cap2">2. Execução</a>
+            <strong>Capítulo 3</strong>
+            <a href="#cap3">3. Avaliação</a>
+
+            <a href="index.html">⬅ Voltar</a>
+        </nav>
+    </aside>
+
+    <main class="conteudo-livro">
+
+        <!-- CAPA -->
+        <section id="capa" class="capitulo">
+            <h1>Projeto Integrador – 7º Ano</h1>
+            <p><strong>Professor:</strong> Márcio L. da Silva</p>
+            <p>Este livro digital organiza o projeto integrador, com links para cada atividade ou PDF correspondente.</p>
+        </section>
+
+        <!-- SUMÁRIO -->
+        <section id="sumario" class="capitulo">
+            <h1>Sumário</h1>
+            <ul>
+                <li><a href="#cap1">Capítulo 1 – Planejamento</a></li>
+                <li><a href="#cap2">Capítulo 2 – Execução</a></li>
+                <li><a href="#cap3">Capítulo 3 – Avaliação</a></li>
+            </ul>
+        </section>
+
+        <!-- Capítulos com links -->
+        <section id="cap1" class="capitulo">
+            <h1>Capítulo 1 – Planejamento</h1>
+            <ul class="conteudos">
+                <li><a href="pdfs/integrador_planejamento_1.pdf" target="_blank">Introdução ao Planejamento</a></li>
+                <li><a href="pdfs/integrador_planejamento_2.pdf" target="_blank">Exemplo de Cronograma</a></li>
+            </ul>
+        </section>
+
+        <section id="cap2" class="capitulo">
+            <h1>Capítulo 2 – Execução</h1>
+            <ul class="conteudos">
+                <li><a href="pdfs/integrador_execucao_1.pdf" target="_blank">Guia de Execução</a></li>
+                <li><a href="pdfs/integrador_execucao_2.pdf" target="_blank">Modelo de Registro</a></li>
+            </ul>
+        </section>
+
+        <section id="cap3" class="capitulo">
+            <h1>Capítulo 3 – Avaliação</h1>
+            <ul class="conteudos">
+                <li><a href="pdfs/integrador_avaliacao_1.pdf" target="_blank">Rubrica de Avaliação</a></li>
+                <li><a href="pdfs/integrador_avaliacao_2.pdf" target="_blank">Relatórios e Feedback</a></li>
+            </ul>
+        </section>
+
+    </main>
+
+</div>
+
+<script>
+document.querySelectorAll('.menu-lateral nav a[href^="#"]').forEach(link=>{
+    link.addEventListener('click',e=>{
+        e.preventDefault();
+        const target=document.querySelector(link.getAttribute('href'));
+        if(target){ window.scrollTo({top:target.offsetTop-20, behavior:'smooth'}); }
+    });
+});
+</script>
+
+</body>
+</html>
