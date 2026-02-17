@@ -1,26 +1,26 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Língua Portuguesa | Centro de Formação Educacional e Tecnológica</title>
+<title>Jurídicos | Centro de Formação Educacional e Tecnológica</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 
 <style>
 
 /* ===================================================== */
-/* IDENTIDADE VISUAL - LÍNGUA PORTUGUESA */
+/* IDENTIDADE VISUAL - JURÍDICOS PREMIUM */
 /* ===================================================== */
 
 :root {
-    --cor-primaria: #4c0519;
-    --cor-secundaria: #7f1d1d;
-    --cor-destaque: #b91c1c;
-    --cor-fundo: #fdf2f2;
+    --cor-primaria: #0b132b;       
+    --cor-secundaria: #1c2541;     
+    --cor-destaque: #3a506b;       
+    --cor-ouro: #d4af37;           
+    --cor-fundo: #f4f6f9;
     --cor-caixa: #ffffff;
-    --cor-texto: #3f1d1d;
+    --cor-texto: #1c2541;
 }
 
 /* RESET */
@@ -59,7 +59,7 @@ body {
     border-radius: 8px;
     cursor: pointer;
     z-index: 1001;
-    box-shadow: 0 6px 15px rgba(0,0,0,0.25);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.3);
 }
 
 /* ===================================================== */
@@ -67,17 +67,17 @@ body {
 /* ===================================================== */
 
 .menu-lateral {
-    width: 280px;
+    width: 290px;
     background: linear-gradient(180deg, var(--cor-primaria), var(--cor-secundaria));
     color: white;
     position: fixed;
     top: 0;
     left: 0;
     height: 100%;
-    padding: 35px 22px;
+    padding: 40px 25px;
     overflow-y: auto;
     transition: transform 0.3s ease;
-    box-shadow: 4px 0 25px rgba(0,0,0,0.3);
+    box-shadow: 4px 0 30px rgba(0,0,0,0.4);
 }
 
 .menu-lateral h2 {
@@ -85,8 +85,9 @@ body {
     font-size: 1.3rem;
     text-align: center;
     border-bottom: 1px solid rgba(255,255,255,0.2);
-    padding-bottom: 12px;
-    letter-spacing: 0.5px;
+    padding-bottom: 14px;
+    color: var(--cor-ouro);
+    letter-spacing: 1px;
 }
 
 /* ===================================================== */
@@ -94,7 +95,7 @@ body {
 /* ===================================================== */
 
 .indice-pdf .item-indice {
-    margin-bottom: 14px;
+    margin-bottom: 16px;
 }
 
 .indice-pdf a {
@@ -109,16 +110,17 @@ body {
 .indice-pdf .linha {
     flex: 1;
     border-bottom: 1px dotted rgba(255,255,255,0.6);
-    margin: 0 8px;
+    margin: 0 10px;
 }
 
 .indice-pdf .pagina {
     font-weight: 600;
-    color: #fecaca;
+    color: var(--cor-ouro);
 }
 
 .indice-pdf a:hover {
-    color: #fecaca;
+    color: var(--cor-ouro);
+    transform: translateX(4px);
 }
 
 /* ===================================================== */
@@ -126,22 +128,23 @@ body {
 /* ===================================================== */
 
 header {
-    margin-left: 280px;
-    padding: 90px 20px;
+    margin-left: 290px;
+    padding: 100px 20px;
     background: linear-gradient(135deg, var(--cor-secundaria), var(--cor-destaque));
     color: white;
     text-align: center;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    box-shadow: 0 10px 35px rgba(0,0,0,0.25);
 }
 
 header h1 {
-    font-size: 2.6rem;
-    margin-bottom: 12px;
+    font-size: 2.7rem;
+    margin-bottom: 14px;
 }
 
 header p {
     font-size: 1.05rem;
     opacity: 0.95;
+    letter-spacing: 0.5px;
 }
 
 /* ===================================================== */
@@ -149,17 +152,17 @@ header p {
 /* ===================================================== */
 
 .conteudo {
-    margin-left: 280px;
-    padding: 80px;
+    margin-left: 290px;
+    padding: 90px;
 }
 
 section {
     background: var(--cor-caixa);
-    padding: 45px;
-    border-radius: 18px;
-    margin-bottom: 70px;
-    box-shadow: 0 15px 40px rgba(0,0,0,0.08);
-    border-left: 6px solid var(--cor-destaque);
+    padding: 50px;
+    border-radius: 20px;
+    margin-bottom: 80px;
+    box-shadow: 0 20px 45px rgba(0,0,0,0.08);
+    border-left: 7px solid var(--cor-ouro);
     transition: 0.3s ease;
 }
 
@@ -169,16 +172,16 @@ section:hover {
 
 section h2 {
     margin-bottom: 25px;
-    font-size: 1.6rem;
+    font-size: 1.7rem;
     color: var(--cor-secundaria);
 }
 
 section ul {
-    padding-left: 20px;
+    padding-left: 22px;
 }
 
 section ul li {
-    margin-bottom: 12px;
+    margin-bottom: 14px;
 }
 
 section ul li a {
@@ -189,7 +192,7 @@ section ul li a {
 }
 
 section ul li a:hover {
-    color: var(--cor-destaque);
+    color: var(--cor-ouro);
 }
 
 /* ===================================================== */
@@ -198,9 +201,9 @@ section ul li a:hover {
 
 footer {
     text-align: center;
-    padding: 35px;
-    background: #fee2e2;
-    margin-left: 280px;
+    padding: 40px;
+    background: #e2e8f0;
+    margin-left: 290px;
     font-size: 0.9rem;
 }
 
@@ -229,7 +232,7 @@ footer {
     }
 
     header {
-        padding-top: 100px;
+        padding-top: 110px;
     }
 
     .conteudo {
@@ -243,60 +246,62 @@ footer {
 <body>
 
 <button class="menu-toggle" onclick="toggleMenu()">☰</button>
-
+    <button onclick="logout()" class="btn-logout">Sair</button>
 <aside class="menu-lateral">
-    <h2>📖 Língua Portuguesa</h2>
+    <h2>⚖️ Jurídicos</h2>
 
     <nav class="indice-pdf">
+
         <div class="item-indice">
-            <a href="#gramatica"><span>1. Gramática</span><span class="linha"></span><span class="pagina">01</span></a>
+            <a href="#constitucional"><span>1. Direito Constitucional</span><span class="linha"></span><span class="pagina">01</span></a>
         </div>
 
         <div class="item-indice">
-            <a href="#literatura"><span>2. Literatura</span><span class="linha"></span><span class="pagina">20</span></a>
+            <a href="#administrativo"><span>2. Direito Administrativo</span><span class="linha"></span><span class="pagina">25</span></a>
         </div>
 
         <div class="item-indice">
-            <a href="#redacao"><span>3. Redação</span><span class="linha"></span><span class="pagina">40</span></a>
+            <a href="#educacional"><span>3. Legislação Educacional</span><span class="linha"></span><span class="pagina">40</span></a>
         </div>
 
         <div class="item-indice">
             <a href="index.html"><span>Voltar</span><span class="linha"></span><span>⟵</span></a>
         </div>
+
     </nav>
 </aside>
 
 <header>
-    <h1>Língua Portuguesa Completa</h1>
-    <p>Gramática • Literatura • Produção Textual</p>
+    <h1>Legislações e Estudos Jurídicos</h1>
+    <p>Constituição • Normas • Regulamentos • Base Legal Educacional</p>
 </header>
 
 <main class="conteudo">
 
-<section id="gramatica">
-    <h2>Gramática</h2>
+<section id="constitucional">
+    <h2>Direito Constitucional</h2>
     <ul>
-        <li><a href="#">Classes Gramaticais</a></li>
-        <li><a href="#">Sintaxe</a></li>
-        <li><a href="#">Concordância</a></li>
+        <li><a href="#">Princípios Fundamentais</a></li>
+        <li><a href="#">Direitos e Garantias</a></li>
+        <li><a href="#">Organização do Estado</a></li>
     </ul>
 </section>
 
-<section id="literatura">
-    <h2>Literatura</h2>
+<section id="administrativo">
+    <h2>Direito Administrativo</h2>
     <ul>
-        <li><a href="#">Escolas Literárias</a></li>
-        <li><a href="#">Autores Clássicos</a></li>
-        <li><a href="#">Interpretação Literária</a></li>
+        <li><a href="#">Atos Administrativos</a></li>
+        <li><a href="#">Licitações</a></li>
+        <li><a href="#">Responsabilidade do Estado</a></li>
     </ul>
 </section>
 
-<section id="redacao">
-    <h2>Redação</h2>
+<section id="educacional">
+    <h2>Legislação Educacional</h2>
     <ul>
-        <li><a href="#">Produção Dissertativa</a></li>
-        <li><a href="#">Estrutura Argumentativa</a></li>
-        <li><a href="#">Técnicas de Escrita</a></li>
+        <li><a href="#">LDB</a></li>
+        <li><a href="#">BNCC</a></li>
+        <li><a href="#">Normas Complementares</a></li>
     </ul>
 </section>
 
