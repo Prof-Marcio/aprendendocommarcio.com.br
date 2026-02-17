@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tecnologia | Centro de Formação Educacional e Tecnológica</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+/* ===================================================== */
+/* IDENTIDADE VISUAL - TECNOLOGIA */
+/* ===================================================== */
+
+:root {
+    --cor-primaria: #0b1220;
+    --cor-secundaria: #111827;
+    --cor-destaque: #2563eb;
+    --cor-neon: #06b6d4;
+    --cor-fundo: #f8fafc;
+    --cor-caixa: #ffffff;
+    --cor-texto: #0f172a;
+}
+
+/* RESET */
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: var(--cor-fundo);
+    color: var(--cor-texto);
+    line-height: 1.75;
+}
+
+/* MENU HAMBÚRGUER */
+
+.menu-toggle {
+    display: none;
+    position: fixed;
+    top: 18px;
+    left: 18px;
+    background: var(--cor-destaque);
+    color: white;
+    border: none;
+    font-size: 22px;
+    padding: 11px 15px;
+    border-radius: 10px;
+    cursor: pointer;
+    z-index: 1001;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.35);
+}
+
+/* MENU LATERAL */
+
+.menu-lateral {
+    width: 300px;
+    background: linear-gradient(180deg, var(--cor-primaria), var(--cor-secundaria));
+    color: white;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    padding: 50px 28px;
+    overflow-y: auto;
+    transition: transform 0.3s ease;
+    box-shadow: 6px 0 35px rgba(0,0,0,0.4);
+}
+
+.menu-lateral h2 {
+    margin-bottom: 40px;
+    font-size: 1.3rem;
+    text-align: center;
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+    padding-bottom: 14px;
+    color: var(--cor-neon);
+    letter-spacing: 1px;
+}
+
+/* ÍNDICE */
+
+.indice-pdf .item-indice { margin-bottom: 18px; }
+
+.indice-pdf a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: white;
+    font-size: 0.95rem;
+    transition: 0.3s ease;
+}
+
+.indice-pdf .linha {
+    flex: 1;
+    border-bottom: 1px dotted rgba(255,255,255,0.6);
+    margin: 0 10px;
+}
+
+.indice-pdf .pagina {
+    font-weight: 600;
+    color: var(--cor-neon);
+}
+
+.indice-pdf a:hover {
+    color: var(--cor-neon);
+    transform: translateX(6px);
+}
+
+/* HEADER */
+
+header {
+    margin-left: 300px;
+    padding: 120px 20px;
+    background: linear-gradient(135deg, var(--cor-secundaria), var(--cor-destaque));
+    color: white;
+    text-align: center;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.35);
+}
+
+header h1 {
+    font-size: 2.8rem;
+    margin-bottom: 15px;
+}
+
+header p {
+    font-size: 1.05rem;
+    opacity: 0.95;
+}
+
+/* CONTEÚDO */
+
+.conteudo {
+    margin-left: 300px;
+    padding: 100px;
+}
+
+section {
+    background: var(--cor-caixa);
+    padding: 60px;
+    border-radius: 22px;
+    margin-bottom: 90px;
+    box-shadow: 0 20px 45px rgba(0,0,0,0.08);
+    border-left: 7px solid var(--cor-destaque);
+    transition: 0.3s ease;
+}
+
+section:hover {
+    transform: translateY(-6px);
+}
+
+section h2 {
+    margin-bottom: 25px;
+    font-size: 1.9rem;
+    color: var(--cor-secundaria);
+}
+
+section ul { padding-left: 25px; }
+
+section ul li { margin-bottom: 16px; }
+
+section ul li a {
+    text-decoration: none;
+    color: var(--cor-primaria);
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+section ul li a:hover { color: var(--cor-destaque); }
+
+/* RODAPÉ */
+
+footer {
+    text-align: center;
+    padding: 45px;
+    background: #e2e8f0;
+    margin-left: 300px;
+    font-size: 0.9rem;
+}
+
+/* RESPONSIVIDADE */
+
+@media (max-width: 1000px) {
+
+    .menu-toggle { display: block; }
+
+    .menu-lateral { transform: translateX(-100%); }
+
+    .menu-lateral.ativo { transform: translateX(0); }
+
+    header, .conteudo, footer { margin-left: 0; }
+
+    header { padding-top: 120px; }
+
+    .conteudo { padding: 40px 25px; }
+}
+
+</style>
+</head>
+
+<body>
+
+<button class="menu-toggle" onclick="toggleMenu()">☰</button>
+
+<aside class="menu-lateral">
+    <h2>💻 Tecnologia</h2>
+
+    <nav class="indice-pdf">
+
+        <div class="item-indice">
+            <a href="#programacao"><span>1. Programação</span><span class="linha"></span><span class="pagina">01</span></a>
+        </div>
+
+        <div class="item-indice">
+            <a href="#web"><span>2. Desenvolvimento Web</span><span class="linha"></span><span class="pagina">18</span></a>
+        </div>
+
+        <div class="item-indice">
+            <a href="#dados"><span>3. Banco de Dados</span><span class="linha"></span><span class="pagina">35</span></a>
+        </div>
+
+        <div class="item-indice">
+            <a href="#educacao-tech"><span>4. Tecnologia na Educação</span><span class="linha"></span><span class="pagina">52</span></a>
+        </div>
+
+        <div class="item-indice voltar">
+            <a href="index.html"><span>Voltar</span><span class="linha"></span><span>⟵</span></a>
+        </div>
+
+    </nav>
+</aside>
+
+<header>
+    <h1>Tecnologias Aplicadas</h1>
+    <p>Programação • Sistemas • Inovação • Educação Tecnológica</p>
+</header>
+
+<main class="conteudo">
+
+<section id="programacao">
+    <h2>Programação</h2>
+    <ul>
+        <li><a href="#">Lógica de Programação</a></li>
+        <li><a href="#">Algoritmos</a></li>
+        <li><a href="#">Estruturas de Dados</a></li>
+    </ul>
+</section>
+
+<section id="web">
+    <h2>Desenvolvimento Web</h2>
+    <ul>
+        <li><a href="#">HTML e CSS</a></li>
+        <li><a href="#">JavaScript</a></li>
+        <li><a href="#">Aplicações Web</a></li>
+    </ul>
+</section>
+
+<section id="dados">
+    <h2>Banco de Dados</h2>
+    <ul>
+        <li><a href="#">Modelagem de Dados</a></li>
+        <li><a href="#">SQL</a></li>
+        <li><a href="#">Sistemas Gerenciadores</a></li>
+    </ul>
+</section>
+
+<section id="educacao-tech">
+    <h2>Tecnologia na Educação</h2>
+    <ul>
+        <li><a href="#">Plataformas Digitais</a></li>
+        <li><a href="#">Ambientes Virtuais</a></li>
+        <li><a href="#">Inovação Educacional</a></li>
+    </ul>
+</section>
+
+</main>
+
+<footer>
+    Centro de Formação Educacional e Tecnológica • Professor Márcio L. da Silva • 2026
+</footer>
+
+<script>
+function toggleMenu() {
+    document.querySelector(".menu-lateral").classList.toggle("ativo");
+}
+</script>
+<script type="module" src="js/guard.js"></script>
+</body>
+</html>

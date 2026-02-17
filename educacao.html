@@ -1,26 +1,26 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Matemática | Centro de Formação Educacional e Tecnológica</title>
+<title>Educação | Centro de Formação Educacional e Tecnológica</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 
 <style>
 
 /* ===================================================== */
-/* IDENTIDADE VISUAL - MATEMÁTICA */
+/* IDENTIDADE VISUAL - EDUCAÇÃO MASTER */
 /* ===================================================== */
 
 :root {
-    --cor-primaria: #0f172a;
-    --cor-secundaria: #1e3a8a;
-    --cor-destaque: #2563eb;
-    --cor-fundo: #f1f5f9;
+    --cor-primaria: #0b3d2e;       
+    --cor-secundaria: #14532d;     
+    --cor-destaque: #1d4ed8;       
+    --cor-apoio: #22c55e;          
+    --cor-fundo: #f6fdf8;
     --cor-caixa: #ffffff;
-    --cor-texto: #1e293b;
+    --cor-texto: #0f172a;
 }
 
 /* RESET */
@@ -39,7 +39,7 @@ body {
     font-family: 'Poppins', sans-serif;
     background: var(--cor-fundo);
     color: var(--cor-texto);
-    line-height: 1.7;
+    line-height: 1.75;
 }
 
 /* ===================================================== */
@@ -59,7 +59,7 @@ body {
     border-radius: 8px;
     cursor: pointer;
     z-index: 1001;
-    box-shadow: 0 6px 15px rgba(0,0,0,0.25);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.3);
 }
 
 /* ===================================================== */
@@ -67,26 +67,27 @@ body {
 /* ===================================================== */
 
 .menu-lateral {
-    width: 280px;
+    width: 300px;
     background: linear-gradient(180deg, var(--cor-primaria), var(--cor-secundaria));
     color: white;
     position: fixed;
     top: 0;
     left: 0;
     height: 100%;
-    padding: 35px 22px;
+    padding: 45px 28px;
     overflow-y: auto;
     transition: transform 0.3s ease;
-    box-shadow: 4px 0 25px rgba(0,0,0,0.3);
+    box-shadow: 5px 0 35px rgba(0,0,0,0.35);
 }
 
 .menu-lateral h2 {
-    margin-bottom: 30px;
+    margin-bottom: 35px;
     font-size: 1.3rem;
     text-align: center;
     border-bottom: 1px solid rgba(255,255,255,0.2);
-    padding-bottom: 12px;
-    letter-spacing: 0.5px;
+    padding-bottom: 14px;
+    color: #bbf7d0;
+    letter-spacing: 1px;
 }
 
 /* ===================================================== */
@@ -94,7 +95,7 @@ body {
 /* ===================================================== */
 
 .indice-pdf .item-indice {
-    margin-bottom: 14px;
+    margin-bottom: 18px;
 }
 
 .indice-pdf a {
@@ -109,16 +110,17 @@ body {
 .indice-pdf .linha {
     flex: 1;
     border-bottom: 1px dotted rgba(255,255,255,0.6);
-    margin: 0 8px;
+    margin: 0 10px;
 }
 
 .indice-pdf .pagina {
     font-weight: 600;
-    color: #93c5fd;
+    color: #bbf7d0;
 }
 
 .indice-pdf a:hover {
-    color: #93c5fd;
+    color: #bbf7d0;
+    transform: translateX(4px);
 }
 
 /* ===================================================== */
@@ -126,22 +128,23 @@ body {
 /* ===================================================== */
 
 header {
-    margin-left: 280px;
-    padding: 90px 20px;
+    margin-left: 300px;
+    padding: 110px 20px;
     background: linear-gradient(135deg, var(--cor-secundaria), var(--cor-destaque));
     color: white;
     text-align: center;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.25);
 }
 
 header h1 {
-    font-size: 2.6rem;
-    margin-bottom: 12px;
+    font-size: 2.8rem;
+    margin-bottom: 14px;
 }
 
 header p {
     font-size: 1.05rem;
     opacity: 0.95;
+    letter-spacing: 0.5px;
 }
 
 /* ===================================================== */
@@ -149,17 +152,17 @@ header p {
 /* ===================================================== */
 
 .conteudo {
-    margin-left: 280px;
-    padding: 80px;
+    margin-left: 300px;
+    padding: 100px;
 }
 
 section {
     background: var(--cor-caixa);
-    padding: 45px;
-    border-radius: 18px;
-    margin-bottom: 70px;
-    box-shadow: 0 15px 40px rgba(0,0,0,0.08);
-    border-left: 6px solid var(--cor-destaque);
+    padding: 55px;
+    border-radius: 22px;
+    margin-bottom: 90px;
+    box-shadow: 0 20px 45px rgba(0,0,0,0.08);
+    border-left: 7px solid var(--cor-destaque);
     transition: 0.3s ease;
 }
 
@@ -169,16 +172,16 @@ section:hover {
 
 section h2 {
     margin-bottom: 25px;
-    font-size: 1.6rem;
+    font-size: 1.8rem;
     color: var(--cor-secundaria);
 }
 
 section ul {
-    padding-left: 20px;
+    padding-left: 25px;
 }
 
 section ul li {
-    margin-bottom: 12px;
+    margin-bottom: 16px;
 }
 
 section ul li a {
@@ -198,9 +201,9 @@ section ul li a:hover {
 
 footer {
     text-align: center;
-    padding: 35px;
-    background: #e2e8f0;
-    margin-left: 280px;
+    padding: 45px;
+    background: #dcfce7;
+    margin-left: 300px;
     font-size: 0.9rem;
 }
 
@@ -229,7 +232,7 @@ footer {
     }
 
     header {
-        padding-top: 100px;
+        padding-top: 120px;
     }
 
     .conteudo {
@@ -245,58 +248,73 @@ footer {
 <button class="menu-toggle" onclick="toggleMenu()">☰</button>
 
 <aside class="menu-lateral">
-    <h2>📘 Matemática</h2>
+    <h2>🎓 Educação</h2>
 
     <nav class="indice-pdf">
+
         <div class="item-indice">
-            <a href="#fund1"><span>1. Fundamental I</span><span class="linha"></span><span class="pagina">01</span></a>
+            <a href="#fundamentos"><span>1. Fundamentos da Educação</span><span class="linha"></span><span class="pagina">01</span></a>
         </div>
 
         <div class="item-indice">
-            <a href="#fund2"><span>2. Fundamental II</span><span class="linha"></span><span class="pagina">20</span></a>
+            <a href="#didatica"><span>2. Didática e Metodologias</span><span class="linha"></span><span class="pagina">22</span></a>
         </div>
 
         <div class="item-indice">
-            <a href="#medio"><span>3. Ensino Médio</span><span class="linha"></span><span class="pagina">40</span></a>
+            <a href="#avaliacao"><span>3. Avaliação Educacional</span><span class="linha"></span><span class="pagina">40</span></a>
+        </div>
+
+        <div class="item-indice">
+            <a href="#gestao"><span>4. Gestão e Políticas Públicas</span><span class="linha"></span><span class="pagina">58</span></a>
         </div>
 
         <div class="item-indice">
             <a href="index.html"><span>Voltar</span><span class="linha"></span><span>⟵</span></a>
         </div>
+
     </nav>
 </aside>
 
 <header>
-    <h1>Matemática Completa</h1>
-    <p>Do 1º Ano do Ensino Fundamental ao Ensino Médio</p>
+    <h1>Educação e Formação Docente</h1>
+    <p>Pedagogia • Metodologias • Políticas Públicas • Mestrado Profissional em Educação</p>
 </header>
 
 <main class="conteudo">
 
-<section id="fund1">
-    <h2>Fundamental I</h2>
+<section id="fundamentos">
+    <h2>Fundamentos da Educação</h2>
     <ul>
-        <li><a href="#">Números e Operações</a></li>
-        <li><a href="#">Problemas Matemáticos</a></li>
-        <li><a href="#">Geometria Básica</a></li>
+        <li><a href="#">Teorias da Aprendizagem</a></li>
+        <li><a href="#">História da Educação</a></li>
+        <li><a href="#">Filosofia da Educação</a></li>
     </ul>
 </section>
 
-<section id="fund2">
-    <h2>Fundamental II</h2>
+<section id="didatica">
+    <h2>Didática e Metodologias</h2>
     <ul>
-        <li><a href="#">Álgebra</a></li>
-        <li><a href="#">Razões e Proporções</a></li>
-        <li><a href="#">Estatística e Probabilidade</a></li>
+        <li><a href="#">Metodologias Ativas</a></li>
+        <li><a href="#">Planejamento de Aula</a></li>
+        <li><a href="#">Tecnologias Educacionais</a></li>
     </ul>
 </section>
 
-<section id="medio">
-    <h2>Ensino Médio</h2>
+<section id="avaliacao">
+    <h2>Avaliação Educacional</h2>
     <ul>
-        <li><a href="#">Funções</a></li>
-        <li><a href="#">Trigonometria</a></li>
-        <li><a href="#">Geometria Analítica</a></li>
+        <li><a href="#">Avaliação Formativa</a></li>
+        <li><a href="#">Avaliação Somativa</a></li>
+        <li><a href="#">Instrumentos Avaliativos</a></li>
+    </ul>
+</section>
+
+<section id="gestao">
+    <h2>Gestão e Políticas Públicas</h2>
+    <ul>
+        <li><a href="#">Políticas Educacionais</a></li>
+        <li><a href="#">Gestão Escolar</a></li>
+        <li><a href="#">Legislação Educacional</a></li>
     </ul>
 </section>
 

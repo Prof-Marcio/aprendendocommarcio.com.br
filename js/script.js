@@ -1,33 +1,46 @@
 /* ===================================================== */
-/* PLATAFORMA EDUCACIONAL - SCRIPT PROFISSIONAL PREMIUM */
+/* CENTRO DE FORMAÇÃO EDUCACIONAL E TECNOLÓGICA */
+/* SCRIPT PROFISSIONAL DEFINITIVO */
 /* ===================================================== */
 
 document.addEventListener("DOMContentLoaded", () => {
 
-    /* ===================================================== */
-    /* 1️⃣ SCROLL SUAVE INTELIGENTE */
-    /* ===================================================== */
-
     const menuLateral = document.querySelector(".menu-lateral");
+    const header = document.querySelector("header");
+
+    /* ===================================================== */
+    /* 1️⃣ SCROLL SUAVE INTELIGENTE (CORRIGIDO) */
+    /* ===================================================== */
 
     document.querySelectorAll('a[href^="#"]').forEach(link => {
+
         link.addEventListener("click", function (e) {
 
-            const target = document.querySelector(this.getAttribute("href"));
+            const destino = this.getAttribute("href");
+
+            if (!destino || destino === "#") return;
+
+            const target = document.querySelector(destino);
 
             if (target) {
+
                 e.preventDefault();
 
-                const offset = menuLateral && window.innerWidth > 1000 ? 40 : 100;
+                const offset = menuLateral && window.innerWidth > 900 ? 60 : 100;
                 const offsetTop = target.offsetTop - offset;
 
                 window.scrollTo({
                     top: offsetTop,
                     behavior: "smooth"
                 });
+
+                if (window.innerWidth <= 900 && menuLateral) {
+                    menuLateral.classList.remove("ativo");
+                }
             }
         });
     });
+
 
     /* ===================================================== */
     /* 2️⃣ ANIMAÇÃO DE ENTRADA DAS SEÇÕES */
@@ -42,7 +55,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 if (entry.isIntersecting) {
                     entry.target.style.opacity = "1";
                     entry.target.style.transform = "translateY(0)";
-                    entry.target.style.transition = "all 0.8s ease";
                 }
             });
         }, { threshold: 0.15 });
@@ -50,19 +62,19 @@ document.addEventListener("DOMContentLoaded", () => {
         secoes.forEach(secao => {
             secao.style.opacity = "0";
             secao.style.transform = "translateY(40px)";
+            secao.style.transition = "all 0.8s ease";
             observer.observe(secao);
         });
     }
 
+
     /* ===================================================== */
-    /* 3️⃣ EFEITO 3D REAL ACOMPANHANDO O MOUSE (CORRIGIDO) */
+    /* 3️⃣ EFEITO 3D + LUZ DINÂMICA UNIFICADO */
     /* ===================================================== */
 
-    const livros = document.querySelectorAll(".livro-estrutura");
+    document.querySelectorAll(".livro-estrutura").forEach(livro => {
 
-    livros.forEach(livro => {
-
-        livro.addEventListener("mousemove", (e) => {
+        livro.addEventListener("mousemove", e => {
 
             const rect = livro.getBoundingClientRect();
 
@@ -80,12 +92,30 @@ document.addEventListener("DOMContentLoaded", () => {
                 rotateY(${rotateY}deg)
                 scale(1.04)
             `;
+
+            /* Luz dinâmica */
+            const percentX = (x / rect.width) * 100;
+            const percentY = (y / rect.height) * 100;
+
+            livro.style.setProperty("--x", percentX + "%");
+            livro.style.setProperty("--y", percentY + "%");
         });
 
         livro.addEventListener("mouseleave", () => {
             livro.style.transform = "rotateX(0) rotateY(0) scale(1)";
         });
+
+        /* Efeito abrir ao clicar */
+        livro.addEventListener("click", () => {
+            livro.classList.add("abrindo");
+
+            setTimeout(() => {
+                livro.classList.remove("abrindo");
+            }, 600);
+        });
+
     });
+
 
     /* ===================================================== */
     /* 4️⃣ DESTAQUE AUTOMÁTICO DO CAPÍTULO */
@@ -98,7 +128,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         window.addEventListener("scroll", () => {
 
-            let scrollPos = window.scrollY + 180;
+            let scrollPos = window.scrollY + 200;
             let capituloAtual = "";
 
             capitulos.forEach(cap => {
@@ -121,33 +151,44 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    /* ===================================================== */
-    /* 5️⃣ BARRA DE PROGRESSO DE LEITURA */
-    /* ===================================================== */
-
-    const progressBar = document.createElement("div");
-    progressBar.id = "progressBar";
-
-    Object.assign(progressBar.style, {
-        position: "fixed",
-        top: "0",
-        left: "0",
-        height: "5px",
-        width: "0%",
-        background: "linear-gradient(to right, #2563eb, #16a34a)",
-        zIndex: "9999",
-        transition: "width 0.2s ease"
-    });
-
-    document.body.appendChild(progressBar);
 
     /* ===================================================== */
-    /* 6️⃣ BOTÃO VOLTAR AO TOPO PREMIUM */
+    /* 5️⃣ BARRA DE PROGRESSO (APENAS LIVROS) */
+    /* ===================================================== */
+
+    if (document.querySelector(".capitulo")) {
+
+        const progressBar = document.createElement("div");
+
+        Object.assign(progressBar.style, {
+            position: "fixed",
+            top: "0",
+            left: "0",
+            height: "5px",
+            width: "0%",
+            background: "linear-gradient(to right, #2563eb, #16a34a)",
+            zIndex: "9999",
+            transition: "width 0.2s ease"
+        });
+
+        document.body.appendChild(progressBar);
+
+        window.addEventListener("scroll", () => {
+            const scrollTotal = document.documentElement.scrollHeight - window.innerHeight;
+            const scrollAtual = window.scrollY;
+            const progresso = (scrollAtual / scrollTotal) * 100;
+
+            progressBar.style.width = progresso + "%";
+        });
+    }
+
+
+    /* ===================================================== */
+    /* 6️⃣ BOTÃO VOLTAR AO TOPO */
     /* ===================================================== */
 
     const btnTopo = document.createElement("button");
     btnTopo.innerHTML = "↑";
-    btnTopo.id = "btnTopo";
 
     Object.assign(btnTopo.style, {
         position: "fixed",
@@ -183,19 +224,9 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-    /* ===================================================== */
-    /* 7️⃣ PARALLAX + PROGRESSO + BOTÃO (SCROLL OTIMIZADO) */
-    /* ===================================================== */
-
-    const header = document.querySelector("header");
-
     window.addEventListener("scroll", () => {
 
-        const scrollTotal = document.documentElement.scrollHeight - window.innerHeight;
         const scrollAtual = window.scrollY;
-        const progresso = (scrollAtual / scrollTotal) * 100;
-
-        progressBar.style.width = progresso + "%";
 
         if (scrollAtual > 400) {
             btnTopo.style.display = "block";
@@ -203,36 +234,10 @@ document.addEventListener("DOMContentLoaded", () => {
             btnTopo.style.display = "none";
         }
 
+        /* Parallax suave */
         if (header) {
-            header.style.backgroundPositionY = scrollAtual * 0.5 + "px";
+            header.style.backgroundPositionY = scrollAtual * 0.4 + "px";
         }
-
     });
 
-  /* ===================================================== */
-/* LUZ DINÂMICA + EFEITOS PREMIUM */
-/* ===================================================== */
-
-document.querySelectorAll(".livro-estrutura").forEach(livro => {
-
-    // Luz dinâmica
-    livro.addEventListener("mousemove", e => {
-        const rect = livro.getBoundingClientRect();
-        const x = ((e.clientX - rect.left) / rect.width) * 100;
-        const y = ((e.clientY - rect.top) / rect.height) * 100;
-
-        livro.style.setProperty("--x", x + "%");
-        livro.style.setProperty("--y", y + "%");
-    });
-
-    // Efeito abrir ao clicar
-    livro.addEventListener("click", () => {
-        livro.classList.add("abrindo");
-
-        setTimeout(() => {
-            livro.classList.remove("abrindo");
-        }, 600);
-    });
-
-});
 });

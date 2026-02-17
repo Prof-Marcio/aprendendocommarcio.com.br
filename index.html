@@ -3,7 +3,9 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Biblioteca Digital | Professor Márcio</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Centro de Formação Educacional e Tecnológica | Prof. Márcio</title>
+    <meta name="description" content="Centro de Formação Educacional e Tecnológica do Prof. Márcio L. da Silva. Plataforma integrada de Matemática, Linguagens, Educação, Direito e Tecnologia.">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- Google Fonts -->
@@ -11,145 +13,217 @@
 
     <!-- CSS Principal -->
     <link rel="stylesheet" href="css/style.css">
-    <link rel="icon" type="image/x-icon" href="android-chrome-192x192.png">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="favicon.png">
 </head>
 
 <body>
 
     <!-- ===================================================== -->
-    <!-- HERO / CABEÇALHO PRINCIPAL -->
+    <!-- HERO INSTITUCIONAL -->
     <!-- ===================================================== -->
 
-    <header class="header-azul">
+    <header class="header-azul" role="banner">
         <div class="container hero-container">
-        
+
             <div class="hero-texto">
-                <h1>📚 Plataforma Educacional</h1>
-                <p>Ambiente Oficial de Estudos — Professor Márcio L. da Silva</p>
+                <h1>Centro de Formação Educacional e Tecnológica</h1>
+                <p>Plataforma Oficial do Prof. Márcio L. da Silva</p>
             </div>
 
             <div class="hero-badge">
-                <span>Ensino Estruturado</span>
-                <span>Conteúdo Organizado</span>
-                <span>Livro Digital Interativo</span>
+                <span>Matemática</span>
+                <span>Linguagens</span>
+                <span>Educação</span>
+                <span>Direito</span>
+                <span>Tecnologia</span>
             </div>
 
         </div>
-     
     </header>
+
 
     <!-- ===================================================== -->
     <!-- CONTEÚDO PRINCIPAL -->
     <!-- ===================================================== -->
 
-    <main class="container">
+    <main class="container" role="main">
 
-        <!-- ======================== -->
-        <!-- APRESENTAÇÃO -->
-        <!-- ======================== -->
+        <!-- ===================================================== -->
+        <!-- APRESENTAÇÃO INSTITUCIONAL -->
+        <!-- ===================================================== -->
 
         <section class="secao" id="apresentacao">
-            <h2>Bem-vindo à Biblioteca Digital</h2>
+            <h2>Apresentação Institucional</h2>
 
             <p>
-                Este ambiente foi desenvolvido para organizar as disciplinas em formato
-                de livros digitais interativos, proporcionando uma experiência moderna,
-                estruturada e eficiente para o aprendizado.
+                Este ambiente integra as áreas de formação acadêmica e profissional do
+                Professor Márcio L. da Silva, reunindo conteúdos organizados em formato
+                de livros digitais estruturados.
+            </p>
+
+            <p>
+                A proposta é oferecer uma experiência educacional moderna, organizada,
+                interdisciplinar e tecnicamente fundamentada.
             </p>
         </section>
 
 
-        <!-- ======================== -->
-        <!-- DISCIPLINAS -->
-        <!-- ======================== -->
+        <!-- ===================================================== -->
+        <!-- ÁREAS DE FORMAÇÃO -->
+        <!-- ===================================================== -->
 
-        <section class="secao" id="disciplinas">
-            <h2>📖 Disciplinas Disponíveis</h2>
+        <section class="secao" id="areas">
+            <h2>Áreas de Formação e Estudo</h2>
 
             <div class="grid-livros">
 
-                <!-- =================================== -->
+                <!-- ===================================================== -->
                 <!-- MATEMÁTICA -->
-                <!-- =================================== -->
+                <!-- ===================================================== -->
 
-                <article class="livro livro-azul">
+                <article class="livro livro-azul" aria-labelledby="titulo-matematica">
 
                     <div class="livro-estrutura">
                         <div class="lombada"></div>
 
                         <div class="capa-conteudo">
-                            <div class="capa-icone">📐</div>
+                            <div class="capa-icone">📘</div>
 
-                            <h3>Matemática</h3>
-                            <p>6º anos A e B</p>
+                            <h3 id="titulo-matematica">Matemática</h3>
+                            <p>Fundamental ao Ensino Médio</p>
 
                             <div class="livro-info">
-                                <span>Capítulos Organizados</span>
-                                <span>Exercícios Práticos</span>
+                                <span>Raciocínio Lógico</span>
+                                <span>Álgebra</span>
+                                <span>Geometria</span>
                             </div>
                         </div>
                     </div>
 
                     <a href="matematica.html" class="btn-livro">
-                        Abrir Livro
+                        Acessar Livro
                     </a>
 
                 </article>
 
 
-                <!-- =================================== -->
-                <!-- PROJETO INTEGRADOR -->
-                <!-- =================================== -->
+                <!-- ===================================================== -->
+                <!-- PORTUGUÊS -->
+                <!-- ===================================================== -->
 
-                <article class="livro livro-vermelho">
+                <article class="livro livro-vermelho" aria-labelledby="titulo-portugues">
 
                     <div class="livro-estrutura">
                         <div class="lombada"></div>
 
                         <div class="capa-conteudo">
-                            <div class="capa-icone">🧩</div>
+                            <div class="capa-icone">📖</div>
 
-                            <h3>Projeto Integrador</h3>
-                            <p>7º ano B</p>
+                            <h3 id="titulo-portugues">Português</h3>
+                            <p>Gramática e Produção Textual</p>
 
                             <div class="livro-info">
-                                <span>Projetos Interdisciplinares</span>
-                                <span>Trabalho em Equipe</span>
+                                <span>Interpretação</span>
+                                <span>Redação</span>
+                                <span>Literatura</span>
                             </div>
                         </div>
                     </div>
 
-                    <a href="integrador.html" class="btn-livro">
-                        Abrir Livro
+                    <a href="lingua-portuguesa.html" class="btn-livro">
+                        Acessar Livro
                     </a>
 
                 </article>
 
 
-                <!-- =================================== -->
-                <!-- PROJETO DE VIDA -->
-                <!-- =================================== -->
+                <!-- ===================================================== -->
+                <!-- JURÍDICOS -->
+                <!-- ===================================================== -->
 
-                <article class="livro livro-verde">
+                <article class="livro livro-dourado" aria-labelledby="titulo-juridico">
 
                     <div class="livro-estrutura">
                         <div class="lombada"></div>
 
                         <div class="capa-conteudo">
-                            <div class="capa-icone">🌱</div>
+                            <div class="capa-icone">⚖️</div>
 
-                            <h3>Projeto de Vida</h3>
-                            <p>7º ano B</p>
+                            <h3 id="titulo-juridico">Jurídicos</h3>
+                            <p>Legislação e Normas</p>
 
                             <div class="livro-info">
-                                <span>Planejamento Pessoal</span>
-                                <span>Autoconhecimento</span>
+                                <span>Constituição</span>
+                                <span>Direito Educacional</span>
+                                <span>Normativas</span>
                             </div>
                         </div>
                     </div>
 
-                    <a href="projetovida.html" class="btn-livro">
-                        Abrir Livro
+                    <a href="juridicos.html" class="btn-livro">
+                        Acessar Livro
+                    </a>
+
+                </article>
+
+
+                <!-- ===================================================== -->
+                <!-- EDUCAÇÃO -->
+                <!-- ===================================================== -->
+
+                <article class="livro livro-verde" aria-labelledby="titulo-educacao">
+
+                    <div class="livro-estrutura">
+                        <div class="lombada"></div>
+
+                        <div class="capa-conteudo">
+                            <div class="capa-icone">🎓</div>
+
+                            <h3 id="titulo-educacao">Educação</h3>
+                            <p>Pedagogia e Didática</p>
+
+                            <div class="livro-info">
+                                <span>Metodologias</span>
+                                <span>Teorias Educacionais</span>
+                                <span>Práticas Docentes</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="educacao.html" class="btn-livro">
+                        Acessar Livro
+                    </a>
+
+                </article>
+
+
+                <!-- ===================================================== -->
+                <!-- TECNOLOGIA -->
+                <!-- ===================================================== -->
+
+                <article class="livro livro-tecnologia" aria-labelledby="titulo-tecnologia">
+
+                    <div class="livro-estrutura">
+                        <div class="lombada"></div>
+
+                        <div class="capa-conteudo">
+                            <div class="capa-icone">💻</div>
+
+                            <h3 id="titulo-tecnologia">Tecnologia</h3>
+                            <p>Desenvolvimento e Sistemas</p>
+
+                            <div class="livro-info">
+                                <span>Programação</span>
+                                <span>Sistemas</span>
+                                <span>Inovação</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="tecnologia.html" class="btn-livro">
+                        Acessar Livro
                     </a>
 
                 </article>
@@ -158,34 +232,18 @@
         </section>
 
 
-        <!-- ======================== -->
-        <!-- METODOLOGIA -->
-        <!-- ======================== -->
+        <!-- ===================================================== -->
+        <!-- MISSÃO INSTITUCIONAL -->
+        <!-- ===================================================== -->
 
-        <section class="secao" id="metodologia">
-            <h2>🎯 Metodologia</h2>
+        <section class="secao" id="missao">
+            <h2>Missão Institucional</h2>
 
             <p>
-                As disciplinas são organizadas por capítulos estruturados,
-                com navegação lateral fixa, leitura confortável e conteúdo progressivo.
-                O modelo foi pensado para funcionar como um livro digital moderno,
-                facilitando revisão, acompanhamento e organização.
+                Integrar conhecimento científico, pedagógico e tecnológico,
+                promovendo formação acadêmica sólida, interdisciplinar e alinhada
+                às demandas contemporâneas.
             </p>
-        </section>
-
-
-        <!-- ======================== -->
-        <!-- AVISOS -->
-        <!-- ======================== -->
-
-        <section class="secao" id="avisos">
-            <h2>📢 Avisos Gerais</h2>
-
-            <ul>
-                <li>Atualizações de conteúdo são feitas semanalmente.</li>
-                <li>As avaliações seguem o cronograma bimestral.</li>
-                <li>Materiais complementares serão adicionados em cada livro.</li>
-            </ul>
         </section>
 
     </main>
@@ -195,12 +253,12 @@
     <!-- RODAPÉ -->
     <!-- ===================================================== -->
 
-    <footer>
+    <footer role="contentinfo">
         <div class="container footer-container">
 
             <div>
-                <strong>Professor Márcio L. da Silva</strong><br>
-                Plataforma Educacional Digital
+                <strong>Prof. Márcio L. da Silva</strong><br>
+                Centro de Formação Educacional e Tecnológica
             </div>
 
             <div>
@@ -212,10 +270,10 @@
 
 
     <!-- ===================================================== -->
-    <!-- SCRIPT -->
+    <!-- SCRIPT GLOBAL -->
     <!-- ===================================================== -->
 
     <script src="js/script.js"></script>
-
+<script type="module" src="js/guard.js"></script>
 </body>
 </html>
