@@ -367,3 +367,12 @@ footer {
 .livro-tecnologia .lombada {
     background: linear-gradient(to bottom, #020617, #0f172a);
 }
+
+.livro-roxo .livro-estrutura {
+    background: linear-gradient(145deg, #581c87, #9333ea);
+    color: white;
+}
+
+.livro-roxo .lombada {
+    background: linear-gradient(to bottom, #3b0764, #4c1d95);
+}
