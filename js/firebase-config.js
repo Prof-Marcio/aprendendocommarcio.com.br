@@ -1,24 +1,21 @@
-// ================================
-// FIREBASE CONFIG DEFINITIVO
-// ================================
-
+// Firebase SDK
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 import { getAuth } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 import { getFirestore } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
 // SUA CONFIGURAÇÃO
 const firebaseConfig = {
-  apiKey: "SUA_API_KEY_AQUI",
+  apiKey: "AIzaSyAn1Eja_qa81xRhzn3lYy_X7t7ML2DKxkg",
   authDomain: "mestre-360.firebaseapp.com",
   projectId: "mestre-360",
-  storageBucket: "mestre-360.appspot.com",
+  storageBucket: "mestre-360.firebasestorage.app",
   messagingSenderId: "894952532346",
-  appId: "1:894952532346:web:XXXXXXX"
+  appId: "1:894952532346:web:881d00bdc0f6ffd6a38ec3"
 };
 
-// Inicializar Firebase
+// Inicializa
 const app = initializeApp(firebaseConfig);
 
-// Exportar serviços
+// Exporta
 export const auth = getAuth(app);
 export const db = getFirestore(app);
