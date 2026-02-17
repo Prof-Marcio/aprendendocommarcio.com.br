@@ -1,9 +1,18 @@
-// ==========================================
+// ===============================
 // AUTH.JS DEFINITIVO
-// ==========================================
+// ===============================
 
 import { auth } from "./firebase-config.js";
-import { signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+import { 
+    signInWithEmailAndPassword,
+    signOut,
+    onAuthStateChanged
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+
+
+// ===============================
+// LOGIN
+// ===============================
 
 window.login = function () {
 
@@ -15,14 +24,14 @@ window.login = function () {
             window.location.href = "index.html";
         })
         .catch((error) => {
-            alert("Erro ao entrar: " + error.message);
+            alert("Erro: " + error.message);
         });
 };
 
 
-/* =========================
-   LOGOUT
-========================= */
+// ===============================
+// LOGOUT
+// ===============================
 
 window.logout = function () {
 
@@ -36,44 +45,17 @@ window.logout = function () {
 };
 
 
-// ==========================================
-// LOGOUT
-// ==========================================
-
-function configurarLogout() {
-
-    const btnLogout = document.getElementById("btnLogout");
-
-    if (btnLogout) {
-        btnLogout.addEventListener("click", () => {
-            signOut(auth)
-                .then(() => {
-                    window.location.href = "login.html";
-                })
-                .catch((error) => {
-                    alert("Erro ao sair: " + error.message);
-                });
-        });
-    }
-}
-
-
-// ==========================================
-// PROTEÇÃO DE PÁGINA
-// ==========================================
+// ===============================
+// PROTEÇÃO AUTOMÁTICA
+// ===============================
 
 onAuthStateChanged(auth, (user) => {
 
-    const paginaLogin = window.location.pathname.includes("login.html");
-    const paginaRegistro = window.location.pathname.includes("registro.html");
+    const pagina = window.location.pathname.split("/").pop();
 
-    if (!user && !paginaLogin && !paginaRegistro) {
+    // Se não estiver logado e não for login.html → manda para login
+    if (!user && pagina !== "login.html") {
         window.location.href = "login.html";
     }
 
-    if (user && paginaLogin) {
-        window.location.href = "index.html";
-    }
-
-    configurarLogout();
 });
