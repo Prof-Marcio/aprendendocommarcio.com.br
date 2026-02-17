@@ -1,24 +1,30 @@
-// ===============================
-// AUTH.JS DEFINITIVO
-// ===============================
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import { 
+    getAuth, 
+    signInWithEmailAndPassword, 
+    signOut,
+    onAuthStateChanged 
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 
-import { auth } from "./firebase-config.js";
-import { signOut } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+/* ===========================
+   CONFIG FIREBASE
+=========================== */
 
-window.logout = function () {
-    signOut(auth)
-        .then(() => {
-            window.location.href = "login.html";
-        })
-        .catch((error) => {
-            alert("Erro ao sair: " + error.message);
-        });
+const firebaseConfig = {
+  apiKey: "SUA_API_KEY",
+  authDomain: "mestre-360.firebaseapp.com",
+  projectId: "mestre-360",
+  storageBucket: "mestre-360.firebasestorage.app",
+  messagingSenderId: "894952532346",
+  appId: "1:894952532346:web:881d00bdc0f6ffd6a38ec3"
 };
 
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
 
-// ===============================
-// LOGIN
-// ===============================
+/* ===========================
+   LOGIN
+=========================== */
 
 window.login = function () {
 
@@ -34,10 +40,9 @@ window.login = function () {
         });
 };
 
-
-// ===============================
-// LOGOUT
-// ===============================
+/* ===========================
+   LOGOUT
+=========================== */
 
 window.logout = function () {
 
@@ -50,17 +55,15 @@ window.logout = function () {
         });
 };
 
-
-// ===============================
-// PROTEÇÃO AUTOMÁTICA
-// ===============================
+/* ===========================
+   PROTEÇÃO DE PÁGINA
+=========================== */
 
 onAuthStateChanged(auth, (user) => {
 
-    const pagina = window.location.pathname.split("/").pop();
+    const paginaLogin = window.location.pathname.includes("login.html");
 
-    // Se não estiver logado e não for login.html → manda para login
-    if (!user && pagina !== "login.html") {
+    if (!user && !paginaLogin) {
         window.location.href = "login.html";
     }
 
