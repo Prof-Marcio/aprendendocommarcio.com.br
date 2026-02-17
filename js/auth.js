@@ -1,10 +1,13 @@
 import { auth } from "./firebase-config.js";
-import { 
-    signInWithEmailAndPassword, 
-    signOut 
+import {
+    signInWithEmailAndPassword,
+    signOut
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 
-// LOGIN
+/* =========================
+   LOGIN
+========================= */
+
 window.login = function () {
 
     const email = document.getElementById("email").value;
@@ -15,11 +18,15 @@ window.login = function () {
             window.location.href = "index.html";
         })
         .catch((error) => {
-            alert("Erro: " + error.message);
+            alert("Erro ao entrar: " + error.message);
         });
 };
 
-// LOGOUT
+
+/* =========================
+   LOGOUT
+========================= */
+
 window.logout = function () {
 
     signOut(auth)
