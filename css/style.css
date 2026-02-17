@@ -358,3 +358,12 @@ footer {
         padding: 30px;
     }
 }
+
+.livro-tecnologia .livro-estrutura {
+    background: linear-gradient(145deg, #0f172a, #0ea5e9);
+    color: white;
+}
+
+.livro-tecnologia .lombada {
+    background: linear-gradient(to bottom, #020617, #0f172a);
+}
