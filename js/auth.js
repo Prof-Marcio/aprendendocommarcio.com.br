@@ -1,30 +1,12 @@
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-import { 
-    getAuth, 
-    signInWithEmailAndPassword, 
-    signOut,
-    onAuthStateChanged 
+import { auth } from "./firebase-config.js";
+import {
+    signInWithEmailAndPassword,
+    signOut
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 
-/* ===========================
-   CONFIG FIREBASE
-=========================== */
-
-const firebaseConfig = {
-  apiKey: "SUA_API_KEY",
-  authDomain: "mestre-360.firebaseapp.com",
-  projectId: "mestre-360",
-  storageBucket: "mestre-360.firebasestorage.app",
-  messagingSenderId: "894952532346",
-  appId: "1:894952532346:web:881d00bdc0f6ffd6a38ec3"
-};
-
-const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
-
-/* ===========================
+/* =========================
    LOGIN
-=========================== */
+========================= */
 
 window.login = function () {
 
@@ -36,13 +18,14 @@ window.login = function () {
             window.location.href = "index.html";
         })
         .catch((error) => {
-            alert("Erro: " + error.message);
+            alert("Erro ao entrar: " + error.message);
         });
 };
 
-/* ===========================
+
+/* =========================
    LOGOUT
-=========================== */
+========================= */
 
 window.logout = function () {
 
@@ -54,17 +37,3 @@ window.logout = function () {
             alert("Erro ao sair: " + error.message);
         });
 };
-
-/* ===========================
-   PROTEÇÃO DE PÁGINA
-=========================== */
-
-onAuthStateChanged(auth, (user) => {
-
-    const paginaLogin = window.location.pathname.includes("login.html");
-
-    if (!user && !paginaLogin) {
-        window.location.href = "login.html";
-    }
-
-});
