@@ -274,11 +274,6 @@ body {
     color: white;
 }
 
-.livro-projetos .livro-estrutura {
-    background: linear-gradient(145deg, #581c87, #9333ea);
-    color: white;
-}
-
 
 /* ===================================================== */
 /* BOTÃO */
@@ -364,58 +359,19 @@ footer {
     }
 }
 
-/* ========================= */
-/* LIVRO PROJETOS */
-/* ========================= */
-
-.livro-roxo .livro-estrutura {
-    background: linear-gradient(145deg,
-        #581c87,
-        #9333ea
-    );
+.btn-logout {
+    position: absolute;
+    top: 25px;
+    right: 30px;
+    padding: 8px 14px;
+    background: #dc2626;
     color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
 }
 
-.livro-roxo .lombada {
-    background: linear-gradient(
-        to bottom,
-        #3b0764,
-        #4c1d95
-    );
-}
-
-/* ===================================================== */
-/* PROJETOS */
-/* ===================================================== */
-
-.livro-roxo .livro-estrutura {
-    background: linear-gradient(145deg, #581c87, #9333ea);
-    color: white;
-}
-
-.livro-roxo .lombada {
-    background: linear-gradient(to bottom, #3b0764, #4c1d95);
-}
-
-.livro-tecnologia .livro-estrutura {
-    background: linear-gradient(145deg, #0f172a, #06b6d4);
-    color: white;
-}
-
-.livro-tecnologia .lombada {
-    background: linear-gradient(to bottom, #020617, #0f172a);
-}
-
-/* ========================= */
-/* PROJETOS */
-/* ========================= */
-
-.livro-projetos .livro-estrutura {
-    background: linear-gradient(145deg, #581c87, #9333ea);
-    color: white;
-}
-
-.livro-tecnologia .livro-estrutura {
-    background: linear-gradient(145deg, #0f172a, #0ea5e9);
-    color: white;
+.btn-logout:hover {
+    background: #b91c1c;
 }

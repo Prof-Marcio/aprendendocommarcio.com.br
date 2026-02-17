@@ -4,23 +4,23 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Projetos | Centro de Formação Educacional e Tecnológica</title>
+<title>Matemática | Centro de Formação Educacional e Tecnológica</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 
 <style>
 
 /* ===================================================== */
-/* IDENTIDADE VISUAL - PROJETOS */
+/* IDENTIDADE VISUAL - MATEMÁTICA */
 /* ===================================================== */
 
 :root {
-    --cor-primaria: #3b0764;      /* Roxo profundo */
-    --cor-secundaria: #5b21b6;    /* Roxo institucional */
-    --cor-destaque: #9333ea;      /* Roxo moderno */
-    --cor-fundo: #f5f3ff;
+    --cor-primaria: #0f172a;
+    --cor-secundaria: #1e3a8a;
+    --cor-destaque: #2563eb;
+    --cor-fundo: #f1f5f9;
     --cor-caixa: #ffffff;
-    --cor-texto: #2e1065;
+    --cor-texto: #1e293b;
 }
 
 /* RESET */
@@ -42,7 +42,9 @@ body {
     line-height: 1.7;
 }
 
+/* ===================================================== */
 /* MENU HAMBÚRGUER */
+/* ===================================================== */
 
 .menu-toggle {
     display: none;
@@ -57,9 +59,12 @@ body {
     border-radius: 8px;
     cursor: pointer;
     z-index: 1001;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.25);
 }
 
+/* ===================================================== */
 /* MENU LATERAL */
+/* ===================================================== */
 
 .menu-lateral {
     width: 280px;
@@ -81,9 +86,12 @@ body {
     text-align: center;
     border-bottom: 1px solid rgba(255,255,255,0.2);
     padding-bottom: 12px;
+    letter-spacing: 0.5px;
 }
 
-/* ÍNDICE */
+/* ===================================================== */
+/* ÍNDICE ESTILO PDF */
+/* ===================================================== */
 
 .indice-pdf .item-indice {
     margin-bottom: 14px;
@@ -95,6 +103,7 @@ body {
     text-decoration: none;
     color: white;
     font-size: 0.95rem;
+    transition: 0.3s ease;
 }
 
 .indice-pdf .linha {
@@ -105,14 +114,16 @@ body {
 
 .indice-pdf .pagina {
     font-weight: 600;
-    color: #e9d5ff;
+    color: #93c5fd;
 }
 
 .indice-pdf a:hover {
-    color: #e9d5ff;
+    color: #93c5fd;
 }
 
+/* ===================================================== */
 /* HEADER */
+/* ===================================================== */
 
 header {
     margin-left: 280px;
@@ -125,9 +136,17 @@ header {
 
 header h1 {
     font-size: 2.6rem;
+    margin-bottom: 12px;
 }
 
+header p {
+    font-size: 1.05rem;
+    opacity: 0.95;
+}
+
+/* ===================================================== */
 /* CONTEÚDO */
+/* ===================================================== */
 
 .conteudo {
     margin-left: 280px;
@@ -141,12 +160,21 @@ section {
     margin-bottom: 70px;
     box-shadow: 0 15px 40px rgba(0,0,0,0.08);
     border-left: 6px solid var(--cor-destaque);
+    transition: 0.3s ease;
+}
+
+section:hover {
+    transform: translateY(-6px);
 }
 
 section h2 {
     margin-bottom: 25px;
     font-size: 1.6rem;
     color: var(--cor-secundaria);
+}
+
+section ul {
+    padding-left: 20px;
 }
 
 section ul li {
@@ -157,28 +185,28 @@ section ul li a {
     text-decoration: none;
     color: var(--cor-primaria);
     font-weight: 600;
+    transition: 0.3s;
 }
 
 section ul li a:hover {
     color: var(--cor-destaque);
 }
 
-/* BOTÃO SAIR */
+/* ===================================================== */
+/* RODAPÉ */
+/* ===================================================== */
 
-.btn-logout {
-    position: fixed;
-    top: 20px;
-    right: 25px;
-    padding: 10px 18px;
-    background: #111827;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    z-index: 2000;
+footer {
+    text-align: center;
+    padding: 35px;
+    background: #e2e8f0;
+    margin-left: 280px;
+    font-size: 0.9rem;
 }
 
-/* RESPONSIVO */
+/* ===================================================== */
+/* RESPONSIVIDADE */
+/* ===================================================== */
 
 @media (max-width: 1000px) {
 
@@ -195,8 +223,13 @@ section ul li a:hover {
     }
 
     header,
-    .conteudo {
+    .conteudo,
+    footer {
         margin-left: 0;
+    }
+
+    header {
+        padding-top: 100px;
     }
 
     .conteudo {
@@ -210,22 +243,21 @@ section ul li a:hover {
 <body>
 
 <button class="menu-toggle" onclick="toggleMenu()">☰</button>
-    <button onclick="logout()" class="btn-logout">Sair</button>
 
 <aside class="menu-lateral">
-    <h2>📂 Projetos</h2>
+    <h2>📘 Matemática</h2>
 
     <nav class="indice-pdf">
         <div class="item-indice">
-            <a href="#interdisciplinares"><span>1. Projetos Interdisciplinares</span><span class="linha"></span><span class="pagina">01</span></a>
+            <a href="#fund1"><span>1. Fundamental I</span><span class="linha"></span><span class="pagina">01</span></a>
         </div>
 
         <div class="item-indice">
-            <a href="#pesquisa"><span>2. Projetos de Pesquisa</span><span class="linha"></span><span class="pagina">20</span></a>
+            <a href="#fund2"><span>2. Fundamental II</span><span class="linha"></span><span class="pagina">20</span></a>
         </div>
 
         <div class="item-indice">
-            <a href="#extensao"><span>3. Projetos de Extensão</span><span class="linha"></span><span class="pagina">40</span></a>
+            <a href="#medio"><span>3. Ensino Médio</span><span class="linha"></span><span class="pagina">40</span></a>
         </div>
 
         <div class="item-indice">
@@ -235,43 +267,50 @@ section ul li a:hover {
 </aside>
 
 <header>
-    <h1>Projetos Acadêmicos e Institucionais</h1>
+    <h1>Matemática Completa</h1>
+    <p>Do 1º Ano do Ensino Fundamental ao Ensino Médio</p>
 </header>
 
 <main class="conteudo">
 
-<section id="interdisciplinares">
-    <h2>Projetos Interdisciplinares</h2>
+<section id="fund1">
+    <h2>Fundamental I</h2>
     <ul>
-        <li><a href="#">Projeto Matemática Aplicada</a></li>
-        <li><a href="#">Projeto Linguagens Integradas</a></li>
+        <li><a href="#">Números e Operações</a></li>
+        <li><a href="#">Problemas Matemáticos</a></li>
+        <li><a href="#">Geometria Básica</a></li>
     </ul>
 </section>
 
-<section id="pesquisa">
-    <h2>Projetos de Pesquisa</h2>
+<section id="fund2">
+    <h2>Fundamental II</h2>
     <ul>
-        <li><a href="#">Pesquisa Educacional</a></li>
-        <li><a href="#">Inovação Tecnológica</a></li>
+        <li><a href="#">Álgebra</a></li>
+        <li><a href="#">Razões e Proporções</a></li>
+        <li><a href="#">Estatística e Probabilidade</a></li>
     </ul>
 </section>
 
-<section id="extensao">
-    <h2>Projetos de Extensão</h2>
+<section id="medio">
+    <h2>Ensino Médio</h2>
     <ul>
-        <li><a href="#">Projeto Comunidade</a></li>
-        <li><a href="#">Projeto Social</a></li>
+        <li><a href="#">Funções</a></li>
+        <li><a href="#">Trigonometria</a></li>
+        <li><a href="#">Geometria Analítica</a></li>
     </ul>
 </section>
 
 </main>
+
+<footer>
+    Centro de Formação Educacional e Tecnológica • Professor Márcio L. da Silva • 2026
+</footer>
 
 <script>
 function toggleMenu() {
     document.querySelector(".menu-lateral").classList.toggle("ativo");
 }
 </script>
-
 <script type="module" src="js/guard.js"></script>
 </body>
 </html>
