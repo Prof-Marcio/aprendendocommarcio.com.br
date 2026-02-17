@@ -204,7 +204,7 @@ footer {
 <body>
 
 <button class="menu-toggle" onclick="toggleMenu()">☰</button>
-
+    <button onclick="logout()" class="btn-logout">Sair</button>
 <aside class="menu-lateral">
     <h2>💻 Tecnologia</h2>
 
@@ -287,6 +287,14 @@ function toggleMenu() {
     document.querySelector(".menu-lateral").classList.toggle("ativo");
 }
 </script>
-<script type="module" src="js/guard.js"></script>
+<script type="module">
+import { verificarNivel } from "./js/auth/roles.js";
+
+const nivel = await verificarNivel();
+
+if (nivel !== "premium" && nivel !== "admin") {
+    document.getElementById("conteudoPremium").style.display = "none";
+}
+</script>
 </body>
 </html>

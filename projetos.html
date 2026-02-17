@@ -4,23 +4,23 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Língua Portuguesa | Centro de Formação Educacional e Tecnológica</title>
+<title>Projetos | Centro de Formação Educacional e Tecnológica</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 
 <style>
 
 /* ===================================================== */
-/* IDENTIDADE VISUAL - LÍNGUA PORTUGUESA */
+/* IDENTIDADE VISUAL - PROJETOS */
 /* ===================================================== */
 
 :root {
-    --cor-primaria: #4c0519;
-    --cor-secundaria: #7f1d1d;
-    --cor-destaque: #b91c1c;
-    --cor-fundo: #fdf2f2;
+    --cor-primaria: #3b0764;      /* Roxo profundo */
+    --cor-secundaria: #5b21b6;    /* Roxo institucional */
+    --cor-destaque: #9333ea;      /* Roxo moderno */
+    --cor-fundo: #f5f3ff;
     --cor-caixa: #ffffff;
-    --cor-texto: #3f1d1d;
+    --cor-texto: #2e1065;
 }
 
 /* RESET */
@@ -42,9 +42,7 @@ body {
     line-height: 1.7;
 }
 
-/* ===================================================== */
 /* MENU HAMBÚRGUER */
-/* ===================================================== */
 
 .menu-toggle {
     display: none;
@@ -59,12 +57,9 @@ body {
     border-radius: 8px;
     cursor: pointer;
     z-index: 1001;
-    box-shadow: 0 6px 15px rgba(0,0,0,0.25);
 }
 
-/* ===================================================== */
 /* MENU LATERAL */
-/* ===================================================== */
 
 .menu-lateral {
     width: 280px;
@@ -86,12 +81,9 @@ body {
     text-align: center;
     border-bottom: 1px solid rgba(255,255,255,0.2);
     padding-bottom: 12px;
-    letter-spacing: 0.5px;
 }
 
-/* ===================================================== */
-/* ÍNDICE ESTILO PDF */
-/* ===================================================== */
+/* ÍNDICE */
 
 .indice-pdf .item-indice {
     margin-bottom: 14px;
@@ -103,7 +95,6 @@ body {
     text-decoration: none;
     color: white;
     font-size: 0.95rem;
-    transition: 0.3s ease;
 }
 
 .indice-pdf .linha {
@@ -114,16 +105,14 @@ body {
 
 .indice-pdf .pagina {
     font-weight: 600;
-    color: #fecaca;
+    color: #e9d5ff;
 }
 
 .indice-pdf a:hover {
-    color: #fecaca;
+    color: #e9d5ff;
 }
 
-/* ===================================================== */
 /* HEADER */
-/* ===================================================== */
 
 header {
     margin-left: 280px;
@@ -136,17 +125,9 @@ header {
 
 header h1 {
     font-size: 2.6rem;
-    margin-bottom: 12px;
 }
 
-header p {
-    font-size: 1.05rem;
-    opacity: 0.95;
-}
-
-/* ===================================================== */
 /* CONTEÚDO */
-/* ===================================================== */
 
 .conteudo {
     margin-left: 280px;
@@ -160,21 +141,12 @@ section {
     margin-bottom: 70px;
     box-shadow: 0 15px 40px rgba(0,0,0,0.08);
     border-left: 6px solid var(--cor-destaque);
-    transition: 0.3s ease;
-}
-
-section:hover {
-    transform: translateY(-6px);
 }
 
 section h2 {
     margin-bottom: 25px;
     font-size: 1.6rem;
     color: var(--cor-secundaria);
-}
-
-section ul {
-    padding-left: 20px;
 }
 
 section ul li {
@@ -185,28 +157,28 @@ section ul li a {
     text-decoration: none;
     color: var(--cor-primaria);
     font-weight: 600;
-    transition: 0.3s;
 }
 
 section ul li a:hover {
     color: var(--cor-destaque);
 }
 
-/* ===================================================== */
-/* RODAPÉ */
-/* ===================================================== */
+/* BOTÃO SAIR */
 
-footer {
-    text-align: center;
-    padding: 35px;
-    background: #fee2e2;
-    margin-left: 280px;
-    font-size: 0.9rem;
+.btn-logout {
+    position: fixed;
+    top: 20px;
+    right: 25px;
+    padding: 10px 18px;
+    background: #111827;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    z-index: 2000;
 }
 
-/* ===================================================== */
-/* RESPONSIVIDADE */
-/* ===================================================== */
+/* RESPONSIVO */
 
 @media (max-width: 1000px) {
 
@@ -223,13 +195,8 @@ footer {
     }
 
     header,
-    .conteudo,
-    footer {
+    .conteudo {
         margin-left: 0;
-    }
-
-    header {
-        padding-top: 100px;
     }
 
     .conteudo {
@@ -244,20 +211,21 @@ footer {
 
 <button class="menu-toggle" onclick="toggleMenu()">☰</button>
     <button onclick="logout()" class="btn-logout">Sair</button>
+
 <aside class="menu-lateral">
-    <h2>📖 Língua Portuguesa</h2>
+    <h2>📂 Projetos</h2>
 
     <nav class="indice-pdf">
         <div class="item-indice">
-            <a href="#gramatica"><span>1. Gramática</span><span class="linha"></span><span class="pagina">01</span></a>
+            <a href="#interdisciplinares"><span>1. Projetos Interdisciplinares</span><span class="linha"></span><span class="pagina">01</span></a>
         </div>
 
         <div class="item-indice">
-            <a href="#literatura"><span>2. Literatura</span><span class="linha"></span><span class="pagina">20</span></a>
+            <a href="#pesquisa"><span>2. Projetos de Pesquisa</span><span class="linha"></span><span class="pagina">20</span></a>
         </div>
 
         <div class="item-indice">
-            <a href="#redacao"><span>3. Redação</span><span class="linha"></span><span class="pagina">40</span></a>
+            <a href="#extensao"><span>3. Projetos de Extensão</span><span class="linha"></span><span class="pagina">40</span></a>
         </div>
 
         <div class="item-indice">
@@ -267,50 +235,43 @@ footer {
 </aside>
 
 <header>
-    <h1>Língua Portuguesa Completa</h1>
-    <p>Gramática • Literatura • Produção Textual</p>
+    <h1>Projetos Acadêmicos e Institucionais</h1>
 </header>
 
 <main class="conteudo">
 
-<section id="gramatica">
-    <h2>Gramática</h2>
+<section id="interdisciplinares">
+    <h2>Projetos Interdisciplinares</h2>
     <ul>
-        <li><a href="#">Classes Gramaticais</a></li>
-        <li><a href="#">Sintaxe</a></li>
-        <li><a href="#">Concordância</a></li>
+        <li><a href="#">Projeto Matemática Aplicada</a></li>
+        <li><a href="#">Projeto Linguagens Integradas</a></li>
     </ul>
 </section>
 
-<section id="literatura">
-    <h2>Literatura</h2>
+<section id="pesquisa">
+    <h2>Projetos de Pesquisa</h2>
     <ul>
-        <li><a href="#">Escolas Literárias</a></li>
-        <li><a href="#">Autores Clássicos</a></li>
-        <li><a href="#">Interpretação Literária</a></li>
+        <li><a href="#">Pesquisa Educacional</a></li>
+        <li><a href="#">Inovação Tecnológica</a></li>
     </ul>
 </section>
 
-<section id="redacao">
-    <h2>Redação</h2>
+<section id="extensao">
+    <h2>Projetos de Extensão</h2>
     <ul>
-        <li><a href="#">Produção Dissertativa</a></li>
-        <li><a href="#">Estrutura Argumentativa</a></li>
-        <li><a href="#">Técnicas de Escrita</a></li>
+        <li><a href="#">Projeto Comunidade</a></li>
+        <li><a href="#">Projeto Social</a></li>
     </ul>
 </section>
 
 </main>
-
-<footer>
-    Centro de Formação Educacional e Tecnológica • Professor Márcio L. da Silva • 2026
-</footer>
 
 <script>
 function toggleMenu() {
     document.querySelector(".menu-lateral").classList.toggle("ativo");
 }
 </script>
+
 <script type="module" src="js/guard.js"></script>
 </body>
 </html>
