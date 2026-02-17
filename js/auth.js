@@ -1,94 +1,72 @@
-import { auth, db } from "./firebase-config.js";
+// ==========================================
+// AUTH.JS DEFINITIVO
+// ==========================================
 
-import {
-  createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
-  signOut,
-  onAuthStateChanged
+import { auth } from "./firebase-config.js";
+import { 
+    signInWithEmailAndPassword,
+    signOut,
+    onAuthStateChanged
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 
-import {
-  doc,
-  setDoc
-} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
-/* ========================= */
-/* REGISTRO */
-/* ========================= */
+// ==========================================
+// LOGIN
+// ==========================================
 
-window.registrar = async function () {
+window.login = function () {
 
-  const email = document.getElementById("email").value;
-  const senha = document.getElementById("senha").value;
+    const email = document.getElementById("email").value;
+    const senha = document.getElementById("senha").value;
 
-  try {
-
-    const userCredential = await createUserWithEmailAndPassword(auth, email, senha);
-    const user = userCredential.user;
-
-    // Cria documento do usuário no Firestore
-    await setDoc(doc(db, "usuarios", user.uid), {
-      email: email,
-      nivel: "aluno", // padrão
-      criadoEm: new Date()
-    });
-
-    alert("Conta criada com sucesso!");
-    window.location.href = "index.html";
-
-  } catch (error) {
-    alert("Erro: " + error.message);
-  }
+    signInWithEmailAndPassword(auth, email, senha)
+        .then(() => {
+            window.location.href = "index.html";
+        })
+        .catch((error) => {
+            alert("Erro: " + error.message);
+        });
 };
 
 
-/* ========================= */
-/* LOGIN */
-/* ========================= */
+// ==========================================
+// LOGOUT
+// ==========================================
 
-window.login = async function () {
+function configurarLogout() {
 
-  const email = document.getElementById("email").value;
-  const senha = document.getElementById("senha").value;
+    const btnLogout = document.getElementById("btnLogout");
 
-  try {
-    await signInWithEmailAndPassword(auth, email, senha);
-    window.location.href = "index.html";
-  } catch (error) {
-    alert("Erro: " + error.message);
-  }
-};
-
-
-/* ========================= */
-/* LOGOUT */
-/* ========================= */
-
-window.logout = async function () {
-
-  try {
-    await signOut(auth);
-    window.location.href = "login.html";
-  } catch (error) {
-    alert("Erro ao sair: " + error.message);
-  }
-};
+    if (btnLogout) {
+        btnLogout.addEventListener("click", () => {
+            signOut(auth)
+                .then(() => {
+                    window.location.href = "login.html";
+                })
+                .catch((error) => {
+                    alert("Erro ao sair: " + error.message);
+                });
+        });
+    }
+}
 
 
-/* ========================= */
-/* PROTEÇÃO AUTOMÁTICA */
-/* ========================= */
+// ==========================================
+// PROTEÇÃO DE PÁGINA
+// ==========================================
 
 onAuthStateChanged(auth, (user) => {
 
-  const paginaAtual = window.location.pathname;
+    const paginaLogin = window.location.pathname.includes("login.html");
+    const paginaRegistro = window.location.pathname.includes("registro.html");
 
-  if (!user && !paginaAtual.includes("login.html") && !paginaAtual.includes("registro.html")) {
-    window.location.href = "login.html";
-  }
+    if (!user && !paginaLogin && !paginaRegistro) {
+        window.location.href = "login.html";
+    }
 
-  if (user && (paginaAtual.includes("login.html") || paginaAtual.includes("registro.html"))) {
-    window.location.href = "index.html";
-  }
+    if (user && paginaLogin) {
+        window.location.href = "index.html";
+    }
 
+    configurarLogout();
 });

@@ -2,24 +2,166 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<title>Login</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login | Centro de Formação Educacional e Tecnológica</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+/* ===================================================== */
+/* RESET */
+/* ===================================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ===================================================== */
+/* BODY */
+/* ===================================================== */
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #0f172a, #1e3a8a, #2563eb);
+    background-size: 300% 300%;
+    animation: gradientMove 12s ease infinite;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Animação suave do fundo */
+@keyframes gradientMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* ===================================================== */
+/* CARD LOGIN */
+/* ===================================================== */
+
+.login-box {
+    background: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(18px);
+    padding: 45px 35px;
+    border-radius: 22px;
+    width: 100%;
+    max-width: 400px;
+    box-shadow: 0 35px 80px rgba(0,0,0,0.45);
+    text-align: center;
+    color: white;
+}
+
+/* ===================================================== */
+/* LOGO */
+/* ===================================================== */
+
+.logo {
+    width: 110px;
+    margin-bottom: 20px;
+}
+
+/* ===================================================== */
+/* TÍTULO */
+/* ===================================================== */
+
+h2 {
+    margin-bottom: 25px;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+/* ===================================================== */
+/* INPUTS */
+/* ===================================================== */
+
+input {
+    width: 100%;
+    padding: 14px;
+    margin-bottom: 18px;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    font-size: 14px;
+}
+
+/* ===================================================== */
+/* BOTÃO */
+/* ===================================================== */
+
+button {
+    width: 100%;
+    padding: 14px;
+    border-radius: 12px;
+    border: none;
+    background: linear-gradient(135deg, #2563eb, #1e40af);
+    color: white;
+    font-weight: 600;
+    font-size: 15px;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+}
+
+/* ===================================================== */
+/* LINK REGISTRO */
+/* ===================================================== */
+
+.registro {
+    margin-top: 18px;
+    font-size: 13px;
+}
+
+.registro a {
+    color: #93c5fd;
+    text-decoration: none;
+}
+
+.registro a:hover {
+    text-decoration: underline;
+}
+
+/* ===================================================== */
+/* RESPONSIVO */
+/* ===================================================== */
+
+@media (max-width: 480px) {
+    .login-box {
+        margin: 20px;
+        padding: 35px 25px;
+    }
+}
+
+</style>
 </head>
 
 <body>
 
-<h2>Login</h2>
-
-<input type="email" id="email" placeholder="Email">
-<input type="password" id="senha" placeholder="Senha">
-
-<button onclick="login()">Entrar</button>
-
 <div class="login-box">
+
+    <!-- SUA LOGO -->
+    <img src="assets/logo-marcio 1.png" alt="Logo Prof. Márcio" class="logo">
+
     <h2>Área Restrita</h2>
+
     <input type="email" id="email" placeholder="Seu e-mail">
     <input type="password" id="senha" placeholder="Sua senha">
+
     <button onclick="login()">Entrar</button>
-    <p><a href="registro.html">Criar conta</a></p>
+
+    <div class="registro">
+        Não tem conta? <a href="registro.html">Criar conta</a>
+    </div>
+
 </div>
 
 <script type="module" src="js/auth.js"></script>
