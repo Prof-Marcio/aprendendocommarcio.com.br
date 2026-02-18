@@ -14,6 +14,12 @@
 </header>
 
 <section class="barra-controle">
+
+    <select id="turma">
+        <option>6º A</option>
+        <option>6º B</option>
+    </select>
+
     <input type="date" id="data">
     <button class="btn vermelho" id="btnLimpar">Limpar Presença</button>
     <span id="contador"></span>
@@ -21,10 +27,10 @@
 
 <section class="sala">
 
-    <div class="aluno">Ana</div>
-    <div class="aluno">Bruno</div>
-    <div class="aluno">Carlos</div>
-    <div class="aluno">Marina</div>
+    <div class="aluno" data-turma="6º A">Ana</div>
+    <div class="aluno" data-turma="6º A">Bruno</div>
+    <div class="aluno" data-turma="6º B">Carlos</div>
+    <div class="aluno" data-turma="6º B">Marina</div>
 
 </section>
 

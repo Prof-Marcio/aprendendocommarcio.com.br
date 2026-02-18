@@ -2,13 +2,14 @@ const alunos = document.querySelectorAll(".aluno");
 const contador = document.getElementById("contador");
 const btnLimpar = document.getElementById("btnLimpar");
 const dataInput = document.getElementById("data");
+const turmaSelect = document.getElementById("turma");
 
 // ==========================
 // GERAR CHAVE
 // ==========================
 
 function gerarChave(nome) {
-    return `${nome}_${dataInput.value}`;
+    return `${nome}_${turmaSelect.value}_${dataInput.value}`;
 }
 
 // ==========================
@@ -120,9 +121,27 @@ btnLimpar.addEventListener("click", () => {
 // ==========================
 
 dataInput.addEventListener("change", carregarPresencas);
+function filtrarTurma() {
+
+    const turmaAtual = turmaSelect.value;
+
+    alunos.forEach(aluno => {
+
+        if (aluno.getAttribute("data-turma") === turmaAtual) {
+            aluno.style.display = "block";
+        } else {
+            aluno.style.display = "none";
+        }
+
+    });
+
+    carregarPresencas();
+}
+
+turmaSelect.addEventListener("change", filtrarTurma);
 
 // ==========================
 // INICIALIZAÇÃO
 // ==========================
 
-atualizarContador();
+filtrarTurma();
