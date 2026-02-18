@@ -4,67 +4,27 @@ body {
     background: linear-gradient(to bottom, #f4f4f4, #dcdcdc);
 }
 
-/* Cabeçalho estilo lousa */
 .topo {
     background: linear-gradient(#1f5f3f, #14432c);
     color: white;
     text-align: center;
     padding: 30px 0;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
 }
 
-.topo h1 {
-    margin: 0;
-    font-size: 32px;
-}
-
-.topo p {
-    margin: 5px 0 0;
-    font-size: 16px;
-}
-
-/* Barra de Controle */
 .barra-controle {
-    background: #ffffff;
+    background: white;
     padding: 15px;
     display: flex;
     gap: 10px;
     justify-content: center;
-    flex-wrap: wrap;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 
-select, input[type="date"] {
-    padding: 8px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-}
-
-.btn {
-    padding: 10px 15px;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    font-weight: bold;
-    transition: 0.3s;
-}
-
-.btn:hover {
-    transform: scale(1.05);
-}
-
-.amarelo { background: #f4c542; }
-.verde { background: #4caf50; color: white; }
-.azul { background: #2196f3; color: white; }
-.vermelho { background: #e53935; color: white; }
-
-/* Área da Sala */
 .sala {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: 20px;
     padding: 30px;
-    max-width: 1000px;
+    max-width: 600px;
     margin: auto;
 }
 
@@ -75,21 +35,36 @@ select, input[type="date"] {
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.2);
     font-weight: bold;
+    cursor: pointer;
     transition: 0.3s;
 }
 
-.aluno:hover {
-    background: #e8f5e9;
-    transform: translateY(-5px);
+.aluno.presente {
+    background: #c8e6c9;
+    border: 2px solid #2e7d32;
 }
 
-/* Menu Inferior */
+.aluno.ausente {
+    background: #ffcdd2;
+    border: 2px solid #c62828;
+}
+
 .menu-inferior {
-    background: linear-gradient(#2e7d32, #1b5e20);
+    background: #1b5e20;
     color: white;
     display: flex;
     justify-content: space-around;
     padding: 20px 0;
-    margin-top: 30px;
-    font-weight: bold;
+}
+
+.btn {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.vermelho {
+    background: #e53935;
+    color: white;
 }

@@ -5,51 +5,36 @@
     <title>Sala Virtual Pedagógica v0.1</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-    <!-- Cabeçalho -->
-    <header class="topo">
-        <h1>Sala Virtual Pedagógica</h1>
-        <p>Sistema Educacional Offline</p>
-    </header>
+<header class="topo">
+    <h1>Sala Virtual Pedagógica</h1>
+    <p>Sistema Educacional Offline - v0.1</p>
+</header>
 
-    <!-- Barra de Controle -->
-    <section class="barra-controle">
-        <select>
-            <option>6º A</option>
-            <option>6º B</option>
-            <option>7º B</option>
-        </select>
+<section class="barra-controle">
+    <input type="date" id="data">
+    <button class="btn vermelho" id="btnLimpar">Limpar Presença</button>
+    <span id="contador"></span>
+</section>
 
-        <input type="date">
+<section class="sala">
 
-        <button class="btn amarelo">Criar Aula</button>
-        <button class="btn verde">Salvar Aula</button>
-        <button class="btn azul">Relatório</button>
-        <button class="btn vermelho">Histórico</button>
-    </section>
+    <div class="aluno">Ana</div>
+    <div class="aluno">Bruno</div>
+    <div class="aluno">Carlos</div>
+    <div class="aluno">Marina</div>
 
-    <!-- Área da Sala -->
-    <section class="sala">
-        <div class="aluno">Ana</div>
-        <div class="aluno">Bruno</div>
-        <div class="aluno">Camila</div>
-        <div class="aluno">Diego</div>
-        <div class="aluno">João</div>
-        <div class="aluno">Júlia</div>
-        <div class="aluno">Leonardo</div>
-        <div class="aluno">Luana</div>
-        <div class="aluno">Marcos</div>
-        <div class="aluno">Matheus</div>
-    </section>
+</section>
 
-    <!-- Menu Inferior -->
-    <footer class="menu-inferior">
-        <div>Gestão de Turmas</div>
-        <div>Controle Pedagógico</div>
-        <div>Tecnologia Educacional</div>
-    </footer>
+<footer class="menu-inferior">
+    <div>Gestão de Turmas</div>
+    <div>Controle Pedagógico</div>
+    <div>Tecnologia Educacional</div>
+</footer>
 
-    <script src="script.js"></script>
+<script src="script.js"></script>
+
 </body>
 </html>
