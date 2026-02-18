@@ -3,6 +3,9 @@ const contador = document.getElementById("contador");
 const btnLimpar = document.getElementById("btnLimpar");
 const dataInput = document.getElementById("data");
 const turmaSelect = document.getElementById("turma");
+const btnRelatorio = document.getElementById("btnRelatorio");
+const relatorioArea = document.getElementById("relatorioArea");
+const relatorioConteudo = document.getElementById("relatorioConteudo");
 
 // ==========================
 // GERAR CHAVE
@@ -145,3 +148,49 @@ turmaSelect.addEventListener("change", filtrarTurma);
 // ==========================
 
 filtrarTurma();
+btnRelatorio.addEventListener("click", gerarRelatorio);
+
+function gerarRelatorio() {
+
+    if (!dataInput.value) {
+        alert("Selecione uma data primeiro!");
+        return;
+    }
+
+    const turma = turmaSelect.value;
+    const data = dataInput.value;
+
+    let presentes = [];
+    let ausentes = [];
+
+    alunos.forEach(aluno => {
+
+        if (aluno.style.display === "none") return;
+
+        const nome = aluno.textContent;
+        const chave = gerarChave(nome);
+        const status = localStorage.getItem(chave);
+
+        if (status === "presente") {
+            presentes.push(nome);
+        } else {
+            ausentes.push(nome);
+        }
+
+    });
+
+    relatorioConteudo.innerHTML = `
+        <p><strong>Turma:</strong> ${turma}</p>
+        <p><strong>Data:</strong> ${data}</p>
+        <p><strong>Total:</strong> ${presentes.length + ausentes.length}</p>
+        <p><strong>Presentes:</strong> ${presentes.length}</p>
+        <p><strong>Ausentes:</strong> ${ausentes.length}</p>
+        <hr>
+        <h3>Lista de Presentes</h3>
+        <ul>${presentes.map(nome => `<li>${nome}</li>`).join("")}</ul>
+        <h3>Lista de Ausentes</h3>
+        <ul>${ausentes.map(nome => `<li>${nome}</li>`).join("")}</ul>
+    `;
+
+    relatorioArea.style.display = "block";
+}
