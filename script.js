@@ -251,7 +251,11 @@ btnPDF.addEventListener("click", function () {
 // EXPORTAR EXCEL (CSV)
 // ================================
 
-btnExcel.addEventListener("click", function () {
+// ================================
+// EXPORTAR EXCEL (CSV CORRIGIDO)
+// ================================
+
+document.getElementById("btnExcel").addEventListener("click", function () {
 
     if (!dataInput.value) {
         alert("Selecione uma data primeiro!");
@@ -276,15 +280,22 @@ btnExcel.addEventListener("click", function () {
         if (statusSalvo === "presente") status = "Presente";
         if (statusSalvo === "ausente") status = "Ausente";
 
-        csv += `${nome};${status}\n`;
+        csv += nome + ";" + status + "\n";
 
     });
 
-    const blob = new Blob([csv], { type: "text/csv;charset=utf-8;" });
-    const link = document.createElement("a");
+    const blob = new Blob(["\uFEFF" + csv], { type: "text/csv;charset=utf-8;" });
 
-    link.href = URL.createObjectURL(blob);
-    link.download = `relatorio_${turma}_${data}.csv`;
+    const link = document.createElement("a");
+    const url = URL.createObjectURL(blob);
+
+    link.href = url;
+    link.setAttribute("download", "relatorio_" + turma + "_" + data + ".csv");
+
+    document.body.appendChild(link);
     link.click();
+
+    document.body.removeChild(link);
+    URL.revokeObjectURL(url);
 
 });
