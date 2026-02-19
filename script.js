@@ -7,6 +7,7 @@ const btnRelatorio = document.getElementById("btnRelatorio");
 const relatorioArea = document.getElementById("relatorioArea");
 const relatorioConteudo = document.getElementById("relatorioConteudo");
 const btnPDF = document.getElementById("btnPDF");
+const btnExcel = document.getElementById("btnExcel");
 
 // ==========================
 // GERAR CHAVE
@@ -243,5 +244,47 @@ btnPDF.addEventListener("click", function () {
     });
 
     doc.save("relatorio_" + turma + "_" + data + ".pdf");
+
+});
+
+// ================================
+// EXPORTAR EXCEL (CSV)
+// ================================
+
+btnExcel.addEventListener("click", function () {
+
+    if (!dataInput.value) {
+        alert("Selecione uma data primeiro!");
+        return;
+    }
+
+    const turma = turmaSelect.value;
+    const data = dataInput.value;
+
+    let csv = "Aluno;Status\n";
+
+    alunos.forEach(aluno => {
+
+        if (aluno.style.display === "none") return;
+
+        const nome = aluno.textContent;
+        const chave = gerarChave(nome);
+        const statusSalvo = localStorage.getItem(chave);
+
+        let status = "Ausente";
+
+        if (statusSalvo === "presente") status = "Presente";
+        if (statusSalvo === "ausente") status = "Ausente";
+
+        csv += `${nome};${status}\n`;
+
+    });
+
+    const blob = new Blob([csv], { type: "text/csv;charset=utf-8;" });
+    const link = document.createElement("a");
+
+    link.href = URL.createObjectURL(blob);
+    link.download = `relatorio_${turma}_${data}.csv`;
+    link.click();
 
 });
