@@ -1,4 +1,13 @@
+// =====================================================
+// SALA VIRTUAL PEDAGÓGICA - VERSÃO FULL ESTÁVEL
+// =====================================================
+
 let grafico = null;
+
+// ==========================
+// ELEMENTOS
+// ==========================
+
 const alunos = document.querySelectorAll(".aluno");
 const contador = document.getElementById("contador");
 const percentual = document.getElementById("percentual");
@@ -14,17 +23,17 @@ const btnHistorico = document.getElementById("btnHistorico");
 const historicoArea = document.getElementById("historicoArea");
 const historicoConteudo = document.getElementById("historicoConteudo");
 
-// ==========================
+// =====================================================
 // GERAR CHAVE
-// ==========================
+// =====================================================
 
-function gerarChave(nome) {
-    return `${nome}_${turmaSelect.value}_${dataInput.value}`;
+function gerarChave(nome, turma, data) {
+    return `${nome}_${turma}_${data}`;
 }
 
-// ==========================
-// ATUALIZAR CONTADOR
-// ==========================
+// =====================================================
+// ATUALIZAR CONTADOR + PERCENTUAL
+// =====================================================
 
 function atualizarContador() {
 
@@ -53,22 +62,26 @@ function atualizarContador() {
     }
 }
 
-// ==========================
+// =====================================================
 // CARREGAR PRESENÇAS
-// ==========================
+// =====================================================
 
 function carregarPresencas() {
-
-    const data = dataInput.value;
 
     alunos.forEach(aluno => {
 
         aluno.classList.remove("presente");
         aluno.classList.remove("ausente");
 
-        if (!data) return;
+        if (!dataInput.value) return;
+        if (aluno.style.display === "none") return;
 
-        const chave = gerarChave(aluno.textContent);
+        const chave = gerarChave(
+            aluno.textContent,
+            turmaSelect.value,
+            dataInput.value
+        );
+
         const status = localStorage.getItem(chave);
 
         if (status === "presente") aluno.classList.add("presente");
@@ -79,9 +92,9 @@ function carregarPresencas() {
     atualizarContador();
 }
 
-// ==========================
-// EVENTO CLIQUE (CICLO)
-// ==========================
+// =====================================================
+// EVENTO CLIQUE (CICLO PRESENTE → AUSENTE → LIMPAR)
+// =====================================================
 
 alunos.forEach(aluno => {
 
@@ -92,9 +105,16 @@ alunos.forEach(aluno => {
             return;
         }
 
-        const chave = gerarChave(aluno.textContent);
+        if (aluno.style.display === "none") return;
 
-        if (!aluno.classList.contains("presente") && !aluno.classList.contains("ausente")) {
+        const chave = gerarChave(
+            aluno.textContent,
+            turmaSelect.value,
+            dataInput.value
+        );
+
+        if (!aluno.classList.contains("presente") &&
+            !aluno.classList.contains("ausente")) {
 
             aluno.classList.add("presente");
             localStorage.setItem(chave, "presente");
@@ -116,9 +136,9 @@ alunos.forEach(aluno => {
 
 });
 
-// ==========================
+// =====================================================
 // LIMPAR PRESENÇA
-// ==========================
+// =====================================================
 
 btnLimpar.addEventListener("click", () => {
 
@@ -129,9 +149,15 @@ btnLimpar.addEventListener("click", () => {
 
     alunos.forEach(aluno => {
 
-        const chave = gerarChave(aluno.textContent);
-        localStorage.removeItem(chave);
+        if (aluno.style.display === "none") return;
 
+        const chave = gerarChave(
+            aluno.textContent,
+            turmaSelect.value,
+            dataInput.value
+        );
+
+        localStorage.removeItem(chave);
         aluno.classList.remove("presente");
         aluno.classList.remove("ausente");
 
@@ -140,11 +166,10 @@ btnLimpar.addEventListener("click", () => {
     atualizarContador();
 });
 
-// ==========================
-// EVENTO DATA
-// ==========================
+// =====================================================
+// FILTRAR TURMA
+// =====================================================
 
-dataInput.addEventListener("change", carregarPresencas);
 function filtrarTurma() {
 
     const turmaAtual = turmaSelect.value;
@@ -163,12 +188,12 @@ function filtrarTurma() {
 }
 
 turmaSelect.addEventListener("change", filtrarTurma);
+dataInput.addEventListener("change", carregarPresencas);
 
-// ==========================
-// INICIALIZAÇÃO
-// ==========================
+// =====================================================
+// RELATÓRIO COMPLETO + ESTATÍSTICA ACUMULADA
+// =====================================================
 
-filtrarTurma();
 btnRelatorio.addEventListener("click", gerarRelatorio);
 
 function gerarRelatorio() {
@@ -184,13 +209,12 @@ function gerarRelatorio() {
     let presentes = [];
     let ausentes = [];
 
-    // ===== Presença da data atual =====
     alunos.forEach(aluno => {
 
         if (aluno.style.display === "none") return;
 
         const nome = aluno.textContent;
-        const chave = gerarChave(nome);
+        const chave = gerarChave(nome, turma, dataAtual);
         const status = localStorage.getItem(chave);
 
         if (status === "presente") {
@@ -201,7 +225,10 @@ function gerarRelatorio() {
 
     });
 
-    // ===== Buscar todas as datas da turma =====
+    // =========================
+    // BUSCAR TODAS AS DATAS
+    // =========================
+
     let datasDaTurma = new Set();
 
     for (let i = 0; i < localStorage.length; i++) {
@@ -222,7 +249,10 @@ function gerarRelatorio() {
 
     const totalAulas = datasDaTurma.size;
 
-    // ===== Calcular faltas acumuladas =====
+    // =========================
+    // CALCULAR FALTAS ACUMULADAS
+    // =========================
+
     let estatisticas = [];
 
     alunos.forEach(aluno => {
@@ -234,7 +264,7 @@ function gerarRelatorio() {
 
         datasDaTurma.forEach(data => {
 
-            const chave = `${nome}_${turma}_${data}`;
+            const chave = gerarChave(nome, turma, data);
             const status = localStorage.getItem(chave);
 
             if (status !== "presente") {
@@ -255,11 +285,10 @@ function gerarRelatorio() {
 
     });
 
-    // ===== Montar HTML =====
     relatorioConteudo.innerHTML = `
         <p><strong>Turma:</strong> ${turma}</p>
         <p><strong>Data:</strong> ${dataAtual}</p>
-        <p><strong>Total de Aulas Registradas:</strong> ${totalAulas}</p>
+        <p><strong>Total de Aulas:</strong> ${totalAulas}</p>
         <p><strong>Presentes Hoje:</strong> ${presentes.length}</p>
         <p><strong>Ausentes Hoje:</strong> ${ausentes.length}</p>
         <hr>
@@ -267,8 +296,8 @@ function gerarRelatorio() {
         <ul>
             ${estatisticas.map(aluno => `
                 <li>
-                    ${aluno.nome} - 
-                    Faltas: ${aluno.faltas} | 
+                    ${aluno.nome} -
+                    Faltas: ${aluno.faltas} |
                     Frequência: ${aluno.frequencia}%
                 </li>
             `).join("")}
@@ -276,39 +305,45 @@ function gerarRelatorio() {
     `;
 
     relatorioArea.style.display = "block";
-}
 
-// ================================
-// GERAR GRÁFICO
-// ================================
+    // =========================
+    // GRÁFICO
+    // =========================
 
-const ctx = document.getElementById("graficoPresenca").getContext("2d");
+    const canvas = document.getElementById("graficoPresenca");
 
-if (grafico !== null) {
-    grafico.destroy();
-}
+    if (canvas) {
 
-grafico = new Chart(ctx, {
-    type: "pie",
-    data: {
-        labels: ["Presentes", "Ausentes"],
-        datasets: [{
-            data: [presentes.length, ausentes.length],
-            backgroundColor: ["#4caf50", "#e53935"]
-        }]
-    },
-    options: {
-        responsive: true,
-        plugins: {
-            legend: {
-                position: "bottom"
-            }
+        const ctx = canvas.getContext("2d");
+
+        if (grafico !== null) {
+            grafico.destroy();
         }
+
+        grafico = new Chart(ctx, {
+            type: "pie",
+            data: {
+                labels: ["Presentes", "Ausentes"],
+                datasets: [{
+                    data: [presentes.length, ausentes.length],
+                    backgroundColor: ["#4caf50", "#e53935"]
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: "bottom"
+                    }
+                }
+            }
+        });
     }
-});
-// ================================
+}
+
+// =====================================================
 // EXPORTAR PDF
-// ================================
+// =====================================================
 
 btnPDF.addEventListener("click", function () {
 
@@ -339,7 +374,7 @@ btnPDF.addEventListener("click", function () {
         if (aluno.style.display === "none") return;
 
         const nome = aluno.textContent;
-        const chave = gerarChave(nome);
+        const chave = gerarChave(nome, turma, data);
         const status = localStorage.getItem(chave);
 
         let situacao = "Ausente";
@@ -353,18 +388,13 @@ btnPDF.addEventListener("click", function () {
     });
 
     doc.save("relatorio_" + turma + "_" + data + ".pdf");
-
 });
 
-// ================================
-// EXPORTAR EXCEL (CSV)
-// ================================
+// =====================================================
+// EXPORTAR EXCEL
+// =====================================================
 
-// ================================
-// EXPORTAR EXCEL (CSV CORRIGIDO)
-// ================================
-
-document.getElementById("btnExcel").addEventListener("click", function () {
+btnExcel.addEventListener("click", function () {
 
     if (!dataInput.value) {
         alert("Selecione uma data primeiro!");
@@ -381,7 +411,7 @@ document.getElementById("btnExcel").addEventListener("click", function () {
         if (aluno.style.display === "none") return;
 
         const nome = aluno.textContent;
-        const chave = gerarChave(nome);
+        const chave = gerarChave(nome, turma, data);
         const statusSalvo = localStorage.getItem(chave);
 
         let status = "Ausente";
@@ -390,7 +420,6 @@ document.getElementById("btnExcel").addEventListener("click", function () {
         if (statusSalvo === "ausente") status = "Ausente";
 
         csv += nome + ";" + status + "\n";
-
     });
 
     const blob = new Blob(["\uFEFF" + csv], { type: "text/csv;charset=utf-8;" });
@@ -406,37 +435,31 @@ document.getElementById("btnExcel").addEventListener("click", function () {
 
     document.body.removeChild(link);
     URL.revokeObjectURL(url);
-
 });
 
-// ================================
-// HISTÓRICO DE AULAS
-// ================================
+// =====================================================
+// HISTÓRICO
+// =====================================================
 
 btnHistorico.addEventListener("click", function () {
 
     const turma = turmaSelect.value;
-
     let datasEncontradas = new Set();
 
-    alunos.forEach(aluno => {
+    for (let i = 0; i < localStorage.length; i++) {
 
-        const nome = aluno.textContent;
+        const chave = localStorage.key(i);
+        const partes = chave.split("_");
 
-        for (let i = 0; i < localStorage.length; i++) {
+        if (partes.length === 3) {
+            const turmaSalva = partes[1];
+            const dataSalva = partes[2];
 
-            const chave = localStorage.key(i);
-
-            if (chave.startsWith(nome + "_" + turma + "_")) {
-
-                const partes = chave.split("_");
-                const dataSalva = partes[2];
-
+            if (turmaSalva === turma) {
                 datasEncontradas.add(dataSalva);
             }
         }
-
-    });
+    }
 
     if (datasEncontradas.size === 0) {
         historicoConteudo.innerHTML = "<p>Nenhuma aula registrada.</p>";
@@ -459,8 +482,12 @@ btnHistorico.addEventListener("click", function () {
 function carregarDataHistorico(dataSelecionada) {
 
     dataInput.value = dataSelecionada;
-
     carregarPresencas();
-
     historicoArea.style.display = "none";
 }
+
+// =====================================================
+// INICIALIZAÇÃO
+// =====================================================
+
+filtrarTurma();

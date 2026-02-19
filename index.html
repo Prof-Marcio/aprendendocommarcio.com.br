@@ -2,7 +2,7 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <title>Sala Virtual Pedagógica v0.2</title>
+    <title>Sala Virtual Pedagógica v0.9</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -20,29 +20,18 @@
     </select>
 
     <input type="date" id="data">
+
     <button class="btn vermelho" id="btnLimpar">Limpar Presença</button>
+
     <span id="contador"></span>
-<span id="percentual" style="margin-left:10px; font-weight:bold;"></span>
+    <span id="percentual"></span>
+
     <button class="btn azul" id="btnHistorico">Histórico</button>
     <button class="btn azul" id="btnRelatorio">Relatório</button>
+
 </section>
 
 <section class="sala">
-    <section id="relatorioArea" class="relatorio-container">
-    <h2>Relatório da Aula</h2>
-
-    <div id="relatorioConteudo"></div>
-
-    <div class="relatorio-botoes">
-    <button class="btn verde" id="btnPDF">Exportar PDF</button>
-    <button class="btn azul" id="btnExcel">Exportar Excel</button>
-</div>
-</section>
-<section id="historicoArea" class="relatorio-container">
-    <h2>Histórico de Aulas</h2>
-    <div id="historicoConteudo"></div>
-    <canvas id="graficoPresenca" style="margin-top:20px;"></canvas>
-</section>
 
     <div class="aluno" data-turma="6º A">Ana</div>
     <div class="aluno" data-turma="6º A">Bruno</div>
@@ -51,7 +40,25 @@
 
 </section>
 
+<!-- RELATÓRIO -->
+<section id="relatorioArea" class="relatorio-container">
+    <h2>Relatório da Aula</h2>
 
+    <div id="relatorioConteudo"></div>
+
+    <canvas id="graficoPresenca"></canvas>
+
+    <div class="relatorio-botoes">
+        <button class="btn verde" id="btnPDF">Exportar PDF</button>
+        <button class="btn azul" id="btnExcel">Exportar Excel</button>
+    </div>
+</section>
+
+<!-- HISTÓRICO -->
+<section id="historicoArea" class="relatorio-container">
+    <h2>Histórico de Aulas</h2>
+    <div id="historicoConteudo"></div>
+</section>
 
 <footer class="menu-inferior">
     <div>Gestão de Turmas</div>
@@ -59,6 +66,7 @@
     <div>Tecnologia Educacional</div>
 </footer>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="script.js"></script>
 
