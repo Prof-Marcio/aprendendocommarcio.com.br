@@ -6,6 +6,7 @@ const turmaSelect = document.getElementById("turma");
 const btnRelatorio = document.getElementById("btnRelatorio");
 const relatorioArea = document.getElementById("relatorioArea");
 const relatorioConteudo = document.getElementById("relatorioConteudo");
+const btnPDF = document.getElementById("btnPDF");
 
 // ==========================
 // GERAR CHAVE
@@ -194,3 +195,53 @@ function gerarRelatorio() {
 
     relatorioArea.style.display = "block";
 }
+
+// ================================
+// EXPORTAR PDF
+// ================================
+
+btnPDF.addEventListener("click", function () {
+
+    if (!dataInput.value) {
+        alert("Selecione uma data primeiro!");
+        return;
+    }
+
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF();
+
+    const turma = turmaSelect.value;
+    const data = dataInput.value;
+
+    let y = 10;
+
+    doc.text("Relatório de Presença", 10, y);
+    y += 10;
+
+    doc.text("Turma: " + turma, 10, y);
+    y += 8;
+
+    doc.text("Data: " + data, 10, y);
+    y += 10;
+
+    alunos.forEach(aluno => {
+
+        if (aluno.style.display === "none") return;
+
+        const nome = aluno.textContent;
+        const chave = gerarChave(nome);
+        const status = localStorage.getItem(chave);
+
+        let situacao = "Ausente";
+
+        if (status === "presente") situacao = "Presente";
+        if (status === "ausente") situacao = "Ausente";
+
+        doc.text(nome + " - " + situacao, 10, y);
+        y += 8;
+
+    });
+
+    doc.save("relatorio_" + turma + "_" + data + ".pdf");
+
+});
