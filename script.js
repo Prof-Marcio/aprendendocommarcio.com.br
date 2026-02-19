@@ -9,6 +9,9 @@ const relatorioArea = document.getElementById("relatorioArea");
 const relatorioConteudo = document.getElementById("relatorioConteudo");
 const btnPDF = document.getElementById("btnPDF");
 const btnExcel = document.getElementById("btnExcel");
+const btnHistorico = document.getElementById("btnHistorico");
+const historicoArea = document.getElementById("historicoArea");
+const historicoConteudo = document.getElementById("historicoConteudo");
 
 // ==========================
 // GERAR CHAVE
@@ -318,3 +321,59 @@ document.getElementById("btnExcel").addEventListener("click", function () {
     URL.revokeObjectURL(url);
 
 });
+
+// ================================
+// HISTÓRICO DE AULAS
+// ================================
+
+btnHistorico.addEventListener("click", function () {
+
+    const turma = turmaSelect.value;
+
+    let datasEncontradas = new Set();
+
+    alunos.forEach(aluno => {
+
+        const nome = aluno.textContent;
+
+        for (let i = 0; i < localStorage.length; i++) {
+
+            const chave = localStorage.key(i);
+
+            if (chave.startsWith(nome + "_" + turma + "_")) {
+
+                const partes = chave.split("_");
+                const dataSalva = partes[2];
+
+                datasEncontradas.add(dataSalva);
+            }
+        }
+
+    });
+
+    if (datasEncontradas.size === 0) {
+        historicoConteudo.innerHTML = "<p>Nenhuma aula registrada.</p>";
+    } else {
+
+        let lista = "<ul>";
+
+        datasEncontradas.forEach(data => {
+            lista += `<li><button onclick="carregarDataHistorico('${data}')">${data}</button></li>`;
+        });
+
+        lista += "</ul>";
+
+        historicoConteudo.innerHTML = lista;
+    }
+
+    historicoArea.style.display = "block";
+});
+
+function carregarDataHistorico(dataSelecionada) {
+
+    dataInput.value = dataSelecionada;
+
+    carregarPresencas();
+
+    historicoArea.style.display = "none";
+}
