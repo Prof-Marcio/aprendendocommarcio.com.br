@@ -68,3 +68,25 @@ body {
     background: #e53935;
     color: white;
 }
+
+/* ========================= */
+/* RELATÓRIO ORGANIZADO */
+/* ========================= */
+
+.relatorio-container {
+    max-width: 700px;
+    margin: 40px auto;
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    display: none;
+}
+
+.relatorio-container h2 {
+    margin-top: 0;
+}
+
+.relatorio-botoes {
+    margin-top: 20px;
+}

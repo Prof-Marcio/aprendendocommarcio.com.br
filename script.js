@@ -193,7 +193,7 @@ function gerarRelatorio() {
         <ul>${ausentes.map(nome => `<li>${nome}</li>`).join("")}</ul>
     `;
 
-    relatorioArea.style.display = "block";
+    document.getElementById("relatorioArea").style.display = "block";
 }
 
 // ================================
