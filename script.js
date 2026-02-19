@@ -1,3 +1,4 @@
+let grafico = null;
 const alunos = document.querySelectorAll(".aluno");
 const contador = document.getElementById("contador");
 const percentual = document.getElementById("percentual");
@@ -277,6 +278,34 @@ function gerarRelatorio() {
     relatorioArea.style.display = "block";
 }
 
+// ================================
+// GERAR GRÁFICO
+// ================================
+
+const ctx = document.getElementById("graficoPresenca").getContext("2d");
+
+if (grafico !== null) {
+    grafico.destroy();
+}
+
+grafico = new Chart(ctx, {
+    type: "pie",
+    data: {
+        labels: ["Presentes", "Ausentes"],
+        datasets: [{
+            data: [presentes.length, ausentes.length],
+            backgroundColor: ["#4caf50", "#e53935"]
+        }]
+    },
+    options: {
+        responsive: true,
+        plugins: {
+            legend: {
+                position: "bottom"
+            }
+        }
+    }
+});
 // ================================
 // EXPORTAR PDF
 // ================================
