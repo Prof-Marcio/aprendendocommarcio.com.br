@@ -178,11 +178,12 @@ function gerarRelatorio() {
     }
 
     const turma = turmaSelect.value;
-    const data = dataInput.value;
+    const dataAtual = dataInput.value;
 
     let presentes = [];
     let ausentes = [];
 
+    // ===== Presença da data atual =====
     alunos.forEach(aluno => {
 
         if (aluno.style.display === "none") return;
@@ -199,24 +200,81 @@ function gerarRelatorio() {
 
     });
 
-    const total = presentes.length + ausentes.length;
-const porcentagem = total > 0 ? ((presentes.length / total) * 100).toFixed(1) : 0;
+    // ===== Buscar todas as datas da turma =====
+    let datasDaTurma = new Set();
 
-relatorioConteudo.innerHTML = `
-    <p><strong>Turma:</strong> ${turma}</p>
-    <p><strong>Data:</strong> ${data}</p>
-    <p><strong>Total:</strong> ${total}</p>
-    <p><strong>Presentes:</strong> ${presentes.length}</p>
-    <p><strong>Ausentes:</strong> ${ausentes.length}</p>
-    <p><strong>Percentual de Presença:</strong> ${porcentagem}%</p>
-    <hr>
-    <h3>Lista de Presentes</h3>
-    <ul>${presentes.map(nome => `<li>${nome}</li>`).join("")}</ul>
-    <h3>Lista de Ausentes</h3>
-    <ul>${ausentes.map(nome => `<li>${nome}</li>`).join("")}</ul>
-`;
+    for (let i = 0; i < localStorage.length; i++) {
 
-    document.getElementById("relatorioArea").style.display = "block";
+        const chave = localStorage.key(i);
+        const partes = chave.split("_");
+
+        if (partes.length === 3) {
+
+            const turmaSalva = partes[1];
+            const dataSalva = partes[2];
+
+            if (turmaSalva === turma) {
+                datasDaTurma.add(dataSalva);
+            }
+        }
+    }
+
+    const totalAulas = datasDaTurma.size;
+
+    // ===== Calcular faltas acumuladas =====
+    let estatisticas = [];
+
+    alunos.forEach(aluno => {
+
+        if (aluno.style.display === "none") return;
+
+        const nome = aluno.textContent;
+        let faltas = 0;
+
+        datasDaTurma.forEach(data => {
+
+            const chave = `${nome}_${turma}_${data}`;
+            const status = localStorage.getItem(chave);
+
+            if (status !== "presente") {
+                faltas++;
+            }
+
+        });
+
+        const frequencia = totalAulas > 0
+            ? (((totalAulas - faltas) / totalAulas) * 100).toFixed(1)
+            : 0;
+
+        estatisticas.push({
+            nome,
+            faltas,
+            frequencia
+        });
+
+    });
+
+    // ===== Montar HTML =====
+    relatorioConteudo.innerHTML = `
+        <p><strong>Turma:</strong> ${turma}</p>
+        <p><strong>Data:</strong> ${dataAtual}</p>
+        <p><strong>Total de Aulas Registradas:</strong> ${totalAulas}</p>
+        <p><strong>Presentes Hoje:</strong> ${presentes.length}</p>
+        <p><strong>Ausentes Hoje:</strong> ${ausentes.length}</p>
+        <hr>
+        <h3>Frequência Acumulada</h3>
+        <ul>
+            ${estatisticas.map(aluno => `
+                <li>
+                    ${aluno.nome} - 
+                    Faltas: ${aluno.faltas} | 
+                    Frequência: ${aluno.frequencia}%
+                </li>
+            `).join("")}
+        </ul>
+    `;
+
+    relatorioArea.style.display = "block";
 }
 
 // ================================
