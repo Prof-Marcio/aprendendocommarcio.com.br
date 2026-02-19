@@ -1,5 +1,6 @@
 const alunos = document.querySelectorAll(".aluno");
 const contador = document.getElementById("contador");
+const percentual = document.getElementById("percentual");
 const btnLimpar = document.getElementById("btnLimpar");
 const dataInput = document.getElementById("data");
 const turmaSelect = document.getElementById("turma");
@@ -24,14 +25,28 @@ function gerarChave(nome) {
 function atualizarContador() {
 
     let presentes = 0;
+    let total = 0;
 
     alunos.forEach(aluno => {
+
+        if (aluno.style.display === "none") return;
+
+        total++;
+
         if (aluno.classList.contains("presente")) {
             presentes++;
         }
+
     });
 
     contador.textContent = "Presentes: " + presentes;
+
+    if (total > 0) {
+        const porcentagem = ((presentes / total) * 100).toFixed(1);
+        percentual.textContent = "Presença: " + porcentagem + "%";
+    } else {
+        percentual.textContent = "";
+    }
 }
 
 // ==========================
@@ -181,18 +196,22 @@ function gerarRelatorio() {
 
     });
 
-    relatorioConteudo.innerHTML = `
-        <p><strong>Turma:</strong> ${turma}</p>
-        <p><strong>Data:</strong> ${data}</p>
-        <p><strong>Total:</strong> ${presentes.length + ausentes.length}</p>
-        <p><strong>Presentes:</strong> ${presentes.length}</p>
-        <p><strong>Ausentes:</strong> ${ausentes.length}</p>
-        <hr>
-        <h3>Lista de Presentes</h3>
-        <ul>${presentes.map(nome => `<li>${nome}</li>`).join("")}</ul>
-        <h3>Lista de Ausentes</h3>
-        <ul>${ausentes.map(nome => `<li>${nome}</li>`).join("")}</ul>
-    `;
+    const total = presentes.length + ausentes.length;
+const porcentagem = total > 0 ? ((presentes.length / total) * 100).toFixed(1) : 0;
+
+relatorioConteudo.innerHTML = `
+    <p><strong>Turma:</strong> ${turma}</p>
+    <p><strong>Data:</strong> ${data}</p>
+    <p><strong>Total:</strong> ${total}</p>
+    <p><strong>Presentes:</strong> ${presentes.length}</p>
+    <p><strong>Ausentes:</strong> ${ausentes.length}</p>
+    <p><strong>Percentual de Presença:</strong> ${porcentagem}%</p>
+    <hr>
+    <h3>Lista de Presentes</h3>
+    <ul>${presentes.map(nome => `<li>${nome}</li>`).join("")}</ul>
+    <h3>Lista de Ausentes</h3>
+    <ul>${ausentes.map(nome => `<li>${nome}</li>`).join("")}</ul>
+`;
 
     document.getElementById("relatorioArea").style.display = "block";
 }
