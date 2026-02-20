@@ -3,115 +3,91 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>SALA MÁRCIO V31 - EDIÇÃO TOTAL</title>
+    <title>SALA MÁRCIO V32 - DINÂMICA TOTAL</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap');
 
         :root {
-            --primary: #2563eb;
+            --primary: #3b82f6;
             --carteira: #f59e0b;
+            --parede: #1e293b;
             --zoom: 0.45;
+            --fonte-size: 10px;
+            --desk-size: 100%;
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', sans-serif; }
 
-        body { 
-            background: #0f172a; 
-            height: 100vh; 
-            display: flex; 
-            flex-direction: column; 
-            overflow: hidden; 
-        }
+        body { background: #0f172a; height: 100vh; display: flex; flex-direction: column; overflow: hidden; }
 
-        /* BARRA SUPERIOR */
-        header { 
-            background: #1e293b; padding: 12px; display: flex; justify-content: space-between; 
-            align-items: center; border-bottom: 2px solid var(--primary); z-index: 100;
-        }
-        header h1 { font-size: 14px; color: #fff; font-weight: 900; }
+        /* HEADER */
+        header { background: #1e293b; padding: 10px; display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid var(--primary); color: white; }
+        header h1 { font-size: 12px; font-weight: 900; }
 
-        /* ÁREA DE EDIÇÃO */
-        .viewport { 
-            flex-grow: 1; overflow: auto; display: flex; justify-content: center; 
-            align-items: flex-start; padding: 60px 20px; background: #334155; 
-        }
+        /* VIEWPORT */
+        .viewport { flex-grow: 1; overflow: auto; display: flex; justify-content: center; align-items: flex-start; padding: 50px 20px; background: #334155; }
 
-        /* FOLHA A4 - ESTRUTURA RÍGIDA PARA NÃO DESCONFIGURAR */
+        /* A4 DINÂMICO */
         .a4-page {
-            width: 210mm; height: 297mm; background: #fff; color: #000;
-            padding: 10mm; position: relative; flex-shrink: 0;
+            width: 210mm; height: 297mm; background: #fff; padding: 10mm; position: relative; flex-shrink: 0;
             transform: scale(var(--zoom)); transform-origin: top center;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
-            display: flex; flex-direction: column;
+            box-shadow: 0 15px 50px rgba(0,0,0,0.6); display: flex; flex-direction: column;
         }
 
-        /* CABEÇALHO EDITÁVEL */
-        .doc-header { border-bottom: 2px solid #000; margin-bottom: 10px; padding-bottom: 10px; }
-        .edit-field { outline: none; border-bottom: 1px dashed #ddd; padding: 2px 4px; display: inline-block; min-width: 50px; }
-        .edit-field:focus { background: #fff9c4; border-bottom: 1px solid var(--primary); }
+        /* CABEÇALHO */
+        .doc-header { border: 2px solid #000; padding: 10px; margin-bottom: 10px; }
+        [contenteditable] { outline: none; transition: 0.2s; }
+        [contenteditable]:focus { background: #ffffd0; padding: 2px; }
 
-        /* SALA */
+        /* SALA BOX */
         .sala-box { 
-            flex-grow: 1; border: 12px solid #1e293b; border-radius: 4px;
-            display: flex; flex-direction: column; background: #fff;
+            flex-grow: 1; border: 15px solid var(--parede); position: relative;
+            display: flex; flex-direction: column; background: #fff; transition: 0.3s;
         }
 
-        .item-editavel { cursor: text; text-transform: uppercase; font-weight: 800; font-size: 10px; text-align: center; outline: none; }
-        
-        .topo-sala { height: 40px; display: flex; align-items: center; justify-content: center; border-bottom: 2px solid #eee; }
-        .tv-label { background: #000; color: #fff; padding: 2px 20px; border-radius: 0 0 10px 10px; }
-
-        .base-sala { height: 80px; display: flex; align-items: center; justify-content: space-between; padding: 0 20px; border-top: 2px solid #eee; }
-        .quadro { width: 50%; height: 40px; background: #065f46; border: 3px solid #451a03; color: #fff; display: flex; align-items: center; justify-content: center; font-size: 14px; }
+        .area-interativa { display: flex; align-items: center; justify-content: center; min-height: 40px; padding: 5px; }
+        .label-movel { font-weight: 900; font-size: 12px; cursor: pointer; text-transform: uppercase; }
 
         /* GRID */
-        .grid-layout { 
+        #gridSala { 
             display: grid; gap: 10px; padding: 15px; flex-grow: 1; 
             align-content: center; justify-items: center;
         }
 
-        /* CARTEIRA */
+        /* CARTEIRA DINÂMICA */
         .carteira { 
-            background: var(--carteira) !important; width: 100%; aspect-ratio: 1/1; 
-            border-radius: 8px; border: 1px solid rgba(0,0,0,0.1);
-            display: flex; flex-direction: column; align-items: center; justify-content: space-around; padding: 4px;
+            background: var(--carteira) !important; width: var(--desk-size); aspect-ratio: 1/1; 
+            border-radius: 8px; border: 2px solid rgba(0,0,0,0.1);
+            display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 5px;
+            box-shadow: 0 4px 0 rgba(0,0,0,0.1);
         }
-        .foto-placeholder { 
-            width: 50%; aspect-ratio: 1/1; background: #fff; border-radius: 50%; 
-            overflow: hidden; border: 2px solid white; cursor: pointer;
-        }
-        .foto-placeholder img { width: 100%; height: 100%; object-fit: cover; }
-        .nome-aluno { 
-            width: 95%; border: none; background: #fff; text-align: center; 
-            font-size: 8px; font-weight: 900; border-radius: 2px; padding: 2px 0;
-        }
+        .foto-aluno { width: 50%; aspect-ratio: 1/1; background: #fff; border-radius: 50%; border: 2px solid white; overflow: hidden; margin-bottom: 4px; }
+        .foto-aluno img { width: 100%; height: 100%; object-fit: cover; }
+        .nome-aluno { width: 100%; border: none; background: #fff; text-align: center; font-size: var(--fonte-size); font-weight: 800; border-radius: 4px; }
 
-        /* RODAPÉ MOBILE */
+        /* MENU INFERIOR */
         footer { background: #1e293b; padding: 10px; border-top: 2px solid var(--primary); }
-        .menu-btns { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; max-width: 500px; margin: 0 auto; }
-        .btn { 
-            background: #334155; border: none; color: white; padding: 12px 5px; 
-            border-radius: 10px; font-size: 9px; font-weight: 700; cursor: pointer;
-            display: flex; flex-direction: column; align-items: center; gap: 4px;
-        }
-        .btn-print { background: var(--primary); }
+        .toolbar { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; max-width: 600px; margin: 0 auto; }
+        .btn { background: #334155; border: none; color: white; border-radius: 12px; padding: 10px 5px; font-size: 9px; font-weight: 700; display: flex; flex-direction: column; align-items: center; gap: 5px; }
+        .btn-ok { background: var(--primary); }
         .btn span { font-size: 18px; }
 
-        /* MODAL */
-        .modal { 
-            display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.8); 
-            z-index: 500; align-items: center; justify-content: center; padding: 20px; 
+        /* PAINEL DE CONTROLE LATERAL (GAVETA) */
+        .drawer { 
+            position: fixed; bottom: 0; left: 0; width: 100%; background: white; 
+            border-radius: 25px 25px 0 0; padding: 25px; z-index: 1000;
+            display: none; flex-direction: column; box-shadow: 0 -10px 30px rgba(0,0,0,0.3);
+            max-height: 80vh; overflow-y: auto;
         }
-        .modal-box { background: white; width: 100%; max-width: 400px; padding: 20px; border-radius: 15px; }
-        .modal-box label { display: block; font-size: 11px; font-weight: 800; margin: 10px 0 5px; color: #444; }
-        .modal-box input { width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 8px; }
+        .drawer-row { margin-bottom: 20px; }
+        .drawer-row label { display: block; font-size: 11px; font-weight: 900; color: #444; margin-bottom: 8px; }
+        .drawer-row input { width: 100%; padding: 12px; border: 2px solid #eee; border-radius: 10px; }
 
         @media print {
-            header, footer, .modal { display: none !important; }
-            body { background: white; overflow: visible; }
-            .viewport { padding: 0; background: white; display: block; }
-            .a4-page { transform: scale(1) !important; margin: 0 !important; box-shadow: none; border: none; }
-            .edit-field { border: none; }
+            header, footer, .drawer { display: none !important; }
+            body { background: white; }
+            .viewport { padding: 0; display: block; }
+            .a4-page { transform: scale(1) !important; margin: 0 !important; box-shadow: none; }
             * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
         }
     </style>
@@ -119,57 +95,71 @@
 <body>
 
 <header>
-    <h1>MAPA DE SALA PRO V31</h1>
-    <div style="background: #065f46; font-size: 9px; padding: 3px 8px; border-radius: 4px;">MODO EDIÇÃO ATIVO</div>
+    <h1>CONFIGURAÇÃO DINÂMICA</h1>
+    <div id="status">Sincronizado</div>
 </header>
 
 <main class="viewport">
     <div class="a4-page" id="folha">
         <div class="doc-header">
-            <div contenteditable="true" class="item-editavel" style="font-size: 22px; margin-bottom: 10px;" id="txt-titulo">MAPA DE ASSENTAMENTO</div>
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; font-size: 12px;">
-                <div><b>ESCOLA:</b> <span contenteditable="true" class="edit-field" id="txt-escola">Clique para digitar</span></div>
-                <div><b>TURMA:</b> <span contenteditable="true" class="edit-field" id="txt-turma">___</span></div>
-                <div><b>PROFESSOR:</b> <span contenteditable="true" class="edit-field" id="txt-prof">Márcio</span></div>
-                <div><b>DATA:</b> <span contenteditable="true" class="edit-field" id="txt-data">__/__/__</span></div>
+            <h2 contenteditable="true" id="txt-h1" style="text-align: center; font-size: 20px; margin-bottom: 10px;">PLANO DE SALA DINÂMICO</h2>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; font-size: 12px; gap: 5px;">
+                <div contenteditable="true" id="txt-info1">ESCOLA: Unidade Escolar...</div>
+                <div contenteditable="true" id="txt-info2">TURMA: 1º Ano A</div>
+                <div contenteditable="true" id="txt-info3">PROFESSOR: Márcio</div>
+                <div contenteditable="true" id="txt-info4">DATA: __/__/__</div>
             </div>
         </div>
 
-        <div class="sala-box">
-            <div class="topo-sala">
-                <div contenteditable="true" class="item-editavel tv-label" id="txt-tv">SMART TV / PAREDE FUNDO</div>
+        <div class="sala-box" id="boxSala">
+            <div class="area-interativa" style="border-bottom: 2px dashed #eee;">
+                <div contenteditable="true" class="label-movel" id="txt-topo" style="background: #000; color: #fff; padding: 2px 15px; border-radius: 5px;">SMART TV / FUNDO</div>
             </div>
             
-            <div id="gridSala" class="grid-layout"></div>
+            <div id="gridSala"></div>
 
-            <div class="base-sala">
-                <div contenteditable="true" class="item-editavel" id="txt-entrada">ENTRADA</div>
-                <div contenteditable="true" class="item-editavel quadro" id="txt-quadro">QUADRO</div>
-                <div contenteditable="true" class="item-editavel" id="txt-biro">BIRÔ</div>
+            <div class="area-interativa" style="border-top: 2px dashed #eee; justify-content: space-around;">
+                <div contenteditable="true" class="label-movel" id="txt-item1">ENTRADA</div>
+                <div contenteditable="true" class="label-movel" id="txt-item2" style="background:#065f46; color:white; padding:5px 30px; border:2px solid #451a03;">QUADRO</div>
+                <div contenteditable="true" class="label-movel" id="txt-item3">BIRÔ</div>
             </div>
         </div>
     </div>
 </main>
 
-<div id="modalAjustes" class="modal">
-    <div class="modal-box">
-        <h2 style="margin-bottom:15px;">Ajustar Grade</h2>
-        <label>COLUNAS (Lado a Lado)</label>
-        <input type="number" id="qCols" value="5">
-        <label>FILEIRAS (Frente ao Fundo)</label>
-        <input type="number" id="qRows" value="6">
-        <label>COR DAS CARTEIRAS</label>
-        <input type="color" id="qCor" value="#f59e0b">
-        <button onclick="salvarAjustes()" style="width:100%; background:var(--primary); color:white; border:none; padding:12px; margin-top:20px; border-radius:8px; font-weight:800;">APLICAR</button>
+<div id="drawer" class="drawer">
+    <h2 style="margin-bottom: 20px; text-align: center;">Personalizar Sala</h2>
+    <div class="drawer-row">
+        <label>QUANTIDADE DE ALUNOS (COLUNAS x FILEIRAS)</label>
+        <div style="display: flex; gap: 10px;">
+            <input type="number" id="vCols" value="5" placeholder="Cols">
+            <input type="number" id="vRows" value="6" placeholder="Rows">
+        </div>
     </div>
+    <div class="drawer-row">
+        <label>TAMANHO DAS CARTEIRAS (%)</label>
+        <input type="range" id="vDeskSize" min="50" max="100" value="100" oninput="ajustarEstilo()">
+    </div>
+    <div class="drawer-row">
+        <label>TAMANHO DA FONTE DOS NOMES</label>
+        <input type="range" id="vFontSize" min="6" max="16" value="10" oninput="ajustarEstilo()">
+    </div>
+    <div class="drawer-row">
+        <label>CORES (CARTEIRA E PAREDE)</label>
+        <div style="display: flex; gap: 10px;">
+            <input type="color" id="vColorDesk" value="#f59e0b" oninput="ajustarEstilo()">
+            <input type="color" id="vColorWall" value="#1e293b" oninput="ajustarEstilo()">
+        </div>
+    </div>
+    <button class="btn-ok" style="width: 100%; border: none; padding: 15px; color: white; border-radius: 12px; font-weight: 900;" onclick="toggleDrawer()">SALVAR E FECHAR</button>
 </div>
 
 <footer>
-    <div class="menu-btns">
+    <div class="toolbar">
         <button class="btn" onclick="mudarZoom(0.05)"><span>➕</span>ZOOM</button>
         <button class="btn" onclick="mudarZoom(-0.05)"><span>➖</span>ZOOM</button>
-        <button class="btn" onclick="document.getElementById('modalAjustes').style.display='flex'"><span>⚙️</span>GRADES</button>
-        <button class="btn btn-print" onclick="window.print()"><span>💾</span>PDF</button>
+        <button class="btn" onclick="toggleDrawer()"><span>🎨</span>ESTILO</button>
+        <button class="btn btn-ok" onclick="window.print()"><span>💾</span>PDF</button>
     </div>
 </footer>
 
@@ -181,32 +171,50 @@
         document.documentElement.style.setProperty('--zoom', zoom);
     }
 
-    function render() {
-        const grid = document.getElementById('gridSala');
-        const c = localStorage.getItem('cols') || 5;
-        const r = localStorage.getItem('rows') || 6;
-        const cor = localStorage.getItem('cor') || '#f59e0b';
-        
-        document.getElementById('qCols').value = c;
-        document.getElementById('qRows').value = r;
-        document.getElementById('qCor').value = cor;
-        document.documentElement.style.setProperty('--carteira', cor);
+    function toggleDrawer() {
+        const d = document.getElementById('drawer');
+        d.style.display = (d.style.display === 'flex') ? 'none' : 'flex';
+        renderGrid();
+    }
 
+    function ajustarEstilo() {
+        const desk = document.getElementById('vDeskSize').value + '%';
+        const font = document.getElementById('vFontSize').value + 'px';
+        const cDesk = document.getElementById('vColorDesk').value;
+        const cWall = document.getElementById('vColorWall').value;
+
+        document.documentElement.style.setProperty('--desk-size', desk);
+        document.documentElement.style.setProperty('--fonte-size', font);
+        document.documentElement.style.setProperty('--carteira', cDesk);
+        document.documentElement.style.setProperty('--parede', cWall);
+        
+        localStorage.setItem('config-v32', JSON.stringify({
+            cols: document.getElementById('vCols').value,
+            rows: document.getElementById('vRows').value,
+            desk, font, cDesk, cWall
+        }));
+    }
+
+    function renderGrid() {
+        const grid = document.getElementById('gridSala');
+        const c = document.getElementById('vCols').value;
+        const r = document.getElementById('vRows').value;
+        
         grid.style.gridTemplateColumns = `repeat(${c}, 1fr)`;
         grid.innerHTML = '';
 
         for (let i = 0; i < (c * r); i++) {
             const div = document.createElement('div');
             div.className = 'carteira';
-            const sNome = localStorage.getItem(`n-${i}`) || "";
-            const sFoto = localStorage.getItem(`f-${i}`) || `https://api.dicebear.com/7.x/initials/svg?seed=${i}`;
+            const sNome = localStorage.getItem(`v32-n-${i}`) || "";
+            const sFoto = localStorage.getItem(`v32-f-${i}`) || `https://api.dicebear.com/7.x/initials/svg?seed=${i}`;
             
             div.innerHTML = `
-                <div class="foto-placeholder" onclick="document.getElementById('file-${i}').click()">
+                <div class="foto-aluno" onclick="document.getElementById('file-${i}').click()">
                     <img src="${sFoto}" id="img-${i}">
                 </div>
                 <input type="file" id="file-${i}" style="display:none" onchange="upload(${i}, this)">
-                <input type="text" class="nome-aluno" value="${sNome}" placeholder="NOME" oninput="localStorage.setItem('n-${i}', this.value)">
+                <input type="text" class="nome-aluno" value="${sNome}" placeholder="Aluno" oninput="localStorage.setItem('v32-n-${i}', this.value)">
             `;
             grid.appendChild(div);
         }
@@ -217,34 +225,35 @@
             const r = new FileReader();
             r.onload = e => {
                 document.getElementById(`img-${i}`).src = e.target.result;
-                localStorage.setItem(`f-${i}`, e.target.result);
+                localStorage.setItem(`v32-f-${i}`, e.target.result);
             };
             r.readAsDataURL(input.files[0]);
         }
     }
 
-    function salvarAjustes() {
-        localStorage.setItem('cols', document.getElementById('qCols').value);
-        localStorage.setItem('rows', document.getElementById('qRows').value);
-        localStorage.setItem('cor', document.getElementById('qCor').value);
-        document.getElementById('modalAjustes').style.display = 'none';
-        render();
-    }
-
-    // Salva textos editáveis automaticamente
-    const idsTextos = ['txt-titulo', 'txt-escola', 'txt-turma', 'txt-prof', 'txt-data', 'txt-tv', 'txt-entrada', 'txt-quadro', 'txt-biro'];
-    
-    idsTextos.forEach(id => {
-        const el = document.getElementById(id);
-        if(localStorage.getItem(id)) el.innerText = localStorage.getItem(id);
-        el.oninput = () => localStorage.setItem(id, el.innerText);
+    // Salva automaticamente todos os textos clicáveis
+    document.querySelectorAll('[contenteditable]').forEach(el => {
+        const id = el.id;
+        if(localStorage.getItem('v32-'+id)) el.innerHTML = localStorage.getItem('v32-'+id);
+        el.oninput = () => localStorage.setItem('v32-'+id, el.innerHTML);
     });
 
     window.onload = () => {
-        render();
+        const config = JSON.parse(localStorage.getItem('config-v32'));
+        if(config) {
+            document.getElementById('vCols').value = config.cols;
+            document.getElementById('vRows').value = config.rows;
+            document.getElementById('vColorDesk').value = config.cDesk;
+            document.getElementById('vColorWall').value = config.cWall;
+            document.getElementById('vDeskSize').value = parseInt(config.desk);
+            document.getElementById('vFontSize').value = parseInt(config.font);
+            ajustarEstilo();
+        }
+        renderGrid();
         if(window.innerWidth < 600) zoom = 0.35;
         mudarZoom(0);
     };
 </script>
+
 </body>
 </html>
