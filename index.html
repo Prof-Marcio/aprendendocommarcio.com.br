@@ -3,241 +3,309 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>SALA MÁRCIO V34 - SLEEK PRO</title>
+    <title>SALA MÁRCIO V36 - KIDS EDITION</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Inter:wght@400;700;900&display=swap');
 
         :root {
-            --primary: #3b82f6;
-            --bg-dark: #0f172a;
-            --bg-panel: #1e293b;
-            --sidebar-w: 260px; /* Mais fino */
-            --zoom: 0.48;
-            --carteira: #f59e0b;
-            --parede: #1e293b;
-            --fonte-size: 9px;
+            --primary: #4cc9f0;
+            --bg-interface: #e0f2fe;
+            --bg-sidebar: #ffffff;
+            --sidebar-w: 290px;
+            --zoom: 0.45;
+            /* Variáveis de Estilo Kids */
+            --carteira: #ffcf33;
+            --parede: #4361ee;
+            --txt-label: #ffffff;
+            --fonte-size: 11px;
             --desk-size: 100%;
+            --desk-radius: 12px;
+            --grid-gap: 12px;
+            --border-w: 8px;
         }
 
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', sans-serif; }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Fredoka', 'Inter', sans-serif; }
+        
+        body { 
+            background: var(--bg-interface); 
+            height: 100vh; 
+            display: flex; 
+            overflow: hidden; 
+            color: #1e293b; 
+        }
 
-        body { background: var(--bg-dark); height: 100vh; display: flex; overflow: hidden; color: #f8fafc; }
-
-        /* --- SIDEBAR REFINADA --- */
+        /* --- SIDEBAR CLARA E LIMPA --- */
         .sidebar {
             width: var(--sidebar-w);
-            background: var(--bg-panel);
-            border-right: 1px solid #334155;
+            background: var(--bg-sidebar);
+            border-right: 3px solid #cbd5e1;
             display: flex;
             flex-direction: column;
             flex-shrink: 0;
-            padding: 15px;
+            overflow-y: auto;
+            padding: 20px;
         }
 
         .sidebar h1 { 
-            font-size: 12px; font-weight: 900; color: var(--primary); 
-            text-transform: uppercase; letter-spacing: 2px; margin-bottom: 25px;
-            text-align: center; border-bottom: 1px solid #334155; padding-bottom: 15px;
+            font-size: 20px; 
+            font-weight: 700; 
+            color: #4361ee; 
+            text-align: center; 
+            margin-bottom: 20px;
+            text-shadow: 1px 1px 0px #eee;
         }
 
         .section-title { 
-            font-size: 9px; font-weight: 700; color: #64748b; 
-            text-transform: uppercase; margin: 15px 0 10px 5px; 
+            font-size: 12px; 
+            font-weight: 700; 
+            color: #64748b; 
+            text-transform: uppercase; 
+            margin: 15px 0 8px 0;
+            border-bottom: 2px solid #f1f5f9;
         }
 
-        .control-row { 
-            background: #151f2e; padding: 10px; border-radius: 8px; margin-bottom: 8px;
-            display: flex; flex-direction: column; gap: 8px;
-        }
-
-        .field-flex { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
-        .field-flex label { font-size: 10px; color: #94a3b8; }
+        .control-row { background: #f8fafc; padding: 12px; border-radius: 12px; border: 2px solid #e2e8f0; margin-bottom: 10px; }
+        .field-flex { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 8px; }
+        .field-flex label { font-size: 11px; color: #475569; font-weight: 600; }
         
-        input[type="number"] {
-            width: 50px; background: #0f172a; border: 1px solid #334155; 
-            color: #fff; border-radius: 4px; padding: 4px; font-size: 11px; text-align: center;
+        input[type="number"] { 
+            width: 50px; background: #fff; border: 2px solid #cbd5e1; 
+            border-radius: 8px; padding: 5px; font-size: 12px; font-weight: 700;
         }
-
-        input[type="range"] { flex-grow: 1; accent-color: var(--primary); height: 4px; }
-
-        .color-picker-wrapper {
-            width: 100%; height: 30px; border-radius: 6px; overflow: hidden; border: 1px solid #334155;
+        
+        input[type="range"] { flex-grow: 1; accent-color: #4361ee; cursor: pointer; }
+        
+        .color-circle {
+            border: 2px solid #cbd5e1; border-radius: 50%; width: 28px; height: 28px; 
+            overflow: hidden; display: flex; align-items: center; justify-content: center;
         }
-        input[type="color"] { width: 120%; height: 150%; border: none; cursor: pointer; transform: translate(-10%, -10%); }
+        input[type="color"] { border: none; width: 40px; height: 40px; cursor: pointer; background: none; }
 
-        .btn-action {
-            margin-top: auto; background: var(--primary); color: white; border: none;
-            padding: 12px; border-radius: 6px; font-size: 11px; font-weight: 700;
-            cursor: pointer; transition: 0.2s; display: flex; align-items: center; justify-content: center; gap: 8px;
+        .btn { 
+            border: none; padding: 12px; border-radius: 10px; font-size: 12px; font-weight: 700; 
+            cursor: pointer; transition: 0.2s; color: white; margin-bottom: 5px;
+            box-shadow: 0 4px 0 rgba(0,0,0,0.1);
         }
-        .btn-action:hover { opacity: 0.9; transform: translateY(-1px); }
+        .btn:active { transform: translateY(2px); box-shadow: 0 2px 0 rgba(0,0,0,0.1); }
+        .btn-blue { background: #4361ee; }
+        .btn-red { background: #ff4d6d; }
+        .btn-help { background: #7209b7; width: 100%; margin-bottom: 15px; }
 
-        /* --- VIEWPORT --- */
-        .main-content {
-            flex-grow: 1; background: #334155; overflow: auto;
-            display: flex; justify-content: center; align-items: flex-start;
-            padding: 40px; position: relative;
+        /* --- ÁREA DO PAPEL --- */
+        .main-content { 
+            flex-grow: 1; background: var(--bg-interface); 
+            overflow: auto; display: flex; justify-content: center; padding: 40px; 
         }
 
         .a4-page {
-            width: 210mm; height: 297mm; background: #fff; color: #000;
-            padding: 12mm; position: relative; flex-shrink: 0;
+            width: 210mm; height: 297mm; background: #fff; color: #1e293b; padding: 12mm;
             transform: scale(var(--zoom)); transform-origin: top center;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.4);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1); 
             display: flex; flex-direction: column;
+            border: 1px solid #ddd;
         }
 
-        /* ELEMENTOS DO PAPEL */
-        .header-box { border: 1.5px solid #000; padding: 12px; margin-bottom: 15px; }
-        .header-box h2 { text-align: center; font-size: 18px; margin-bottom: 10px; text-transform: uppercase; }
-        .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; font-size: 11px; }
-        [contenteditable] { outline: none; border-bottom: 1px solid transparent; }
-        [contenteditable]:hover { border-bottom: 1px dashed #ccc; }
-
-        .sala-area {
-            flex-grow: 1; border: 10px solid var(--parede);
-            display: flex; flex-direction: column; background: #fff;
+        .header-box { 
+            border: 3px solid #1e293b; border-radius: 15px; 
+            padding: 20px; margin-bottom: 20px; background: #fdfdfd;
         }
-
-        .label-sala { height: 35px; display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 800; }
         
-        #gridContainer {
-            display: grid; gap: 8px; padding: 12px; flex-grow: 1;
-            align-content: center; justify-items: center;
+        .header-box h2 { font-family: 'Fredoka'; color: #4361ee; font-size: 24px; text-transform: uppercase; }
+
+        .info-grid { 
+            display: grid; grid-template-columns: 1fr 1fr; gap: 12px; 
+            font-size: 14px; margin-top: 10px;
         }
 
-        /* CARTEIRA SLEEK */
+        /* --- SALA ESTILO DESENHO --- */
+        .sala-area {
+            flex-grow: 1; border: var(--border-w) solid var(--parede);
+            border-radius: 20px; display: flex; flex-direction: column; 
+            background: #fff; transition: 0.3s; overflow: hidden;
+        }
+
+        .label-sala { 
+            height: 45px; display: flex; align-items: center; justify-content: center; 
+            font-size: 12px; font-weight: 700; color: var(--txt-label);
+            letter-spacing: 1px;
+        }
+        
+        #gridContainer { 
+            display: grid; gap: var(--grid-gap); padding: 20px; 
+            flex-grow: 1; align-content: center; justify-items: center; 
+        }
+
+        /* CARTEIRA LÚDICA */
         .desk {
             background: var(--carteira) !important; width: var(--desk-size); aspect-ratio: 1/1;
-            border-radius: 4px; display: flex; flex-direction: column;
-            align-items: center; justify-content: center; padding: 4px; border: 1px solid rgba(0,0,0,0.05);
+            border-radius: var(--desk-radius); display: flex; flex-direction: column;
+            align-items: center; justify-content: center; padding: 8px;
+            border: 3px solid #1e293b; /* Borda estilo desenho */
+            box-shadow: 4px 4px 0px rgba(0,0,0,0.05);
         }
-        .desk-photo { width: 45%; aspect-ratio: 1/1; background: #fff; border-radius: 50%; overflow: hidden; margin-bottom: 3px; border: 1.5px solid #fff; }
+        .desk-photo { 
+            width: 55%; aspect-ratio: 1/1; background: #fff; 
+            border-radius: 50%; overflow: hidden; margin-bottom: 6px; 
+            border: 3px solid #1e293b;
+        }
         .desk-photo img { width: 100%; height: 100%; object-fit: cover; }
-        .desk-name { width: 100%; border: none; background: #fff; text-align: center; font-size: var(--fonte-size); font-weight: 700; border-radius: 2px; padding: 1px 0; }
+        .desk-name { 
+            width: 100%; border: 2px solid #1e293b; background: #fff; 
+            text-align: center; font-size: var(--fonte-size); font-weight: 700; 
+            border-radius: 6px; padding: 2px; color: #1e293b;
+        }
 
-        @media (max-width: 800px) {
-            body { flex-direction: column; }
-            .sidebar { width: 100%; height: auto; border-right: none; border-bottom: 1px solid #334155; }
-            .main-content { padding: 10px; }
+        /* MODAL TUTORIAL */
+        #modalTutorial {
+            position: fixed; top:0; left:0; width:100%; height:100%; background:rgba(67, 97, 238, 0.4);
+            backdrop-filter: blur(5px); display: none; justify-content:center; align-items:center; z-index:9999;
+        }
+        .modal-content { 
+            background: white; padding: 35px; border-radius: 25px; 
+            max-width: 500px; color: #1e293b; border: 4px solid #4361ee;
+            box-shadow: 0 20px 0 rgba(0,0,0,0.1);
         }
 
         @media print {
-            .sidebar { display: none !important; }
+            .sidebar, #modalTutorial { display: none !important; }
             .main-content { padding: 0; background: #fff; }
-            .a4-page { transform: scale(1) !important; margin: 0 !important; box-shadow: none; }
-            * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+            .a4-page { transform: scale(1) !important; margin: 0 !important; box-shadow: none; border: none; }
         }
     </style>
 </head>
 <body>
 
     <aside class="sidebar">
-        <h1>Sala Digital</h1>
+        <h1>SALA MÁRCIO V36</h1>
 
-        <div class="section-title">Estrutura da Sala</div>
+        <button class="btn btn-help" onclick="toggleTutorial(true)">⭐ COMO USAR?</button>
+
+        <div class="section-title">📐 Tamanho da Grade</div>
         <div class="control-row">
-            <div class="field-flex">
-                <label>Colunas:</label>
-                <input type="number" id="inCols" value="5" oninput="rebuild()">
-            </div>
-            <div class="field-flex">
-                <label>Fileiras:</label>
-                <input type="number" id="inRows" value="6" oninput="rebuild()">
-            </div>
+            <div class="field-flex"><label>Colunas:</label><input type="number" id="inCols" value="5" oninput="rebuild()"></div>
+            <div class="field-flex"><label>Fileiras:</label><input type="number" id="inRows" value="6" oninput="rebuild()"></div>
+            <div class="field-flex"><label>Distância:</label><input type="range" id="rgGap" min="5" max="40" value="12" oninput="update()"></div>
         </div>
 
-        <div class="section-title">Estética</div>
+        <div class="section-title">🎨 Cores Divertidas</div>
         <div class="control-row">
-            <div class="field-flex">
-                <label>Cor Carteira</label>
-                <div class="color-picker-wrapper"><input type="color" id="cpDesk" value="#f59e0b" oninput="updateStyles()"></div>
-            </div>
-            <div class="field-flex">
-                <label>Cor Parede</label>
-                <div class="color-picker-wrapper"><input type="color" id="cpWall" value="#1e293b" oninput="updateStyles()"></div>
-            </div>
+            <div class="field-flex"><label>Mesa:</label><div class="color-circle"><input type="color" id="cpDesk" value="#ffcf33" oninput="update()"></div></div>
+            <div class="field-flex"><label>Paredes:</label><div class="color-circle"><input type="color" id="cpWall" value="#4361ee" oninput="update()"></div></div>
+            <div class="field-flex"><label>Texto:</label><div class="color-circle"><input type="color" id="cpTxt" value="#ffffff" oninput="update()"></div></div>
         </div>
 
-        <div class="section-title">Ajustes Finos</div>
+        <div class="section-title">✏️ Formatos</div>
         <div class="control-row">
-            <label style="font-size:9px; color:#64748b">TAMANHO CARTEIRA</label>
-            <input type="range" id="rgDesk" min="40" max="100" value="100" oninput="updateStyles()">
+            <label>TAMANHO MESA</label>
+            <input type="range" id="rgDesk" min="40" max="100" value="100" oninput="update()">
             
-            <label style="font-size:9px; color:#64748b; margin-top:10px">TAMANHO FONTE</label>
-            <input type="range" id="rgFont" min="5" max="14" value="9" oninput="updateStyles()">
+            <label style="margin-top:10px; display:block">BORDAS REDONDAS</label>
+            <input type="range" id="rgRadius" min="0" max="80" value="12" oninput="update()">
+
+            <label style="margin-top:10px; display:block">GROSSURA PAREDE</label>
+            <input type="range" id="rgBorder" min="2" max="25" value="8" oninput="update()">
         </div>
 
-        <div class="section-title">Visualização</div>
+        <div class="section-title">🔡 Nomes</div>
         <div class="control-row">
-            <input type="range" min="0.2" max="1" step="0.02" value="0.48" oninput="setZoom(this.value)">
+            <label>TAMANHO DA LETRA</label>
+            <input type="range" id="rgFont" min="8" max="18" value="11" oninput="update()">
         </div>
 
-        <button class="btn-action" onclick="window.print()">
-            📄 EXPORTAR PARA PDF
-        </button>
+        <div class="section-title">🔍 Zoom da Tela</div>
+        <div class="control-row">
+            <input type="range" min="0.3" max="1" step="0.01" value="0.45" oninput="setZoom(this.value)">
+        </div>
+
+        <div class="btn-group" style="display:flex; flex-direction:column; gap:5px">
+            <button class="btn btn-blue" onclick="window.print()">📥 SALVAR / IMPRIMIR</button>
+            <button class="btn btn-red" onclick="resetAll()">🧹 LIMPAR TUDO</button>
+        </div>
     </aside>
 
     <main class="main-content">
         <div class="a4-page" id="page">
             <div class="header-box">
-                <h2 contenteditable="true">Mapa de Sala de Aula</h2>
+                <h2 contenteditable="true">MAPA DA TURMA - V36</h2>
                 <div class="info-grid">
-                    <div contenteditable="true"><b>ESCOLA:</b> Digite o nome</div>
-                    <div contenteditable="true"><b>TURMA:</b> ________</div>
-                    <div contenteditable="true"><b>PROFESSOR:</b> Márcio</div>
-                    <div contenteditable="true"><b>DATA:</b> __/__/____</div>
+                    <div contenteditable="true"><b>🏫 ESCOLA:</b> Nome da Escola</div>
+                    <div contenteditable="true"><b>👥 TURMA:</b> 6º Ano A</div>
+                    <div contenteditable="true"><b>👨‍🏫 PROFESSOR:</b> Márcio</div>
+                    <div contenteditable="true"><b>📅 DATA:</b> __/__/____</div>
                 </div>
             </div>
 
-            <div class="sala-area">
-                <div class="label-sala" style="border-bottom: 1px dashed #ddd;">
-                    <span contenteditable="true" style="background:#000; color:#fff; padding:2px 12px; border-radius:3px;">FUNDOS / SMART TV</span>
+            <div class="sala-area" id="salaFrame">
+                <div class="label-sala" style="background: var(--parede); border-bottom: 3px solid #1e293b;">
+                    <span contenteditable="true">📺 QUADRO / SMART TV</span>
                 </div>
 
                 <div id="gridContainer"></div>
 
-                <div class="label-sala" style="border-top: 1px dashed #ddd; justify-content: space-around;">
-                    <span contenteditable="true">PORTA</span>
-                    <span contenteditable="true" style="background:#065f46; color:#fff; padding:4px 20px; border:1.5px solid #333;">QUADRO NEGRO</span>
-                    <span contenteditable="true">BIRÔ</span>
+                <div class="label-sala" style="background: var(--parede); border-top: 3px solid #1e293b; justify-content: space-around;">
+                    <span contenteditable="true">🚪 PORTA</span>
+                    <span contenteditable="true" style="background:#ff4d6d; color:#fff; padding:4px 20px; border:3px solid #1e293b; border-radius:10px">MESA PROFESSOR</span>
+                    <span contenteditable="true">🗄️ ARMÁRIO</span>
                 </div>
             </div>
         </div>
     </main>
 
+    <div id="modalTutorial" onclick="toggleTutorial(false)">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <h2 style="font-family:'Fredoka'; margin-bottom:15px">Aprenda a Usar! 🚀</h2>
+            <ul style="list-style:none; font-size:15px">
+                <li style="margin-bottom:12px">✅ <b>Fotos:</b> Clique no círculo da foto para colocar o rosto do aluno.</li>
+                <li style="margin-bottom:12px">✅ <b>Nomes:</b> Clique na caixinha branca abaixo da foto para digitar o nome.</li>
+                <li style="margin-bottom:12px">✅ <b>Cores:</b> Use o menu lateral para deixar a sala com a cara da sua turma.</li>
+                <li style="margin-bottom:12px">✅ <b>Desenho:</b> Ajuste o "Arredondamento" para deixar as mesas circulares ou quadradas.</li>
+                <li style="margin-bottom:12px">✅ <b>PDF:</b> Quando terminar, clique em "Salvar" e escolha "Salvar como PDF".</li>
+            </ul>
+            <button class="btn btn-blue" style="width:100%; margin-top:15px" onclick="toggleTutorial(false)">VAMOS COMEÇAR!</button>
+        </div>
+    </div>
+
     <script>
         function setZoom(v) { document.documentElement.style.setProperty('--zoom', v); }
+        function toggleTutorial(show) { document.getElementById('modalTutorial').style.display = show ? 'flex' : 'none'; }
 
-        function updateStyles() {
-            const dSize = document.getElementById('rgDesk').value + '%';
-            const fSize = document.getElementById('rgFont').value + 'px';
-            const cDesk = document.getElementById('cpDesk').value;
-            const cWall = document.getElementById('cpWall').value;
+        function update() {
+            const cfg = {
+                ds: document.getElementById('rgDesk').value + '%',
+                fs: document.getElementById('rgFont').value + 'px',
+                cd: document.getElementById('cpDesk').value,
+                cw: document.getElementById('cpWall').value,
+                ct: document.getElementById('cpTxt').value,
+                rd: document.getElementById('rgRadius').value + 'px',
+                gp: document.getElementById('rgGap').value + 'px',
+                bw: document.getElementById('rgBorder').value + 'px',
+                cols: document.getElementById('inCols').value,
+                rows: document.getElementById('inRows').value
+            };
 
-            document.documentElement.style.setProperty('--desk-size', dSize);
-            document.documentElement.style.setProperty('--fonte-size', fSize);
-            document.documentElement.style.setProperty('--carteira', cDesk);
-            document.documentElement.style.setProperty('--parede', cWall);
+            const root = document.documentElement.style;
+            root.setProperty('--desk-size', cfg.ds);
+            root.setProperty('--fonte-size', cfg.fs);
+            root.setProperty('--carteira', cfg.cd);
+            root.setProperty('--parede', cfg.cw);
+            root.setProperty('--txt-label', cfg.ct);
+            root.setProperty('--desk-radius', cfg.rd);
+            root.setProperty('--grid-gap', cfg.gp);
+            root.setProperty('--border-w', cfg.bw);
 
-            localStorage.setItem('v34_cfg', JSON.stringify({
-                c: document.getElementById('inCols').value,
-                r: document.getElementById('inRows').value,
-                ds: dSize, fs: fSize, cd: cDesk, cw: cWall
-            }));
+            localStorage.setItem('v36_config', JSON.stringify(cfg));
         }
 
         function rebuild() {
             const container = document.getElementById('gridContainer');
-            const cols = document.getElementById('inCols').value || 1;
-            const rows = document.getElementById('inRows').value || 1;
-
-            container.style.gridTemplateColumns = `repeat(${cols}, 1fr)`;
+            const c = document.getElementById('inCols').value || 1;
+            const r = document.getElementById('inRows').value || 1;
+            container.style.gridTemplateColumns = `repeat(${c}, 1fr)`;
             container.innerHTML = '';
 
-            for (let i = 0; i < (cols * rows); i++) {
-                const n = localStorage.getItem(`v34_n_${i}`) || "";
-                const f = localStorage.getItem(`v34_f_${i}`) || `https://api.dicebear.com/7.x/initials/svg?seed=${i}`;
+            for (let i = 0; i < (c * r); i++) {
+                const n = localStorage.getItem(`v36_n_${i}`) || "";
+                const f = localStorage.getItem(`v36_f_${i}`) || `https://api.dicebear.com/7.x/adventurer/svg?seed=${i+10}`;
                 
                 const d = document.createElement('div');
                 d.className = 'desk';
@@ -245,41 +313,51 @@
                     <div class="desk-photo" onclick="document.getElementById('file-${i}').click()">
                         <img src="${f}" id="img-${i}">
                     </div>
-                    <input type="file" id="file-${i}" style="display:none" onchange="up(${i}, this)">
-                    <input type="text" class="desk-name" value="${n}" placeholder="..." oninput="localStorage.setItem('v34_n_${i}', this.value)">
+                    <input type="file" id="file-${i}" style="display:none" onchange="upload(${i}, this)">
+                    <input type="text" class="desk-name" value="${n}" placeholder="Nome..." oninput="localStorage.setItem('v36_n_${i}', this.value)">
                 `;
                 container.appendChild(d);
             }
-            updateStyles();
+            update();
         }
 
-        function up(i, input) {
+        function upload(i, input) {
             if (input.files && input.files[0]) {
                 const reader = new FileReader();
                 reader.onload = e => {
                     document.getElementById(`img-${i}`).src = e.target.result;
-                    localStorage.setItem(`v34_f_${i}`, e.target.result);
+                    localStorage.setItem(`v36_f_${i}`, e.target.result);
                 };
                 reader.readAsDataURL(input.files[0]);
             }
         }
 
-        // Auto-save textos editáveis
+        function resetAll() {
+            if(confirm("Deseja apagar tudo e recomeçar?")) {
+                localStorage.clear();
+                location.reload();
+            }
+        }
+
         document.querySelectorAll('[contenteditable]').forEach((el, idx) => {
-            const id = 'v34_t_' + idx;
+            const id = 'v36_t_' + idx;
             if(localStorage.getItem(id)) el.innerHTML = localStorage.getItem(id);
             el.oninput = () => localStorage.setItem(id, el.innerHTML);
         });
 
         window.onload = () => {
-            const data = JSON.parse(localStorage.getItem('v34_cfg'));
-            if(data) {
-                document.getElementById('inCols').value = data.c;
-                document.getElementById('inRows').value = data.r;
-                document.getElementById('cpDesk').value = data.cd;
-                document.getElementById('cpWall').value = data.cw;
-                document.getElementById('rgDesk').value = parseInt(data.ds);
-                document.getElementById('rgFont').value = parseInt(data.fs);
+            const saved = JSON.parse(localStorage.getItem('v36_config'));
+            if(saved) {
+                document.getElementById('inCols').value = saved.cols;
+                document.getElementById('inRows').value = saved.rows;
+                document.getElementById('cpDesk').value = saved.cd;
+                document.getElementById('cpWall').value = saved.cw;
+                document.getElementById('cpTxt').value = saved.ct;
+                document.getElementById('rgDesk').value = parseInt(saved.ds);
+                document.getElementById('rgFont').value = parseInt(saved.fs);
+                document.getElementById('rgRadius').value = parseInt(saved.rd);
+                document.getElementById('rgGap').value = parseInt(saved.gp);
+                document.getElementById('rgBorder').value = parseInt(saved.bw);
             }
             rebuild();
         };
