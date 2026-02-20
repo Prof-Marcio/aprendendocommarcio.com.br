@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SALA MÁRCIO V3.0 - ESTÁVEL</title>
+    <title>SALA MÁRCIO V4.0 - TOTAL RESPONSIVO</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;700&display=swap');
 
@@ -19,7 +19,7 @@
 
         body { 
             font-family: 'Fredoka', sans-serif; background: #1e272e; 
-            display: flex; height: 100vh; flex-direction: row; 
+            display: flex; height: 100vh; flex-direction: row;
         }
 
         /* BARRA LATERAL (CONTROLES) */
@@ -31,90 +31,103 @@
         }
 
         .control-group { display: flex; flex-direction: column; gap: 5px; font-size: 12px; font-weight: bold; }
-        .control-group input { padding: 8px; border: 1px solid #ccc; border-radius: 5px; }
+        .control-group input { padding: 8px; border: 1px solid #ccc; border-radius: 5px; width: 100%; }
 
         .btn-acao { 
             padding: 12px; border: none; border-radius: 8px; 
             font-weight: 700; cursor: pointer; color: white; transition: 0.3s;
             text-align: center; font-size: 13px; text-decoration: none;
         }
-        .btn-print { background: #27ae60; margin-top: auto; }
+        .btn-print { background: #27ae60; margin-top: 10px; }
         .btn-ajuda { background: #2980b9; }
 
         /* ÁREA PRINCIPAL */
         .main-content {
             flex-grow: 1; background: #2f3640; overflow: auto;
-            display: flex; justify-content: center; align-items: flex-start; padding: 40px;
+            display: flex; justify-content: center; align-items: flex-start; 
+            padding: 20px;
         }
 
-        /* FOLHA A4 */
-        .a4-portrait {
-            width: 210mm; height: 297mm; background: #fff;
-            padding: 20mm; box-shadow: 0 0 30px rgba(0,0,0,0.5);
-            display: flex; flex-direction: column; align-items: center;
+        /* AJUSTE DINÂMICO DA FOLHA */
+        .a4-wrapper {
             transform: scale(var(--zoom-level));
             transform-origin: top center;
-            flex-shrink: 0;
+            transition: transform 0.2s;
         }
 
-        .header-sala { font-size: 26px; font-weight: bold; margin-bottom: 20px; text-align: center; border-bottom: 2px dashed #ccc; width: 100%; outline: none; }
+        .a4-portrait {
+            width: 210mm; min-height: 297mm; background: #fff;
+            padding: 15mm; box-shadow: 0 0 30px rgba(0,0,0,0.5);
+            display: flex; flex-direction: column; align-items: center;
+        }
+
+        .header-sala { font-size: 24px; font-weight: bold; margin-bottom: 15px; text-align: center; border-bottom: 2px dashed #ccc; width: 100%; outline: none; }
 
         /* SALA */
         .sala-container {
-            width: 100%; height: 85%; border: 15px solid var(--parede);
+            width: 100%; flex-grow: 1; border: 12px solid var(--parede);
             background: var(--chao); position: relative; display: flex; flex-direction: column;
+            min-height: 230mm;
         }
 
-        .tv-obj { width: 200px; height: 15px; background: #000; margin: 0 auto; border-radius: 0 0 10px 10px; color: #0f0; font-size: 8px; text-align: center; font-weight: bold; }
-        .quadro-obj { width: 60%; height: 40px; background: #1b4d3e; margin: 0 auto; border: 4px solid #855e39; border-radius: 12px 12px 0 0; color: white; text-align: center; line-height: 40px; font-weight: bold; outline: none; }
+        .tv-obj { width: 180px; height: 12px; background: #000; margin: 0 auto; border-radius: 0 0 10px 10px; color: #0f0; font-size: 8px; text-align: center; font-weight: bold; }
+        .quadro-obj { width: 60%; height: 35px; background: #1b4d3e; margin: 0 auto; border: 4px solid #855e39; border-radius: 10px 10px 0 0; color: white; text-align: center; line-height: 35px; font-weight: bold; outline: none; }
 
-        .grid-estudantes { flex-grow: 1; display: grid; gap: 10px; padding: 20px; justify-items: center; align-items: center; }
+        .grid-estudantes { flex-grow: 1; display: grid; gap: 8px; padding: 15px; justify-items: center; align-items: center; }
         .celula { width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; }
-        .carteira { background: var(--cor-carteira); border-radius: 8px; border: 1px solid rgba(0,0,0,0.2); padding: 5px; }
-        .vago { background: #f1f2f6; border: 2px dashed #bdc3c7; color: #7f8c8d; font-size: 11px; font-weight: bold; text-align: center; border-radius: 8px; }
+        .carteira { background: var(--cor-carteira); border-radius: 6px; border: 1px solid rgba(0,0,0,0.2); padding: 4px; width: 100%; }
+        .vago { background: #f1f2f6; border: 2px dashed #bdc3c7; color: #7f8c8d; font-size: 10px; font-weight: bold; text-align: center; border-radius: 6px; width: 100%; padding: 10px 0; }
 
-        .foto-aluno { width: 45%; aspect-ratio: 1/1; background: #eee; border-radius: 50%; overflow: hidden; border: 2px solid #fff; margin-bottom: 5px; cursor: pointer; }
+        .foto-aluno { width: 40px; height: 40px; background: #eee; border-radius: 50%; overflow: hidden; border: 2px solid #fff; margin-bottom: 4px; cursor: pointer; margin-inline: auto; }
         .foto-aluno img { width: 100%; height: 100%; object-fit: cover; }
         
-        .nome-in { width: 95%; background: #ffffff; color: var(--cor-texto-aluno); border: 1px solid #ddd; text-align: center; border-radius: 4px; font-weight: bold; padding: 2px 0; }
+        .nome-in { width: 98%; background: #ffffff; color: var(--cor-texto-aluno); border: 1px solid #ddd; text-align: center; border-radius: 3px; font-weight: bold; padding: 1px 0; }
 
-        /* AJUSTE PARA CELULAR - SIMPLES E SEM ERRO */
-        @media (max-width: 768px) {
-            body { flex-direction: column; overflow: auto; }
-            .sidebar { width: 100%; height: auto; position: relative; }
-            .main-content { padding: 10px; }
-            .a4-portrait { transform: scale(0.35); transform-origin: top left; }
+        /* RESPONSIVIDADE PARA QUALQUER TELA */
+        @media (max-width: 900px) {
+            body { flex-direction: column; }
+            .sidebar { width: 100%; height: auto; max-height: 300px; border-bottom: 4px solid #2980b9; }
+            .main-content { padding: 10px; height: 100%; }
+            .a4-wrapper { transform: scale(0.45); } /* Ajuste automático para tablets */
+        }
+
+        @media (max-width: 500px) {
+            .a4-wrapper { transform: scale(0.32) translateX(-50%); left: 50%; position: relative; } /* Ajuste para celulares pequenos */
+            .sidebar h2 { font-size: 18px; }
         }
 
         @media print {
             .sidebar { display: none !important; }
-            .main-content { padding: 0; background: white; }
-            .a4-portrait { transform: scale(1) !important; box-shadow: none; margin: 0; }
+            .main-content { padding: 0; background: white; overflow: visible; }
+            .a4-wrapper { transform: scale(1) !important; }
+            .a4-portrait { box-shadow: none; margin: 0; }
         }
     </style>
 </head>
 <body>
 
 <aside class="sidebar">
-    <h2 style="text-align:center">MÁRCIO V3.0</h2>
-    <div class="control-group">🔍 ZOOM<input type="range" id="zIn" min="0.2" max="1.5" step="0.1" value="0.8" oninput="ajustarZoom()"></div>
+    <h2 style="text-align:center; color: #2c3e50;">MÁRCIO V4.0</h2>
+    <div class="control-group">🔍 AJUSTE DE TELA (ZOOM)<input type="range" id="zIn" min="0.2" max="1.5" step="0.05" value="0.8" oninput="ajustarZoom()"></div>
     <div class="control-group">COLUNAS<input type="number" id="cIn" value="5" oninput="gerar()"></div>
     <div class="control-group">FILEIRAS<input type="number" id="rIn" value="7" oninput="gerar()"></div>
     <div class="control-group">COR PAREDE<input type="color" id="pCol" value="#2c3e50" oninput="cores()"></div>
     <div class="control-group">COR CARTEIRA<input type="color" id="cCol" value="#d35400" oninput="cores()"></div>
     <div class="control-group">COR DO NOME<input type="color" id="tCol" value="#000000" oninput="cores()"></div>
     
-    <button class="btn-acao btn-ajuda" onclick="alert('DICA: No celular, o menu fica no topo. No PC, na lateral. Use o Zoom para ajustar o tamanho na tela!')">❓ AJUDA RÁPIDA</button>
+    <button class="btn-acao btn-ajuda" onclick="alert('DICA: Use o controle deslizante de ZOOM para encaixar o mapa perfeitamente na sua tela, seja celular ou PC!')">❓ AJUDA</button>
     <button class="btn-acao btn-print" onclick="window.print()">📑 IMPRIMIR PDF</button>
 </aside>
 
 <main class="main-content">
-    <div class="a4-portrait" id="folhaA4">
-        <div class="header-sala" contenteditable="true">MAPA DE SALA: 7º ANO B</div>
-        <div class="sala-container">
-            <div class="tv-obj">MONITOR TV</div>
-            <div id="grid" class="grid-estudantes"></div>
-            <div class="quadro-obj" contenteditable="true">PROFESSOR: MÁRCIO</div>
+    <div class="a4-wrapper" id="wrapper">
+        <div class="a4-portrait" id="folhaA4">
+            <div class="header-sala" contenteditable="true">MAPA DE SALA: 7º ANO B</div>
+            <div class="sala-container">
+                <div class="tv-obj">MONITOR TV</div>
+                <div id="grid" class="grid-estudantes"></div>
+                <div class="quadro-obj" contenteditable="true">PROFESSOR: MÁRCIO</div>
+            </div>
         </div>
     </div>
 </main>
@@ -132,7 +145,8 @@
         grid.style.gridTemplateRows = `repeat(${rows}, 1fr)`;
         grid.innerHTML = '';
         
-        const fSize = Math.max(6, 18 - (cols + rows));
+        // Ajuste automático do tamanho da letra baseado na quantidade de alunos
+        const fSize = Math.max(5, 16 - (cols + rows));
 
         for (let r = 1; r <= rows; r++) {
             for (let c = 1; c <= cols; c++) {
@@ -146,7 +160,8 @@
                     celula.innerHTML = "🖥️ BIRÔ";
                 } else {
                     celula.className += ' carteira';
-                    celula.innerHTML = `<div class="foto-aluno" onclick="this.nextElementSibling.click()"><img src="https://api.dicebear.com/7.x/avataaars/svg?seed=${r}${c}"></div>
+                    const id = `r${r}c${c}`;
+                    celula.innerHTML = `<div class="foto-aluno" onclick="this.nextElementSibling.click()"><img src="https://api.dicebear.com/7.x/avataaars/svg?seed=${id}"></div>
                                         <input type="file" style="display:none" onchange="readImg(this)">
                                         <input type="text" class="nome-in" placeholder="Nome" style="font-size: ${fSize}px">`;
                 }
@@ -169,7 +184,23 @@
         document.documentElement.style.setProperty('--cor-texto-aluno', document.getElementById('tCol').value);
     }
 
-    window.onload = () => { gerar(); ajustarZoom(); };
+    // Função para detectar o tamanho da tela e sugerir um zoom inicial
+    function autoZoom() {
+        if (window.innerWidth < 500) {
+            document.getElementById('zIn').value = 0.35;
+        } else if (window.innerWidth < 900) {
+            document.getElementById('zIn').value = 0.5;
+        } else {
+            document.getElementById('zIn').value = 0.75;
+        }
+        ajustarZoom();
+    }
+
+    window.onload = () => { 
+        gerar(); 
+        autoZoom();
+        cores();
+    };
 </script>
 </body>
 </html>
