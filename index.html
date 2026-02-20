@@ -2,7 +2,8 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <title>SALA MÁRCIO V1.0 - MAPEAMENTO DE TURMA</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SALA MÁRCIO V3.0 - ESTÁVEL</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;700&display=swap');
 
@@ -10,180 +11,165 @@
             --parede: #2c3e50;
             --chao: #ffffff;
             --cor-carteira: #d35400;
+            --cor-texto-aluno: #000000;
+            --zoom-level: 1;
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
 
         body { 
             font-family: 'Fredoka', sans-serif; background: #1e272e; 
-            display: flex; height: 100vh; overflow: hidden;
+            display: flex; height: 100vh; flex-direction: row; 
         }
 
-        /* BARRA LATERAL */
+        /* BARRA LATERAL (CONTROLES) */
         .sidebar { 
-            width: 260px; background: #fff; padding: 25px; 
-            display: flex; flex-direction: column; gap: 20px;
+            width: 280px; background: #fff; padding: 20px; 
+            display: flex; flex-direction: column; gap: 15px;
             box-shadow: 5px 0 15px rgba(0,0,0,0.3); z-index: 100;
+            overflow-y: auto; flex-shrink: 0;
+        }
+
+        .control-group { display: flex; flex-direction: column; gap: 5px; font-size: 12px; font-weight: bold; }
+        .control-group input { padding: 8px; border: 1px solid #ccc; border-radius: 5px; }
+
+        .btn-acao { 
+            padding: 12px; border: none; border-radius: 8px; 
+            font-weight: 700; cursor: pointer; color: white; transition: 0.3s;
+            text-align: center; font-size: 13px; text-decoration: none;
+        }
+        .btn-print { background: #27ae60; margin-top: auto; }
+        .btn-ajuda { background: #2980b9; }
+
+        /* ÁREA PRINCIPAL */
+        .main-content {
+            flex-grow: 1; background: #2f3640; overflow: auto;
+            display: flex; justify-content: center; align-items: flex-start; padding: 40px;
+        }
+
+        /* FOLHA A4 */
+        .a4-portrait {
+            width: 210mm; height: 297mm; background: #fff;
+            padding: 20mm; box-shadow: 0 0 30px rgba(0,0,0,0.5);
+            display: flex; flex-direction: column; align-items: center;
+            transform: scale(var(--zoom-level));
+            transform-origin: top center;
             flex-shrink: 0;
         }
 
-        .control-group { display: flex; flex-direction: column; gap: 8px; font-size: 12px; font-weight: bold; }
-        .control-group input { padding: 10px; border: 1px solid #ccc; border-radius: 5px; width: 100%; }
+        .header-sala { font-size: 26px; font-weight: bold; margin-bottom: 20px; text-align: center; border-bottom: 2px dashed #ccc; width: 100%; outline: none; }
 
-        .btn-print { 
-            background: #27ae60; color: white; padding: 15px; border: none; 
-            border-radius: 8px; font-weight: 700; cursor: pointer; margin-top: auto;
-        }
-
-        /* CONTEÚDO PRINCIPAL */
-        .main-content {
-            flex-grow: 1; display: flex; align-items: flex-start; justify-content: center;
-            background: #2f3640; overflow: auto; padding: 40px;
-        }
-
-        .a4-portrait {
-            width: 210mm; height: 297mm; background: #fff;
-            display: flex; flex-direction: column; align-items: center;
-            padding: 30px; box-shadow: 0 0 50px rgba(0,0,0,0.5); 
-            position: relative; flex-shrink: 0;
-        }
-
-        .header-sala { font-size: 26px; font-weight: bold; margin-bottom: 20px; outline: none; border-bottom: 2px dashed #ccc; width: 90%; text-align: center; }
-
-        /* A SALA COM PAREDE SUPERIOR PROTEGIDA */
+        /* SALA */
         .sala-container {
-            width: 95%; height: 80%; border: 15px solid var(--parede);
-            background: var(--chao); position: relative;
-            display: flex; flex-direction: column;
-            margin-top: 10px; /* Garante que a parede superior não corte */
+            width: 100%; height: 85%; border: 15px solid var(--parede);
+            background: var(--chao); position: relative; display: flex; flex-direction: column;
         }
 
-        /* TV ACOPLADA NA PAREDE */
-        .tv-obj { 
-            width: 200px; height: 15px; background: #000; 
-            margin: 0 auto; border-radius: 0 0 10px 10px; 
-            z-index: 20; flex-shrink: 0;
-            display: flex; align-items: center; justify-content: center;
-            color: #0f0; font-size: 8px; font-weight: bold;
-        }
+        .tv-obj { width: 200px; height: 15px; background: #000; margin: 0 auto; border-radius: 0 0 10px 10px; color: #0f0; font-size: 8px; text-align: center; font-weight: bold; }
+        .quadro-obj { width: 60%; height: 40px; background: #1b4d3e; margin: 0 auto; border: 4px solid #855e39; border-radius: 12px 12px 0 0; color: white; text-align: center; line-height: 40px; font-weight: bold; outline: none; }
 
-        /* QUADRO NA BASE */
-        .quadro-obj { 
-            width: 60%; height: 40px; background: #1b4d3e; 
-            margin: 0 auto; border: 4px solid #855e39; 
-            border-radius: 12px 12px 0 0; color: white; 
-            text-align: center; line-height: 40px; font-weight: bold; 
-            flex-shrink: 0; outline: none;
-        }
+        .grid-estudantes { flex-grow: 1; display: grid; gap: 10px; padding: 20px; justify-items: center; align-items: center; }
+        .celula { width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+        .carteira { background: var(--cor-carteira); border-radius: 8px; border: 1px solid rgba(0,0,0,0.2); padding: 5px; }
+        .vago { background: #f1f2f6; border: 2px dashed #bdc3c7; color: #7f8c8d; font-size: 11px; font-weight: bold; text-align: center; border-radius: 8px; }
 
-        /* VÃO DA PORTA NA LATERAL ESQUERDA */
-        .porta-vao { 
-            position: absolute; left: -15px; bottom: 50px; 
-            width: 15px; height: 100px; background: #fff; z-index: 5; 
-        }
-
-        /* GRID INTERNO */
-        .grid-estudantes {
-            flex-grow: 1; display: grid; gap: 10px; padding: 20px;
-            justify-items: center; align-items: center; overflow: hidden;
-        }
-
-        .celula { width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; border-radius: 8px; overflow: hidden; }
-        .carteira { background: var(--cor-carteira); border: 1px solid rgba(0,0,0,0.2); padding: 5px; }
-        .vago { background: #f1f2f6; border: 2px dashed #bdc3c7; color: #7f8c8d; font-size: 11px; font-weight: bold; text-align: center; }
-
-        .foto-aluno { width: 45%; aspect-ratio: 1/1; background: #fff; border-radius: 50%; overflow: hidden; border: 2px solid #fff; margin-bottom: 4px; }
+        .foto-aluno { width: 45%; aspect-ratio: 1/1; background: #eee; border-radius: 50%; overflow: hidden; border: 2px solid #fff; margin-bottom: 5px; cursor: pointer; }
         .foto-aluno img { width: 100%; height: 100%; object-fit: cover; }
-        .nome-in { width: 95%; background: rgba(0,0,0,0.7); color: #fff; border: none; text-align: center; border-radius: 3px; font-family: inherit; }
+        
+        .nome-in { width: 95%; background: #ffffff; color: var(--cor-texto-aluno); border: 1px solid #ddd; text-align: center; border-radius: 4px; font-weight: bold; padding: 2px 0; }
+
+        /* AJUSTE PARA CELULAR - SIMPLES E SEM ERRO */
+        @media (max-width: 768px) {
+            body { flex-direction: column; overflow: auto; }
+            .sidebar { width: 100%; height: auto; position: relative; }
+            .main-content { padding: 10px; }
+            .a4-portrait { transform: scale(0.35); transform-origin: top left; }
+        }
 
         @media print {
             .sidebar { display: none !important; }
-            .main-content { padding: 0; background: white; overflow: visible; }
-            body { background: white; }
-            .a4-portrait { box-shadow: none; margin: 0; width: 210mm; height: 297mm; padding: 20mm; }
+            .main-content { padding: 0; background: white; }
+            .a4-portrait { transform: scale(1) !important; box-shadow: none; margin: 0; }
         }
     </style>
-    <link rel="icon" type="image/png" href="favicon-32x32.png">
 </head>
 <body>
 
-<aside class="sidebar no-print">
-    <h2 style="margin-bottom:15px">CONTROLES</h2>
+<aside class="sidebar">
+    <h2 style="text-align:center">MÁRCIO V3.0</h2>
+    <div class="control-group">🔍 ZOOM<input type="range" id="zIn" min="0.2" max="1.5" step="0.1" value="0.8" oninput="ajustarZoom()"></div>
     <div class="control-group">COLUNAS<input type="number" id="cIn" value="5" oninput="gerar()"></div>
     <div class="control-group">FILEIRAS<input type="number" id="rIn" value="7" oninput="gerar()"></div>
     <div class="control-group">COR PAREDE<input type="color" id="pCol" value="#2c3e50" oninput="cores()"></div>
     <div class="control-group">COR CARTEIRA<input type="color" id="cCol" value="#d35400" oninput="cores()"></div>
-    <button class="btn-print" onclick="window.print()">📑 GERAR PDF FINAL</button>
+    <div class="control-group">COR DO NOME<input type="color" id="tCol" value="#000000" oninput="cores()"></div>
+    
+    <button class="btn-acao btn-ajuda" onclick="alert('DICA: No celular, o menu fica no topo. No PC, na lateral. Use o Zoom para ajustar o tamanho na tela!')">❓ AJUDA RÁPIDA</button>
+    <button class="btn-acao btn-print" onclick="window.print()">📑 IMPRIMIR PDF</button>
 </aside>
 
 <main class="main-content">
-    <div class="a4-portrait">
+    <div class="a4-portrait" id="folhaA4">
         <div class="header-sala" contenteditable="true">MAPA DE SALA: 7º ANO B</div>
-        
         <div class="sala-container">
             <div class="tv-obj">MONITOR TV</div>
-            <div class="porta-vao"></div>
-            
             <div id="grid" class="grid-estudantes"></div>
-            
             <div class="quadro-obj" contenteditable="true">PROFESSOR: MÁRCIO</div>
         </div>
     </div>
 </main>
 
 <script>
+    function ajustarZoom() {
+        document.documentElement.style.setProperty('--zoom-level', document.getElementById('zIn').value);
+    }
+
     function gerar() {
         const grid = document.getElementById('grid');
         const cols = parseInt(document.getElementById('cIn').value) || 2;
         const rows = parseInt(document.getElementById('rIn').value) || 2;
-
         grid.style.gridTemplateColumns = `repeat(${cols}, 1fr)`;
         grid.style.gridTemplateRows = `repeat(${rows}, 1fr)`;
         grid.innerHTML = '';
-
-        const fSize = Math.max(7, 22 - (cols + rows));
+        
+        const fSize = Math.max(6, 18 - (cols + rows));
 
         for (let r = 1; r <= rows; r++) {
             for (let c = 1; c <= cols; c++) {
                 const celula = document.createElement('div');
                 celula.className = 'celula';
-
-                const isEntrada = (r === rows && c === 1);
-                const isBiro = (r === rows && c === cols);
-
-                if (isEntrada) {
-                    celula.classList.add('vago');
-                    celula.innerHTML = "🚪<br>ENTRADA";
-                } else if (isBiro) {
-                    celula.classList.add('vago');
-                    celula.innerHTML = "🖥️<br>BIRÔ";
+                if (r === rows && c === 1) {
+                    celula.className += ' vago';
+                    celula.innerHTML = "🚪 PORTA";
+                } else if (r === rows && c === cols) {
+                    celula.className += ' vago';
+                    celula.innerHTML = "🖥️ BIRÔ";
                 } else {
-                    celula.classList.add('carteira');
-                    celula.innerHTML = `
-                        <div class="foto-aluno"><img src="https://api.dicebear.com/7.x/avataaars/svg?seed=aluno${r}${c}" onclick="upload(this)"></div>
-                        <input type="text" class="nome-in" placeholder="Aluno" style="font-size: ${fSize}px">
-                    `;
+                    celula.className += ' carteira';
+                    celula.innerHTML = `<div class="foto-aluno" onclick="this.nextElementSibling.click()"><img src="https://api.dicebear.com/7.x/avataaars/svg?seed=${r}${c}"></div>
+                                        <input type="file" style="display:none" onchange="readImg(this)">
+                                        <input type="text" class="nome-in" placeholder="Nome" style="font-size: ${fSize}px">`;
                 }
                 grid.appendChild(celula);
             }
         }
     }
 
+    function readImg(input) {
+        if (input.files && input.files[0]) {
+            const reader = new FileReader();
+            reader.onload = e => { input.previousElementSibling.querySelector('img').src = e.target.result; };
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+
     function cores() {
         document.documentElement.style.setProperty('--parede', document.getElementById('pCol').value);
         document.documentElement.style.setProperty('--cor-carteira', document.getElementById('cCol').value);
+        document.documentElement.style.setProperty('--cor-texto-aluno', document.getElementById('tCol').value);
     }
 
-    function upload(img) {
-        const i = document.createElement('input'); i.type = 'file';
-        i.onchange = e => {
-            const f = e.target.files[0]; const reader = new FileReader();
-            reader.onload = ev => img.src = ev.target.result;
-            reader.readAsDataURL(f);
-        }; i.click();
-    }
-
-    window.onload = gerar;
+    window.onload = () => { gerar(); ajustarZoom(); };
 </script>
 </body>
 </html>
