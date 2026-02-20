@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>SALA MÁRCIO V42 - SISTEMA DINÂMICO</title>
+    <title>SALA MÁRCIO V43 - ULTRA CONTROL</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&display=swap');
 
@@ -11,109 +11,156 @@
             --primary: #4361ee;
             --sidebar-w: 300px;
             --zoom: 0.55;
-            /* Variáveis que os sliders controlam */
+            
+            /* Variáveis de Estilo Dinâmicas */
             --carteira: #ffcf33;
             --parede: #4361ee;
-            --txt-label: #ffffff;
+            --cor-borda: #000000;
+            --cor-texto-desk: #000000;
+            --cor-cabecalho: #4361ee;
+            --cor-texto-cabecalho: #ffffff;
+            
+            /* Variáveis de Tamanho */
             --fonte-size: 11px;
             --desk-size: 100%;
             --grid-gap: 12px;
             --photo-size: 50%;
+            --border-w: 5px;
+            --desk-radius: 12px;
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Fredoka', sans-serif; }
         
-        body { background: #1e293b; height: 100vh; display: flex; overflow: hidden; }
-
-        /* --- MENU LATERAL (SIDEBAR) --- */
-        .sidebar {
-            width: var(--sidebar-w); background: #ffffff; height: 100%;
-            display: flex; flex-direction: column; flex-shrink: 0;
-            transition: transform 0.3s ease; border-right: 5px solid var(--primary);
-            position: relative; z-index: 9999;
+        body { 
+            background: #0f172a; 
+            height: 100vh; 
+            display: flex; 
+            overflow: hidden; 
+            color: #1e293b;
         }
 
-        .sidebar.minimized { transform: translateX(-100%); width: 0; }
+        /* --- SIDEBAR --- */
+        .sidebar {
+            width: var(--sidebar-w); background: #f8fafc; height: 100%;
+            display: flex; flex-direction: column; flex-shrink: 0;
+            transition: all 0.3s ease; border-right: 4px solid var(--primary);
+            position: relative; z-index: 1000;
+        }
 
-        .sidebar-content { padding: 20px; width: var(--sidebar-w); overflow-y: auto; flex-grow: 1; }
+        .sidebar.minimized { margin-left: calc(-1 * var(--sidebar-w)); }
+
+        .sidebar-content { padding: 15px; overflow-y: auto; flex-grow: 1; }
 
         .btn-toggle-menu {
-            position: absolute; right: -55px; top: 20px; width: 55px; height: 55px;
-            background: var(--primary); color: white; border: none; border-radius: 0 12px 12px 0;
-            cursor: pointer; display: flex; align-items: center; justify-content: center; 
-            font-size: 28px; box-shadow: 5px 0 15px rgba(0,0,0,0.3);
+            position: absolute; right: -45px; top: 15px; width: 45px; height: 45px;
+            background: var(--primary); color: white; border: none; border-radius: 0 10px 10px 0;
+            cursor: pointer; font-size: 20px; display: flex; align-items: center; justify-content: center;
         }
 
-        .section-title { font-size: 11px; font-weight: 700; color: #64748b; text-transform: uppercase; margin: 15px 0 8px; border-bottom: 2px solid #f1f5f9; }
-        .control-row { background: #f8fafc; padding: 12px; border-radius: 12px; margin-bottom: 10px; border: 1px solid #e2e8f0; }
-        .field-flex { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 8px; font-size: 13px; }
+        /* --- CONTROLES --- */
+        .section-title { 
+            font-size: 12px; font-weight: 700; color: var(--primary); 
+            text-transform: uppercase; margin: 15px 0 8px; 
+            display: flex; align-items: center; gap: 5px;
+        }
         
-        input[type="number"] { width: 60px; padding: 6px; border: 2px solid #cbd5e1; border-radius: 8px; text-align: center; font-weight: bold; }
-        input[type="range"] { flex-grow: 1; cursor: pointer; accent-color: var(--primary); }
-        input[type="color"] { width: 40px; height: 30px; border: none; cursor: pointer; background: none; }
+        .control-row { 
+            background: #ffffff; padding: 10px; border-radius: 8px; 
+            margin-bottom: 8px; border: 1px solid #e2e8f0; box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .field-flex { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 5px; }
+        label { font-size: 11px; font-weight: 600; }
+
+        input[type="number"], input[type="text"] { 
+            width: 50px; padding: 4px; border: 1px solid #cbd5e1; border-radius: 5px; text-align: center; 
+        }
         
-        .btn { border: none; padding: 14px; border-radius: 10px; font-weight: 700; cursor: pointer; color: white; width: 100%; margin: 8px 0; font-size: 14px; transition: 0.2s; }
-        .btn-print { background: #06d6a0; border-bottom: 4px solid #058f6b; font-size: 16px; }
-        .btn-print:hover { background: #058f6b; }
+        input[type="range"] { flex-grow: 1; accent-color: var(--primary); cursor: pointer; }
+        input[type="color"] { width: 35px; height: 25px; border: none; cursor: pointer; background: none; }
+
+        .btn { 
+            border: none; padding: 10px; border-radius: 8px; font-weight: 700; 
+            cursor: pointer; color: white; width: 100%; margin-top: 5px; font-size: 13px;
+        }
+        .btn-print { background: #10b981; }
         .btn-reset { background: #ef4444; }
 
-        /* --- ÁREA DO MAPA (VIEWPORT) --- */
+        /* --- ÁREA DO MAPA --- */
         .main-view {
             flex-grow: 1; overflow: auto; display: flex; 
             justify-content: center; align-items: flex-start;
-            padding: 50px 20px; background: #334155; position: relative;
+            padding: 40px 10px; background: #1e293b;
         }
 
-        /* Container A4 Dinâmico */
         .a4-wrapper { 
             width: 210mm; min-height: 297mm;
             transform: scale(var(--zoom)); transform-origin: top center;
-            background: white; box-shadow: 0 0 50px rgba(0,0,0,0.5);
-            padding: 15mm; display: flex; flex-direction: column;
+            background: white; padding: 10mm; display: flex; flex-direction: column;
+            box-shadow: 0 0 40px rgba(0,0,0,0.5);
         }
 
-        .header-box { border: 4px solid #000; border-radius: 20px; padding: 20px; margin-bottom: 20px; }
-        .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; font-size: 16px; }
+        /* --- HEADER --- */
+        .header-box { 
+            border: 3px solid var(--cor-borda); border-radius: 15px; 
+            padding: 15px; margin-bottom: 15px; background: #fff;
+        }
+        .info-grid { 
+            display: grid; grid-template-columns: repeat(2, 1fr); 
+            gap: 10px; font-size: 14px; margin-top: 10px;
+        }
 
+        /* --- SALA AREA --- */
         .sala-area {
-            flex-grow: 1; border: 10px solid var(--parede);
-            border-radius: 25px; display: flex; flex-direction: column; overflow: hidden; background: #fff;
+            flex-grow: 1; border: var(--border-w) solid var(--parede);
+            border-radius: 20px; display: flex; flex-direction: column; 
+            overflow: hidden; background: #fff; position: relative;
         }
 
-        /* GRADE DINÂMICA */
+        .wall-label {
+            background: var(--cor-cabecalho); color: var(--cor-texto-cabecalho);
+            padding: 10px; text-align: center; font-weight: 700;
+            border-bottom: 2px solid var(--cor-borda); border-top: 2px solid var(--cor-borda);
+        }
+
         #gridContainer { 
             display: grid; gap: var(--grid-gap); padding: 20px; 
-            flex-grow: 1; align-content: center; justify-items: center; 
+            flex-grow: 1; align-content: start; justify-items: center; 
         }
 
+        /* --- CARTEIRA --- */
         .desk {
-            background: var(--carteira); width: var(--desk-size); aspect-ratio: 1/1;
-            border-radius: 15px; border: 2.5px solid #000;
-            display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 5px;
-            box-shadow: 3px 3px 0px rgba(0,0,0,0.1);
+            background: var(--carteira); width: var(--desk-size);
+            aspect-ratio: 1 / 1.1; border-radius: var(--desk-radius);
+            border: 2px solid var(--cor-borda); display: flex;
+            flex-direction: column; align-items: center; justify-content: center;
+            padding: 5px; transition: 0.2s;
         }
+        
         .desk-photo { 
             width: var(--photo-size); aspect-ratio: 1/1; background: #fff; 
-            border-radius: 50%; overflow: hidden; border: 2px solid #000; margin-bottom: 6px;
+            border-radius: 50%; overflow: hidden; border: 1.5px solid var(--cor-borda);
+            margin-bottom: 5px; cursor: pointer;
         }
         .desk-photo img { width: 100%; height: 100%; object-fit: cover; }
+        
         .desk-name { 
-            width: 95%; border: 2px solid #000; text-align: center; 
-            font-size: var(--fonte-size); font-weight: 700; background: #fff; border-radius: 5px;
+            width: 90%; border: 1px solid var(--cor-borda); text-align: center; 
+            font-size: var(--fonte-size); font-weight: 700; color: var(--cor-texto-desk);
+            background: #fff; border-radius: 4px; padding: 2px;
         }
 
         /* RESPONSIVIDADE CELULAR */
         @media (max-width: 768px) {
-            .sidebar { position: fixed; left: 0; }
-            .main-view { padding-top: 100px; }
-            .btn-toggle-menu { top: 15px; }
+            .sidebar { position: fixed; height: 100%; left: 0; }
+            .main-view { padding-top: 80px; }
+            .a4-wrapper { width: 95vw; height: auto; padding: 5mm; }
         }
 
         @media print {
             .sidebar, .btn-toggle-menu { display: none !important; }
-            .main-view { padding: 0; display: block; background: white; overflow: visible; }
-            .a4-wrapper { transform: scale(1) !important; box-shadow: none; margin: 0; width: 210mm; }
-            body { background: white; }
+            .main-view { padding: 0; background: white; }
+            .a4-wrapper { transform: scale(1) !important; margin: 0; border: none; }
         }
     </style>
 </head>
@@ -123,66 +170,74 @@
         <button class="btn-toggle-menu" onclick="toggleMenu()">☰</button>
         
         <div class="sidebar-content">
-            <h2 style="text-align:center; color:var(--primary); margin-bottom:15px">SALA V42 DINÂMICA</h2>
+            <h3 style="text-align:center; color:var(--primary)">CONFIGURAÇÕES</h3>
             
-            <button class="btn btn-print" onclick="window.print()">💾 SALVAR / IMPRIMIR PDF</button>
+            <button class="btn btn-print" onclick="window.print()">💾 IMPRIMIR PDF</button>
 
-            <div class="section-title">📏 Configuração da Grade</div>
+            <div class="section-title">📐 Grade e Espaçamento</div>
             <div class="control-row">
                 <div class="field-flex"><label>Colunas:</label><input type="number" id="inCols" value="5" oninput="rebuild()"></div>
-                <div class="field-flex"><label>Fileiras:</label><input type="number" id="inRows" value="6" oninput="rebuild()"></div>
-                <label>ESPAÇO ENTRE MESAS</label>
-                <input type="range" id="rgGap" min="5" max="50" value="15" oninput="update()">
+                <div class="field-flex"><label>Linhas:</label><input type="number" id="inRows" value="6" oninput="rebuild()"></div>
+                <label>Espaço entre mesas</label>
+                <input type="range" id="rgGap" min="2" max="50" value="12" oninput="update()">
             </div>
 
-            <div class="section-title">🎨 Tamanhos Dinâmicos</div>
+            <div class="section-title">🎨 Cores do Mapa</div>
             <div class="control-row">
-                <label>TAMANHO DAS FOTOS</label>
-                <input type="range" id="rgPhoto" min="20" max="85" value="50" oninput="update()">
-                <label>TAMANHO DOS NOMES</label>
-                <input type="range" id="rgFont" min="7" max="25" value="12" oninput="update()">
-                <label>TAMANHO DAS MESAS %</label>
-                <input type="range" id="rgDesk" min="50" max="100" value="100" oninput="update()">
+                <div class="field-flex"><label>Paredes:</label><input type="color" id="cpWall" value="#4361ee" oninput="update()"></div>
+                <div class="field-flex"><label>Bordas:</label><input type="color" id="cpBorder" value="#000000" oninput="update()"></div>
+                <div class="field-flex"><label>Topo/Base:</label><input type="color" id="cpHeader" value="#4361ee" oninput="update()"></div>
+                <div class="field-flex"><label>Texto Topo:</label><input type="color" id="cpHeaderText" value="#ffffff" oninput="update()"></div>
             </div>
 
-            <div class="section-title">🌈 Cores do Layout</div>
+            <div class="section-title">🪑 Estilo das Mesas</div>
             <div class="control-row">
-                <div class="field-flex"><label>Cor da Mesa:</label><input type="color" id="cpDesk" value="#ffcf33" oninput="update()"></div>
-                <div class="field-flex"><label>Cor da Parede:</label><input type="color" id="cpWall" value="#4361ee" oninput="update()"></div>
+                <div class="field-flex"><label>Mesa:</label><input type="color" id="cpDesk" value="#ffcf33" oninput="update()"></div>
+                <div class="field-flex"><label>Texto:</label><input type="color" id="cpDeskText" value="#000000" oninput="update()"></div>
+                <label>Tamanho %</label>
+                <input type="range" id="rgDesk" min="30" max="100" value="100" oninput="update()">
+                <label>Arredondar</label>
+                <input type="range" id="rgRadius" min="0" max="50" value="12" oninput="update()">
             </div>
 
-            <div class="section-title">🔍 Ajuste de Tela (Celular/PC)</div>
+            <div class="section-title">👤 Alunos e Fotos</div>
             <div class="control-row">
-                <input type="range" min="0.2" max="1.5" step="0.05" value="0.55" id="zoomMaster" oninput="setZoom(this.value)">
-                <p style="font-size: 11px; text-align: center; margin-top: 5px; color: #64748b;">Aumente o zoom para editar melhor no celular</p>
+                <label>Tamanho Foto %</label>
+                <input type="range" id="rgPhoto" min="10" max="90" value="50" oninput="update()">
+                <label>Tamanho Fonte</label>
+                <input type="range" id="rgFont" min="6" max="25" value="11" oninput="update()">
             </div>
 
-            <button class="btn btn-reset" onclick="resetAll()">🗑️ APAGAR TUDO</button>
+            <div class="section-title">📱 Ajuste de Tela</div>
+            <div class="control-row">
+                <input type="range" min="0.2" max="1.5" step="0.01" value="0.55" id="zoomMaster" oninput="setZoom(this.value)">
+                <center><small>Arraste para ajustar o tamanho no celular</small></center>
+            </div>
+
+            <button class="btn btn-reset" onclick="resetAll()">🗑️ LIMPAR TUDO</button>
         </div>
     </aside>
 
     <main class="main-view">
         <div class="a4-wrapper" id="page">
             <div class="header-box">
-                <h2 contenteditable="true" style="text-align:center; color:var(--primary); margin-bottom:10px; font-size: 24px;">MAPA DE SALA - PROF. MÁRCIO</h2>
+                <h2 contenteditable="true" style="text-align:center; color:var(--primary)">MAPA DE SALA - PROF. MÁRCIO</h2>
                 <div class="info-grid">
-                    <div contenteditable="true"><b>🏫 ESCOLA:</b> Nome da Unidade</div>
-                    <div contenteditable="true"><b>👥 TURMA:</b> ______</div>
+                    <div contenteditable="true"><b>🏫 ESCOLA:</b> Nome...</div>
+                    <div contenteditable="true"><b>👥 TURMA:</b> ...</div>
                     <div contenteditable="true"><b>👨‍🏫 PROF:</b> Márcio</div>
                     <div contenteditable="true"><b>📅 DATA:</b> __/__/2026</div>
                 </div>
             </div>
 
             <div class="sala-area">
-                <div style="background: var(--parede); height:50px; display:flex; align-items:center; justify-content:center; color:var(--txt-label); font-weight:700; border-bottom:3px solid #000; font-size: 18px;">
-                    <span contenteditable="true">📺 QUADRO / SMART TV</span>
-                </div>
+                <div class="wall-label" contenteditable="true">📺 QUADRO / SMART TV</div>
 
                 <div id="gridContainer"></div>
 
-                <div style="background: var(--parede); height:60px; display:flex; align-items:center; justify-content:space-around; color:var(--txt-label); font-weight:700; border-top:3px solid #000; font-size: 14px;">
+                <div class="wall-label" style="display:flex; justify-content: space-around;">
                     <span contenteditable="true">🚪 PORTA</span>
-                    <span contenteditable="true" style="background:#ef4444; color:#fff; padding:8px 20px; border:3px solid #000; border-radius:12px">MESA PROFESSOR</span>
+                    <span contenteditable="true" style="background:#ef4444; padding:2px 10px; border-radius:5px">MESA PROFESSOR</span>
                     <span contenteditable="true">🗄️ ARMÁRIO</span>
                 </div>
             </div>
@@ -190,13 +245,11 @@
     </main>
 
     <script>
-        function toggleMenu() {
-            document.getElementById('sidebar').classList.toggle('minimized');
-        }
+        function toggleMenu() { document.getElementById('sidebar').classList.toggle('minimized'); }
 
         function setZoom(v) { 
             document.documentElement.style.setProperty('--zoom', v); 
-            localStorage.setItem('v42_zoom', v);
+            localStorage.setItem('v43_zoom', v);
         }
 
         function update() {
@@ -205,6 +258,11 @@
                 fs: document.getElementById('rgFont').value + 'px',
                 cd: document.getElementById('cpDesk').value,
                 cw: document.getElementById('cpWall').value,
+                cb: document.getElementById('cpBorder').value,
+                ct: document.getElementById('cpDeskText').value,
+                ch: document.getElementById('cpHeader').value,
+                cht: document.getElementById('cpHeaderText').value,
+                rd: document.getElementById('rgRadius').value + 'px',
                 gp: document.getElementById('rgGap').value + 'px',
                 ps: document.getElementById('rgPhoto').value + '%',
                 cols: document.getElementById('inCols').value,
@@ -216,22 +274,28 @@
             root.setProperty('--fonte-size', cfg.fs);
             root.setProperty('--carteira', cfg.cd);
             root.setProperty('--parede', cfg.cw);
+            root.setProperty('--cor-borda', cfg.cb);
+            root.setProperty('--cor-texto-desk', cfg.ct);
+            root.setProperty('--cor-cabecalho', cfg.ch);
+            root.setProperty('--cor-texto-cabecalho', cfg.cht);
+            root.setProperty('--desk-radius', cfg.rd);
             root.setProperty('--grid-gap', cfg.gp);
             root.setProperty('--photo-size', cfg.ps);
 
-            localStorage.setItem('v42_config', JSON.stringify(cfg));
+            localStorage.setItem('v43_config_v2', JSON.stringify(cfg));
         }
 
         function rebuild() {
             const container = document.getElementById('gridContainer');
             const c = parseInt(document.getElementById('inCols').value) || 1;
             const r = parseInt(document.getElementById('inRows').value) || 1;
+            
             container.style.gridTemplateColumns = `repeat(${c}, 1fr)`;
             container.innerHTML = '';
 
             for (let i = 0; i < (c * r); i++) {
-                const n = localStorage.getItem(`v42_n_${i}`) || "";
-                const f = localStorage.getItem(`v42_f_${i}`) || `https://api.dicebear.com/7.x/bottts/svg?seed=${i}`;
+                const n = localStorage.getItem(`v43_n_${i}`) || "";
+                const f = localStorage.getItem(`v43_f_${i}`) || `https://api.dicebear.com/7.x/bottts/svg?seed=${i}`;
                 
                 const d = document.createElement('div');
                 d.className = 'desk';
@@ -240,7 +304,7 @@
                         <img src="${f}" id="img-${i}">
                     </div>
                     <input type="file" id="file-${i}" style="display:none" onchange="upload(${i}, this)">
-                    <input type="text" class="desk-name" value="${n}" placeholder="Nome" oninput="localStorage.setItem('v42_n_${i}', this.value)">
+                    <input type="text" class="desk-name" value="${n}" placeholder="Nome" oninput="localStorage.setItem('v43_n_${i}', this.value)">
                 `;
                 container.appendChild(d);
             }
@@ -252,36 +316,32 @@
                 const reader = new FileReader();
                 reader.onload = e => {
                     document.getElementById(`img-${i}`).src = e.target.result;
-                    localStorage.setItem(`v42_f_${i}`, e.target.result);
+                    localStorage.setItem(`v43_f_${i}`, e.target.result);
                 };
                 reader.readAsDataURL(input.files[0]);
             }
         }
 
         function resetAll() {
-            if(confirm("ATENÇÃO: Isso apagará todas as fotos e nomes. Deseja continuar?")) {
-                localStorage.clear();
-                location.reload();
-            }
+            if(confirm("Apagar tudo?")) { localStorage.clear(); location.reload(); }
         }
 
-        document.querySelectorAll('[contenteditable]').forEach((el, idx) => {
-            const id = 'v42_t_' + idx;
-            if(localStorage.getItem(id)) el.innerHTML = localStorage.getItem(id);
-            el.oninput = () => localStorage.setItem(id, el.innerHTML);
-        });
-
         window.onload = () => {
-            const saved = JSON.parse(localStorage.getItem('v42_config'));
-            const savedZoom = localStorage.getItem('v42_zoom');
+            const saved = JSON.parse(localStorage.getItem('v43_config_v2'));
+            const savedZoom = localStorage.getItem('v43_zoom');
             
             if(saved) {
                 document.getElementById('inCols').value = saved.cols;
                 document.getElementById('inRows').value = saved.rows;
                 document.getElementById('cpDesk').value = saved.cd;
                 document.getElementById('cpWall').value = saved.cw;
+                document.getElementById('cpBorder').value = saved.cb;
+                document.getElementById('cpHeader').value = saved.ch;
+                document.getElementById('cpHeaderText').value = saved.cht;
+                document.getElementById('cpDeskText').value = saved.ct;
                 document.getElementById('rgDesk').value = parseInt(saved.ds);
                 document.getElementById('rgFont').value = parseInt(saved.fs);
+                document.getElementById('rgRadius').value = parseInt(saved.rd);
                 document.getElementById('rgGap').value = parseInt(saved.gp);
                 document.getElementById('rgPhoto').value = parseInt(saved.ps);
             }
