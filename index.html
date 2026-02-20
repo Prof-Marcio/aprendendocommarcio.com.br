@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>SALA MÁRCIO V24 - FIX IMPRESSÃO</title>
+    <title>SALA MÁRCIO V25 - MOBILE FIX</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap');
 
@@ -22,37 +22,41 @@
 
         body { 
             background: #cbd5e1; height: 100vh; display: flex; flex-direction: column; overflow: hidden;
-            touch-action: manipulation;
+            touch-action: pan-x pan-y; /* Melhora o scroll no mobile */
         }
 
-        /* --- SISTEMA DE AJUDA --- */
+        /* --- BOTÃO AJUDA MOBILE --- */
         .btn-help {
-            position: fixed; top: 15px; right: 15px; width: 45px; height: 45px;
+            position: fixed; top: 10px; right: 10px; width: 40px; height: 40px;
             background: var(--primary); color: white; border-radius: 50%;
             display: flex; align-items: center; justify-content: center;
-            font-weight: 800; font-size: 20px; cursor: pointer; z-index: 2000;
-            border: 3px solid white; box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            font-weight: 800; font-size: 18px; cursor: pointer; z-index: 2000;
+            border: 2px solid white; box-shadow: 0 4px 10px rgba(0,0,0,0.2);
         }
 
         #modalHelp {
             display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.85); z-index: 3000; justify-content: center; align-items: center; padding: 20px;
+            background: rgba(0,0,0,0.85); z-index: 3000; justify-content: center; align-items: center; padding: 15px;
         }
 
         .help-content {
-            background: white; width: 100%; max-width: 500px; padding: 30px; border-radius: 20px;
-            max-height: 90vh; overflow-y: auto; position: relative;
+            background: white; width: 95%; max-width: 450px; padding: 20px; border-radius: 15px;
+            max-height: 85vh; overflow-y: auto;
         }
 
-        .btn-close-help { background: #ef4444; color: white; border: none; padding: 12px; width: 100%; border-radius: 10px; font-weight: 800; cursor: pointer; margin-top: 10px; }
+        .btn-close-help { background: #ef4444; color: white; border: none; padding: 12px; width: 100%; border-radius: 10px; font-weight: 800; margin-top: 15px; }
 
-        /* --- LAYOUT DA SALA --- */
-        .main-container { flex-grow: 1; overflow: auto; display: flex; justify-content: center; align-items: flex-start; padding: 15px; }
+        /* --- CONTAINER E PÁGINA --- */
+        .main-container { 
+            flex-grow: 1; overflow: auto; display: flex; justify-content: center; 
+            align-items: flex-start; padding: 10px; background: #cbd5e1;
+        }
 
         .a4-page {
             width: 210mm; height: 297mm; background: #fff; padding: 10mm; position: relative; flex-shrink: 0;
-            transform: scale(var(--zoom)); transform-origin: top center; box-shadow: 0 10px 40px rgba(0,0,0,0.3);
-            display: flex; flex-direction: column; border-radius: 2px;
+            transform: scale(var(--zoom)); transform-origin: top center; 
+            box-shadow: 0 5px 25px rgba(0,0,0,0.2);
+            display: flex; flex-direction: column; border-radius: 4px;
         }
 
         .sala-box {
@@ -61,61 +65,67 @@
             overflow: hidden;
         }
 
-        .area-fundo { height: 50px; display: flex; justify-content: center; align-items: flex-start; width: 100%; }
-        .tv-topo { width: 220px; height: 14px; background: var(--cor-tv); border-radius: 0 0 10px 10px; color: #fff; font-size: 8px; font-weight: 800; display: flex; align-items: center; justify-content: center; }
+        /* --- ELEMENTOS DA SALA --- */
+        .area-fundo { height: 40px; display: flex; justify-content: center; width: 100%; }
+        .tv-topo { width: 180px; height: 12px; background: var(--cor-tv); border-radius: 0 0 8px 8px; color: #fff; font-size: 7px; font-weight: 800; display: flex; align-items: center; justify-content: center; }
 
-        .grid-alunos { flex: 1; display: grid; gap: 10px; padding: 10px; align-content: center; justify-items: center; }
+        .grid-alunos { flex: 1; display: grid; gap: 8px; padding: 10px; align-content: center; justify-items: center; }
 
         .desk { 
-            background: var(--cor-carteira) !important; width: 100%; max-width: 100px; aspect-ratio: 1/1;
-            border-radius: 10px; padding: 6px; display: flex; flex-direction: column; 
+            background: var(--cor-carteira) !important; width: 100%; max-width: 90px; aspect-ratio: 1/1;
+            border-radius: 8px; padding: 4px; display: flex; flex-direction: column; 
             align-items: center; justify-content: space-between; border: 1px solid rgba(0,0,0,0.1);
             -webkit-print-color-adjust: exact; print-color-adjust: exact;
         }
 
-        .foto-aluno { width: 45%; aspect-ratio: 1/1; background: #fff; border-radius: 50%; border: 2px solid #fff; overflow: hidden; cursor: pointer; }
+        .foto-aluno { width: 42%; aspect-ratio: 1/1; background: #eee; border-radius: 50%; border: 1.5px solid #fff; overflow: hidden; }
         .foto-aluno img { width: 100%; height: 100%; object-fit: cover; }
-        .nome-aluno { width: 100%; background: rgba(255,255,255,0.9); border: none; border-radius: 4px; text-align: center; font-weight: 800; font-size: 9px; color: var(--cor-texto-aluno); }
-
-        .area-frente { height: 90px; display: flex; justify-content: center; align-items: center; width: 100%; position: relative; }
-        .quadro { 
-            width: 60%; height: 45px; background: var(--cor-quadro) !important; border: 4px solid #451a03; 
-            border-radius: 5px; color: #fff; display: flex; align-items: center; justify-content: center; 
-            font-weight: 700; font-size: 16px; -webkit-print-color-adjust: exact; print-color-adjust: exact;
+        
+        .nome-aluno { 
+            width: 100%; background: rgba(255,255,255,0.9); border: none; border-radius: 3px; 
+            text-align: center; font-weight: 800; font-size: 8px; color: var(--cor-texto-aluno);
+            -webkit-appearance: none; /* Remove sombras no iOS */
         }
 
-        .label-parede { position: absolute; background: #fff !important; padding: 4px 10px; font-weight: 800; font-size: 11px; color: var(--parede); border: 2px solid var(--parede); border-radius: 4px; -webkit-print-color-adjust: exact; }
-        .entrada-pos { left: -12px; bottom: 25px; transform: rotate(-90deg); }
-        .biro-pos { right: -12px; bottom: 25px; transform: rotate(90deg); }
+        .area-frente { height: 80px; display: flex; justify-content: center; align-items: center; width: 100%; position: relative; }
+        .quadro { 
+            width: 55%; height: 40px; background: var(--cor-quadro) !important; border: 3px solid #451a03; 
+            border-radius: 4px; color: #fff; display: flex; align-items: center; justify-content: center; 
+            font-weight: 700; font-size: 14px; -webkit-print-color-adjust: exact;
+        }
 
-        footer { background: #fff; border-top: 1px solid #cbd5e1; padding: 12px; z-index: 1000; }
-        .toolbar { display: flex; gap: 15px; overflow-x: auto; align-items: flex-end; padding-bottom: 8px; }
-        .tool-group { display: flex; flex-direction: column; gap: 4px; min-width: 85px; flex-shrink: 0; }
-        .tool-group label { font-size: 9px; font-weight: 800; color: #64748b; text-transform: uppercase; text-align: center; }
+        .label-parede { position: absolute; background: #fff !important; padding: 3px 8px; font-weight: 800; font-size: 10px; color: var(--parede); border: 2px solid var(--parede); border-radius: 4px; }
+        .entrada-pos { left: -10px; bottom: 20px; transform: rotate(-90deg); }
+        .biro-pos { right: -10px; bottom: 20px; transform: rotate(90deg); }
+
+        /* --- FOOTER RESPONSIVO --- */
+        footer { background: #fff; border-top: 1px solid #cbd5e1; padding: 10px; z-index: 1000; }
+        .toolbar { display: flex; gap: 10px; overflow-x: auto; align-items: flex-end; padding-bottom: 5px; }
+        .tool-group { display: flex; flex-direction: column; gap: 3px; min-width: 80px; flex-shrink: 0; }
+        .tool-group label { font-size: 8px; font-weight: 800; color: #64748b; text-transform: uppercase; text-align: center; }
         
-        input[type="number"], input[type="range"] { padding: 8px; border: 1px solid #d1d5db; border-radius: 8px; font-size: 14px; width: 100%; }
-        input[type="color"] { width: 100%; height: 35px; border: none; cursor: pointer; background: none; }
-        .btn-print { background: var(--primary); color: white; border: none; padding: 0 20px; border-radius: 10px; font-weight: 800; cursor: pointer; height: 48px; flex-shrink: 0; }
+        input[type="number"], input[type="range"] { padding: 8px; border: 1px solid #d1d5db; border-radius: 6px; font-size: 13px; width: 100%; }
+        input[type="color"] { width: 100%; height: 30px; border: none; cursor: pointer; background: none; }
+        .btn-print { background: var(--primary); color: white; border: none; padding: 0 15px; border-radius: 8px; font-weight: 800; cursor: pointer; height: 40px; flex-shrink: 0; font-size: 12px; }
 
-        /* --- REGRAS DE IMPRESSÃO CRÍTICAS --- */
+        /* --- AJUSTES MOBILE ESPECÍFICOS --- */
+        @media (max-width: 768px) {
+            .main-container { align-items: center; }
+            .a4-page { 
+                margin-top: 0;
+                /* O segredo está aqui: calculamos o zoom baseado na largura da tela do celular */
+                transform: scale(calc(window.innerWidth / 850)); 
+            }
+        }
+
+        /* --- IMPRESSÃO --- */
         @media print {
             @page { size: A4; margin: 0; }
             body { background: white !important; overflow: visible; }
             footer, .btn-help { display: none !important; }
             .main-container { padding: 0; margin: 0; overflow: visible; display: block; }
-            .a4-page { 
-                transform: scale(1) !important; 
-                margin: 0 auto !important; 
-                box-shadow: none !important; 
-                width: 210mm; height: 297mm;
-                page-break-after: always;
-            }
-            .sala-box { border-width: 8px !important; }
-            * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; color-adjust: exact !important; }
-        }
-
-        @media (max-width: 768px) {
-            .a4-page { transform: scale(0.35) translateY(-45%); margin-top: -180px; }
+            .a4-page { transform: scale(1) !important; margin: 0 !important; width: 210mm; height: 297mm; }
+            * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
         }
     </style>
 </head>
@@ -125,34 +135,26 @@
 
 <div id="modalHelp">
     <div class="help-content">
-        <h2>📖 Tutorial de Impressão</h2>
-        <div style="font-size: 14px; color: #444; line-height: 1.6;">
-            <p>Para o PDF ficar perfeito:</p>
-            <ol style="margin-left: 20px; margin-top: 10px;">
-                <li>Clique no botão azul <b>IMPRIMIR PDF</b>.</li>
-                <li>No destino, escolha <b>"Salvar como PDF"</b>.</li>
-                <li>Em "Mais definições", verifique se:
-                    <ul>
-                        <li>O tamanho do papel é <b>A4</b>.</li>
-                        <li>As margens estão como <b>Nenhum</b> ou <b>Predefinido</b>.</li>
-                        <li>A opção <b>"Gráficos de fundo"</b> está ATIVADA.</li>
-                    </ul>
-                </li>
-            </ol>
-        </div>
-        <button class="btn-close-help" onclick="toggleHelp(false)">ENTENDI!</button>
+        <h2 style="color:var(--primary); margin-bottom:10px;">📖 Dicas Celular</h2>
+        <p style="font-size: 14px; line-height: 1.5; color:#333;">
+            1. <b>Zoom:</b> Use a barra no rodapé para ajustar o tamanho da folha na sua tela.<br><br>
+            2. <b>Fotos:</b> Toque no círculo branco para abrir a galeria do celular.<br><br>
+            3. <b>Teclado:</b> Se o teclado cobrir a tela, use o scroll para subir a folha.<br><br>
+            4. <b>PDF:</b> No celular, ao clicar em imprimir, escolha "Salvar como PDF" nas opções da impressora.
+        </p>
+        <button class="btn-close-help" onclick="toggleHelp(false)">VOLTAR</button>
     </div>
 </div>
 
-<main class="main-container">
+<main class="main-container" id="container">
     <div class="a4-page" id="folha">
-        <h2 contenteditable="true" style="text-align:center; margin-bottom:12px; font-weight:800; font-size: 22px; color: #1e293b;">PLANO DE SALA: _________</h2>
+        <h2 contenteditable="true" style="text-align:center; margin-bottom:12px; font-weight:800; font-size: 20px; color: #1e293b;">PLANO DE SALA: _________</h2>
         <div class="sala-box">
-            <div class="area-fundo"><div class="tv-topo" contenteditable="true">PAREDE DO FUNDO / SMART TV</div></div>
+            <div class="area-fundo"><div class="tv-topo" contenteditable="true">SMART TV</div></div>
             <div id="grid" class="grid-alunos"></div>
             <div class="area-frente">
                 <div class="label-parede entrada-pos">ENTRADA</div>
-                <div class="quadro" contenteditable="true">QUADRO / TELA</div>
+                <div class="quadro" contenteditable="true">QUADRO</div>
                 <div class="label-parede biro-pos">BIRÔ</div>
             </div>
         </div>
@@ -161,13 +163,12 @@
 
 <footer>
     <div class="toolbar">
-        <div class="tool-group"><label>🔍 Zoom</label><input type="range" id="zoom" min="0.2" max="1.2" step="0.05" value="0.75" oninput="update()"></div>
+        <div class="tool-group"><label>🔍 Zoom</label><input type="range" id="zoom" min="0.2" max="1.2" step="0.05" value="0.4" oninput="update()"></div>
         <div class="tool-group"><label>↔️ Colunas</label><input type="number" id="cols" value="5" min="1" onchange="render()"></div>
         <div class="tool-group"><label>↕️ Fileiras</label><input type="number" id="rows" value="6" min="1" onchange="render()"></div>
         <div class="tool-group"><label>🧱 Parede</label><input type="color" id="cParede" value="#1e293b" oninput="update()"></div>
         <div class="tool-group"><label>🪑 Carteira</label><input type="color" id="cDesk" value="#f59e0b" oninput="update()"></div>
         <div class="tool-group"><label>✍️ Nomes</label><input type="color" id="cText" value="#000000" oninput="update()"></div>
-        <div class="tool-group"><label>🟢 Quadro</label><input type="color" id="cQuadro" value="#065f46" oninput="update()"></div>
         <button class="btn-print" onclick="window.print()">IMPRIMIR PDF</button>
     </div>
 </footer>
@@ -176,12 +177,9 @@
     function toggleHelp(show) { document.getElementById('modalHelp').style.display = show ? 'flex' : 'none'; }
 
     function update() {
-        const root = document.documentElement;
-        root.style.setProperty('--zoom', document.getElementById('zoom').value);
-        root.style.setProperty('--parede', document.getElementById('cParede').value);
-        root.style.setProperty('--cor-carteira', document.getElementById('cDesk').value);
-        root.style.setProperty('--cor-texto-aluno', document.getElementById('cText').value);
-        root.style.setProperty('--cor-quadro', document.getElementById('cQuadro').value);
+        const val = document.getElementById('zoom').value;
+        document.documentElement.style.setProperty('--zoom', val);
+        document.getElementById('folha').style.transform = `scale(${val})`;
     }
 
     function render() {
@@ -195,7 +193,7 @@
             cell.className = 'desk';
             cell.innerHTML = `
                 <div class="foto-aluno" onclick="this.nextElementSibling.click()"><img src="https://api.dicebear.com/7.x/initials/svg?seed=A${i}"></div>
-                <input type="file" style="display:none" onchange="subirFoto(this)">
+                <input type="file" style="display:none" accept="image/*" onchange="subirFoto(this)">
                 <input type="text" class="nome-aluno" placeholder="Aluno">
             `;
             grid.appendChild(cell);
@@ -210,7 +208,14 @@
         }
     }
 
-    window.onload = () => { render(); update(); }
+    // Ajuste inicial para mobile
+    window.onload = () => {
+        if(window.innerWidth < 768) {
+            document.getElementById('zoom').value = 0.35;
+        }
+        render(); 
+        update(); 
+    }
 </script>
 </body>
 </html>
