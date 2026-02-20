@@ -3,161 +3,129 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>SALA MÁRCIO V33 - SIDEBAR PRO</title>
+    <title>SALA MÁRCIO V34 - SLEEK PRO</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap');
 
         :root {
             --primary: #3b82f6;
-            --sidebar-width: 320px;
+            --bg-dark: #0f172a;
+            --bg-panel: #1e293b;
+            --sidebar-w: 260px; /* Mais fino */
+            --zoom: 0.48;
             --carteira: #f59e0b;
             --parede: #1e293b;
-            --zoom: 0.5;
-            --fonte-size: 10px;
+            --fonte-size: 9px;
             --desk-size: 100%;
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', sans-serif; }
 
-        body { 
-            background: #0f172a; 
-            height: 100vh; 
-            display: flex; 
-            overflow: hidden; 
-            color: #fff;
-        }
+        body { background: var(--bg-dark); height: 100vh; display: flex; overflow: hidden; color: #f8fafc; }
 
-        /* --- PAINEL LATERAL (ESQUERDA) --- */
+        /* --- SIDEBAR REFINADA --- */
         .sidebar {
-            width: var(--sidebar-width);
-            background: #1e293b;
+            width: var(--sidebar-w);
+            background: var(--bg-panel);
             border-right: 1px solid #334155;
             display: flex;
             flex-direction: column;
             flex-shrink: 0;
-            z-index: 100;
-            overflow-y: auto;
-        }
-
-        .sidebar-header {
-            padding: 20px;
-            background: #111827;
-            border-bottom: 2px solid var(--primary);
-        }
-
-        .sidebar-header h1 { font-size: 16px; font-weight: 900; letter-spacing: 1px; color: var(--primary); }
-
-        .control-group { padding: 20px; border-bottom: 1px solid #334155; }
-        .control-group h3 { font-size: 11px; text-transform: uppercase; color: #94a3b8; margin-bottom: 15px; letter-spacing: 1px; }
-
-        .field { margin-bottom: 15px; }
-        .field label { display: block; font-size: 11px; margin-bottom: 6px; color: #cbd5e1; }
-        .field input[type="number"], .field input[type="text"] {
-            width: 100%; background: #0f172a; border: 1px solid #334155; 
-            padding: 10px; color: #fff; border-radius: 6px; outline: none;
-        }
-        .field input[type="range"] { width: 100%; accent-color: var(--primary); }
-        .field input[type="color"] { width: 100%; height: 40px; border: none; background: none; cursor: pointer; }
-
-        .btn-print {
-            margin: 20px; background: var(--primary); color: white; border: none;
-            padding: 15px; border-radius: 8px; font-weight: 800; cursor: pointer;
-            display: flex; align-items: center; justify-content: center; gap: 10px;
-        }
-        .btn-print:hover { background: #2563eb; }
-
-        /* --- ÁREA DE VISUALIZAÇÃO (DIREITA) --- */
-        .main-view {
-            flex-grow: 1;
-            background: #334155;
-            overflow: auto;
-            display: flex;
-            justify-content: center;
-            align-items: flex-start;
-            padding: 40px;
-            scroll-behavior: smooth;
-        }
-
-        /* O PAPEL A4 */
-        .a4-page {
-            width: 210mm;
-            height: 297mm;
-            background: #fff;
-            color: #000;
-            padding: 10mm;
-            position: relative;
-            flex-shrink: 0;
-            transform: scale(var(--zoom));
-            transform-origin: top center;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
-            display: flex;
-            flex-direction: column;
-            transition: transform 0.2s ease;
-        }
-
-        .doc-header { border: 2px solid #000; padding: 10px; margin-bottom: 10px; }
-        .doc-header h2 { text-align: center; font-size: 20px; margin-bottom: 8px; }
-        .doc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5px; font-size: 12px; }
-
-        /* A SALA DENTRO DO PAPEL */
-        .sala-box {
-            flex-grow: 1;
-            border: 15px solid var(--parede);
-            background: #fff;
-            display: flex;
-            flex-direction: column;
-            position: relative;
-        }
-
-        .area-txt { display: flex; align-items: center; justify-content: center; min-height: 40px; font-weight: 900; font-size: 11px; text-transform: uppercase; }
-        
-        #gridSala {
-            display: grid;
-            gap: 10px;
             padding: 15px;
-            flex-grow: 1;
-            align-content: center;
-            justify-items: center;
         }
 
-        /* CARTEIRA */
-        .carteira {
-            background: var(--carteira) !important;
-            width: var(--desk-size);
-            aspect-ratio: 1/1;
-            border-radius: 6px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 4px;
-            border: 1px solid rgba(0,0,0,0.1);
+        .sidebar h1 { 
+            font-size: 12px; font-weight: 900; color: var(--primary); 
+            text-transform: uppercase; letter-spacing: 2px; margin-bottom: 25px;
+            text-align: center; border-bottom: 1px solid #334155; padding-bottom: 15px;
         }
 
-        .foto-aluno {
-            width: 50%; aspect-ratio: 1/1; background: #fff; border-radius: 50%;
-            border: 2px solid white; overflow: hidden; margin-bottom: 2px;
+        .section-title { 
+            font-size: 9px; font-weight: 700; color: #64748b; 
+            text-transform: uppercase; margin: 15px 0 10px 5px; 
         }
-        .foto-aluno img { width: 100%; height: 100%; object-fit: cover; }
+
+        .control-row { 
+            background: #151f2e; padding: 10px; border-radius: 8px; margin-bottom: 8px;
+            display: flex; flex-direction: column; gap: 8px;
+        }
+
+        .field-flex { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+        .field-flex label { font-size: 10px; color: #94a3b8; }
         
-        .nome-aluno {
-            width: 100%; border: none; background: #fff; text-align: center;
-            font-size: var(--fonte-size); font-weight: 800; border-radius: 2px;
+        input[type="number"] {
+            width: 50px; background: #0f172a; border: 1px solid #334155; 
+            color: #fff; border-radius: 4px; padding: 4px; font-size: 11px; text-align: center;
         }
 
-        /* AJUSTES MOBILE */
-        @media (max-width: 900px) {
+        input[type="range"] { flex-grow: 1; accent-color: var(--primary); height: 4px; }
+
+        .color-picker-wrapper {
+            width: 100%; height: 30px; border-radius: 6px; overflow: hidden; border: 1px solid #334155;
+        }
+        input[type="color"] { width: 120%; height: 150%; border: none; cursor: pointer; transform: translate(-10%, -10%); }
+
+        .btn-action {
+            margin-top: auto; background: var(--primary); color: white; border: none;
+            padding: 12px; border-radius: 6px; font-size: 11px; font-weight: 700;
+            cursor: pointer; transition: 0.2s; display: flex; align-items: center; justify-content: center; gap: 8px;
+        }
+        .btn-action:hover { opacity: 0.9; transform: translateY(-1px); }
+
+        /* --- VIEWPORT --- */
+        .main-content {
+            flex-grow: 1; background: #334155; overflow: auto;
+            display: flex; justify-content: center; align-items: flex-start;
+            padding: 40px; position: relative;
+        }
+
+        .a4-page {
+            width: 210mm; height: 297mm; background: #fff; color: #000;
+            padding: 12mm; position: relative; flex-shrink: 0;
+            transform: scale(var(--zoom)); transform-origin: top center;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.4);
+            display: flex; flex-direction: column;
+        }
+
+        /* ELEMENTOS DO PAPEL */
+        .header-box { border: 1.5px solid #000; padding: 12px; margin-bottom: 15px; }
+        .header-box h2 { text-align: center; font-size: 18px; margin-bottom: 10px; text-transform: uppercase; }
+        .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; font-size: 11px; }
+        [contenteditable] { outline: none; border-bottom: 1px solid transparent; }
+        [contenteditable]:hover { border-bottom: 1px dashed #ccc; }
+
+        .sala-area {
+            flex-grow: 1; border: 10px solid var(--parede);
+            display: flex; flex-direction: column; background: #fff;
+        }
+
+        .label-sala { height: 35px; display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 800; }
+        
+        #gridContainer {
+            display: grid; gap: 8px; padding: 12px; flex-grow: 1;
+            align-content: center; justify-items: center;
+        }
+
+        /* CARTEIRA SLEEK */
+        .desk {
+            background: var(--carteira) !important; width: var(--desk-size); aspect-ratio: 1/1;
+            border-radius: 4px; display: flex; flex-direction: column;
+            align-items: center; justify-content: center; padding: 4px; border: 1px solid rgba(0,0,0,0.05);
+        }
+        .desk-photo { width: 45%; aspect-ratio: 1/1; background: #fff; border-radius: 50%; overflow: hidden; margin-bottom: 3px; border: 1.5px solid #fff; }
+        .desk-photo img { width: 100%; height: 100%; object-fit: cover; }
+        .desk-name { width: 100%; border: none; background: #fff; text-align: center; font-size: var(--fonte-size); font-weight: 700; border-radius: 2px; padding: 1px 0; }
+
+        @media (max-width: 800px) {
             body { flex-direction: column; }
-            .sidebar { width: 100%; height: auto; max-height: 40vh; }
-            .main-view { padding: 10px; }
-            .a4-page { margin-top: 20px; }
+            .sidebar { width: 100%; height: auto; border-right: none; border-bottom: 1px solid #334155; }
+            .main-content { padding: 10px; }
         }
 
         @media print {
             .sidebar { display: none !important; }
-            body { background: white; }
-            .main-view { padding: 0; overflow: visible; display: block; }
-            .a4-page { transform: scale(1) !important; margin: 0 !important; box-shadow: none; border: none; }
+            .main-content { padding: 0; background: #fff; }
+            .a4-page { transform: scale(1) !important; margin: 0 !important; box-shadow: none; }
             * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
         }
     </style>
@@ -165,74 +133,73 @@
 <body>
 
     <aside class="sidebar">
-        <div class="sidebar-header">
-            <h1>SALA MÁRCIO V33</h1>
-        </div>
+        <h1>Sala Digital</h1>
 
-        <div class="control-group">
-            <h3>📏 Layout da Grade</h3>
-            <div class="field">
-                <label>COLUNAS (LADO A LADO)</label>
-                <input type="number" id="vCols" value="5" oninput="renderGrid()">
+        <div class="section-title">Estrutura da Sala</div>
+        <div class="control-row">
+            <div class="field-flex">
+                <label>Colunas:</label>
+                <input type="number" id="inCols" value="5" oninput="rebuild()">
             </div>
-            <div class="field">
-                <label>FILEIRAS (FRENTE/FUNDO)</label>
-                <input type="number" id="vRows" value="6" oninput="renderGrid()">
-            </div>
-        </div>
-
-        <div class="control-group">
-            <h3>🎨 Estilo e Cores</h3>
-            <div class="field">
-                <label>COR DAS CARTEIRAS</label>
-                <input type="color" id="vColorDesk" value="#f59e0b" oninput="ajustarEstilo()">
-            </div>
-            <div class="field">
-                <label>COR DA PAREDE</label>
-                <input type="color" id="vColorWall" value="#1e293b" oninput="ajustarEstilo()">
-            </div>
-            <div class="field">
-                <label>TAMANHO CARTEIRAS: <span id="valDesk">100</span>%</label>
-                <input type="range" id="vDeskSize" min="40" max="100" value="100" oninput="ajustarEstilo()">
-            </div>
-            <div class="field">
-                <label>TAMANHO FONTE: <span id="valFont">10</span>px</label>
-                <input type="range" id="vFontSize" min="6" max="14" value="9" oninput="ajustarEstilo()">
+            <div class="field-flex">
+                <label>Fileiras:</label>
+                <input type="number" id="inRows" value="6" oninput="rebuild()">
             </div>
         </div>
 
-        <div class="control-group">
-            <h3>🔍 Zoom da Tela</h3>
-            <input type="range" min="0.2" max="1" step="0.05" value="0.5" oninput="mudarZoom(this.value)">
+        <div class="section-title">Estética</div>
+        <div class="control-row">
+            <div class="field-flex">
+                <label>Cor Carteira</label>
+                <div class="color-picker-wrapper"><input type="color" id="cpDesk" value="#f59e0b" oninput="updateStyles()"></div>
+            </div>
+            <div class="field-flex">
+                <label>Cor Parede</label>
+                <div class="color-picker-wrapper"><input type="color" id="cpWall" value="#1e293b" oninput="updateStyles()"></div>
+            </div>
         </div>
 
-        <button class="btn-print" onclick="window.print()">
-            <span>💾</span> GERAR PDF / IMPRIMIR
+        <div class="section-title">Ajustes Finos</div>
+        <div class="control-row">
+            <label style="font-size:9px; color:#64748b">TAMANHO CARTEIRA</label>
+            <input type="range" id="rgDesk" min="40" max="100" value="100" oninput="updateStyles()">
+            
+            <label style="font-size:9px; color:#64748b; margin-top:10px">TAMANHO FONTE</label>
+            <input type="range" id="rgFont" min="5" max="14" value="9" oninput="updateStyles()">
+        </div>
+
+        <div class="section-title">Visualização</div>
+        <div class="control-row">
+            <input type="range" min="0.2" max="1" step="0.02" value="0.48" oninput="setZoom(this.value)">
+        </div>
+
+        <button class="btn-action" onclick="window.print()">
+            📄 EXPORTAR PARA PDF
         </button>
     </aside>
 
-    <main class="main-view">
-        <div class="a4-page" id="folha">
-            <div class="doc-header">
-                <h2 contenteditable="true">MAPA DE ASSENTAMENTO ESCOLAR</h2>
-                <div class="doc-grid">
-                    <div contenteditable="true"><b>ESCOLA:</b> Nome da Escola</div>
-                    <div contenteditable="true"><b>TURMA:</b> _________</div>
+    <main class="main-content">
+        <div class="a4-page" id="page">
+            <div class="header-box">
+                <h2 contenteditable="true">Mapa de Sala de Aula</h2>
+                <div class="info-grid">
+                    <div contenteditable="true"><b>ESCOLA:</b> Digite o nome</div>
+                    <div contenteditable="true"><b>TURMA:</b> ________</div>
                     <div contenteditable="true"><b>PROFESSOR:</b> Márcio</div>
                     <div contenteditable="true"><b>DATA:</b> __/__/____</div>
                 </div>
             </div>
 
-            <div class="sala-box">
-                <div class="area-txt" style="border-bottom: 2px dashed #eee;">
-                    <span contenteditable="true" style="background:#000; color:#fff; padding:2px 10px; border-radius:4px;">SMART TV / FUNDO</span>
+            <div class="sala-area">
+                <div class="label-sala" style="border-bottom: 1px dashed #ddd;">
+                    <span contenteditable="true" style="background:#000; color:#fff; padding:2px 12px; border-radius:3px;">FUNDOS / SMART TV</span>
                 </div>
 
-                <div id="gridSala"></div>
+                <div id="gridContainer"></div>
 
-                <div class="area-txt" style="border-top: 2px dashed #eee; justify-content: space-around; padding: 10px;">
-                    <span contenteditable="true">ENTRADA</span>
-                    <span contenteditable="true" style="background:#065f46; color:#fff; padding:5px 25px; border:2px solid #451a03;">QUADRO</span>
+                <div class="label-sala" style="border-top: 1px dashed #ddd; justify-content: space-around;">
+                    <span contenteditable="true">PORTA</span>
+                    <span contenteditable="true" style="background:#065f46; color:#fff; padding:4px 20px; border:1.5px solid #333;">QUADRO NEGRO</span>
                     <span contenteditable="true">BIRÔ</span>
                 </div>
             </div>
@@ -240,87 +207,81 @@
     </main>
 
     <script>
-        function mudarZoom(v) {
-            document.documentElement.style.setProperty('--zoom', v);
-        }
+        function setZoom(v) { document.documentElement.style.setProperty('--zoom', v); }
 
-        function ajustarEstilo() {
-            const dSize = document.getElementById('vDeskSize').value;
-            const fSize = document.getElementById('vFontSize').value;
-            const cDesk = document.getElementById('vColorDesk').value;
-            const cWall = document.getElementById('vColorWall').value;
+        function updateStyles() {
+            const dSize = document.getElementById('rgDesk').value + '%';
+            const fSize = document.getElementById('rgFont').value + 'px';
+            const cDesk = document.getElementById('cpDesk').value;
+            const cWall = document.getElementById('cpWall').value;
 
-            document.getElementById('valDesk').innerText = dSize;
-            document.getElementById('valFont').innerText = fSize;
-
-            document.documentElement.style.setProperty('--desk-size', dSize + '%');
-            document.documentElement.style.setProperty('--fonte-size', fSize + 'px');
+            document.documentElement.style.setProperty('--desk-size', dSize);
+            document.documentElement.style.setProperty('--fonte-size', fSize);
             document.documentElement.style.setProperty('--carteira', cDesk);
             document.documentElement.style.setProperty('--parede', cWall);
-            
-            // Salva as configs
-            localStorage.setItem('v33-config', JSON.stringify({
-                cols: document.getElementById('vCols').value,
-                rows: document.getElementById('vRows').value,
-                dSize, fSize, cDesk, cWall
+
+            localStorage.setItem('v34_cfg', JSON.stringify({
+                c: document.getElementById('inCols').value,
+                r: document.getElementById('inRows').value,
+                ds: dSize, fs: fSize, cd: cDesk, cw: cWall
             }));
         }
 
-        function renderGrid() {
-            const grid = document.getElementById('gridSala');
-            const c = document.getElementById('vCols').value || 1;
-            const r = document.getElementById('vRows').value || 1;
+        function rebuild() {
+            const container = document.getElementById('gridContainer');
+            const cols = document.getElementById('inCols').value || 1;
+            const rows = document.getElementById('inRows').value || 1;
 
-            grid.style.gridTemplateColumns = `repeat(${c}, 1fr)`;
-            grid.innerHTML = '';
+            container.style.gridTemplateColumns = `repeat(${cols}, 1fr)`;
+            container.innerHTML = '';
 
-            for (let i = 0; i < (c * r); i++) {
-                const sNome = localStorage.getItem(`v33-n-${i}`) || "";
-                const sFoto = localStorage.getItem(`v33-f-${i}`) || `https://api.dicebear.com/7.x/initials/svg?seed=${i}`;
+            for (let i = 0; i < (cols * rows); i++) {
+                const n = localStorage.getItem(`v34_n_${i}`) || "";
+                const f = localStorage.getItem(`v34_f_${i}`) || `https://api.dicebear.com/7.x/initials/svg?seed=${i}`;
                 
-                const div = document.createElement('div');
-                div.className = 'carteira';
-                div.innerHTML = `
-                    <div class="foto-aluno" onclick="document.getElementById('file-${i}').click()">
-                        <img src="${sFoto}" id="img-${i}">
+                const d = document.createElement('div');
+                d.className = 'desk';
+                d.innerHTML = `
+                    <div class="desk-photo" onclick="document.getElementById('file-${i}').click()">
+                        <img src="${f}" id="img-${i}">
                     </div>
-                    <input type="file" id="file-${i}" style="display:none" onchange="upload(${i}, this)">
-                    <input type="text" class="nome-aluno" value="${sNome}" placeholder="Nome" oninput="localStorage.setItem('v33-n-${i}', this.value)">
+                    <input type="file" id="file-${i}" style="display:none" onchange="up(${i}, this)">
+                    <input type="text" class="desk-name" value="${n}" placeholder="..." oninput="localStorage.setItem('v34_n_${i}', this.value)">
                 `;
-                grid.appendChild(div);
+                container.appendChild(d);
             }
+            updateStyles();
         }
 
-        function upload(i, input) {
+        function up(i, input) {
             if (input.files && input.files[0]) {
                 const reader = new FileReader();
                 reader.onload = e => {
                     document.getElementById(`img-${i}`).src = e.target.result;
-                    localStorage.setItem(`v33-f-${i}`, e.target.result);
+                    localStorage.setItem(`v34_f_${i}`, e.target.result);
                 };
                 reader.readAsDataURL(input.files[0]);
             }
         }
 
-        // Auto-save para textos contenteditable
-        document.querySelectorAll('[contenteditable]').forEach((el, index) => {
-            const id = 'v33-txt-' + index;
+        // Auto-save textos editáveis
+        document.querySelectorAll('[contenteditable]').forEach((el, idx) => {
+            const id = 'v34_t_' + idx;
             if(localStorage.getItem(id)) el.innerHTML = localStorage.getItem(id);
             el.oninput = () => localStorage.setItem(id, el.innerHTML);
         });
 
         window.onload = () => {
-            const cfg = JSON.parse(localStorage.getItem('v33-config'));
-            if(cfg) {
-                document.getElementById('vCols').value = cfg.cols;
-                document.getElementById('vRows').value = cfg.rows;
-                document.getElementById('vDeskSize').value = cfg.dSize;
-                document.getElementById('vFontSize').value = cfg.fSize;
-                document.getElementById('vColorDesk').value = cfg.cDesk;
-                document.getElementById('vColorWall').value = cfg.cWall;
-                ajustarEstilo();
+            const data = JSON.parse(localStorage.getItem('v34_cfg'));
+            if(data) {
+                document.getElementById('inCols').value = data.c;
+                document.getElementById('inRows').value = data.r;
+                document.getElementById('cpDesk').value = data.cd;
+                document.getElementById('cpWall').value = data.cw;
+                document.getElementById('rgDesk').value = parseInt(data.ds);
+                document.getElementById('rgFont').value = parseInt(data.fs);
             }
-            renderGrid();
+            rebuild();
         };
     </script>
 </body>
