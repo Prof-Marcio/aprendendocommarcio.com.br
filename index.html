@@ -3,17 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>SALA MÁRCIO V36 - KIDS EDITION</title>
+    <title>SALA MÁRCIO V38 - FULL RESPONSIVE</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Inter:wght@400;700;900&display=swap');
 
         :root {
-            --primary: #4cc9f0;
-            --bg-interface: #e0f2fe;
+            --primary: #4361ee;
+            --bg-interface: #f0f9ff;
             --bg-sidebar: #ffffff;
-            --sidebar-w: 290px;
+            --sidebar-w: 300px;
             --zoom: 0.45;
-            /* Variáveis de Estilo Kids */
+            /* Variáveis de Design */
             --carteira: #ffcf33;
             --parede: #4361ee;
             --txt-label: #ffffff;
@@ -24,250 +24,190 @@
             --border-w: 8px;
         }
 
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Fredoka', 'Inter', sans-serif; }
+        /* MODO ECONÔMICO */
+        .simple-mode {
+            --carteira: #ffffff !important;
+            --parede: #000000 !important;
+            --txt-label: #000000 !important;
+            --desk-radius: 0px !important;
+            --border-w: 2px !important;
+        }
+        .simple-mode .desk-photo { display: none !important; }
+        .simple-mode .desk { border: 1px solid #000 !important; box-shadow: none !important; }
+        .simple-mode .label-sala { background: #fff !important; color: #000 !important; border: 1px solid #000 !important; }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Fredoka', sans-serif; }
         
-        body { 
-            background: var(--bg-interface); 
-            height: 100vh; 
-            display: flex; 
-            overflow: hidden; 
-            color: #1e293b; 
-        }
+        body { background: var(--bg-interface); height: 100vh; display: flex; overflow: hidden; }
 
-        /* --- SIDEBAR CLARA E LIMPA --- */
+        /* --- SIDEBAR RESPONSIVA --- */
         .sidebar {
-            width: var(--sidebar-w);
-            background: var(--bg-sidebar);
-            border-right: 3px solid #cbd5e1;
-            display: flex;
-            flex-direction: column;
-            flex-shrink: 0;
-            overflow-y: auto;
-            padding: 20px;
+            width: var(--sidebar-w); background: var(--bg-sidebar); border-right: 3px solid #cbd5e1;
+            display: flex; flex-direction: column; flex-shrink: 0; overflow-y: auto; padding: 20px;
+            transition: transform 0.3s ease; z-index: 1000;
         }
 
-        .sidebar h1 { 
-            font-size: 20px; 
-            font-weight: 700; 
-            color: #4361ee; 
-            text-align: center; 
-            margin-bottom: 20px;
-            text-shadow: 1px 1px 0px #eee;
+        /* Botão Mobile */
+        .mobile-toggle {
+            display: none; position: fixed; bottom: 20px; right: 20px; 
+            width: 60px; height: 60px; border-radius: 50%; background: var(--primary);
+            color: white; border: none; font-size: 24px; z-index: 1100; box-shadow: 0 4px 15px rgba(0,0,0,0.3);
         }
 
-        .section-title { 
-            font-size: 12px; 
-            font-weight: 700; 
-            color: #64748b; 
-            text-transform: uppercase; 
-            margin: 15px 0 8px 0;
-            border-bottom: 2px solid #f1f5f9;
-        }
-
+        .section-title { font-size: 11px; font-weight: 700; color: #64748b; text-transform: uppercase; margin: 15px 0 8px 0; border-bottom: 2px solid #f1f5f9; padding-bottom: 3px; }
         .control-row { background: #f8fafc; padding: 12px; border-radius: 12px; border: 2px solid #e2e8f0; margin-bottom: 10px; }
         .field-flex { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 8px; }
-        .field-flex label { font-size: 11px; color: #475569; font-weight: 600; }
         
-        input[type="number"] { 
-            width: 50px; background: #fff; border: 2px solid #cbd5e1; 
-            border-radius: 8px; padding: 5px; font-size: 12px; font-weight: 700;
-        }
-        
-        input[type="range"] { flex-grow: 1; accent-color: #4361ee; cursor: pointer; }
-        
-        .color-circle {
-            border: 2px solid #cbd5e1; border-radius: 50%; width: 28px; height: 28px; 
-            overflow: hidden; display: flex; align-items: center; justify-content: center;
-        }
-        input[type="color"] { border: none; width: 40px; height: 40px; cursor: pointer; background: none; }
+        input[type="number"], input[type="text"] { border: 2px solid #cbd5e1; border-radius: 8px; padding: 5px; font-weight: 700; }
+        input[type="range"] { flex-grow: 1; accent-color: var(--primary); }
+        input[type="color"] { border: none; width: 30px; height: 30px; cursor: pointer; background: none; }
 
-        .btn { 
-            border: none; padding: 12px; border-radius: 10px; font-size: 12px; font-weight: 700; 
-            cursor: pointer; transition: 0.2s; color: white; margin-bottom: 5px;
-            box-shadow: 0 4px 0 rgba(0,0,0,0.1);
-        }
-        .btn:active { transform: translateY(2px); box-shadow: 0 2px 0 rgba(0,0,0,0.1); }
+        .btn { border: none; padding: 12px; border-radius: 10px; font-size: 12px; font-weight: 700; cursor: pointer; color: white; margin-bottom: 8px; display: block; width: 100%; transition: 0.2s; }
         .btn-blue { background: #4361ee; }
+        .btn-green { background: #06d6a0; }
         .btn-red { background: #ff4d6d; }
-        .btn-help { background: #7209b7; width: 100%; margin-bottom: 15px; }
+        .btn-purple { background: #7209b7; }
 
-        /* --- ÁREA DO PAPEL --- */
-        .main-content { 
-            flex-grow: 1; background: var(--bg-interface); 
-            overflow: auto; display: flex; justify-content: center; padding: 40px; 
-        }
+        /* --- ÁREA DE VISUALIZAÇÃO --- */
+        .main-content { flex-grow: 1; overflow: auto; display: flex; justify-content: center; align-items: flex-start; padding: 20px; }
 
         .a4-page {
-            width: 210mm; height: 297mm; background: #fff; color: #1e293b; padding: 12mm;
+            width: 210mm; min-height: 297mm; background: #fff; padding: 10mm;
             transform: scale(var(--zoom)); transform-origin: top center;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1); 
-            display: flex; flex-direction: column;
-            border: 1px solid #ddd;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1); display: flex; flex-direction: column;
+            transition: 0.3s;
         }
 
-        .header-box { 
-            border: 3px solid #1e293b; border-radius: 15px; 
-            padding: 20px; margin-bottom: 20px; background: #fdfdfd;
-        }
-        
-        .header-box h2 { font-family: 'Fredoka'; color: #4361ee; font-size: 24px; text-transform: uppercase; }
+        .header-box { border: 3px solid #1e293b; border-radius: 15px; padding: 15px; margin-bottom: 15px; }
+        .info-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; font-size: 14px; }
 
-        .info-grid { 
-            display: grid; grid-template-columns: 1fr 1fr; gap: 12px; 
-            font-size: 14px; margin-top: 10px;
-        }
-
-        /* --- SALA ESTILO DESENHO --- */
         .sala-area {
             flex-grow: 1; border: var(--border-w) solid var(--parede);
-            border-radius: 20px; display: flex; flex-direction: column; 
-            background: #fff; transition: 0.3s; overflow: hidden;
+            border-radius: 20px; display: flex; flex-direction: column; background: #fff; overflow: hidden;
         }
 
-        .label-sala { 
-            height: 45px; display: flex; align-items: center; justify-content: center; 
-            font-size: 12px; font-weight: 700; color: var(--txt-label);
-            letter-spacing: 1px;
-        }
-        
-        #gridContainer { 
-            display: grid; gap: var(--grid-gap); padding: 20px; 
-            flex-grow: 1; align-content: center; justify-items: center; 
-        }
+        #gridContainer { display: grid; gap: var(--grid-gap); padding: 15px; flex-grow: 1; align-content: center; justify-items: center; }
 
-        /* CARTEIRA LÚDICA */
+        /* CARTEIRA */
         .desk {
             background: var(--carteira) !important; width: var(--desk-size); aspect-ratio: 1/1;
             border-radius: var(--desk-radius); display: flex; flex-direction: column;
-            align-items: center; justify-content: center; padding: 8px;
-            border: 3px solid #1e293b; /* Borda estilo desenho */
-            box-shadow: 4px 4px 0px rgba(0,0,0,0.05);
+            align-items: center; justify-content: center; padding: 5px;
+            border: 2px solid #1e293b; transition: 0.2s;
         }
-        .desk-photo { 
-            width: 55%; aspect-ratio: 1/1; background: #fff; 
-            border-radius: 50%; overflow: hidden; margin-bottom: 6px; 
-            border: 3px solid #1e293b;
-        }
+        .desk-photo { width: 50%; aspect-ratio: 1/1; background: #fff; border-radius: 50%; overflow: hidden; margin-bottom: 4px; border: 2px solid #1e293b; cursor: pointer; }
         .desk-photo img { width: 100%; height: 100%; object-fit: cover; }
-        .desk-name { 
-            width: 100%; border: 2px solid #1e293b; background: #fff; 
-            text-align: center; font-size: var(--fonte-size); font-weight: 700; 
-            border-radius: 6px; padding: 2px; color: #1e293b;
-        }
+        .desk-name { width: 90%; border: 1px solid #1e293b; background: #fff; text-align: center; font-size: var(--fonte-size); font-weight: 700; border-radius: 4px; }
 
-        /* MODAL TUTORIAL */
-        #modalTutorial {
-            position: fixed; top:0; left:0; width:100%; height:100%; background:rgba(67, 97, 238, 0.4);
-            backdrop-filter: blur(5px); display: none; justify-content:center; align-items:center; z-index:9999;
-        }
-        .modal-content { 
-            background: white; padding: 35px; border-radius: 25px; 
-            max-width: 500px; color: #1e293b; border: 4px solid #4361ee;
-            box-shadow: 0 20px 0 rgba(0,0,0,0.1);
+        /* RESPONSIVIDADE MOBILE */
+        @media (max-width: 768px) {
+            .sidebar { position: fixed; transform: translateX(-100%); height: 100%; }
+            .sidebar.active { transform: translateX(0); }
+            .mobile-toggle { display: block; }
+            .main-content { padding: 10px; }
+            :root { --zoom: 0.35; }
         }
 
         @media print {
-            .sidebar, #modalTutorial { display: none !important; }
-            .main-content { padding: 0; background: #fff; }
-            .a4-page { transform: scale(1) !important; margin: 0 !important; box-shadow: none; border: none; }
+            .sidebar, .mobile-toggle { display: none !important; }
+            body { overflow: visible; background: #fff; }
+            .main-content { padding: 0; display: block; }
+            .a4-page { transform: scale(1) !important; box-shadow: none; border: none; margin: 0; width: 100%; }
         }
     </style>
 </head>
 <body>
 
+    <button class="mobile-toggle" onclick="document.querySelector('.sidebar').classList.toggle('active')">⚙️</button>
+
     <aside class="sidebar">
-        <h1>SALA MÁRCIO V36</h1>
+        <h1 style="color:var(--primary)">SALA PRO V38</h1>
+        
+        <button class="btn btn-purple" onclick="toggleSimpleMode()" id="btnMode">🌓 MODO: COLORIDO</button>
+        <button class="btn btn-green" onclick="window.print()">🖨️ IMPRIMIR / PDF</button>
 
-        <button class="btn btn-help" onclick="toggleTutorial(true)">⭐ COMO USAR?</button>
-
-        <div class="section-title">📐 Tamanho da Grade</div>
+        <div class="section-title">📐 Estrutura da Sala</div>
         <div class="control-row">
             <div class="field-flex"><label>Colunas:</label><input type="number" id="inCols" value="5" oninput="rebuild()"></div>
             <div class="field-flex"><label>Fileiras:</label><input type="number" id="inRows" value="6" oninput="rebuild()"></div>
-            <div class="field-flex"><label>Distância:</label><input type="range" id="rgGap" min="5" max="40" value="12" oninput="update()"></div>
+            <div class="field-flex"><label>Espaço:</label><input type="range" id="rgGap" min="2" max="40" value="12" oninput="update()"></div>
         </div>
 
-        <div class="section-title">🎨 Cores Divertidas</div>
+        <div class="section-title">🎨 Cores & Estilo</div>
         <div class="control-row">
-            <div class="field-flex"><label>Mesa:</label><div class="color-circle"><input type="color" id="cpDesk" value="#ffcf33" oninput="update()"></div></div>
-            <div class="field-flex"><label>Paredes:</label><div class="color-circle"><input type="color" id="cpWall" value="#4361ee" oninput="update()"></div></div>
-            <div class="field-flex"><label>Texto:</label><div class="color-circle"><input type="color" id="cpTxt" value="#ffffff" oninput="update()"></div></div>
+            <div class="field-flex"><label>Carteira:</label><input type="color" id="cpDesk" value="#ffcf33" oninput="update()"></div>
+            <div class="field-flex"><label>Parede:</label><input type="color" id="cpWall" value="#4361ee" oninput="update()"></div>
+            <div class="field-flex"><label>Texto:</label><input type="color" id="cpTxt" value="#ffffff" oninput="update()"></div>
         </div>
 
-        <div class="section-title">✏️ Formatos</div>
+        <div class="section-title">📏 Formatos</div>
         <div class="control-row">
-            <label>TAMANHO MESA</label>
-            <input type="range" id="rgDesk" min="40" max="100" value="100" oninput="update()">
-            
-            <label style="margin-top:10px; display:block">BORDAS REDONDAS</label>
-            <input type="range" id="rgRadius" min="0" max="80" value="12" oninput="update()">
-
-            <label style="margin-top:10px; display:block">GROSSURA PAREDE</label>
-            <input type="range" id="rgBorder" min="2" max="25" value="8" oninput="update()">
+            <label>TAMANHO MESA (%)</label>
+            <input type="range" id="rgDesk" min="30" max="100" value="100" oninput="update()">
+            <label>ARREDONDAMENTO</label>
+            <input type="range" id="rgRadius" min="0" max="50" value="12" oninput="update()">
+            <label>PAREDE (PX)</label>
+            <input type="range" id="rgBorder" min="1" max="30" value="8" oninput="update()">
         </div>
 
-        <div class="section-title">🔡 Nomes</div>
+        <div class="section-title">🔡 Texto & Zoom</div>
         <div class="control-row">
-            <label>TAMANHO DA LETRA</label>
-            <input type="range" id="rgFont" min="8" max="18" value="11" oninput="update()">
+            <label>TAMANHO FONTE</label>
+            <input type="range" id="rgFont" min="6" max="20" value="11" oninput="update()">
+            <label>ZOOM TELA</label>
+            <input type="range" min="0.2" max="1" step="0.05" value="0.45" oninput="setZoom(this.value)">
         </div>
 
-        <div class="section-title">🔍 Zoom da Tela</div>
-        <div class="control-row">
-            <input type="range" min="0.3" max="1" step="0.01" value="0.45" oninput="setZoom(this.value)">
-        </div>
-
-        <div class="btn-group" style="display:flex; flex-direction:column; gap:5px">
-            <button class="btn btn-blue" onclick="window.print()">📥 SALVAR / IMPRIMIR</button>
-            <button class="btn btn-red" onclick="resetAll()">🧹 LIMPAR TUDO</button>
-        </div>
+        <button class="btn btn-red" onclick="resetAll()">🗑️ RESETAR TUDO</button>
     </aside>
 
     <main class="main-content">
         <div class="a4-page" id="page">
             <div class="header-box">
-                <h2 contenteditable="true">MAPA DA TURMA - V36</h2>
+                <h2 contenteditable="true" style="text-align:center; color:var(--primary); margin-bottom:10px">MAPA DE SALA - DINÂMICO</h2>
                 <div class="info-grid">
-                    <div contenteditable="true"><b>🏫 ESCOLA:</b> Nome da Escola</div>
-                    <div contenteditable="true"><b>👥 TURMA:</b> 6º Ano A</div>
-                    <div contenteditable="true"><b>👨‍🏫 PROFESSOR:</b> Márcio</div>
+                    <div contenteditable="true"><b>🏫 ESCOLA:</b> Nome da Unidade</div>
+                    <div contenteditable="true"><b>👥 TURMA:</b> ________</div>
+                    <div contenteditable="true"><b>👨‍🏫 PROF:</b> Márcio</div>
                     <div contenteditable="true"><b>📅 DATA:</b> __/__/____</div>
                 </div>
             </div>
 
             <div class="sala-area" id="salaFrame">
-                <div class="label-sala" style="background: var(--parede); border-bottom: 3px solid #1e293b;">
+                <div class="label-sala" style="background: var(--parede); height:40px; display:flex; align-items:center; justify-content:center; color:var(--txt-label); font-weight:700;">
                     <span contenteditable="true">📺 QUADRO / SMART TV</span>
                 </div>
 
                 <div id="gridContainer"></div>
 
-                <div class="label-sala" style="background: var(--parede); border-top: 3px solid #1e293b; justify-content: space-around;">
+                <div class="label-sala" style="background: var(--parede); min-height:45px; display:flex; align-items:center; justify-content:space-around; color:var(--txt-label); font-weight:700;">
                     <span contenteditable="true">🚪 PORTA</span>
-                    <span contenteditable="true" style="background:#ff4d6d; color:#fff; padding:4px 20px; border:3px solid #1e293b; border-radius:10px">MESA PROFESSOR</span>
+                    <span contenteditable="true" id="profTag" style="background:#ff4d6d; color:#fff; padding:3px 15px; border:2px solid #1e293b; border-radius:8px">MESA PROFESSOR</span>
                     <span contenteditable="true">🗄️ ARMÁRIO</span>
                 </div>
             </div>
         </div>
     </main>
 
-    <div id="modalTutorial" onclick="toggleTutorial(false)">
-        <div class="modal-content" onclick="event.stopPropagation()">
-            <h2 style="font-family:'Fredoka'; margin-bottom:15px">Aprenda a Usar! 🚀</h2>
-            <ul style="list-style:none; font-size:15px">
-                <li style="margin-bottom:12px">✅ <b>Fotos:</b> Clique no círculo da foto para colocar o rosto do aluno.</li>
-                <li style="margin-bottom:12px">✅ <b>Nomes:</b> Clique na caixinha branca abaixo da foto para digitar o nome.</li>
-                <li style="margin-bottom:12px">✅ <b>Cores:</b> Use o menu lateral para deixar a sala com a cara da sua turma.</li>
-                <li style="margin-bottom:12px">✅ <b>Desenho:</b> Ajuste o "Arredondamento" para deixar as mesas circulares ou quadradas.</li>
-                <li style="margin-bottom:12px">✅ <b>PDF:</b> Quando terminar, clique em "Salvar" e escolha "Salvar como PDF".</li>
-            </ul>
-            <button class="btn btn-blue" style="width:100%; margin-top:15px" onclick="toggleTutorial(false)">VAMOS COMEÇAR!</button>
-        </div>
-    </div>
-
     <script>
+        let simpleMode = false;
+
+        function toggleSimpleMode() {
+            simpleMode = !simpleMode;
+            const page = document.getElementById('page');
+            const btn = document.getElementById('btnMode');
+            if(simpleMode) {
+                page.classList.add('simple-mode');
+                btn.innerText = "🌓 MODO: ECONÔMICO";
+                btn.classList.replace('btn-purple', 'btn-blue');
+            } else {
+                page.classList.remove('simple-mode');
+                btn.innerText = "🌓 MODO: COLORIDO";
+                btn.classList.replace('btn-blue', 'btn-purple');
+            }
+        }
+
         function setZoom(v) { document.documentElement.style.setProperty('--zoom', v); }
-        function toggleTutorial(show) { document.getElementById('modalTutorial').style.display = show ? 'flex' : 'none'; }
 
         function update() {
             const cfg = {
@@ -293,19 +233,20 @@
             root.setProperty('--grid-gap', cfg.gp);
             root.setProperty('--border-w', cfg.bw);
 
-            localStorage.setItem('v36_config', JSON.stringify(cfg));
+            localStorage.setItem('v38_config', JSON.stringify(cfg));
         }
 
         function rebuild() {
             const container = document.getElementById('gridContainer');
-            const c = document.getElementById('inCols').value || 1;
-            const r = document.getElementById('inRows').value || 1;
+            const c = parseInt(document.getElementById('inCols').value) || 1;
+            const r = parseInt(document.getElementById('inRows').value) || 1;
+            
             container.style.gridTemplateColumns = `repeat(${c}, 1fr)`;
             container.innerHTML = '';
 
             for (let i = 0; i < (c * r); i++) {
-                const n = localStorage.getItem(`v36_n_${i}`) || "";
-                const f = localStorage.getItem(`v36_f_${i}`) || `https://api.dicebear.com/7.x/adventurer/svg?seed=${i+10}`;
+                const n = localStorage.getItem(`v38_n_${i}`) || "";
+                const f = localStorage.getItem(`v38_f_${i}`) || `https://api.dicebear.com/7.x/adventurer/svg?seed=${i+20}`;
                 
                 const d = document.createElement('div');
                 d.className = 'desk';
@@ -314,7 +255,7 @@
                         <img src="${f}" id="img-${i}">
                     </div>
                     <input type="file" id="file-${i}" style="display:none" onchange="upload(${i}, this)">
-                    <input type="text" class="desk-name" value="${n}" placeholder="Nome..." oninput="localStorage.setItem('v36_n_${i}', this.value)">
+                    <input type="text" class="desk-name" value="${n}" placeholder="..." oninput="localStorage.setItem('v38_n_${i}', this.value)">
                 `;
                 container.appendChild(d);
             }
@@ -326,33 +267,34 @@
                 const reader = new FileReader();
                 reader.onload = e => {
                     document.getElementById(`img-${i}`).src = e.target.result;
-                    localStorage.setItem(`v36_f_${i}`, e.target.result);
+                    localStorage.setItem(`v38_f_${i}`, e.target.result);
                 };
                 reader.readAsDataURL(input.files[0]);
             }
         }
 
         function resetAll() {
-            if(confirm("Deseja apagar tudo e recomeçar?")) {
+            if(confirm("Deseja apagar TUDO e voltar ao padrão?")) {
                 localStorage.clear();
                 location.reload();
             }
         }
 
+        // Auto-save textos editáveis
         document.querySelectorAll('[contenteditable]').forEach((el, idx) => {
-            const id = 'v36_t_' + idx;
+            const id = 'v38_t_' + idx;
             if(localStorage.getItem(id)) el.innerHTML = localStorage.getItem(id);
             el.oninput = () => localStorage.setItem(id, el.innerHTML);
         });
 
         window.onload = () => {
-            const saved = JSON.parse(localStorage.getItem('v36_config'));
+            const saved = JSON.parse(localStorage.getItem('v38_config'));
             if(saved) {
                 document.getElementById('inCols').value = saved.cols;
                 document.getElementById('inRows').value = saved.rows;
                 document.getElementById('cpDesk').value = saved.cd;
                 document.getElementById('cpWall').value = saved.cw;
-                document.getElementById('cpTxt').value = saved.ct;
+                document.getElementById('cpTxt').value = saved.ct || "#ffffff";
                 document.getElementById('rgDesk').value = parseInt(saved.ds);
                 document.getElementById('rgFont').value = parseInt(saved.fs);
                 document.getElementById('rgRadius').value = parseInt(saved.rd);
