@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>SALA MÁRCIO V27 - PRO MOBILE</title>
+    <title>SALA MÁRCIO V28 - TUTORIAL COMPLETO</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap');
 
@@ -14,308 +14,133 @@
             --parede: #1e293b;
             --fundo-sala: #ffffff;
             --cor-carteira: #f59e0b;
-            --cor-texto-aluno: #000000;
-            --zoom: 1; /* Mobile friendly default */
+            --zoom: 1;
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', sans-serif; -webkit-tap-highlight-color: transparent; }
 
-        body { 
-            background: var(--bg-body); 
-            height: 100vh; 
-            display: flex; 
-            flex-direction: column; 
-            overflow: hidden;
-        }
+        body { background: var(--bg-body); height: 100vh; display: flex; flex-direction: column; overflow: hidden; }
 
-        /* --- HEADER --- */
-        header {
-            background: var(--parede);
-            color: white;
-            padding: 12px 16px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-        }
-        header h1 { font-size: 14px; font-weight: 800; letter-spacing: 1px; }
+        header { background: var(--parede); color: white; padding: 12px 16px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 10px rgba(0,0,0,0.2); z-index: 10; }
+        header h1 { font-size: 14px; font-weight: 800; }
 
-        /* --- ÁREA DE TRABALHO --- */
-        .main-container { 
-            flex-grow: 1; 
-            overflow: auto; 
-            padding: 20px;
-            display: flex;
-            justify-content: center;
-            align-items: flex-start;
-            scrollbar-width: thin;
-        }
+        .main-container { flex-grow: 1; overflow: auto; padding: 20px; display: flex; justify-content: center; align-items: flex-start; position: relative; }
 
-        /* Classe que controla se estamos vendo como A4 ou como Grade Flexível */
-        .preview-mode .a4-page {
-            width: 210mm; height: 297mm;
-            transform: scale(var(--zoom));
-            transform-origin: top center;
-            margin-bottom: -150mm; /* Compensa o espaço vazio do scale */
-        }
+        /* MODOS DE VISUALIZAÇÃO */
+        .preview-mode .a4-page { width: 210mm; height: 297mm; transform: scale(var(--zoom)); transform-origin: top center; margin-bottom: -150mm; }
+        .edit-mode .a4-page { width: 100%; max-width: 600px; height: auto; padding: 15px; }
 
-        .edit-mode .a4-page {
-            width: 100%;
-            max-width: 600px;
-            height: auto;
-            transform: none !important;
-            padding: 15px;
-        }
+        .a4-page { background: #fff; padding: 10mm; position: relative; flex-shrink: 0; box-shadow: 0 4px 20px rgba(0,0,0,0.1); display: flex; flex-direction: column; transition: all 0.3s ease; }
+        .sala-box { width: 100%; flex-grow: 1; border: 8px solid var(--parede); background: var(--fundo-sala); border-radius: 4px; display: flex; flex-direction: column; }
 
-        .a4-page {
-            background: #fff;
-            padding: 10mm;
-            position: relative;
-            flex-shrink: 0;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-            display: flex;
-            flex-direction: column;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .sala-box {
-            width: 100%;
-            flex-grow: 1;
-            border: 8px solid var(--parede);
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            background: var(--fundo-sala);
-            border-radius: 4px;
-        }
-
-        /* --- GRID E CARTEIRAS --- */
-        .grid-alunos {
-            display: grid;
-            gap: 8px;
-            padding: 10px;
-            flex-grow: 1;
-            align-content: center;
-        }
-
-        .desk {
-            background: var(--cor-carteira) !important;
-            width: 100%;
-            aspect-ratio: 1/1;
-            border-radius: 6px;
-            padding: 4px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: space-between;
-            border: 1px solid rgba(0,0,0,0.1);
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-        }
-
-        .foto-aluno {
-            width: 50%;
-            aspect-ratio: 1/1;
-            background: rgba(255,255,255,0.8);
-            border-radius: 50%;
-            overflow: hidden;
-            border: 2px solid white;
-        }
+        .grid-alunos { display: grid; gap: 8px; padding: 10px; flex-grow: 1; }
+        .desk { background: var(--cor-carteira) !important; width: 100%; aspect-ratio: 1/1; border-radius: 6px; padding: 4px; display: flex; flex-direction: column; align-items: center; justify-content: space-between; border: 1px solid rgba(0,0,0,0.1); }
+        .foto-aluno { width: 50%; aspect-ratio: 1/1; background: white; border-radius: 50%; overflow: hidden; border: 2px solid white; cursor: pointer; }
         .foto-aluno img { width: 100%; height: 100%; object-fit: cover; }
+        .nome-aluno { width: 100%; border: none; border-radius: 3px; font-size: 8px; font-weight: 700; text-align: center; text-transform: uppercase; }
 
-        .nome-aluno {
-            width: 100%;
-            background: white;
-            border: none;
-            border-radius: 3px;
-            font-size: 8px;
-            font-weight: 700;
-            text-align: center;
-            padding: 2px 0;
-            text-transform: uppercase;
-        }
-
-        /* --- RODAPÉ ESTILO APP --- */
-        footer {
-            background: white;
-            border-top: 1px solid #e2e8f0;
-            padding: 10px 5px;
-            padding-bottom: calc(10px + env(safe-area-inset-bottom));
-        }
-
-        .toolbar {
-            display: flex;
-            justify-content: space-around;
-            align-items: center;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .tool-btn {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 4px;
-            background: none;
-            border: none;
-            color: #64748b;
-            font-size: 10px;
-            font-weight: 600;
-            cursor: pointer;
-            min-width: 60px;
-        }
-
+        /* FOOTER E BOTÕES */
+        footer { background: white; border-top: 1px solid #e2e8f0; padding: 10px 5px; padding-bottom: calc(10px + env(safe-area-inset-bottom)); }
+        .toolbar { display: flex; justify-content: space-around; align-items: center; max-width: 600px; margin: 0 auto; }
+        .tool-btn { display: flex; flex-direction: column; align-items: center; background: none; border: none; color: #64748b; font-size: 10px; font-weight: 600; min-width: 60px; }
         .tool-btn.active { color: var(--primary); }
-        .tool-btn i { font-size: 20px; margin-bottom: 2px; }
-
-        .icon-box {
-            width: 40px; height: 40px;
-            display: flex; align-items: center; justify-content: center;
-            border-radius: 10px; background: #f8fafc;
-            margin-bottom: 2px;
-        }
+        .icon-box { width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; border-radius: 12px; background: #f8fafc; margin-bottom: 4px; font-size: 18px; }
         .active .icon-box { background: #eff6ff; border: 1px solid var(--primary); }
+        .btn-main { background: var(--primary) !important; color: white !important; border-radius: 12px !important; padding: 10px 15px; }
 
-        /* Botão Destaque */
-        .btn-main {
-            background: var(--primary) !important;
-            color: white !important;
-            padding: 10px 20px;
-            border-radius: 12px !important;
-            font-weight: 800;
-        }
+        /* MODAIS */
+        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 3000; justify-content: center; align-items: center; padding: 20px; }
+        .modal-content { background: white; width: 100%; max-width: 500px; border-radius: 20px; padding: 25px; max-height: 90vh; overflow-y: auto; }
+        .step { margin-bottom: 15px; padding-left: 30px; position: relative; font-size: 14px; line-height: 1.4; }
+        .step-num { position: absolute; left: 0; top: 0; width: 22px; height: 22px; background: var(--primary); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 800; }
 
-        /* --- MODAL DE AJUSTES --- */
-        #modalSettings {
-            display: none;
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.5); z-index: 2000;
-            justify-content: center; align-items: flex-end;
-        }
-        .modal-content {
-            background: white;
-            width: 100%;
-            border-radius: 20px 20px 0 0;
-            padding: 24px;
-            animation: slideUp 0.3s ease-out;
-        }
-        @keyframes slideUp { from { transform: translateY(100%); } to { transform: translateY(0); } }
-
-        .setting-row { margin-bottom: 18px; }
-        .setting-row label { display: block; font-size: 12px; font-weight: 700; color: #475569; margin-bottom: 8px; }
-        .input-control { width: 100%; padding: 12px; border: 1.5px solid #e2e8f0; border-radius: 10px; font-size: 16px; }
-
-        /* --- PRINT --- */
         @media print {
-            body { overflow: visible; background: white; }
-            header, footer, #modalSettings { display: none !important; }
+            header, footer, .modal { display: none !important; }
             .main-container { padding: 0; display: block; }
-            .a4-page { transform: scale(1) !important; margin: 0 !important; box-shadow: none; width: 210mm; height: 297mm; }
-            .edit-mode .a4-page { width: 210mm; }
+            .a4-page { transform: scale(1) !important; margin: 0 !important; width: 210mm; height: 297mm; }
         }
     </style>
 </head>
 <body class="edit-mode">
 
 <header>
-    <h1>SALA MÁRCIO V27</h1>
-    <div style="font-size: 10px; background: #334155; padding: 4px 8px; border-radius: 4px;">MOBILE PRO</div>
+    <h1>SALA MÁRCIO V28</h1>
+    <button onclick="document.getElementById('modalTutorial').style.display='flex'" style="background:none; border:1px solid white; color:white; padding:4px 8px; border-radius:5px; font-size:10px;">AJUDA / TUTORIAL</button>
 </header>
 
-<main class="main-container" id="scrollArea">
+<div id="modalTutorial" class="modal" style="display: flex;">
+    <div class="modal-content">
+        <h2 style="color:var(--primary); margin-bottom:15px;">Como usar o App:</h2>
+        <div class="step"><span class="step-num">1</span><b>Editar Nomes:</b> Toque no campo branco debaixo da carteira e digite o nome do aluno.</div>
+        <div class="step"><span class="step-num">2</span><b>Colocar Fotos:</b> Toque no círculo da foto. A galeria do seu celular abrirá automaticamente.</div>
+        <div class="step"><span class="step-num">3</span><b>Ajustar Sala:</b> Clique em "AJUSTES" no menu inferior para mudar quantas fileiras e colunas a sala tem.</div>
+        <div class="step"><span class="step-num">4</span><b>Ver Resultado:</b> Clique em "VER FOLHA" para ver como o desenho está ficando no papel A4.</div>
+        <div class="step"><span class="step-num">5</span><b>Gerar PDF:</b> Clique no botão azul "SALVAR PDF" para criar o arquivo pronto para imprimir.</div>
+        <button class="btn-main" style="width:100%; border:none; margin-top:10px;" onclick="this.parentElement.parentElement.style.display='none'">ENTENDI, VAMOS COMEÇAR!</button>
+    </div>
+</div>
+
+<main class="main-container">
     <div class="a4-page" id="folha">
-        <h2 contenteditable="true" style="text-align:center; margin-bottom:10px; font-size: 18px; color: var(--parede);">PLANO DE SALA: _________</h2>
-        
+        <h2 contenteditable="true" style="text-align:center; margin-bottom:10px; font-size: 18px;">PLANO DE SALA: _________</h2>
         <div class="sala-box">
-            <div style="height:30px; display:flex; justify-content:center; align-items:center; background:#f8fafc; font-size:8px; font-weight:800; border-bottom:1px solid #eee;">SMART TV / FUNDO</div>
-            
+            <div style="height:30px; display:flex; justify-content:center; align-items:center; background:#f8fafc; font-size:8px; font-weight:800;">TV / FUNDO</div>
             <div id="grid" class="grid-alunos"></div>
-            
-            <div style="height:60px; display:flex; justify-content:center; align-items:center; position:relative; background:#f8fafc; border-top:1px solid #eee;">
-                <div style="width:50%; height:30px; border:2px solid #451a03; background:var(--cor-quadro, #065f46); color:white; display:flex; align-items:center; justify-content:center; font-size:10px; border-radius:4px;">QUADRO</div>
+            <div style="height:60px; display:flex; justify-content:center; align-items:center; background:#f8fafc; position:relative;">
+                <div style="width:50%; height:30px; border:2px solid #451a03; background:#065f46; color:white; display:flex; align-items:center; justify-content:center; font-size:10px; border-radius:4px;">QUADRO</div>
             </div>
         </div>
     </div>
 </main>
 
-<div id="modalSettings" onclick="if(event.target==this) toggleSettings()">
-    <div class="modal-content">
-        <h3 style="margin-bottom:20px;">Configurações da Sala</h3>
-        <div class="setting-row">
-            <label>NÚMERO DE COLUNAS</label>
-            <input type="number" id="cols" class="input-control" value="5" onchange="render()">
-        </div>
-        <div class="setting-row">
-            <label>NÚMERO DE FILEIRAS</label>
-            <input type="number" id="rows" class="input-control" value="6" onchange="render()">
-        </div>
-        <div class="setting-row">
-            <label>COR DAS CARTEIRAS</label>
-            <input type="color" id="cDesk" class="input-control" style="height:50px" value="#f59e0b" oninput="updateStyle()">
-        </div>
-        <button class="btn-main" style="width:100%; border:none;" onclick="toggleSettings()">CONCLUÍDO</button>
+<div id="modalSettings" class="modal" onclick="if(event.target==this) this.style.display='none'">
+    <div class="modal-content" style="margin-top: auto; border-radius: 25px 25px 0 0;">
+        <h3 style="margin-bottom:20px;">Ajustes da Sala</h3>
+        <label style="font-size:12px; font-weight:700;">COLUNAS (LADO A LADO)</label>
+        <input type="number" id="cols" style="width:100%; padding:15px; margin:10px 0 20px; border-radius:10px; border:1px solid #ddd;" value="5" onchange="render()">
+        
+        <label style="font-size:12px; font-weight:700;">FILEIRAS (FRENTE/FUNDO)</label>
+        <input type="number" id="rows" style="width:100%; padding:15px; margin:10px 0 20px; border-radius:10px; border:1px solid #ddd;" value="6" onchange="render()">
+        
+        <button class="btn-main" style="width:100%; border:none;" onclick="document.getElementById('modalSettings').style.display='none'">APLICAR MUDANÇAS</button>
     </div>
 </div>
 
 <footer>
     <div class="toolbar">
         <button class="tool-btn active" id="btnEdit" onclick="setMode('edit')">
-            <div class="icon-box">✍️</div>
-            EDITAR
+            <div class="icon-box">✍️</div>EDITAR
         </button>
-        
         <button class="tool-btn" id="btnPreview" onclick="setMode('preview')">
-            <div class="icon-box">📄</div>
-            VER FOLHA
+            <div class="icon-box">📄</div>VER FOLHA
         </button>
-
-        <button class="tool-btn" onclick="toggleSettings()">
-            <div class="icon-box">⚙️</div>
-            AJUSTES
+        <button class="tool-btn" onclick="document.getElementById('modalSettings').style.display='flex'">
+            <div class="icon-box">⚙️</div>AJUSTES
         </button>
-
         <button class="tool-btn btn-main" onclick="window.print()">
-            <div style="font-size:18px">PDF</div>
-            SALVAR
+            <div style="font-size:16px; margin-bottom:2px;">💾</div>PDF
         </button>
     </div>
 </footer>
 
 <script>
     function setMode(mode) {
-        const body = document.body;
-        const btnEdit = document.getElementById('btnEdit');
-        const btnPreview = document.getElementById('btnPreview');
-
+        const b = document.body;
         if(mode === 'preview') {
-            body.classList.remove('edit-mode');
-            body.classList.add('preview-mode');
-            btnPreview.classList.add('active');
-            btnEdit.classList.remove('active');
+            b.classList.replace('edit-mode', 'preview-mode');
+            document.getElementById('btnPreview').classList.add('active');
+            document.getElementById('btnEdit').classList.remove('active');
             autoZoom();
         } else {
-            body.classList.remove('preview-mode');
-            body.classList.add('edit-mode');
-            btnEdit.classList.add('active');
-            btnPreview.classList.remove('active');
+            b.classList.replace('preview-mode', 'edit-mode');
+            document.getElementById('btnEdit').classList.add('active');
+            document.getElementById('btnPreview').classList.remove('active');
         }
-    }
-
-    function toggleSettings() {
-        const m = document.getElementById('modalSettings');
-        m.style.display = (m.style.display === 'flex') ? 'none' : 'flex';
-    }
-
-    function updateStyle() {
-        document.documentElement.style.setProperty('--cor-carteira', document.getElementById('cDesk').value);
     }
 
     function autoZoom() {
-        if(document.body.classList.contains('preview-mode')) {
-            const availableWidth = window.innerWidth - 40;
-            const a4Width = 793; // 210mm em pixels aprox.
-            const newZoom = (availableWidth / a4Width).toFixed(2);
-            document.documentElement.style.setProperty('--zoom', newZoom);
-        }
+        const zoom = ((window.innerWidth - 40) / 793).toFixed(2);
+        document.documentElement.style.setProperty('--zoom', zoom);
     }
 
     function render() {
@@ -324,31 +149,28 @@
         const r = parseInt(document.getElementById('rows').value) || 1;
         grid.style.gridTemplateColumns = `repeat(${c}, 1fr)`;
         grid.innerHTML = '';
-        
         for (let i = 0; i < (r * c); i++) {
             const cell = document.createElement('div');
             cell.className = 'desk';
             cell.innerHTML = `
-                <div class="foto-aluno" onclick="this.nextElementSibling.click()">
-                    <img src="https://api.dicebear.com/7.x/initials/svg?seed=P${i}">
-                </div>
-                <input type="file" style="display:none" accept="image/*" onchange="subirFoto(this)">
+                <div class="foto-aluno" onclick="this.nextElementSibling.click()"><img src="https://api.dicebear.com/7.x/initials/svg?seed=${i}"></div>
+                <input type="file" style="display:none" accept="image/*" onchange="subir(this)">
                 <input type="text" class="nome-aluno" placeholder="NOME">
             `;
             grid.appendChild(cell);
         }
     }
 
-    function subirFoto(input) {
+    function subir(input) {
         if (input.files && input.files[0]) {
-            const reader = new FileReader();
-            reader.onload = e => { input.previousElementSibling.querySelector('img').src = e.target.result; };
-            reader.readAsDataURL(input.files[0]);
+            const r = new FileReader();
+            r.onload = e => input.previousElementSibling.querySelector('img').src = e.target.result;
+            r.readAsDataURL(input.files[0]);
         }
     }
 
-    window.addEventListener('resize', autoZoom);
     window.onload = render;
+    window.onresize = autoZoom;
 </script>
 </body>
 </html>
