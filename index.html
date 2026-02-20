@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>SALA MÁRCIO V24 - FIX IMPRESSÃO</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap');
+
+        :root {
+            --primary: #3b82f6;
+            --parede: #1e293b;
+            --fundo-sala: #ffffff;
+            --cor-carteira: #f59e0b;
+            --cor-texto-aluno: #000000;
+            --cor-quadro: #065f46;
+            --cor-tv: #000000;
+            --zoom: 0.75;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', sans-serif; }
+
+        body { 
+            background: #cbd5e1; height: 100vh; display: flex; flex-direction: column; overflow: hidden;
+            touch-action: manipulation;
+        }
+
+        /* --- SISTEMA DE AJUDA --- */
+        .btn-help {
+            position: fixed; top: 15px; right: 15px; width: 45px; height: 45px;
+            background: var(--primary); color: white; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-weight: 800; font-size: 20px; cursor: pointer; z-index: 2000;
+            border: 3px solid white; box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+
+        #modalHelp {
+            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.85); z-index: 3000; justify-content: center; align-items: center; padding: 20px;
+        }
+
+        .help-content {
+            background: white; width: 100%; max-width: 500px; padding: 30px; border-radius: 20px;
+            max-height: 90vh; overflow-y: auto; position: relative;
+        }
+
+        .btn-close-help { background: #ef4444; color: white; border: none; padding: 12px; width: 100%; border-radius: 10px; font-weight: 800; cursor: pointer; margin-top: 10px; }
+
+        /* --- LAYOUT DA SALA --- */
+        .main-container { flex-grow: 1; overflow: auto; display: flex; justify-content: center; align-items: flex-start; padding: 15px; }
+
+        .a4-page {
+            width: 210mm; height: 297mm; background: #fff; padding: 10mm; position: relative; flex-shrink: 0;
+            transform: scale(var(--zoom)); transform-origin: top center; box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+            display: flex; flex-direction: column; border-radius: 2px;
+        }
+
+        .sala-box {
+            width: 100%; flex: 1; border: 12px solid var(--parede); position: relative; 
+            display: flex; flex-direction: column; border-radius: 8px; background: var(--fundo-sala);
+            overflow: hidden;
+        }
+
+        .area-fundo { height: 50px; display: flex; justify-content: center; align-items: flex-start; width: 100%; }
+        .tv-topo { width: 220px; height: 14px; background: var(--cor-tv); border-radius: 0 0 10px 10px; color: #fff; font-size: 8px; font-weight: 800; display: flex; align-items: center; justify-content: center; }
+
+        .grid-alunos { flex: 1; display: grid; gap: 10px; padding: 10px; align-content: center; justify-items: center; }
+
+        .desk { 
+            background: var(--cor-carteira) !important; width: 100%; max-width: 100px; aspect-ratio: 1/1;
+            border-radius: 10px; padding: 6px; display: flex; flex-direction: column; 
+            align-items: center; justify-content: space-between; border: 1px solid rgba(0,0,0,0.1);
+            -webkit-print-color-adjust: exact; print-color-adjust: exact;
+        }
+
+        .foto-aluno { width: 45%; aspect-ratio: 1/1; background: #fff; border-radius: 50%; border: 2px solid #fff; overflow: hidden; cursor: pointer; }
+        .foto-aluno img { width: 100%; height: 100%; object-fit: cover; }
+        .nome-aluno { width: 100%; background: rgba(255,255,255,0.9); border: none; border-radius: 4px; text-align: center; font-weight: 800; font-size: 9px; color: var(--cor-texto-aluno); }
+
+        .area-frente { height: 90px; display: flex; justify-content: center; align-items: center; width: 100%; position: relative; }
+        .quadro { 
+            width: 60%; height: 45px; background: var(--cor-quadro) !important; border: 4px solid #451a03; 
+            border-radius: 5px; color: #fff; display: flex; align-items: center; justify-content: center; 
+            font-weight: 700; font-size: 16px; -webkit-print-color-adjust: exact; print-color-adjust: exact;
+        }
+
+        .label-parede { position: absolute; background: #fff !important; padding: 4px 10px; font-weight: 800; font-size: 11px; color: var(--parede); border: 2px solid var(--parede); border-radius: 4px; -webkit-print-color-adjust: exact; }
+        .entrada-pos { left: -12px; bottom: 25px; transform: rotate(-90deg); }
+        .biro-pos { right: -12px; bottom: 25px; transform: rotate(90deg); }
+
+        footer { background: #fff; border-top: 1px solid #cbd5e1; padding: 12px; z-index: 1000; }
+        .toolbar { display: flex; gap: 15px; overflow-x: auto; align-items: flex-end; padding-bottom: 8px; }
+        .tool-group { display: flex; flex-direction: column; gap: 4px; min-width: 85px; flex-shrink: 0; }
+        .tool-group label { font-size: 9px; font-weight: 800; color: #64748b; text-transform: uppercase; text-align: center; }
+        
+        input[type="number"], input[type="range"] { padding: 8px; border: 1px solid #d1d5db; border-radius: 8px; font-size: 14px; width: 100%; }
+        input[type="color"] { width: 100%; height: 35px; border: none; cursor: pointer; background: none; }
+        .btn-print { background: var(--primary); color: white; border: none; padding: 0 20px; border-radius: 10px; font-weight: 800; cursor: pointer; height: 48px; flex-shrink: 0; }
+
+        /* --- REGRAS DE IMPRESSÃO CRÍTICAS --- */
+        @media print {
+            @page { size: A4; margin: 0; }
+            body { background: white !important; overflow: visible; }
+            footer, .btn-help { display: none !important; }
+            .main-container { padding: 0; margin: 0; overflow: visible; display: block; }
+            .a4-page { 
+                transform: scale(1) !important; 
+                margin: 0 auto !important; 
+                box-shadow: none !important; 
+                width: 210mm; height: 297mm;
+                page-break-after: always;
+            }
+            .sala-box { border-width: 8px !important; }
+            * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; color-adjust: exact !important; }
+        }
+
+        @media (max-width: 768px) {
+            .a4-page { transform: scale(0.35) translateY(-45%); margin-top: -180px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="btn-help" onclick="toggleHelp(true)">?</div>
+
+<div id="modalHelp">
+    <div class="help-content">
+        <h2>📖 Tutorial de Impressão</h2>
+        <div style="font-size: 14px; color: #444; line-height: 1.6;">
+            <p>Para o PDF ficar perfeito:</p>
+            <ol style="margin-left: 20px; margin-top: 10px;">
+                <li>Clique no botão azul <b>IMPRIMIR PDF</b>.</li>
+                <li>No destino, escolha <b>"Salvar como PDF"</b>.</li>
+                <li>Em "Mais definições", verifique se:
+                    <ul>
+                        <li>O tamanho do papel é <b>A4</b>.</li>
+                        <li>As margens estão como <b>Nenhum</b> ou <b>Predefinido</b>.</li>
+                        <li>A opção <b>"Gráficos de fundo"</b> está ATIVADA.</li>
+                    </ul>
+                </li>
+            </ol>
+        </div>
+        <button class="btn-close-help" onclick="toggleHelp(false)">ENTENDI!</button>
+    </div>
+</div>
+
+<main class="main-container">
+    <div class="a4-page" id="folha">
+        <h2 contenteditable="true" style="text-align:center; margin-bottom:12px; font-weight:800; font-size: 22px; color: #1e293b;">PLANO DE SALA: _________</h2>
+        <div class="sala-box">
+            <div class="area-fundo"><div class="tv-topo" contenteditable="true">PAREDE DO FUNDO / SMART TV</div></div>
+            <div id="grid" class="grid-alunos"></div>
+            <div class="area-frente">
+                <div class="label-parede entrada-pos">ENTRADA</div>
+                <div class="quadro" contenteditable="true">QUADRO / TELA</div>
+                <div class="label-parede biro-pos">BIRÔ</div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<footer>
+    <div class="toolbar">
+        <div class="tool-group"><label>🔍 Zoom</label><input type="range" id="zoom" min="0.2" max="1.2" step="0.05" value="0.75" oninput="update()"></div>
+        <div class="tool-group"><label>↔️ Colunas</label><input type="number" id="cols" value="5" min="1" onchange="render()"></div>
+        <div class="tool-group"><label>↕️ Fileiras</label><input type="number" id="rows" value="6" min="1" onchange="render()"></div>
+        <div class="tool-group"><label>🧱 Parede</label><input type="color" id="cParede" value="#1e293b" oninput="update()"></div>
+        <div class="tool-group"><label>🪑 Carteira</label><input type="color" id="cDesk" value="#f59e0b" oninput="update()"></div>
+        <div class="tool-group"><label>✍️ Nomes</label><input type="color" id="cText" value="#000000" oninput="update()"></div>
+        <div class="tool-group"><label>🟢 Quadro</label><input type="color" id="cQuadro" value="#065f46" oninput="update()"></div>
+        <button class="btn-print" onclick="window.print()">IMPRIMIR PDF</button>
+    </div>
+</footer>
+
+<script>
+    function toggleHelp(show) { document.getElementById('modalHelp').style.display = show ? 'flex' : 'none'; }
+
+    function update() {
+        const root = document.documentElement;
+        root.style.setProperty('--zoom', document.getElementById('zoom').value);
+        root.style.setProperty('--parede', document.getElementById('cParede').value);
+        root.style.setProperty('--cor-carteira', document.getElementById('cDesk').value);
+        root.style.setProperty('--cor-texto-aluno', document.getElementById('cText').value);
+        root.style.setProperty('--cor-quadro', document.getElementById('cQuadro').value);
+    }
+
+    function render() {
+        const grid = document.getElementById('grid');
+        const c = parseInt(document.getElementById('cols').value) || 1;
+        const r = parseInt(document.getElementById('rows').value) || 1;
+        grid.style.gridTemplateColumns = `repeat(${c}, 1fr)`;
+        grid.innerHTML = '';
+        for (let i = 0; i < (r * c); i++) {
+            const cell = document.createElement('div');
+            cell.className = 'desk';
+            cell.innerHTML = `
+                <div class="foto-aluno" onclick="this.nextElementSibling.click()"><img src="https://api.dicebear.com/7.x/initials/svg?seed=A${i}"></div>
+                <input type="file" style="display:none" onchange="subirFoto(this)">
+                <input type="text" class="nome-aluno" placeholder="Aluno">
+            `;
+            grid.appendChild(cell);
+        }
+    }
+
+    function subirFoto(input) {
+        if (input.files && input.files[0]) {
+            const reader = new FileReader();
+            reader.onload = e => { input.previousElementSibling.querySelector('img').src = e.target.result; };
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+
+    window.onload = () => { render(); update(); }
+</script>
+</body>
+</html>
