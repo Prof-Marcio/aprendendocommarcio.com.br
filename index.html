@@ -3,14 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>SALA MÁRCIO V43 - PDF PROFISSIONAL</title>
+    <title>SALA MÁRCIO V43 - FULL DYNAMIC & PDF</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&display=swap');
 
         :root {
+            /* Variáveis de Interface */
             --primary: #4361ee;
             --sidebar-w: 320px;
             --zoom: 0.6;
+            
+            /* Variáveis Dinâmicas de Estilo */
             --bg-app: #0f172a;
             --bg-sala: #ffffff;
             --cor-parede: #4361ee;
@@ -19,6 +22,8 @@
             --cor-txt-nome: #000000;
             --cor-bg-nome: #ffffff;
             --cor-labels: #ffffff;
+            
+            /* Variáveis Dinâmicas de Dimensão */
             --grid-gap: 15px;
             --desk-width: 100%;
             --desk-radius: 12px;
@@ -28,105 +33,122 @@
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Fredoka', sans-serif; }
-
-        /* FORÇAR CORES NO PDF */
+        
+        /* AJUSTE ESSENCIAL PARA O NAVEGADOR ACEITAR CORES NO PDF */
         @media all {
-            body { 
-                -webkit-print-color-adjust: exact !important; 
-                print-color-adjust: exact !important; 
-                color-adjust: exact !important;
-            }
+            body { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
         }
 
         body { background: var(--bg-app); height: 100vh; display: flex; overflow: hidden; }
 
-        /* --- SIDEBAR --- */
+        /* --- SIDEBAR ULTRACONTROL --- */
         .sidebar {
             width: var(--sidebar-w); background: #f1f5f9; height: 100%;
             display: flex; flex-direction: column; flex-shrink: 0;
             transition: transform 0.3s ease; border-right: 5px solid var(--primary);
-            position: relative; z-index: 9999;
+            position: relative; z-index: 9999; box-shadow: 10px 0 30px rgba(0,0,0,0.5);
         }
         .sidebar.minimized { transform: translateX(-100%); }
-        .sidebar-content { padding: 15px; overflow-y: auto; flex-grow: 1; }
+
+        .sidebar-content { padding: 15px; overflow-y: auto; flex-grow: 1; scrollbar-width: thin; }
+
         .btn-toggle-menu {
             position: absolute; right: -50px; top: 15px; width: 50px; height: 50px;
             background: var(--primary); color: white; border: none; border-radius: 0 12px 12px 0;
-            cursor: pointer; font-size: 24px;
+            cursor: pointer; font-size: 24px; box-shadow: 5px 0 15px rgba(0,0,0,0.3);
         }
 
-        /* --- CONTROLES --- */
-        .section-title { font-size: 10px; font-weight: 800; color: #1e293b; background: #cbd5e1; padding: 5px 10px; border-radius: 4px; margin: 12px 0 5px; text-transform: uppercase; }
-        .control-group { background: #fff; padding: 10px; border-radius: 8px; border: 1px solid #e2e8f0; margin-bottom: 5px; }
-        .field { display: flex; align-items: center; justify-content: space-between; margin-bottom: 5px; }
-        label { font-size: 11px; font-weight: 600; color: #475569; }
-        input[type="range"] { flex-grow: 1; accent-color: var(--primary); }
-        input[type="color"] { width: 35px; height: 25px; border: none; cursor: pointer; }
-        input[type="number"] { width: 50px; padding: 3px; border: 1px solid #ccc; text-align: center; }
+        /* --- ESTILIZAÇÃO DOS CONTROLES --- */
+        .section-title { 
+            font-size: 11px; font-weight: 800; color: #1e293b; background: #cbd5e1;
+            padding: 5px 10px; border-radius: 4px; margin: 15px 0 8px; text-transform: uppercase;
+        }
+        .control-group { background: #fff; padding: 10px; border-radius: 8px; border: 1px solid #e2e8f0; margin-bottom: 10px; }
+        .field { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; gap: 10px; }
+        label { font-size: 12px; font-weight: 600; color: #475569; }
+        
+        input[type="range"] { flex-grow: 1; accent-color: var(--primary); cursor: pointer; }
+        input[type="color"] { width: 40px; height: 25px; border: 1px solid #ddd; cursor: pointer; background: none; }
+        input[type="number"] { width: 55px; padding: 4px; border-radius: 4px; border: 1px solid #cbd5e1; font-weight: bold; }
 
-        .btn { border: none; padding: 12px; border-radius: 8px; font-weight: 700; cursor: pointer; color: white; width: 100%; margin: 4px 0; }
-        .btn-print { background: #22c55e; border-bottom: 3px solid #166534; }
-        .btn-reset { background: #ef4444; }
+        .btn { border: none; padding: 12px; border-radius: 8px; font-weight: 700; cursor: pointer; color: white; width: 100%; margin: 4px 0; transition: 0.2s; }
+        .btn-print { background: #22c55e; border-bottom: 4px solid #166534; font-size: 14px; }
+        .btn-reset { background: #ef4444; border-bottom: 4px solid #991b1b; }
+        .btn:active { transform: translateY(2px); border-bottom-width: 2px; }
 
         /* --- ÁREA DE VISUALIZAÇÃO --- */
-        .viewport { flex-grow: 1; overflow: auto; display: flex; justify-content: center; align-items: flex-start; padding: 40px; }
+        .viewport {
+            flex-grow: 1; overflow: auto; display: flex; justify-content: center; 
+            align-items: flex-start; padding: 60px 20px; position: relative;
+        }
 
-        /* FORMATO A4 */
+        /* CANVAS A4 QUE SERÁ IMPRESSO */
         .canvas-a4 { 
-            width: 210mm; 
-            min-height: 297mm; 
-            background: white; 
-            padding: 10mm;
-            transform: scale(var(--zoom)); 
-            transform-origin: top center;
-            box-shadow: 0 0 30px rgba(0,0,0,0.5);
-            display: flex;
-            flex-direction: column;
-            flex-shrink: 0;
+            width: 210mm; min-height: 297mm; background: white; padding: 12mm;
+            transform: scale(var(--zoom)); transform-origin: top center;
+            box-shadow: 0 0 50px rgba(0,0,0,0.8); transition: transform 0.1s;
+            display: flex; flex-direction: column;
         }
 
-        .header-print { border: 4px solid var(--cor-borda-geral); border-radius: 15px; padding: 15px; margin-bottom: 15px; }
-        .sala-box { flex-grow: 1; border: 6px solid var(--cor-parede); border-radius: 15px; background: var(--bg-sala); display: flex; flex-direction: column; overflow: hidden; }
-        .label-top, .label-bottom { background: var(--cor-parede); color: var(--cor-labels); padding: 10px; text-align: center; font-weight: 700; }
+        /* --- ELEMENTOS DA SALA --- */
+        .sala-box {
+            flex-grow: 1; border: 6px solid var(--cor-parede); border-radius: 15px;
+            background: var(--bg-sala) !important; display: flex; flex-direction: column; overflow: hidden;
+        }
 
-        #gridSala { display: grid; gap: var(--grid-gap); padding: 15px; flex-grow: 1; align-content: start; justify-items: center; }
+        .label-top, .label-bottom { 
+            background: var(--cor-parede) !important; color: var(--cor-labels) !important; 
+            padding: 12px; text-align: center; font-weight: 700; font-size: 16px;
+        }
 
-        /* CARTEIRA */
+        #gridSala { 
+            display: grid; gap: var(--grid-gap); padding: 20px; 
+            flex-grow: 1; align-content: center; justify-items: center;
+        }
+
+        /* --- CARTEIRA DINÂMICA COMPLETA --- */
         .desk {
-            background: var(--cor-carteira) !important; 
-            width: var(--desk-width); 
-            aspect-ratio: 1/1.1;
-            border: var(--border-thick) solid var(--cor-borda-geral); 
-            border-radius: var(--desk-radius);
+            background: var(--cor-carteira) !important; width: var(--desk-width); aspect-ratio: 1/1.1;
+            border: var(--border-thick) solid var(--cor-borda-geral); border-radius: var(--desk-radius);
             display: flex; flex-direction: column; align-items: center; justify-content: center;
-            padding: 5px;
+            padding: 5px; position: relative;
         }
-        .desk-photo { width: var(--photo-scale); aspect-ratio: 1/1; border-radius: 50%; border: 1.5px solid var(--cor-borda-geral); overflow: hidden; margin-bottom: 3px; background: #fff; }
+        .desk-photo {
+            width: var(--photo-scale); aspect-ratio: 1/1; background: #fff;
+            border-radius: 50%; border: 1.5px solid var(--cor-borda-geral);
+            overflow: hidden; margin-bottom: 5px;
+        }
         .desk-photo img { width: 100%; height: 100%; object-fit: cover; }
-        .desk-name { width: 95%; background: var(--cor-bg-nome); color: var(--cor-txt-nome); border: 1px solid var(--cor-borda-geral); border-radius: 3px; font-size: var(--font-size); font-weight: 700; text-align: center; border: none; outline: none; }
+        .desk-name {
+            width: 95%; background: var(--cor-bg-nome) !important; color: var(--cor-txt-nome) !important;
+            border: 1px solid var(--cor-borda-geral); border-radius: 4px;
+            font-size: var(--font-size); font-weight: 700; text-align: center; padding: 2px;
+            outline: none;
+        }
 
-        /* CONFIGURAÇÃO DE IMPRESSÃO - CORREÇÃO TOTAL */
+        /* --- AJUSTES EXCLUSIVOS DE IMPRESSÃO --- */
         @media print {
             @page { size: A4; margin: 0; }
-            body { background: white !important; overflow: visible !important; display: block !important; height: auto !important; }
+            body { background: white !important; overflow: visible !important; display: block !important; }
             .sidebar, .btn-toggle-menu { display: none !important; }
-            .viewport { padding: 0 !important; display: block !important; overflow: visible !important; }
+            .viewport { padding: 0 !important; display: block !important; overflow: visible !important; background: white !important; }
             .canvas-a4 { 
                 transform: scale(1) !important; 
                 margin: 0 !important; 
                 width: 210mm !important; 
-                height: 297mm !important; 
+                min-height: 297mm !important;
                 box-shadow: none !important; 
                 border: none !important;
-                padding: 10mm !important;
+                padding: 12mm !important;
             }
+            input[type="text"] { border: 1px solid var(--cor-borda-geral) !important; }
             .desk-name::placeholder { color: transparent !important; }
-            input[type="text"] { border: none !important; background: transparent !important; }
         }
 
+        /* MOBILE FIX */
         @media (max-width: 768px) {
-            .viewport { padding: 60px 5px; }
-            .canvas-a4 { transform: scale(var(--zoom)); }
+            .sidebar { position: fixed; left: 0; }
+            .viewport { padding: 80px 5px; align-items: center; }
         }
     </style>
 </head>
@@ -135,62 +157,75 @@
     <aside class="sidebar" id="sidebar">
         <button class="btn-toggle-menu" onclick="toggleMenu()">☰</button>
         <div class="sidebar-content">
-            <h3 style="text-align:center; color:var(--primary); margin-bottom:10px;">CONFIGURAÇÕES</h3>
+            <h2 style="text-align:center; margin-bottom:15px; color:var(--primary)">SALA V43 FULL</h2>
             
             <button class="btn btn-print" onclick="window.print()">💾 GERAR PDF / IMPRIMIR</button>
 
-            <div class="section-title">Grade</div>
+            <div class="section-title">📐 Estrutura da Grade</div>
             <div class="control-group">
                 <div class="field"><label>Colunas:</label><input type="number" id="inCols" value="5" oninput="rebuild()"></div>
-                <div class="field"><label>Linhas:</label><input type="number" id="inRows" value="6" oninput="rebuild()"></div>
-                <label>Espaçamento</label>
-                <input type="range" id="rgGap" min="0" max="40" value="15" oninput="applyStyles()">
+                <div class="field"><label>Fileiras:</label><input type="number" id="inRows" value="6" oninput="rebuild()"></div>
+                <label>Espaçamento (Gap)</label>
+                <input type="range" id="rgGap" min="0" max="60" value="15" oninput="applyStyles()">
             </div>
 
-            <div class="section-title">Estilo das Mesas</div>
+            <div class="section-title">🎨 Cores Gerais</div>
             <div class="control-group">
                 <div class="field"><label>Mesa:</label><input type="color" id="cpDesk" value="#ffcf33" oninput="applyStyles()"></div>
-                <div class="field"><label>Borda:</label><input type="color" id="cpBorder" value="#000000" oninput="applyStyles()"></div>
-                <label>Largura %</label>
+                <div class="field"><label>Paredes:</label><input type="color" id="cpWall" value="#4361ee" oninput="applyStyles()"></div>
+                <div class="field"><label>Bordas:</label><input type="color" id="cpBorder" value="#000000" oninput="applyStyles()"></div>
+                <div class="field"><label>Fundo Sala:</label><input type="color" id="cpSalaBg" value="#ffffff" oninput="applyStyles()"></div>
+                <div class="field"><label>Texto Nome:</label><input type="color" id="cpTxtNome" value="#000000" oninput="applyStyles()"></div>
+            </div>
+
+            <div class="section-title">📏 Medidas e Bordas</div>
+            <div class="control-group">
+                <label>Largura da Mesa %</label>
                 <input type="range" id="rgDeskW" min="40" max="100" value="100" oninput="applyStyles()">
-                <label>Fonte Nome</label>
-                <input type="range" id="rgFont" min="6" max="22" value="11" oninput="applyStyles()">
+                <label>Arredondamento</label>
+                <input type="range" id="rgRadius" min="0" max="50" value="12" oninput="applyStyles()">
+                <label>Espessura Bordas</label>
+                <input type="range" id="rgBorderT" min="0" max="10" value="2" oninput="applyStyles()">
             </div>
 
-            <div class="section-title">Cores do Ambiente</div>
+            <div class="section-title">👤 Alunos e Fotos</div>
             <div class="control-group">
-                <div class="field"><label>Parede:</label><input type="color" id="cpWall" value="#4361ee" oninput="applyStyles()"></div>
-                <div class="field"><label>Fundo:</label><input type="color" id="cpSalaBg" value="#ffffff" oninput="applyStyles()"></div>
+                <label>Tamanho da Foto %</label>
+                <input type="range" id="rgPhoto" min="10" max="95" value="55" oninput="applyStyles()">
+                <label>Tamanho da Fonte</label>
+                <input type="range" id="rgFont" min="6" max="24" value="11" oninput="applyStyles()">
             </div>
 
-            <div class="section-title">Zoom de Visualização</div>
+            <div class="section-title">🔍 Ajuste de Tela (Celular)</div>
             <div class="control-group">
-                <input type="range" min="0.2" max="1.0" step="0.01" value="0.6" id="zoomMaster" oninput="setZoom(this.value)">
-                <center><small>Ajuste apenas para ver na tela</small></center>
+                <input type="range" min="0.2" max="1.5" step="0.05" value="0.6" id="zoomMaster" oninput="setZoom(this.value)">
+                <p style="font-size:10px; text-align:center; margin-top:5px">Arraste para ajustar a visualização na tela.</p>
             </div>
-            
-            <button class="btn btn-reset" onclick="resetData()">🗑️ LIMPAR TUDO</button>
+
+            <button class="btn btn-reset" onclick="resetData()">🗑️ RESET TOTAL</button>
         </div>
     </aside>
 
     <main class="viewport">
         <div class="canvas-a4" id="printArea">
-            <div class="header-print">
+            <header style="border: 4px solid var(--cor-borda-geral); border-radius:15px; padding:15px; margin-bottom:15px">
                 <h2 contenteditable="true" style="text-align:center; color:var(--cor-parede)">MAPA DE DISPOSIÇÃO DE SALA</h2>
                 <div style="display:grid; grid-template-columns: 1fr 1fr; gap:10px; margin-top:10px; font-size:14px">
-                    <div contenteditable="true"><b>🏫 ESCOLA:</b> Clique para digitar...</div>
+                    <div contenteditable="true"><b>🏫 ESCOLA:</b> Digite aqui...</div>
                     <div contenteditable="true"><b>👥 TURMA:</b> ______</div>
                     <div contenteditable="true"><b>👨‍🏫 PROF:</b> Márcio</div>
                     <div contenteditable="true"><b>📅 DATA:</b> __/__/2026</div>
                 </div>
-            </div>
+            </header>
 
             <div class="sala-box">
                 <div class="label-top" contenteditable="true">📺 QUADRO / SMART TV</div>
+                
                 <div id="gridSala"></div>
+
                 <div class="label-bottom" style="display:flex; justify-content: space-around; align-items:center">
                     <span contenteditable="true">🚪 PORTA</span>
-                    <span contenteditable="true" style="background:#ef4444; color:white; padding:4px 12px; border-radius:6px; border:1px solid black; font-size:12px">MESA PROFESSOR</span>
+                    <span contenteditable="true" style="background:#ef4444; color:white; padding:5px 15px; border-radius:8px; border:2px solid black">MESA PROFESSOR</span>
                     <span contenteditable="true">🗄️ ARMÁRIO</span>
                 </div>
             </div>
@@ -198,6 +233,7 @@
     </main>
 
     <script>
+        // Funções de Interface
         function toggleMenu() { document.getElementById('sidebar').classList.toggle('minimized'); }
 
         function setZoom(v) { 
@@ -205,54 +241,69 @@
             localStorage.setItem('v43_zoom', v);
         }
 
+        // Aplica todos os estilos dinâmicos
         function applyStyles() {
             const root = document.documentElement.style;
             const cfg = {
                 gap: document.getElementById('rgGap').value + 'px',
                 dW: document.getElementById('rgDeskW').value + '%',
+                rad: document.getElementById('rgRadius').value + 'px',
+                bor: document.getElementById('rgBorderT').value + 'px',
                 fnt: document.getElementById('rgFont').value + 'px',
+                pht: document.getElementById('rgPhoto').value + '%',
                 cDes: document.getElementById('cpDesk').value,
                 cWal: document.getElementById('cpWall').value,
                 cBor: document.getElementById('cpBorder').value,
                 cSBg: document.getElementById('cpSalaBg').value,
+                cTxt: document.getElementById('cpTxtNome').value,
                 cols: document.getElementById('inCols').value,
                 rows: document.getElementById('inRows').value
             };
 
             root.setProperty('--grid-gap', cfg.gap);
             root.setProperty('--desk-width', cfg.dW);
+            root.setProperty('--desk-radius', cfg.rad);
+            root.setProperty('--border-thick', cfg.bor);
             root.setProperty('--font-size', cfg.fnt);
+            root.setProperty('--photo-scale', cfg.pht);
             root.setProperty('--cor-carteira', cfg.cDes);
             root.setProperty('--cor-parede', cfg.cWal);
             root.setProperty('--cor-borda-geral', cfg.cBor);
             root.setProperty('--bg-sala', cfg.cSBg);
+            root.setProperty('--cor-txt-nome', cfg.cTxt);
 
             localStorage.setItem('v43_master_cfg', JSON.stringify(cfg));
         }
 
+        // Reconstrói a grade de alunos
         function rebuild() {
             const container = document.getElementById('gridSala');
             const c = parseInt(document.getElementById('inCols').value) || 1;
             const r = parseInt(document.getElementById('inRows').value) || 1;
+            
             container.style.gridTemplateColumns = `repeat(${c}, 1fr)`;
             container.innerHTML = '';
+
             for (let i = 0; i < (c * r); i++) {
-                const n = localStorage.getItem(`v43_n_${i}`) || "";
-                const img = localStorage.getItem(`v43_f_${i}`) || `https://api.dicebear.com/7.x/bottts/svg?seed=${i}`;
+                const savedName = localStorage.getItem(`v43_n_${i}`) || "";
+                const savedImg = localStorage.getItem(`v43_f_${i}`) || `https://api.dicebear.com/7.x/bottts/svg?seed=${i}`;
+                
                 const d = document.createElement('div');
                 d.className = 'desk';
                 d.innerHTML = `
                     <div class="desk-photo" onclick="document.getElementById('file-${i}').click()">
-                        <img src="${img}" id="img-${i}">
+                        <img src="${savedImg}" id="img-${i}">
                     </div>
                     <input type="file" id="file-${i}" style="display:none" onchange="upload(${i}, this)">
-                    <input type="text" class="desk-name" value="${n}" placeholder="Aluno" oninput="localStorage.setItem('v43_n_${i}', this.value)">
+                    <input type="text" class="desk-name" value="${savedName}" placeholder="Aluno" 
+                           oninput="localStorage.setItem('v43_n_${i}', this.value)">
                 `;
                 container.appendChild(d);
             }
             applyStyles();
         }
 
+        // Upload de Fotos
         function upload(i, input) {
             if (input.files && input.files[0]) {
                 const reader = new FileReader();
@@ -264,23 +315,38 @@
             }
         }
 
-        function resetData() { if(confirm("Deseja apagar todos os nomes e fotos?")) { localStorage.clear(); location.reload(); } }
+        // Reset Geral
+        function resetData() {
+            if(confirm("Isso apagará TODOS os nomes, fotos e configurações. Continuar?")) {
+                localStorage.clear();
+                location.reload();
+            }
+        }
 
+        // Inicialização
         window.onload = () => {
             const saved = JSON.parse(localStorage.getItem('v43_master_cfg'));
+            const savedZoom = localStorage.getItem('v43_zoom');
+            
             if(saved) {
                 document.getElementById('inCols').value = saved.cols;
                 document.getElementById('inRows').value = saved.rows;
                 document.getElementById('rgGap').value = parseInt(saved.gap);
                 document.getElementById('rgDeskW').value = parseInt(saved.dW);
+                document.getElementById('rgRadius').value = parseInt(saved.rad);
+                document.getElementById('rgBorderT').value = parseInt(saved.bor);
                 document.getElementById('rgFont').value = parseInt(saved.fnt);
+                document.getElementById('rgPhoto').value = parseInt(saved.pht);
                 document.getElementById('cpDesk').value = saved.cDes;
                 document.getElementById('cpWall').value = saved.cWal;
                 document.getElementById('cpBorder').value = saved.cBor;
                 document.getElementById('cpSalaBg').value = saved.cSBg;
+                document.getElementById('cpTxtNome').value = saved.cTxt;
             }
-            const sz = localStorage.getItem('v43_zoom');
-            if(sz) { document.getElementById('zoomMaster').value = sz; setZoom(sz); }
+            if(savedZoom) {
+                document.getElementById('zoomMaster').value = savedZoom;
+                setZoom(savedZoom);
+            }
             rebuild();
         };
     </script>
