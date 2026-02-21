@@ -3,17 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>SALA MÁRCIO V43 - FULL DYNAMIC & PDF</title>
+    <title>SALA MÁRCIO V43 - ULTRA RESPONSIVE</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&display=swap');
 
         :root {
-            /* Variáveis de Interface */
             --primary: #4361ee;
             --sidebar-w: 320px;
             --zoom: 0.6;
-            
-            /* Variáveis Dinâmicas de Estilo */
             --bg-app: #0f172a;
             --bg-sala: #ffffff;
             --cor-parede: #4361ee;
@@ -22,8 +19,6 @@
             --cor-txt-nome: #000000;
             --cor-bg-nome: #ffffff;
             --cor-labels: #ffffff;
-            
-            /* Variáveis Dinâmicas de Dimensão */
             --grid-gap: 15px;
             --desk-width: 100%;
             --desk-radius: 12px;
@@ -34,185 +29,196 @@
 
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Fredoka', sans-serif; }
         
-        /* AJUSTE ESSENCIAL PARA O NAVEGADOR ACEITAR CORES NO PDF */
         @media all {
             body { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
         }
 
-        body { background: var(--bg-app); height: 100vh; display: flex; overflow: hidden; }
+        body { background: var(--bg-app); height: 100vh; display: flex; overflow: hidden; color: #1e293b; }
 
-        /* --- SIDEBAR ULTRACONTROL --- */
+        /* --- SIDEBAR REFORMULADA --- */
         .sidebar {
             width: var(--sidebar-w); background: #f1f5f9; height: 100%;
             display: flex; flex-direction: column; flex-shrink: 0;
-            transition: transform 0.3s ease; border-right: 5px solid var(--primary);
-            position: relative; z-index: 9999; box-shadow: 10px 0 30px rgba(0,0,0,0.5);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); 
+            border-right: 5px solid var(--primary);
+            position: relative; z-index: 9999;
         }
-        .sidebar.minimized { transform: translateX(-100%); }
+        .sidebar.minimized { transform: translateX(-100%); margin-right: calc(var(--sidebar-w) * -1); }
 
-        .sidebar-content { padding: 15px; overflow-y: auto; flex-grow: 1; scrollbar-width: thin; }
+        .sidebar-content { padding: 20px; overflow-y: auto; flex-grow: 1; }
 
         .btn-toggle-menu {
-            position: absolute; right: -50px; top: 15px; width: 50px; height: 50px;
-            background: var(--primary); color: white; border: none; border-radius: 0 12px 12px 0;
-            cursor: pointer; font-size: 24px; box-shadow: 5px 0 15px rgba(0,0,0,0.3);
+            position: absolute; right: -55px; top: 15px; width: 55px; height: 55px;
+            background: var(--primary); color: white; border: none; border-radius: 0 15px 15px 0;
+            cursor: pointer; font-size: 24px; display: flex; align-items: center; justify-content: center;
+            box-shadow: 5px 0 15px rgba(0,0,0,0.3);
         }
 
-        /* --- ESTILIZAÇÃO DOS CONTROLES --- */
+        /* --- CONTROLES --- */
         .section-title { 
-            font-size: 11px; font-weight: 800; color: #1e293b; background: #cbd5e1;
-            padding: 5px 10px; border-radius: 4px; margin: 15px 0 8px; text-transform: uppercase;
+            font-size: 11px; font-weight: 800; color: #fff; background: var(--primary);
+            padding: 6px 12px; border-radius: 6px; margin: 18px 0 8px; text-transform: uppercase;
+            display: flex; align-items: center; gap: 8px;
         }
-        .control-group { background: #fff; padding: 10px; border-radius: 8px; border: 1px solid #e2e8f0; margin-bottom: 10px; }
-        .field { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; gap: 10px; }
-        label { font-size: 12px; font-weight: 600; color: #475569; }
+        .control-group { background: #fff; padding: 12px; border-radius: 10px; border: 1px solid #e2e8f0; margin-bottom: 12px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
+        .field { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; gap: 10px; }
+        label { font-size: 12px; font-weight: 600; color: #64748b; }
         
-        input[type="range"] { flex-grow: 1; accent-color: var(--primary); cursor: pointer; }
-        input[type="color"] { width: 40px; height: 25px; border: 1px solid #ddd; cursor: pointer; background: none; }
-        input[type="number"] { width: 55px; padding: 4px; border-radius: 4px; border: 1px solid #cbd5e1; font-weight: bold; }
+        input[type="range"] { flex-grow: 1; accent-color: var(--primary); height: 6px; border-radius: 5px; }
+        input[type="color"] { width: 45px; height: 30px; border: 2px solid #f1f5f9; cursor: pointer; border-radius: 4px; }
+        input[type="number"] { width: 60px; padding: 6px; border-radius: 6px; border: 2px solid #e2e8f0; text-align: center; font-weight: 700; }
 
-        .btn { border: none; padding: 12px; border-radius: 8px; font-weight: 700; cursor: pointer; color: white; width: 100%; margin: 4px 0; transition: 0.2s; }
-        .btn-print { background: #22c55e; border-bottom: 4px solid #166534; font-size: 14px; }
-        .btn-reset { background: #ef4444; border-bottom: 4px solid #991b1b; }
-        .btn:active { transform: translateY(2px); border-bottom-width: 2px; }
+        .btn { border: none; padding: 14px; border-radius: 10px; font-weight: 700; cursor: pointer; color: white; width: 100%; margin: 5px 0; transition: 0.3s; display: flex; align-items: center; justify-content: center; gap: 10px; }
+        .btn-print { background: #10b981; border-bottom: 4px solid #065f46; font-size: 15px; }
+        .btn-reset { background: #f43f5e; border-bottom: 4px solid #9f1239; }
+        .btn:hover { filter: brightness(1.1); }
+        .btn:active { transform: scale(0.98); }
 
-        /* --- ÁREA DE VISUALIZAÇÃO --- */
+        /* --- VIEWPORT --- */
         .viewport {
             flex-grow: 1; overflow: auto; display: flex; justify-content: center; 
-            align-items: flex-start; padding: 60px 20px; position: relative;
+            align-items: flex-start; padding: 40px 20px; background: radial-gradient(circle, #1e293b 0%, #0f172a 100%);
         }
 
-        /* CANVAS A4 QUE SERÁ IMPRESSO */
         .canvas-a4 { 
             width: 210mm; min-height: 297mm; background: white; padding: 12mm;
             transform: scale(var(--zoom)); transform-origin: top center;
-            box-shadow: 0 0 50px rgba(0,0,0,0.8); transition: transform 0.1s;
-            display: flex; flex-direction: column;
+            box-shadow: 0 0 60px rgba(0,0,0,0.6); transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex; flex-direction: column; position: relative;
         }
 
         /* --- ELEMENTOS DA SALA --- */
         .sala-box {
-            flex-grow: 1; border: 6px solid var(--cor-parede); border-radius: 15px;
+            flex-grow: 1; border: 8px solid var(--cor-parede); border-radius: 20px;
             background: var(--bg-sala) !important; display: flex; flex-direction: column; overflow: hidden;
         }
 
         .label-top, .label-bottom { 
             background: var(--cor-parede) !important; color: var(--cor-labels) !important; 
-            padding: 12px; text-align: center; font-weight: 700; font-size: 16px;
+            padding: 15px; text-align: center; font-weight: 700; font-size: 18px; letter-spacing: 1px;
         }
 
         #gridSala { 
-            display: grid; gap: var(--grid-gap); padding: 20px; 
+            display: grid; gap: var(--grid-gap); padding: 25px; 
             flex-grow: 1; align-content: center; justify-items: center;
         }
 
-        /* --- CARTEIRA DINÂMICA COMPLETA --- */
         .desk {
             background: var(--cor-carteira) !important; width: var(--desk-width); aspect-ratio: 1/1.1;
             border: var(--border-thick) solid var(--cor-borda-geral); border-radius: var(--desk-radius);
             display: flex; flex-direction: column; align-items: center; justify-content: center;
-            padding: 5px; position: relative;
+            padding: 5px; transition: transform 0.2s;
         }
         .desk-photo {
             width: var(--photo-scale); aspect-ratio: 1/1; background: #fff;
             border-radius: 50%; border: 1.5px solid var(--cor-borda-geral);
-            overflow: hidden; margin-bottom: 5px;
+            overflow: hidden; margin-bottom: 6px; cursor: pointer;
         }
         .desk-photo img { width: 100%; height: 100%; object-fit: cover; }
         .desk-name {
-            width: 95%; background: var(--cor-bg-nome) !important; color: var(--cor-txt-nome) !important;
+            width: 90%; background: var(--cor-bg-nome) !important; color: var(--cor-txt-nome) !important;
             border: 1px solid var(--cor-borda-geral); border-radius: 4px;
-            font-size: var(--font-size); font-weight: 700; text-align: center; padding: 2px;
-            outline: none;
+            font-size: var(--font-size); font-weight: 700; text-align: center; padding: 3px;
+            outline: none; text-transform: uppercase;
         }
 
-        /* --- AJUSTES EXCLUSIVOS DE IMPRESSÃO --- */
+        /* --- TUTORIAL OVERLAY --- */
+        .tutorial-box {
+            background: #fff3cd; border: 2px dashed #ffc107; padding: 10px; border-radius: 8px;
+            font-size: 11px; margin-top: 15px; color: #856404;
+        }
+
+        /* --- PRINT --- */
         @media print {
             @page { size: A4; margin: 0; }
             body { background: white !important; overflow: visible !important; display: block !important; }
             .sidebar, .btn-toggle-menu { display: none !important; }
             .viewport { padding: 0 !important; display: block !important; overflow: visible !important; background: white !important; }
             .canvas-a4 { 
-                transform: scale(1) !important; 
-                margin: 0 !important; 
-                width: 210mm !important; 
-                min-height: 297mm !important;
-                box-shadow: none !important; 
-                border: none !important;
-                padding: 12mm !important;
+                transform: scale(1) !important; margin: 0 !important; 
+                width: 210mm !important; min-height: 297mm !important;
+                box-shadow: none !important; border: none !important; padding: 10mm !important;
             }
-            input[type="text"] { border: 1px solid var(--cor-borda-geral) !important; }
-            .desk-name::placeholder { color: transparent !important; }
         }
 
-        /* MOBILE FIX */
+        /* --- MOBILE OPTIMIZATION --- */
         @media (max-width: 768px) {
-            .sidebar { position: fixed; left: 0; }
-            .viewport { padding: 80px 5px; align-items: center; }
+            .sidebar { position: fixed; left: 0; top: 0; box-shadow: 20px 0 50px rgba(0,0,0,0.5); }
+            .btn-toggle-menu { width: 60px; height: 60px; right: -60px; }
+            .viewport { padding: 80px 10px 20px 10px; align-items: flex-start; }
+            .canvas-a4 { transform-origin: top left; left: 50%; transform: translateX(-50%) scale(var(--zoom)); }
         }
     </style>
 </head>
 <body>
 
     <aside class="sidebar" id="sidebar">
-        <button class="btn-toggle-menu" onclick="toggleMenu()">☰</button>
+        <button class="btn-toggle-menu" onclick="toggleMenu()">⚙️</button>
         <div class="sidebar-content">
-            <h2 style="text-align:center; margin-bottom:15px; color:var(--primary)">SALA V43 FULL</h2>
+            <h2 style="text-align:center; color:var(--primary); font-weight: 800;">SALA MÁRCIO V43</h2>
+            <p style="text-align:center; font-size: 11px; color: #64748b; margin-bottom: 15px;">Versão Profissional Full</p>
             
-            <button class="btn btn-print" onclick="window.print()">💾 GERAR PDF / IMPRIMIR</button>
+            <button class="btn btn-print" onclick="window.print()">📄 GERAR PDF / IMPRIMIR</button>
 
-            <div class="section-title">📐 Estrutura da Grade</div>
+            <div class="section-title">📐 Estrutura da Sala</div>
             <div class="control-group">
                 <div class="field"><label>Colunas:</label><input type="number" id="inCols" value="5" oninput="rebuild()"></div>
                 <div class="field"><label>Fileiras:</label><input type="number" id="inRows" value="6" oninput="rebuild()"></div>
-                <label>Espaçamento (Gap)</label>
+                <label>Distância entre Mesas</label>
                 <input type="range" id="rgGap" min="0" max="60" value="15" oninput="applyStyles()">
             </div>
 
-            <div class="section-title">🎨 Cores Gerais</div>
+            <div class="section-title">🎨 Identidade Visual</div>
             <div class="control-group">
                 <div class="field"><label>Mesa:</label><input type="color" id="cpDesk" value="#ffcf33" oninput="applyStyles()"></div>
                 <div class="field"><label>Paredes:</label><input type="color" id="cpWall" value="#4361ee" oninput="applyStyles()"></div>
-                <div class="field"><label>Bordas:</label><input type="color" id="cpBorder" value="#000000" oninput="applyStyles()"></div>
-                <div class="field"><label>Fundo Sala:</label><input type="color" id="cpSalaBg" value="#ffffff" oninput="applyStyles()"></div>
-                <div class="field"><label>Texto Nome:</label><input type="color" id="cpTxtNome" value="#000000" oninput="applyStyles()"></div>
+                <div class="field"><label>Linhas:</label><input type="color" id="cpBorder" value="#000000" oninput="applyStyles()"></div>
+                <div class="field"><label>Fundo:</label><input type="color" id="cpSalaBg" value="#ffffff" oninput="applyStyles()"></div>
             </div>
 
-            <div class="section-title">📏 Medidas e Bordas</div>
+            <div class="section-title">📏 Ajustes das Carteiras</div>
             <div class="control-group">
                 <label>Largura da Mesa %</label>
                 <input type="range" id="rgDeskW" min="40" max="100" value="100" oninput="applyStyles()">
                 <label>Arredondamento</label>
-                <input type="range" id="rgRadius" min="0" max="50" value="12" oninput="applyStyles()">
-                <label>Espessura Bordas</label>
+                <input type="range" id="rgRadius" min="0" max="60" value="12" oninput="applyStyles()">
+                <label>Borda da Mesa</label>
                 <input type="range" id="rgBorderT" min="0" max="10" value="2" oninput="applyStyles()">
             </div>
 
-            <div class="section-title">👤 Alunos e Fotos</div>
+            <div class="section-title">👥 Alunos e Fontes</div>
             <div class="control-group">
-                <label>Tamanho da Foto %</label>
+                <label>Escala da Foto %</label>
                 <input type="range" id="rgPhoto" min="10" max="95" value="55" oninput="applyStyles()">
-                <label>Tamanho da Fonte</label>
-                <input type="range" id="rgFont" min="6" max="24" value="11" oninput="applyStyles()">
+                <label>Tamanho do Nome</label>
+                <input type="range" id="rgFont" min="6" max="25" value="11" oninput="applyStyles()">
             </div>
 
-            <div class="section-title">🔍 Ajuste de Tela (Celular)</div>
+            <div class="section-title">🔍 Zoom (Ajuste para Celular)</div>
             <div class="control-group">
-                <input type="range" min="0.2" max="1.5" step="0.05" value="0.6" id="zoomMaster" oninput="setZoom(this.value)">
-                <p style="font-size:10px; text-align:center; margin-top:5px">Arraste para ajustar a visualização na tela.</p>
+                <input type="range" min="0.15" max="1.2" step="0.01" value="0.35" id="zoomMaster" oninput="setZoom(this.value)">
+                <center><small id="zoomVal">Zoom: 35%</small></center>
             </div>
 
-            <button class="btn btn-reset" onclick="resetData()">🗑️ RESET TOTAL</button>
+            <div class="tutorial-box">
+                <strong>💡 Tutorial para PDF:</strong><br>
+                1. Ajuste o Zoom para ver tudo.<br>
+                2. No celular, use o modo <i>Paisagem</i>.<br>
+                3. Ao imprimir, ative <b>"Gráficos de Segundo Plano"</b>.<br>
+                4. Defina <b>Margens: Nenhuma</b>.
+            </div>
+
+            <button class="btn btn-reset" onclick="resetData()">🗑️ APAGAR TUDO</button>
         </div>
     </aside>
 
     <main class="viewport">
         <div class="canvas-a4" id="printArea">
-            <header style="border: 4px solid var(--cor-borda-geral); border-radius:15px; padding:15px; margin-bottom:15px">
-                <h2 contenteditable="true" style="text-align:center; color:var(--cor-parede)">MAPA DE DISPOSIÇÃO DE SALA</h2>
-                <div style="display:grid; grid-template-columns: 1fr 1fr; gap:10px; margin-top:10px; font-size:14px">
-                    <div contenteditable="true"><b>🏫 ESCOLA:</b> Digite aqui...</div>
-                    <div contenteditable="true"><b>👥 TURMA:</b> ______</div>
+            <header style="border: 4px solid var(--cor-borda-geral); border-radius:15px; padding:15px; margin-bottom:15px; background: #fff;">
+                <h2 contenteditable="true" style="text-align:center; color:var(--cor-parede); font-size: 24px;">MAPA DE DISPOSIÇÃO DE SALA</h2>
+                <div style="display:grid; grid-template-columns: 1fr 1fr; gap:10px; margin-top:15px; font-size:14px">
+                    <div contenteditable="true"><b>🏫 ESCOLA:</b> ___________________</div>
+                    <div contenteditable="true"><b>👥 TURMA:</b> ____________________</div>
                     <div contenteditable="true"><b>👨‍🏫 PROF:</b> Márcio</div>
                     <div contenteditable="true"><b>📅 DATA:</b> __/__/2026</div>
                 </div>
@@ -220,12 +226,10 @@
 
             <div class="sala-box">
                 <div class="label-top" contenteditable="true">📺 QUADRO / SMART TV</div>
-                
                 <div id="gridSala"></div>
-
                 <div class="label-bottom" style="display:flex; justify-content: space-around; align-items:center">
                     <span contenteditable="true">🚪 PORTA</span>
-                    <span contenteditable="true" style="background:#ef4444; color:white; padding:5px 15px; border-radius:8px; border:2px solid black">MESA PROFESSOR</span>
+                    <span contenteditable="true" style="background:#ef4444; color:white; padding:6px 16px; border-radius:10px; border:2px solid black; font-size: 12px; font-weight: 800;">MESA PROFESSOR</span>
                     <span contenteditable="true">🗄️ ARMÁRIO</span>
                 </div>
             </div>
@@ -233,15 +237,14 @@
     </main>
 
     <script>
-        // Funções de Interface
         function toggleMenu() { document.getElementById('sidebar').classList.toggle('minimized'); }
 
         function setZoom(v) { 
             document.documentElement.style.setProperty('--zoom', v);
+            document.getElementById('zoomVal').innerText = `Zoom: ${Math.round(v * 100)}%`;
             localStorage.setItem('v43_zoom', v);
         }
 
-        // Aplica todos os estilos dinâmicos
         function applyStyles() {
             const root = document.documentElement.style;
             const cfg = {
@@ -255,7 +258,6 @@
                 cWal: document.getElementById('cpWall').value,
                 cBor: document.getElementById('cpBorder').value,
                 cSBg: document.getElementById('cpSalaBg').value,
-                cTxt: document.getElementById('cpTxtNome').value,
                 cols: document.getElementById('inCols').value,
                 rows: document.getElementById('inRows').value
             };
@@ -270,32 +272,28 @@
             root.setProperty('--cor-parede', cfg.cWal);
             root.setProperty('--cor-borda-geral', cfg.cBor);
             root.setProperty('--bg-sala', cfg.cSBg);
-            root.setProperty('--cor-txt-nome', cfg.cTxt);
 
             localStorage.setItem('v43_master_cfg', JSON.stringify(cfg));
         }
 
-        // Reconstrói a grade de alunos
         function rebuild() {
             const container = document.getElementById('gridSala');
             const c = parseInt(document.getElementById('inCols').value) || 1;
             const r = parseInt(document.getElementById('inRows').value) || 1;
-            
             container.style.gridTemplateColumns = `repeat(${c}, 1fr)`;
             container.innerHTML = '';
 
             for (let i = 0; i < (c * r); i++) {
-                const savedName = localStorage.getItem(`v43_n_${i}`) || "";
-                const savedImg = localStorage.getItem(`v43_f_${i}`) || `https://api.dicebear.com/7.x/bottts/svg?seed=${i}`;
-                
+                const n = localStorage.getItem(`v43_n_${i}`) || "";
+                const img = localStorage.getItem(`v43_f_${i}`) || `https://api.dicebear.com/7.x/bottts/svg?seed=${i}`;
                 const d = document.createElement('div');
                 d.className = 'desk';
                 d.innerHTML = `
                     <div class="desk-photo" onclick="document.getElementById('file-${i}').click()">
-                        <img src="${savedImg}" id="img-${i}">
+                        <img src="${img}" id="img-${i}">
                     </div>
                     <input type="file" id="file-${i}" style="display:none" onchange="upload(${i}, this)">
-                    <input type="text" class="desk-name" value="${savedName}" placeholder="Aluno" 
+                    <input type="text" class="desk-name" value="${n}" placeholder="ALUNO" 
                            oninput="localStorage.setItem('v43_n_${i}', this.value)">
                 `;
                 container.appendChild(d);
@@ -303,7 +301,6 @@
             applyStyles();
         }
 
-        // Upload de Fotos
         function upload(i, input) {
             if (input.files && input.files[0]) {
                 const reader = new FileReader();
@@ -315,16 +312,17 @@
             }
         }
 
-        // Reset Geral
         function resetData() {
-            if(confirm("Isso apagará TODOS os nomes, fotos e configurações. Continuar?")) {
+            if(confirm("ATENÇÃO: Isso apagará todos os dados dos alunos e cores. Confirmar?")) {
                 localStorage.clear();
                 location.reload();
             }
         }
 
-        // Inicialização
         window.onload = () => {
+            const isMobile = window.innerWidth <= 768;
+            if(isMobile) document.getElementById('sidebar').classList.add('minimized');
+
             const saved = JSON.parse(localStorage.getItem('v43_master_cfg'));
             const savedZoom = localStorage.getItem('v43_zoom');
             
@@ -341,12 +339,11 @@
                 document.getElementById('cpWall').value = saved.cWal;
                 document.getElementById('cpBorder').value = saved.cBor;
                 document.getElementById('cpSalaBg').value = saved.cSBg;
-                document.getElementById('cpTxtNome').value = saved.cTxt;
             }
-            if(savedZoom) {
-                document.getElementById('zoomMaster').value = savedZoom;
-                setZoom(savedZoom);
-            }
+            
+            setZoom(savedZoom || (isMobile ? 0.35 : 0.6));
+            document.getElementById('zoomMaster').value = savedZoom || (isMobile ? 0.35 : 0.6);
+            
             rebuild();
         };
     </script>
