@@ -1,310 +1,129 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Centro de Formação Educacional e Tecnológica | Prof. Márcio</title>
-    <meta name="description" content="Centro de Formação Educacional e Tecnológica do Prof. Márcio L. da Silva. Plataforma integrada de Matemática, Linguagens, Educação, Direito e Tecnologia.">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aprendendo com Márcio | Matemática 7º Ano</title>
+<meta name="description" content="Plataforma de Matemática 7º Ano - Missões, Desafios e Avaliações">
 
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-
-    <!-- CSS Principal -->
-    <link rel="stylesheet" href="css/style.css">
-
-    <!-- Favicon -->
-    <link rel="icon" type="image/png" href="favicon.png">
+<link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <!-- ===================================================== -->
-    <!-- HERO INSTITUCIONAL -->
-    <!-- ===================================================== -->
+<!-- ================= HEADER ================= -->
 
-    <header class="header-azul" role="banner">
-    <div class="container hero-container">
+<header class="header">
+    <div class="header-container">
 
-        <div class="hero-texto">
-            <h1>Centro de Formação Educacional e Tecnológica</h1>
-            <p>Plataforma Oficial do Prof. Márcio L. da Silva</p>
+        <div class="logo">
+            <span class="logo-icon">∑</span>
+            <span class="logo-text">Aprendendo com Márcio</span>
         </div>
 
-            <div class="hero-badge">
-                <span>Matemática</span>
-                <span>Linguagens</span>
-                <span>Educação</span>
-                <span>Direito</span>
-                <span>Tecnologia</span>
-                <span>Projetos</span>
-            </div>
+        <nav class="nav">
+            <ul class="nav-list">
+                <li><a href="index.html" class="nav-link active">Início</a></li>
+                <li><a href="bimestres/bimestre1.html" class="nav-link">1º Bimestre</a></li>
+                <li><a href="#" class="nav-link" onclick="emConstrucao()">2º Bimestre</a></li>
+                <li><a href="#" class="nav-link" onclick="emConstrucao()">3º Bimestre</a></li>
+                <li><a href="#" class="nav-link" onclick="emConstrucao()">4º Bimestre</a></li>
+            </ul>
+        </nav>
 
-        </div>
-    </header>
+        <button class="menu-toggle" onclick="toggleMenu()">☰</button>
 
+    </div>
+</header>
 
-    <!-- ===================================================== -->
-    <!-- CONTEÚDO PRINCIPAL -->
-    <!-- ===================================================== -->
+<!-- ================= HERO PRINCIPAL ================= -->
 
-    <main class="container" role="main">
+<section class="hero">
 
-        <!-- ===================================================== -->
-        <!-- APRESENTAÇÃO INSTITUCIONAL -->
-        <!-- ===================================================== -->
+    <h1 class="hero-title">
+        🎮 Bem-vindo à Plataforma de Matemática!
+    </h1>
 
-        <section class="secao" id="apresentacao">
-            <h2>Apresentação Institucional</h2>
+    <p class="hero-subtitle">
+        Prepare-se para completar missões, resolver desafios e evoluir no 7º Ano 🚀
+    </p>
 
+    <a href="bimestres/bimestre1.html" class="btn btn-primary">
+        🚀 Começar 1º Bimestre
+    </a>
+
+    <a href="#como-funciona" class="btn btn-secondary">
+        📚 Como Funciona?
+    </a>
+
+</section>
+
+<!-- ================= COMO FUNCIONA ================= -->
+
+<section id="como-funciona" class="section">
+
+    <h2 class="section-title">Como Funciona a Plataforma?</h2>
+
+    <div class="structure-grid">
+
+        <div class="structure-card">
+            <h3>🎯 Missões</h3>
             <p>
-                Este ambiente integra as áreas de formação acadêmica e profissional do
-                Professor Márcio L. da Silva, reunindo conteúdos organizados em formato
-                de livros digitais estruturados.
+                Cada conteúdo é uma missão para você completar e avançar.
             </p>
-
-            <p>
-                A proposta é oferecer uma experiência educacional moderna, organizada,
-                interdisciplinar e tecnicamente fundamentada.
-            </p>
-        </section>
-
-
-        <!-- ===================================================== -->
-        <!-- ÁREAS DE FORMAÇÃO -->
-        <!-- ===================================================== -->
-
-        <section class="secao" id="areas">
-            <h2>Áreas de Formação e Estudo</h2>
-
-            <div class="grid-livros">
-
-                <!-- ===================================================== -->
-                <!-- MATEMÁTICA -->
-                <!-- ===================================================== -->
-
-                <article class="livro livro-azul" aria-labelledby="titulo-matematica">
-
-                    <div class="livro-estrutura">
-                        <div class="lombada"></div>
-
-                        <div class="capa-conteudo">
-                            <div class="capa-icone">📘</div>
-
-                            <h3 id="titulo-matematica">Matemática</h3>
-                            <p>Fundamental ao Ensino Médio</p>
-
-                            <div class="livro-info">
-                                <span>Raciocínio Lógico</span>
-                                <span>Álgebra</span>
-                                <span>Geometria</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <a href="matematica.html" class="btn-livro">
-                        Acessar Livro
-                    </a>
-
-                </article>
-
-
-                <!-- ===================================================== -->
-                <!-- PORTUGUÊS -->
-                <!-- ===================================================== -->
-
-                <article class="livro livro-vermelho" aria-labelledby="titulo-portugues">
-
-                    <div class="livro-estrutura">
-                        <div class="lombada"></div>
-
-                        <div class="capa-conteudo">
-                            <div class="capa-icone">📖</div>
-
-                            <h3 id="titulo-portugues">Português</h3>
-                            <p>Gramática e Produção Textual</p>
-
-                            <div class="livro-info">
-                                <span>Interpretação</span>
-                                <span>Redação</span>
-                                <span>Literatura</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <a href="lingua-portuguesa.html" class="btn-livro">
-                        Acessar Livro
-                    </a>
-
-                </article>
-
-
-                <!-- ===================================================== -->
-                <!-- JURÍDICOS -->
-                <!-- ===================================================== -->
-
-                <article class="livro livro-dourado" aria-labelledby="titulo-juridico">
-
-                    <div class="livro-estrutura">
-                        <div class="lombada"></div>
-
-                        <div class="capa-conteudo">
-                            <div class="capa-icone">⚖️</div>
-
-                            <h3 id="titulo-juridico">Jurídicos</h3>
-                            <p>Legislação e Normas</p>
-
-                            <div class="livro-info">
-                                <span>Constituição</span>
-                                <span>Direito Educacional</span>
-                                <span>Normativas</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <a href="juridicos.html" class="btn-livro">
-                        Acessar Livro
-                    </a>
-
-                </article>
-
-
-                <!-- ===================================================== -->
-                <!-- EDUCAÇÃO -->
-                <!-- ===================================================== -->
-
-                <article class="livro livro-verde" aria-labelledby="titulo-educacao">
-
-                    <div class="livro-estrutura">
-                        <div class="lombada"></div>
-
-                        <div class="capa-conteudo">
-                            <div class="capa-icone">🎓</div>
-
-                            <h3 id="titulo-educacao">Educação</h3>
-                            <p>Pedagogia e Didática</p>
-
-                            <div class="livro-info">
-                                <span>Metodologias</span>
-                                <span>Teorias Educacionais</span>
-                                <span>Práticas Docentes</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <a href="educacao.html" class="btn-livro">
-                        Acessar Livro
-                    </a>
-
-                </article>
-
-
-                <!-- ===================================================== -->
-                <!-- TECNOLOGIA -->
-                <!-- ===================================================== -->
-
-                <article class="livro livro-tecnologia" aria-labelledby="titulo-tecnologia">
-
-                    <div class="livro-estrutura">
-                        <div class="lombada"></div>
-
-                        <div class="capa-conteudo">
-                            <div class="capa-icone">💻</div>
-
-                            <h3 id="titulo-tecnologia">Tecnologia</h3>
-                            <p>Desenvolvimento e Sistemas</p>
-
-                            <div class="livro-info">
-                                <span>Programação</span>
-                                <span>Sistemas</span>
-                                <span>Inovação</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <a href="tecnologia.html" class="btn-livro">
-                        Acessar Livro
-                    </a>
-
-                </article>
-
-                <!-- PROJETOS -->
-                <!-- =================================== -->
-
-                <article class="livro livro-projetos">
-
-                <div class="livro-estrutura">
-                <div class="lombada"></div>
-
-                <div class="capa-conteudo">
-                <div class="capa-icone">🚀</div>
-
-                <h3>Projetos</h3>
-                <p>Projetos Interdisciplinares e Aplicações Práticas</p>
-
-                <div class="livro-info">
-                    <span>Projetos Educacionais</span>
-                    <span>Projetos Tecnológicos</span>
-                    <span>Projetos Científicos</span>
-                </div>
-            </div>
         </div>
 
-        <a href="projetos.html" class="btn-livro">
-            Acessar Livro
-        </a>
-
-        </article>
-
-       
-
-            </div>
-        </section>
-
-
-        <!-- ===================================================== -->
-        <!-- MISSÃO INSTITUCIONAL -->
-        <!-- ===================================================== -->
-
-        <section class="secao" id="missao">
-            <h2>Missão Institucional</h2>
-
+        <div class="structure-card">
+            <h3>🧠 Desafios</h3>
             <p>
-                Integrar conhecimento científico, pedagógico e tecnológico,
-                promovendo formação acadêmica sólida, interdisciplinar e alinhada
-                às demandas contemporâneas.
+                Exercícios que ajudam você a treinar e melhorar.
             </p>
-        </section>
-
-    </main>
-
-
-    <!-- ===================================================== -->
-    <!-- RODAPÉ -->
-    <!-- ===================================================== -->
-
-    <footer role="contentinfo">
-        <div class="container footer-container">
-
-            <div>
-                <strong>Prof. Márcio L. da Silva</strong><br>
-                Centro de Formação Educacional e Tecnológica
-            </div>
-
-            <div>
-                © 2026 — Todos os direitos reservados
-            </div>
-
         </div>
-    </footer>
 
+        <div class="structure-card">
+            <h3>🏁 Fase Final</h3>
+            <p>
+                A avaliação do bimestre é a fase final do jogo!
+            </p>
+        </div>
 
-    <!-- ===================================================== -->
-    <!-- SCRIPT GLOBAL -->
-    <!-- ===================================================== -->
+    </div>
 
-  <script type="module" src="js/auth.js"></script>
-<script type="module" src="js/guard.js"></script>
+</section>
+
+<!-- ================= OBJETIVO DO ANO ================= -->
+
+<section class="section">
+
+    <h2 class="section-title">🏆 Seu Objetivo em 2026</h2>
+
+    <p class="section-text">
+        Aprender Matemática de forma organizada, divertida e estratégica.
+        Aqui você acompanha seu progresso e evolui passo a passo!
+    </p>
+
+</section>
+
+<!-- ================= CHAMADA FINAL ================= -->
+
+<section class="section">
+
+    <h2 class="section-title">Pronto para começar?</h2>
+
+    <a href="bimestres/bimestre1.html" class="btn btn-primary">
+        🎮 Entrar na Primeira Missão
+    </a>
+
+</section>
+
+<!-- ================= FOOTER ================= -->
+
+<footer class="footer">
+    <p>© 2026 - Aprendendo com Márcio</p>
+    <p>Plataforma de Matemática 7º Ano</p>
+</footer>
+
+<script src="script.js"></script>
+
 </body>
 </html>

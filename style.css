@@ -1,261 +1,475 @@
-/* ============================= */
-/* RESET */
-/* ============================= */
+/* =====================================================
+   APRENDENDO COM MÁRCIO 2026
+   VERSÃO JOVEM - MOBILE FIRST
+===================================================== */
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "Segoe UI", sans-serif;
+/* ================= VARIÁVEIS ================= */
+
+:root{
+--azul:#2563EB;
+--roxo:#7C3AED;
+--laranja:#F97316;
+--verde:#22C55E;
+--fundo:#F1F5F9;
+--branco:#FFFFFF;
+--texto:#1E293B;
+--radius:18px;
+--shadow:0 10px 30px rgba(0,0,0,0.12);
+--transition:0.3s ease;
 }
 
-body {
-    background: linear-gradient(to bottom, #f0e6d6 0%, #e6dccb 100%);
+/* ================= RESET ================= */
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
 }
 
-/* ============================= */
-/* LOUSA */
-/* ============================= */
-
-.lousa-container {
-    background: #d9c5a4;
-    padding: 30px 60px;
+body{
+font-family: 'Segoe UI', sans-serif;
+background:var(--fundo);
+color:var(--texto);
+padding-top:70px;
+line-height:1.6;
 }
 
-.lousa {
-    background:
-        radial-gradient(circle at 30% 30%, rgba(255,255,255,0.08), transparent 60%),
-        linear-gradient(145deg, #2e7d32, #1b5e20);
-    border: 18px solid #8b5e3c;
-    border-radius: 12px;
-    padding: 60px;
-    text-align: center;
-    color: white;
-    box-shadow:
-        inset 0 0 40px rgba(0,0,0,0.4),
-        0 15px 30px rgba(0,0,0,0.3);
+/* ================= HEADER ================= */
+
+.header{
+position:fixed;
+top:0;
+width:100%;
+background:linear-gradient(135deg,var(--azul),var(--roxo));
+color:white;
+z-index:1000;
 }
 
-.lousa h1 {
-    font-size: 48px;
-    letter-spacing: 2px;
-    margin-bottom: 10px;
+.header-container{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:15px 20px;
 }
 
-.lousa p {
-    font-size: 20px;
-    opacity: 0.9;
+.logo{
+display:flex;
+align-items:center;
+gap:8px;
+font-weight:bold;
+font-size:1rem;
 }
 
-.logo-central i {
-    font-size: 70px;
-    margin-bottom: 15px;
+.logo-icon{
+font-size:1.4rem;
+color:var(--laranja);
 }
 
-/* ============================= */
-/* PAINEL MADEIRA */
-/* ============================= */
+/* ================= MENU ================= */
 
-.painel {
-    background: linear-gradient(145deg, #d7b48a, #c69c6d);
-    padding: 25px 40px;
-    box-shadow:
-        inset 0 3px 8px rgba(0,0,0,0.3),
-        0 10px 25px rgba(0,0,0,0.4);
-    border-top: 6px solid #8b5e3c;
+.nav{
+display:none;
+position:absolute;
+top:70px;
+right:20px;
+background:var(--azul);
+padding:20px;
+border-radius:var(--radius);
+box-shadow:var(--shadow);
 }
 
-/* Linha superior */
-
-.linha-superior {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
+.nav.ativo{
+display:block;
 }
 
-/* Turmas */
-
-.turma {
-    padding: 10px 25px;
-    border-radius: 10px;
-    border: none;
-    font-weight: bold;
-    background: #f2f2f2;
-    box-shadow: inset 0 3px 6px rgba(0,0,0,0.2);
-    cursor: pointer;
+.nav-list{
+list-style:none;
+display:flex;
+flex-direction:column;
+gap:15px;
 }
 
-.turma.ativa {
-    background: #2e7d32;
-    color: white;
+.nav-link{
+color:white;
+text-decoration:none;
+font-weight:500;
+font-size:1rem;
 }
 
-/* Data */
-
-.data {
-    background: #eee;
-    padding: 8px 15px;
-    border-radius: 8px;
+.menu-toggle{
+background:none;
+border:none;
+color:white;
+font-size:1.6rem;
+cursor:pointer;
 }
 
-.data input {
-    border: none;
-    background: transparent;
+/* ================= HERO ================= */
+
+.hero{
+padding:60px 20px;
+text-align:center;
+background:linear-gradient(135deg,var(--azul),var(--roxo));
+color:white;
 }
 
-/* Botões */
-
-.linha-botoes {
-    display: flex;
-    gap: 15px;
+.hero-title{
+font-size:1.8rem;
+margin-bottom:15px;
 }
 
-.btn {
-    padding: 14px 25px;
-    border-radius: 10px;
-    border: none;
-    font-weight: bold;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    box-shadow:
-        inset 0 -3px 6px rgba(0,0,0,0.2),
-        0 6px 15px rgba(0,0,0,0.3);
+.hero-subtitle{
+font-size:1rem;
+margin-bottom:25px;
+opacity:0.95;
 }
 
-.amarelo {
-    background: linear-gradient(#ffd54f, #f4c542);
+/* ================= BOTÕES ================= */
+
+.btn{
+display:block;
+width:100%;
+padding:15px;
+border-radius:30px;
+font-weight:bold;
+text-align:center;
+text-decoration:none;
+margin-bottom:15px;
+transition:var(--transition);
 }
 
-.verde {
-    background: linear-gradient(#66bb6a, #4caf50);
-    color: white;
+.btn-primary{
+background:var(--laranja);
+color:white;
 }
 
-.azul {
-    background: linear-gradient(#42a5f5, #2196f3);
-    color: white;
+.btn-primary:active{
+transform:scale(0.97);
 }
 
-.vermelho {
-    background: linear-gradient(#ef5350, #e53935);
-    color: white;
+.btn-secondary{
+background:white;
+color:var(--azul);
 }
 
-/* ============================= */
-/* SALA */
-/* ============================= */
+/* ================= SEÇÕES ================= */
 
-.sala {
-    padding: 60px 40px;
-    background: linear-gradient(#efe7da, #e3d7c6);
+.section{
+padding:60px 20px;
 }
 
-/* Fileiras */
-
-.fileira {
-    display: flex;
-    justify-content: center;
-    gap: 60px;
-    margin-bottom: 60px;
+.section-title{
+font-size:1.4rem;
+text-align:center;
+margin-bottom:20px;
 }
 
-/* Carteiras */
-
-.carteira {
-    position: relative;
-    width: 160px;
-    background: linear-gradient(145deg, #c89f6d, #b88350);
-    padding: 25px 15px 20px;
-    border-radius: 15px;
-    text-align: center;
-    box-shadow:
-        inset 0 -5px 10px rgba(0,0,0,0.3),
-        0 12px 25px rgba(0,0,0,0.4);
-    transition: 0.3s ease;
+.section-text{
+text-align:center;
+font-size:0.95rem;
+margin-bottom:30px;
 }
 
-.carteira:hover {
-    transform: translateY(-10px);
+/* ================= CARDS ================= */
+
+.structure-grid{
+display:flex;
+flex-direction:column;
+gap:20px;
 }
 
-/* Avatar */
-
-.avatar {
-    width: 80px;
-    height: 80px;
-    margin: auto;
-    border-radius: 50%;
-    overflow: hidden;
-    border: 4px solid white;
-    box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+.structure-card{
+background:white;
+padding:25px;
+border-radius:var(--radius);
+box-shadow:var(--shadow);
+transition:var(--transition);
 }
 
-.avatar img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+.structure-card:active{
+transform:scale(0.98);
 }
 
-/* Nome */
-
-.nome {
-    background: white;
-    margin-top: 12px;
-    padding: 6px;
-    border-radius: 8px;
-    font-weight: bold;
-    box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+.clickable{
+cursor:pointer;
 }
 
-/* Badge */
+/* ================= INDICADORES ================= */
 
-.badge {
+.bimestre-indicadores{
+display:flex;
+justify-content:space-around;
+margin-top:25px;
+}
+
+.indicador{
+background:rgba(255,255,255,0.2);
+padding:15px;
+border-radius:var(--radius);
+text-align:center;
+min-width:80px;
+}
+
+.indicador strong{
+display:block;
+font-size:1.2rem;
+}
+
+/* ================= TIMELINE ================= */
+
+.timeline{
+display:flex;
+flex-direction:column;
+gap:15px;
+margin-top:20px;
+}
+
+.timeline-item{
+background:white;
+padding:15px;
+border-radius:var(--radius);
+box-shadow:var(--shadow);
+font-size:0.9rem;
+}
+
+.destaque{
+background:var(--verde);
+color:white;
+}
+
+/* ================= LIVRO ================= */
+
+.overlay{
+display:none;
+position:fixed;
+inset:0;
+background:rgba(0,0,0,0.7);
+justify-content:center;
+align-items:center;
+padding:20px;
+}
+
+.overlay.ativo{
+display:flex;
+}
+
+.livro{
+background:white;
+width:100%;
+max-width:400px;
+height:80vh;
+border-radius:var(--radius);
+padding:20px;
+position:relative;
+display:flex;
+flex-direction:column;
+justify-content:space-between;
+}
+
+.livro-conteudo{
+overflow-y:auto;
+}
+
+.livro-controles{
+display:flex;
+justify-content:space-between;
+margin-top:10px;
+}
+
+.livro-controles button{
+padding:10px 15px;
+border:none;
+border-radius:10px;
+background:var(--azul);
+color:white;
+font-size:1rem;
+}
+
+.btn-close{
+position:absolute;
+top:10px;
+right:10px;
+background:var(--laranja);
+color:white;
+border:none;
+padding:8px 12px;
+border-radius:10px;
+}
+
+/* ================= FOOTER ================= */
+
+.footer{
+background:var(--azul);
+color:white;
+text-align:center;
+padding:30px 20px;
+font-size:0.9rem;
+}
+
+/* ================= TABLET ================= */
+
+@media(min-width:768px){
+
+.hero-title{
+font-size:2.4rem;
+}
+
+.structure-grid{
+flex-direction:row;
+justify-content:center;
+}
+
+.structure-card{
+width:300px;
+}
+
+}
+
+/* ================= DESKTOP ================= */
+
+@media(min-width:1024px){
+
+.nav{
+display:block !important;
+position:static;
+background:none;
+box-shadow:none;
+padding:0;
+}
+
+.nav-list{
+flex-direction:row;
+}
+
+.menu-toggle{
+display:none;
+}
+
+.hero{
+padding:120px 20px;
+}
+
+.hero-title{
+font-size:3rem;
+}
+
+}
+
+/* ================= ANIMAÇÕES GERAIS ================= */
+
+@keyframes flutuar {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-8px); }
+    100% { transform: translateY(0px); }
+}
+
+@keyframes aparecer {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes progressoAnimado {
+    from { width: 0%; }
+    to { width: var(--progresso); }
+}
+
+/* ================= HERO ANIMADO ================= */
+
+.hero-title {
+    animation: aparecer 0.8s ease forwards;
+}
+
+.hero-subtitle {
+    animation: aparecer 1.2s ease forwards;
+}
+
+.hero::after {
+    content: "➕  ✖  ➗  ➖";
     position: absolute;
-    top: 12px;
-    right: 12px;
-    background: #e53935;
-    color: white;
-    padding: 4px 8px;
-    border-radius: 50%;
-    font-size: 12px;
-    font-weight: bold;
-    box-shadow: 0 3px 6px rgba(0,0,0,0.4);
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 1.5rem;
+    opacity: 0.2;
+    animation: flutuar 3s infinite ease-in-out;
 }
 
-/* ============================= */
-/* FAIXA CURVA */
-/* ============================= */
+/* ================= CARDS ANIMADOS ================= */
 
-.faixa {
-    background: linear-gradient(to right, #a8d08d, #6aa84f);
-    padding: 50px 20px;
-    display: flex;
-    justify-content: space-around;
-    border-top-left-radius: 120px;
-    border-top-right-radius: 120px;
+.structure-card {
+    animation: aparecer 0.6s ease forwards;
 }
 
-.icone-faixa {
-    text-align: center;
-    color: white;
+.structure-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.15);
 }
 
-.icone-faixa i {
-    font-size: 50px;
-    margin-bottom: 10px;
+/* ================= BARRA DE PROGRESSO MELHORADA ================= */
+
+.barra-externa {
+    background:#e2e8f0;
+    border-radius:20px;
+    height:22px;
+    overflow:hidden;
+    margin-top:15px;
 }
 
-/* ============================= */
-/* RODAPÉ */
-/* ============================= */
+.barra-interna {
+    background:linear-gradient(90deg,#22C55E,#16A34A);
+    height:100%;
+    width:0%;
+    border-radius:20px;
+    transition:width 0.6s ease;
+}
 
-footer {
-    background: #1b5e20;
-    color: white;
-    text-align: center;
-    padding: 20px;
-    font-size: 14px;
+/* ================= MEDALHAS ================= */
+
+.medalha {
+    font-size:2rem;
+    animation: flutuar 2.5s infinite ease-in-out;
+}
+
+.medalha.bronze { color:#CD7F32; }
+.medalha.prata { color:#C0C0C0; }
+.medalha.ouro { color:#FFD700; }
+
+/* ================= NOTIFICAÇÃO ANIMADA ================= */
+
+.notificacao-jovem {
+    position:fixed;
+    bottom:20px;
+    left:50%;
+    transform:translateX(-50%) translateY(40px);
+    background:linear-gradient(135deg,#2563EB,#7C3AED);
+    color:white;
+    padding:15px 25px;
+    border-radius:20px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.2);
+    opacity:0;
+    transition:0.4s ease;
+    z-index:9999;
+}
+
+.notificacao-jovem.mostrar {
+    opacity:1;
+    transform:translateX(-50%) translateY(0);
+}
+
+/* ================= BOTÃO MISSÃO COMPLETA ================= */
+
+.btn-missao {
+    background:#22C55E;
+    color:white;
+    padding:12px;
+    border:none;
+    border-radius:15px;
+    width:100%;
+    margin-top:15px;
+    font-weight:bold;
+    transition:0.3s;
+}
+
+.btn-missao:active {
+    transform:scale(0.95);
 }

@@ -1,362 +1,191 @@
-// =====================================================
-// SALA VIRTUAL PEDAGÓGICA - BASE PARA MODELO ILUSTRADO
-// =====================================================
+/* =====================================================
+   APRENDENDO COM MÁRCIO 2026
+   SCRIPT MOBILE + INTERATIVO JOVEM
+===================================================== */
 
-let grafico = null;
+/* ================= MENU MOBILE ================= */
 
-// ==========================
-// ELEMENTOS
-// ==========================
-
-const carteiras = document.querySelectorAll(".carteira");
-const contador = document.getElementById("contador");
-const percentual = document.getElementById("percentual");
-const btnLimpar = document.getElementById("btnLimpar");
-const dataInput = document.getElementById("data");
-const turmaSelect = document.getElementById("turma");
-const btnRelatorio = document.getElementById("btnRelatorio");
-const relatorioArea = document.getElementById("relatorioArea");
-const relatorioConteudo = document.getElementById("relatorioConteudo");
-const btnPDF = document.getElementById("btnPDF");
-const btnExcel = document.getElementById("btnExcel");
-const btnHistorico = document.getElementById("btnHistorico");
-const historicoArea = document.getElementById("historicoArea");
-const historicoConteudo = document.getElementById("historicoConteudo");
-
-// =====================================================
-// GERAR CHAVE
-// =====================================================
-
-function gerarChave(nome, turma, data) {
-    return `${nome}_${turma}_${data}`;
+function toggleMenu(){
+    const nav = document.querySelector(".nav");
+    nav.classList.toggle("ativo");
 }
 
-// =====================================================
-// ATUALIZAR CONTADOR
-// =====================================================
+/* ================= BANCO DE DADOS ================= */
 
-function atualizarContador() {
+const banco = {
 
-    let presentes = 0;
-    let total = 0;
+    conteudos: [
+        {titulo:"Missão 1 🚀", texto:"Sequências numéricas e padrões."},
+        {titulo:"Missão 2 🔍", texto:"Múltiplos, divisores e números primos."},
+        {titulo:"Missão 3 ⚙️", texto:"MMC e MDC aplicados."},
+        {titulo:"Missão 4 🔢", texto:"Números inteiros e operações."},
+        {titulo:"Missão Final 🏁", texto:"Revisão geral do bimestre."}
+    ],
 
-    carteiras.forEach(carteira => {
+    exercicios: [
+        {titulo:"Desafio 1 🧠", texto:"Sequências e lógica."},
+        {titulo:"Desafio 2 🔢", texto:"Inteiros e operações."},
+        {titulo:"Desafio 3 🏆", texto:"Problemas mistos."}
+    ],
 
-        if (carteira.style.display === "none") return;
+    avaliacoes: [
+        {titulo:"Diagnóstico 🎯", texto:"Avaliação inicial."},
+        {titulo:"Progresso 📈", texto:"Acompanhamento contínuo."},
+        {titulo:"Fase Final 📝", texto:"Prova bimestral."}
+    ]
 
-        total++;
+};
 
-        if (carteira.classList.contains("presente")) {
-            presentes++;
-        }
+/* ================= VARIÁVEIS ================= */
 
-    });
+let paginas = [];
+let paginaAtual = 0;
 
-    contador.textContent = "Presentes: " + presentes;
+const overlay = document.getElementById("overlay");
+const conteudo = document.getElementById("conteudoLivro");
 
-    if (total > 0) {
-        const porcentagem = ((presentes / total) * 100).toFixed(1);
-        percentual.textContent = "Presença: " + porcentagem + "%";
-    } else {
-        percentual.textContent = "";
+/* ================= SISTEMA DE LIVRO ================= */
+
+function abrirLivro(tipo){
+
+    paginas = banco[tipo];
+    paginaAtual = 0;
+
+    renderizar();
+    overlay.classList.add("ativo");
+}
+
+function fecharLivro(){
+    overlay.classList.remove("ativo");
+}
+
+function proximaPagina(){
+    if(paginaAtual < paginas.length - 1){
+        paginaAtual++;
+        salvarProgresso();
+        renderizar();
+        animacaoSuave();
     }
 }
 
-// =====================================================
-// CARREGAR PRESENÇAS
-// =====================================================
-
-function carregarPresencas() {
-
-    carteiras.forEach(carteira => {
-
-        carteira.classList.remove("presente", "ausente");
-
-        if (!dataInput.value) return;
-        if (carteira.style.display === "none") return;
-
-        const nome = carteira.dataset.nome;
-
-        const chave = gerarChave(
-            nome,
-            turmaSelect.value,
-            dataInput.value
-        );
-
-        const status = localStorage.getItem(chave);
-
-        if (status === "presente") carteira.classList.add("presente");
-        if (status === "ausente") carteira.classList.add("ausente");
-
-    });
-
-    atualizarContador();
+function paginaAnterior(){
+    if(paginaAtual > 0){
+        paginaAtual--;
+        renderizar();
+        animacaoSuave();
+    }
 }
 
-// =====================================================
-// EVENTO CLIQUE CARTEIRA (CICLO)
-// =====================================================
+function renderizar(){
 
-carteiras.forEach(carteira => {
+    const pagina = paginas[paginaAtual];
 
-    carteira.addEventListener("click", function () {
-
-        if (!dataInput.value) {
-            alert("Selecione uma data primeiro!");
-            return;
-        }
-
-        if (carteira.style.display === "none") return;
-
-        const nome = carteira.dataset.nome;
-
-        const chave = gerarChave(
-            nome,
-            turmaSelect.value,
-            dataInput.value
-        );
-
-        carteira.classList.remove("presente", "ausente");
-
-        const statusAtual = localStorage.getItem(chave);
-
-        if (!statusAtual) {
-            carteira.classList.add("presente");
-            localStorage.setItem(chave, "presente");
-        }
-        else if (statusAtual === "presente") {
-            carteira.classList.add("ausente");
-            localStorage.setItem(chave, "ausente");
-        }
-        else {
-            localStorage.removeItem(chave);
-        }
-
-        atualizarContador();
-    });
-
-});
-
-// =====================================================
-// FILTRAR TURMA
-// =====================================================
-
-function filtrarTurma() {
-
-    const turmaAtual = turmaSelect.value;
-
-    carteiras.forEach(carteira => {
-
-        if (carteira.dataset.turma === turmaAtual) {
-            carteira.style.display = "block";
-        } else {
-            carteira.style.display = "none";
-        }
-
-    });
-
-    carregarPresencas();
-}
-
-turmaSelect.addEventListener("change", filtrarTurma);
-dataInput.addEventListener("change", carregarPresencas);
-
-// =====================================================
-// LIMPAR PRESENÇA
-// =====================================================
-
-btnLimpar.addEventListener("click", function () {
-
-    if (!dataInput.value) {
-        alert("Selecione uma data primeiro!");
-        return;
-    }
-
-    carteiras.forEach(carteira => {
-
-        if (carteira.style.display === "none") return;
-
-        const chave = gerarChave(
-            carteira.dataset.nome,
-            turmaSelect.value,
-            dataInput.value
-        );
-
-        localStorage.removeItem(chave);
-        carteira.classList.remove("presente", "ausente");
-
-    });
-
-    atualizarContador();
-});
-
-// =====================================================
-// RELATÓRIO + GRÁFICO
-// =====================================================
-
-btnRelatorio.addEventListener("click", function () {
-
-    if (!dataInput.value) {
-        alert("Selecione uma data primeiro!");
-        return;
-    }
-
-    const turma = turmaSelect.value;
-    const data = dataInput.value;
-
-    let presentes = [];
-    let ausentes = [];
-
-    carteiras.forEach(carteira => {
-
-        if (carteira.style.display === "none") return;
-
-        const nome = carteira.dataset.nome;
-        const chave = gerarChave(nome, turma, data);
-        const status = localStorage.getItem(chave);
-
-        if (status === "presente") {
-            presentes.push(nome);
-        } else {
-            ausentes.push(nome);
-        }
-
-    });
-
-    relatorioConteudo.innerHTML = `
-        <p><strong>Turma:</strong> ${turma}</p>
-        <p><strong>Data:</strong> ${data}</p>
-        <p><strong>Presentes:</strong> ${presentes.length}</p>
-        <p><strong>Ausentes:</strong> ${ausentes.length}</p>
+    conteudo.innerHTML = `
+        <h2>${pagina.titulo}</h2>
+        <p>${pagina.texto}</p>
+        <div class="progresso-info">
+            Página ${paginaAtual + 1} de ${paginas.length}
+        </div>
     `;
 
-    relatorioArea.style.display = "block";
+    atualizarBarra();
+}
 
-    // GRÁFICO
+/* ================= PROGRESSO SALVO ================= */
 
-    const canvas = document.getElementById("graficoPresenca");
+function salvarProgresso(){
+    localStorage.setItem("progressoBimestre", paginaAtual);
+}
 
-    if (canvas) {
+function carregarProgresso(){
+    const salvo = localStorage.getItem("progressoBimestre");
+    if(salvo !== null){
+        paginaAtual = parseInt(salvo);
+    }
+}
 
-        const ctx = canvas.getContext("2d");
+/* ================= BARRA DE PROGRESSO ================= */
 
-        if (grafico !== null) {
-            grafico.destroy();
-        }
+function atualizarBarra(){
 
-        grafico = new Chart(ctx, {
-            type: "pie",
-            data: {
-                labels: ["Presentes", "Ausentes"],
-                datasets: [{
-                    data: [presentes.length, ausentes.length],
-                    backgroundColor: ["#4caf50", "#e53935"]
-                }]
-            },
-            options: {
-                responsive: true,
-                plugins: {
-                    legend: {
-                        position: "bottom"
-                    }
-                }
-            }
-        });
+    let barra = document.querySelector(".barra-progresso");
+
+    if(!barra){
+        barra = document.createElement("div");
+        barra.className = "barra-progresso";
+        conteudo.appendChild(barra);
+    }
+
+    const porcentagem = ((paginaAtual + 1) / paginas.length) * 100;
+    barra.style.width = porcentagem + "%";
+}
+
+/* ================= ANIMAÇÃO ================= */
+
+function animacaoSuave(){
+    conteudo.style.transform = "scale(0.98)";
+    setTimeout(()=>{
+        conteudo.style.transform = "scale(1)";
+    },150);
+}
+
+/* ================= SWIPE MOBILE ================= */
+
+let startX = 0;
+
+if(overlay){
+
+overlay.addEventListener("touchstart", e=>{
+    startX = e.touches[0].clientX;
+});
+
+overlay.addEventListener("touchend", e=>{
+    let endX = e.changedTouches[0].clientX;
+
+    if(startX - endX > 50){
+        proximaPagina();
+    }
+
+    if(endX - startX > 50){
+        paginaAnterior();
     }
 });
 
-// =====================================================
-// EXPORTAR PDF
-// =====================================================
+}
 
-btnPDF.addEventListener("click", function () {
+/* ================= TECLADO ================= */
 
-    if (!dataInput.value) {
-        alert("Selecione uma data primeiro!");
-        return;
-    }
+document.addEventListener("keydown", function(e){
 
-    const { jsPDF } = window.jspdf;
-    const doc = new jsPDF();
+    if(!overlay.classList.contains("ativo")) return;
 
-    const turma = turmaSelect.value;
-    const data = dataInput.value;
-
-    let y = 10;
-
-    doc.text("Relatório de Presença", 10, y);
-    y += 10;
-
-    doc.text("Turma: " + turma, 10, y);
-    y += 8;
-
-    doc.text("Data: " + data, 10, y);
-    y += 10;
-
-    carteiras.forEach(carteira => {
-
-        if (carteira.style.display === "none") return;
-
-        const nome = carteira.dataset.nome;
-        const chave = gerarChave(nome, turma, data);
-        const status = localStorage.getItem(chave);
-
-        let situacao = "Ausente";
-        if (status === "presente") situacao = "Presente";
-
-        doc.text(nome + " - " + situacao, 10, y);
-        y += 8;
-
-    });
-
-    doc.save("relatorio_" + turma + "_" + data + ".pdf");
+    if(e.key === "ArrowRight") proximaPagina();
+    if(e.key === "ArrowLeft") paginaAnterior();
+    if(e.key === "Escape") fecharLivro();
 });
 
-// =====================================================
-// EXPORTAR EXCEL
-// =====================================================
+/* ================= NOTIFICAÇÃO DIVERTIDA ================= */
 
-btnExcel.addEventListener("click", function () {
+function emConstrucao(){
+    mostrarNotificacao("🚧 Ainda estamos preparando essa fase!");
+}
 
-    if (!dataInput.value) {
-        alert("Selecione uma data primeiro!");
-        return;
-    }
+function mostrarNotificacao(texto){
 
-    const turma = turmaSelect.value;
-    const data = dataInput.value;
+    const aviso = document.createElement("div");
+    aviso.className = "notificacao-jovem";
+    aviso.innerText = texto;
 
-    let csv = "Aluno;Status\n";
+    document.body.appendChild(aviso);
 
-    carteiras.forEach(carteira => {
+    setTimeout(()=>{
+        aviso.classList.add("mostrar");
+    },50);
 
-        if (carteira.style.display === "none") return;
-
-        const nome = carteira.dataset.nome;
-        const chave = gerarChave(nome, turma, data);
-        const status = localStorage.getItem(chave);
-
-        let situacao = "Ausente";
-        if (status === "presente") situacao = "Presente";
-
-        csv += nome + ";" + situacao + "\n";
-    });
-
-    const blob = new Blob(["\uFEFF" + csv], { type: "text/csv;charset=utf-8;" });
-    const link = document.createElement("a");
-    const url = URL.createObjectURL(blob);
-
-    link.href = url;
-    link.setAttribute("download", "relatorio_" + turma + "_" + data + ".csv");
-
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-    URL.revokeObjectURL(url);
-});
-
-// =====================================================
-// INICIALIZAÇÃO
-// =====================================================
-
-filtrarTurma();
+    setTimeout(()=>{
+        aviso.classList.remove("mostrar");
+        setTimeout(()=>{
+            aviso.remove();
+        },300);
+    },3000);
+}
