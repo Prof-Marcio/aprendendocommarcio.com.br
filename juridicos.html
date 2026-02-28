@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jurídicos | Centro de Formação Educacional e Tecnológica</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+/* ===================================================== */
+/* IDENTIDADE VISUAL - JURÍDICOS PREMIUM */
+/* ===================================================== */
+
+:root {
+    --cor-primaria: #0b132b;       
+    --cor-secundaria: #1c2541;     
+    --cor-destaque: #3a506b;       
+    --cor-ouro: #d4af37;           
+    --cor-fundo: #f4f6f9;
+    --cor-caixa: #ffffff;
+    --cor-texto: #1c2541;
+}
+
+/* RESET */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: var(--cor-fundo);
+    color: var(--cor-texto);
+    line-height: 1.7;
+}
+
+/* ===================================================== */
+/* MENU HAMBÚRGUER */
+/* ===================================================== */
+
+.menu-toggle {
+    display: none;
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    background: var(--cor-secundaria);
+    color: white;
+    border: none;
+    font-size: 22px;
+    padding: 10px 14px;
+    border-radius: 8px;
+    cursor: pointer;
+    z-index: 1001;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+}
+
+/* ===================================================== */
+/* MENU LATERAL */
+/* ===================================================== */
+
+.menu-lateral {
+    width: 290px;
+    background: linear-gradient(180deg, var(--cor-primaria), var(--cor-secundaria));
+    color: white;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    padding: 40px 25px;
+    overflow-y: auto;
+    transition: transform 0.3s ease;
+    box-shadow: 4px 0 30px rgba(0,0,0,0.4);
+}
+
+.menu-lateral h2 {
+    margin-bottom: 30px;
+    font-size: 1.3rem;
+    text-align: center;
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+    padding-bottom: 14px;
+    color: var(--cor-ouro);
+    letter-spacing: 1px;
+}
+
+/* ===================================================== */
+/* ÍNDICE ESTILO PDF */
+/* ===================================================== */
+
+.indice-pdf .item-indice {
+    margin-bottom: 16px;
+}
+
+.indice-pdf a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: white;
+    font-size: 0.95rem;
+    transition: 0.3s ease;
+}
+
+.indice-pdf .linha {
+    flex: 1;
+    border-bottom: 1px dotted rgba(255,255,255,0.6);
+    margin: 0 10px;
+}
+
+.indice-pdf .pagina {
+    font-weight: 600;
+    color: var(--cor-ouro);
+}
+
+.indice-pdf a:hover {
+    color: var(--cor-ouro);
+    transform: translateX(4px);
+}
+
+/* ===================================================== */
+/* HEADER */
+/* ===================================================== */
+
+header {
+    margin-left: 290px;
+    padding: 100px 20px;
+    background: linear-gradient(135deg, var(--cor-secundaria), var(--cor-destaque));
+    color: white;
+    text-align: center;
+    box-shadow: 0 10px 35px rgba(0,0,0,0.25);
+}
+
+header h1 {
+    font-size: 2.7rem;
+    margin-bottom: 14px;
+}
+
+header p {
+    font-size: 1.05rem;
+    opacity: 0.95;
+    letter-spacing: 0.5px;
+}
+
+/* ===================================================== */
+/* CONTEÚDO */
+/* ===================================================== */
+
+.conteudo {
+    margin-left: 290px;
+    padding: 90px;
+}
+
+section {
+    background: var(--cor-caixa);
+    padding: 50px;
+    border-radius: 20px;
+    margin-bottom: 80px;
+    box-shadow: 0 20px 45px rgba(0,0,0,0.08);
+    border-left: 7px solid var(--cor-ouro);
+    transition: 0.3s ease;
+}
+
+section:hover {
+    transform: translateY(-6px);
+}
+
+section h2 {
+    margin-bottom: 25px;
+    font-size: 1.7rem;
+    color: var(--cor-secundaria);
+}
+
+section ul {
+    padding-left: 22px;
+}
+
+section ul li {
+    margin-bottom: 14px;
+}
+
+section ul li a {
+    text-decoration: none;
+    color: var(--cor-primaria);
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+section ul li a:hover {
+    color: var(--cor-ouro);
+}
+
+/* ===================================================== */
+/* RODAPÉ */
+/* ===================================================== */
+
+footer {
+    text-align: center;
+    padding: 40px;
+    background: #e2e8f0;
+    margin-left: 290px;
+    font-size: 0.9rem;
+}
+
+/* ===================================================== */
+/* RESPONSIVIDADE */
+/* ===================================================== */
+
+@media (max-width: 1000px) {
+
+    .menu-toggle {
+        display: block;
+    }
+
+    .menu-lateral {
+        transform: translateX(-100%);
+    }
+
+    .menu-lateral.ativo {
+        transform: translateX(0);
+    }
+
+    header,
+    .conteudo,
+    footer {
+        margin-left: 0;
+    }
+
+    header {
+        padding-top: 110px;
+    }
+
+    .conteudo {
+        padding: 40px 25px;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<button class="menu-toggle" onclick="toggleMenu()">☰</button>
+    <button onclick="logout()" class="btn-logout">Sair</button>
+<aside class="menu-lateral">
+    <h2>⚖️ Jurídicos</h2>
+
+    <nav class="indice-pdf">
+
+        <div class="item-indice">
+            <a href="#constitucional"><span>1. Direito Constitucional</span><span class="linha"></span><span class="pagina">01</span></a>
+        </div>
+
+        <div class="item-indice">
+            <a href="#administrativo"><span>2. Direito Administrativo</span><span class="linha"></span><span class="pagina">25</span></a>
+        </div>
+
+        <div class="item-indice">
+            <a href="#educacional"><span>3. Legislação Educacional</span><span class="linha"></span><span class="pagina">40</span></a>
+        </div>
+
+        <div class="item-indice">
+            <a href="index.html"><span>Voltar</span><span class="linha"></span><span>⟵</span></a>
+        </div>
+
+    </nav>
+</aside>
+
+<header>
+    <h1>Legislações e Estudos Jurídicos</h1>
+    <p>Constituição • Normas • Regulamentos • Base Legal Educacional</p>
+</header>
+
+<main class="conteudo">
+
+<section id="constitucional">
+    <h2>Direito Constitucional</h2>
+    <ul>
+        <li><a href="#">Princípios Fundamentais</a></li>
+        <li><a href="#">Direitos e Garantias</a></li>
+        <li><a href="#">Organização do Estado</a></li>
+    </ul>
+</section>
+
+<section id="administrativo">
+    <h2>Direito Administrativo</h2>
+    <ul>
+        <li><a href="#">Atos Administrativos</a></li>
+        <li><a href="#">Licitações</a></li>
+        <li><a href="#">Responsabilidade do Estado</a></li>
+    </ul>
+</section>
+
+<section id="educacional">
+    <h2>Legislação Educacional</h2>
+    <ul>
+        <li><a href="#">LDB</a></li>
+        <li><a href="#">BNCC</a></li>
+        <li><a href="#">Normas Complementares</a></li>
+    </ul>
+</section>
+
+</main>
+
+<footer>
+    Centro de Formação Educacional e Tecnológica • Professor Márcio L. da Silva • 2026
+</footer>
+
+<script>
+function toggleMenu() {
+    document.querySelector(".menu-lateral").classList.toggle("ativo");
+}
+</script>
+<script type="module" src="js/guard.js"></script>
+</body>
+</html>

@@ -1,0 +1,377 @@
+/* ===================================================== */
+/* CENTRO DE FORMAÇÃO EDUCACIONAL E TECNOLÓGICA */
+/* CSS INSTITUCIONAL OFICIAL */
+/* ===================================================== */
+
+
+/* ===================================================== */
+/* VARIÁVEIS INSTITUCIONAIS */
+/* ===================================================== */
+
+:root {
+
+    /* IDENTIDADE PRINCIPAL */
+    --azul-academico: #1e3a8a;
+    --azul-secundario: #2563eb;
+
+    --bordo-intelectual: #7f1d1d;
+    --bordo-secundario: #b91c1c;
+
+    --dourado-institucional: #b8860b;
+    --dourado-claro: #facc15;
+
+    --verde-educacional: #065f46;
+    --verde-secundario: #16a34a;
+
+    --azul-tecnologia: #0f172a;
+    --ciano-tecnologia: #06b6d4;
+
+    /* NEUTROS */
+    --fundo: #f3f4f6;
+    --fundo-livro: #f9fafb;
+    --texto: #1f2937;
+    --texto-suave: #374151;
+    --branco: #ffffff;
+    --cinza: #e5e7eb;
+
+    /* SOMBRAS */
+    --sombra-leve: 0 10px 25px rgba(0,0,0,0.08);
+    --sombra-media: 0 18px 40px rgba(0,0,0,0.14);
+    --sombra-forte: 0 30px 70px rgba(0,0,0,0.22);
+}
+
+
+/* ===================================================== */
+/* RESET GLOBAL */
+/* ===================================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: var(--fundo);
+    color: var(--texto);
+    line-height: 1.6;
+}
+
+
+/* ===================================================== */
+/* CONTAINER */
+/* ===================================================== */
+
+.container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 0 20px;
+}
+
+
+/* ===================================================== */
+/* HEADER INSTITUCIONAL (INDEX) */
+/* ===================================================== */
+
+.header-azul {
+    padding: 110px 20px;
+    color: white;
+    background: linear-gradient(
+        135deg,
+        var(--azul-academico),
+        var(--azul-tecnologia)
+    );
+}
+
+.hero-container {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.hero-texto h1 {
+    font-size: 3rem;
+    font-weight: 700;
+}
+
+.hero-texto p {
+    margin-top: 15px;
+    font-size: 1.1rem;
+    opacity: 0.95;
+}
+
+.hero-badge {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.hero-badge span {
+    background: rgba(255,255,255,0.15);
+    padding: 8px 14px;
+    border-radius: 30px;
+    font-size: 0.85rem;
+    backdrop-filter: blur(6px);
+}
+
+
+/* ===================================================== */
+/* SEÇÕES DO INDEX */
+/* ===================================================== */
+
+.secao {
+    background: var(--branco);
+    margin: 70px 0;
+    padding: 65px;
+    border-radius: 22px;
+    box-shadow: var(--sombra-leve);
+    transition: 0.4s ease;
+}
+
+.secao:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--sombra-media);
+}
+
+.secao h2 {
+    margin-bottom: 25px;
+    font-size: 1.9rem;
+}
+
+
+/* ===================================================== */
+/* GRID LIVROS */
+/* ===================================================== */
+
+.grid-livros {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 60px;
+    margin-top: 60px;
+    perspective: 2000px;
+}
+
+
+/* ===================================================== */
+/* LIVRO 3D */
+/* ===================================================== */
+
+.livro {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+.livro-estrutura {
+    position: relative;
+    width: 100%;
+    max-width: 300px;
+    aspect-ratio: 3 / 4;
+    border-radius: 14px;
+    overflow: hidden;
+    transform-style: preserve-3d;
+    transition: transform 0.6s ease, box-shadow 0.6s ease;
+    box-shadow: var(--sombra-media);
+    animation: flutuar 6s ease-in-out infinite;
+}
+
+.livro-estrutura:hover {
+    transform: rotateY(-8deg) rotateX(3deg) scale(1.03);
+    box-shadow: var(--sombra-forte);
+}
+
+/* Lombada */
+
+.lombada {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 18px;
+    height: 100%;
+    background: linear-gradient(
+        to bottom,
+        rgba(0,0,0,0.45),
+        rgba(0,0,0,0.2)
+    );
+    box-shadow: inset -3px 0 6px rgba(0,0,0,0.35);
+}
+
+/* Conteúdo capa */
+
+.capa-conteudo {
+    height: 100%;
+    padding: 40px 25px 30px 45px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.capa-icone {
+    font-size: 70px;
+    text-shadow: 0 6px 18px rgba(0,0,0,0.35);
+}
+
+.capa-conteudo h3 {
+    font-size: 1.4rem;
+}
+
+.livro-info {
+    font-size: 0.8rem;
+    opacity: 0.9;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+
+/* ===================================================== */
+/* CORES POR ÁREA */
+/* ===================================================== */
+
+.livro-azul .livro-estrutura {
+    background: linear-gradient(145deg,
+        var(--azul-academico),
+        var(--azul-secundario)
+    );
+    color: white;
+}
+
+.livro-vermelho .livro-estrutura {
+    background: linear-gradient(145deg,
+        var(--bordo-intelectual),
+        var(--bordo-secundario)
+    );
+    color: white;
+}
+
+.livro-dourado .livro-estrutura {
+    background: linear-gradient(145deg,
+        var(--dourado-institucional),
+        var(--dourado-claro)
+    );
+    color: #1f2937;
+}
+
+.livro-verde .livro-estrutura {
+    background: linear-gradient(145deg,
+        var(--verde-educacional),
+        var(--verde-secundario)
+    );
+    color: white;
+}
+
+.livro-tecnologia .livro-estrutura {
+    background: linear-gradient(145deg,
+        var(--azul-tecnologia),
+        var(--ciano-tecnologia)
+    );
+    color: white;
+}
+
+
+/* ===================================================== */
+/* BOTÃO */
+/* ===================================================== */
+
+.btn-livro {
+    width: 100%;
+    max-width: 300px;
+    margin-top: 22px;
+    padding: 14px;
+    border-radius: 12px;
+    font-weight: 600;
+    text-decoration: none;
+    text-align: center;
+    background: var(--texto);
+    color: white;
+    transition: 0.3s ease;
+    box-shadow: var(--sombra-leve);
+}
+
+.btn-livro:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--sombra-media);
+}
+
+
+/* ===================================================== */
+/* ANIMAÇÃO */
+/* ===================================================== */
+
+@keyframes flutuar {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-6px); }
+    100% { transform: translateY(0px); }
+}
+
+
+/* ===================================================== */
+/* FOOTER */
+/* ===================================================== */
+
+footer {
+    padding: 45px 20px;
+    background: var(--cinza);
+    margin-top: 100px;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    font-size: 0.9rem;
+}
+
+
+/* ===================================================== */
+/* RESPONSIVIDADE */
+/* ===================================================== */
+
+@media (max-width: 1000px) {
+
+    .hero-texto h1 {
+        font-size: 2.3rem;
+    }
+
+    .grid-livros {
+        gap: 45px;
+    }
+}
+
+@media (max-width: 600px) {
+
+    body {
+        font-size: 15px;
+    }
+
+    .hero-texto h1 {
+        font-size: 1.8rem;
+    }
+
+    .secao {
+        padding: 30px;
+    }
+}
+
+.btn-logout {
+    position: absolute;
+    top: 25px;
+    right: 30px;
+    padding: 8px 14px;
+    background: #dc2626;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.btn-logout:hover {
+    background: #b91c1c;
+}

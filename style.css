@@ -1,0 +1,261 @@
+/* ============================= */
+/* RESET */
+/* ============================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI", sans-serif;
+}
+
+body {
+    background: linear-gradient(to bottom, #f0e6d6 0%, #e6dccb 100%);
+}
+
+/* ============================= */
+/* LOUSA */
+/* ============================= */
+
+.lousa-container {
+    background: #d9c5a4;
+    padding: 30px 60px;
+}
+
+.lousa {
+    background:
+        radial-gradient(circle at 30% 30%, rgba(255,255,255,0.08), transparent 60%),
+        linear-gradient(145deg, #2e7d32, #1b5e20);
+    border: 18px solid #8b5e3c;
+    border-radius: 12px;
+    padding: 60px;
+    text-align: center;
+    color: white;
+    box-shadow:
+        inset 0 0 40px rgba(0,0,0,0.4),
+        0 15px 30px rgba(0,0,0,0.3);
+}
+
+.lousa h1 {
+    font-size: 48px;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+}
+
+.lousa p {
+    font-size: 20px;
+    opacity: 0.9;
+}
+
+.logo-central i {
+    font-size: 70px;
+    margin-bottom: 15px;
+}
+
+/* ============================= */
+/* PAINEL MADEIRA */
+/* ============================= */
+
+.painel {
+    background: linear-gradient(145deg, #d7b48a, #c69c6d);
+    padding: 25px 40px;
+    box-shadow:
+        inset 0 3px 8px rgba(0,0,0,0.3),
+        0 10px 25px rgba(0,0,0,0.4);
+    border-top: 6px solid #8b5e3c;
+}
+
+/* Linha superior */
+
+.linha-superior {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+/* Turmas */
+
+.turma {
+    padding: 10px 25px;
+    border-radius: 10px;
+    border: none;
+    font-weight: bold;
+    background: #f2f2f2;
+    box-shadow: inset 0 3px 6px rgba(0,0,0,0.2);
+    cursor: pointer;
+}
+
+.turma.ativa {
+    background: #2e7d32;
+    color: white;
+}
+
+/* Data */
+
+.data {
+    background: #eee;
+    padding: 8px 15px;
+    border-radius: 8px;
+}
+
+.data input {
+    border: none;
+    background: transparent;
+}
+
+/* Botões */
+
+.linha-botoes {
+    display: flex;
+    gap: 15px;
+}
+
+.btn {
+    padding: 14px 25px;
+    border-radius: 10px;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow:
+        inset 0 -3px 6px rgba(0,0,0,0.2),
+        0 6px 15px rgba(0,0,0,0.3);
+}
+
+.amarelo {
+    background: linear-gradient(#ffd54f, #f4c542);
+}
+
+.verde {
+    background: linear-gradient(#66bb6a, #4caf50);
+    color: white;
+}
+
+.azul {
+    background: linear-gradient(#42a5f5, #2196f3);
+    color: white;
+}
+
+.vermelho {
+    background: linear-gradient(#ef5350, #e53935);
+    color: white;
+}
+
+/* ============================= */
+/* SALA */
+/* ============================= */
+
+.sala {
+    padding: 60px 40px;
+    background: linear-gradient(#efe7da, #e3d7c6);
+}
+
+/* Fileiras */
+
+.fileira {
+    display: flex;
+    justify-content: center;
+    gap: 60px;
+    margin-bottom: 60px;
+}
+
+/* Carteiras */
+
+.carteira {
+    position: relative;
+    width: 160px;
+    background: linear-gradient(145deg, #c89f6d, #b88350);
+    padding: 25px 15px 20px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow:
+        inset 0 -5px 10px rgba(0,0,0,0.3),
+        0 12px 25px rgba(0,0,0,0.4);
+    transition: 0.3s ease;
+}
+
+.carteira:hover {
+    transform: translateY(-10px);
+}
+
+/* Avatar */
+
+.avatar {
+    width: 80px;
+    height: 80px;
+    margin: auto;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 4px solid white;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+}
+
+.avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Nome */
+
+.nome {
+    background: white;
+    margin-top: 12px;
+    padding: 6px;
+    border-radius: 8px;
+    font-weight: bold;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+}
+
+/* Badge */
+
+.badge {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: #e53935;
+    color: white;
+    padding: 4px 8px;
+    border-radius: 50%;
+    font-size: 12px;
+    font-weight: bold;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.4);
+}
+
+/* ============================= */
+/* FAIXA CURVA */
+/* ============================= */
+
+.faixa {
+    background: linear-gradient(to right, #a8d08d, #6aa84f);
+    padding: 50px 20px;
+    display: flex;
+    justify-content: space-around;
+    border-top-left-radius: 120px;
+    border-top-right-radius: 120px;
+}
+
+.icone-faixa {
+    text-align: center;
+    color: white;
+}
+
+.icone-faixa i {
+    font-size: 50px;
+    margin-bottom: 10px;
+}
+
+/* ============================= */
+/* RODAPÉ */
+/* ============================= */
+
+footer {
+    background: #1b5e20;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    font-size: 14px;
+}
