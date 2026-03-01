@@ -1,223 +1,200 @@
 /* ==========================================================
-   SISTEMA LIVRO REAL + ZOOM + PROGRESSO
+   VARIÁVEIS GLOBAIS
 ========================================================== */
 
-let livro = {
-    pasta: "",
-    paginas: [],
-    atual: 0,
-    unidade: ""
-};
+const conteudosBimestre1 = [
+    "u1-naturais",
+    "u1-operacoes",
+    "u1-divisores",
+    "u2-ideia",
+    "u2-operacoes",
+    "u2-potencia",
+    "avaliacao-diagnostica",
+    "avaliacao-formativa",
+    "avaliacao-bimestral"
+];
 
-let zoom = {
-    escala: 1,
-    ativo: false
-};
 
 /* ==========================================================
-   ABRIR DOCUMENTO
+   ABRIR DOCUMENTO (SISTEMA LIVRO)
 ========================================================== */
 
-function abrirDocumento(pasta, arquivos, unidade){
-
-    livro.pasta = pasta;
-    livro.paginas = arquivos;
-    livro.atual = 0;
-    livro.unidade = unidade;
-
-    document.getElementById("overlay").style.display = "flex";
-    document.body.style.overflow = "hidden";
-
-    renderizarPagina();
-}
-
-function renderizarPagina(){
+function abrirDocumento(pasta, arquivos, idConteudo){
 
     const container = document.getElementById("documentoContainer");
+    container.innerHTML = "";
 
-    container.innerHTML = `
-        <div class="pagina-livro animar">
-            <div class="zoom-wrapper">
-                <img id="imagemLivro"
-                     src="${livro.pasta}/${livro.paginas[livro.atual]}"
-                     alt="Página ${livro.atual + 1}">
-            </div>
-        </div>
+    arquivos.forEach(arquivo => {
+        container.innerHTML += `
+            <img src="${pasta}/${arquivo}" alt="Página">
+        `;
+    });
 
-        <div class="controle-livro">
-            <button onclick="paginaAnterior()">◀</button>
-            <span>${livro.atual + 1} / ${livro.paginas.length}</span>
-            <button onclick="proximaPagina()">▶</button>
-        </div>
-    `;
+    document.getElementById("overlay").style.display = "flex";
 
-    atualizarProgresso();
-    iniciarZoom();
+    marcarConcluido(idConteudo);
 }
+
 
 /* ==========================================================
-   PAGINAÇÃO
+   FECHAR DOCUMENTO
 ========================================================== */
-
-function proximaPagina(){
-    if(livro.atual < livro.paginas.length - 1){
-        livro.atual++;
-        salvarProgresso();
-        renderizarPagina();
-    }
-}
-
-function paginaAnterior(){
-    if(livro.atual > 0){
-        livro.atual--;
-        salvarProgresso();
-        renderizarPagina();
-    }
-}
 
 function fecharDocumento(){
     document.getElementById("overlay").style.display = "none";
-    document.body.style.overflow = "auto";
 }
+
 
 /* ==========================================================
-   PROGRESSO POR UNIDADE
+   SISTEMA DE PROGRESSO AUTOMÁTICO
 ========================================================== */
 
-function salvarProgresso(){
+function carregarProgresso(){
 
-    let progresso = JSON.parse(localStorage.getItem("progressoLivro")) || {};
+    let dados = JSON.parse(localStorage.getItem("progressoB1")) || [];
+    atualizarBarra(dados.length);
 
-    progresso[livro.unidade] = livro.atual;
-
-    localStorage.setItem("progressoLivro", JSON.stringify(progresso));
 }
 
-function atualizarProgresso(){
+function marcarConcluido(idConteudo){
 
-    let progresso = JSON.parse(localStorage.getItem("progressoLivro")) || {};
-    let indice = progresso[livro.unidade] || 0;
+    let dados = JSON.parse(localStorage.getItem("progressoB1")) || [];
 
-    let porcentagem = ((indice + 1) / livro.paginas.length) * 100;
+    if(!dados.includes(idConteudo)){
+        dados.push(idConteudo);
+        localStorage.setItem("progressoB1", JSON.stringify(dados));
+    }
 
-    const barra = document.getElementById("barraProgresso");
+    atualizarBarra(dados.length);
+}
+
+function atualizarBarra(qtdConcluidos){
+
+    const total = conteudosBimestre1.length;
+    const porcentagem = Math.round((qtdConcluidos / total) * 100);
+
+    const barra = document.getElementById("barraProgressoVisual");
+    const texto = document.getElementById("progressoTexto");
 
     if(barra){
         barra.style.width = porcentagem + "%";
     }
+
+    if(texto){
+        texto.innerText = porcentagem + "% concluído";
+    }
 }
+
+function resetarProgresso(){
+
+    localStorage.removeItem("progressoB1");
+    atualizarBarra(0);
+
+}
+
 
 /* ==========================================================
-   ZOOM MOBILE
+   NAVEGAÇÃO INFERIOR (Ripple + Elástico)
 ========================================================== */
 
-function iniciarZoom(){
+document.addEventListener("DOMContentLoaded", function(){
 
-    const img = document.getElementById("imagemLivro");
-    let ultimoToque = 0;
+    carregarProgresso();
 
-    img.addEventListener("touchstart", function(e){
+    document.querySelectorAll(".nav-item").forEach(item => {
 
-        const agora = new Date().getTime();
+        item.addEventListener("click", function(){
 
-        if(agora - ultimoToque < 300){
-            alternarZoom(img);
+            document.querySelectorAll(".nav-item").forEach(el=>{
+                el.classList.remove("active-nav");
+            });
+
+            this.classList.add("active-nav");
+
+            // Ripple
+            this.classList.remove("ripple");
+            void this.offsetWidth;
+            this.classList.add("ripple");
+
+            // Elástico no ícone
+            const icon = this.querySelector(".icon");
+
+            if(icon){
+                icon.classList.remove("elastic");
+                void icon.offsetWidth;
+                icon.classList.add("elastic");
+            }
+
+        });
+
+    });
+
+});
+
+
+/* ==========================================================
+   SCROLL SUAVE ENTRE SEÇÕES
+========================================================== */
+
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+
+    anchor.addEventListener('click', function (e) {
+
+        const target = document.querySelector(this.getAttribute('href'));
+
+        if(target){
+            e.preventDefault();
+            target.scrollIntoView({
+                behavior: 'smooth'
+            });
         }
 
-        ultimoToque = agora;
     });
-}
 
-function alternarZoom(img){
+});
 
-    zoom.escala = zoom.escala === 1 ? 2 : 1;
-    img.style.transform = `scale(${zoom.escala})`;
-    img.style.transition = "transform 0.3s ease";
-}
 
 /* ==========================================================
    EM CONSTRUÇÃO
 ========================================================== */
 
 function emConstrucao(){
-    alert("🚧 Este bimestre ainda está em construção 🚧");
-}
 
-/* ==========================================================
-   ANIMAÇÃO DE CLIQUE BOTTOM NAV
-========================================================== */
+    const aviso = document.createElement("div");
 
-document.querySelectorAll(".nav-item").forEach(item => {
+    aviso.innerText = "🚧 Página em construção 🚧";
+    aviso.style.position = "fixed";
+    aviso.style.bottom = "30px";
+    aviso.style.right = "30px";
+    aviso.style.background = "#2563eb";
+    aviso.style.color = "white";
+    aviso.style.padding = "15px 25px";
+    aviso.style.borderRadius = "12px";
+    aviso.style.boxShadow = "0 10px 30px rgba(0,0,0,0.3)";
+    aviso.style.zIndex = "5000";
+    aviso.style.opacity = "0";
+    aviso.style.transition = "0.3s";
 
-    item.addEventListener("click", function(){
+    document.body.appendChild(aviso);
 
-        // Remove active de todos
-        document.querySelectorAll(".nav-item").forEach(el=>{
-            el.classList.remove("active-nav");
-        });
+    setTimeout(()=>{ aviso.style.opacity = "1"; },50);
 
-        // Adiciona active no clicado
-        this.classList.add("active-nav");
-
-        // Ripple effect
-        this.classList.remove("ripple");
-        void this.offsetWidth; // força reflow
-        this.classList.add("ripple");
-
-    });
-
-});
-
-/* ==========================================================
-   ANIMAÇÃO COMPLETA NAV (Ripple + Elástico)
-========================================================== */
-
-document.querySelectorAll(".nav-item").forEach(item => {
-
-    item.addEventListener("click", function(){
-
-        // Remove active de todos
-        document.querySelectorAll(".nav-item").forEach(el=>{
-            el.classList.remove("active-nav");
-        });
-
-        this.classList.add("active-nav");
-
-        // Ripple
-        this.classList.remove("ripple");
-        void this.offsetWidth;
-        this.classList.add("ripple");
-
-        // Animação elástica do ícone
-        const icon = this.querySelector(".icon");
-
-        icon.classList.remove("elastic");
-        void icon.offsetWidth;
-        icon.classList.add("elastic");
-
-    });
-
-});
-
-/* ==========================================================
-   SISTEMA DE PROGRESSO
-========================================================== */
-
-let progresso = 0;
-
-function atualizarProgresso(valor){
-
-    progresso = valor;
-
-    const barra = document.getElementById("barraProgressoVisual");
-    const texto = document.getElementById("progressoTexto");
-
-    barra.style.width = progresso + "%";
-    texto.innerText = progresso + "% concluído";
+    setTimeout(()=>{
+        aviso.style.opacity = "0";
+        setTimeout(()=>{ aviso.remove(); },300);
+    },3000);
 
 }
 
-/* Exemplo automático (teste) */
-setTimeout(()=>{
-    atualizarProgresso(35);
-},1000);
+
+/* ==========================================================
+   FECHAR OVERLAY COM ESC (DESKTOP)
+========================================================== */
+
+document.addEventListener("keydown", function(e){
+
+    if(e.key === "Escape"){
+        fecharDocumento();
+    }
+
+});
