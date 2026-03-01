@@ -3,22 +3,37 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>1º Bimestre | Matemática 7º Ano</title>
+<title>📘 1º Bimestre | Matemática 7º Ano</title>
 <link rel="stylesheet" href="../style.css">
 </head>
 
 <body class="app-body">
 
 <!-- ==========================================================
-   HEADER
+   HEADER PRINCIPAL
 ========================================================== -->
 
 <header class="app-header">
-    <div class="app-title">📘 1º Bimestre</div>
-    <div class="app-subtitle">
-        UNIDADE 1: Números Naturais e Operações<br>
-        UNIDADE 2: O Conjunto dos Números Inteiros
+
+    <div class="header-top">
+        <h1>📘 1º Bimestre</h1>
+        <p class="header-sub">
+            Matemática • 7º Ano
+        </p>
     </div>
+
+    <div class="header-info">
+        <div class="info-card">
+            🔢 Unidade 1<br>
+            <span>Números Naturais</span>
+        </div>
+
+        <div class="info-card">
+            ➖ Unidade 2<br>
+            <span>Números Inteiros</span>
+        </div>
+    </div>
+
 </header>
 
 <!-- ==========================================================
@@ -27,11 +42,9 @@
 
 <main class="app-container">
 
-<!-- ==========================================================
-   UNIDADE 1
-========================================================== -->
+<!-- ================= UNIDADE 1 ================= -->
 
-<section class="app-card destaque-app">
+<section id="conteudos" class="app-card destaque-app">
 
 <h2>📗 UNIDADE 1 — NÚMEROS NATURAIS E OPERAÇÕES</h2>
 
@@ -40,38 +53,36 @@
 <button class="sumario-link"
 onclick="abrirDocumento('../assets/imagens/1bimestre/unidade1/1numeros-naturais',
 ['p12.png','p13.png','p14.png','p15.png'],'u1-naturais')">
-<span>1. Números Naturais</span>
-<span>12–15</span>
+<span>🔢 1. Números Naturais</span>
+<span class="pagina">12–15</span>
 </button>
 
 <button class="sumario-link"
 onclick="abrirDocumento('../assets/imagens/1bimestre/unidade1/2operacoes-com-numeros-naturais',
 ['p16.png','p17.png','p18.png','p19.png'],'u1-operacoes')">
-<span>2. Operações com Números Naturais</span>
-<span>16–19</span>
+<span>➕ 2. Operações com Números Naturais</span>
+<span class="pagina">16–19</span>
 </button>
 
 <button class="sumario-link"
 onclick="abrirDocumento('../assets/imagens/1bimestre/unidade1/3divisores-e-multiplos',
 ['p20.png','p21.png','p22.png','p23.png','p24.png','p26.png'],'u1-divisores')">
-<span>3. Divisores, Múltiplos, MDC e MMC</span>
-<span>20–26</span>
+<span>📐 3. Divisores, Múltiplos, MDC e MMC</span>
+<span class="pagina">20–26</span>
 </button>
 
 <button class="sumario-link"
 onclick="abrirDocumento('../assets/imagens/1bimestre/unidade1/retomando',
 ['p28.png','p29.png'],'u1-retomando')">
-<span>Retomando o que aprendeu</span>
-<span>28-29</span>
+<span>🔁 Retomando o que aprendeu</span>
+<span class="pagina">28–29</span>
 </button>
 
 </div>
 
 </section>
 
-<!-- ==========================================================
-   UNIDADE 2
-========================================================== -->
+<!-- ================= UNIDADE 2 ================= -->
 
 <section class="app-card">
 
@@ -82,94 +93,59 @@ onclick="abrirDocumento('../assets/imagens/1bimestre/unidade1/retomando',
 <button class="sumario-link"
 onclick="abrirDocumento('../assets/imagens/1bimestre/unidade2/1ideia-de-inteiros',
 ['p32.png','p33.png','p35.png'],'u2-ideia')">
-<span>1. A Ideia de Números Inteiros</span>
-<span>32–35</span>
+<span>➖ 1. Ideia de Números Inteiros</span>
+<span class="pagina">32–35</span>
 </button>
 
 <button class="sumario-link"
 onclick="abrirDocumento('../assets/imagens/1bimestre/unidade2/2conjunto-inteiros',
 ['p36.png','p37.png','p38.png'],'u2-conjunto')">
-<span>2. O Conjunto dos Números Inteiros</span>
-<span>36–38</span>
-</button>
-
-<button class="sumario-link"
-onclick="abrirDocumento('../assets/imagens/1bimestre/unidade2/3modulo',
-['p39.png','p40.png'],'u2-modulo')">
-<span>3. Módulo de um Número Inteiro</span>
-<span>39–40</span>
-</button>
-
-<button class="sumario-link"
-onclick="abrirDocumento('../assets/imagens/1bimestre/unidade2/4comparacao',
-['p41.png','p43.png'],'u2-comparacao')">
-<span>4. Comparação de Números Inteiros</span>
-<span>41–43</span>
+<span>📊 2. Conjunto dos Inteiros</span>
+<span class="pagina">36–38</span>
 </button>
 
 <button class="sumario-link"
 onclick="abrirDocumento('../assets/imagens/1bimestre/unidade2/5adicao',
 ['p44.png','p47.png','p48.png','p49.png'],'u2-adicao')">
-<span>5. Adição de Números Inteiros</span>
-<span>44–49</span>
-</button>
-
-<button class="sumario-link"
-onclick="abrirDocumento('../assets/imagens/1bimestre/unidade2/6subtracao',
-['p51.png','p53.png'],'u2-subtracao')">
-<span>6. Subtração de Números Inteiros</span>
-<span>51–53</span>
-</button>
-
-<button class="sumario-link"
-onclick="abrirDocumento('../assets/imagens/1bimestre/unidade2/7adicao-algebrica',
-['p54.png','p56.png'],'u2-algebrica')">
-<span>7. Adição Algébrica</span>
-<span>54–56</span>
-</button>
-
-<button class="sumario-link"
-onclick="abrirDocumento('../assets/imagens/1bimestre/unidade2/8multiplicacao',
-['p58.png','p60.png','p61.png','p62.png'],'u2-multiplicacao')">
-<span>8. Multiplicação de Números Inteiros</span>
-<span>58–62</span>
-</button>
-
-<button class="sumario-link"
-onclick="abrirDocumento('../assets/imagens/1bimestre/unidade2/9divisao',
-['p63.png','p64.png'],'u2-divisao')">
-<span>9. Divisão Exata</span>
-<span>63–64</span>
+<span>➕ 3. Adição de Inteiros</span>
+<span class="pagina">44–49</span>
 </button>
 
 <button class="sumario-link"
 onclick="abrirDocumento('../assets/imagens/1bimestre/unidade2/10potenciacao',
-['p65.png','p66.png','p68.png'],'u2-potenciacao')">
-<span>10. Potenciação</span>
-<span>65–68</span>
-</button>
-
-<button class="sumario-link"
-onclick="abrirDocumento('../assets/imagens/1bimestre/unidade2/11raiz',
-['p69.png'],'u2-raiz')">
-<span>11. Raiz Quadrada Exata</span>
-<span>69</span>
-</button>
-
-<button class="sumario-link"
-onclick="abrirDocumento('../assets/imagens/1bimestre/unidade2/12expressoes',
-['p70.png','p71.png','p72.png'],'u2-expressoes')">
-<span>12. Expressões Numéricas</span>
-<span>70–71</span>
+['p65.png','p66.png','p68.png'],'u2-potencia')">
+<span>⚡ 4. Potenciação</span>
+<span class="pagina">65–68</span>
 </button>
 
 <button class="sumario-link"
 onclick="abrirDocumento('../assets/imagens/1bimestre/unidade2/retomando',
 ['p72.png','p73.png'],'u2-retomando')">
-<span>Retomando o que aprendeu</span>
-<span>72-73</span>
+<span>🔁 Retomando o que aprendeu</span>
+<span class="pagina">72–73</span>
 </button>
+
 </div>
+
+</section>
+
+<!-- ================= AVALIAÇÕES ================= -->
+
+<section id="avaliacoes" class="app-card">
+
+<h2>📝 Avaliações do Bimestre</h2>
+
+<button class="app-btn" onclick="emConstrucao()">
+📌 Simulado
+</button>
+
+<button class="app-btn" onclick="emConstrucao()">
+📘 Avaliação Qualitativa
+</button>
+
+<button class="app-btn" onclick="emConstrucao()">
+🏁 Avaliação Mensal
+</button>
 
 </section>
 
@@ -181,36 +157,35 @@ onclick="abrirDocumento('../assets/imagens/1bimestre/unidade2/retomando',
 
 <div class="overlay" id="overlay">
 <div class="documento">
-<button class="fechar" onclick="fecharDocumento()">✖</button>
+<button class="fechar" onclick="fecharDocumento()">✖ Fechar</button>
 <div id="documentoContainer"></div>
 </div>
 </div>
 
 <!-- ==========================================================
-   NAVEGAÇÃO INFERIOR
+   NAVEGAÇÃO INFERIOR FIXA
 ========================================================== -->
 
 <nav class="bottom-nav">
 
 <a href="../index.html" class="nav-item">
-<svg class="icon" viewBox="0 0 24 24">
-<path d="M12 3l9 8h-3v9h-4v-6H10v6H6v-9H3z"/>
-</svg>
-<span>Início</span>
+🏠<span>Início</span>
 </a>
 
-<a href="#" class="nav-item active-nav">
-<svg class="icon" viewBox="0 0 24 24">
-<path d="M4 4h14a2 2 0 012 2v14H6a2 2 0 01-2-2V4z"/>
-</svg>
-<span>Conteúdos</span>
+<a href="#conteudos" class="nav-item active-nav">
+📚<span>Conteúdos</span>
 </a>
 
 <a href="#avaliacoes" class="nav-item">
-<svg class="icon" viewBox="0 0 24 24">
-<path d="M3 13h4v8H3zm7-6h4v14h-4zm7 3h4v11h-4z"/>
-</svg>
-<span>Avaliações</span>
+📝<span>Avaliações</span>
+</a>
+
+<a href="#" onclick="emConstrucao()" class="nav-item">
+📅<span>2º</span>
+</a>
+
+<a href="#" onclick="emConstrucao()" class="nav-item">
+🚧<span>3º</span>
 </a>
 
 </nav>
