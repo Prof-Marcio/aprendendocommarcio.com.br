@@ -1,4 +1,6 @@
-/* ================= RESET ================= */
+/* ==========================================================
+   RESET GLOBAL
+========================================================== */
 
 *{
 margin:0;
@@ -6,21 +8,28 @@ padding:0;
 box-sizing:border-box;
 }
 
-body{
-font-family:'Segoe UI',sans-serif;
-background:#f4f6fa;
-color:#1e293b;
-line-height:1.6;
+html{
+scroll-behavior:smooth;
 }
 
-/* ================= HEADER ================= */
+body{
+font-family:'Segoe UI', sans-serif;
+background:#f1f5f9;
+color:#1e293b;
+line-height:1.6;
+overflow-x:hidden;
+}
+
+/* ==========================================================
+   HEADER
+========================================================== */
 
 .header{
-background:linear-gradient(135deg,#0f172a,#1e3a8a);
-color:white;
-padding:15px 0;
 position:sticky;
 top:0;
+width:100%;
+background:linear-gradient(135deg,#0f172a,#1e3a8a);
+color:white;
 z-index:1000;
 box-shadow:0 4px 15px rgba(0,0,0,0.2);
 }
@@ -29,9 +38,9 @@ box-shadow:0 4px 15px rgba(0,0,0,0.2);
 max-width:1200px;
 margin:auto;
 display:flex;
-justify-content:space-between;
 align-items:center;
-padding:0 20px;
+justify-content:space-between;
+padding:15px 20px;
 }
 
 .logo{
@@ -39,7 +48,7 @@ display:flex;
 align-items:center;
 gap:10px;
 font-weight:bold;
-font-size:1.1rem;
+font-size:1.2rem;
 }
 
 .logo-icon{
@@ -47,188 +56,253 @@ font-size:1.8rem;
 color:#facc15;
 }
 
+/* ==========================================================
+   MENU
+========================================================== */
+
+.menu-toggle{
+background:none;
+border:none;
+color:white;
+font-size:1.8rem;
+cursor:pointer;
+display:block;
+}
+
+.nav{
+position:fixed;
+top:0;
+right:-100%;
+width:70%;
+height:100vh;
+background:#0f172a;
+transition:0.4s ease;
+padding-top:80px;
+}
+
+.nav.active{
+right:0;
+}
+
 .nav-list{
 list-style:none;
 display:flex;
+flex-direction:column;
 gap:20px;
+padding:20px;
 }
 
 .nav-link{
 color:white;
 text-decoration:none;
-padding:8px 14px;
+font-size:1rem;
+padding:12px;
 border-radius:8px;
 transition:0.3s;
-font-weight:500;
 }
 
 .nav-link:hover{
-background:#2563eb;
+background:#1e40af;
 }
 
 .nav-link.active{
+background:#2563eb;
+}
+
+/* ==========================================================
+   HERO
+========================================================== */
+
+.hero{
+background:linear-gradient(-45deg,#2563eb,#3b82f6,#1e40af,#0ea5e9);
+background-size:400% 400%;
+animation:gradientMove 8s ease infinite;
+color:white;
+text-align:center;
+padding:60px 20px;
+}
+
+@keyframes gradientMove{
+0%{background-position:0% 50%;}
+50%{background-position:100% 50%;}
+100%{background-position:0% 50%;}
+}
+
+.hero h1{
+font-size:2rem;
+margin-bottom:15px;
+}
+
+.hero p{
+font-size:1rem;
+margin-bottom:20px;
+}
+
+.btn-hero{
+display:inline-block;
+padding:14px 30px;
 background:#facc15;
 color:#0f172a;
 font-weight:bold;
+border-radius:30px;
+text-decoration:none;
+transition:0.3s;
 }
 
-/* ================= PAGE TITLE ================= */
-
-.page-title{
-text-align:center;
-padding:60px 20px 30px 20px;
-background:linear-gradient(135deg,#2563eb,#3b82f6);
-color:white;
+.btn-hero:hover{
+transform:scale(1.05);
+box-shadow:0 10px 25px rgba(0,0,0,0.3);
 }
 
-.page-title h1{
-font-size:2.5rem;
-margin-bottom:10px;
-}
-
-.page-title p{
-font-size:1.1rem;
-opacity:0.9;
-}
-
-/* ================= CONTAINER ================= */
+/* ==========================================================
+   CONTAINER
+========================================================== */
 
 .container{
 max-width:1000px;
 margin:auto;
-padding:40px 20px;
+padding:30px 20px;
 }
 
-/* ================= UNIDADES ================= */
+/* ==========================================================
+   CARDS
+========================================================== */
 
-.unidade{
+.card{
 background:white;
 padding:25px;
-border-radius:16px;
-box-shadow:0 10px 30px rgba(0,0,0,0.08);
-margin-bottom:40px;
-transition:0.3s;
+border-radius:20px;
+margin-bottom:25px;
+box-shadow:0 15px 35px rgba(0,0,0,0.08);
+transition:0.4s;
 }
 
-.unidade:hover{
-transform:translateY(-5px);
+.card:hover{
+transform:translateY(-8px);
+box-shadow:0 25px 50px rgba(0,0,0,0.15);
 }
 
-.unidade h2{
-margin-bottom:20px;
+.card h2{
 color:#1e3a8a;
-font-size:1.3rem;
+margin-bottom:10px;
 }
 
-/* ================= BOTÕES CONTEÚDO ================= */
+.card p{
+color:#475569;
+font-size:0.95rem;
+}
 
-.botao-conteudo{
-display:block;
+/* ==========================================================
+   BOTÕES
+========================================================== */
+
+.btn{
 width:100%;
-margin-bottom:15px;
-padding:14px 16px;
+margin-top:15px;
+padding:14px;
 border:none;
 border-radius:12px;
-background:linear-gradient(135deg,#3b82f6,#2563eb);
+background:linear-gradient(135deg,#2563eb,#1e40af);
 color:white;
-font-size:0.95rem;
-font-weight:600;
+font-weight:bold;
 cursor:pointer;
 transition:0.3s;
-box-shadow:0 8px 20px rgba(37,99,235,0.3);
 }
 
-.botao-conteudo:hover{
-transform:scale(1.02);
-box-shadow:0 10px 25px rgba(37,99,235,0.5);
+.btn:hover{
+transform:scale(1.03);
+box-shadow:0 10px 20px rgba(37,99,235,0.4);
 }
 
-/* ================= OVERLAY VISUALIZADOR ================= */
+.disabled{
+background:#94a3b8;
+cursor:not-allowed;
+}
+
+/* ==========================================================
+   OVERLAY DOCUMENTO
+========================================================== */
 
 .overlay{
 display:none;
 position:fixed;
 inset:0;
-background:rgba(0,0,0,0.8);
+background:rgba(0,0,0,0.85);
 justify-content:center;
 align-items:center;
-padding:20px;
+padding:15px;
 z-index:2000;
 }
 
 .documento{
 background:white;
 width:100%;
-max-width:850px;
-height:90vh;
+max-width:900px;
+height:95vh;
 overflow-y:auto;
-border-radius:16px;
-padding:25px;
+border-radius:15px;
+padding:20px;
 position:relative;
-box-shadow:0 30px 60px rgba(0,0,0,0.4);
-animation:fadeIn 0.3s ease;
+box-shadow:0 30px 60px rgba(0,0,0,0.5);
 }
 
 .documento img{
 width:100%;
+height:auto;
 margin-bottom:20px;
 border-radius:10px;
 box-shadow:0 5px 15px rgba(0,0,0,0.15);
 }
 
-/* ================= BOTÃO FECHAR ================= */
-
 .fechar{
 position:absolute;
-top:15px;
-right:15px;
+top:10px;
+right:10px;
 background:#ef4444;
 color:white;
 border:none;
 padding:8px 12px;
 border-radius:8px;
 cursor:pointer;
-font-weight:bold;
-transition:0.2s;
 }
 
-.fechar:hover{
-background:#dc2626;
+/* ==========================================================
+   FOOTER
+========================================================== */
+
+.footer{
+background:#0f172a;
+color:white;
+text-align:center;
+padding:25px;
+margin-top:40px;
 }
 
-/* ================= ANIMAÇÕES ================= */
+/* ==========================================================
+   RESPONSIVO DESKTOP
+========================================================== */
 
-@keyframes fadeIn{
-from{opacity:0; transform:scale(0.9);}
-to{opacity:1; transform:scale(1);}
+@media(min-width:768px){
+
+.menu-toggle{
+display:none;
 }
 
-/* ================= RESPONSIVO ================= */
-
-@media(max-width:768px){
-
-.header-container{
-flex-direction:column;
-gap:10px;
+.nav{
+position:static;
+height:auto;
+width:auto;
+background:none;
+padding-top:0;
 }
 
 .nav-list{
-flex-wrap:wrap;
-justify-content:center;
+flex-direction:row;
+gap:25px;
 }
 
-.page-title h1{
-font-size:2rem;
-}
-
-.documento{
-height:95vh;
-padding:15px;
-}
-
-.botao-conteudo{
-font-size:0.9rem;
-padding:12px;
+.hero h1{
+font-size:2.8rem;
 }
 
 }

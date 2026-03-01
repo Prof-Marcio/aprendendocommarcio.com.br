@@ -3,104 +3,110 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>1º Bimestre | Aprendendo com Márcio</title>
+<title>1º Bimestre | Matemática 7º Ano</title>
+
 <link rel="stylesheet" href="../style.css">
 </head>
 
 <body>
 
+<!-- ================= HEADER ================= -->
+
 <header class="header">
     <div class="header-container">
+
         <div class="logo">
             <span class="logo-icon">∑</span>
             <span class="logo-text">Aprendendo com Márcio</span>
         </div>
 
-        <nav class="nav">
+        <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+
+        <nav class="nav" id="menu">
             <ul class="nav-list">
                 <li><a href="../index.html" class="nav-link">Início</a></li>
                 <li><a href="bimestre1.html" class="nav-link active">1º Bimestre</a></li>
-                <li><a href="bimestre2.html" class="nav-link">2º Bimestre</a></li>
-                <li><a href="bimestre3.html" class="nav-link">3º Bimestre</a></li>
-                <li><a href="bimestre4.html" class="nav-link">4º Bimestre</a></li>
+                <li><a href="#" onclick="emConstrucao()" class="nav-link">2º Bimestre</a></li>
+                <li><a href="#" onclick="emConstrucao()" class="nav-link">3º Bimestre</a></li>
+                <li><a href="#" onclick="emConstrucao()" class="nav-link">4º Bimestre</a></li>
             </ul>
         </nav>
+
     </div>
 </header>
 
-<section class="page-title">
-    <h1>📚 1º BIMESTRE</h1>
-    <p>Organização completa das unidades e conteúdos</p>
+<!-- ================= HERO ================= -->
+
+<section class="hero">
+    <h1>📚 1º Bimestre</h1>
+    <p>Números Naturais e Inteiros</p>
 </section>
 
-<div class="container">
+<!-- ================= CONTEÚDO ================= -->
 
-    <!-- ================= UNIDADE 1 ================= -->
+<section class="container">
 
-    <section class="unidade">
-        <h2>📘 UNIDADE 1 — NÚMEROS NATURAIS E OPERAÇÕES</h2>
+    <!-- UNIDADE 1 -->
+    <div class="card destaque">
+        <h2>📘 Unidade 1 — Números Naturais e Operações</h2>
 
-        <button onclick="abrirDocumento(
-        '../assets/imagens/1bimestre/unidade1/numeros-naturais',
-        ['p12.png','p13.png']
-        )" class="botao-conteudo">
-        1. Números naturais
+        <button class="btn" onclick="abrirDocumento('../assets/imagens/1bimestre/unidade1/numeros-naturais', ['p12.png','p13.png'])">
+        🔢 Números Naturais
         </button>
 
-        <button onclick="abrirDocumento(
-        '../assets/imagens/1bimestre/unidade1/operacoes-naturais',
-        ['p16.png','p17.png','p18.png','p19.png']
-        )" class="botao-conteudo">
-        2. Operações com números naturais
+        <button class="btn" onclick="abrirDocumento('../assets/imagens/1bimestre/unidade1/operacoes-naturais', ['p16.png','p17.png'])">
+        ➕ Operações com Números Naturais
         </button>
 
-        <button onclick="abrirDocumento(
-        '../assets/imagens/1bimestre/unidade1/divisores-multiplos',
-        ['p20.png','p21.png','p22.png','p23.png','p24.png','p26.png','p28.png']
-        )" class="botao-conteudo">
-        3. Divisores e múltiplos
+        <button class="btn" onclick="abrirDocumento('../assets/imagens/1bimestre/unidade1/divisores-multiplos', ['p20.png','p21.png','p22.png','p23.png'])">
+        📐 Divisores, Múltiplos, MDC e MMC
         </button>
 
-    </section>
+    </div>
 
-    <!-- ================= UNIDADE 2 ================= -->
+    <!-- UNIDADE 2 -->
+    <div class="card">
+        <h2>📗 Unidade 2 — O Conjunto dos Números Inteiros</h2>
 
-    <section class="unidade">
-        <h2>📘 UNIDADE 2 — O CONJUNTO DOS NÚMEROS INTEIROS</h2>
-
-        <button onclick="abrirDocumento(
-        '../assets/imagens/1bimestre/unidade2/ideia-inteiros',
-        ['p32.png','p33.png','p35.png']
-        )" class="botao-conteudo">
-        1. A ideia de números inteiros
+        <button class="btn" onclick="abrirDocumento('../assets/imagens/1bimestre/unidade2/inteiros', ['p32.png','p33.png'])">
+        ➖ Números Inteiros
         </button>
 
-        <button onclick="abrirDocumento(
-        '../assets/imagens/1bimestre/unidade2/conjunto-inteiros',
-        ['p36.png','p37.png','p38.png']
-        )" class="botao-conteudo">
-        2. O conjunto dos números inteiros
+        <button class="btn" onclick="abrirDocumento('../assets/imagens/1bimestre/unidade2/operacoes-inteiros', ['p44.png','p45.png','p46.png'])">
+        ➗ Operações com Inteiros
         </button>
 
-        <button onclick="abrirDocumento(
-        '../assets/imagens/1bimestre/unidade2/modulo-inteiros',
-        ['p39.png','p40.png']
-        )" class="botao-conteudo">
-        3. Módulo de um número inteiro
+        <button class="btn" onclick="abrirDocumento('../assets/imagens/1bimestre/unidade2/potenciacao', ['p65.png','p66.png'])">
+        ⚡ Potenciação e Raiz Quadrada
         </button>
 
-    </section>
+        <button class="btn" onclick="abrirDocumento('../assets/imagens/1bimestre/unidade2/expressoes', ['p70.png','p71.png'])">
+        🧮 Expressões Numéricas
+        </button>
 
-</div>
+    </div>
 
-<!-- ================= VISUALIZADOR ================= -->
+</section>
+
+<!-- ================= OVERLAY ================= -->
 
 <div class="overlay" id="overlay">
+
     <div class="documento">
+
         <button class="fechar" onclick="fecharDocumento()">✖</button>
+
         <div id="documentoContainer"></div>
+
     </div>
+
 </div>
+
+<!-- ================= FOOTER ================= -->
+
+<footer class="footer">
+    © 2026 — 1º Bimestre — Aprendendo com Márcio
+</footer>
 
 <script src="../script.js"></script>
 
