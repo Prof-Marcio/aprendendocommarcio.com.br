@@ -198,3 +198,19 @@ document.addEventListener("keydown", function(e){
     }
 
 });
+
+/* ==========================================================
+   REGISTRO SERVICE WORKER (PWA)
+========================================================== */
+
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", function() {
+    navigator.serviceWorker.register("/service-worker.js")
+      .then(function(registration) {
+        console.log("PWA registrada com sucesso:", registration.scope);
+      })
+      .catch(function(error) {
+        console.log("Erro ao registrar PWA:", error);
+      });
+  });
+}
