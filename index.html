@@ -3,13 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Aprendendo com Márcio</title>
+
+<title>📘 Aprendendo com Márcio</title>
 
 <meta name="theme-color" content="#2563eb">
 
 <link rel="manifest" href="manifest.json">
 <link rel="icon" href="assets/icones/app-192.png">
-
 <link rel="apple-touch-icon" href="assets/icones/app-192.png">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -20,17 +20,22 @@
 <body class="app-body">
 
 <!-- ==========================================================
-   HEADER PRINCIPAL
+   HEADER PRINCIPAL ESTILO APP
 ========================================================== -->
 
-<header class="app-header">
+<header class="app-header header-home">
 
-    <div class="app-title">
-        📘 Aprendendo com Márcio
-    </div>
+    <div class="header-content">
 
-    <div class="app-subtitle">
-        Matemática • 7º Ano • 2026
+        <div class="header-logo">
+            📘
+        </div>
+
+        <div class="header-text">
+            <h1>Aprendendo com Márcio</h1>
+            <p>Matemática • 7º Ano • 2026</p>
+        </div>
+
     </div>
 
 </header>
@@ -41,16 +46,20 @@
 
 <main class="app-container">
 
-    <!-- INTRODUÇÃO -->
+    <!-- HERO -->
 
-    <section class="app-card destaque-app">
+    <section class="hero-home">
 
-        <h2>🚀 Plataforma de Aprendizagem</h2>
+        <h2>🚀 Plataforma Digital de Matemática</h2>
 
         <p>
             Planejamento organizado por bimestre com conteúdos,
             exercícios, avaliações e acompanhamento de progresso.
         </p>
+
+        <a href="bimestres/bimestre1.html" class="hero-btn">
+            🎯 Acessar 1º Bimestre
+        </a>
 
     </section>
 
@@ -58,50 +67,66 @@
 
     <section class="app-card">
 
-        <h2>📅 Bimestres</h2>
+        <h2>📅 Organização por Bimestres</h2>
 
-        <!-- 1º Bimestre -->
+        <div class="bimestre-grid">
 
-        <a href="bimestres/bimestre1.html" class="app-btn">
-            📘 1º Bimestre
-            <span class="btn-sub">Números Naturais e Inteiros</span>
-        </a>
+            <!-- 1º BIMESTRE -->
 
-        <!-- 2º -->
+            <a href="bimestres/bimestre1.html" class="card-bimestre card-ativo">
+                <div class="card-icon">📘</div>
+                <div class="card-info">
+                    <h3>1º Bimestre</h3>
+                    <p>Números Naturais e Inteiros</p>
+                </div>
+            </a>
 
-        <button onclick="emConstrucao()" class="app-btn btn-secondary">
-            📗 2º Bimestre
-            <span class="btn-sub">Em construção</span>
-        </button>
+            <!-- 2º BIMESTRE -->
 
-        <!-- 3º -->
+            <div onclick="emConstrucao()" class="card-bimestre">
+                <div class="card-icon">📗</div>
+                <div class="card-info">
+                    <h3>2º Bimestre</h3>
+                    <p>Em construção</p>
+                </div>
+            </div>
 
-        <button onclick="emConstrucao()" class="app-btn btn-secondary">
-            📙 3º Bimestre
-            <span class="btn-sub">Em construção</span>
-        </button>
+            <!-- 3º BIMESTRE -->
 
-        <!-- 4º -->
+            <div onclick="emConstrucao()" class="card-bimestre">
+                <div class="card-icon">📙</div>
+                <div class="card-info">
+                    <h3>3º Bimestre</h3>
+                    <p>Em construção</p>
+                </div>
+            </div>
 
-        <button onclick="emConstrucao()" class="app-btn btn-secondary">
-            📕 4º Bimestre
-            <span class="btn-sub">Em construção</span>
-        </button>
+            <!-- 4º BIMESTRE -->
+
+            <div onclick="emConstrucao()" class="card-bimestre">
+                <div class="card-icon">📕</div>
+                <div class="card-info">
+                    <h3>4º Bimestre</h3>
+                    <p>Em construção</p>
+                </div>
+            </div>
+
+        </div>
 
     </section>
 
-    <!-- SOBRE -->
+    <!-- METODOLOGIA -->
 
     <section class="app-card">
 
-        <h2>👨‍🏫 Metodologia</h2>
+        <h2>👨‍🏫 Metodologia Aplicada</h2>
 
         <ul class="lista-metodologia">
-            <li>✔ Aula Invertida</li>
-            <li>✔ Resolução de Problemas</li>
-            <li>✔ Gamificação</li>
-            <li>✔ Uso de Tecnologia</li>
-            <li>✔ Avaliação Contínua</li>
+            <li>🎯 Aula Invertida</li>
+            <li>🧠 Resolução de Problemas</li>
+            <li>🎮 Gamificação</li>
+            <li>💻 Uso de Tecnologia</li>
+            <li>📊 Avaliação Contínua</li>
         </ul>
 
     </section>
@@ -109,12 +134,10 @@
 </main>
 
 <!-- ==========================================================
-   BOTTOM NAV GLOBAL
+   BOTTOM NAV GLOBAL ESTILO APP
 ========================================================== -->
 
 <nav class="bottom-nav">
-
-    <!-- INÍCIO -->
 
     <a href="index.html" class="nav-item active-nav">
         <svg class="icon" viewBox="0 0 24 24">
@@ -123,29 +146,24 @@
         <span>Início</span>
     </a>
 
-    <!-- 1º BIMESTRE -->
-
     <a href="bimestres/bimestre1.html" class="nav-item">
-        📘 1º Bimestre
+        <span>📘</span>
+        <span>1º</span>
     </a>
 
-    <!-- 2º BIMESTRE -->
-
     <a href="#" onclick="emConstrucao()" class="nav-item">
-        📗 2º Bimestre
+        <span>📗</span>
+        <span>2º</span>
     </a>
 
-    <!-- 3º BIMESTRE -->
-
     <a href="#" onclick="emConstrucao()" class="nav-item">
-        📙 3º Bimestre
+        <span>📙</span>
+        <span>3º</span>
     </a>
 
-    <!-- 4º BIMESTRE -->
-
     <a href="#" onclick="emConstrucao()" class="nav-item">
-           📕 4º Bimestre
-            
+        <span>📕</span>
+        <span>4º</span>
     </a>
 
 </nav>
