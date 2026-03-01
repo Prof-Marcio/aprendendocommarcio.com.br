@@ -1,12 +1,15 @@
 // ==========================================================
 // SISTEMA PROFISSIONAL DE VISUALIZAÇÃO TIPO PDF REAL
 // RESPONSIVO + MOBILE + ANIMAÇÕES + PERFORMANCE
+// VERSÃO OTIMIZADA FINAL
 // ==========================================================
 
 let paginasAtuais = [];
 let paginaAtual = 0;
 let pastaAtual = "";
 let chaveProgressoAtual = "";
+let escalaAtual = 1;
+let eventoZoomAplicado = false;
 
 // ==========================================================
 // ABRIR DOCUMENTO
@@ -73,6 +76,9 @@ function renderizarPagina(){
         </div>
     `;
 
+    escalaAtual = 1;
+    eventoZoomAplicado = false;
+
     aplicarZoomMobile();
 }
 
@@ -101,10 +107,13 @@ function paginaAnterior(){
 function animarTrocaPagina(direcao){
 
     const img = document.getElementById("pdfPage");
+    if(!img) return;
 
     img.style.transition = "all 0.2s ease";
     img.style.opacity = "0";
-    img.style.transform = direcao === "next" ? "translateX(-15px)" : "translateX(15px)";
+    img.style.transform = direcao === "next" 
+        ? "translateX(-15px)" 
+        : "translateX(15px)";
 
     setTimeout(() => {
         renderizarPagina();
@@ -119,6 +128,7 @@ function fecharDocumento(){
     const overlay = document.getElementById("overlay");
     overlay.style.display = "none";
     document.body.style.overflow = "auto";
+    escalaAtual = 1;
 }
 
 // ==========================================================
@@ -126,12 +136,10 @@ function fecharDocumento(){
 // ==========================================================
 
 let touchStartX = 0;
-let touchStartY = 0;
 let touchEndX = 0;
 
 document.addEventListener("touchstart", function(e){
     touchStartX = e.changedTouches[0].screenX;
-    touchStartY = e.changedTouches[0].screenY;
 });
 
 document.addEventListener("touchend", function(e){
@@ -157,30 +165,77 @@ function detectarSwipe(){
 }
 
 // ==========================================================
-// ZOOM PINCH PARA CELULAR
+// ZOOM PROFISSIONAL (RODA MOUSE + PINCH TOUCH)
 // ==========================================================
 
 function aplicarZoomMobile(){
 
     const img = document.getElementById("pdfPage");
+    if(!img || eventoZoomAplicado) return;
 
-    let escala = 1;
+    eventoZoomAplicado = true;
 
+    // ZOOM COM RODA DO MOUSE
     img.addEventListener("wheel", function(e){
         e.preventDefault();
 
         if(e.deltaY < 0){
-            escala += 0.1;
+            escalaAtual += 0.1;
         }else{
-            escala -= 0.1;
+            escalaAtual -= 0.1;
         }
 
-        if(escala < 1) escala = 1;
-        if(escala > 3) escala = 3;
+        limitarEscala();
+        aplicarEscala(img);
+    }, { passive:false });
 
-        img.style.transform = `scale(${escala})`;
-    });
+    // PINCH TOUCH REAL
+    let distanciaInicial = null;
 
+    img.addEventListener("touchmove", function(e){
+
+        if(e.touches.length === 2){
+
+            e.preventDefault();
+
+            const dx = e.touches[0].clientX - e.touches[1].clientX;
+            const dy = e.touches[0].clientY - e.touches[1].clientY;
+
+            const distanciaAtual = Math.sqrt(dx * dx + dy * dy);
+
+            if(!distanciaInicial){
+                distanciaInicial = distanciaAtual;
+            }
+
+            const diferenca = distanciaAtual - distanciaInicial;
+
+            escalaAtual += diferenca * 0.005;
+
+            distanciaInicial = distanciaAtual;
+
+            limitarEscala();
+            aplicarEscala(img);
+        }
+
+    }, { passive:false });
+
+}
+
+// ==========================================================
+// APLICAR ESCALA
+// ==========================================================
+
+function aplicarEscala(img){
+    img.style.transform = `scale(${escalaAtual})`;
+}
+
+// ==========================================================
+// LIMITAR ZOOM
+// ==========================================================
+
+function limitarEscala(){
+    if(escalaAtual < 1) escalaAtual = 1;
+    if(escalaAtual > 3) escalaAtual = 3;
 }
 
 // ==========================================================
@@ -214,7 +269,6 @@ function atualizarProgresso(chave){
 
     localStorage.setItem(chave, "concluido");
 
-    // Atualiza barra visual se existir
     const barra = document.querySelector(".progresso-barra");
 
     if(barra){
@@ -241,7 +295,7 @@ function criarNotificacao(texto){
     aviso.style.padding = "14px 22px";
     aviso.style.borderRadius = "14px";
     aviso.style.boxShadow = "0 10px 30px rgba(0,0,0,0.3)";
-    aviso.style.zIndex = "3000";
+    aviso.style.zIndex = "4000";
     aviso.style.opacity = "0";
     aviso.style.transition = "0.3s";
 
