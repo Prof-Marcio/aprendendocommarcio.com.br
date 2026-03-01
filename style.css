@@ -547,3 +547,273 @@ grid-template-columns:1fr 1fr;
 }
 
 }
+
+/* ==========================================================
+   RESET PROFISSIONAL
+========================================================== */
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+html{
+scroll-behavior:smooth;
+}
+
+body{
+font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+background:#f3f6fb;
+color:#1e293b;
+-webkit-font-smoothing:antialiased;
+padding-bottom:85px; /* espaço para bottom nav */
+}
+
+/* ==========================================================
+   HEADER APP FIXO RESPONSIVO
+========================================================== */
+
+.app-header{
+position:sticky;
+top:0;
+z-index:1000;
+background:linear-gradient(135deg,#2563eb,#1e40af);
+color:white;
+padding:18px 15px;
+box-shadow:0 5px 20px rgba(0,0,0,0.15);
+}
+
+.header-content{
+display:flex;
+align-items:center;
+gap:12px;
+}
+
+.header-logo{
+font-size:1.8rem;
+}
+
+.header-text h1{
+font-size:1.1rem;
+font-weight:700;
+}
+
+.header-text p{
+font-size:0.75rem;
+opacity:0.9;
+margin-top:3px;
+}
+
+/* ==========================================================
+   CONTAINER PRINCIPAL
+========================================================== */
+
+.app-container{
+max-width:900px;
+margin:auto;
+padding:18px;
+}
+
+/* ==========================================================
+   HERO HOME
+========================================================== */
+
+.hero-home{
+background:linear-gradient(135deg,#e0ecff,#f0f6ff);
+padding:20px;
+border-radius:20px;
+margin-bottom:25px;
+text-align:center;
+box-shadow:0 8px 25px rgba(37,99,235,0.1);
+}
+
+.hero-home h2{
+font-size:1rem;
+margin-bottom:8px;
+}
+
+.hero-home p{
+font-size:0.85rem;
+margin-bottom:15px;
+line-height:1.4;
+}
+
+.hero-btn{
+display:inline-block;
+background:#2563eb;
+color:white;
+padding:12px 18px;
+border-radius:14px;
+font-weight:600;
+transition:0.3s;
+}
+
+.hero-btn:active{
+transform:scale(0.95);
+}
+
+/* ==========================================================
+   CARDS
+========================================================== */
+
+.app-card{
+background:white;
+padding:18px;
+border-radius:18px;
+margin-bottom:20px;
+box-shadow:0 6px 25px rgba(0,0,0,0.08);
+}
+
+.app-card h2{
+font-size:1rem;
+margin-bottom:15px;
+}
+
+/* ==========================================================
+   GRID BIMESTRES
+========================================================== */
+
+.bimestre-grid{
+display:flex;
+flex-direction:column;
+gap:14px;
+}
+
+.card-bimestre{
+display:flex;
+align-items:center;
+gap:15px;
+background:#f8fafc;
+padding:16px;
+border-radius:16px;
+transition:0.3s;
+cursor:pointer;
+}
+
+.card-bimestre:active{
+transform:scale(0.97);
+}
+
+.card-ativo{
+border-left:6px solid #2563eb;
+background:#eef2ff;
+}
+
+.card-icon{
+font-size:1.6rem;
+}
+
+.card-info h3{
+font-size:0.95rem;
+margin-bottom:3px;
+}
+
+.card-info p{
+font-size:0.75rem;
+opacity:0.7;
+}
+
+/* ==========================================================
+   LISTA METODOLOGIA
+========================================================== */
+
+.lista-metodologia{
+list-style:none;
+}
+
+.lista-metodologia li{
+margin-bottom:8px;
+font-size:0.85rem;
+}
+
+/* ==========================================================
+   BOTTOM NAV ESTILO APP REAL
+========================================================== */
+
+.bottom-nav{
+position:fixed;
+bottom:0;
+left:0;
+right:0;
+height:65px;
+background:white;
+display:flex;
+justify-content:space-around;
+align-items:center;
+box-shadow:0 -5px 20px rgba(0,0,0,0.12);
+z-index:2000;
+}
+
+.nav-item{
+flex:1;
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+text-decoration:none;
+color:#64748b;
+font-size:0.65rem;
+transition:0.2s;
+height:100%;
+}
+
+.nav-item span{
+font-size:0.65rem;
+margin-top:3px;
+}
+
+.nav-item .icon{
+width:22px;
+height:22px;
+fill:currentColor;
+}
+
+.nav-item:active{
+background:#f1f5f9;
+}
+
+.active-nav{
+color:#2563eb;
+font-weight:600;
+}
+
+/* ==========================================================
+   RESPONSIVO TABLET
+========================================================== */
+
+@media(min-width:768px){
+
+.hero-home h2{
+font-size:1.2rem;
+}
+
+.hero-home p{
+font-size:0.95rem;
+}
+
+.card-info h3{
+font-size:1rem;
+}
+
+.card-info p{
+font-size:0.85rem;
+}
+
+.bottom-nav{
+height:70px;
+}
+
+}
+
+/* ==========================================================
+   RESPONSIVO DESKTOP
+========================================================== */
+
+@media(min-width:1024px){
+
+.app-container{
+max-width:800px;
+}
+
+}
