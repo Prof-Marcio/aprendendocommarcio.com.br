@@ -4,8 +4,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Aprendendo com Márcio | Matemática 7º Ano</title>
-<meta name="description" content="Plataforma de Matemática 7º Ano - Missões, Desafios e Avaliações">
-
 <link rel="stylesheet" href="style.css">
 </head>
 
@@ -25,102 +23,65 @@
             <ul class="nav-list">
                 <li><a href="index.html" class="nav-link active">Início</a></li>
                 <li><a href="bimestres/bimestre1.html" class="nav-link">1º Bimestre</a></li>
-                <li><a href="#" class="nav-link" onclick="emConstrucao()">2º Bimestre</a></li>
-                <li><a href="#" class="nav-link" onclick="emConstrucao()">3º Bimestre</a></li>
-                <li><a href="#" class="nav-link" onclick="emConstrucao()">4º Bimestre</a></li>
+                <li><a href="bimestres/bimestre2.html" class="nav-link">2º Bimestre</a></li>
+                <li><a href="bimestres/bimestre3.html" class="nav-link">3º Bimestre</a></li>
+                <li><a href="bimestres/bimestre4.html" class="nav-link">4º Bimestre</a></li>
             </ul>
         </nav>
-
-        <button class="menu-toggle" onclick="toggleMenu()">☰</button>
 
     </div>
 </header>
 
-<!-- ================= HERO PRINCIPAL ================= -->
+<!-- ================= HERO ================= -->
 
-<section class="hero">
-
-    <h1 class="hero-title">
-        🎮 Bem-vindo à Plataforma de Matemática!
-    </h1>
-
-    <p class="hero-subtitle">
-        Prepare-se para completar missões, resolver desafios e evoluir no 7º Ano 🚀
-    </p>
-
-    <a href="bimestres/bimestre1.html" class="btn btn-primary">
-        🚀 Começar 1º Bimestre
-    </a>
-
-    <a href="#como-funciona" class="btn btn-secondary">
-        📚 Como Funciona?
-    </a>
-
+<section class="page-title">
+    <h1>📘 Planejamento 2026</h1>
+    <p>Matemática • 7º Ano • Organização por Bimestres</p>
 </section>
 
-<!-- ================= COMO FUNCIONA ================= -->
+<!-- ================= CONTEÚDO PRINCIPAL ================= -->
 
-<section id="como-funciona" class="section">
+<div class="container">
 
-    <h2 class="section-title">Como Funciona a Plataforma?</h2>
+    <section class="unidade">
+        <h2>🚀 Acesse os Bimestres</h2>
 
-    <div class="structure-grid">
+        <button onclick="window.location.href='bimestres/bimestre1.html'" class="botao-conteudo">
+        📚 1º Bimestre — Números Naturais e Inteiros
+        </button>
 
-        <div class="structure-card">
-            <h3>🎯 Missões</h3>
-            <p>
-                Cada conteúdo é uma missão para você completar e avançar.
-            </p>
-        </div>
+        <button onclick="window.location.href='bimestres/bimestre2.html'" class="botao-conteudo">
+        📘 2º Bimestre
+        </button>
 
-        <div class="structure-card">
-            <h3>🧠 Desafios</h3>
-            <p>
-                Exercícios que ajudam você a treinar e melhorar.
-            </p>
-        </div>
+        <button onclick="window.location.href='bimestres/bimestre3.html'" class="botao-conteudo">
+        📗 3º Bimestre
+        </button>
 
-        <div class="structure-card">
-            <h3>🏁 Fase Final</h3>
-            <p>
-                A avaliação do bimestre é a fase final do jogo!
-            </p>
-        </div>
+        <button onclick="window.location.href='bimestres/bimestre4.html'" class="botao-conteudo">
+        📙 4º Bimestre
+        </button>
 
-    </div>
+    </section>
 
-</section>
+    <section class="unidade">
+        <h2>🎯 Objetivo do Ambiente</h2>
+        <p>
+        Este ambiente organiza todos os conteúdos do ano letivo de Matemática do 7º ano,
+        divididos por bimestre, unidades e páginas do livro.
+        </p>
+        <p>
+        Cada conteúdo pode ser visualizado como documento digital, facilitando
+        o estudo pelo celular.
+        </p>
+    </section>
 
-<!-- ================= OBJETIVO DO ANO ================= -->
-
-<section class="section">
-
-    <h2 class="section-title">🏆 Seu Objetivo em 2026</h2>
-
-    <p class="section-text">
-        Aprender Matemática de forma organizada, divertida e estratégica.
-        Aqui você acompanha seu progresso e evolui passo a passo!
-    </p>
-
-</section>
-
-<!-- ================= CHAMADA FINAL ================= -->
-
-<section class="section">
-
-    <h2 class="section-title">Pronto para começar?</h2>
-
-    <a href="bimestres/bimestre1.html" class="btn btn-primary">
-        🎮 Entrar na Primeira Missão
-    </a>
-
-</section>
+</div>
 
 <!-- ================= FOOTER ================= -->
 
-<footer class="footer">
-    <p>© 2026 - Aprendendo com Márcio</p>
-    <p>Plataforma de Matemática 7º Ano</p>
+<footer style="text-align:center;padding:25px;background:#0f172a;color:white;">
+© 2026 — Aprendendo com Márcio
 </footer>
 
 <script src="script.js"></script>

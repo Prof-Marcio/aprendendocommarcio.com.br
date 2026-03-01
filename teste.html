@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Visualizador de Conteúdos</title>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+
+body{
+font-family:Arial, sans-serif;
+background:#eef2f7;
+}
+
+/* HEADER */
+header{
+background:linear-gradient(135deg,#1E3A8A,#2563EB);
+color:white;
+padding:20px;
+text-align:center;
+font-size:1.4rem;
+font-weight:bold;
+}
+
+/* CONTAINER */
+.container{
+max-width:1000px;
+margin:auto;
+padding:30px 20px;
+}
+
+/* UNIDADE */
+.unidade{
+background:white;
+padding:20px;
+border-radius:15px;
+box-shadow:0 10px 25px rgba(0,0,0,0.1);
+margin-bottom:30px;
+}
+
+.unidade h2{
+margin-bottom:15px;
+color:#1E3A8A;
+}
+
+/* LISTA CONTEÚDOS */
+.lista{
+list-style:none;
+}
+
+.lista li{
+margin-bottom:12px;
+}
+
+.botao{
+width:100%;
+padding:12px;
+background:linear-gradient(135deg,#2563EB,#1E40AF);
+color:white;
+border:none;
+border-radius:10px;
+cursor:pointer;
+font-size:0.95rem;
+transition:0.3s;
+}
+
+.botao:hover{
+transform:translateY(-3px);
+}
+
+/* OVERLAY */
+.overlay{
+display:none;
+position:fixed;
+inset:0;
+background:rgba(0,0,0,0.8);
+justify-content:center;
+align-items:center;
+padding:20px;
+z-index:999;
+}
+
+.documento{
+background:white;
+width:100%;
+max-width:800px;
+height:90vh;
+overflow-y:auto;
+border-radius:15px;
+padding:25px;
+position:relative;
+}
+
+.documento img{
+width:100%;
+margin-bottom:20px;
+border-radius:8px;
+box-shadow:0 5px 15px rgba(0,0,0,0.2);
+}
+
+.fechar{
+position:absolute;
+top:15px;
+right:15px;
+background:#EF4444;
+color:white;
+border:none;
+padding:8px 12px;
+border-radius:8px;
+cursor:pointer;
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+📚 UNIDADE 1 — NÚMEROS NATURAIS E OPERAÇÕES
+</header>
+
+<div class="container">
+
+<div class="unidade">
+
+<h2>📖 Conteúdos</h2>
+
+<ul class="lista">
+
+<li>
+<button onclick="abrirDocumento('conteudos/unidade1/numeros-naturais', ['p12.png','p13.png'])" class="botao">
+1. Números naturais — Sequência numérica (p.12-13)
+</button>
+</li>
+
+<li>
+<button onclick="abrirDocumento('conteudos/unidade1/operacoes-naturais', ['p16.png','p17.png'])" class="botao">
+2. Operações com números naturais (p.16-17)
+</button>
+</li>
+
+</ul>
+
+</div>
+
+</div>
+
+<!-- OVERLAY -->
+<div class="overlay" id="overlay">
+
+<div class="documento">
+
+<button class="fechar" onclick="fecharDocumento()">✖</button>
+
+<div id="documentoContainer"></div>
+
+</div>
+
+</div>
+
+<script>
+
+function abrirDocumento(pasta, arquivos){
+
+const container = document.getElementById("documentoContainer");
+container.innerHTML = "";
+
+arquivos.forEach(function(nome){
+container.innerHTML += `<img src="${pasta}/${nome}">`;
+});
+
+document.getElementById("overlay").style.display="flex";
+}
+
+function fecharDocumento(){
+document.getElementById("overlay").style.display="none";
+}
+
+</script>
+
+</body>
+</html>

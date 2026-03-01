@@ -1,23 +1,3 @@
-/* =====================================================
-   APRENDENDO COM MÁRCIO 2026
-   VERSÃO JOVEM - MOBILE FIRST
-===================================================== */
-
-/* ================= VARIÁVEIS ================= */
-
-:root{
---azul:#2563EB;
---roxo:#7C3AED;
---laranja:#F97316;
---verde:#22C55E;
---fundo:#F1F5F9;
---branco:#FFFFFF;
---texto:#1E293B;
---radius:18px;
---shadow:0 10px 30px rgba(0,0,0,0.12);
---transition:0.3s ease;
-}
-
 /* ================= RESET ================= */
 
 *{
@@ -27,449 +7,228 @@ box-sizing:border-box;
 }
 
 body{
-font-family: 'Segoe UI', sans-serif;
-background:var(--fundo);
-color:var(--texto);
-padding-top:70px;
+font-family:'Segoe UI',sans-serif;
+background:#f4f6fa;
+color:#1e293b;
 line-height:1.6;
 }
 
 /* ================= HEADER ================= */
 
 .header{
-position:fixed;
-top:0;
-width:100%;
-background:linear-gradient(135deg,var(--azul),var(--roxo));
+background:linear-gradient(135deg,#0f172a,#1e3a8a);
 color:white;
+padding:15px 0;
+position:sticky;
+top:0;
 z-index:1000;
+box-shadow:0 4px 15px rgba(0,0,0,0.2);
 }
 
 .header-container{
+max-width:1200px;
+margin:auto;
 display:flex;
 justify-content:space-between;
 align-items:center;
-padding:15px 20px;
+padding:0 20px;
 }
 
 .logo{
 display:flex;
 align-items:center;
-gap:8px;
+gap:10px;
 font-weight:bold;
-font-size:1rem;
+font-size:1.1rem;
 }
 
 .logo-icon{
-font-size:1.4rem;
-color:var(--laranja);
-}
-
-/* ================= MENU ================= */
-
-.nav{
-display:none;
-position:absolute;
-top:70px;
-right:20px;
-background:var(--azul);
-padding:20px;
-border-radius:var(--radius);
-box-shadow:var(--shadow);
-}
-
-.nav.ativo{
-display:block;
+font-size:1.8rem;
+color:#facc15;
 }
 
 .nav-list{
 list-style:none;
 display:flex;
-flex-direction:column;
-gap:15px;
+gap:20px;
 }
 
 .nav-link{
 color:white;
 text-decoration:none;
+padding:8px 14px;
+border-radius:8px;
+transition:0.3s;
 font-weight:500;
-font-size:1rem;
 }
 
-.menu-toggle{
-background:none;
-border:none;
-color:white;
-font-size:1.6rem;
-cursor:pointer;
+.nav-link:hover{
+background:#2563eb;
 }
 
-/* ================= HERO ================= */
-
-.hero{
-padding:60px 20px;
-text-align:center;
-background:linear-gradient(135deg,var(--azul),var(--roxo));
-color:white;
-}
-
-.hero-title{
-font-size:1.8rem;
-margin-bottom:15px;
-}
-
-.hero-subtitle{
-font-size:1rem;
-margin-bottom:25px;
-opacity:0.95;
-}
-
-/* ================= BOTÕES ================= */
-
-.btn{
-display:block;
-width:100%;
-padding:15px;
-border-radius:30px;
+.nav-link.active{
+background:#facc15;
+color:#0f172a;
 font-weight:bold;
-text-align:center;
-text-decoration:none;
-margin-bottom:15px;
-transition:var(--transition);
 }
 
-.btn-primary{
-background:var(--laranja);
+/* ================= PAGE TITLE ================= */
+
+.page-title{
+text-align:center;
+padding:60px 20px 30px 20px;
+background:linear-gradient(135deg,#2563eb,#3b82f6);
 color:white;
 }
 
-.btn-primary:active{
-transform:scale(0.97);
+.page-title h1{
+font-size:2.5rem;
+margin-bottom:10px;
 }
 
-.btn-secondary{
-background:white;
-color:var(--azul);
+.page-title p{
+font-size:1.1rem;
+opacity:0.9;
 }
 
-/* ================= SEÇÕES ================= */
+/* ================= CONTAINER ================= */
 
-.section{
-padding:60px 20px;
+.container{
+max-width:1000px;
+margin:auto;
+padding:40px 20px;
 }
 
-.section-title{
-font-size:1.4rem;
-text-align:center;
-margin-bottom:20px;
-}
+/* ================= UNIDADES ================= */
 
-.section-text{
-text-align:center;
-font-size:0.95rem;
-margin-bottom:30px;
-}
-
-/* ================= CARDS ================= */
-
-.structure-grid{
-display:flex;
-flex-direction:column;
-gap:20px;
-}
-
-.structure-card{
+.unidade{
 background:white;
 padding:25px;
-border-radius:var(--radius);
-box-shadow:var(--shadow);
-transition:var(--transition);
+border-radius:16px;
+box-shadow:0 10px 30px rgba(0,0,0,0.08);
+margin-bottom:40px;
+transition:0.3s;
 }
 
-.structure-card:active{
-transform:scale(0.98);
+.unidade:hover{
+transform:translateY(-5px);
 }
 
-.clickable{
-cursor:pointer;
+.unidade h2{
+margin-bottom:20px;
+color:#1e3a8a;
+font-size:1.3rem;
 }
 
-/* ================= INDICADORES ================= */
+/* ================= BOTÕES CONTEÚDO ================= */
 
-.bimestre-indicadores{
-display:flex;
-justify-content:space-around;
-margin-top:25px;
-}
-
-.indicador{
-background:rgba(255,255,255,0.2);
-padding:15px;
-border-radius:var(--radius);
-text-align:center;
-min-width:80px;
-}
-
-.indicador strong{
+.botao-conteudo{
 display:block;
-font-size:1.2rem;
-}
-
-/* ================= TIMELINE ================= */
-
-.timeline{
-display:flex;
-flex-direction:column;
-gap:15px;
-margin-top:20px;
-}
-
-.timeline-item{
-background:white;
-padding:15px;
-border-radius:var(--radius);
-box-shadow:var(--shadow);
-font-size:0.9rem;
-}
-
-.destaque{
-background:var(--verde);
+width:100%;
+margin-bottom:15px;
+padding:14px 16px;
+border:none;
+border-radius:12px;
+background:linear-gradient(135deg,#3b82f6,#2563eb);
 color:white;
+font-size:0.95rem;
+font-weight:600;
+cursor:pointer;
+transition:0.3s;
+box-shadow:0 8px 20px rgba(37,99,235,0.3);
 }
 
-/* ================= LIVRO ================= */
+.botao-conteudo:hover{
+transform:scale(1.02);
+box-shadow:0 10px 25px rgba(37,99,235,0.5);
+}
+
+/* ================= OVERLAY VISUALIZADOR ================= */
 
 .overlay{
 display:none;
 position:fixed;
 inset:0;
-background:rgba(0,0,0,0.7);
+background:rgba(0,0,0,0.8);
 justify-content:center;
 align-items:center;
 padding:20px;
+z-index:2000;
 }
 
-.overlay.ativo{
-display:flex;
-}
-
-.livro{
+.documento{
 background:white;
 width:100%;
-max-width:400px;
-height:80vh;
-border-radius:var(--radius);
-padding:20px;
-position:relative;
-display:flex;
-flex-direction:column;
-justify-content:space-between;
-}
-
-.livro-conteudo{
+max-width:850px;
+height:90vh;
 overflow-y:auto;
+border-radius:16px;
+padding:25px;
+position:relative;
+box-shadow:0 30px 60px rgba(0,0,0,0.4);
+animation:fadeIn 0.3s ease;
 }
 
-.livro-controles{
-display:flex;
-justify-content:space-between;
-margin-top:10px;
-}
-
-.livro-controles button{
-padding:10px 15px;
-border:none;
+.documento img{
+width:100%;
+margin-bottom:20px;
 border-radius:10px;
-background:var(--azul);
-color:white;
-font-size:1rem;
+box-shadow:0 5px 15px rgba(0,0,0,0.15);
 }
 
-.btn-close{
+/* ================= BOTÃO FECHAR ================= */
+
+.fechar{
 position:absolute;
-top:10px;
-right:10px;
-background:var(--laranja);
+top:15px;
+right:15px;
+background:#ef4444;
 color:white;
 border:none;
 padding:8px 12px;
-border-radius:10px;
+border-radius:8px;
+cursor:pointer;
+font-weight:bold;
+transition:0.2s;
 }
 
-/* ================= FOOTER ================= */
-
-.footer{
-background:var(--azul);
-color:white;
-text-align:center;
-padding:30px 20px;
-font-size:0.9rem;
+.fechar:hover{
+background:#dc2626;
 }
 
-/* ================= TABLET ================= */
+/* ================= ANIMAÇÕES ================= */
 
-@media(min-width:768px){
-
-.hero-title{
-font-size:2.4rem;
+@keyframes fadeIn{
+from{opacity:0; transform:scale(0.9);}
+to{opacity:1; transform:scale(1);}
 }
 
-.structure-grid{
-flex-direction:row;
-justify-content:center;
-}
+/* ================= RESPONSIVO ================= */
 
-.structure-card{
-width:300px;
-}
+@media(max-width:768px){
 
-}
-
-/* ================= DESKTOP ================= */
-
-@media(min-width:1024px){
-
-.nav{
-display:block !important;
-position:static;
-background:none;
-box-shadow:none;
-padding:0;
+.header-container{
+flex-direction:column;
+gap:10px;
 }
 
 .nav-list{
-flex-direction:row;
+flex-wrap:wrap;
+justify-content:center;
 }
 
-.menu-toggle{
-display:none;
+.page-title h1{
+font-size:2rem;
 }
 
-.hero{
-padding:120px 20px;
+.documento{
+height:95vh;
+padding:15px;
 }
 
-.hero-title{
-font-size:3rem;
+.botao-conteudo{
+font-size:0.9rem;
+padding:12px;
 }
 
-}
-
-/* ================= ANIMAÇÕES GERAIS ================= */
-
-@keyframes flutuar {
-    0% { transform: translateY(0px); }
-    50% { transform: translateY(-8px); }
-    100% { transform: translateY(0px); }
-}
-
-@keyframes aparecer {
-    from { opacity: 0; transform: translateY(15px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes progressoAnimado {
-    from { width: 0%; }
-    to { width: var(--progresso); }
-}
-
-/* ================= HERO ANIMADO ================= */
-
-.hero-title {
-    animation: aparecer 0.8s ease forwards;
-}
-
-.hero-subtitle {
-    animation: aparecer 1.2s ease forwards;
-}
-
-.hero::after {
-    content: "➕  ✖  ➗  ➖";
-    position: absolute;
-    bottom: 10px;
-    left: 50%;
-    transform: translateX(-50%);
-    font-size: 1.5rem;
-    opacity: 0.2;
-    animation: flutuar 3s infinite ease-in-out;
-}
-
-/* ================= CARDS ANIMADOS ================= */
-
-.structure-card {
-    animation: aparecer 0.6s ease forwards;
-}
-
-.structure-card:hover {
-    transform: translateY(-8px) scale(1.02);
-    box-shadow: 0 15px 35px rgba(0,0,0,0.15);
-}
-
-/* ================= BARRA DE PROGRESSO MELHORADA ================= */
-
-.barra-externa {
-    background:#e2e8f0;
-    border-radius:20px;
-    height:22px;
-    overflow:hidden;
-    margin-top:15px;
-}
-
-.barra-interna {
-    background:linear-gradient(90deg,#22C55E,#16A34A);
-    height:100%;
-    width:0%;
-    border-radius:20px;
-    transition:width 0.6s ease;
-}
-
-/* ================= MEDALHAS ================= */
-
-.medalha {
-    font-size:2rem;
-    animation: flutuar 2.5s infinite ease-in-out;
-}
-
-.medalha.bronze { color:#CD7F32; }
-.medalha.prata { color:#C0C0C0; }
-.medalha.ouro { color:#FFD700; }
-
-/* ================= NOTIFICAÇÃO ANIMADA ================= */
-
-.notificacao-jovem {
-    position:fixed;
-    bottom:20px;
-    left:50%;
-    transform:translateX(-50%) translateY(40px);
-    background:linear-gradient(135deg,#2563EB,#7C3AED);
-    color:white;
-    padding:15px 25px;
-    border-radius:20px;
-    box-shadow:0 10px 30px rgba(0,0,0,0.2);
-    opacity:0;
-    transition:0.4s ease;
-    z-index:9999;
-}
-
-.notificacao-jovem.mostrar {
-    opacity:1;
-    transform:translateX(-50%) translateY(0);
-}
-
-/* ================= BOTÃO MISSÃO COMPLETA ================= */
-
-.btn-missao {
-    background:#22C55E;
-    color:white;
-    padding:12px;
-    border:none;
-    border-radius:15px;
-    width:100%;
-    margin-top:15px;
-    font-weight:bold;
-    transition:0.3s;
-}
-
-.btn-missao:active {
-    transform:scale(0.95);
 }

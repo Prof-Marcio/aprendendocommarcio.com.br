@@ -3,19 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Missões do 1º Bimestre | Matemática 7º Ano</title>
-<meta name="description" content="Missões do 1º Bimestre - Matemática 7º Ano">
-
+<title>1º Bimestre | Aprendendo com Márcio</title>
 <link rel="stylesheet" href="../style.css">
 </head>
 
 <body>
 
-<!-- ================= HEADER ================= -->
-
 <header class="header">
     <div class="header-container">
-
         <div class="logo">
             <span class="logo-icon">∑</span>
             <span class="logo-text">Aprendendo com Márcio</span>
@@ -25,127 +20,87 @@
             <ul class="nav-list">
                 <li><a href="../index.html" class="nav-link">Início</a></li>
                 <li><a href="bimestre1.html" class="nav-link active">1º Bimestre</a></li>
-                <li><a href="#" class="nav-link" onclick="emConstrucao()">2º Bimestre</a></li>
-                <li><a href="#" class="nav-link" onclick="emConstrucao()">3º Bimestre</a></li>
-                <li><a href="#" class="nav-link" onclick="emConstrucao()">4º Bimestre</a></li>
+                <li><a href="bimestre2.html" class="nav-link">2º Bimestre</a></li>
+                <li><a href="bimestre3.html" class="nav-link">3º Bimestre</a></li>
+                <li><a href="bimestre4.html" class="nav-link">4º Bimestre</a></li>
             </ul>
         </nav>
-
-        <button class="menu-toggle" onclick="toggleMenu()">☰</button>
-
     </div>
 </header>
 
-<!-- ================= HERO MISSÕES ================= -->
-
-<section class="hero">
-
-    <h1 class="hero-title">
-        🎮 Missões do 1º Bimestre
-    </h1>
-
-    <p class="hero-subtitle">
-        Complete cada missão e evolua no seu nível em Matemática 🚀
-    </p>
-
+<section class="page-title">
+    <h1>📚 1º BIMESTRE</h1>
+    <p>Organização completa das unidades e conteúdos</p>
 </section>
 
-<!-- ================= MISSÕES PRINCIPAIS ================= -->
+<div class="container">
 
-<section class="section">
+    <!-- ================= UNIDADE 1 ================= -->
 
-    <h2 class="section-title">🚀 Missões Disponíveis</h2>
+    <section class="unidade">
+        <h2>📘 UNIDADE 1 — NÚMEROS NATURAIS E OPERAÇÕES</h2>
 
-    <div class="structure-grid">
-
-        <div class="structure-card clickable" onclick="abrirLivro('conteudos')">
-            <h3>🎯 Missões de Conteúdo</h3>
-            <p>
-                Aprenda os conteúdos passo a passo.
-            </p>
-        </div>
-
-        <div class="structure-card clickable" onclick="abrirLivro('exercicios')">
-            <h3>🧠 Desafios</h3>
-            <p>
-                Resolva exercícios e treine suas habilidades.
-            </p>
-        </div>
-
-        <div class="structure-card clickable" onclick="abrirLivro('avaliacoes')">
-            <h3>🏁 Fase Final</h3>
-            <p>
-                Enfrente a avaliação do bimestre.
-            </p>
-        </div>
-
-    </div>
-
-</section>
-
-<!-- ================= PROGRESSO DO ALUNO ================= -->
-
-<section class="section">
-
-    <h2 class="section-title">📊 Seu Progresso</h2>
-
-    <p class="section-text">
-        A cada missão concluída, você avança no bimestre!
-    </p>
-
-    <div style="background:#e2e8f0; border-radius:20px; overflow:hidden; height:20px;">
-        <div id="barraVisual" style="background:#22C55E; height:100%; width:20%; transition:0.4s;"></div>
-    </div>
-
-</section>
-
-<!-- ================= LINHA DE MISSÕES ================= -->
-
-<section class="section">
-
-    <h2 class="section-title">🗺️ Caminho do Bimestre</h2>
-
-    <div class="timeline">
-
-        <div class="timeline-item">Missão 1 🚀 Sequências</div>
-        <div class="timeline-item">Missão 2 🔍 Números Primos</div>
-        <div class="timeline-item">Missão 3 ⚙️ MMC e MDC</div>
-        <div class="timeline-item">Missão 4 🔢 Inteiros</div>
-        <div class="timeline-item destaque">🏁 Revisão Final</div>
-
-    </div>
-
-</section>
-
-<!-- ================= OVERLAY DO LIVRO ================= -->
-
-<div class="overlay" id="overlay">
-
-    <div class="livro">
-
-        <div id="conteudoLivro" class="livro-conteudo">
-            <!-- Conteúdo dinâmico -->
-        </div>
-
-        <div class="livro-controles">
-            <button onclick="paginaAnterior()">◀</button>
-            <button onclick="proximaPagina()">▶</button>
-        </div>
-
-        <button class="btn-close" onclick="fecharLivro()">
-            ✖
+        <button onclick="abrirDocumento(
+        '../assets/imagens/1bimestre/unidade1/numeros-naturais',
+        ['p12.png','p13.png']
+        )" class="botao-conteudo">
+        1. Números naturais
         </button>
 
-    </div>
+        <button onclick="abrirDocumento(
+        '../assets/imagens/1bimestre/unidade1/operacoes-naturais',
+        ['p16.png','p17.png','p18.png','p19.png']
+        )" class="botao-conteudo">
+        2. Operações com números naturais
+        </button>
+
+        <button onclick="abrirDocumento(
+        '../assets/imagens/1bimestre/unidade1/divisores-multiplos',
+        ['p20.png','p21.png','p22.png','p23.png','p24.png','p26.png','p28.png']
+        )" class="botao-conteudo">
+        3. Divisores e múltiplos
+        </button>
+
+    </section>
+
+    <!-- ================= UNIDADE 2 ================= -->
+
+    <section class="unidade">
+        <h2>📘 UNIDADE 2 — O CONJUNTO DOS NÚMEROS INTEIROS</h2>
+
+        <button onclick="abrirDocumento(
+        '../assets/imagens/1bimestre/unidade2/ideia-inteiros',
+        ['p32.png','p33.png','p35.png']
+        )" class="botao-conteudo">
+        1. A ideia de números inteiros
+        </button>
+
+        <button onclick="abrirDocumento(
+        '../assets/imagens/1bimestre/unidade2/conjunto-inteiros',
+        ['p36.png','p37.png','p38.png']
+        )" class="botao-conteudo">
+        2. O conjunto dos números inteiros
+        </button>
+
+        <button onclick="abrirDocumento(
+        '../assets/imagens/1bimestre/unidade2/modulo-inteiros',
+        ['p39.png','p40.png']
+        )" class="botao-conteudo">
+        3. Módulo de um número inteiro
+        </button>
+
+    </section>
 
 </div>
 
-<!-- ================= FOOTER ================= -->
+<!-- ================= VISUALIZADOR ================= -->
 
-<footer class="footer">
-    <p>© 2026 - Aprendendo com Márcio</p>
-    <p>Missões do 1º Bimestre</p>
-</footer>
+<div class="overlay" id="overlay">
+    <div class="documento">
+        <button class="fechar" onclick="fecharDocumento()">✖</button>
+        <div id="documentoContainer"></div>
+    </div>
+</div>
 
 <script src="../script.js"></script>
 
