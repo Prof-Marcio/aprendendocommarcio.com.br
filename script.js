@@ -1,171 +1,152 @@
 /* ==========================================================
-   SISTEMA COMPLETO — APRENDENDO COM MÁRCIO
-   Estrutura Profissional Escalável
+   SISTEMA LIVRO REAL + ZOOM MOBILE
 ========================================================== */
 
-/* ==========================================================
-   CONTROLE GLOBAL
-========================================================== */
-
-const SistemaVisualizador = {
-
-    overlay: null,
-    container: null,
-    carregando: null,
-    imagensAtuais: [],
-    bloqueado: false,
-
-    iniciar: function(){
-
-        this.overlay = document.getElementById("overlay");
-        this.container = document.getElementById("documentoContainer");
-
-        if(!this.overlay || !this.container){
-            console.warn("Overlay ou container não encontrado.");
-            return;
-        }
-
-        this.criarLoader();
-        this.registrarEventosGlobais();
-    },
-
-    /* ======================================================
-       CRIAR LOADER VISUAL
-    ====================================================== */
-
-    criarLoader: function(){
-
-        const loader = document.createElement("div");
-        loader.id = "loaderVisualizador";
-        loader.style.display = "none";
-        loader.style.textAlign = "center";
-        loader.style.padding = "20px";
-        loader.innerHTML = "📖 Carregando páginas...";
-
-        this.container.parentNode.insertBefore(loader, this.container);
-        this.carregando = loader;
-    },
-
-    mostrarLoader: function(){
-        if(this.carregando){
-            this.carregando.style.display = "block";
-        }
-    },
-
-    esconderLoader: function(){
-        if(this.carregando){
-            this.carregando.style.display = "none";
-        }
-    },
-
-    /* ======================================================
-       ABRIR DOCUMENTO
-    ====================================================== */
-
-    abrir: function(pasta, arquivos){
-
-        if(this.bloqueado) return;
-
-        this.bloqueado = true;
-        this.mostrarLoader();
-
-        this.container.innerHTML = "";
-        this.imagensAtuais = [];
-
-        let imagensCarregadas = 0;
-        const total = arquivos.length;
-
-        arquivos.forEach((nome) => {
-
-            const img = document.createElement("img");
-
-            img.src = `${pasta}/${nome}`;
-            img.alt = nome;
-            img.loading = "lazy";
-            img.style.opacity = "0";
-            img.style.transition = "opacity 0.3s ease";
-
-            img.onload = () => {
-                img.style.opacity = "1";
-                imagensCarregadas++;
-
-                if(imagensCarregadas === total){
-                    this.esconderLoader();
-                    this.bloqueado = false;
-                }
-            };
-
-            img.onerror = () => {
-                console.error("Erro ao carregar:", nome);
-            };
-
-            this.container.appendChild(img);
-            this.imagensAtuais.push(img);
-
-        });
-
-        this.overlay.style.display = "flex";
-        document.body.style.overflow = "hidden";
-    },
-
-    /* ======================================================
-       FECHAR DOCUMENTO
-    ====================================================== */
-
-    fechar: function(){
-
-        this.overlay.style.display = "none";
-        document.body.style.overflow = "auto";
-        this.container.innerHTML = "";
-        this.imagensAtuais = [];
-    },
-
-    /* ======================================================
-       EVENTOS GLOBAIS
-    ====================================================== */
-
-    registrarEventosGlobais: function(){
-
-        // Fechar clicando fora
-        document.addEventListener("click", (e) => {
-            if(e.target === this.overlay){
-                this.fechar();
-            }
-        });
-
-        // Fechar com ESC
-        document.addEventListener("keydown", (e) => {
-            if(e.key === "Escape"){
-                this.fechar();
-            }
-        });
-
-    }
-
+let livro = {
+    pasta: "",
+    paginas: [],
+    atual: 0
 };
 
-
-/* ==========================================================
-   FUNÇÕES GLOBAIS PARA HTML
-========================================================== */
+let zoom = {
+    escala: 1,
+    posX: 0,
+    posY: 0,
+    ativo: false
+};
 
 function abrirDocumento(pasta, arquivos){
-    SistemaVisualizador.abrir(pasta, arquivos);
+
+    livro.pasta = pasta;
+    livro.paginas = arquivos;
+    livro.atual = 0;
+
+    document.getElementById("overlay").style.display = "flex";
+    document.body.style.overflow = "hidden";
+
+    renderizarPagina();
+}
+
+function renderizarPagina(){
+
+    const container = document.getElementById("documentoContainer");
+
+    container.innerHTML = `
+        <div class="pagina-livro animar">
+            <div class="zoom-wrapper">
+                <img id="imagemLivro"
+                     src="${livro.pasta}/${livro.paginas[livro.atual]}"
+                     alt="Página ${livro.atual + 1}">
+            </div>
+        </div>
+
+        <div class="controle-livro">
+            <button onclick="paginaAnterior()">◀</button>
+            <span>${livro.atual + 1} / ${livro.paginas.length}</span>
+            <button onclick="proximaPagina()">▶</button>
+        </div>
+    `;
+
+    iniciarZoom();
+}
+
+function proximaPagina(){
+    if(livro.atual < livro.paginas.length - 1){
+        livro.atual++;
+        renderizarPagina();
+    }
+}
+
+function paginaAnterior(){
+    if(livro.atual > 0){
+        livro.atual--;
+        renderizarPagina();
+    }
 }
 
 function fecharDocumento(){
-    SistemaVisualizador.fechar();
+    document.getElementById("overlay").style.display = "none";
+    document.body.style.overflow = "auto";
+}
+
+/* ==========================================================
+   SISTEMA DE ZOOM
+========================================================== */
+
+function iniciarZoom(){
+
+    const img = document.getElementById("imagemLivro");
+
+    let ultimoToque = 0;
+    let distanciaInicial = 0;
+
+    img.addEventListener("touchstart", function(e){
+
+        if(e.touches.length === 2){
+
+            zoom.ativo = true;
+            distanciaInicial = calcularDistancia(e.touches[0], e.touches[1]);
+
+        }
+
+        // Duplo toque
+        const agora = new Date().getTime();
+        if(agora - ultimoToque < 300){
+            alternarZoom(img);
+        }
+        ultimoToque = agora;
+
+    });
+
+    img.addEventListener("touchmove", function(e){
+
+        if(zoom.ativo && e.touches.length === 2){
+
+            e.preventDefault();
+
+            const novaDistancia = calcularDistancia(e.touches[0], e.touches[1]);
+
+            zoom.escala = novaDistancia / distanciaInicial;
+
+            if(zoom.escala < 1) zoom.escala = 1;
+            if(zoom.escala > 4) zoom.escala = 4;
+
+            aplicarTransform(img);
+
+        }
+
+    });
+
+    img.addEventListener("touchend", function(e){
+        if(e.touches.length < 2){
+            zoom.ativo = false;
+        }
+    });
+
+}
+
+function calcularDistancia(t1, t2){
+    const dx = t1.clientX - t2.clientX;
+    const dy = t1.clientY - t2.clientY;
+    return Math.sqrt(dx * dx + dy * dy);
+}
+
+function alternarZoom(img){
+
+    if(zoom.escala === 1){
+        zoom.escala = 2;
+    } else {
+        zoom.escala = 1;
+    }
+
+    aplicarTransform(img);
+}
+
+function aplicarTransform(img){
+    img.style.transform = `scale(${zoom.escala})`;
+    img.style.transition = "transform 0.2s ease";
 }
 
 function emConstrucao(){
     alert("🚧 Este bimestre ainda está em construção 🚧");
 }
-
-
-/* ==========================================================
-   INICIALIZAÇÃO AUTOMÁTICA
-========================================================== */
-
-document.addEventListener("DOMContentLoaded", function(){
-    SistemaVisualizador.iniciar();
-});
