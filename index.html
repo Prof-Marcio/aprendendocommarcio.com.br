@@ -4,88 +4,145 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Aprendendo com Márcio | Matemática 7º Ano</title>
+<meta name="description" content="Planejamento anual de Matemática 7º Ano - Plataforma digital interativa">
 
 <link rel="stylesheet" href="style.css">
 </head>
 
-<body>
+<body class="app-body">
 
-<!-- ================= HEADER ================= -->
+<!-- ==========================================================
+   HEADER PRINCIPAL
+========================================================== -->
 
-<header class="header">
-    <div class="header-container">
+<header class="app-header">
 
-        <div class="logo">
-            <span class="logo-icon">∑</span>
-            <span class="logo-text">Aprendendo com Márcio</span>
-        </div>
-
-        <button class="menu-toggle" onclick="toggleMenu()">☰</button>
-
-        <nav class="nav" id="menu">
-            <ul class="nav-list">
-                <li><a href="index.html" class="nav-link active">Início</a></li>
-                <li><a href="bimestres/bimestre1.html" class="nav-link">1º Bimestre</a></li>
-                <li><a href="#" onclick="emConstrucao()" class="nav-link">2º Bimestre</a></li>
-                <li><a href="#" onclick="emConstrucao()" class="nav-link">3º Bimestre</a></li>
-                <li><a href="#" onclick="emConstrucao()" class="nav-link">4º Bimestre</a></li>
-            </ul>
-        </nav>
-
+    <div class="app-title">
+        📘 Aprendendo com Márcio
     </div>
+
+    <div class="app-subtitle">
+        Matemática • 7º Ano • 2026
+    </div>
+
 </header>
 
-<!-- ================= HERO ================= -->
+<!-- ==========================================================
+   CONTEÚDO PRINCIPAL
+========================================================== -->
 
-<section class="hero">
-    <h1>📘 Matemática 7º Ano</h1>
-    <p>Planejamento organizado por bimestres</p>
-    <a href="bimestres/bimestre1.html" class="btn-hero">Acessar 1º Bimestre</a>
-</section>
+<main class="app-container">
 
-<!-- ================= CARDS ================= -->
+    <!-- INTRODUÇÃO -->
 
-<section class="container">
+    <section class="app-card destaque-app">
 
-    <div class="card destaque">
-        <h2>📚 1º Bimestre</h2>
-        <p>Números Naturais e Inteiros</p>
-        <button onclick="window.location.href='bimestres/bimestre1.html'" class="btn">
-            Entrar
+        <h2>🚀 Plataforma de Aprendizagem</h2>
+
+        <p>
+            Planejamento organizado por bimestre com conteúdos,
+            exercícios, avaliações e acompanhamento de progresso.
+        </p>
+
+    </section>
+
+    <!-- BIMESTRES -->
+
+    <section class="app-card">
+
+        <h2>📅 Bimestres</h2>
+
+        <!-- 1º Bimestre -->
+
+        <a href="bimestres/bimestre1.html" class="app-btn">
+            📘 1º Bimestre
+            <span class="btn-sub">Números Naturais e Inteiros</span>
+        </a>
+
+        <!-- 2º -->
+
+        <button onclick="emConstrucao()" class="app-btn btn-secondary">
+            📗 2º Bimestre
+            <span class="btn-sub">Em construção</span>
         </button>
-    </div>
 
-    <div class="card">
-        <h2>📘 2º Bimestre</h2>
-        <p>Conteúdo em preparação</p>
-        <button onclick="emConstrucao()" class="btn disabled">
-            Em Construção
+        <!-- 3º -->
+
+        <button onclick="emConstrucao()" class="app-btn btn-secondary">
+            📙 3º Bimestre
+            <span class="btn-sub">Em construção</span>
         </button>
-    </div>
 
-    <div class="card">
-        <h2>📗 3º Bimestre</h2>
-        <p>Conteúdo em preparação</p>
-        <button onclick="emConstrucao()" class="btn disabled">
-            Em Construção
+        <!-- 4º -->
+
+        <button onclick="emConstrucao()" class="app-btn btn-secondary">
+            📕 4º Bimestre
+            <span class="btn-sub">Em construção</span>
         </button>
-    </div>
 
-    <div class="card">
-        <h2>📙 4º Bimestre</h2>
-        <p>Conteúdo em preparação</p>
-        <button onclick="emConstrucao()" class="btn disabled">
-            Em Construção
-        </button>
-    </div>
+    </section>
 
-</section>
+    <!-- SOBRE -->
 
-<!-- ================= FOOTER ================= -->
+    <section class="app-card">
 
-<footer class="footer">
-    © 2026 — Aprendendo com Márcio
-</footer>
+        <h2>👨‍🏫 Metodologia</h2>
+
+        <ul class="lista-metodologia">
+            <li>✔ Aula Invertida</li>
+            <li>✔ Resolução de Problemas</li>
+            <li>✔ Gamificação</li>
+            <li>✔ Uso de Tecnologia</li>
+            <li>✔ Avaliação Contínua</li>
+        </ul>
+
+    </section>
+
+</main>
+
+<!-- ==========================================================
+   BOTTOM NAV GLOBAL
+========================================================== -->
+
+<nav class="bottom-nav">
+
+    <a href="index.html" class="nav-item active-nav">
+        <svg class="icon" viewBox="0 0 24 24">
+            <path d="M12 3l9 8h-3v9h-4v-6H10v6H6v-9H3z"/>
+        </svg>
+        <span>Início</span>
+    </a>
+
+    <a href="bimestres/bimestre1.html" class="nav-item">
+        <svg class="icon" viewBox="0 0 24 24">
+            <path d="M4 4h14a2 2 0 012 2v14H6a2 2 0 01-2-2V4z"/>
+        </svg>
+        <span>1º</span>
+    </a>
+
+    <a href="#" onclick="emConstrucao()" class="nav-item">
+        <svg class="icon" viewBox="0 0 24 24">
+            <path d="M7 2v2H5a2 2 0 00-2 2v2h18V6a2 2 0 00-2-2h-2V2h-2v2H9V2H7z"/>
+            <path d="M3 10v10a2 2 0 002 2h14a2 2 0 002-2V10H3z"/>
+        </svg>
+        <span>2º</span>
+    </a>
+
+    <a href="#" onclick="emConstrucao()" class="nav-item">
+        <svg class="icon" viewBox="0 0 24 24">
+            <path d="M12 2l10 18H2L12 2z"/>
+        </svg>
+        <span>3º</span>
+    </a>
+
+    <a href="#" onclick="emConstrucao()" class="nav-item">
+        <svg class="icon" viewBox="0 0 24 24">
+            <path d="M3 13h4v8H3zm7-6h4v14h-4zm7 3h4v11h-4z"/>
+        </svg>
+        <span>4º</span>
+    </a>
+
+</nav>
 
 <script src="script.js"></script>
 
