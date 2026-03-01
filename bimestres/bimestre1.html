@@ -13,25 +13,18 @@
 <body class="app-body">
 
 <!-- ==========================================================
-   HEADER SUPERIOR FIXO ESTILO APP
+   HEADER SUPERIOR FIXO
 ========================================================== -->
 
-<header class="app-header header-bimestre">
+<header class="app-header">
 
     <div class="header-main">
-
-        <div class="header-icon">
-            📘
-        </div>
-
+        <div class="header-icon">📘</div>
         <div class="header-text">
             <h1>1º Bimestre</h1>
             <p>Matemática • 7º Ano • Planejamento Completo</p>
         </div>
-
     </div>
-
-    <!-- UNIDADES EM DESTAQUE -->
 
     <div class="header-unidades">
 
@@ -61,9 +54,7 @@
 
 <main class="app-container">
 
-<!-- ==========================================================
-   UNIDADE 1
-========================================================== -->
+<!-- ================= UNIDADE 1 ================= -->
 
 <section id="conteudos" class="app-card destaque-app">
 
@@ -74,46 +65,36 @@
 <button class="sumario-link"
 onclick="abrirDocumento('../assets/imagens/1bimestre/unidade1/1numeros-naturais',
 ['p12.png','p13.png','p14.png','p15.png'],'u1-naturais')">
-
 <span>🔢 1. Números Naturais</span>
 <span class="pagina">12–15</span>
-
 </button>
 
 <button class="sumario-link"
 onclick="abrirDocumento('../assets/imagens/1bimestre/unidade1/2operacoes-com-numeros-naturais',
 ['p16.png','p17.png','p18.png','p19.png'],'u1-operacoes')">
-
 <span>➕ 2. Operações com Números Naturais</span>
 <span class="pagina">16–19</span>
-
 </button>
 
 <button class="sumario-link"
 onclick="abrirDocumento('../assets/imagens/1bimestre/unidade1/3divisores-e-multiplos',
 ['p20.png','p21.png','p22.png','p23.png','p24.png','p26.png'],'u1-divisores')">
-
 <span>📐 3. Divisores, Múltiplos, MDC e MMC</span>
 <span class="pagina">20–26</span>
-
 </button>
 
 <button class="sumario-link"
 onclick="abrirDocumento('../assets/imagens/1bimestre/unidade1/retomando',
 ['p28.png','p29.png'],'u1-retomando')">
-
 <span>🔁 Retomando o que aprendeu</span>
 <span class="pagina">28–29</span>
-
 </button>
 
 </div>
 
 </section>
 
-<!-- ==========================================================
-   UNIDADE 2
-========================================================== -->
+<!-- ================= UNIDADE 2 ================= -->
 
 <section class="app-card">
 
@@ -124,55 +105,43 @@ onclick="abrirDocumento('../assets/imagens/1bimestre/unidade1/retomando',
 <button class="sumario-link"
 onclick="abrirDocumento('../assets/imagens/1bimestre/unidade2/1ideia-de-inteiros',
 ['p32.png','p33.png','p35.png'],'u2-ideia')">
-
 <span>➖ 1. Ideia de Números Inteiros</span>
 <span class="pagina">32–35</span>
-
 </button>
 
 <button class="sumario-link"
 onclick="abrirDocumento('../assets/imagens/1bimestre/unidade2/2conjunto-inteiros',
 ['p36.png','p37.png','p38.png'],'u2-conjunto')">
-
 <span>📊 2. Conjunto dos Inteiros</span>
 <span class="pagina">36–38</span>
-
 </button>
 
 <button class="sumario-link"
 onclick="abrirDocumento('../assets/imagens/1bimestre/unidade2/5adicao',
 ['p44.png','p47.png','p48.png','p49.png'],'u2-adicao')">
-
 <span>➕ 3. Adição de Inteiros</span>
 <span class="pagina">44–49</span>
-
 </button>
 
 <button class="sumario-link"
 onclick="abrirDocumento('../assets/imagens/1bimestre/unidade2/10potenciacao',
 ['p65.png','p66.png','p68.png'],'u2-potencia')">
-
 <span>⚡ 4. Potenciação</span>
 <span class="pagina">65–68</span>
-
 </button>
 
 <button class="sumario-link"
 onclick="abrirDocumento('../assets/imagens/1bimestre/unidade2/retomando',
 ['p72.png','p73.png'],'u2-retomando')">
-
 <span>🔁 Retomando o que aprendeu</span>
 <span class="pagina">72–73</span>
-
 </button>
 
 </div>
 
 </section>
 
-<!-- ==========================================================
-   AVALIAÇÕES
-========================================================== -->
+<!-- ================= AVALIAÇÕES ================= -->
 
 <section id="avaliacoes" class="app-card">
 
@@ -195,23 +164,27 @@ onclick="abrirDocumento('../assets/imagens/1bimestre/unidade2/retomando',
 </main>
 
 <!-- ==========================================================
-   OVERLAY LIVRO
+   OVERLAY LIVRO PROFISSIONAL
 ========================================================== -->
 
 <div class="overlay" id="overlay">
 
 <div class="documento">
 
-<button class="fechar" onclick="fecharDocumento()">✖ Fechar</button>
+    <!-- BARRA SUPERIOR FIXA -->
+    <div class="pdf-topbar">
+        <button class="fechar" onclick="fecharDocumento()">✖ Fechar</button>
+    </div>
 
-<div id="documentoContainer"></div>
+    <!-- CONTEÚDO PDF -->
+    <div id="documentoContainer"></div>
 
 </div>
 
 </div>
 
 <!-- ==========================================================
-   BOTTOM NAV ESTILO APLICATIVO REAL
+   NAVEGAÇÃO INFERIOR COMPLETA
 ========================================================== -->
 
 <nav class="bottom-nav">

@@ -19,19 +19,13 @@ body{
 font-family:'Segoe UI',Roboto,-apple-system,BlinkMacSystemFont,sans-serif;
 background:#f1f5f9;
 color:#1e293b;
--webkit-font-smoothing:antialiased;
 min-height:100vh;
-padding-bottom:80px; /* espaço bottom nav */
+padding-bottom:80px;
 overflow-x:hidden;
 }
 
-a{
-text-decoration:none;
-color:inherit;
-}
-
 /* ==========================================================
-   2️⃣ HEADER APP (GLOBAL)
+   2️⃣ HEADER GLOBAL
 ========================================================== */
 
 .app-header{
@@ -66,7 +60,7 @@ margin-top:4px;
 }
 
 /* ==========================================================
-   3️⃣ HEADER UNIDADES (BIMESTRE)
+   3️⃣ HEADER UNIDADES
 ========================================================== */
 
 .header-unidades{
@@ -89,16 +83,6 @@ font-size:0.75rem;
 backdrop-filter:blur(6px);
 }
 
-.unidade-box strong{
-display:block;
-font-size:0.75rem;
-}
-
-.unidade-box span{
-font-size:0.65rem;
-opacity:0.9;
-}
-
 .unidade-ativa{
 background:rgba(255,255,255,0.25);
 }
@@ -114,45 +98,7 @@ padding:20px 16px;
 }
 
 /* ==========================================================
-   5️⃣ HERO HOME
-========================================================== */
-
-.hero-home{
-background:linear-gradient(135deg,#dbeafe,#eff6ff);
-padding:22px;
-border-radius:20px;
-margin-bottom:25px;
-text-align:center;
-box-shadow:0 10px 30px rgba(37,99,235,0.1);
-}
-
-.hero-home h2{
-font-size:1.05rem;
-margin-bottom:10px;
-}
-
-.hero-home p{
-font-size:0.9rem;
-margin-bottom:15px;
-line-height:1.5;
-}
-
-.hero-btn{
-display:inline-block;
-padding:12px 18px;
-border-radius:14px;
-background:#2563eb;
-color:white;
-font-weight:600;
-transition:0.3s;
-}
-
-.hero-btn:active{
-transform:scale(0.95);
-}
-
-/* ==========================================================
-   6️⃣ CARDS GERAIS
+   5️⃣ CARDS
 ========================================================== */
 
 .app-card{
@@ -175,55 +121,7 @@ color:#1e3a8a;
 }
 
 /* ==========================================================
-   7️⃣ GRID BIMESTRES
-========================================================== */
-
-.bimestre-grid{
-display:flex;
-flex-direction:column;
-gap:16px;
-}
-
-.card-bimestre{
-display:flex;
-align-items:center;
-gap:15px;
-padding:18px;
-background:#f8fafc;
-border-radius:18px;
-cursor:pointer;
-transition:0.3s;
-}
-
-.card-bimestre:hover{
-background:#e2e8f0;
-}
-
-.card-bimestre:active{
-transform:scale(0.97);
-}
-
-.card-ativo{
-border-left:6px solid #2563eb;
-background:#eef2ff;
-}
-
-.card-icon{
-font-size:1.8rem;
-}
-
-.card-info h3{
-font-size:1rem;
-margin-bottom:4px;
-}
-
-.card-info p{
-font-size:0.8rem;
-opacity:0.7;
-}
-
-/* ==========================================================
-   8️⃣ SUMÁRIO ESTILO LIVRO
+   6️⃣ SUMÁRIO
 ========================================================== */
 
 .sumario{
@@ -264,7 +162,7 @@ color:#2563eb;
 }
 
 /* ==========================================================
-   9️⃣ BOTÕES
+   7️⃣ BOTÕES
 ========================================================== */
 
 .app-btn{
@@ -288,39 +186,76 @@ transform:scale(1.03);
 box-shadow:0 10px 25px rgba(37,99,235,0.4);
 }
 
-.btn-secondary{
-background:linear-gradient(135deg,#94a3b8,#64748b);
-}
-
 /* ==========================================================
-   🔟 OVERLAY LIVRO (PDF)
+   8️⃣ OVERLAY PDF PROFISSIONAL
 ========================================================== */
 
 .overlay{
 display:none;
 position:fixed;
 inset:0;
-background:rgba(0,0,0,0.85);
+background:rgba(0,0,0,0.88);
 justify-content:center;
 align-items:center;
 padding:15px;
 z-index:3000;
 }
 
+/* CONTAINER DO PDF */
+
 .documento{
 background:#ffffff;
 width:100%;
 max-width:900px;
-height:92vh;
-overflow-y:auto;
+height:94vh;
+display:flex;
+flex-direction:column;
 border-radius:20px;
-padding:20px;
-position:relative;
+overflow:hidden;
 box-shadow:0 25px 60px rgba(0,0,0,0.4);
 animation:fadeIn 0.3s ease;
 }
 
-.documento img{
+/* BARRA SUPERIOR FIXA */
+
+.pdf-topbar{
+position:sticky;
+top:0;
+background:white;
+padding:10px 15px;
+display:flex;
+justify-content:flex-end;
+border-bottom:1px solid #e2e8f0;
+z-index:10;
+}
+
+/* BOTÃO FECHAR FIXO CORRETO */
+
+.fechar{
+background:#ef4444;
+color:white;
+border:none;
+padding:10px 16px;
+border-radius:30px;
+cursor:pointer;
+font-weight:600;
+box-shadow:0 4px 12px rgba(0,0,0,0.2);
+transition:0.2s;
+}
+
+.fechar:active{
+transform:scale(0.95);
+}
+
+/* CONTEÚDO PDF */
+
+#documentoContainer{
+flex:1;
+overflow-y:auto;
+padding:15px;
+}
+
+#documentoContainer img{
 width:100%;
 height:auto;
 margin-bottom:20px;
@@ -328,20 +263,8 @@ border-radius:12px;
 box-shadow:0 8px 25px rgba(0,0,0,0.2);
 }
 
-.fechar{
-position:absolute;
-top:15px;
-right:15px;
-background:#ef4444;
-color:white;
-border:none;
-padding:10px 14px;
-border-radius:10px;
-cursor:pointer;
-}
-
 /* ==========================================================
-   1️⃣1️⃣ BOTTOM NAV ESTILO APP REAL
+   9️⃣ BOTTOM NAV APP REAL
 ========================================================== */
 
 .bottom-nav{
@@ -384,7 +307,7 @@ font-weight:600;
 }
 
 /* ==========================================================
-   1️⃣2️⃣ ANIMAÇÕES
+   🔟 ANIMAÇÃO
 ========================================================== */
 
 @keyframes fadeIn{
@@ -393,7 +316,7 @@ to{opacity:1;transform:scale(1);}
 }
 
 /* ==========================================================
-   1️⃣3️⃣ RESPONSIVIDADE TOTAL MOBILE
+   1️⃣1️⃣ RESPONSIVIDADE TOTAL MOBILE
 ========================================================== */
 
 @media(max-width:480px){
@@ -428,30 +351,16 @@ font-size:0.9rem;
 }
 
 .documento{
-padding:15px;
-height:94vh;
+height:96vh;
 }
 
 }
 
 /* ==========================================================
-   1️⃣4️⃣ TABLET
+   1️⃣2️⃣ TABLET
 ========================================================== */
 
 @media(min-width:768px){
-
-.bimestre-grid{
-display:grid;
-grid-template-columns:1fr 1fr;
-}
-
-}
-
-/* ==========================================================
-   1️⃣5️⃣ DESKTOP
-========================================================== */
-
-@media(min-width:1024px){
 
 .app-container{
 max-width:850px;
