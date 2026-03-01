@@ -3,28 +3,33 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>1º Bimestre | App Matemática</title>
+<title>1º Bimestre | Matemática 7º Ano</title>
+
 <link rel="stylesheet" href="../style.css">
 </head>
 
 <body class="app-body">
 
-<!-- ================= HEADER APP ================= -->
+<!-- ==========================================================
+   HEADER
+========================================================== -->
 
 <header class="app-header">
     <div class="app-title">📘 1º Bimestre</div>
-    <div class="app-subtitle">Matemática 7º Ano</div>
+    <div class="app-subtitle">Números Naturais e Inteiros</div>
 </header>
 
-<!-- ================= CONTEÚDO ================= -->
+<!-- ==========================================================
+   CONTEÚDO PRINCIPAL
+========================================================== -->
 
 <main class="app-container">
 
-    <!-- UNIDADE 1 -->
-    <section class="app-card destaque-app">
+    <!-- ================= UNIDADE 1 ================= -->
 
-        <h2>📗 Unidade 1</h2>
-        <p>Números Naturais e Operações</p>
+    <section id="conteudos" class="app-card destaque-app">
+
+        <h2>📗 Unidade 1 — Números Naturais e Operações</h2>
 
         <button class="app-btn"
         onclick="abrirDocumento(
@@ -39,54 +44,123 @@
         '../assets/imagens/1bimestre/unidade1/operacoes-naturais',
         ['p16.png','p17.png','p18.png','p19.png'],
         'u1-operacoes')">
-        ➕ Operações
+        ➕ Operações com Naturais
         </button>
 
         <button class="app-btn"
         onclick="abrirDocumento(
         '../assets/imagens/1bimestre/unidade1/divisores-multiplos',
-        ['p20.png','p21.png','p22.png','p23.png'],
+        ['p20.png','p21.png','p22.png','p23.png','p24.png','p26.png','p28.png'],
         'u1-divisores')">
-        📐 MDC e MMC
+        📐 Divisores, Múltiplos, MDC e MMC
         </button>
 
     </section>
 
-    <!-- UNIDADE 2 -->
+    <!-- ================= UNIDADE 2 ================= -->
+
     <section class="app-card">
 
-        <h2>📙 Unidade 2</h2>
-        <p>Conjunto dos Números Inteiros</p>
+        <h2>📘 Unidade 2 — Conjunto dos Inteiros</h2>
 
         <button class="app-btn"
         onclick="abrirDocumento(
         '../assets/imagens/1bimestre/unidade2/ideia-inteiros',
-        ['p32.png','p33.png'],
+        ['p32.png','p33.png','p35.png'],
         'u2-ideia')">
-        ➖ Ideia de Inteiros
+        ➖ Ideia de Números Inteiros
         </button>
 
         <button class="app-btn"
         onclick="abrirDocumento(
         '../assets/imagens/1bimestre/unidade2/operacoes-inteiros',
-        ['p44.png','p45.png','p46.png'],
+        ['p44.png','p45.png','p46.png','p47.png','p48.png','p49.png'],
         'u2-operacoes')">
-        ➗ Operações
+        ➗ Operações com Inteiros
         </button>
 
         <button class="app-btn"
         onclick="abrirDocumento(
         '../assets/imagens/1bimestre/unidade2/potenciacao-raiz',
-        ['p65.png','p66.png','p68.png'],
+        ['p65.png','p66.png','p68.png','p69.png','p70.png','p71.png','p72.png'],
         'u2-potencia')">
-        ⚡ Potência e Raiz
+        ⚡ Potenciação, Raiz e Expressões
+        </button>
+
+    </section>
+
+    <!-- ================= PROGRESSO ================= -->
+
+    <section id="progresso" class="app-card">
+
+        <h2>📊 Seu Progresso</h2>
+
+        <div class="progresso-wrapper">
+            <div class="progresso-barra" id="barraProgressoVisual"></div>
+        </div>
+
+        <div class="progresso-info">
+            <span id="progressoTexto">0% concluído</span>
+        </div>
+
+        <button class="app-btn btn-secondary"
+        onclick="resetarProgresso()">
+        🔄 Resetar Progresso
+        </button>
+
+    </section>
+
+    <!-- ================= AVALIAÇÕES ================= -->
+
+    <section id="avaliacoes" class="app-card">
+
+        <h2>📝 Avaliações</h2>
+
+        <button class="app-btn"
+        onclick="abrirDocumento(
+        '../assets/imagens/1bimestre/avaliacoes/diagnostica',
+        ['p1.png'],
+        'avaliacao-diagnostica')">
+        📌 Avaliação Diagnóstica
+        </button>
+
+        <button class="app-btn"
+        onclick="abrirDocumento(
+        '../assets/imagens/1bimestre/avaliacoes/formativa',
+        ['p1.png','p2.png'],
+        'avaliacao-formativa')">
+        📘 Avaliação Formativa
+        </button>
+
+        <button class="app-btn"
+        onclick="abrirDocumento(
+        '../assets/imagens/1bimestre/avaliacoes/bimestral',
+        ['p1.png','p2.png','p3.png'],
+        'avaliacao-bimestral')">
+        🏁 Avaliação Bimestral
         </button>
 
     </section>
 
 </main>
 
-<!-- ================= BOTTOM NAV ================= -->
+<!-- ==========================================================
+   OVERLAY LIVRO
+========================================================== -->
+
+<div class="overlay" id="overlay">
+    <div class="documento">
+
+        <button class="fechar" onclick="fecharDocumento()">✖</button>
+
+        <div id="documentoContainer"></div>
+
+    </div>
+</div>
+
+<!-- ==========================================================
+   NAVEGAÇÃO INFERIOR
+========================================================== -->
 
 <nav class="bottom-nav">
 
@@ -119,78 +193,7 @@
         <span>Avaliações</span>
     </a>
 
-    <a href="#" onclick="emConstrucao()" class="nav-item">
-        <svg class="icon" viewBox="0 0 24 24">
-            <path d="M12 2l10 18H2L12 2z"/>
-        </svg>
-        <span>Sobre</span>
-    </a>
-
 </nav>
-
-<!-- ==========================================================
-   SEÇÃO PROGRESSO
-========================================================== -->
-
-<section id="progresso" class="app-card">
-
-    <h2>📊 Seu Progresso</h2>
-
-    <p>Complete os conteúdos e acompanhe sua evolução.</p>
-
-    <div class="progresso-wrapper">
-        <div class="progresso-barra" id="barraProgressoVisual"></div>
-    </div>
-
-    <div class="progresso-info">
-        <span id="progressoTexto">0% concluído</span>
-    </div>
-
-</section>
-
-
-<!-- ==========================================================
-   SEÇÃO AVALIAÇÕES
-========================================================== -->
-
-<section id="avaliacoes" class="app-card">
-
-    <h2>📝 Avaliações do Bimestre</h2>
-
-    <button class="app-btn"
-    onclick="abrirDocumento(
-    '../assets/imagens/1bimestre/avaliacoes/diagnostica',
-    ['p1.png'],
-    'avaliacao-diagnostica')">
-    📌 Avaliação Diagnóstica
-    </button>
-
-    <button class="app-btn"
-    onclick="abrirDocumento(
-    '../assets/imagens/1bimestre/avaliacoes/formativa',
-    ['p1.png','p2.png'],
-    'avaliacao-formativa')">
-    📘 Avaliação Formativa
-    </button>
-
-    <button class="app-btn"
-    onclick="abrirDocumento(
-    '../assets/imagens/1bimestre/avaliacoes/bimestral',
-    ['p1.png','p2.png','p3.png'],
-    'avaliacao-bimestral')">
-    🏁 Avaliação Bimestral
-    </button>
-
-</section>
-
-<!-- ================= OVERLAY LIVRO ================= -->
-
-<div class="overlay" id="overlay">
-    <div class="documento">
-        <button class="fechar" onclick="fecharDocumento()">✖</button>
-        <div id="documentoContainer"></div>
-    </div>
-</div>
 
 <script src="../script.js"></script>
 
