@@ -10,7 +10,9 @@
 
 <body>
 
-<!-- ================= HEADER ================= -->
+<!-- ==========================================================
+   HEADER
+========================================================== -->
 
 <header class="header">
     <div class="header-container">
@@ -35,60 +37,117 @@
     </div>
 </header>
 
-<!-- ================= HERO ================= -->
+<!-- ==========================================================
+   HERO
+========================================================== -->
 
 <section class="hero">
     <h1>📚 1º Bimestre</h1>
-    <p>Números Naturais e Inteiros</p>
+    <p>Números Naturais e Operações • Números Inteiros</p>
 </section>
 
-<!-- ================= CONTEÚDO ================= -->
+<!-- ==========================================================
+   CONTEÚDO PRINCIPAL
+========================================================== -->
 
 <section class="container">
 
-    <!-- UNIDADE 1 -->
+    <!-- ================= UNIDADE 1 ================= -->
+
     <div class="card destaque">
+
         <h2>📘 Unidade 1 — Números Naturais e Operações</h2>
 
-        <button class="btn" onclick="abrirDocumento('../assets/imagens/1bimestre/unidade1/numeros-naturais', ['p12.png','p13.png'])">
+        <!-- Barra de Progresso -->
+        <div class="progresso-container">
+            <div id="barraProgresso" class="progresso-barra"></div>
+        </div>
+
+        <!-- Conteúdos -->
+
+        <button class="btn"
+        onclick="abrirDocumento(
+        '../assets/imagens/1bimestre/unidade1/numeros-naturais',
+        ['p12.png','p13.png','p14.png','p15.png'],
+        'unidade1-numeros-naturais'
+        )">
         🔢 Números Naturais
         </button>
 
-        <button class="btn" onclick="abrirDocumento('../assets/imagens/1bimestre/unidade1/operacoes-naturais', ['p16.png','p17.png'])">
+        <button class="btn"
+        onclick="abrirDocumento(
+        '../assets/imagens/1bimestre/unidade1/operacoes-naturais',
+        ['p16.png','p17.png','p18.png','p19.png'],
+        'unidade1-operacoes'
+        )">
         ➕ Operações com Números Naturais
         </button>
 
-        <button class="btn" onclick="abrirDocumento('../assets/imagens/1bimestre/unidade1/divisores-multiplos', ['p20.png','p21.png','p22.png','p23.png'])">
+        <button class="btn"
+        onclick="abrirDocumento(
+        '../assets/imagens/1bimestre/unidade1/divisores-multiplos',
+        ['p20.png','p21.png','p22.png','p23.png','p24.png','p26.png','p28.png'],
+        'unidade1-divisores'
+        )">
         📐 Divisores, Múltiplos, MDC e MMC
         </button>
 
     </div>
 
-    <!-- UNIDADE 2 -->
+    <!-- ================= UNIDADE 2 ================= -->
+
     <div class="card">
+
         <h2>📗 Unidade 2 — O Conjunto dos Números Inteiros</h2>
 
-        <button class="btn" onclick="abrirDocumento('../assets/imagens/1bimestre/unidade2/inteiros', ['p32.png','p33.png'])">
-        ➖ Números Inteiros
+        <!-- Barra de Progresso -->
+        <div class="progresso-container">
+            <div id="barraProgresso2" class="progresso-barra"></div>
+        </div>
+
+        <button class="btn"
+        onclick="abrirDocumento(
+        '../assets/imagens/1bimestre/unidade2/ideia-inteiros',
+        ['p32.png','p33.png','p35.png'],
+        'unidade2-ideia'
+        )">
+        ➖ A Ideia de Números Inteiros
         </button>
 
-        <button class="btn" onclick="abrirDocumento('../assets/imagens/1bimestre/unidade2/operacoes-inteiros', ['p44.png','p45.png','p46.png'])">
-        ➗ Operações com Inteiros
+        <button class="btn"
+        onclick="abrirDocumento(
+        '../assets/imagens/1bimestre/unidade2/conjunto-inteiros',
+        ['p36.png','p37.png','p38.png'],
+        'unidade2-conjunto'
+        )">
+        📏 O Conjunto dos Inteiros e Reta Numérica
         </button>
 
-        <button class="btn" onclick="abrirDocumento('../assets/imagens/1bimestre/unidade2/potenciacao', ['p65.png','p66.png'])">
-        ⚡ Potenciação e Raiz Quadrada
+        <button class="btn"
+        onclick="abrirDocumento(
+        '../assets/imagens/1bimestre/unidade2/operacoes-inteiros',
+        ['p44.png','p45.png','p46.png','p47.png','p48.png','p49.png'],
+        'unidade2-operacoes'
+        )">
+        ➗ Operações com Números Inteiros
         </button>
 
-        <button class="btn" onclick="abrirDocumento('../assets/imagens/1bimestre/unidade2/expressoes', ['p70.png','p71.png'])">
-        🧮 Expressões Numéricas
+        <button class="btn"
+        onclick="abrirDocumento(
+        '../assets/imagens/1bimestre/unidade2/potenciacao-raiz',
+        ['p65.png','p66.png','p68.png','p69.png','p70.png','p71.png','p72.png'],
+        'unidade2-potenciacao'
+        )">
+        ⚡ Potenciação, Raiz e Expressões Numéricas
         </button>
 
     </div>
 
 </section>
 
-<!-- ================= OVERLAY ================= -->
+<!-- ==========================================================
+   OVERLAY LIVRO
+========================================================== -->
 
 <div class="overlay" id="overlay">
 
@@ -102,7 +161,9 @@
 
 </div>
 
-<!-- ================= FOOTER ================= -->
+<!-- ==========================================================
+   FOOTER
+========================================================== -->
 
 <footer class="footer">
     © 2026 — 1º Bimestre — Aprendendo com Márcio

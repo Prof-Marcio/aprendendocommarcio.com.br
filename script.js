@@ -1,25 +1,29 @@
 /* ==========================================================
-   SISTEMA LIVRO REAL + ZOOM MOBILE
+   SISTEMA LIVRO REAL + ZOOM + PROGRESSO
 ========================================================== */
 
 let livro = {
     pasta: "",
     paginas: [],
-    atual: 0
+    atual: 0,
+    unidade: ""
 };
 
 let zoom = {
     escala: 1,
-    posX: 0,
-    posY: 0,
     ativo: false
 };
 
-function abrirDocumento(pasta, arquivos){
+/* ==========================================================
+   ABRIR DOCUMENTO
+========================================================== */
+
+function abrirDocumento(pasta, arquivos, unidade){
 
     livro.pasta = pasta;
     livro.paginas = arquivos;
     livro.atual = 0;
+    livro.unidade = unidade;
 
     document.getElementById("overlay").style.display = "flex";
     document.body.style.overflow = "hidden";
@@ -47,12 +51,18 @@ function renderizarPagina(){
         </div>
     `;
 
+    atualizarProgresso();
     iniciarZoom();
 }
+
+/* ==========================================================
+   PAGINAÇÃO
+========================================================== */
 
 function proximaPagina(){
     if(livro.atual < livro.paginas.length - 1){
         livro.atual++;
+        salvarProgresso();
         renderizarPagina();
     }
 }
@@ -60,6 +70,7 @@ function proximaPagina(){
 function paginaAnterior(){
     if(livro.atual > 0){
         livro.atual--;
+        salvarProgresso();
         renderizarPagina();
     }
 }
@@ -70,82 +81,63 @@ function fecharDocumento(){
 }
 
 /* ==========================================================
-   SISTEMA DE ZOOM
+   PROGRESSO POR UNIDADE
+========================================================== */
+
+function salvarProgresso(){
+
+    let progresso = JSON.parse(localStorage.getItem("progressoLivro")) || {};
+
+    progresso[livro.unidade] = livro.atual;
+
+    localStorage.setItem("progressoLivro", JSON.stringify(progresso));
+}
+
+function atualizarProgresso(){
+
+    let progresso = JSON.parse(localStorage.getItem("progressoLivro")) || {};
+    let indice = progresso[livro.unidade] || 0;
+
+    let porcentagem = ((indice + 1) / livro.paginas.length) * 100;
+
+    const barra = document.getElementById("barraProgresso");
+
+    if(barra){
+        barra.style.width = porcentagem + "%";
+    }
+}
+
+/* ==========================================================
+   ZOOM MOBILE
 ========================================================== */
 
 function iniciarZoom(){
 
     const img = document.getElementById("imagemLivro");
-
     let ultimoToque = 0;
-    let distanciaInicial = 0;
 
     img.addEventListener("touchstart", function(e){
 
-        if(e.touches.length === 2){
-
-            zoom.ativo = true;
-            distanciaInicial = calcularDistancia(e.touches[0], e.touches[1]);
-
-        }
-
-        // Duplo toque
         const agora = new Date().getTime();
+
         if(agora - ultimoToque < 300){
             alternarZoom(img);
         }
+
         ultimoToque = agora;
-
     });
-
-    img.addEventListener("touchmove", function(e){
-
-        if(zoom.ativo && e.touches.length === 2){
-
-            e.preventDefault();
-
-            const novaDistancia = calcularDistancia(e.touches[0], e.touches[1]);
-
-            zoom.escala = novaDistancia / distanciaInicial;
-
-            if(zoom.escala < 1) zoom.escala = 1;
-            if(zoom.escala > 4) zoom.escala = 4;
-
-            aplicarTransform(img);
-
-        }
-
-    });
-
-    img.addEventListener("touchend", function(e){
-        if(e.touches.length < 2){
-            zoom.ativo = false;
-        }
-    });
-
-}
-
-function calcularDistancia(t1, t2){
-    const dx = t1.clientX - t2.clientX;
-    const dy = t1.clientY - t2.clientY;
-    return Math.sqrt(dx * dx + dy * dy);
 }
 
 function alternarZoom(img){
 
-    if(zoom.escala === 1){
-        zoom.escala = 2;
-    } else {
-        zoom.escala = 1;
-    }
-
-    aplicarTransform(img);
-}
-
-function aplicarTransform(img){
+    zoom.escala = zoom.escala === 1 ? 2 : 1;
     img.style.transform = `scale(${zoom.escala})`;
-    img.style.transition = "transform 0.2s ease";
+    img.style.transition = "transform 0.3s ease";
 }
+
+/* ==========================================================
+   EM CONSTRUÇÃO
+========================================================== */
 
 function emConstrucao(){
     alert("🚧 Este bimestre ainda está em construção 🚧");
