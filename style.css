@@ -355,3 +355,41 @@ font-weight:600;
 font-size:0.8rem;
 opacity:0.9;
 }
+
+/* ==========================================================
+   SUMÁRIO CLICÁVEL PROFISSIONAL
+========================================================== */
+
+.sumario{
+display:flex;
+flex-direction:column;
+gap:6px;
+margin-top:10px;
+}
+
+.sumario-link{
+display:flex;
+justify-content:space-between;
+align-items:center;
+width:100%;
+background:#f8fafc;
+border:none;
+padding:12px 15px;
+border-radius:10px;
+cursor:pointer;
+font-size:0.9rem;
+font-weight:500;
+border-bottom:1px dotted #cbd5e1;
+transition:0.2s ease;
+text-align:left;
+}
+
+.sumario-link:hover{
+background:#e2e8f0;
+transform:translateX(3px);
+}
+
+.sumario-link span:last-child{
+font-weight:600;
+color:#2563eb;
+}
