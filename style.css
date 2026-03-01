@@ -314,3 +314,44 @@ font-size:0.9rem;
 }
 
 }
+
+/* ==========================================================
+   BOTÕES BIMESTRE COM ÍCONES
+========================================================== */
+
+.btn-bimestre{
+display:flex;
+align-items:center;
+justify-content:flex-start;
+gap:15px;
+text-align:left;
+}
+
+.btn-icon{
+background:rgba(255,255,255,0.2);
+padding:10px;
+border-radius:12px;
+display:flex;
+align-items:center;
+justify-content:center;
+}
+
+.icon-btn{
+width:22px;
+height:22px;
+fill:white;
+}
+
+.btn-content{
+display:flex;
+flex-direction:column;
+}
+
+.btn-title{
+font-weight:600;
+}
+
+.btn-sub{
+font-size:0.8rem;
+opacity:0.9;
+}
