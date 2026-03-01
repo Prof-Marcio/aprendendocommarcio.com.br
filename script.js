@@ -142,3 +142,82 @@ function alternarZoom(img){
 function emConstrucao(){
     alert("🚧 Este bimestre ainda está em construção 🚧");
 }
+
+/* ==========================================================
+   ANIMAÇÃO DE CLIQUE BOTTOM NAV
+========================================================== */
+
+document.querySelectorAll(".nav-item").forEach(item => {
+
+    item.addEventListener("click", function(){
+
+        // Remove active de todos
+        document.querySelectorAll(".nav-item").forEach(el=>{
+            el.classList.remove("active-nav");
+        });
+
+        // Adiciona active no clicado
+        this.classList.add("active-nav");
+
+        // Ripple effect
+        this.classList.remove("ripple");
+        void this.offsetWidth; // força reflow
+        this.classList.add("ripple");
+
+    });
+
+});
+
+/* ==========================================================
+   ANIMAÇÃO COMPLETA NAV (Ripple + Elástico)
+========================================================== */
+
+document.querySelectorAll(".nav-item").forEach(item => {
+
+    item.addEventListener("click", function(){
+
+        // Remove active de todos
+        document.querySelectorAll(".nav-item").forEach(el=>{
+            el.classList.remove("active-nav");
+        });
+
+        this.classList.add("active-nav");
+
+        // Ripple
+        this.classList.remove("ripple");
+        void this.offsetWidth;
+        this.classList.add("ripple");
+
+        // Animação elástica do ícone
+        const icon = this.querySelector(".icon");
+
+        icon.classList.remove("elastic");
+        void icon.offsetWidth;
+        icon.classList.add("elastic");
+
+    });
+
+});
+
+/* ==========================================================
+   SISTEMA DE PROGRESSO
+========================================================== */
+
+let progresso = 0;
+
+function atualizarProgresso(valor){
+
+    progresso = valor;
+
+    const barra = document.getElementById("barraProgressoVisual");
+    const texto = document.getElementById("progressoTexto");
+
+    barra.style.width = progresso + "%";
+    texto.innerText = progresso + "% concluído";
+
+}
+
+/* Exemplo automático (teste) */
+setTimeout(()=>{
+    atualizarProgresso(35);
+},1000);
