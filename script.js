@@ -1,15 +1,20 @@
 // ==========================================================
 // SISTEMA PROFISSIONAL DE VISUALIZAÇÃO TIPO PDF REAL
-// RESPONSIVO + MOBILE + ANIMAÇÕES + PERFORMANCE
-// VERSÃO OTIMIZADA FINAL
+// VERSÃO PREMIUM DEFINITIVA
+// RESPONSIVO + MOBILE + PERFORMANCE + ESTABILIDADE
 // ==========================================================
 
 let paginasAtuais = [];
 let paginaAtual = 0;
 let pastaAtual = "";
 let chaveProgressoAtual = "";
+
 let escalaAtual = 1;
-let eventoZoomAplicado = false;
+let overlayAtivo = false;
+let distanciaInicialPinch = null;
+
+let touchStartX = 0;
+let touchEndX = 0;
 
 // ==========================================================
 // ABRIR DOCUMENTO
@@ -21,9 +26,11 @@ function abrirDocumento(pasta, listaPaginas, chaveProgresso){
     paginasAtuais = listaPaginas;
     paginaAtual = 0;
     chaveProgressoAtual = chaveProgresso || "";
+    escalaAtual = 1;
 
     const overlay = document.getElementById("overlay");
     overlay.style.display = "flex";
+    overlayAtivo = true;
 
     document.body.style.overflow = "hidden";
 
@@ -33,7 +40,7 @@ function abrirDocumento(pasta, listaPaginas, chaveProgresso){
 }
 
 // ==========================================================
-// PRELOAD PARA PERFORMANCE
+// PRELOAD OTIMIZADO
 // ==========================================================
 
 function preloadPaginas(){
@@ -65,21 +72,22 @@ function renderizarPagina(){
 
         <div class="pdf-controls">
 
-            <button onclick="paginaAnterior()" ${paginaAtual === 0 ? "disabled" : ""}>⬅</button>
+            <button onclick="paginaAnterior()" ${paginaAtual === 0 ? "disabled" : ""}>
+                ⬅
+            </button>
 
             <span>
                 📖 Página ${paginaAtual + 1} de ${paginasAtuais.length}
             </span>
 
-            <button onclick="proximaPagina()" ${paginaAtual === paginasAtuais.length - 1 ? "disabled" : ""}>➡</button>
+            <button onclick="proximaPagina()" ${paginaAtual === paginasAtuais.length - 1 ? "disabled" : ""}>
+                ➡
+            </button>
 
         </div>
     `;
 
-    escalaAtual = 1;
-    eventoZoomAplicado = false;
-
-    aplicarZoomMobile();
+    aplicarEventosZoom();
 }
 
 // ==========================================================
@@ -101,7 +109,7 @@ function paginaAnterior(){
 }
 
 // ==========================================================
-// ANIMAÇÃO SUAVE
+// ANIMAÇÃO DE TRANSIÇÃO
 // ==========================================================
 
 function animarTrocaPagina(direcao){
@@ -111,8 +119,8 @@ function animarTrocaPagina(direcao){
 
     img.style.transition = "all 0.2s ease";
     img.style.opacity = "0";
-    img.style.transform = direcao === "next" 
-        ? "translateX(-15px)" 
+    img.style.transform = direcao === "next"
+        ? "translateX(-15px)"
         : "translateX(15px)";
 
     setTimeout(() => {
@@ -125,29 +133,32 @@ function animarTrocaPagina(direcao){
 // ==========================================================
 
 function fecharDocumento(){
+
     const overlay = document.getElementById("overlay");
+
     overlay.style.display = "none";
+    overlayAtivo = false;
+
     document.body.style.overflow = "auto";
+
     escalaAtual = 1;
+    distanciaInicialPinch = null;
 }
 
 // ==========================================================
-// SWIPE MOBILE PROFISSIONAL
+// SWIPE MOBILE CONTROLADO
 // ==========================================================
 
-let touchStartX = 0;
-let touchEndX = 0;
-
 document.addEventListener("touchstart", function(e){
+    if(!overlayAtivo) return;
     touchStartX = e.changedTouches[0].screenX;
 });
 
 document.addEventListener("touchend", function(e){
 
+    if(!overlayAtivo) return;
+
     touchEndX = e.changedTouches[0].screenX;
-
-    if(document.getElementById("overlay").style.display !== "flex") return;
-
     detectarSwipe();
 });
 
@@ -165,33 +176,34 @@ function detectarSwipe(){
 }
 
 // ==========================================================
-// ZOOM PROFISSIONAL (RODA MOUSE + PINCH TOUCH)
+// ZOOM PROFISSIONAL (MOUSE + PINCH)
 // ==========================================================
 
-function aplicarZoomMobile(){
+function aplicarEventosZoom(){
 
     const img = document.getElementById("pdfPage");
-    if(!img || eventoZoomAplicado) return;
+    if(!img) return;
 
-    eventoZoomAplicado = true;
+    escalaAtual = 1;
+    img.style.transform = "scale(1)";
 
-    // ZOOM COM RODA DO MOUSE
+    // RODA DO MOUSE
     img.addEventListener("wheel", function(e){
+
         e.preventDefault();
 
         if(e.deltaY < 0){
             escalaAtual += 0.1;
-        }else{
+        } else {
             escalaAtual -= 0.1;
         }
 
         limitarEscala();
         aplicarEscala(img);
+
     }, { passive:false });
 
-    // PINCH TOUCH REAL
-    let distanciaInicial = null;
-
+    // PINCH TOUCH
     img.addEventListener("touchmove", function(e){
 
         if(e.touches.length === 2){
@@ -203,15 +215,14 @@ function aplicarZoomMobile(){
 
             const distanciaAtual = Math.sqrt(dx * dx + dy * dy);
 
-            if(!distanciaInicial){
-                distanciaInicial = distanciaAtual;
+            if(!distanciaInicialPinch){
+                distanciaInicialPinch = distanciaAtual;
             }
 
-            const diferenca = distanciaAtual - distanciaInicial;
+            const diferenca = distanciaAtual - distanciaInicialPinch;
 
             escalaAtual += diferenca * 0.005;
-
-            distanciaInicial = distanciaAtual;
+            distanciaInicialPinch = distanciaAtual;
 
             limitarEscala();
             aplicarEscala(img);
@@ -219,19 +230,18 @@ function aplicarZoomMobile(){
 
     }, { passive:false });
 
+    img.addEventListener("touchend", function(){
+        distanciaInicialPinch = null;
+    });
 }
 
 // ==========================================================
-// APLICAR ESCALA
+// ESCALA
 // ==========================================================
 
 function aplicarEscala(img){
     img.style.transform = `scale(${escalaAtual})`;
 }
-
-// ==========================================================
-// LIMITAR ZOOM
-// ==========================================================
 
 function limitarEscala(){
     if(escalaAtual < 1) escalaAtual = 1;
@@ -239,12 +249,12 @@ function limitarEscala(){
 }
 
 // ==========================================================
-// TECLADO (DESKTOP)
+// TECLADO DESKTOP
 // ==========================================================
 
 document.addEventListener("keydown", function(e){
 
-    if(document.getElementById("overlay").style.display !== "flex") return;
+    if(!overlayAtivo) return;
 
     if(e.key === "ArrowRight"){
         proximaPagina();
@@ -277,7 +287,7 @@ function atualizarProgresso(chave){
 }
 
 // ==========================================================
-// NOTIFICAÇÃO PREMIUM
+// NOTIFICAÇÃO PREMIUM PROFISSIONAL
 // ==========================================================
 
 function criarNotificacao(texto){
@@ -287,7 +297,7 @@ function criarNotificacao(texto){
     aviso.innerText = texto;
 
     aviso.style.position = "fixed";
-    aviso.style.bottom = "100px";
+    aviso.style.bottom = "110px";
     aviso.style.left = "50%";
     aviso.style.transform = "translateX(-50%)";
     aviso.style.background = "#2563eb";
@@ -295,7 +305,7 @@ function criarNotificacao(texto){
     aviso.style.padding = "14px 22px";
     aviso.style.borderRadius = "14px";
     aviso.style.boxShadow = "0 10px 30px rgba(0,0,0,0.3)";
-    aviso.style.zIndex = "4000";
+    aviso.style.zIndex = "6000";
     aviso.style.opacity = "0";
     aviso.style.transition = "0.3s";
 
