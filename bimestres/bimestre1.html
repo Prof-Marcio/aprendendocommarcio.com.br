@@ -1,13 +1,18 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+
 <title>📘 1º Bimestre | Matemática 7º Ano</title>
 
+<meta name="description" content="Planejamento completo do 1º Bimestre - Matemática 7º Ano. Conteúdos organizados por unidades, avaliações e materiais digitais.">
 <meta name="theme-color" content="#2563eb">
 
 <link rel="stylesheet" href="../style.css">
+
 </head>
 
 <body class="app-body">
@@ -16,15 +21,20 @@
    HEADER SUPERIOR FIXO
 ========================================================== -->
 
-<header class="app-header">
+<header class="app-header" role="banner">
 
     <div class="header-main">
-        <div class="header-icon">📘</div>
+
+        <div class="header-icon" aria-hidden="true">📘</div>
+
         <div class="header-text">
             <h1>1º Bimestre</h1>
             <p>Matemática • 7º Ano • Planejamento Completo</p>
         </div>
+
     </div>
+
+    <!-- UNIDADES -->
 
     <div class="header-unidades">
 
@@ -52,13 +62,13 @@
    CONTEÚDO PRINCIPAL
 ========================================================== -->
 
-<main class="app-container">
+<main class="app-container" role="main">
 
 <!-- ================= UNIDADE 1 ================= -->
 
-<section id="conteudos" class="app-card destaque-app">
+<section id="conteudos" class="app-card destaque-app" aria-labelledby="u1-title">
 
-<h2>📗 UNIDADE 1 — NÚMEROS NATURAIS E OPERAÇÕES</h2>
+<h2 id="u1-title">📗 UNIDADE 1 — NÚMEROS NATURAIS E OPERAÇÕES</h2>
 
 <div class="sumario">
 
@@ -96,9 +106,9 @@ onclick="abrirDocumento('../assets/imagens/1bimestre/unidade1/retomando-o-que-ap
 
 <!-- ================= UNIDADE 2 ================= -->
 
-<section class="app-card">
+<section class="app-card" aria-labelledby="u2-title">
 
-<h2>📘 UNIDADE 2 — O CONJUNTO DOS NÚMEROS INTEIROS</h2>
+<h2 id="u2-title">📘 UNIDADE 2 — O CONJUNTO DOS NÚMEROS INTEIROS</h2>
 
 <div class="sumario">
 
@@ -143,9 +153,9 @@ onclick="abrirDocumento('../assets/imagens/1bimestre/unidade2/retomando',
 
 <!-- ================= AVALIAÇÕES ================= -->
 
-<section id="avaliacoes" class="app-card">
+<section id="avaliacoes" class="app-card" aria-labelledby="avaliacoes-title">
 
-<h2>📝 Avaliações do 1º Bimestre</h2>
+<h2 id="avaliacoes-title">📝 Avaliações do 1º Bimestre</h2>
 
 <button class="app-btn" onclick="emConstrucao()">
 📌 Simulado Diagnóstico
@@ -172,11 +182,15 @@ onclick="abrirDocumento('../assets/imagens/1bimestre/unidade2/retomando',
 <div class="documento">
 
     <!-- BARRA SUPERIOR FIXA -->
+
     <div class="pdf-topbar">
-        <button class="fechar" onclick="fecharDocumento()">✖ Fechar</button>
+        <button class="fechar" onclick="fecharDocumento()" aria-label="Fechar documento">
+            ✖ Fechar
+        </button>
     </div>
 
     <!-- CONTEÚDO PDF -->
+
     <div id="documentoContainer"></div>
 
 </div>
@@ -187,7 +201,7 @@ onclick="abrirDocumento('../assets/imagens/1bimestre/unidade2/retomando',
    NAVEGAÇÃO INFERIOR COMPLETA
 ========================================================== -->
 
-<nav class="bottom-nav">
+<nav class="bottom-nav" role="navigation" aria-label="Menu do bimestre">
 
 <a href="../index.html" class="nav-item">
 🏠
@@ -221,7 +235,7 @@ onclick="abrirDocumento('../assets/imagens/1bimestre/unidade2/retomando',
 
 </nav>
 
-<script src="../script.js"></script>
+<script src="../script.js" defer></script>
 
 </body>
 </html>
