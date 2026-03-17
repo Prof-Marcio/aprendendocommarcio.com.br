@@ -1,206 +1,40 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
-
+<html lang="pt-br">
 <head>
-
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-
-<title>📘 Aprendendo com Márcio</title>
-
-<meta name="description" content="Plataforma digital de Matemática - 7º Ano - Planejamento por Bimestres com conteúdos, avaliações e acompanhamento de desempenho.">
-<meta name="theme-color" content="#2563eb">
-
-<link rel="manifest" href="manifest.json">
-<link rel="icon" href="assets/icones/app-192.png" sizes="192x192">
-<link rel="apple-touch-icon" href="assets/icones/app-192.png">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-
-<link rel="stylesheet" href="style.css">
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MPAL 2026 - Analista de Redes</title>
+    <link rel="stylesheet" href="style.css">
 </head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎯 Missão MPAL 2026</h1>
+            <p style="text-align: center; color: var(--text-dim);">Foco: Analista do Ministério Público - Administração de Redes</p>
+        </header>
+        
+        <div class="card-grid">
+            <section class="category-card">
+                <h2>📚 Conhecimentos Gerais</h2>
+                <p style="font-size: 0.85em; color: var(--text-dim);">Peso: 1 | Questões: 30</p>
+                <a href="conhecimentos-gerais/portugues/index.html" class="nav-link">Língua Portuguesa</a>
+                <a href="conhecimentos-gerais/legislacao/index.html" class="nav-link">Noções de Legislação (Alagoas)</a>
+            </section>
 
-<body class="app-body">
-
-<!-- ==========================================================
-   HEADER PRINCIPAL ESTILO APP
-========================================================== -->
-
-<header class="app-header header-home" role="banner">
-
-    <div class="header-content">
-
-        <div class="header-logo" aria-hidden="true">
-            📘
+            <section class="category-card">
+                <h2>⚙️ Conhecimentos Específicos</h2>
+                <p style="font-size: 0.85em; color: var(--text-dim);">Peso: 2 | Questões: 30</p>
+                <a href="conhecimentos-especificos/seguranca-informacao/index.html" class="nav-link">🛡️ Segurança da Informação & LGPD</a>
+                <a href="conhecimentos-especificos/infraestrutura-redes/index.html" class="nav-link">🌐 Infraestrutura de TI e Redes</a>
+                <a href="conhecimentos-especificos/admin-sistemas/index.html" class="nav-link">🖥️ Adm. de Sistemas e Servidores</a>
+                <a href="conhecimentos-especificos/computacao-nuvem/index.html" class="nav-link">☁️ Computação em Nuvem e Nuvem</a>
+                <a href="conhecimentos-especificos/governanca-gestao/index.html" class="nav-link">📊 Governança e Gestão de TI</a>
+            </section>
         </div>
 
-        <div class="header-text">
-            <h1>Aprendendo com Márcio</h1>
-            <p>Matemática • 7º Ano • 2026</p>
+        <footer style="margin-top: 40px; text-align: center; font-size: 0.8em; color: var(--text-dim);">
+            <p>Banca: Fundação Carlos Chagas (FCC) | Remuneração: R$ 6.243,37</p>
         </div>
-
     </div>
-
-</header>
-
-<!-- ==========================================================
-   CONTEÚDO PRINCIPAL
-========================================================== -->
-
-<main class="app-container" role="main">
-
-    <!-- HERO -->
-
-    <section class="hero-home" aria-labelledby="hero-title">
-
-        <h2 id="hero-title">🚀 Plataforma Digital de Matemática</h2>
-
-        <p>
-            Planejamento organizado por bimestre com conteúdos,
-            exercícios, avaliações e acompanhamento de progresso.
-        </p>
-
-        <a href="bimestres/bimestre1.html"
-           class="hero-btn"
-           aria-label="Acessar conteúdos do primeiro bimestre">
-            🎯 Acessar 1º Bimestre
-        </a>
-
-    </section>
-
-    <!-- BIMESTRES -->
-
-    <section class="app-card" aria-labelledby="bimestres-title">
-
-        <h2 id="bimestres-title">📅 Organização por Bimestres</h2>
-
-        <div class="bimestre-grid">
-
-            <!-- 1º BIMESTRE -->
-
-            <a href="bimestres/bimestre1.html"
-               class="card-bimestre card-ativo"
-               aria-label="Acessar primeiro bimestre">
-
-                <div class="card-icon" aria-hidden="true">📘</div>
-
-                <div class="card-info">
-                    <h3>1º Bimestre</h3>
-                    <p>Números Naturais e Inteiros</p>
-                </div>
-
-            </a>
-
-            <!-- 2º BIMESTRE -->
-
-            <div onclick="emConstrucao()"
-                 class="card-bimestre"
-                 role="button"
-                 tabindex="0"
-                 aria-label="Segundo bimestre em construção">
-
-                <div class="card-icon" aria-hidden="true">📗</div>
-
-                <div class="card-info">
-                    <h3>2º Bimestre</h3>
-                    <p>Em construção</p>
-                </div>
-
-            </div>
-
-            <!-- 3º BIMESTRE -->
-
-            <div onclick="emConstrucao()"
-                 class="card-bimestre"
-                 role="button"
-                 tabindex="0"
-                 aria-label="Terceiro bimestre em construção">
-
-                <div class="card-icon" aria-hidden="true">📙</div>
-
-                <div class="card-info">
-                    <h3>3º Bimestre</h3>
-                    <p>Em construção</p>
-                </div>
-
-            </div>
-
-            <!-- 4º BIMESTRE -->
-
-            <div onclick="emConstrucao()"
-                 class="card-bimestre"
-                 role="button"
-                 tabindex="0"
-                 aria-label="Quarto bimestre em construção">
-
-                <div class="card-icon" aria-hidden="true">📕</div>
-
-                <div class="card-info">
-                    <h3>4º Bimestre</h3>
-                    <p>Em construção</p>
-                </div>
-
-            </div>
-
-        </div>
-
-    </section>
-
-    <!-- METODOLOGIA -->
-
-    <section class="app-card" aria-labelledby="metodologia-title">
-
-        <h2 id="metodologia-title">👨‍🏫 Metodologia Aplicada</h2>
-
-        <ul class="lista-metodologia">
-            <li>🎯 Aula Invertida</li>
-            <li>🧠 Resolução de Problemas</li>
-            <li>🎮 Gamificação</li>
-            <li>💻 Uso de Tecnologia</li>
-            <li>📊 Avaliação Contínua</li>
-        </ul>
-
-    </section>
-
-</main>
-
-<!-- ==========================================================
-   BOTTOM NAV GLOBAL ESTILO APP
-========================================================== -->
-
-<nav class="bottom-nav" role="navigation" aria-label="Menu principal">
-
-    <a href="index.html" class="nav-item active-nav" aria-current="page">
-        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M12 3l9 8h-3v9h-4v-6H10v6H6v-9H3z"/>
-        </svg>
-        <span>Início</span>
-    </a>
-
-    <a href="bimestres/bimestre1.html" class="nav-item">
-        <span>📘</span>
-        <span>1º</span>
-    </a>
-
-    <a href="#" onclick="emConstrucao()" class="nav-item">
-        <span>📗</span>
-        <span>2º</span>
-    </a>
-
-    <a href="#" onclick="emConstrucao()" class="nav-item">
-        <span>📙</span>
-        <span>3º</span>
-    </a>
-
-    <a href="#" onclick="emConstrucao()" class="nav-item">
-        <span>📕</span>
-        <span>4º</span>
-    </a>
-
-</nav>
-
-<script src="script.js" defer></script>
-
 </body>
 </html>
