@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SLA e Escalonamento - Técnico TI</title>
+    <link rel="stylesheet" href="../../assets/css/a4-engine.css">
+    <style>
+        :root {
+            --branco: #ffffff;
+            --azul-foco: #003366;
+            --alerta: #d32f2f;
+            --sucesso: #2e7d32;
+            --cinza-texto: #333333;
+            --cinza-claro: #f8f9fa;
+            --borda: #ececec;
+        }
+
+        body { 
+            background-color: #f0f2f5; 
+            font-family: 'Segoe UI', Tahoma, sans-serif; 
+            margin: 0; 
+            padding: 20px;
+            color: var(--cinza-texto);
+        }
+
+        .folha-a4 {
+            background: var(--branco);
+            width: 210mm;
+            min-height: 297mm;
+            margin: 0 auto;
+            padding: 25mm;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            box-sizing: border-box;
+            position: relative;
+        }
+
+        header {
+            border-bottom: 2px solid var(--azul-foco);
+            margin-bottom: 30px;
+            padding-bottom: 10px;
+        }
+
+        h1 { color: var(--azul-foco); font-size: 18pt; margin: 0; }
+        h2 { color: var(--azul-foco); font-size: 14pt; border-left: 5px solid var(--azul-foco); padding-left: 10px; margin-top: 25px; }
+        
+        .badge-fcc {
+            background: #2e7d32;
+            color: white;
+            padding: 3px 10px;
+            border-radius: 4px;
+            font-size: 10pt;
+            font-weight: bold;
+            float: right;
+        }
+
+        .box-conceito {
+            background: var(--cinza-claro);
+            border: 1px solid var(--borda);
+            padding: 15px;
+            border-radius: 5px;
+            margin: 15px 0;
+        }
+
+        .metodo-pareto {
+            border: 2px dashed var(--azul-foco);
+            padding: 15px;
+            margin: 20px 0;
+            background: #f0f7ff;
+        }
+
+        .formula {
+            display: block;
+            text-align: center;
+            font-weight: bold;
+            background: #eee;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 4px;
+        }
+
+        .check-item { color: var(--sucesso); font-weight: bold; }
+        .alerta-item { color: var(--alerta); font-weight: bold; }
+
+        @media print {
+            body { background: none; padding: 0; }
+            .folha-a4 { box-shadow: none; margin: 0; width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="no-print">
+        <a href="../index.html" class="btn-voltar" style="background: #333; color: #fff; padding: 8px 16px; text-decoration: none; border-radius: 4px; font-size: 12px;">← Painel Central</a>
+    </nav>
+
+    <div class="folha-a4">
+        <header>
+            <span class="badge-fcc">FOCO OPERACIONAL 🛠️</span>
+            <h1>Help Desk: SLA e Escalonamento</h1>
+            <p><strong>VDG – Níveis de Suporte e Metas</strong> | MP-AL 2026</p>
+        </header>
+
+        <section>
+            <h2>📌 O que é SLA?</h2>
+            <div class="box-conceito">
+                <strong>Service Level Agreement:</strong> Acordo de Nível de Serviço. É um contrato entre a TI e o cliente que define tempos de resposta e resolução.
+            </div>
+            <ul>
+                <li><strong>Tempo de Resposta:</strong> Quanto tempo o técnico leva para "dar um oi" no chamado.</li>
+                <li><strong>Tempo de Resolução:</strong> Quanto tempo leva para o problema ser resolvido de fato.</li>
+            </ul>
+        </section>
+
+        <section class="metodo-pareto">
+            <h2>🎯 Escalonamento: O Caminho do Chamado</h2>
+            <p>A FCC cobra a diferença entre os dois tipos de subida de nível:</p>
+            
+            
+            <div class="box-conceito">
+                <p><strong>1. Escalonamento Funcional (Horizontal):</strong> Quando o técnico não tem <strong>conhecimento</strong> técnico suficiente. O chamado vai para um especialista (Nível 2 ou Nível 3).</p>
+                <p><strong>2. Escalonamento Hierárquico (Vertical):</strong> Quando o chamado exige <strong>autoridade</strong> ou vai estourar o SLA. Envolve gestores e gerentes para liberar recursos ou tomar decisões.</p>
+            </div>
+        </section>
+
+        <section>
+            <h2>⚙️ Níveis de Atendimento (Tiers)</h2>
+            <div class="formula">Nível 1 (Service Desk) → Nível 2 (Campo/Especialista) → Nível 3 (Fabricante/Desenvolvedor)</div>
+            <ul>
+                <li><strong>Nível 1:</strong> Suporte inicial, triagem, reset de senhas, procedimentos simples de script.</li>
+                <li><strong>Nível 2:</strong> Atendimento presencial (Desktop Support), configuração de redes locais, problemas de hardware.</li>
+                <li><strong>Nível 3:</strong> Problemas complexos no servidor, bugs de software, contato com o suporte do fabricante (Microsoft, Dell, Cisco).</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2 class="alerta-item">🚨 OLA e UC (Termos de Prova)</h2>
+            <p>Não confunda SLA com seus "primos":</p>
+            <ul>
+                <li>🔹 <strong>OLA (Operating Level Agreement):</strong> Acordo entre áreas <strong>internas</strong> da TI (Ex: Help Desk e Rede).</li>
+                <li>🔹 <strong>UC (Underpinning Contract):</strong> Contrato com <strong>fornecedores externos</strong> (Ex: Vivo, Embratel).</li>
+            </ul>
+        </section>
+
+        <section style="background: #fff9db; padding: 15px; border: 1px solid #ffe58f;">
+            <h2 style="margin-top: 0;">🧠 Resumo de Ouro (Decore!)</h2>
+            <p class="check-item">Checklist do Técnico:</p>
+            <p>✅ Se o tempo está acabando e você não resolveu, peça <strong>Escalonamento Hierárquico</strong>.<br>
+               ✅ Se o problema é complexo demais para sua função, faça <strong>Escalonamento Funcional</strong>.<br>
+               ✅ SLA mede a satisfação do cliente; OLA mede a eficiência interna.</p>
+        </section>
+
+        <footer style="margin-top: 40px; font-size: 9pt; color: #999; text-align: center; border-top: 1px solid #eee; padding-top: 10px;">
+            Material de Apoio - Técnico de TI - MP-AL 2026.
+        </footer>
+    </div>
+
+</body>
+</html>

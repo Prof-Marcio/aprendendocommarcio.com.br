@@ -1,0 +1,72 @@
+:root {
+    --fcc-blue: #1a73e8;
+    --fcc-red: #d32f2f;
+    --fcc-green: #2e7d32;
+    --pareto-gold: #ffc107;
+    --bg-light: #f4f7f9;
+}
+
+body { background: var(--bg-light); padding: 20px; font-family: 'Segoe UI', sans-serif; }
+
+/* Container do Mapa */
+.sheet {
+    background: white;
+    max-width: 900px;
+    margin: 0 auto 30px auto;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+/* Títulos das Seções */
+.section-header {
+    background: #f8f9fa;
+    padding: 10px 15px;
+    border-left: 4px solid var(--fcc-blue);
+    margin: 20px 0 15px 0;
+    font-weight: bold;
+    color: #333;
+}
+
+/* Itens de Tópico */
+.topic-group { display: flex; flex-direction: column; gap: 8px; }
+
+.topic-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 15px;
+    background: #fff;
+    border: 1px solid #eee;
+    text-decoration: none;
+    color: #444;
+    border-radius: 5px;
+    transition: 0.2s;
+}
+
+.topic-item:hover { background: #f0f7ff; border-color: var(--fcc-blue); }
+
+/* Tags Pareto */
+.pareto-tag {
+    background: var(--pareto-gold);
+    color: #5f4b00;
+    font-size: 0.7rem;
+    font-weight: bold;
+    padding: 2px 6px;
+    border-radius: 3px;
+    margin-right: 10px;
+}
+
+/* Grid de Revisão */
+.revision-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 10px;
+    margin-top: 10px;
+    padding: 10px;
+    background: #fafafa;
+    border-radius: 4px;
+}
+
+.check-group { font-size: 0.8rem; display: flex; align-items: center; gap: 5px; cursor: pointer; }
+input[type="checkbox"] { width: 16px; height: 16px; accent-color: var(--fcc-green); }

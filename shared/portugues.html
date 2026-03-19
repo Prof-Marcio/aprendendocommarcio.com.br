@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Português FCC - Mapa de Ciclos Completo</title>
+    <link rel="stylesheet" href="../assets/css/a4-engine.css">
+    <style>
+        :root {
+            --fcc-blue: #1a73e8;
+            --pareto-red: #e74c3c;
+            --bg-body: #f8f9fa;
+            --branco: #ffffff;
+        }
+        body { background-color: var(--bg-body); font-family: 'Segoe UI', sans-serif; margin: 0; padding: 20px; }
+        
+        .pareto-box {
+            border: 2px solid var(--pareto-red);
+            background: #fffafa;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 4px;
+        }
+
+        .topic-container {
+            background: var(--branco);
+            border: 1px solid #dee2e6;
+            margin-bottom: 12px;
+            padding: 12px 18px;
+            border-radius: 6px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .topic-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            text-decoration: none;
+            color: #333;
+            font-size: 11pt;
+        }
+
+        .topic-header:hover { color: var(--fcc-blue); }
+        .high-priority { color: var(--pareto-red); font-weight: bold; }
+
+        .badge-fcc {
+            background: var(--fcc-blue);
+            color: white;
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-size: 8pt;
+            margin-right: 8px;
+        }
+
+        /* Grade de Revisão */
+        .revision-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 10px;
+            margin-top: 12px;
+            padding-top: 10px;
+            border-top: 1px solid #f1f1f1;
+        }
+
+        .check-group {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 8.5pt;
+            color: #666;
+            cursor: pointer;
+        }
+
+        input[type="checkbox"] {
+            width: 16px;
+            height: 16px;
+            cursor: pointer;
+            accent-color: #27ae60;
+        }
+
+        h2 {
+            font-size: 14pt;
+            color: #444;
+            margin: 25px 0 15px 0;
+            border-left: 5px solid var(--fcc-blue);
+            padding-left: 12px;
+        }
+
+        .no-print { position: fixed; top: 15px; left: 15px; z-index: 100; }
+        .btn-voltar { background: #333; color: #fff; padding: 8px 16px; text-decoration: none; border-radius: 4px; font-size: 12px; }
+
+        @media print { .no-print { display: none; } .sheet { box-shadow: none; border: none; width: 100%; padding: 0; } }
+    </style>
+</head>
+<body>
+
+    <nav class="no-print">
+        <a href="../index.html" class="btn-voltar">← Painel Central</a>
+    </nav>
+
+    <article class="sheet">
+        <header class="doc-header">
+            <h1>Língua Portuguesa (Edital Verticalizado)</h1>
+            <p><strong>GESTÃO DE REVISÕES ATIVAS</strong> | MP-AL 2026</p>
+        </header>
+
+        <div class="pareto-box">
+            <strong style="color:var(--pareto-red);">DIRETRIZ PARETO:</strong> Clique no assunto para abrir o resumo. Marque cada etapa conforme concluir o estudo/revisão.
+        </div>
+
+        <section>
+            <h2>01. O "Coração" da Prova (Foco 80%)</h2>
+            
+            <div class="topic-container">
+                <a href="portugues_vozes.html" class="topic-header high-priority">
+                    <span><span class="badge-fcc">TOP 1</span> Vozes do Verbo (Transposição Ativa/Passiva)</span>
+                </a>
+                <div class="revision-grid">
+                    <label class="check-group"><input type="checkbox" data-id="p1-est"> Feito</label>
+                    <label class="check-group"><input type="checkbox" data-id="p1-24h"> 24h</label>
+                    <label class="check-group"><input type="checkbox" data-id="p1-7d"> 7d</label>
+                    <label class="check-group"><input type="checkbox" data-id="p1-15d"> 15d</label>
+                    <label class="check-group"><input type="checkbox" data-id="p1-30d"> 30d</label>
+                </div>
+            </div>
+
+            <div class="topic-container">
+                <a href="conectivos.html" class="topic-header high-priority">
+                    <span><span class="badge-fcc">TOP 2</span> Conectivos (Conjunções Adversativas/Concessivas)</span>
+                </a>
+                <div class="revision-grid">
+                    <label class="check-group"><input type="checkbox" data-id="p2-est"> Feito</label>
+                    <label class="check-group"><input type="checkbox" data-id="p2-24h"> 24h</label>
+                    <label class="check-group"><input type="checkbox" data-id="p2-7d"> 7d</label>
+                    <label class="check-group"><input type="checkbox" data-id="p2-15d"> 15d</label>
+                    <label class="check-group"><input type="checkbox" data-id="p2-30d"> 30d</label>
+                </div>
+            </div>
+
+            <div class="topic-container">
+                <a href="crase.html" class="topic-header high-priority">
+                    <span><span class="badge-fcc">TOP 3</span> Emprego da Crase</span>
+                </a>
+                <div class="revision-grid">
+                    <label class="check-group"><input type="checkbox" data-id="p3-est"> Feito</label>
+                    <label class="check-group"><input type="checkbox" data-id="p3-24h"> 24h</label>
+                    <label class="check-group"><input type="checkbox" data-id="p3-7d"> 7d</label>
+                    <label class="check-group"><input type="checkbox" data-id="p3-15d"> 15d</label>
+                    <label class="check-group"><input type="checkbox" data-id="p3-30d"> 30d</label>
+                </div>
+            </div>
+
+            <div class="topic-container">
+                <a href="concordancia.html" class="topic-header high-priority">
+                    <span><span class="badge-fcc">TOP 4</span> Concordância Verbal (Sujeito Coletivo, Partícula SE)</span>
+                </a>
+                <div class="revision-grid">
+                    <label class="check-group"><input type="checkbox" data-id="p4-est"> Feito</label>
+                    <label class="check-group"><input type="checkbox" data-id="p4-24h"> 24h</label>
+                    <label class="check-group"><input type="checkbox" data-id="p4-7d"> 7d</label>
+                    <label class="check-group"><input type="checkbox" data-id="p4-15d"> 15d</label>
+                    <label class="check-group"><input type="checkbox" data-id="p4-30d"> 30d</label>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>02. Manutenção de Nota (Intermediário)</h2>
+            
+            <div class="topic-container">
+                <a href="portugues_pontuacao.html" class="topic-header">
+                    <span>Pontuação (Vírgula para Adjuntos e Orações)</span>
+                </a>
+                <div class="revision-grid">
+                    <label class="check-group"><input type="checkbox" data-id="p5-est"> Feito</label>
+                    <label class="check-group"><input type="checkbox" data-id="p5-24h"> 24h</label>
+                    <label class="check-group"><input type="checkbox" data-id="p5-7d"> 7d</label>
+                    <label class="check-group"><input type="checkbox" data-id="p5-15d"> 15d</label>
+                    <label class="check-group"><input type="checkbox" data-id="p5-30d"> 30d</label>
+                </div>
+            </div>
+
+            <div class="topic-container">
+                <a href="portugues_regencia.html" class="topic-header">
+                    <span>Regência Nominal e Verbal (Pronomes Relativos)</span>
+                </a>
+                <div class="revision-grid">
+                    <label class="check-group"><input type="checkbox" data-id="p6-est"> Feito</label>
+                    <label class="check-group"><input type="checkbox" data-id="p6-24h"> 24h</label>
+                    <label class="check-group"><input type="checkbox" data-id="p6-7d"> 7d</label>
+                    <label class="check-group"><input type="checkbox" data-id="p6-15d"> 15d</label>
+                    <label class="check-group"><input type="checkbox" data-id="p6-30d"> 30d</label>
+                </div>
+            </div>
+
+            <div class="topic-container">
+                <a href="portugues_pronomes.html" class="topic-header">
+                    <span>Colocação Pronominal</span>
+                </a>
+                <div class="revision-grid">
+                    <label class="check-group"><input type="checkbox" data-id="p7-est"> Feito</label>
+                    <label class="check-group"><input type="checkbox" data-id="p7-24h"> 24h</label>
+                    <label class="check-group"><input type="checkbox" data-id="p7-7d"> 7d</label>
+                    <label class="check-group"><input type="checkbox" data-id="p7-15d"> 15d</label>
+                    <label class="check-group"><input type="checkbox" data-id="p7-30d"> 30d</label>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>03. Base e Conceitos (Revisão Rápida)</h2>
+            
+            <div class="topic-container">
+                <a href="portugues_interpretacao.html" class="topic-header">
+                    <span>Compreensão e Interpretação de Textos</span>
+                </a>
+                <div class="revision-grid">
+                    <label class="check-group"><input type="checkbox" data-id="p8-est"> Feito</label>
+                    <label class="check-group"><input type="checkbox" data-id="p8-24h"> 24h</label>
+                    <label class="check-group"><input type="checkbox" data-id="p8-7d"> 7d</label>
+                    <label class="check-group"><input type="checkbox" data-id="p8-15d"> 15d</label>
+                    <label class="check-group"><input type="checkbox" data-id="p8-30d"> 30d</label>
+                </div>
+            </div>
+
+            <div class="topic-container">
+                <a href="portugues_ortografia.html" class="topic-header">
+                    <span>Ortografia e Acentuação Gráfica</span>
+                </a>
+                <div class="revision-grid">
+                    <label class="check-group"><input type="checkbox" data-id="p9-est"> Feito</label>
+                    <label class="check-group"><input type="checkbox" data-id="p9-24h"> 24h</label>
+                    <label class="check-group"><input type="checkbox" data-id="p9-7d"> 7d</label>
+                    <label class="check-group"><input type="checkbox" data-id="p9-15d"> 15d</label>
+                    <label class="check-group"><input type="checkbox" data-id="p9-30d"> 30d</label>
+                </div>
+            </div>
+        </section>
+
+        <footer style="margin-top: 40px; border-top: 1px solid #ccc; padding-top: 15px; font-size: 10px; color: #999; text-align: center;">
+            Sincronizado com Ciclo MP-AL 2026 • FCC Standard.
+        </footer>
+    </article>
+
+    <script>
+        // LÓGICA DE PERSISTÊNCIA (SALVAMENTO AUTOMÁTICO)
+        document.querySelectorAll('input[type="checkbox"]').forEach(el => {
+            const key = 'check_' + el.getAttribute('data-id');
+            
+            // Carrega estado do LocalStorage
+            if (localStorage.getItem(key) === 'true') {
+                el.checked = true;
+            }
+
+            // Salva estado ao clicar
+            el.addEventListener('change', () => {
+                localStorage.setItem(key, el.checked);
+            });
+        });
+    </script>
+</body>
+</html>

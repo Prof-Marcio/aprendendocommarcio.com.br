@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Legislação MP-AL - Gestão de Ciclos</title>
+    <link rel="stylesheet" href="../assets/css/a4-engine.css">
+    <style>
+        :root {
+            --fcc-red: #d32f2f;
+            --fcc-blue: #1a73e8;
+            --bg-body: #f4f7f9;
+            --white: #ffffff;
+        }
+        body { background-color: var(--bg-body); font-family: 'Segoe UI', sans-serif; margin: 0; padding: 20px; }
+        
+        .pareto-alert {
+            border: 2px solid var(--fcc-red);
+            background: #fff5f5;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 6px;
+        }
+
+        .topic-container {
+            background: var(--white);
+            border: 1px solid #dee2e6;
+            margin-bottom: 12px;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .topic-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            text-decoration: none;
+            color: #333;
+            font-size: 10.5pt;
+        }
+
+        .priority-high { color: var(--fcc-red); font-weight: bold; border-left: 4px solid var(--fcc-red); padding-left: 10px !important; }
+
+        .badge-fcc-law {
+            background: var(--fcc-red);
+            color: white;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 8pt;
+            margin-right: 10px;
+            text-transform: uppercase;
+        }
+
+        /* Grade de Revisão */
+        .revision-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 10px;
+            margin-top: 12px;
+            padding-top: 10px;
+            border-top: 1px solid #f1f1f1;
+        }
+
+        .check-group {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 8.5pt;
+            color: #666;
+            cursor: pointer;
+        }
+
+        input[type="checkbox"] {
+            width: 17px;
+            height: 17px;
+            cursor: pointer;
+            accent-color: #27ae60;
+        }
+
+        h2 {
+            font-size: 13pt;
+            color: #2c3e50;
+            margin: 25px 0 15px 0;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 5px;
+        }
+
+        .no-print { position: fixed; top: 15px; left: 15px; z-index: 100; }
+        .btn-voltar { background: #333; color: #fff; padding: 8px 16px; text-decoration: none; border-radius: 4px; font-size: 12px; }
+
+        @media print { .no-print { display: none; } .sheet { box-shadow: none; border: none; width: 100%; } }
+    </style>
+</head>
+<body>
+
+    <nav class="no-print">
+        <a href="../index.html" class="btn-voltar">← Painel Central</a>
+    </nav>
+
+    <article class="sheet">
+        <header class="doc-header">
+            <h1>Legislação Institucional (Mapa de Ciclos)</h1>
+            <p><strong>FOCO ALTA RELEVÂNCIA</strong> | MP-AL 2026</p>
+        </header>
+
+        <div class="pareto-alert">
+            <strong>FOCO ESTRATÉGICO:</strong> Priorize o <strong>Regime Disciplinar (Lei 5.247)</strong> e a <strong>Administração Superior (LC 15)</strong>. A FCC ama prazos de PAD e composição de conselhos.
+        </div>
+
+        <section>
+            <h2>01. RJU (Lei Estadual nº 5.247/1991)</h2>
+            
+            <div class="topic-container">
+                <a href="eg_provimento.html" class="topic-header priority-high">
+                    <span><span class="badge-fcc-law">PARETO 1</span> Provimento (Nomeação, Reintegração, Recondução)</span>
+                </a>
+                <div class="revision-grid">
+                    <label class="check-group"><input type="checkbox" data-id="l1-est"> Estudado</label>
+                    <label class="check-group"><input type="checkbox" data-id="l1-24h"> 24h</label>
+                    <label class="check-group"><input type="checkbox" data-id="l1-7d"> 7d</label>
+                    <label class="check-group"><input type="checkbox" data-id="l1-15d"> 15d</label>
+                    <label class="check-group"><input type="checkbox" data-id="l1-30d"> 30d</label>
+                </div>
+            </div>
+
+            <div class="topic-container">
+                <a href="legislação-regime-disciplinar.html" class="topic-header priority-high">
+                    <span><span class="badge-fcc-law">PARETO 2</span> Regime Disciplinar (Deveres e Proibições)</span>
+                </a>
+                <div class="revision-grid">
+                    <label class="check-group"><input type="checkbox" data-id="l2-est"> Estudado</label>
+                    <label class="check-group"><input type="checkbox" data-id="l2-24h"> 24h</label>
+                    <label class="check-group"><input type="checkbox" data-id="l2-7d"> 7d</label>
+                    <label class="check-group"><input type="checkbox" data-id="l2-15d"> 15d</label>
+                    <label class="check-group"><input type="checkbox" data-id="l2-30d"> 30d</label>
+                </div>
+            </div>
+
+            <div class="topic-container">
+                <a href="legislacao-prazos-pad.html" class="topic-header priority-high">
+                    <span><span class="badge-fcc-law">PARETO 3</span> Sanções e Prazos Prescricionais do PAD</span>
+                </a>
+                <div class="revision-grid">
+                    <label class="check-group"><input type="checkbox" data-id="l3-est"> Estudado</label>
+                    <label class="check-group"><input type="checkbox" data-id="l3-24h"> 24h</label>
+                    <label class="check-group"><input type="checkbox" data-id="l3-7d"> 7d</label>
+                    <label class="check-group"><input type="checkbox" data-id="l3-15d"> 15d</label>
+                    <label class="check-group"><input type="checkbox" data-id="l3-30d"> 30d</label>
+                </div>
+            </div>
+
+            <div class="topic-container">
+                <a href="#" class="topic-header">Direitos e Vantagens (Gratificações e Adicionais)</a>
+                <div class="revision-grid">
+                    <label class="check-group"><input type="checkbox" data-id="l4-est"> Estudado</label>
+                    <label class="check-group"><input type="checkbox" data-id="l4-24h"> 24h</label>
+                    <label class="check-group"><input type="checkbox" data-id="l4-7d"> 7d</label>
+                    <label class="check-group"><input type="checkbox" data-id="l4-15d"> 15d</label>
+                    <label class="check-group"><input type="checkbox" data-id="l4-30d"> 30d</label>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>02. Lei Orgânica (LC nº 15/1996)</h2>
+            
+            <div class="topic-container">
+                <a href="leg_administracao.html" class="topic-header priority-high">
+                    <span><span class="badge-fcc-law">PARETO 4</span> Órgãos de Administração Superior (PGJ, Colégio, Conselho)</span>
+                </a>
+                <div class="revision-grid">
+                    <label class="check-group"><input type="checkbox" data-id="l5-est"> Estudado</label>
+                    <label class="check-group"><input type="checkbox" data-id="l5-24h"> 24h</label>
+                    <label class="check-group"><input type="checkbox" data-id="l5-7d"> 7d</label>
+                    <label class="check-group"><input type="checkbox" data-id="l5-15d"> 15d</label>
+                    <label class="check-group"><input type="checkbox" data-id="l5-30d"> 30d</label>
+                </div>
+            </div>
+
+            <div class="topic-container">
+                <a href="#" class="topic-header">Autonomia e Funções Institucionais</a>
+                <div class="revision-grid">
+                    <label class="check-group"><input type="checkbox" data-id="l6-est"> Estudado</label>
+                    <label class="check-group"><input type="checkbox" data-id="l6-24h"> 24h</label>
+                    <label class="check-group"><input type="checkbox" data-id="l6-7d"> 7d</label>
+                    <label class="check-group"><input type="checkbox" data-id="l6-15d"> 15d</label>
+                    <label class="check-group"><input type="checkbox" data-id="l6-30d"> 30d</label>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>03. Estrutura (Lei nº 6.306/2002)</h2>
+            
+            <div class="topic-container">
+                <a href="#" class="topic-header priority-high">
+                    <span><span class="badge-fcc-law">PARETO 5</span> Estrutura Organizacional e Secretarias</span>
+                </a>
+                <div class="revision-grid">
+                    <label class="check-group"><input type="checkbox" data-id="l7-est"> Estudado</label>
+                    <label class="check-group"><input type="checkbox" data-id="l7-24h"> 24h</label>
+                    <label class="check-group"><input type="checkbox" data-id="l7-7d"> 7d</label>
+                    <label class="check-group"><input type="checkbox" data-id="l7-15d"> 15d</label>
+                    <label class="check-group"><input type="checkbox" data-id="l7-30d"> 30d</label>
+                </div>
+            </div>
+        </section>
+
+        <footer style="margin-top: 30px; font-size: 9pt; border-top: 1px solid #ccc; padding-top: 10px; text-align: center; color: #777;">
+            <strong>MÉTODO DE CONTROLE:</strong> Dados salvos automaticamente no seu dispositivo.
+        </footer>
+    </article>
+
+    <script>
+        // LÓGICA DE PERSISTÊNCIA (SALVAMENTO AUTOMÁTICO)
+        document.querySelectorAll('input[type="checkbox"]').forEach(el => {
+            const key = 'leg_check_' + el.getAttribute('data-id');
+            if (localStorage.getItem(key) === 'true') el.checked = true;
+            el.addEventListener('change', () => localStorage.setItem(key, el.checked));
+        });
+    </script>
+</body>
+</html>

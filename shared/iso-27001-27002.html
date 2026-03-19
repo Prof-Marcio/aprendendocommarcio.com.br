@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>ISO 27001 e 27002 - Ficha PDF Pareto</title>
+    <link rel="stylesheet" href="../assets/css/a4-engine.css">
+    <style>
+        :root {
+            --iso-blue: #0d47a1;
+            --iso-light: #e3f2fd;
+        }
+        .status-badge {
+            background: var(--iso-blue);
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 9pt;
+            float: right;
+            text-transform: uppercase;
+        }
+        .pareto-box {
+            background: var(--iso-light);
+            border: 1px solid #bbdefb;
+            padding: 15px;
+            margin: 20px 0;
+            border-left: 8px solid var(--iso-blue);
+        }
+        .alerta-fcc {
+            background: #ffebee;
+            border: 1px dashed #c62828;
+            padding: 10px;
+            margin: 15px 0;
+            font-size: 10pt;
+            color: #b71c1c;
+        }
+        .flashcard {
+            background: #fdfdfd;
+            border: 1px solid #eee;
+            padding: 12px;
+            margin-bottom: 10px;
+            border-left: 4px solid #90caf9;
+        }
+        .flashcard strong { color: var(--iso-blue); display: block; margin-bottom: 5px; }
+        .pdca-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin: 15px 0;
+        }
+        .pdca-item {
+            background: #f8f9fa;
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: center;
+            font-size: 10pt;
+        }
+        .pdca-item b { color: var(--iso-blue); font-size: 14pt; }
+    </style>
+</head>
+<body>
+
+    <nav class="no-print">
+        <a href="../index.html" class="btn-voltar">← Painel Central</a>
+    </nav>
+
+    <a href="portugues.html" class="btn-back no-print">← Voltar ao Mapa Portguês</a>
+
+    <div class="pdf-page">
+        <header>
+            <span class="status-badge">Foco Analista TI</span>
+            <p>ESTADO DE ALAGOAS - MINISTÉRIO PÚBLICO | CONCURSO 2026</p>
+            <h1>ISO 27001:2024 e ISO 27002</h1>
+        </header>
+
+        <section>
+            <div class="pareto-box">
+                <strong>🎯 ESTRATÉGIA PARETO:</strong> A FCC cobra a diferença entre <strong>27001 (Requisitos/Gestão)</strong> e <strong>27002 (Guia/Controles)</strong>. Memorize o ciclo PDCA e a finalidade do SGSI.
+            </div>
+
+            <h2>📌 Conceitos Fundamentais</h2>
+            <ul>
+                <li><strong>🔐 ISO 27001:2024:</strong> Define requisitos para implementar um <strong>SGSI</strong> (Sistema de Gestão de Segurança da Informação). <u>Foco: Gestão + Certificação.</u></li>
+                <li><strong>🛡️ ISO 27002:</strong> Guia de boas práticas com diretrizes de controles. <u>Foco: Operacional/Como aplicar.</u></li>
+            </ul>
+
+            <h2>⚙️ Estrutura ISO 27001 – Ciclo PDCA</h2>
+            <p>O SGSI é baseado na melhoria contínua:</p>
+            <div class="pdca-grid">
+                <div class="pdca-item"><b>P</b><br>Plan (Planejar)<br><small>Análise de riscos e política</small></div>
+                <div class="pdca-item"><b>D</b><br>Do (Executar)<br><small>Implementar controles</small></div>
+                <div class="pdca-item"><b>C</b><br>Check (Verificar)<br><small>Monitorar e auditar</small></div>
+                <div class="pdca-item"><b>A</b><br>Act (Agir)<br><small>Melhorar continuamente</small></div>
+            </div>
+
+            <h2>🛡️ ISO 27002 – Categorias de Controles</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Grupo de Controle</th>
+                        <th>Exemplo Estilo FCC</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Controles Físicos</strong></td>
+                        <td>Monitoramento de perímetro, salas de servidores, UPS.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Controles Tecnológicos</strong></td>
+                        <td>Criptografia, backup, gestão de acesso lógico, logs.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Controles Organizacionais</strong></td>
+                        <td>Políticas de SI, inventário de ativos, uso aceitável.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Controles de Pessoas</strong></td>
+                        <td>Treinamento, termos de confidencialidade (NDA).</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="alerta-fcc">
+                <strong>🚨 PEGADINHAS DA FCC:</strong>
+                <br>• <strong>27001 = 27002?</strong> ERRADO. A 27001 é a única certificável.
+                <br>• <strong>A 27002 substitui a 27001?</strong> ERRADO. Elas são complementares.
+                <br>• <strong>SGSI é opcional?</strong> ERRADO. É o núcleo da norma.
+            </div>
+
+            <h2>🧠 Flashcards (Active Recall)</h2>
+            <div class="flashcard">
+                <strong>A ISO 27002 estabelece requisitos para certificação?</strong>
+                <p>Não. Apenas a <strong>ISO 27001</strong> é certificável. A 27002 é apenas um guia de diretrizes.</p>
+            </div>
+            <div class="flashcard">
+                <strong>Qual o foco principal do ciclo PDCA na ISO 27001?</strong>
+                <p>Garantir a <strong>melhoria contínua</strong> do SGSI.</p>
+            </div>
+            <div class="flashcard">
+                <strong>O que significa SGSI?</strong>
+                <p>Sistema de Gestão de Segurança da Informação.</p>
+            </div>
+        </section>
+
+        <footer style="margin-top: 50px; text-align: center; font-size: 8.5pt; color: #777; border-top: 1px solid #eee; padding-top: 10px;">
+            VDG – Segurança da Informação – MP-AL 2026 – Foco Total FCC
+        </footer>
+    </div>
+
+</body>
+</html>

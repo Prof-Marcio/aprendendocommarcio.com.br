@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Técnico TI - Gestão de Ciclos</title>
+    <link rel="stylesheet" href="../assets/css/a4-engine.css">
+    <style>
+        :root {
+            --fcc-green: #2e7d32;
+            --light-green: #f1f8e9;
+            --bg-body: #f4f4f4;
+        }
+        body { background-color: var(--bg-body); font-family: 'Segoe UI', sans-serif; padding: 20px; }
+        
+        /* Estilos Pareto */
+        .pareto-label {
+            background: var(--fcc-green);
+            color: white;
+            font-weight: bold;
+            padding: 2px 6px;
+            font-size: 8pt;
+            border-radius: 2px;
+            margin-right: 8px;
+        }
+        .fcc-priority-row { 
+            background: var(--light-green) !important; 
+            border-left: 5px solid var(--fcc-green) !important; 
+        }
+
+        .warning-box {
+            border: 1px dashed var(--fcc-green);
+            background: #fff;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 4px;
+        }
+
+        /* Containers de Tópicos */
+        .topic-container {
+            background: #fff;
+            border: 1px solid #ddd;
+            margin-bottom: 12px;
+            padding: 12px 15px;
+            border-radius: 6px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        .topic-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            text-decoration: none;
+            color: #333;
+            font-size: 10pt;
+            font-weight: 600;
+        }
+
+        /* Grade de Revisão */
+        .revision-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 10px;
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 1px solid #eee;
+        }
+        .check-group {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 8.5pt;
+            color: #555;
+            cursor: pointer;
+        }
+        input[type="checkbox"] {
+            width: 16px;
+            height: 16px;
+            cursor: pointer;
+            accent-color: var(--fcc-green);
+        }
+
+        h2 {
+            font-size: 13pt;
+            color: var(--fcc-green);
+            margin: 20px 0 10px 0;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 5px;
+        }
+
+        .no-print { position: fixed; top: 15px; left: 15px; z-index: 100; }
+        .btn-voltar { background: #333; color: #fff; padding: 8px 16px; text-decoration: none; border-radius: 4px; font-size: 12px; }
+
+        @media print { .no-print { display: none; } .sheet { box-shadow: none; border: none; } }
+    </style>
+</head>
+<body>
+
+    <nav class="no-print">
+        <a href="../index.html" class="btn-voltar">← Painel Central</a>
+    </nav>
+
+    <article class="sheet">
+        <header class="doc-header">
+            <h1>Técnico - Tecnologia da Informação (Pareto)</h1>
+            <p>CONHECIMENTOS ESPECÍFICOS - FOCO EM SUPORTE | FCC 2026</p>
+        </header>
+
+        <div class="warning-box">
+            <strong>ESTRATÉGIA PARETO:</strong> Para Técnico, foque em <strong>Hardware (Diagnóstico)</strong>, <strong>Comandos de Rede</strong> e <strong>Active Directory (Operacional)</strong>. A FCC cobra o "Como resolver".
+        </div>
+
+        <section>
+            <h2>01. Suporte e Atendimento</h2>
+            
+            <div class="topic-container fcc-priority-row">
+                <a href="tecnico-itil-incidentes.html" class="topic-header">
+                    <span><span class="pareto-label">PARETO</span> Gestão de Incidentes e ITIL v4</span>
+                </a>
+                <div class="revision-grid">
+                    <label class="check-group"><input type="checkbox" data-id="tec1-est"> Feito</label>
+                    <label class="check-group"><input type="checkbox" data-id="tec1-24h"> 24h</label>
+                    <label class="check-group"><input type="checkbox" data-id="tec1-7d"> 7d</label>
+                    <label class="check-group"><input type="checkbox" data-id="tec1-15d"> 15d</label>
+                    <label class="check-group"><input type="checkbox" data-id="tec1-30d"> 30d</label>
+                </div>
+            </div>
+
+            <div class="topic-container fcc-priority-row">
+                <a href="tecnico-sla-escalonamento.html" class="topic-header">
+                    <span><span class="pareto-label">PARETO</span> Help Desk: SLA e Escalonamento</span>
+                </a>
+                <div class="revision-grid">
+                    <label class="check-group"><input type="checkbox" data-id="tec2-est"> Feito</label>
+                    <label class="check-group"><input type="checkbox" data-id="tec2-24h"> 24h</label>
+                    <label class="check-group"><input type="checkbox" data-id="tec2-7d"> 7d</label>
+                    <label class="check-group"><input type="checkbox" data-id="tec2-15d"> 15d</label>
+                    <label class="check-group"><input type="checkbox" data-id="tec2-30d"> 30d</label>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>02. Hardware e Sistemas</h2>
+            
+            <div class="topic-container fcc-priority-row">
+                <a href="suporte_hardware.html" class="topic-header">
+                    <span><span class="pareto-label">PARETO</span> Diagnóstico de Falhas (RAM, SSD, Beeps)</span>
+                </a>
+                <div class="revision-grid">
+                    <label class="check-group"><input type="checkbox" data-id="tec3-est"> Feito</label>
+                    <label class="check-group"><input type="checkbox" data-id="tec3-24h"> 24h</label>
+                    <label class="check-group"><input type="checkbox" data-id="tec3-7d"> 7d</label>
+                    <label class="check-group"><input type="checkbox" data-id="tec3-15d"> 15d</label>
+                    <label class="check-group"><input type="checkbox" data-id="tec3-30d"> 30d</label>
+                </div>
+            </div>
+
+            <div class="topic-container fcc-priority-row">
+                <a href="#" class="topic-header">
+                    <span><span class="pareto-label">PARETO</span> Active Directory: Senhas e Domínio</span>
+                </a>
+                <div class="revision-grid">
+                    <label class="check-group"><input type="checkbox" data-id="tec4-est"> Feito</label>
+                    <label class="check-group"><input type="checkbox" data-id="tec4-24h"> 24h</label>
+                    <label class="check-group"><input type="checkbox" data-id="tec4-7d"> 7d</label>
+                    <label class="check-group"><input type="checkbox" data-id="tec4-15d"> 15d</label>
+                    <label class="check-group"><input type="checkbox" data-id="tec4-30d"> 30d</label>
+                </div>
+            </div>
+        </section>
+        <div class="page-number">Página 1 de 2</div>
+    </article>
+
+    <article class="sheet">
+        <section>
+            <h2>03. Redes e Conectividade</h2>
+            <div class="topic-container fcc-priority-row">
+                <a href="suporte_comandos.html" class="topic-header">
+                    <span><span class="pareto-label">PARETO</span> Diagnóstico: Ping, Tracert, Ipconfig</span>
+                </a>
+                <div class="revision-grid">
+                    <label class="check-group"><input type="checkbox" data-id="tec5-est"> Feito</label>
+                    <label class="check-group"><input type="checkbox" data-id="tec5-24h"> 24h</label>
+                    <label class="check-group"><input type="checkbox" data-id="tec5-7d"> 7d</label>
+                    <label class="check-group"><input type="checkbox" data-id="tec5-15d"> 15d</label>
+                    <label class="check-group"><input type="checkbox" data-id="tec5-30d"> 30d</label>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>04. Segurança e Backup</h2>
+            <div class="topic-container fcc-priority-row">
+                <a href="#" class="topic-header">
+                    <span><span class="pareto-label">PARETO</span> Backup: Full, Incremental e Diferencial</span>
+                </a>
+                <div class="revision-grid">
+                    <label class="check-group"><input type="checkbox" data-id="tec6-est"> Feito</label>
+                    <label class="check-group"><input type="checkbox" data-id="tec6-24h"> 24h</label>
+                    <label class="check-group"><input type="checkbox" data-id="tec6-7d"> 7d</label>
+                    <label class="check-group"><input type="checkbox" data-id="tec6-15d"> 15d</label>
+                    <label class="check-group"><input type="checkbox" data-id="tec6-30d"> 30d</label>
+                </div>
+            </div>
+        </section>
+
+        <footer style="margin-top: 50px; background: #e8f5e9; padding: 15px; font-size: 9pt; border: 1px solid #4caf50;">
+            <strong>DICA FCC TÉCNICO:</strong> A banca ama trocar os conceitos de <strong>Backup Incremental</strong> (limpa o bit de arquivo) vs <strong>Diferencial</strong> (não limpa). Estude o processo de boot do Windows e os comandos de rede básicos.
+        </footer>
+        <div class="page-number">Página 2 de 2</div>
+    </article>
+
+    <script>
+        // Sistema de Persistência Global
+        document.querySelectorAll('input[type="checkbox"]').forEach(el => {
+            const key = 'check_tec_ti_' + el.getAttribute('data-id');
+            if (localStorage.getItem(key) === 'true') el.checked = true;
+            el.addEventListener('change', () => localStorage.setItem(key, el.checked));
+        });
+    </script>
+</body>
+</html>

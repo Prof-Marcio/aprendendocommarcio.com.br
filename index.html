@@ -3,36 +3,117 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MPAL 2026 - Analista de Redes</title>
-    <link rel="stylesheet" href="style.css">
+    <title>MP-AL 2026 | Painel de Controle Pareto</title>
+    <style>
+        :root {
+            --fcc-blue: #1a73e8;
+            --fcc-red: #d32f2f;
+            --fcc-green: #2e7d32;
+            --dark: #202124;
+            --bg: #f8f9fa;
+        }
+
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: var(--bg); margin: 0; padding: 20px; color: var(--dark); }
+        
+        .container { max-width: 1100px; margin: 0 auto; }
+        
+        header { text-align: center; padding: 40px 0; border-bottom: 2px solid #ddd; margin-bottom: 30px; }
+        header h1 { margin: 0; font-size: 24pt; color: var(--fcc-blue); }
+        header p { color: #666; margin-top: 10px; }
+
+        .grid-disciplinas {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background: #fff;
+            border-radius: 12px;
+            padding: 25px;
+            text-decoration: none;
+            color: inherit;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            border-top: 5px solid #ccc;
+            transition: transform 0.2s, box-shadow 0.2s;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .card:hover { transform: translateY(-5px); box-shadow: 0 8px 15px rgba(0,0,0,0.1); }
+
+        .card h3 { margin: 0 0 10px 0; font-size: 16pt; }
+        .card p { font-size: 10pt; color: #555; line-height: 1.4; }
+        .card .badge { 
+            display: inline-block; 
+            margin-top: 15px; 
+            font-size: 9pt; 
+            font-weight: bold; 
+            text-transform: uppercase; 
+            color: var(--fcc-blue);
+        }
+
+        /* Cores por Categoria */
+        .c-gerais { border-top-color: var(--fcc-blue); }
+        .c-legislacao { border-top-color: var(--fcc-red); }
+        .c-ti { border-top-color: var(--fcc-green); }
+
+        .section-title { grid-column: 1 / -1; margin: 20px 0 10px 0; font-size: 14pt; color: #888; text-transform: uppercase; letter-spacing: 1px; }
+    </style>
 </head>
 <body>
+
     <div class="container">
         <header>
-            <h1>🎯 Missão MPAL 2026</h1>
-            <p style="text-align: center; color: var(--text-dim);">Foco: Analista do Ministério Público - Administração de Redes</p>
+            <h1>MP-AL 2026 | Gestão de Ciclos</h1>
+            <p>Foco Estratégico FCC - Método 80/20</p>
         </header>
-        
-        <div class="card-grid">
-            <section class="category-card">
-                <h2>📚 Conhecimentos Gerais</h2>
-                <p style="font-size: 0.85em; color: var(--text-dim);">Peso: 1 | Questões: 30</p>
-                <a href="conhecimentos-gerais/portugues/index.html" class="nav-link">1.1 Língua Portuguesa</a>
-                <a href="conhecimentos-gerais/legislacao/index.html" class="nav-link">1.2 Noções de Legislação (Alagoas)</a>
-            </section>
 
-            <section class="category-card">
-                <h2>⚙️ Conhecimentos Específicos</h2>
-                <p style="font-size: 0.85em; color: var(--text-dim);">Peso: 2 | Questões: 30</p>
-                <a href="conhecimentos-especificos/seguranca-informacao/index.html" class="nav-link">2.1 Segurança da Informação</a>
-                <a href="conhecimentos-especificos/infraestrutura-redes/index.html" class="nav-link">2.2 Infraestrutura de TI e Redes</a>
-                <a href="conhecimentos-especificos/admin-sistemas/index.html" class="nav-link">2.3 Computação em Nuvem e Nuvem</a>
-            </section>
+        <div class="grid-disciplinas">
+            
+            <div class="section-title">Conhecimentos Básicos</div>
+            
+            <a href="shared/portugues.html" class="card c-gerais">
+                <div>
+                    <h3>Língua Portuguesa</h3>
+                    <p>Foco em Reescrita, Vozes Verbais e Conectivos. O "Coração" da prova FCC.</p>
+                </div>
+                <span class="badge">Abrir Mapa Pareto →</span>
+            </a>
+
+            <a href="shared/legislacao.html" class="card c-legislacao">
+                <div>
+                    <h3>Legislação MP-AL</h3>
+                    <p>RJU (Lei 5.247) e Lei Orgânica (LC 15). Foco em Provimento e Administração Superior.</p>
+                </div>
+                <span class="badge">Abrir Mapa Pareto →</span>
+            </a>
+
+            <div class="section-title">Conhecimentos Específicos (TI)</div>
+
+            <a href="shared/analista.html" class="card c-ti">
+                <div>
+                    <h3>Analista: Redes</h3>
+                    <p>Segurança (ISO 27001), Cloud, Criptografia e Modelo OSI avançado.</p>
+                </div>
+                <span class="badge">Painel Analista →</span>
+            </a>
+
+            <a href="shared/tecnico.html" class="card c-ti">
+                <div>
+                    <h3>Técnico: Suporte</h3>
+                    <p>Hardware, Windows/AD, Comandos de Rede e Atendimento (ITIL).</p>
+                </div>
+                <span class="badge">Painel Técnico →</span>
+            </a>
+
         </div>
 
-        <footer style="margin-top: 40px; text-align: center; font-size: 0.8em; color: var(--text-dim);">
-            <p>Banca: Fundação Carlos Chagas (FCC) | Remuneração: R$ 6.243,37</p>
-        </div>
+        <footer style="text-align: center; margin-top: 50px; color: #999; font-size: 9pt;">
+            Sistema de Estudos Local • Sincronizado com pasta /shared/
+        </footer>
     </div>
+
 </body>
 </html>

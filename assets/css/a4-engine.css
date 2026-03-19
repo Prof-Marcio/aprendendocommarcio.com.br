@@ -1,0 +1,104 @@
+/* Configurações Gerais de Reset e Tela */
+:root {
+    --bg-gray: #525659; /* Cor de fundo do visualizador de PDF */
+    --shadow: 0 0 15px rgba(0,0,0,0.3);
+    --fcc-blue: #1a73e8;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    background-color: var(--bg-gray);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 0;
+    font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+/* Simulação da Folha A4 na Tela */
+.pdf-page, .folha-a4, .sheet {
+    background: white;
+    width: 210mm;
+    min-height: 297mm;
+    padding: 20mm; /* Margem padrão ABNT */
+    margin-bottom: 30px;
+    box-shadow: var(--shadow);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Cabeçalho Estilo Documento */
+header {
+    border-bottom: 2px solid #333;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+}
+
+header h1 { font-size: 22pt; color: #111; }
+header p { font-size: 10pt; color: #666; font-weight: bold; }
+
+/* Tipografia de Conteúdo */
+h2 {
+    font-size: 16pt;
+    color: var(--fcc-blue);
+    margin: 25px 0 10px 0;
+    border-left: 5px solid var(--fcc-blue);
+    padding-left: 10px;
+}
+
+p, li {
+    font-size: 11pt;
+    line-height: 1.6;
+    color: #333;
+    text-align: justify;
+}
+
+ul { margin-left: 20px; margin-bottom: 15px; }
+
+/* Tabelas Estilo Concurso */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+
+th {
+    background: #f1f1f1;
+    border: 1px solid #ccc;
+    padding: 10px;
+    font-size: 10pt;
+    text-align: left;
+}
+
+td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    font-size: 10pt;
+}
+
+/* Ajustes para Impressão Real (Ctrl+P) */
+@media print {
+    body { background: none; padding: 0; }
+    .pdf-page, .folha-a4, .sheet {
+        margin: 0;
+        box-shadow: none;
+        width: 100%;
+        height: auto;
+    }
+    .no-print { display: none !important; }
+}
+
+/* Botão de Voltar Flutuante */
+.btn-back {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    background: #000;
+    color: #fff;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 12px;
+    z-index: 9999;
+}
