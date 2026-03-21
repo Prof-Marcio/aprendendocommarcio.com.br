@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Concordância e Partícula SE - Analista MP-AL</title>
+    <style>
+        :root {
+            --azul-foco: #003366; 
+            --branco: #ffffff;
+            --alerta: #d32f2f;
+            --cinza-texto: #2c3e50;
+            --cinza-claro: #f4f7f9;
+            --borda: #cfd8dc;
+            --bg-exemplo: #fff9c4;
+        }
+
+        body { 
+            background-color: #eceff1; 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            margin: 0; 
+            padding: 40px 0;
+            color: var(--cinza-texto);
+        }
+
+        .folha-a4 {
+            background: var(--branco);
+            width: 210mm;
+            min-height: 297mm;
+            margin: 0 auto;
+            padding: 25mm;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            box-sizing: border-box;
+            position: relative;
+        }
+
+        header {
+            border-bottom: 5px solid var(--azul-foco);
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+        }
+
+        .badge-fcc {
+            background: var(--alerta);
+            color: white;
+            padding: 6px 15px;
+            border-radius: 4px;
+            font-size: 10pt;
+            font-weight: bold;
+            float: right;
+            text-transform: uppercase;
+        }
+
+        h1 { color: var(--azul-foco); font-size: 18pt; margin: 0; }
+        h2 { color: var(--azul-foco); font-size: 13pt; border-left: 6px solid var(--azul-foco); padding-left: 12px; margin-top: 25px; margin-bottom: 12px; text-transform: uppercase; }
+        
+        .box-conceito {
+            background: var(--cinza-claro);
+            border: 1px solid var(--borda);
+            padding: 15px;
+            border-radius: 6px;
+            margin: 10px 0;
+            font-size: 10.5pt;
+            line-height: 1.5;
+        }
+
+        .metodo-pareto {
+            border: 2px dashed var(--azul-foco);
+            padding: 18px;
+            margin: 20px 0;
+            background: #f0f4f8;
+            font-size: 10.5pt;
+            position: relative;
+        }
+
+        .metodo-pareto::before {
+            content: "💡 ESTRATÉGIA PARETO (80/20)";
+            position: absolute;
+            top: -12px;
+            left: 20px;
+            background: var(--azul-foco);
+            color: white;
+            padding: 2px 10px;
+            font-size: 8pt;
+            font-weight: bold;
+            border-radius: 3px;
+        }
+
+        .exemplo {
+            font-family: 'Courier New', Courier, monospace;
+            background: var(--bg-exemplo);
+            padding: 10px;
+            border: 1px solid #fbc02d;
+            margin: 8px 0;
+            display: block;
+            font-size: 10pt;
+        }
+
+        .grid-concordancia {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .card-conc {
+            border: 1px solid var(--borda);
+            padding: 12px;
+            border-radius: 5px;
+            background: #fff;
+        }
+
+        @media print {
+            body { background: white; padding: 0; }
+            .folha-a4 { box-shadow: none; margin: 0; width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="folha-a4">
+        <header>
+            <span class="badge-fcc">RECORRENTE FCC</span>
+            <h1>Concordância & Partícula SE</h1>
+            <p><strong>Língua Portuguesa</strong> | Analista MP-AL (Redes)</p>
+        </header>
+
+        <section>
+            <h2>1. Conceito do Tema</h2>
+            <div class="box-conceito">
+                A <strong>Concordância Verbal</strong> é a adaptação do verbo ao seu sujeito em número e pessoa. Na FCC, a dificuldade reside na identificação do sujeito paciente quando acompanhado da partícula <strong>SE</strong> e em orações intercaladas que "escondem" o núcleo do sujeito.
+            </div>
+        </section>
+
+        <section>
+            <h2>2. O "SE" na Concordância (Divisor de Águas)</h2>
+            <div class="grid-concordancia">
+                <div class="card-conc">
+                    <strong>SE: Partícula Apassivadora</strong>
+                    <p>Acompanha verbos VTD ou VTDI. O verbo <strong>concorda</strong> com o sujeito paciente.</p>
+                    <span class="exemplo">Configuraram-se <u>os servidores</u>. (Plural)</span>
+                </div>
+                <div class="card-conc">
+                    <strong>SE: Índice de Indeterminação</strong>
+                    <p>Acompanha VTI, VI ou VL. O verbo fica obrigatoriamente no <strong>singular</strong>.</p>
+                    <span class="exemplo">Precisa-se <u>de</u> analistas técnicos. (Singular)</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="metodo-pareto">
+            <h2>3. Como cai na Banca (Malícia FCC)</h2>
+            <ul>
+                <li><strong>O Sujeito Distante:</strong> A FCC coloca 2 ou 3 linhas entre o sujeito e o verbo. <br><em>Estratégia:</em> Ache o verbo e pergunte "Quem?" ou "O quê?". Ignore os termos entre vírgulas.</li>
+                <li><strong>Locuções Verbais com SE:</strong> No caso de passiva, apenas o auxiliar varia. <br> <span class="exemplo">Devem-se buscar novas soluções. (Buscar é VTD)</span></li>
+                <li><strong>Verbo HAVER (Existir):</strong> No sentido de existir, é impessoal (sempre singular). <br> <span class="exemplo">Havia muitos roteadores para configurar.</span></li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>4. Concordância Nominal (Especial Analista)</h2>
+            <div class="box-conceito">
+                <strong>Palavras Específicas:</strong> <br>
+                - <strong>Anexo / Incluso / Próprio:</strong> Concordam com o substantivo (Seguem anexos os logs). <br>
+                - <strong>Bastante:</strong> Se for adjetivo (= muitos), varia. Se for advérbio, não varia. <br>
+                - <strong>Meio:</strong> Se for numeral (= metade), varia. Se for advérbio (= um pouco), não varia.
+            </div>
+        </section>
+
+        <section>
+            <h2>5. Checklist Final (Memorização)</h2>
+            <div class="box-conceito" style="background: #e8f5e9;">
+                <ul>
+                    <li>✅ <strong>VTD + SE:</strong> Concordância obrigatória (Vendem-se casas).</li>
+                    <li>✅ <strong>VTI + SE (Preposição):</strong> Verbo no Singular (Trata-se de erros).</li>
+                    <li>✅ <strong>Haver (Tempo/Existir):</strong> Sempre Singular.</li>
+                    <li>✅ <strong>Fazer (Tempo):</strong> Sempre Singular (Faz dez anos).</li>
+                </ul>
+            </div>
+        </section>
+
+        <footer style="margin-top: 30px; font-size: 8pt; color: #999; text-align: center; border-top: 1px solid #eee; padding-top: 10px;">
+            Ciclo de Estudos - MP-AL 2026 - Analista de Redes
+        </footer>
+    </div>
+
+</body>
+</html>

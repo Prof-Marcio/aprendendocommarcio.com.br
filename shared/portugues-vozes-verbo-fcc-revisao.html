@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Revisão MP-AL: Vozes do Verbo</title>
+    <style>
+        :root {
+            --branco: #ffffff;
+            --azul-mp: #002d5b; /* Cor da disciplina: Português/Institucional */
+            --alerta-bg: #ffebee;
+            --alerta-borda: #c62828;
+            --processo-bg: #fffde7;
+            --processo-borda: #fbc02d;
+            --essencial-bg: #e8f5e9;
+            --essencial-borda: #2e7d32;
+            --cinza-fundo: #cfd8dc;
+        }
+
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: var(--cinza-fundo); padding: 20px; margin: 0; }
+
+        .folha-a5 {
+            background: var(--branco);
+            width: 148mm; /* Tamanho A5 real */
+            min-height: 210mm;
+            margin: 0 auto;
+            padding: 15mm;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            border-radius: 5px;
+        }
+
+        .header {
+            background: var(--azul-mp);
+            color: white;
+            padding: 10px;
+            text-align: center;
+            border-radius: 4px;
+            margin-bottom: 15px;
+        }
+
+        h1 { font-size: 16pt; margin: 0; text-transform: uppercase; }
+        h2 { font-size: 11pt; color: var(--azul-mp); border-bottom: 2px solid var(--azul-mp); margin-top: 15px; margin-bottom: 8px; }
+
+        .badge {
+            display: inline-block;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 8pt;
+            font-weight: bold;
+            color: white;
+            background: var(--azul-mp);
+        }
+
+        .gatilhos-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            font-size: 9pt;
+        }
+
+        .card-gatilho {
+            background: #f8f9fa;
+            border-left: 4px solid var(--azul-mp);
+            padding: 8px;
+        }
+
+        .processo-box {
+            background: var(--processo-bg);
+            border: 1px dashed var(--processo-borda);
+            padding: 10px;
+            font-size: 9pt;
+            border-radius: 4px;
+        }
+
+        .alerta-box {
+            background: var(--alerta-bg);
+            border-left: 5px solid var(--alerta-borda);
+            padding: 10px;
+            font-size: 9pt;
+            margin-top: 10px;
+        }
+
+        .essencial-box {
+            background: var(--essencial-bg);
+            border: 1px solid var(--essencial-borda);
+            padding: 10px;
+            font-size: 9pt;
+            font-weight: bold;
+            text-align: center;
+            margin-top: 15px;
+        }
+
+        .exemplo {
+            font-style: italic;
+            color: #444;
+            margin: 4px 0;
+            display: block;
+        }
+
+        @media print {
+            body { background: white; padding: 0; }
+            .folha-a5 { box-shadow: none; margin: 0; width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="folha-a5">
+        <div class="header">
+            <h1>Vozes do Verbo</h1>
+            <p style="margin: 3px 0; font-size: 9pt;">MP-AL | Analista - Redes | Banca: FCC</p>
+        </div>
+
+        <h2>⚡ Gatilhos de Reconhecimento</h2>
+        <div class="gatilhos-grid">
+            <div class="card-gatilho">
+                <strong>Ativa:</strong> Sujeito → Pratica<br>
+                <strong>Passiva Analítica:</strong> SER + Particípio<br>
+                <strong>Passiva Sintética:</strong> VTD + SE
+            </div>
+            <div class="card-gatilho">
+                <strong>Reflexiva:</strong> Faz e Sofre<br>
+                <strong>Agente da Passiva:</strong> Por / Pelo / Pela
+            </div>
+        </div>
+
+        <h2>🔄 Processo: Transposição (Pareto 80/20)</h2>
+        <div class="processo-box">
+            <strong>Passo a Passo para Ativa → Passiva:</strong><br>
+            1. <strong>O.D. vira Sujeito:</strong> O que sofre a ação inicia a frase.<br>
+            2. <strong>Verbo vira Locução:</strong> Adicione o verbo SER no <em>mesmo tempo</em> do original.<br>
+            3. <strong>Manter o Tempo:</strong> Se era "Fez" (Pret. Perf.), vira "Foi feito".
+        </div>
+
+        <h2>📚 Exemplos Clássicos (Padrão FCC)</h2>
+        <div style="font-size: 9pt;">
+            <span class="exemplo">"O técnico configurou a rede." (Ativa)</span>
+            <span class="exemplo">"A rede <strong>foi configurada</strong> pelo técnico." (Passiva Analítica)</span>
+            <span class="exemplo">"<strong>Instalaram-se</strong> os cabos." (Passiva Sintética)</span>
+        </div>
+
+        <div class="alerta-box">
+            <strong style="color: var(--alerta-borda);">🚨 ALERTA DE PEGADINHA (FCC)</strong><br>
+            O "SE" só é partícula apassivadora com <strong>VTD</strong>. Se o verbo tiver preposição (VTI), o "SE" é Índice de Indeterminação do Sujeito.<br>
+            ❌ <em>"Precisa-se de técnicos"</em> → <strong>NÃO</strong> admite voz passiva.
+        </div>
+
+        <div class="essencial-box">
+            📌 ESSENCIAL: Na transposição, a regra de ouro da FCC é manter o TEMPO e MODO verbal. Se a ativa está no Futuro do Pretérito, a passiva também deve estar!
+        </div>
+
+        <footer style="margin-top: 20px; text-align: center; font-size: 7pt; color: #777;">
+            Revisão de Véspera - Foco Estratégico MP-AL
+        </footer>
+    </div>
+
+</body>
+</html>

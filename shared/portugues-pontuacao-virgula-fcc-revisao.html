@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Revisão MP-AL: Pontuação (A Vírgula na FCC)</title>
+    <style>
+        :root {
+            --branco: #ffffff;
+            --cor-primaria: #ff6f00; /* Laranja para Atenção/Pontuação */
+            --alerta-bg: #ffebee;
+            --alerta-borda: #c62828;
+            --processo-bg: #e8f5e9;
+            --processo-borda: #2e7d32;
+            --essencial-bg: #fffde7;
+            --essencial-borda: #fbc02d;
+            --cinza-fundo: #cfd8dc;
+        }
+
+        body { font-family: 'Segoe UI', Tahoma, sans-serif; background: var(--cinza-fundo); padding: 20px; margin: 0; }
+
+        .folha-a5 {
+            background: var(--branco);
+            width: 148mm;
+            min-height: 210mm;
+            margin: 0 auto;
+            padding: 15mm;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            border-radius: 5px;
+        }
+
+        .header {
+            background: var(--cor-primaria);
+            color: white;
+            padding: 10px;
+            text-align: center;
+            border-radius: 4px;
+            margin-bottom: 12px;
+        }
+
+        h1 { font-size: 13pt; margin: 0; text-transform: uppercase; }
+        h2 { font-size: 10pt; color: var(--cor-primaria); border-bottom: 2px solid var(--cor-primaria); margin-top: 12px; margin-bottom: 5px; }
+
+        .gatilhos-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+            font-size: 8pt;
+        }
+
+        .card-gatilho {
+            background: #f8f9fa;
+            border-left: 4px solid var(--cor-primaria);
+            padding: 6px;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 1px 4px;
+            border-radius: 3px;
+            font-size: 7pt;
+            font-weight: bold;
+            color: white;
+            background: var(--cor-primaria);
+        }
+
+        .processo-box {
+            background: var(--processo-bg);
+            border: 1px dashed var(--processo-borda);
+            padding: 8px;
+            font-size: 8.5pt;
+            border-radius: 4px;
+        }
+
+        .alerta-box {
+            background: var(--alerta-bg);
+            border-left: 5px solid var(--alerta-borda);
+            padding: 8px;
+            font-size: 8.5pt;
+            margin-top: 8px;
+        }
+
+        .essencial-box {
+            background: var(--essencial-bg);
+            border: 1px solid var(--essencial-borda);
+            padding: 8px;
+            font-size: 8.5pt;
+            text-align: center;
+            margin-top: 12px;
+        }
+
+        .exemplo { font-family: monospace; font-size: 8.5pt; color: #2e7d32; font-weight: bold; }
+
+        @media print {
+            body { background: white; padding: 0; }
+            .folha-a5 { box-shadow: none; margin: 0; width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="folha-a5">
+        <div class="header">
+            <h1>Pontuação: A Vírgula (FCC)</h1>
+            <p style="margin: 2px 0; font-size: 7.5pt;">MP-AL | Analista - Redes</p>
+        </div>
+
+        <h2>⚡ Gatilhos de Proibição (Regra Sagrada)</h2>
+        <div class="gatilhos-grid">
+            <div class="card-gatilho">
+                🚫 Entre <strong>Sujeito</strong> e <strong>Verbo</strong>.<br>
+                🚫 Entre <strong>Verbo</strong> e <strong>Complemento</strong> (O.D./O.I.).
+            </div>
+            <div class="card-gatilho">
+                🚫 Entre <strong>Nome</strong> e <strong>Adjunto/Complemento</strong>.<br>
+                🚫 Antes de oração substantiva.
+            </div>
+        </div>
+
+        <h2>🔄 Processo de Análise Sintática</h2>
+        <div class="processo-box">
+            1. <strong>Localize o Verbo:</strong> Pergunte "Quem?". Ache o Sujeito. Se houver vírgula entre eles isolada, está ERRADO.<br>
+            2. <strong>Termos Intercalados:</strong> Se abrir vírgula para explicar, TEM que fechar. (Ex: O Analista, <em>que é atento</em>, revisou...).<br>
+            3. <strong>Deslocamento:</strong> Se o Adjunto Adverbial vier para o início da frase e for longo, a vírgula é OBRIGATÓRIA.
+        </div>
+
+        <h2>📚 Casos Clássicos na FCC</h2>
+        <div style="font-size: 8.5pt; line-height: 1.4;">
+            • <span class="exemplo">Explicativa:</span> Machado de Assis, o mestre, escreveu... (Sempre entre vírgulas).<br>
+            • <span class="exemplo">Enumeração:</span> Comprou cabos, switches, e roteidores.<br>
+            • <span class="exemplo">O "E" com sujeitos diferentes:</span> João saiu, e Maria entrou. (Vírgula aceitável pela FCC).
+        </div>
+
+        <div class="alerta-box">
+            <strong style="color: var(--alerta-borda);">🚨 ALERTA: O QUE A BANCA AMA</strong><br>
+            Substituir vírgulas por **Travessões** ou **Parênteses**. Em termos intercalados (como o aposto), a troca geralmente mantém a correção.
+        </div>
+
+        <div class="essencial-box">
+            📌 DICA DE OURO: A FCC adora frases longas em ordem indireta. Reorganize a frase mentalmente (Sujeito + Verbo + Complemento). Se a vírgula quebrar essa sequência, marque como errada!
+        </div>
+
+        <footer style="margin-top: 15px; text-align: center; font-size: 7pt; color: #777;">
+            Revisão de Véspera - Foco Estratégico MP-AL
+        </footer>
+    </div>
+
+</body>
+</html>

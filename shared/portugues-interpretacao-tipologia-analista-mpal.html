@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interpretação e Tipologia - Analista MP-AL</title>
+    <style>
+        :root {
+            --azul-foco: #003366; 
+            --branco: #ffffff;
+            --alerta: #d32f2f;
+            --cinza-texto: #2c3e50;
+            --cinza-claro: #f4f7f9;
+            --borda: #cfd8dc;
+            --bg-exemplo: #fff9c4;
+        }
+
+        body { 
+            background-color: #eceff1; 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            margin: 0; 
+            padding: 40px 0;
+            color: var(--cinza-texto);
+        }
+
+        .folha-a4 {
+            background: var(--branco);
+            width: 210mm;
+            min-height: 297mm;
+            margin: 0 auto;
+            padding: 25mm;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            box-sizing: border-box;
+            position: relative;
+        }
+
+        header {
+            border-bottom: 5px solid var(--azul-foco);
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+        }
+
+        .badge-fcc {
+            background: var(--alerta);
+            color: white;
+            padding: 6px 15px;
+            border-radius: 4px;
+            font-size: 10pt;
+            font-weight: bold;
+            float: right;
+            text-transform: uppercase;
+        }
+
+        h1 { color: var(--azul-foco); font-size: 18pt; margin: 0; }
+        h2 { color: var(--azul-foco); font-size: 13pt; border-left: 6px solid var(--azul-foco); padding-left: 12px; margin-top: 25px; margin-bottom: 12px; text-transform: uppercase; }
+        
+        .box-conceito {
+            background: var(--cinza-claro);
+            border: 1px solid var(--borda);
+            padding: 15px;
+            border-radius: 6px;
+            margin: 10px 0;
+            font-size: 10.5pt;
+            line-height: 1.5;
+        }
+
+        .metodo-pareto {
+            border: 2px dashed var(--azul-foco);
+            padding: 18px;
+            margin: 20px 0;
+            background: #f0f4f8;
+            font-size: 10.5pt;
+            position: relative;
+        }
+
+        .metodo-pareto::before {
+            content: "💡 ESTRATÉGIA PARETO (80/20)";
+            position: absolute;
+            top: -12px;
+            left: 20px;
+            background: var(--azul-foco);
+            color: white;
+            padding: 2px 10px;
+            font-size: 8pt;
+            font-weight: bold;
+            border-radius: 3px;
+        }
+
+        .exemplo {
+            font-family: 'Courier New', Courier, monospace;
+            background: var(--bg-exemplo);
+            padding: 8px;
+            border: 1px solid #fbc02d;
+            margin: 8px 0;
+            display: block;
+            font-size: 9.5pt;
+        }
+
+        .grid-tipos {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .card-tipo {
+            border: 1px solid var(--borda);
+            padding: 10px;
+            border-radius: 5px;
+            background: #fff;
+        }
+
+        @media print {
+            body { background: white; padding: 0; }
+            .folha-a4 { box-shadow: none; margin: 0; width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="folha-a4">
+        <header>
+            <span class="badge-fcc">ESSENCIAL FCC</span>
+            <h1>Interpretação & Tipologia</h1>
+            <p><strong>Língua Portuguesa</strong> | Analista MP-AL (Redes)</p>
+        </header>
+
+        <section>
+            <h2>1. Conceito do Tema</h2>
+            <div class="box-conceito">
+                Interpretar é depreender o que está "além" das palavras (subentendido), enquanto a Tipologia é a forma como o texto é construído (narração, dissertação, descrição). Na FCC, as questões de interpretação testam a sua capacidade de **inferência** e reconhecimento da **ideia central**.
+            </div>
+        </section>
+
+        <section>
+            <h2>2. Tipologia Textual (Foco em Prova)</h2>
+            <div class="grid-tipos">
+                <div class="card-tipo">
+                    <strong>Dissertativo-Argumentativo</strong>
+                    <p>Defesa de uma ideia com argumentos. (Artigos de opinião, editoriais).</p>
+                    <span class="exemplo">"É necessário que a rede seja segura, pois..."</span>
+                </div>
+                <div class="card-tipo">
+                    <strong>Dissertativo-Expositivo</strong>
+                    <p>Apenas informa/explica algo, sem tentar convencer. (Manuais, notícias).</p>
+                    <span class="exemplo">"O protocolo TCP opera na camada 4..."</span>
+                </div>
+                <div class="card-tipo">
+                    <strong>Narrativo</strong>
+                    <p>Relata fatos, personagens e tempo. (Contos, crônicas).</p>
+                </div>
+                <div class="card-tipo">
+                    <strong>Injunção</strong>
+                    <p>Ordem ou instrução. (Editais, receitas).</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="metodo-pareto">
+            <h2>3. Como cai na Banca (Malícia FCC)</h2>
+            <ul>
+                <li><strong>"Infere-se do texto que..."</strong>: A resposta não está escrita exatamente no texto, mas é uma conclusão lógica baseada nele.</li>
+                <li><strong>Relação entre parágrafos:</strong> A banca pergunta se o 2º parágrafo ratifica, contradiz ou exemplifica o 1º.</li>
+                <li><strong>Sentido de Palavras:</strong> Pedido para substituir uma palavra difícil (ex: <em>idiossincrasia</em>) por outra sem mudar o sentido no contexto.</li>
+                <li><strong>Voz do Autor:</strong> Identificar se o autor é irônico, pessimista, otimista ou imparcial.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>4. Estratégia de Leitura (Checklist)</h2>
+            <div class="box-conceito">
+                <strong>Passo a passo FCC:</strong> <br>
+                1. Leia primeiro o **Enunciado** (para saber o que procurar). <br>
+                2. Leia o texto buscando a **Tese** (O que o autor quer provar?). <br>
+                3. Sublinhe os **Conectivos** (eles mudam o rumo do argumento). <br>
+                4. Cuidado com termos restritivos: <em>apenas, somente, nunca, sempre</em>. Eles costumam invalidar alternativas.
+            </div>
+        </section>
+
+        <section>
+            <h2>5. Memorização Rápida</h2>
+            <div class="box-conceito" style="background: #e8f5e9;">
+                <ul>
+                    <li>✅ <strong>Compreensão:</strong> O que está NO texto (O autor diz que...).</li>
+                    <li>✅ <strong>Interpretação:</strong> O que se tira DO texto (Depreende-se que...).</li>
+                    <li>✅ <strong>FCC ama:</strong> Textos sobre ética, tecnologia vs. humanidade e o papel do Estado.</li>
+                </ul>
+            </div>
+        </section>
+
+        <footer style="margin-top: 30px; font-size: 8pt; color: #999; text-align: center; border-top: 1px solid #eee; padding-top: 10px;">
+            Material de Leitura Estratégica - MP-AL 2026
+        </footer>
+    </div>
+
+</body>
+</html>

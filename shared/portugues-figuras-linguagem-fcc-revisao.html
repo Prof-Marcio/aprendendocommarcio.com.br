@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Revisão MP-AL: Figuras de Linguagem</title>
+    <style>
+        :root {
+            --branco: #ffffff;
+            --cor-primaria: #2e7d32; /* Verde para Língua Portuguesa/Humanas */
+            --alerta-bg: #ffebee;
+            --alerta-borda: #c62828;
+            --processo-bg: #fffde7;
+            --processo-borda: #fbc02d;
+            --essencial-bg: #e8f5e9;
+            --essencial-borda: #1b5e20;
+            --cinza-fundo: #cfd8dc;
+        }
+
+        body { font-family: 'Segoe UI', Tahoma, sans-serif; background: var(--cinza-fundo); padding: 20px; margin: 0; }
+
+        .folha-a5 {
+            background: var(--branco);
+            width: 148mm;
+            min-height: 210mm;
+            margin: 0 auto;
+            padding: 15mm;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            border-radius: 5px;
+        }
+
+        .header {
+            background: var(--cor-primaria);
+            color: white;
+            padding: 10px;
+            text-align: center;
+            border-radius: 4px;
+            margin-bottom: 15px;
+        }
+
+        h1 { font-size: 14pt; margin: 0; text-transform: uppercase; }
+        h2 { font-size: 11pt; color: var(--cor-primaria); border-bottom: 2px solid var(--cor-primaria); margin-top: 15px; margin-bottom: 8px; }
+
+        .gatilhos-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            font-size: 8.5pt;
+        }
+
+        .card-gatilho {
+            background: #f8f9fa;
+            border-left: 4px solid var(--cor-primaria);
+            padding: 8px;
+        }
+
+        .processo-box {
+            background: var(--processo-bg);
+            border: 1px dashed var(--processo-borda);
+            padding: 10px;
+            font-size: 9pt;
+            border-radius: 4px;
+        }
+
+        .alerta-box {
+            background: var(--alerta-bg);
+            border-left: 5px solid var(--alerta-borda);
+            padding: 10px;
+            font-size: 9pt;
+            margin-top: 10px;
+        }
+
+        .essencial-box {
+            background: var(--essencial-bg);
+            border: 1px solid var(--essencial-borda);
+            padding: 10px;
+            font-size: 9pt;
+            text-align: center;
+            margin-top: 15px;
+        }
+
+        .exemplo { font-style: italic; color: #444; display: block; margin: 3px 0; }
+
+        @media print {
+            body { background: white; padding: 0; }
+            .folha-a5 { box-shadow: none; margin: 0; width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="folha-a5">
+        <div class="header">
+            <h1>Figuras de Linguagem</h1>
+            <p style="margin: 3px 0; font-size: 8pt;">MP-AL | Analista - Redes | Banca: FCC</p>
+        </div>
+
+        <h2>⚡ Gatilhos de Reconhecimento</h2>
+        <div class="gatilhos-grid">
+            <div class="card-gatilho">
+                <strong>Metáfora:</strong> Comparação implícita (sem "como").<br>
+                <strong>Metonímia:</strong> Substituição (Autor pela obra, parte pelo todo).<br>
+                <strong>Antítese:</strong> Ideias opostas lado a lado.
+            </div>
+            <div class="card-gatilho">
+                <strong>Paradoxo:</strong> Ideias contraditórias que se anulam.<br>
+                <strong>Eufemismo:</strong> Suavizar expressão rude.<br>
+                <strong>Hipérbole:</strong> Exagero intencional.
+            </div>
+        </div>
+
+        <h2>🔄 Processo: Identificação de Efeito (FCC)</h2>
+        <div class="processo-box">
+            <strong>Como a banca cobra:</strong><br>
+            1. <strong>Identifique o termo denotativo:</strong> Qual o sentido real?<br>
+            2. <strong>Analise o contexto:</strong> O autor quer enfatizar (Hipérbole), criticar (Ironia) ou aproximar conceitos (Metáfora)?<br>
+            3. <strong>Efeito de Sentido:</strong> A figura de linguagem serve para dar expressividade, não é erro gramatical.
+        </div>
+
+        <h2>📚 Exemplos Clássicos (Top FCC)</h2>
+        <div style="font-size: 8.5pt;">
+            <span class="exemplo">"Ele é um leão no trabalho." (Metáfora)</span>
+            <span class="exemplo">"Li Machado de Assis ontem." (Metonímia - Autor pela obra)</span>
+            <span class="exemplo">"O silêncio era ensurdecedor." (Paradoxo)</span>
+            <span class="exemplo">"Que inteligência... quebrou o vidro de novo!" (Ironia)</span>
+        </div>
+
+        <div class="alerta-box">
+            <strong style="color: var(--alerta-borda);">🚨 ALERTA DE PEGADINHA (FCC)</strong><br>
+            A FCC ama confundir <strong>Metonímia</strong> com <strong>Metáfora</strong>. Lembre-se: na Metonímia existe uma relação lógica/real de contiguidade (ex: "beber um copo"), na Metáfora a relação é subjetiva/comparativa.
+        </div>
+
+        <div class="essencial-box">
+            📌 ESSENCIAL: Fique atento à PERSONIFICAÇÃO (Prosopopeia). A banca usa muito em textos literários ou crônicas para dar sentimentos humanos a objetos ou animais.
+        </div>
+
+        <footer style="margin-top: 15px; text-align: center; font-size: 7pt; color: #777;">
+            Revisão de Véspera - Foco Estratégico MP-AL
+        </footer>
+    </div>
+
+</body>
+</html>

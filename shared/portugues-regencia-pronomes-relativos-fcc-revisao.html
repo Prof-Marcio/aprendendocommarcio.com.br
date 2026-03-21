@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Revisão MP-AL: Regência e Pronomes Relativos</title>
+    <style>
+        :root {
+            --branco: #ffffff;
+            --cor-primaria: #4527a0; /* Roxo Profundo para Regência */
+            --alerta-bg: #fff3e0;
+            --alerta-borda: #e65100;
+            --processo-bg: #f3e5f5;
+            --processo-borda: #7b1fa2;
+            --essencial-bg: #e8f5e9;
+            --essencial-borda: #2e7d32;
+            --cinza-fundo: #cfd8dc;
+        }
+
+        body { font-family: 'Segoe UI', sans-serif; background: var(--cinza-fundo); padding: 20px; margin: 0; }
+
+        .folha-a5 {
+            background: var(--branco);
+            width: 148mm;
+            min-height: 210mm;
+            margin: 0 auto;
+            padding: 15mm;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            border-radius: 5px;
+        }
+
+        .header {
+            background: var(--cor-primaria);
+            color: white;
+            padding: 10px;
+            text-align: center;
+            border-radius: 4px;
+            margin-bottom: 12px;
+        }
+
+        h1 { font-size: 13pt; margin: 0; text-transform: uppercase; }
+        h2 { font-size: 10pt; color: var(--cor-primaria); border-bottom: 2px solid var(--cor-primaria); margin-top: 12px; margin-bottom: 5px; }
+
+        .gatilhos-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+            font-size: 8pt;
+        }
+
+        .card-gatilho {
+            background: #f8f9fa;
+            border-left: 4px solid var(--cor-primaria);
+            padding: 6px;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 1px 4px;
+            border-radius: 3px;
+            font-size: 7pt;
+            font-weight: bold;
+            color: white;
+            background: #673ab7;
+        }
+
+        .processo-box {
+            background: var(--processo-bg);
+            border: 1px dashed var(--processo-borda);
+            padding: 8px;
+            font-size: 8.5pt;
+            border-radius: 4px;
+        }
+
+        .alerta-box {
+            background: var(--alerta-bg);
+            border-left: 5px solid var(--alerta-borda);
+            padding: 8px;
+            font-size: 8.5pt;
+            margin-top: 8px;
+        }
+
+        .essencial-box {
+            background: var(--essencial-bg);
+            border: 1px solid var(--essencial-borda);
+            padding: 8px;
+            font-size: 8.5pt;
+            text-align: center;
+            margin-top: 12px;
+        }
+
+        .exemplo { font-family: monospace; font-size: 8pt; color: #c62828; font-weight: bold; }
+
+        @media print {
+            body { background: white; padding: 0; }
+            .folha-a5 { box-shadow: none; margin: 0; width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="folha-a5">
+        <div class="header">
+            <h1>Regência & Pronomes Relativos</h1>
+            <p style="margin: 2px 0; font-size: 7.5pt;">MP-AL | Analista - Redes | Banca: FCC</p>
+        </div>
+
+        <h2>⚡ Gatilhos: Verbos que a FCC Ama</h2>
+        <div class="gatilhos-grid">
+            <div class="card-gatilho">
+                <span class="badge">ASSISTIR (Ver/Presenciar)</span><br>
+                Exige preposição <strong>A</strong>.<br>
+                <em>"Assisti ao jogo."</em>
+            </div>
+            <div class="card-gatilho">
+                <span class="badge">VISAR (Objetivar)</span><br>
+                Exige preposição <strong>A</strong>.<br>
+                <em>"Viso ao cargo."</em>
+            </div>
+            <div class="card-gatilho">
+                <span class="badge">ASPIRAR (Desejar)</span><br>
+                Exige preposição <strong>A</strong>.<br>
+                <em>"Aspiro à vaga."</em>
+            </div>
+            <div class="card-gatilho">
+                <span class="badge">PREFERIR</span><br>
+                X <strong>A</strong> Y (Sem o "do que").<br>
+                <em>"Prefiro redes a suporte."</em>
+            </div>
+        </div>
+
+        <h2>🔄 Processo: Relativo + Preposição</h2>
+        <div class="processo-box">
+            1. <strong>Olhe para o verbo DEPOIS do pronome:</strong> Identifique a regência dele.<br>
+            2. <strong>O verbo exige preposição?</strong> Se sim, ela deve "saltar" para antes do pronome relativo.<br>
+            3. <strong>Exemplo:</strong> A vaga <span class="exemplo">a que</span> aspiro. (Quem aspira, aspira <strong>A</strong> algo).
+        </div>
+
+        <h2>📚 Casos Clássicos de Relativos</h2>
+        <div style="font-size: 8.5pt; line-height: 1.4;">
+            • <span class="exemplo">CUJO:</span> Posse. Nunca aceita artigo depois (cujo o ❌).<br>
+            • <span class="exemplo">ONDE:</span> Apenas para lugares físicos fixos.<br>
+            • <span class="exemplo">AONDE:</span> Com verbos de movimento (Quem vai, vai <strong>A</strong>).
+        </div>
+
+        <div class="alerta-box">
+            <strong style="color: var(--alerta-borda);">🚨 ALERTA: ARMADILHA DO "A QUAL"</strong><br>
+            A FCC usa "A qual / As quais" para evitar ambiguidade ou testar a <strong>Crase</strong>. <br>
+            Ex: <em>"A ferramenta <strong>à qual</strong> me refiro."</em> (Refiro-me <strong>A</strong> + <strong>A</strong> qual = Crase Obrigatória).
+        </div>
+
+        <div class="essencial-box">
+            📌 O "X" DA QUESTÃO: Se a frase tiver "O livro que eu gostei", está errado para a FCC. O correto é "O livro DE QUE gostei" (Quem gosta, gosta DE algo). Sempre verifique a regência do verbo final!
+        </div>
+
+        <footer style="margin-top: 15px; text-align: center; font-size: 7pt; color: #777;">
+            Revisão de Véspera - Foco Estratégico MP-AL
+        </footer>
+    </div>
+
+</body>
+</html>

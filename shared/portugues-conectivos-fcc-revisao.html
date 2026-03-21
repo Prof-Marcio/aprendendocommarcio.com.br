@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Revisão MP-AL: Conectivos (FCC)</title>
+    <style>
+        :root {
+            --branco: #ffffff;
+            --cor-primaria: #1565c0; /* Azul Conectivos */
+            --alerta-bg: #fff3e0;
+            --alerta-borda: #ef6c00;
+            --processo-bg: #f3e5f5;
+            --processo-borda: #7b1fa2;
+            --essencial-bg: #e8f5e9;
+            --essencial-borda: #2e7d32;
+            --cinza-fundo: #cfd8dc;
+        }
+
+        body { font-family: 'Segoe UI', Tahoma, sans-serif; background: var(--cinza-fundo); padding: 20px; margin: 0; }
+
+        .folha-a5 {
+            background: var(--branco);
+            width: 148mm;
+            min-height: 210mm;
+            margin: 0 auto;
+            padding: 15mm;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            border-radius: 5px;
+        }
+
+        .header {
+            background: var(--cor-primaria);
+            color: white;
+            padding: 10px;
+            text-align: center;
+            border-radius: 4px;
+            margin-bottom: 12px;
+        }
+
+        h1 { font-size: 13pt; margin: 0; text-transform: uppercase; }
+        h2 { font-size: 10pt; color: var(--cor-primaria); border-bottom: 2px solid var(--cor-primaria); margin-top: 12px; margin-bottom: 5px; }
+
+        .gatilhos-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+            font-size: 8pt;
+        }
+
+        .card-gatilho {
+            background: #f8f9fa;
+            border-left: 4px solid var(--cor-primaria);
+            padding: 6px;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 1px 4px;
+            border-radius: 3px;
+            font-size: 7pt;
+            font-weight: bold;
+            color: white;
+            background: #546e7a;
+            margin-bottom: 2px;
+        }
+
+        .processo-box {
+            background: var(--processo-bg);
+            border: 1px dashed var(--processo-borda);
+            padding: 8px;
+            font-size: 8.5pt;
+            border-radius: 4px;
+        }
+
+        .alerta-box {
+            background: var(--alerta-bg);
+            border-left: 5px solid var(--alerta-borda);
+            padding: 8px;
+            font-size: 8.5pt;
+            margin-top: 8px;
+        }
+
+        .essencial-box {
+            background: var(--essencial-bg);
+            border: 1px solid var(--essencial-borda);
+            padding: 8px;
+            font-size: 8.5pt;
+            text-align: center;
+            margin-top: 12px;
+        }
+
+        .exemplo { font-family: monospace; font-size: 8pt; color: #d32f2f; }
+
+        @media print {
+            body { background: white; padding: 0; }
+            .folha-a5 { box-shadow: none; margin: 0; width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="folha-a5">
+        <div class="header">
+            <h1>Conectivos & Valor Semântico</h1>
+            <p style="margin: 2px 0; font-size: 7.5pt;">MP-AL | Analista - Redes | Banca: FCC</p>
+        </div>
+
+        <h2>⚡ Gatilhos de Substituição (Viciados pela FCC)</h2>
+        <div class="gatilhos-grid">
+            <div class="card-gatilho">
+                <span class="badge">CONCESSÃO (Oposição)</span><br>
+                Embora ➜ Conquanto<br>
+                A despeito de ➜ Malgrado<br>
+                Posto que ➜ Ainda que
+            </div>
+            <div class="card-gatilho">
+                <span class="badge">ADVERSATIVA (Ruptura)</span><br>
+                Mas ➜ Porém<br>
+                Contudo ➜ No entanto<br>
+                Todavia ➜ Entretanto
+            </div>
+            <div class="card-gatilho">
+                <span class="badge">CAUSA / EXPLICAÇÃO</span><br>
+                Pois ➜ Visto que<br>
+                Já que ➜ Porquanto<br>
+                Dado que ➜ Uma vez que
+            </div>
+            <div class="card-gatilho">
+                <span class="badge">CONSEQUÊNCIA</span><br>
+                Tão... que<br>
+                Tanto... que<br>
+                De modo que
+            </div>
+        </div>
+
+        <h2>🔄 Processo de Resolução de Questão</h2>
+        <div class="processo-box">
+            1. <strong>Identifique o valor:</strong> É soma, contraste, causa ou condição?<br>
+            2. <strong>Teste a troca:</strong> Substitua o conectivo pelo seu "par sinônimo" da tabela acima.<br>
+            3. <strong>Verifique o Verbo:</strong> Trocar "Mas" por "Embora" exige mudar o verbo (Indicativo vs. Subjuntivo)!
+        </div>
+
+        <h2>📚 Exemplos Clássicos (Efeito de Sentido)</h2>
+        <div style="font-size: 8.5pt; line-height: 1.4;">
+            • "Estudei muito, <span class="exemplo">contudo</span> não passei." (Adversativa - Fato certo)<br>
+            • "<span class="exemplo">Conquanto</span> tenha estudado, não passei." (Concessiva - Fato hipotético/subjetivo)<br>
+            • "Não saiu, <span class="exemplo">porquanto</span> chovia." (Causa/Explicação)
+        </div>
+
+        <div class="alerta-box">
+            <strong style="color: var(--alerta-borda);">🚨 ALERTA DE PEGADINHA: O "POIS"</strong><br>
+            • <strong>Pois + Verbo:</strong> Explicativo/Causal. (Não saiu, pois chovia).<br>
+            • <strong>Verbo + , pois, :</strong> Conclusivo (= Portanto). (Estudou muito; passou, pois, em primeiro).
+        </div>
+
+        <div class="essencial-box">
+            📌 O QUE NÃO ESQUECER: A FCC adora trocar "Contudo" (Adversativa) por "Conquanto" (Concessiva). São parecidos, mas as classes são diferentes! Cuidado com a "casca de banana".
+        </div>
+
+        <footer style="margin-top: 15px; text-align: center; font-size: 7pt; color: #777;">
+            Revisão de Véspera - Foco Estratégico MP-AL
+        </footer>
+    </div>
+
+</body>
+</html>
