@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Técnico TI - Mapa de Ciclos Inteligente</title>
+    <style>
+        :root {
+            --fcc-green: #1b5e20;
+            --pareto-green: #4caf50;
+            --bg-body: #f8f9fa;
+            --branco: #ffffff;
+            --estudo-cor: #2e7d32; /* Verde */
+            --rev-cor: #ef6c00;    /* Laranja */
+            --cinza-data: #90a4ae;
+        }
+        body { background-color: var(--bg-body); font-family: 'Segoe UI', sans-serif; margin: 0; padding: 20px; color: #333; }
+        
+        .sheet {
+            background: var(--branco);
+            max-width: 210mm;
+            margin: 0 auto;
+            padding: 15mm;
+            box-shadow: 0 0 15px rgba(0,0,0,0.05);
+            border-radius: 8px;
+        }
+
+        .doc-header { border-bottom: 3px solid var(--fcc-green); margin-bottom: 20px; padding-bottom: 10px; text-align: center; }
+        .doc-header h1 { margin: 0; color: var(--fcc-green); font-size: 19pt; letter-spacing: -0.5px; }
+        .doc-header p { margin: 5px 0 0 0; font-size: 9pt; color: #666; font-weight: bold; text-transform: uppercase; }
+
+        .strategy-box {
+            border: 2px dashed var(--fcc-green);
+            background: #f1f8e9;
+            padding: 12px;
+            margin-bottom: 25px;
+            font-size: 9.5pt;
+            line-height: 1.4;
+            border-radius: 6px;
+        }
+
+        .topic-container {
+            background: var(--branco);
+            border: 1px solid #e0e0e0;
+            margin-bottom: 20px;
+            padding: 15px;
+            border-radius: 8px;
+        }
+
+        .topic-title { font-weight: bold; font-size: 11pt; color: #333; display: block; margin-bottom: 12px; }
+        
+        .access-links { display: flex; gap: 8px; margin-bottom: 15px; }
+        .btn-link {
+            flex: 1; text-align: center; padding: 8px; font-size: 8.5pt;
+            text-decoration: none; border-radius: 4px; font-weight: bold;
+            border: 1px solid transparent;
+        }
+        .btn-teoria { background: #edf7ed; color: #1b5e20; border-color: #c8e6c9; }
+        .btn-revisao { background: #fff3e0; color: #e65100; border-color: #ffe0b2; }
+
+        .revision-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 10px;
+            padding-top: 15px;
+            border-top: 1px solid #f0f0f0;
+        }
+
+        .check-group {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 10px 5px;
+            border-radius: 6px;
+        }
+
+        .is-study { background: #e8f5e9; border: 1px solid #c8e6c9; color: var(--estudo-cor); }
+        .is-revision { background: #fff3e0; border: 1px solid #ffe0b2; color: var(--rev-cor); }
+
+        .check-label { font-size: 7.5pt; font-weight: 900; text-transform: uppercase; margin-bottom: 6px; }
+        .date-display { font-size: 7pt; color: var(--cinza-data); height: 12px; margin-top: 6px; font-family: 'Courier New', monospace; font-weight: bold; }
+
+        input[type="checkbox"] { width: 19px; height: 19px; cursor: pointer; }
+        .is-study input[type="checkbox"] { accent-color: var(--estudo-cor); }
+        .is-revision input[type="checkbox"] { accent-color: var(--rev-cor); }
+
+        h2 { font-size: 12.5pt; color: #2e7d32; margin: 30px 0 15px 0; border-left: 6px solid var(--fcc-green); padding-left: 12px; }
+
+        .no-print { position: fixed; top: 15px; left: 15px; z-index: 1000; }
+        .btn-voltar { background: #333; color: #fff; padding: 8px 16px; text-decoration: none; border-radius: 4px; font-size: 12px; }
+
+        @media print { .no-print { display: none; } .sheet { box-shadow: none; width: 100%; padding: 0; } }
+    </style>
+</head>
+<body>
+
+    <nav class="no-print">
+        <a href="../index.html" class="btn-voltar">← Painel Central</a>
+    </nav>
+
+    <article class="sheet">
+        <header class="doc-header">
+            <h1>Mapa de Ciclos Inteligente (Técnico TI)</h1>
+            <p><strong>CÁLCULO AUTOMÁTICO DE DATAS</strong> | MP-AL 2026</p>
+        </header>
+
+        <div class="strategy-box">
+            <strong style="color:var(--fcc-green);">MÉTODO PARETO TÉCNICO:</strong> Ao marcar <b style="color:var(--estudo-cor)">Estudo</b>, as revisões aparecem. Foco total em <strong>Operação, Comandos e Diagnóstico</strong> (Hardware e Redes).
+        </div>
+
+        <section>
+            <h2>🚀 Ciclo 01: O "Coração" do Suporte (80% da Prova)</h2>
+            
+            <div class="topic-container" data-topic="tec_itil_incidente">
+                <span class="topic-title">ITIL v4: Gestão de Incidentes e Service Desk</span>
+                <div class="access-links">
+                    <a href="itil-tec-teoria.html" class="btn-link btn-teoria">📖 Teoria Completa</a>
+                    <a href="itil-tec-revisao.html" class="btn-link btn-revisao">⚡ Revisão (Gatilhos)</a>
+                </div>
+                <div class="revision-grid">
+                    <div class="check-group is-study"><span class="check-label">Estudo</span><input type="checkbox" class="main-study"><span class="date-display">--/--</span></div>
+                    <div class="check-group is-revision"><span class="check-label">24h</span><input type="checkbox"><span class="date-display">--/--</span></div>
+                    <div class="check-group is-revision"><span class="check-label">7d</span><input type="checkbox"><span class="date-display">--/--</span></div>
+                    <div class="check-group is-revision"><span class="check-label">15d</span><input type="checkbox"><span class="date-display">--/--</span></div>
+                    <div class="check-group is-revision"><span class="check-label">30d</span><input type="checkbox"><span class="date-display">--/--</span></div>
+                </div>
+            </div>
+
+            <div class="topic-container" data-topic="tec_hardware">
+                <span class="topic-title">Hardware: Diagnóstico de Falhas (RAM, SSD, BIOS)</span>
+                <div class="access-links">
+                    <a href="hardware-teoria.html" class="btn-link btn-teoria">📖 Teoria Completa</a>
+                    <a href="hardware-revisao.html" class="btn-link btn-revisao">⚡ Revisão (Gatilhos)</a>
+                </div>
+                <div class="revision-grid">
+                    <div class="check-group is-study"><span class="check-label">Estudo</span><input type="checkbox" class="main-study"><span class="date-display">--/--</span></div>
+                    <div class="check-group is-revision"><span class="check-label">24h</span><input type="checkbox"><span class="date-display">--/--</span></div>
+                    <div class="check-group is-revision"><span class="check-label">7d</span><input type="checkbox"><span class="date-display">--/--</span></div>
+                    <div class="check-group is-revision"><span class="check-label">15d</span><input type="checkbox"><span class="date-display">--/--</span></div>
+                    <div class="check-group is-revision"><span class="check-label">30d</span><input type="checkbox"><span class="date-display">--/--</span></div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>📉 Ciclo 02: Manutenção e Comandos</h2>
+            
+            <div class="topic-container" data-topic="tec_cmd_redes">
+                <span class="topic-title">Comandos de Rede: IPConfig, Ping, Tracert, NSLookup</span>
+                <div class="access-links">
+                    <a href="cmd-teoria.html" class="btn-link btn-teoria">📖 Teoria</a>
+                    <a href="cmd-revisao.html" class="btn-link btn-revisao">⚡ Revisão</a>
+                </div>
+                <div class="revision-grid">
+                    <div class="check-group is-study"><span class="check-label">Estudo</span><input type="checkbox" class="main-study"><span class="date-display">--/--</span></div>
+                    <div class="check-group is-revision"><span class="check-label">24h</span><input type="checkbox"><span class="date-display">--/--</span></div>
+                    <div class="check-group is-revision"><span class="check-label">7d</span><input type="checkbox"><span class="date-display">--/--</span></div>
+                    <div class="check-group is-revision"><span class="check-label">15d</span><input type="checkbox"><span class="date-display">--/--</span></div>
+                    <div class="check-group is-revision"><span class="check-label">30d</span><input type="checkbox"><span class="date-display">--/--</span></div>
+                </div>
+            </div>
+
+            <div class="topic-container" data-topic="tec_ad_dominio">
+                <span class="topic-title">Active Directory: Gestão de Usuários, Senhas e GPO</span>
+                <div class="access-links">
+                    <a href="ad-teoria.html" class="btn-link btn-teoria">📖 Teoria</a>
+                    <a href="ad-revisao.html" class="btn-link btn-revisao">⚡ Revisão</a>
+                </div>
+                <div class="revision-grid">
+                    <div class="check-group is-study"><span class="check-label">Estudo</span><input type="checkbox" class="main-study"><span class="date-display">--/--</span></div>
+                    <div class="check-group is-revision"><span class="check-label">24h</span><input type="checkbox"><span class="date-display">--/--</span></div>
+                    <div class="check-group is-revision"><span class="check-label">7d</span><input type="checkbox"><span class="date-display">--/--</span></div>
+                    <div class="check-group is-revision"><span class="check-label">15d</span><input type="checkbox"><span class="date-display">--/--</span></div>
+                    <div class="check-group is-revision"><span class="check-label">30d</span><input type="checkbox"><span class="date-display">--/--</span></div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>📚 Ciclo 03: Segurança e Backup Operacional</h2>
+            
+            <div class="topic-container" data-topic="tec_backup">
+                <span class="topic-title">Tipos de Backup: Full, Incremental e Diferencial</span>
+                <div class="access-links">
+                    <a href="backup-teoria.html" class="btn-link btn-teoria">📖 Teoria</a>
+                    <a href="backup-revisao.html" class="btn-link btn-revisao">⚡ Revisão</a>
+                </div>
+                <div class="revision-grid">
+                    <div class="check-group is-study"><span class="check-label">Estudo</span><input type="checkbox" class="main-study"><span class="date-display">--/--</span></div>
+                    <div class="check-group is-revision"><span class="check-label">24h</span><input type="checkbox"><span class="date-display">--/--</span></div>
+                    <div class="check-group is-revision"><span class="check-label">7d</span><input type="checkbox"><span class="date-display">--/--</span></div>
+                    <div class="check-group is-revision"><span class="check-label">15d</span><input type="checkbox"><span class="date-display">--/--</span></div>
+                    <div class="check-group is-revision"><span class="check-label">30d</span><input type="checkbox"><span class="date-display">--/--</span></div>
+                </div>
+            </div>
+        </section>
+
+        <footer style="margin-top: 30px; border-top: 1px solid #eee; padding-top: 15px; font-size: 8.5pt; color: #999; text-align: center;">
+            Sincronizado com Ciclo Técnico MP-AL 2026 • FCC Standard.
+        </footer>
+    </article>
+
+    <script>
+        function formatDate(date) { return date.toLocaleDateString('pt-BR', { day: '2-digit', month: '2-digit' }); }
+        function addDays(date, days) { const result = new Date(date); result.setDate(result.getDate() + days); return result; }
+
+        const containers = document.querySelectorAll('.topic-container');
+        containers.forEach(container => {
+            const topicId = container.getAttribute('data-topic');
+            const checkboxes = container.querySelectorAll('input[type="checkbox"]');
+            const dateDisplays = container.querySelectorAll('.date-display');
+
+            const savedData = JSON.parse(localStorage.getItem('mpal_tec_final_' + topicId)) || {};
+
+            checkboxes.forEach((cb, index) => {
+                if (savedData['check' + index]) cb.checked = true;
+                if (savedData['date' + index]) dateDisplays[index].textContent = savedData['date' + index];
+
+                cb.addEventListener('change', () => {
+                    let currentData = JSON.parse(localStorage.getItem('mpal_tec_final_' + topicId)) || {};
+                    
+                    if (index === 0 && cb.checked) {
+                        const today = new Date();
+                        const schedule = [0, 1, 7, 15, 30];
+                        schedule.forEach((days, i) => {
+                            const revDate = formatDate(addDays(today, days));
+                            dateDisplays[i].textContent = revDate;
+                            currentData['date' + i] = revDate;
+                        });
+                    } else if (index === 0 && !cb.checked) {
+                        dateDisplays.forEach((disp, i) => { disp.textContent = '--/--'; delete currentData['date' + i]; });
+                    }
+                    currentData['check' + index] = cb.checked;
+                    localStorage.setItem('mpal_tec_final_' + topicId, JSON.stringify(currentData));
+                });
+            });
+        });
+    </script>
+</body>
+</html>

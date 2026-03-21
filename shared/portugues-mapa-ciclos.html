@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Português FCC - Cronograma Inteligente Completo</title>
+    <style>
+        :root {
+            --fcc-blue: #003366;
+            --pareto-red: #e74c3c;
+            --bg-body: #f4f7f9;
+            --branco: #ffffff;
+            --estudo-cor: #27ae60; /* Verde */
+            --rev-cor: #e67e22;    /* Laranja */
+            --cinza-data: #7f8c8d;
+        }
+        body { background-color: var(--bg-body); font-family: 'Segoe UI', sans-serif; margin: 0; padding: 20px; color: #333; }
+        
+        .sheet {
+            background: var(--branco);
+            max-width: 210mm;
+            margin: 0 auto;
+            padding: 20mm;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+            border-radius: 8px;
+        }
+
+        .doc-header { border-bottom: 3px solid var(--fcc-blue); margin-bottom: 20px; padding-bottom: 10px; text-align: center; }
+        .doc-header h1 { margin: 0; color: var(--fcc-blue); font-size: 20pt; letter-spacing: -1px; }
+        .doc-header p { margin: 5px 0 0 0; font-size: 9pt; color: #666; font-weight: bold; text-transform: uppercase; }
+
+        .pareto-box {
+            border: 2px dashed var(--pareto-red);
+            background: #fffafa;
+            padding: 12px;
+            margin-bottom: 25px;
+            font-size: 9.5pt;
+            line-height: 1.4;
+            color: #555;
+        }
+
+        .topic-container {
+            background: var(--branco);
+            border: 1px solid #ddd;
+            margin-bottom: 20px;
+            padding: 15px;
+            border-radius: 8px;
+            position: relative;
+        }
+
+        .topic-title { font-weight: bold; font-size: 11pt; color: #333; display: block; margin-bottom: 12px; }
+        
+        .access-links { display: flex; gap: 8px; margin-bottom: 15px; }
+        .btn-link {
+            flex: 1; text-align: center; padding: 7px; font-size: 8.5pt;
+            text-decoration: none; border-radius: 4px; font-weight: bold;
+            border: 1px solid transparent; transition: opacity 0.2s;
+        }
+        .btn-teoria { background: #e3f2fd; color: #1565c0; border-color: #bbdefb; }
+        .btn-revisao { background: #fff3e0; color: #e65100; border-color: #ffe0b2; }
+        .btn-link:hover { opacity: 0.8; }
+
+        /* Grade de Revisão Inteligente */
+        .revision-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 10px;
+            padding-top: 15px;
+            border-top: 1px solid #eee;
+        }
+
+        .check-group {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 10px;
+            border-radius: 4px;
+            border: 1px solid transparent;
+        }
+
+        /* Cores Diferenciadas */
+        .is-study { background: #e8f5e9; border-color: #c8e6c9; color: var(--estudo-cor); } /* Verde Claro */
+        .is-revision { background: #fff3e0; border-color: #ffe0b2; color: var(--rev-cor); } /* Laranja Claro */
+
+        .check-label { font-size: 7.5pt; font-weight: 800; text-transform: uppercase; margin-bottom: 6px; }
+        
+        .date-display { 
+            font-size: 7pt; 
+            color: var(--cinza-data); 
+            height: 12px; 
+            margin-top: 6px;
+            font-family: 'Courier New', monospace;
+            font-weight: bold;
+        }
+
+        /* Checkboxes Otimizados */
+        input[type="checkbox"] { 
+            width: 20px; height: 20px; 
+            cursor: pointer; 
+        }
+        
+        /* Cor Sucesso ao marcar */
+        .is-study input[type="checkbox"] { accent-color: var(--estudo-cor); }
+        .is-revision input[type="checkbox"] { accent-color: var(--rev-cor); }
+
+        h2 { font-size: 13pt; color: #444; margin: 35px 0 15px 0; border-left: 5px solid var(--fcc-blue); padding-left: 10px; }
+
+        .no-print { position: fixed; top: 15px; left: 15px; z-index: 1000; }
+        .btn-voltar { background: #333; color: #fff; padding: 8px 16px; text-decoration: none; border-radius: 4px; font-size: 12px; font-weight: bold; }
+
+        @media print { .no-print { display: none; } .sheet { box-shadow: none; width: 100%; padding: 0; } }
+    </style>
+</head>
+<body>
+
+    <nav class="no-print">
+        <a href="../index.html" class="btn-voltar">← Voltar ao Hub</a>
+    </nav>
+
+    <article class="sheet">
+        <header class="doc-header">
+            <h1>Mapa de Ciclos Inteligente (Completo)</h1>
+            <p><strong>CÁLCULO AUTOMÁTICO DE DATAS DE REVISÃO</strong> | MP-AL 2026</p>
+        </header>
+
+        <div class="pareto-box">
+            <strong style="color:var(--pareto-red);">MÉTODO PARETO FCC:</strong> Ao marcar o checkbox <b style="color:var(--estudo-cor)">Estudo</b>, o sistema calcula automaticamente as datas das próximas <b style="color:var(--rev-cor)">Revisões Espaçadas</b>. Tudo fica salvo no seu navegador.
+        </div>
+
+        <section>
+            <h2>🚀 Ciclo 01: O "Coração" da FCC (80% da Prova)</h2>
+            
+            <div class="topic-container" data-topic="vozes">
+                <span class="topic-title">Vozes do Verbo e Transposição Ativa/Passiva</span>
+                <div class="access-links">
+                    <a href="portugues-vozes-verbo.html" class="btn-link btn-teoria">📖 Teoria Completa</a>
+                    <a href="portugues-vozes-verbo.html" class="btn-link btn-revisao">⚡ Revisão (Gatilhos)</a>
+                </div>
+                <div class="revision-grid">
+                    <div class="check-group is-study">
+                        <span class="check-label">Estudo</span>
+                        <input type="checkbox" class="main-study">
+                        <span class="date-display">--/--</span>
+                    </div>
+                    <div class="check-group is-revision">
+                        <span class="check-label">24h</span>
+                        <input type="checkbox">
+                        <span class="date-display">--/--</span>
+                    </div>
+                    <div class="check-group is-revision">
+                        <span class="check-label">7d</span>
+                        <input type="checkbox">
+                        <span class="date-display">--/--</span>
+                    </div>
+                    <div class="check-group is-revision">
+                        <span class="check-label">15d</span>
+                        <input type="checkbox">
+                        <span class="date-display">--/--</span>
+                    </div>
+                    <div class="check-group is-revision">
+                        <span class="check-label">30d</span>
+                        <input type="checkbox">
+                        <span class="date-display">--/--</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="topic-container" data-topic="figuras">
+                <span class="topic-title">Figuras de Linguagem e Efeitos de Sentido</span>
+                <div class="access-links">
+                    <a href="figuras-linguagem.html" class="btn-link btn-teoria">📖 Teoria Completa</a>
+                    <a href="revisao-figuras.html" class="btn-link btn-revisao">⚡ Revisão (Gatilhos)</a>
+                </div>
+                <div class="revision-grid">
+                    <div class="check-group is-study">
+                        <span class="check-label">Estudo</span>
+                        <input type="checkbox" class="main-study">
+                        <span class="date-display">--/--</span>
+                    </div>
+                    <div class="check-group is-revision">
+                        <span class="check-label">24h</span>
+                        <input type="checkbox">
+                        <span class="date-display">--/--</span>
+                    </div>
+                    <div class="check-group is-revision">
+                        <span class="check-label">7d</span>
+                        <input type="checkbox">
+                        <span class="date-display">--/--</span>
+                    </div>
+                    <div class="check-group is-revision">
+                        <span class="check-label">15d</span>
+                        <input type="checkbox">
+                        <span class="date-display">--/--</span>
+                    </div>
+                    <div class="check-group is-revision">
+                        <span class="check-label">30d</span>
+                        <input type="checkbox">
+                        <span class="date-display">--/--</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="topic-container" data-topic="conjuncoes">
+                <span class="topic-title">Conectivos (Conjunções e Valor Semântico)</span>
+                <div class="access-links">
+                    <a href="conectivos-teoria.html" class="btn-link btn-teoria">📖 Teoria Completa</a>
+                    <a href="conectivos-revisao.html" class="btn-link btn-revisao">⚡ Revisão (Gatilhos)</a>
+                </div>
+                <div class="revision-grid">
+                    <div class="check-group is-study">
+                        <span class="check-label">Estudo</span>
+                        <input type="checkbox" class="main-study">
+                        <span class="date-display">--/--</span>
+                    </div>
+                    <div class="check-group is-revision">
+                        <span class="check-label">24h</span>
+                        <input type="checkbox">
+                        <span class="date-display">--/--</span>
+                    </div>
+                    <div class="check-group is-revision">
+                        <span class="check-label">7d</span>
+                        <input type="checkbox">
+                        <span class="date-display">--/--</span>
+                    </div>
+                    <div class="check-group is-revision">
+                        <span class="check-label">15d</span>
+                        <input type="checkbox">
+                        <span class="date-display">--/--</span>
+                    </div>
+                    <div class="check-group is-revision">
+                        <span class="check-label">30d</span>
+                        <input type="checkbox">
+                        <span class="date-display">--/--</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>📉 Ciclo 02: Manutenção de Nota (Sintaxe e Crase)</h2>
+            
+            <div class="topic-container" data-topic="concordancia">
+                <span class="topic-title">Concordância Verbal e Nominal (Partícula SE)</span>
+                <div class="access-links">
+                    <a href="concordancia-teoria.html" class="btn-link btn-teoria">📖 Teoria</a>
+                    <a href="concordancia-revisao.html" class="btn-link btn-revisao">⚡ Revisão</a>
+                </div>
+                <div class="revision-grid">
+                    <div class="check-group is-study">
+                        <span class="check-label">Estudo</span>
+                        <input type="checkbox" class="main-study">
+                        <span class="date-display">--/--</span>
+                    </div>
+                    <div class="check-group is-revision">
+                        <span class="check-label">24h</span>
+                        <input type="checkbox">
+                        <span class="date-display">--/--</span>
+                    </div>
+                    <div class="check-group is-revision">
+                        <span class="check-label">7d</span>
+                        <input type="checkbox">
+                        <span class="date-display">--/--</span>
+                    </div>
+                    <div class="check-group is-revision">
+                        <span class="check-label">15d</span>
+                        <input type="checkbox">
+                        <span class="date-display">--/--</span>
+                    </div>
+                    <div class="check-group is-revision">
+                        <span class="check-label">30d</span>
+                        <input type="checkbox">
+                        <span class="date-display">--/--</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="topic-container" data-topic="crase">
+                <span class="topic-title">Emprego da Crase (Regras de Ouro)</span>
+                <div class="access-links">
+                    <a href="crase-teoria.html" class="btn-link btn-teoria">📖 Teoria</a>
+                    <a href="crase-revisao.html" class="btn-link btn-revisao">⚡ Revisão</a>
+                </div>
+                <div class="revision-grid">
+                    <div class="check-group is-study">
+                        <span class="check-label">Estudo</span>
+                        <input type="checkbox" class="main-study">
+                        <span class="date-display">--/--</span>
+                    </div>
+                    <div class="check-group is-revision">
+                        <span class="check-label">24h</span>
+                        <input type="checkbox">
+                        <span class="date-display">--/--</span>
+                    </div>
+                    <div class="check-group is-revision">
+                        <span class="check-label">7d</span>
+                        <input type="checkbox">
+                        <span class="date-display">--/--</span>
+                    </div>
+                    <div class="check-group is-revision">
+                        <span class="check-label">15d</span>
+                        <input type="checkbox">
+                        <span class="date-display">--/--</span>
+                    </div>
+                    <div class="check-group is-revision">
+                        <span class="check-label">30d</span>
+                        <input type="checkbox">
+                        <span class="date-display">--/--</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="topic-container" data-topic="pontuacao">
+                <span class="topic-title">Pontuação (A Vírgula na FCC)</span>
+                <div class="access-links">
+                    <a href="pontuacao-teoria.html" class="btn-link btn-teoria">📖 Teoria</a>
+                    <a href="pontuacao-revisao.html" class="btn-link btn-revisao">⚡ Revisão</a>
+                </div>
+                <div class="revision-grid">
+                    <div class="check-group is-study">
+                        <span class="check-label">Estudo</span>
+                        <input type="checkbox" class="main-study">
+                        <span class="date-display">--/--</span>
+                    </div>
+                    <div class="check-group is-revision">
+                        <span class="check-label">24h</span>
+                        <input type="checkbox">
+                        <span class="date-display">--/--</span>
+                    </div>
+                    <div class="check-group is-revision">
+                        <span class="check-label">7d</span>
+                        <input type="checkbox">
+                        <span class="date-display">--/--</span>
+                    </div>
+                    <div class="check-group is-revision">
+                        <span class="check-label">15d</span>
+                        <input type="checkbox">
+                        <span class="date-display">--/--</span>
+                    </div>
+                    <div class="check-group is-revision">
+                        <span class="check-label">30d</span>
+                        <input type="checkbox">
+                        <span class="date-display">--/--</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>📚 Ciclo 03: Base e Interpretação</h2>
+            
+            <div class="topic-container" data-topic="interpretacao">
+                <span class="topic-title">Interpretação Textual e Tipologia</span>
+                <div class="access-links">
+                    <a href="interpretacao-teoria.html" class="btn-link btn-teoria">📖 Teoria</a>
+                    <a href="interpretacao-revisao.html" class="btn-link btn-revisao">⚡ Revisão</a>
+                </div>
+                <div class="revision-grid">
+                    <div class="check-group is-study">
+                        <span class="check-label">Estudo</span>
+                        <input type="checkbox" class="main-study">
+                        <span class="date-display">--/--</span>
+                    </div>
+                    <div class="check-group is-revision">
+                        <span class="check-label">24h</span>
+                        <input type="checkbox">
+                        <span class="date-display">--/--</span>
+                    </div>
+                    <div class="check-group is-revision">
+                        <span class="check-label">7d</span>
+                        <input type="checkbox">
+                        <span class="date-display">--/--</span>
+                    </div>
+                    <div class="check-group is-revision">
+                        <span class="check-label">15d</span>
+                        <input type="checkbox">
+                        <span class="date-display">--/--</span>
+                    </div>
+                    <div class="check-group is-revision">
+                        <span class="check-label">30d</span>
+                        <input type="checkbox">
+                        <span class="date-display">--/--</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="topic-container" data-topic="regencia">
+                <span class="topic-title">Regência e Pronomes Relativos</span>
+                <div class="access-links">
+                    <a href="regencia-teoria.html" class="btn-link btn-teoria">📖 Teoria</a>
+                    <a href="regencia-revisao.html" class="btn-link btn-revisao">⚡ Revisão</a>
+                </div>
+                <div class="revision-grid">
+                    <div class="check-group is-study">
+                        <span class="check-label">Estudo</span>
+                        <input type="checkbox" class="main-study">
+                        <span class="date-display">--/--</span>
+                    </div>
+                    <div class="check-group is-revision">
+                        <span class="check-label">24h</span>
+                        <input type="checkbox">
+                        <span class="date-display">--/--</span>
+                    </div>
+                    <div class="check-group is-revision">
+                        <span class="check-label">7d</span>
+                        <input type="checkbox">
+                        <span class="date-display">--/--</span>
+                    </div>
+                    <div class="check-group is-revision">
+                        <span class="check-label">15d</span>
+                        <input type="checkbox">
+                        <span class="date-display">--/--</span>
+                    </div>
+                    <div class="check-group is-revision">
+                        <span class="check-label">30d</span>
+                        <input type="checkbox">
+                        <span class="date-display">--/--</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer style="margin-top: 40px; border-top: 1px solid #eee; padding-top: 15px; font-size: 8pt; color: #bbb; text-align: center;">
+            Sincronizado com Ciclo Pareto MP-AL 2026 • FCC Standard.
+        </footer>
+    </article>
+
+    <script>
+        // FORMATAÇÃO E CÁLCULO DE DATAS
+        function formatDate(date) {
+            return date.toLocaleDateString('pt-BR', { day: '2-digit', month: '2-digit' });
+        }
+
+        function addDays(date, days) {
+            const result = new Date(date);
+            result.setDate(result.getDate() + days);
+            return result;
+        }
+
+        const containers = document.querySelectorAll('.topic-container');
+
+        containers.forEach(container => {
+            const topicId = container.getAttribute('data-topic');
+            const checkboxes = container.querySelectorAll('input[type="checkbox"]');
+            const dateDisplays = container.querySelectorAll('.date-display');
+            const mainStudy = container.querySelector('.main-study');
+
+            // Carregar dados salvos do localStorage
+            const savedData = JSON.parse(localStorage.getItem('mpal_intelligent_data_' + topicId)) || {};
+
+            checkboxes.forEach((cb, index) => {
+                // Restaurar estado dos checkboxes
+                if (savedData['check' + index]) cb.checked = true;
+                
+                // Restaurar datas exibidas
+                if (savedData['date' + index]) {
+                    dateDisplays[index].textContent = savedData['date' + index];
+                }
+
+                cb.addEventListener('change', () => {
+                    let currentData = JSON.parse(localStorage.getItem('mpal_intelligent_data_' + topicId)) || {};
+                    
+                    // LÓGICA DO CHECKBOX DE ESTUDO (Índice 0)
+                    if (index === 0 && cb.checked) {
+                        const today = new Date();
+                        const schedule = [0, 1, 7, 15, 30]; // Estudo=0, Revs=1,7,15,30
+                        
+                        schedule.forEach((days, i) => {
+                            const revDate = formatDate(addDays(today, days));
+                            dateDisplays[i].textContent = revDate;
+                            currentData['date' + i] = revDate; // Salva a data calculada
+                        });
+                    } 
+                    // Se desmarcar o estudo, limpa todas as datas
+                    else if (index === 0 && !cb.checked) {
+                        dateDisplays.forEach((disp, i) => {
+                            disp.textContent = '--/--';
+                            delete currentData['date' + i]; // Remove data salva
+                        });
+                    }
+
+                    // Salva o estado do checkbox atual
+                    currentData['check' + index] = cb.checked;
+                    localStorage.setItem('mpal_intelligent_data_' + topicId, JSON.stringify(currentData));
+                });
+            });
+        });
+    </script>
+</body>
+</html>
