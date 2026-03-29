@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Dossiê Estratégico Português: Coesão e Conectores</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background-color: #f1f5f9; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        
+        /* Configuração de múltiplas laudas A4 */
+        .lauda {
+            background: white; width: 210mm; min-height: 297mm; padding: 1.5cm;
+            margin: 20px auto; display: flex; flex-direction: column;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1); border-top: 15px solid #1e3a8a;
+            position: relative; page-break-after: always;
+        }
+
+        h1 { color: #1e3a8a; font-size: 22pt; text-align: center; border-bottom: 3px solid #1e3a8a; padding-bottom: 10px; margin-bottom: 20px; text-transform: uppercase; }
+        h2 { font-size: 14pt; color: #1e3a8a; text-transform: uppercase; margin: 15px 0 10px; border-left: 6px solid #3b82f6; padding-left: 10px; background: #eff6ff; }
+        h3 { font-size: 11pt; color: #2563eb; margin: 10px 0 5px; text-transform: uppercase; }
+
+        p, li { font-size: 10.5pt; line-height: 1.5; color: #334155; margin-bottom: 8px; text-align: justify; }
+        ul { margin-left: 25px; list-style-type: square; }
+        
+        /* Grids e Boxes */
+        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin: 10px 0; }
+        .box { border: 1px solid #e2e8f0; padding: 12px; border-radius: 8px; background: #f8fafc; }
+        .box-perigo { background: #fff1f2; border: 1px solid #fecaca; border-left: 8px solid #e11d48; }
+        .box-metodo { background: #f0fdf4; border: 1px solid #bbf7d0; border-left: 8px solid #16a34a; }
+        
+        .badge { display: inline-block; padding: 2px 8px; border-radius: 4px; font-weight: bold; font-size: 9pt; text-transform: uppercase; }
+        .badge-certo { background: #dcfce7; color: #166534; }
+        .badge-errado { background: #fee2e2; color: #991b1b; }
+
+        .exemplo { background: #fafafa; border: 1px dashed #cbd5e1; padding: 15px; margin: 10px 0; font-style: italic; }
+        
+        .footer { text-align: center; font-size: 9pt; color: #94a3b8; border-top: 1px solid #e2e8f0; padding-top: 10px; margin-top: auto; }
+        
+        .no-print { text-align: center; padding: 20px; position: sticky; top: 0; z-index: 100; }
+        button { padding: 12px 30px; cursor: pointer; background: #1e3a8a; color: white; border: none; border-radius: 6px; font-weight: bold; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+        
+        @media print { .no-print { display: none; } .lauda { margin: 0; box-shadow: none; border-top: none; } }
+    </style>
+</head>
+<body>
+
+    <div class="no-print">
+        <button onclick="window.print()">IMPRIMIR DOSSIÊ COMPLETO (3 LAUDAS)</button>
+    </div>
+
+    <div class="lauda">
+        <h1>Língua Portuguesa: Módulo I</h1>
+        <p style="text-align: center; font-weight: bold; color: #64748b;">UNEAL | Técnico em Assuntos Educacionais | Banca: CEBRASPE</p>
+
+        <h2>1. Conceitos Essenciais</h2>
+        <div class="box">
+            <h3>Coesão Textual</h3>
+            <p>É o conjunto de mecanismos linguísticos que ligam palavras, frases e parágrafos, garantindo a continuidade e a organização do texto. No CEBRASPE, foque em:</p>
+            <ul>
+                <li><strong>Conectores:</strong> Instrumentos que estabelecem relações lógicas entre as ideias.</li>
+                <li><strong>Continuidade:</strong> Como uma informação se conecta com a outra para formar sentido.</li>
+                <li><strong>Organização:</strong> A estrutura que permite a fluidez da leitura.</li>
+            </ul>
+        </div>
+
+        <div class="box" style="margin-top: 15px;">
+            <h3>Tipos de Coesão</h3>
+            <p>A banca exige que você identifique como os elementos se relacionam no texto:</p>
+            <div class="grid-2">
+                <div>
+                    <p>• <strong>Referencial:</strong> Quando um termo retoma ou substitui outro.</p>
+                    <p><em>Ex: "João estudou muito. <strong>Ele</strong> passou." (Retomada).</em></p>
+                </div>
+                <div>
+                    <p>• <strong>Sequencial:</strong> Relaciona ideias por conectores ou conjunções.</p>
+                    <p><em>Ex: "Estudou muito, <strong>portanto</strong> passou." (Lógica).</em></p>
+                </div>
+            </div>
+        </div>
+
+        <h2>2. Estrutura e Conectores Críticos</h2>
+        <p>As relações lógicas mais cobradas para o cargo de Técnico Educacional:</p>
+        <ul>
+            <li><strong>Adição:</strong> e, também, além disso.</li>
+            <li><strong>Causa:</strong> porque, pois, já que, visto que.</li>
+            <li><strong>Oposição:</strong> mas, porém, entretanto, todavia.</li>
+            <li><strong>Conclusão/Consequência:</strong> portanto, logo, assim, por conseguinte.</li>
+        </ul>
+
+        <div class="footer">Lauda 1/3 - Coesão e Conectores UNEAL 2026</div>
+    </div>
+
+    <div class="lauda">
+        <h1>Língua Portuguesa: Módulo II</h1>
+        
+        <h2>3. O Que Mais Cai no CEBRASPE</h2>
+        <p>A banca avalia a sua capacidade de análise gramatical e semântica aplicada:</p>
+        <div class="box" style="background: #fdfcf0; border-color: #fef08a;">
+            <p>1. <strong>Relação Lógica:</strong> Identificar qual o sentido que o conector carrega no período.</p>
+            <p>2. <strong>Substituição:</strong> Trocar um conector por outro sem alterar o sentido original.</p>
+            <p>3. <strong>Função do Conector:</strong> Analisar o papel da conjunção dentro do contexto específico.</p>
+            <p>4. <strong>Coesão entre Partes:</strong> Como frases e parágrafos se "amarram" entre si.</p>
+            <p>5. <strong>Manutenção do Sentido:</strong> Verificar se a reescrita preserva a ideia do autor.</p>
+        </div>
+
+        <h2>4. Radar de Pegadinhas (Padrão de Erro)</h2>
+        <div class="box-perigo">
+            <p><strong>❌ Troca Incompatível:</strong> Substituir "portanto" (conclusão) por "porém" (oposição).</p>
+            <p><strong>❌ Funções do "Pois":</strong> Ignorar que ele pode indicar causa, explicação ou conclusão dependendo da posição.</p>
+            <p><strong>❌ Equivalência Falsa:</strong> Achar que todos os conectores de uma "família" são 100% iguais em qualquer contexto.</p>
+            <p><strong>❌ Desconsiderar o Contexto:</strong> Tentar resolver o item sem ler o período inteiro onde o conector está inserido.</p>
+        </div>
+
+        <h2>5. Exemplos Estilo Certo ou Errado</h2>
+        <div class="exemplo">
+            "Ele estudou muito, <strong>portanto</strong> conseguiu aprovação."
+        </div>
+        <p><strong>Item 1:</strong> O termo “portanto” expressa ideia de conclusão. <span class="badge badge-certo">✔ CERTO</span></p>
+        <p><strong>Item 2:</strong> O termo "portanto" indica uma relação de oposição. <span class="badge badge-errado">❌ ERRADO</span></p>
+
+        <div class="exemplo">
+            "Estava cansado, <strong>porém</strong> continuou estudando."
+        </div>
+        <p><strong>Item 3:</strong> O termo “porém” expressa oposição. <span class="badge badge-certo">✔ CERTO</span></p>
+
+        <div class="footer">Lauda 2/3 - Coesão e Conectores UNEAL 2026</div>
+    </div>
+
+    <div class="lauda">
+        <h1>Língua Portuguesa: Módulo III</h1>
+
+        <h2>6. Método Rápido: R.C.S.</h2>
+        <p>Para não errar itens de conectivos, siga este processo mecânico:</p>
+        <div class="box-metodo">
+            <p><strong>R — RELAÇÃO:</strong> Qual relação lógica o conector expressa originalmente?</p>
+            <p><strong>C — CONTEXTO:</strong> A relação faz sentido dentro da ideia do autor?</p>
+            <p><strong>S — SUBSTITUIÇÃO:</strong> Se trocar o conector pelo sugerido, o sentido muda?</p>
+        </div>
+
+        <h2>7. Checklist de Julgamento (Checklist Mental)</h2>
+        <ul>
+            <li>O item atribuiu a relação lógica <strong>correta</strong> ao conector?</li>
+            <li>A substituição proposta <strong>preserva</strong> a intenção original do texto?</li>
+            <li>O contexto do período confirma o sentido que a banca está afirmando?</li>
+            <li>Eu confundi causa com explicação ou oposição com conclusão?</li>
+        </ul>
+
+        <h2>8. Erros Fatais dos Candidatos</h2>
+        <div class="box" style="border-color: #cbd5e1;">
+            <p>• Memorizar conectores em listas secas sem entender a aplicação prática.</p>
+            <p>• Ignorar a mudança de sentido sutil em certas substituições.</p>
+            <li>Não perceber que a banca pode tentar forçar uma lógica inexistente.</li>
+        </div>
+
+        <div class="box" style="margin-top: 20px; background: #fffbeb; border: 2px dashed #f59e0b;">
+            <h3 style="color: #b45309; text-align: center;">🧠 RESUMO DE BOLSO (REGRA DE OURO)</h3>
+            <p style="text-align: center; font-weight: bold;">"No CEBRASPE, identifique sempre a relação lógica. Se o item disser que 'mas' indica causa ou que 'visto que' indica conclusão: Marque ERRADO."</p>
+            <div class="grid-2" style="font-size: 9pt;">
+                <div>
+                    <strong>Certo:</strong><br>• Relação lógica correta<br>• Sentido preservado<br>• Substituição funcional
+                </div>
+                <div>
+                    <strong>Errado:</strong><br>• Troca altera sentido<br>• Função mal interpretada<br>• Ignora o contexto
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">Lauda 3/3 - Coesão e Conectores UNEAL 2026</div>
+    </div>
+
+</body>
+</html>

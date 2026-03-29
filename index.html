@@ -3,20 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MP-AL 2026 | Painel de Controle Pareto</title>
+    <title>UNEAL 2026 | Painel de Controle Pareto</title>
     <style>
         :root {
-            --fcc-blue: #003366;
-            --fcc-red: #b71c1c;
-            --fcc-green: #1b5e20;
-            --fcc-gold: #b8860b;
-            --dark: #202124;
-            --bg: #f4f7f9;
+            --uneal-blue: #1e3a8a; /* Azul Escuro Institucional */
+            --uneal-light-blue: #3b82f6;
+            --cebraspe-orange: #f59e0b;
+            --alagoas-red: #dc2626;
+            --edu-green: #10b981;
+            --dark: #1e293b;
+            --bg: #f8fafc;
             --white: #ffffff;
         }
 
         body { font-family: 'Segoe UI', Tahoma, sans-serif; background: var(--bg); margin: 0; padding: 20px; color: var(--dark); }
-        
         .container { max-width: 1200px; margin: 0 auto; }
         
         header { 
@@ -26,21 +26,21 @@
             border-radius: 15px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.05);
             margin-bottom: 40px; 
-            border-bottom: 5px solid var(--fcc-blue);
+            border-bottom: 5px solid var(--uneal-blue);
         }
-        header h1 { margin: 0; font-size: 26pt; color: var(--fcc-blue); letter-spacing: -1px; }
-        header p { color: #666; margin-top: 10px; font-weight: 500; text-transform: uppercase; font-size: 9pt; letter-spacing: 2px; }
+        header h1 { margin: 0; font-size: 24pt; color: var(--uneal-blue); letter-spacing: -1px; }
+        header p { color: #64748b; margin-top: 10px; font-weight: 600; text-transform: uppercase; font-size: 9pt; letter-spacing: 2px; }
 
         .grid-disciplinas {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 25px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
         }
 
         .card {
             background: var(--white);
             border-radius: 12px;
-            padding: 25px;
+            padding: 20px;
             text-decoration: none;
             color: inherit;
             box-shadow: 0 4px 6px rgba(0,0,0,0.03);
@@ -51,34 +51,33 @@
             position: relative;
         }
 
-        .card:hover { transform: translateY(-8px); box-shadow: 0 12px 20px rgba(0,0,0,0.1); }
-
-        .card h3 { margin: 10px 0 10px 0; font-size: 16pt; color: var(--fcc-blue); }
-        .card p { font-size: 10pt; color: #444; line-height: 1.5; margin-bottom: 20px; flex-grow: 1; }
+        .card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.08); }
+        .card h3 { margin: 10px 0; font-size: 14pt; color: var(--uneal-blue); }
+        .card p { font-size: 9pt; color: #475569; line-height: 1.4; margin-bottom: 15px; flex-grow: 1; }
         
         .card-footer {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-top: 1px solid #eee;
-            padding-top: 15px;
+            border-top: 1px solid #f1f5f9;
+            padding-top: 12px;
         }
 
         .badge-status { 
-            font-size: 7.5pt; 
+            font-size: 7pt; 
             font-weight: 800; 
             text-transform: uppercase; 
-            padding: 4px 12px;
+            padding: 3px 10px;
             border-radius: 4px;
         }
 
-        .btn-abrir { font-size: 8.5pt; font-weight: bold; color: var(--fcc-blue); text-transform: uppercase; }
+        .btn-abrir { font-size: 8pt; font-weight: bold; color: var(--uneal-blue); text-transform: uppercase; }
 
-        /* Temas por Disciplina */
-        .c-portugues { border-top-color: var(--fcc-blue); }
-        .c-legislacao { border-top-color: var(--fcc-red); }
-        .c-analista { border-top-color: var(--fcc-gold); }
-        .c-tecnico { border-top-color: var(--fcc-green); }
+        /* Estilos por Matéria */
+        .c-basica { border-top-color: var(--uneal-light-blue); }
+        .c-alagoas { border-top-color: var(--alagoas-red); }
+        .c-especifica { border-top-color: var(--edu-green); }
+        .c-atualidades { border-top-color: var(--cebraspe-orange); }
 
         .section-header { 
             grid-column: 1 / -1; 
@@ -86,72 +85,85 @@
             align-items: center; 
             margin: 30px 0 10px 0;
         }
-        .section-header h2 { font-size: 12pt; color: #888; text-transform: uppercase; letter-spacing: 2px; margin-right: 15px; font-weight: 900; }
-        .line { flex-grow: 1; height: 1px; background: #ddd; }
+        .section-header h2 { font-size: 11pt; color: #94a3b8; text-transform: uppercase; letter-spacing: 2px; margin-right: 15px; font-weight: 900; }
+        .line { flex-grow: 1; height: 1px; background: #e2e8f0; }
 
-        footer { text-align: center; margin-top: 60px; padding: 20px; color: #bbb; font-size: 9pt; border-top: 1px solid #eee; }
+        footer { text-align: center; margin-top: 60px; padding: 20px; color: #94a3b8; font-size: 8pt; border-top: 1px solid #e2e8f0; }
     </style>
 </head>
 <body>
 
     <div class="container">
         <header>
-            <h1>MP-AL 2026 | HUB PARETO</h1>
-            <p>Foco Estratégico FCC • Ciclos de Alta Relevância</p>
+            <h1>UNEAL 2026 | HUB PARETO</h1>
+            <p>Técnico em Assuntos Educacionais • Foco CEBRASPE</p>
         </header>
 
         <div class="grid-disciplinas">
             
             <div class="section-header">
-                <h2>Básicos (Comum a todos)</h2>
+                <h2>Conhecimentos Básicos</h2>
                 <div class="line"></div>
             </div>
             
-            <a href="shared/portugues-mapa-ciclos.html" class="card c-portugues">
-                <span class="badge-status" style="background:#e3f2fd; color:#1565c0;">Figuras • Vozes • Sintaxe</span>
-                <h3>Língua Portuguesa</h3>
-                <p>O segredo da FCC: Transposição de vozes, partícula SE e efeitos de sentido em figuras de linguagem.</p>
-                <div class="card-footer">
-                    <span class="btn-abrir">Acessar Materiais →</span>
-                </div>
+            <a href="shared/1. Língua Portuguesa/portugues.html" class="card c-basica">
+                <span class="badge-status" style="background:#dbeafe; color:#1e40af;">Reescrita • Coesão • Tipologia</span>
+                <h3>1. Língua Portuguesa</h3>
+                <p>Foco em inferências, substituição de conectivos e manutenção do sentido original (Padrão CEBRASPE).</p>
+                <div class="card-footer"><span class="btn-abrir">Ver Tópicos →</span></div>
             </a>
 
-            <a href="shared/legislacao.html" class="card c-legislacao">
-                <span class="badge-status" style="background:#ffebee; color:#c62828;">RJU • LC 15 • PAD</span>
-                <h3>Legislação MP-AL</h3>
-                <p>Administração Superior e Regime Disciplinar. Prazos prescricionais e composição de conselhos.</p>
-                <div class="card-footer">
-                    <span class="btn-abrir">Ver Mapas de Ciclo →</span>
-                </div>
+            <a href="shared/2. Tecnologia da Infrmação/Tecnologia.da.Informacao.html" class="card c-basica">
+                <span class="badge-status" style="background:#dbeafe; color:#1e40af;">Segurança • Suíte Office • Nuvem</span>
+                <h3>2. Tecnologia da Informação</h3>
+                <p>Conceitos de Internet, ferramentas de busca e segurança da informação.</p>
+                <div class="card-footer"><span class="btn-abrir">Ver Tópicos →</span></div>
+            </a>
+
+            <a href="shared/3. Raciocínio Lógico/Raciocinio.Logico.html" class="card c-basica">
+                <span class="badge-status" style="background:#dbeafe; color:#1e40af;">Proposições • Equivalência • Análise</span>
+                <h3>3. Raciocínio Lógico</h3>
+                <p>Lógica sentencial, diagramas lógicos e análise de argumentos complexos.</p>
+                <div class="card-footer"><span class="btn-abrir">Ver Tópicos →</span></div>
+            </a>
+
+            <a href="shared/4. Conhecimentos de Alagoas/Conhecimentos.de.alagoas.html" class="card c-alagoas">
+                <span class="badge-status" style="background:#fee2e2; color:#991b1b;">História • Geografia • Constituição</span>
+                <h3>4. Conhecimentos Alagoas</h3>
+                <p>Aspectos históricos e geográficos do Estado e a Constituição Estadual de Alagoas.</p>
+                <div class="card-footer"><span class="btn-abrir">Ver Tópicos →</span></div>
+            </a>
+
+            <a href="shared/5. Legislação Educacional/Legislacao.educacional.html" class="card c-especifica">
+                <span class="badge-status" style="background:#d1fae5; color:#065f46;">LDB • PNE • CF/88 Art. 205</span>
+                <h3>5. Legislação Educacional</h3>
+                <p>Leis fundamentais da educação nacional e diretrizes para o ensino superior.</p>
+                <div class="card-footer"><span class="btn-abrir">Ver Tópicos →</span></div>
+            </a>
+
+            <a href="shared/6. Atualidades (Discursiva)/Atualidades.html" class="card c-atualidades">
+                <span class="badge-status" style="background:#fef3c7; color:#92400e;">Prova Discursiva • Temas 2026</span>
+                <h3>6. Atualidades</h3>
+                <p>Específico para a prova discursiva: Tópicos de relevância política, econômica e social.</p>
+                <div class="card-footer"><span class="btn-abrir">Ver Temas →</span></div>
             </a>
 
             <div class="section-header">
-                <h2>Específicos (TI)</h2>
+                <h2>Conhecimentos Específicos</h2>
                 <div class="line"></div>
             </div>
 
-            <a href="shared/analista.html" class="card c-analista">
-                <span class="badge-status" style="background:#fff8e1; color:#b8860b;">Segurança • ISO 27001 • Cripto</span>
-                <h3>Analista: Redes</h3>
-                <p>Governança de segurança (ISO 2022/2024), criptografia assimétrica e integridade com Hash.</p>
-                <div class="card-footer">
-                    <span class="btn-abrir">Painel Especializado →</span>
-                </div>
-            </a>
-
-            <a href="shared/tecnico-ti-completo.html" class="card c-tecnico">
-                <span class="badge-status" style="background:#e8f5e9; color:#2e7d32;">Hardware • ITIL v4 • Suporte</span>
-                <h3>Técnico: TI</h3>
-                <p>Foco em suporte ao usuário, SLA, escalonamento funcional e diagnóstico de falhas em hardware.</p>
-                <div class="card-footer">
-                    <span class="btn-abrir">Painel Especializado →</span>
-                </div>
+            <a href="shared/7. Técnico Educacional/tecnico.educacional.html" class="card c-especifica">
+                <span class="badge-status" style="background:#d1fae5; color:#065f46;">Pedagogia • Gestão • Processos</span>
+                <h3>7. Técnico Educacional</h3>
+                <p>Fundamentos da educação, gestão democrática e rotinas do técnico administrativo educacional.</p>
+                <div class="card-footer"><span class="btn-abrir">Acesso Completo →</span></div>
             </a>
 
         </div>
 
         <footer>
-            Sincronizado com: /meu-diario-mpal/ • 2026 • Foco Total na Aprovação.
+            Sincronizado com: Edital UNEAL Nº 1-2026 • Foco Total na Aprovação.
         </footer>
     </div>
 
