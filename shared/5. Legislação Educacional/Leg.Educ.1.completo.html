@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Dossiê Estratégico: CF/88 - Educação (UNEAL)</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background-color: #f1f5f9; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        
+        /* Configuração de múltiplas laudas A4 */
+        .lauda {
+            background: white; width: 210mm; min-height: 297mm; padding: 1.5cm;
+            margin: 20px auto; display: flex; flex-direction: column;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1); border-top: 15px solid #1e3a8a;
+            position: relative; page-break-after: always;
+        }
+
+        h1 { color: #1e3a8a; font-size: 22pt; text-align: center; border-bottom: 3px solid #1e3a8a; padding-bottom: 10px; margin-bottom: 20px; text-transform: uppercase; }
+        h2 { font-size: 14pt; color: #1e3a8a; text-transform: uppercase; margin: 15px 0 10px; border-left: 6px solid #3b82f6; padding-left: 10px; background: #eff6ff; }
+        h3 { font-size: 11pt; color: #2563eb; margin: 10px 0 5px; text-transform: uppercase; }
+
+        p, li { font-size: 10.5pt; line-height: 1.5; color: #334155; margin-bottom: 8px; text-align: justify; }
+        ul { margin-left: 25px; list-style-type: square; }
+        
+        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin: 10px 0; }
+        .box { border: 1px solid #e2e8f0; padding: 12px; border-radius: 8px; background: #f8fafc; }
+        .box-perigo { background: #fff1f2; border: 1px solid #fecaca; border-left: 8px solid #e11d48; }
+        .box-metodo { background: #f0fdf4; border: 1px solid #bbf7d0; border-left: 8px solid #16a34a; }
+        
+        .badge { display: inline-block; padding: 2px 8px; border-radius: 4px; font-weight: bold; font-size: 9pt; text-transform: uppercase; }
+        .badge-certo { background: #dcfce7; color: #166534; }
+        .badge-errado { background: #fee2e2; color: #991b1b; }
+
+        .exemplo { background: #fafafa; border: 1px dashed #cbd5e1; padding: 15px; margin: 10px 0; font-style: italic; border-left: 4px solid #1e3a8a; }
+        
+        .footer { text-align: center; font-size: 9pt; color: #94a3b8; border-top: 1px solid #e2e8f0; padding-top: 10px; margin-top: auto; }
+        
+        .no-print { text-align: center; padding: 20px; position: sticky; top: 0; z-index: 100; }
+        button { padding: 12px 30px; cursor: pointer; background: #1e3a8a; color: white; border: none; border-radius: 6px; font-weight: bold; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+        
+        @media print { .no-print { display: none; } .lauda { margin: 0; box-shadow: none; border-top: none; } }
+    </style>
+</head>
+<body>
+
+    <div class="no-print">
+        <button onclick="window.print()">IMPRIMIR DOSSIÊ (3 LAUDAS)</button>
+    </div>
+
+    <div class="lauda">
+        <h1>Legislação Educacional: CF/88</h1>
+        <p style="text-align: center; font-weight: bold; color: #64748b;">UNEAL | Técnico em Assuntos Educacionais | Arts. 205 a 214</p>
+
+        <h2>1. Conceitos Essenciais (Art. 205)</h2>
+        <div class="box">
+            <h3>Definição Constitucional</h3>
+            <p>A educação é um <strong>direito de todos</strong> e um <strong>dever do Estado e da família</strong>. Deve ser promovida e incentivada com a colaboração da sociedade.</p>
+            <p><strong>Tríplice Finalidade:</strong></p>
+            <ul>
+                <li><strong>Pleno desenvolvimento da pessoa:</strong> Foco no indivíduo.</li>
+                <li><strong>Preparo para o exercício da cidadania:</strong> Foco na vida social/política.</li>
+                <li><strong>Qualificação para o trabalho:</strong> Foco profissional.</li>
+            </ul>
+        </div>
+
+        <h2>2. Princípios do Ensino (Art. 206)</h2>
+        <p>A base para qualquer questão de prova sobre a CF/88. Memorize os 7 pilares:</p>
+        <div class="grid-2">
+            <div class="box">
+                <p>• <strong>Igualdade:</strong> De condições para acesso e permanência.</p>
+                <p>• <strong>Liberdade:</strong> De aprender, ensinar, pesquisar e divulgar o saber.</p>
+                <p>• <strong>Pluralismo:</strong> De ideias e concepções pedagógicas.</p>
+            </div>
+            <div class="box">
+                <p>• <strong>Gratuidade:</strong> Do ensino público em estabelecimentos oficiais.</p>
+                <p>• <strong>Gestão Democrática:</strong> Do ensino público, na forma da lei.</p>
+                <p>• <strong>Qualidade:</strong> Garantia de padrão de qualidade.</p>
+            </div>
+        </div>
+        <p style="margin-top: 10px;">• <strong>Valorização:</strong> Dos profissionais da educação escolar (planos de carreira, ingresso por concurso público).</p>
+
+        <h2>3. Deveres do Estado (Art. 208)</h2>
+        <div class="box">
+            <h3>Educação Básica Obrigatória</h3>
+            <p><strong>Atenção à Idade:</strong> Dos <strong>4 aos 17 anos</strong>. Compreende: Pré-escola, Ensino Fundamental e Ensino Médio.</p>
+            <p><strong>Programas Suplementares (M.A.T.E):</strong> Material didático, Alimentação, Transporte e Assistência à saúde.</p>
+        </div>
+
+        <div class="footer">Lauda 1/3 - CF/88: Princípios e Deveres</div>
+    </div>
+
+    <div class="lauda">
+        <h1>Estratégia de Prova: CEBRASPE</h1>
+        
+        <h2>4. O Que Mais Cai na Banca</h2>
+        <div class="box" style="background: #fdfcf0; border-color: #fef08a;">
+            <p>1. <strong>Literalidade do Art. 205:</strong> Itens que afirmam ser dever "exclusivo" do Estado (Errado, inclui a família).</p>
+            <p>2. <strong>Gratuidade:</strong> A banca tenta dizer que pode haver cobrança em "instituições oficiais" (Errado).</p>
+            <p>3. <strong>Atendimento Especializado (AEE):</strong> Deve ser preferencialmente na <u>rede regular de ensino</u>.</p>
+            <p>4. <strong>Ensino Noturno:</strong> Garantia de oferta adequada às condições do educando.</p>
+            <p>5. <strong>Educação Infantil:</strong> Creche e pré-escola às crianças até 5 anos de idade.</p>
+        </div>
+
+        <h2>5. Radar de Pegadinhas (CUIDADO!)</h2>
+        <div class="box-perigo">
+            <p><strong>❌ Troca de Idade:</strong> O CEBRASPE troca "4 a 17 anos" por "7 a 14" ou "0 a 6". Fique atento ao texto atualizado da CF.</p>
+            <p><strong>❌ Coexistência:</strong> Afirmar que o ensino é livre à iniciativa privada <u>apenas</u> se houver falta de vagas no público. (Errado, é livre mediante cumprimento de normas).</p>
+            <p><strong>❌ Gestão Democrática:</strong> Dizer que se aplica ao ensino privado. (A CF exige apenas para o <u>ensino público</u>).</p>
+            <p><strong>❌ Assistência à Saúde:</strong> Tentar dizer que os programas suplementares são apenas de livros e transporte.</p>
+        </div>
+
+        <h2>6. Exemplos Estilo Certo ou Errado</h2>
+        <div class="exemplo">
+            "A educação, direito de todos e dever do Estado e da família, será promovida e incentivada com a colaboração da sociedade."
+        </div>
+        <p><strong>Item 1:</strong> O item reflete a redação literal do Art. 205 da CF/88. <span class="badge badge-certo">✔ CERTO</span></p>
+
+        <div class="exemplo">
+            "O Estado deve garantir educação básica obrigatória e gratuita dos 6 aos 18 anos."
+        </div>
+        <p><strong>Item 2:</strong> A idade da educação obrigatória está incorreta conforme o Art. 208. <span class="badge badge-errado">❌ ERRADO</span> (O correto é 4 a 17 anos).</p>
+
+        <div class="footer">Lauda 2/3 - Análise Crítica CEBRASPE</div>
+    </div>
+
+    <div class="lauda">
+        <h1>Métodos de Resolução e Resumo</h1>
+
+        <h2>7. Método Rápido: F.P.D.</h2>
+        <p>Ao ler a questão, classifique o item para encontrar o erro:</p>
+        <div class="box-metodo">
+            <p><strong>F — FINALIDADES:</strong> Verbo "Visar". (Desenvolvimento + Cidadania + Trabalho).</p>
+            <p><strong>P — PRINCÍPIOS:</strong> Substantivos "Igualdade, Liberdade, Pluralismo, Gratuidade, Gestão".</p>
+            <p><strong>D — DEVER DO ESTADO:</strong> Garantias concretas (Vagas, AEE, Idades, Programas).</p>
+        </div>
+
+        <h2>8. Checklist Mental (Anti-Erro)</h2>
+        <ul>
+            <li>O item excluiu a <strong>família</strong> da responsabilidade educacional?</li>
+            <li>A idade citada é <strong>4 a 17 anos</strong> para a básica obrigatória?</li>
+            <li>A <strong>gratuidade</strong> foi garantida em estabelecimento <strong>oficial</strong> (público)?</li>
+            <li>O <strong>Pluralismo</strong> de ideias foi respeitado?</li>
+        </ul>
+
+        <h2>9. Erros Comuns dos Candidatos</h2>
+        <div class="box" style="border-color: #cbd5e1;">
+            <p>• Confundir Educação Infantil (0 a 5 anos) com Educação Obrigatória (4 a 17 anos).</p>
+            <p>• Achar que "Gestão Democrática" é um princípio universal (é apenas do ensino público).</p>
+            <li>Esquecer que o AEE é <strong>preferencialmente</strong> na rede regular (e não obrigatoriamente).</li>
+        </div>
+
+        <div class="box" style="margin-top: 20px; background: #fffbeb; border: 2px dashed #f59e0b;">
+            <h3 style="color: #b45309; text-align: center;">🧠 REGRA DE OURO (RESUMO DE VÉSPERA)</h3>
+            <p style="text-align: center; font-weight: bold; color: #1e3a8a;">EDUCAÇÃO = DIREITO DE TODOS + DEVER DO ESTADO + DEVER DA FAMÍLIA.</p>
+            <div class="grid-2" style="font-size: 9pt;">
+                <div>
+                    <strong>Finalidades:</strong><br>• Desenvolvimento Humano<br>• Exercício da Cidadania<br>• Trabalho
+                </div>
+                <div>
+                    <strong>Garantias Estatais:</strong><br>• Básica (4-17 anos)<br>• Infantil (até 5 anos)<br>• AEE (Prefer. Regular)
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">Lauda 3/3 - Resumo Estratégico UNEAL 2026</div>
+    </div>
+
+</body>
+</html>

@@ -2,7 +2,7 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <title>Rac. Lóg.(UNEAL)</title>
+    <title>Edital Verticalizado: Raciocínio Lógico (UNEAL)</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { background-color: #f1f5f9; font-family: 'Segoe UI', sans-serif; }
@@ -15,31 +15,32 @@
         h1 { color: #1e3a8a; font-size: 18pt; text-align: center; border-bottom: 2px solid #1e3a8a; padding-bottom: 8px; margin-bottom: 15px; text-transform: uppercase; }
         .edital-table { width: 100%; border-collapse: collapse; margin-bottom: 15px; }
         .edital-table th { background: #1e3a8a; color: white; padding: 8px; font-size: 9pt; border: 1px solid #1e3a8a; }
-        .edital-table td { border: 1px solid #e2e8f0; padding: 6px 8px; font-size: 8.2pt; vertical-align: middle; line-height: 1.2; text-align: left; }
+        .edital-table td { border: 1px solid #e2e8f0; padding: 6px 8px; font-size: 8.2pt; vertical-align: middle; line-height: 1.2; }
         
-        /* Centralizar a coluna de status */
-        .td-status { text-align: center !important; }
-
         /* Estilização dos Links */
         .edital-table td a {
             color: #1e3a8a;
             text-decoration: none;
             font-weight: 500;
         }
-        .edital-table td a:hover { text-decoration: underline; }
+        .edital-table td a:hover {
+            text-decoration: underline;
+        }
 
-        /* Estilização do Checkbox (Marcação) */
+        /* Estilização do Checkbox de Status (Marcação) */
+        .td-status { text-align: center !important; }
         .input-status {
-            width: 18px;
-            height: 18px;
+            width: 16px;
+            height: 16px;
             cursor: pointer;
-            accent-color: #1e3a8a; /* Define a cor do check quando marcado */
+            accent-color: #1e3a8a;
         }
 
         .pri-critica { color: #dc2626; font-weight: bold; }
-        .box-estrategia { background: #f0f4ff; border: 1px solid #c7d2fe; padding: 12px; border-radius: 6px; margin-top: auto; border-left: 6px solid #3f51b5; }
+        .pri-maxima { color: #991b1b; font-weight: bold; }
+        .box-estrategia { background: #f0f4ff; border: 1px solid #c7d2fe; padding: 10px; border-radius: 6px; margin-top: auto; border-left: 6px solid #3f51b5; }
         .box-estrategia h3 { color: #1e3a8a; font-size: 10pt; text-transform: uppercase; margin-bottom: 4px; }
-        .box-estrategia p { font-size: 8.5pt; color: #374151; line-height: 1.4; }
+        .box-estrategia p { font-size: 8.5pt; color: #374151; line-height: 1.4; margin-bottom: 5px; }
         .footer { text-align: center; font-size: 8pt; color: #94a3b8; border-top: 1px solid #e2e8f0; padding-top: 8px; margin-top: 10px; }
         .no-print { text-align: center; padding: 15px; }
         button { padding: 10px 25px; cursor: pointer; background: #1e3a8a; color: white; border: none; border-radius: 5px; font-weight: bold; }
@@ -48,76 +49,80 @@
 </head>
 <body>
     <div class="no-print">
-        <button onclick="window.print()">IMPRIMIR EDITAL VERTICALIZADO PORTUGUÊS</button>
+        <button onclick="window.print()">IMPRIMIR EDITAL VERTICALIZADO RL</button>
     </div>
     <div class="lauda">
-        <h1>📑 Raciocínio Lógico e Analítico (UNEAL)</h1>
+        <h1>📑 Edital Verticalizado: Raciocínio Lógico e Analítico</h1>
         <table class="edital-table">
             <thead>
                 <tr>
-                    <th style="width: 32%;">Tópico / Subtópico</th>
+                    <th style="width: 30%;">Tópico / Subtópico</th>
                     <th style="width: 15%;">Prioridade</th>
-                    <th style="width: 43%;">Gatilhos CEBRASPE (O que focar)</th>
+                    <th style="width: 45%;">Foco Estratégico (CEBRASPE)</th>
                     <th style="width: 10%;">Status</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td><a href="Rac.1.completo.html" target="_blank">1 e 2 Interpretação / Gêneros</a></td>
-                    <td class="pri-critica">MÁXIMA</td>
-                    <td>Diferença entre "Afirma" (Explícito) e "Depreende" (Lógico).</td>
-                    <td class="td-status"><input type="checkbox" class="input-status"></td>
-                </tr>
-                <tr>
-                    <td><a href="Port.2.completo.html" target="_blank">4 Coesão e Conectores</a></td>
-                    <td class="pri-critica">CRÍTICA</td>
-                    <td>Troca de conjunções (Conquanto/Embora/Apesar de).</td>
-                    <td class="td-status"><input type="checkbox" class="input-status"></td>
-                </tr>
-                <tr>
-                    <td><a href="Port.3.completo.html" target="_blank">5.3 Orações Adjetivas</a></td>
-                    <td class="pri-critica">CRÍTICA</td>
-                    <td>Com vírgula (Explicativa) vs Sem vírgula (Restritiva).</td>
-                    <td class="td-status"><input type="checkbox" class="input-status"></td>
-                </tr>
-                <tr>
-                    <td><a href="Port.4.completo.html" target="_blank">5.4 Pontuação</a></td>
-                    <td class="pri-critica">MÁXIMA</td>
-                    <td>Vírgula em Adjuntos Adverbiais e deslocamentos.</td>
-                    <td class="td-status"><input type="checkbox" class="input-status"></td>
-                </tr>
-                <tr>
-                    <td><a href="Port.5.completo.html" target="_blank">5.5 Concordância (Partícula SE)</a></td>
+                    <td><a href="https://www.google.com/search?q=logica+proposicional+sentencas+abertas+fechadas+cebraspe+questoes" target="_blank">1. Lógica sentencial (proposicional). 1.1 Simples e compostas.</a></td>
                     <td>ALTA</td>
-                    <td>Alugam-se casas (Voz Passiva) vs Precisa-se de (Índice).</td>
+                    <td>Identificar o que é proposição (sentenças abertas x fechadas).</td>
                     <td class="td-status"><input type="checkbox" class="input-status"></td>
                 </tr>
                 <tr>
-                    <td><a href="Port.6.completo.html" target="_blank">5.7 Crase</a></td>
-                    <td>ALTA</td>
-                    <td>Casos proibitivos (Verbos/Masculinos) e facultativos.</td>
+                    <td><a href="https://www.google.com/search?q=tabela+verdade+conectivos+logicos+condicional+cebraspe+questoes" target="_blank">1.2. Tabelas‐verdade e Conectivos.</a></td>
+                    <td class="pri-maxima">MÁXIMA</td>
+                    <td><b>Dominar a condicional (p → q)</b>. É o conectivo preferido da banca.</td>
                     <td class="td-status"><input type="checkbox" class="input-status"></td>
                 </tr>
                 <tr>
-                    <td><a href="Port.7.completo.html" target="_blank">6 Reescrita de Textos</a></td>
+                    <td><a href="https://www.google.com/search?q=equivalencias+logicas+negacao+contrapositiva+cebraspe+questoes" target="_blank">1.3. Equivalências Lógicas.</a></td>
                     <td class="pri-critica">CRÍTICA</td>
-                    <td>Manutenção da Correção Gramatical + Sentido Original.</td>
+                    <td>Foco em <b>Contrapositiva</b> e <b>Negação de Proposições Compostas</b>.</td>
                     <td class="td-status"><input type="checkbox" class="input-status"></td>
                 </tr>
                 <tr>
-                    <td><a href="Port.8.completo.html" target="_blank">6.1 Significação / Paráfrase</a></td>
+                    <td><a href="https://www.google.com/search?q=raciocinio+logico+associacao+correlacao+elementos+cebraspe" target="_blank">2. Relações arbitrárias e Dedução de informações.</a></td>
                     <td>ALTA</td>
-                    <td>Troca de palavras por sinônimos contextuais (ex: Óbice).</td>
+                    <td>Problemas de correlação (quem mora onde, qual a profissão de quem).</td>
+                    <td class="td-status"><input type="checkbox" class="input-status"></td>
+                </tr>
+                <tr>
+                    <td><a href="https://www.google.com/search?q=sequencias+logicas+numericas+figuras+padroes+cebraspe" target="_blank">3. Funções intelectuais: Raciocínio verbal, matemático e padrões.</a></td>
+                    <td>MÉDIA</td>
+                    <td>Sequências numéricas e de figuras. Atenção a padrões cíclicos.</td>
+                    <td class="td-status"><input type="checkbox" class="input-status"></td>
+                </tr>
+                <tr>
+                    <td><a href="https://www.google.com/search?q=analise+combinatoria+probabilidade+condicional+cebraspe+questoes" target="_blank">4.1. Problemas de contagem e Noções de probabilidade.</a></td>
+                    <td class="pri-critica">CRÍTICA</td>
+                    <td>Princípio Fundamental da Contagem e probabilidade condicional.</td>
+                    <td class="td-status"><input type="checkbox" class="input-status"></td>
+                </tr>
+                <tr>
+                    <td><a href="https://www.google.com/search?q=falacias+logicas+argumentacao+cebraspe+exemplos" target="_blank">5. Falácias.</a></td>
+                    <td>BAIXA</td>
+                    <td>Compreender erros comuns de argumentação (Ad Hominem, Espantalho).</td>
+                    <td class="td-status"><input type="checkbox" class="input-status"></td>
+                </tr>
+                <tr>
+                    <td><a href="https://www.google.com/search?q=estatistica+media+moda+mediana+desvio+padrao+cebraspe+questoes" target="_blank">6. Estatística: Média, Moda, Mediana e Desvio Padrão.</a></td>
+                    <td class="pri-maxima">MÁXIMA</td>
+                    <td>Cálculo de <b>Mediana</b> em listas e interpretação de <b>Desvio Padrão</b>.</td>
                     <td class="td-status"><input type="checkbox" class="input-status"></td>
                 </tr>
             </tbody>
         </table>
+
         <div class="box-estrategia">
-            <h3>🛡️ Estratégia do Especialista (Português)</h3>
-            <p><strong>A Regra do "Mantém":</strong> O CEBRASPE ama perguntar se a substituição de X por Y mantém a correção E o sentido. Quase sempre a gramática está certa, mas o sentido mudou de "causa" para "concessão". Fique atento!</p>
-            <p style="margin-top:5px;"><strong>A Vírgula Semântica:</strong> Mudar a vírgula de lugar em orações adjetivas quase sempre <u>altera o sentido</u>, mas mantém a <u>correção gramatical</u>. A banca adora esse detalhe.</p>
+            <h3>🛡️ MANTRA PARA A PROVA (RACIOCÍNIO LÓGICO)</h3>
+            <p><strong>Cuidado com a Condicional:</strong> No CEBRASPE, "Se p, então q" é equivalente a "~q → ~p" ou "~p ou q". Saiba trocar o conectivo com rapidez.</p>
+            
+            <p><strong>Negação não é antônimo:</strong> Negar "Todo" é "Pelo menos um... não". Negar "E" é usar "OU" com tudo negado (Leis de Morgan).</p>
+            <p><strong>Estatística Básica:</strong> A mediana é o termo central após ordenar os dados (Rol). Se o desvio padrão é zero, todos os valores são iguais.</p>
+            <p><strong>Análise de Gráficos:</strong> Não tente calcular tudo. Muitas questões de gráficos exigem apenas comparação visual e lógica de exclusão.</p>
         </div>
-        <div class="footer">Planejamento UNEAL 2026 - Língua Portuguesa - Técnico em Assuntos Educacionais</div>
+        <div class="footer">Estratégia Final UNEAL 2026 - Raciocínio Lógico - Técnico em Assuntos Educacionais</div>
     </div>
 </body>
 </html>

@@ -2,177 +2,126 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <title>Dossiê Estratégico: Significação e Paráfrase</title>
+    <title>Edital Verticalizado: Legislação Educacional (UNEAL)</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { background-color: #f1f5f9; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
-        
-        /* Configuração de múltiplas laudas A4 */
+        body { background-color: #f1f5f9; font-family: 'Segoe UI', sans-serif; }
+        @page { size: A4; margin: 0; }
         .lauda {
-            background: white; width: 210mm; min-height: 297mm; padding: 1.5cm;
-            margin: 20px auto; display: flex; flex-direction: column;
-            box-shadow: 0 0 15px rgba(0,0,0,0.1); border-top: 15px solid #1e3a8a;
-            position: relative; page-break-after: always;
+            background: white; width: 210mm; height: 297mm; padding: 1.2cm;
+            margin: 0 auto; display: flex; flex-direction: column;
+            border-top: 12px solid #1e3a8a; position: relative;
+        }
+        h1 { color: #1e3a8a; font-size: 18pt; text-align: center; border-bottom: 2px solid #1e3a8a; padding-bottom: 8px; margin-bottom: 15px; text-transform: uppercase; }
+        .edital-table { width: 100%; border-collapse: collapse; margin-bottom: 15px; }
+        .edital-table th { background: #1e3a8a; color: white; padding: 8px; font-size: 9pt; border: 1px solid #1e3a8a; }
+        .edital-table td { border: 1px solid #e2e8f0; padding: 6px 8px; font-size: 8.2pt; vertical-align: middle; line-height: 1.2; }
+        
+        /* Estilização dos Links */
+        .edital-table td a {
+            color: #1e3a8a;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .edital-table td a:hover {
+            text-decoration: underline;
         }
 
-        h1 { color: #1e3a8a; font-size: 22pt; text-align: center; border-bottom: 3px solid #1e3a8a; padding-bottom: 10px; margin-bottom: 20px; text-transform: uppercase; }
-        h2 { font-size: 14pt; color: #1e3a8a; text-transform: uppercase; margin: 15px 0 10px; border-left: 6px solid #3b82f6; padding-left: 10px; background: #eff6ff; }
-        h3 { font-size: 11pt; color: #2563eb; margin: 10px 0 5px; text-transform: uppercase; }
+        /* Estilização do Checkbox de Status */
+        .td-status { text-align: center !important; }
+        .input-status {
+            width: 16px;
+            height: 16px;
+            cursor: pointer;
+            accent-color: #1e3a8a;
+        }
 
-        p, li { font-size: 10.5pt; line-height: 1.5; color: #334155; margin-bottom: 8px; text-align: justify; }
-        ul { margin-left: 25px; list-style-type: square; }
-        
-        /* Grids e Boxes */
-        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin: 10px 0; }
-        .box { border: 1px solid #e2e8f0; padding: 12px; border-radius: 8px; background: #f8fafc; }
-        .box-perigo { background: #fff1f2; border: 1px solid #fecaca; border-left: 8px solid #e11d48; }
-        .box-metodo { background: #f0fdf4; border: 1px solid #bbf7d0; border-left: 8px solid #16a34a; }
-        
-        .badge { display: inline-block; padding: 2px 8px; border-radius: 4px; font-weight: bold; font-size: 9pt; text-transform: uppercase; }
-        .badge-certo { background: #dcfce7; color: #166534; }
-        .badge-errado { background: #fee2e2; color: #991b1b; }
-
-        .exemplo { background: #fafafa; border: 1px dashed #cbd5e1; padding: 15px; margin: 10px 0; font-style: italic; }
-        
-        .footer { text-align: center; font-size: 9pt; color: #94a3b8; border-top: 1px solid #e2e8f0; padding-top: 10px; margin-top: auto; }
-        
-        .no-print { text-align: center; padding: 20px; position: sticky; top: 0; z-index: 100; }
-        button { padding: 12px 30px; cursor: pointer; background: #1e3a8a; color: white; border: none; border-radius: 6px; font-weight: bold; box-shadow: 0 4px 6px rgba(0,0,0,0.1); transition: 0.3s; }
-        button:hover { background: #3b82f6; }
-        
-        @media print { .no-print { display: none; } .lauda { margin: 0; box-shadow: none; border-top: none; } }
+        .pri-critica { color: #dc2626; font-weight: bold; }
+        .pri-maxima { color: #991b1b; font-weight: bold; }
+        .box-estrategia { background: #f0f4ff; border: 1px solid #c7d2fe; padding: 10px; border-radius: 6px; margin-top: auto; border-left: 6px solid #3f51b5; }
+        .box-estrategia h3 { color: #1e3a8a; font-size: 10pt; text-transform: uppercase; margin-bottom: 4px; }
+        .box-estrategia p { font-size: 8.5pt; color: #374151; line-height: 1.4; margin-bottom: 5px; }
+        .footer { text-align: center; font-size: 8pt; color: #94a3b8; border-top: 1px solid #e2e8f0; padding-top: 8px; margin-top: 10px; }
+        .no-print { text-align: center; padding: 15px; }
+        button { padding: 10px 25px; cursor: pointer; background: #1e3a8a; color: white; border: none; border-radius: 5px; font-weight: bold; }
+        @media print { .no-print { display: none; } .lauda { margin: 0; box-shadow: none; width: 210mm; height: 297mm; } }
     </style>
 </head>
 <body>
-
     <div class="no-print">
-        <button onclick="window.print()">IMPRIMIR DOSSIÊ COMPLETO (3 LAUDAS)</button>
+        <button onclick="window.print()">IMPRIMIR EDITAL VERTICALIZADO LEGISLAÇÃO</button>
     </div>
-
     <div class="lauda">
-        <h1>Língua Portuguesa: Módulo I</h1>
-        <p style="text-align: center; font-weight: bold; color: #64748b;">UNEAL | Técnico em Assuntos Educacionais | Banca: CEBRASPE</p>
+        <h1>📑 Edital Verticalizado: Legislação Educacional</h1>
+        <table class="edital-table">
+            <thead>
+                <tr>
+                    <th style="width: 30%;">Tópico / Subtópico</th>
+                    <th style="width: 15%;">Prioridade</th>
+                    <th style="width: 45%;">Foco Estratégico (CEBRASPE)</th>
+                    <th style="width: 10%;">Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><a href="https://www.google.com/search?q=CF+88+Artigo+6+direito+social+educacao+cebraspe+questoes" target="_blank">1. CF/88: Princípios e Deveres do Estado.</a></td>
+                    <td>ALTA</td>
+                    <td>Foco no Art. 6º (Educação como direito social primário) e Art. 7º.</td>
+                    <td class="td-status"><input type="checkbox" class="input-status"></td>
+                </tr>
+                <tr>
+                    <td><a href="https://www.google.com/search?q=CF+88+Artigos+205+ao+214+autonomia+universitaria+cebraspe" target="_blank">1.2. CF/88: Artigos 205 ao 214.</a></td>
+                    <td class="pri-critica">CRÍTICA</td>
+                    <td><b>Art. 207 (Autonomia Universitária)</b> e Art. 206 (Princípios do Ensino). Cai sempre!</td>
+                    <td class="td-status"><input type="checkbox" class="input-status"></td>
+                </tr>
+                <tr>
+                    <td><a href="https://www.planalto.gov.br/ccivil_03/leis/l9394.htm" target="_blank">2. LDB (Lei 9.394/96) e Alterações.</a></td>
+                    <td class="pri-maxima">MÁXIMA</td>
+                    <td>O "manual" do Técnico. Atenção total às atualizações de 2023, 2024 e 2025.</td>
+                    <td class="td-status"><input type="checkbox" class="input-status"></td>
+                </tr>
+                <tr>
+                    <td><a href="https://www.google.com/search?q=LDB+Art+2+e+3+principios+ensino+cebraspe+questoes" target="_blank">2.1. LDB: Fins e Princípios (Art. 2º e 3º).</a></td>
+                    <td>ALTA</td>
+                    <td>Gestão democrática do ensino público e pluralismo de ideias.</td>
+                    <td class="td-status"><input type="checkbox" class="input-status"></td>
+                </tr>
+                <tr>
+                    <td><a href="https://www.google.com/search?q=LDB+Art+8+ao+11+regime+colaboracao+cebraspe" target="_blank">2.2. LDB: Organização Nacional (Art. 8º ao 11).</a></td>
+                    <td>ALTA</td>
+                    <td>Competências da União, Estados e Municípios no regime de colaboração.</td>
+                    <td class="td-status"><input type="checkbox" class="input-status"></td>
+                </tr>
+                <tr>
+                    <td><a href="https://www.google.com/search?q=LDB+Art+43+ao+57+educacao+superior+cebraspe+questoes" target="_blank">2.3. LDB: Educação Superior (Art. 43 ao 57).</a></td>
+                    <td class="pri-critica">CRÍTICA</td>
+                    <td>Finalidades (Art. 43), cursos de graduação e a autonomia das Universidades estaduais.</td>
+                    <td class="td-status"><input type="checkbox" class="input-status"></td>
+                </tr>
+                <tr>
+                    <td><a href="https://www.google.com/search?q=LDB+Art+58+educacao+especial+inclusao+cebraspe" target="_blank">2.4. LDB: Modalidades Transversais (Especial/EaD).</a></td>
+                    <td>ALTA</td>
+                    <td>Inclusão como regra (Art. 58) e mediação tecnológica (EaD) no ensino superior.</td>
+                    <td class="td-status"><input type="checkbox" class="input-status"></td>
+                </tr>
+                <tr>
+                    <td><a href="https://www.google.com/search?q=LDB+recursos+financeiros+manutencao+ensino+cebraspe" target="_blank">2.5. LDB: Recursos Financeiros (Art. 68 ao 77).</a></td>
+                    <td>MÉDIA</td>
+                    <td>Fontes de receita e o que é considerado manutenção do ensino.</td>
+                    <td class="td-status"><input type="checkbox" class="input-status"></td>
+                </tr>
+            </tbody>
+        </table>
 
-        <h2>1. Conceitos Essenciais</h2>
-        <div class="box">
-            <h3>Significação e Paráfrase</h3>
-            <p>A <strong>Significação</strong> é o estudo do sentido das palavras dentro de um contexto específico. O CEBRASPE foca na <strong>Paráfrase</strong>: o ato de reescrever um texto mantendo a equivalência de sentido, sem perda da carga semântica original.</p>
-            <ul>
-                <li><strong>Sinonímia:</strong> Uso de termos com sentidos aproximados.</li>
-                <li><strong>Fidelidade Semântica:</strong> O objetivo principal é não alterar a intenção do autor.</li>
-                <li><strong>Exemplo:</strong> "A leitura <u>amplia</u> o conhecimento" vs "A leitura <u>expande</u> o conhecimento".</li>
-            </ul>
+        <div class="box-estrategia">
+            <h3>🛡️ MANTRA PARA A PROVA (LEGISLAÇÃO APLICADA)</h3>
+            <p><strong>Bíblia da Autonomia:</strong> O Artigo 207 da CF/88 exige a <strong>indissociabilidade</strong> entre ensino, pesquisa e extensão. Não existe pilar isolado na Universidade.</p>
+            <p><strong>Gestão e Participação:</strong> Na LDB (Art. 3º), a gestão democrática é norma. Decisões acadêmicas e administrativas na UNEAL são construídas coletivamente.</p>
+            <p><strong>Educação Superior:</strong> O Art. 43 é o coração da sua prova. Saiba que a pós-graduação compreende mestrado e doutorado (stricto sensu) e especialização (lato sensu).</p>
+            <p><strong>Atualizações:</strong> O CEBRASPE ama cobrar mudanças recentes. Verifique sempre se o seu material cita as alterações sobre educação digital e bilíngue de surdos.</p>
         </div>
-
-        <div class="box" style="margin-top: 15px;">
-            <h3>Estruturas de Paráfrase Cobradas</h3>
-            <div class="grid-2">
-                <div>
-                    <p>• <strong>Substituição Lexical:</strong> Troca de palavras-chave por sinônimos contextualizados.</p>
-                </div>
-                <div>
-                    <p>• <strong>Ordem Sintática:</strong> Mudança da posição dos termos (ex: deslocamento de advérbios).</p>
-                </div>
-                <div>
-                    <p>• <strong>Equivalência Estrutural:</strong> Transformação de voz verbal ou substituição por pronomes.</p>
-                </div>
-                <div>
-                    <p>• <strong>Conectivos:</strong> Troca de conjunções de mesma carga lógica (ex: portanto → logo).</p>
-                </div>
-            </div>
-        </div>
-
-        <h2>2. Estrutura Fundamental</h2>
-        <p>A paráfrase bem-sucedida para o CEBRASPE exige:</p>
-        <ul>
-            <li><strong>Manutenção do Sentido:</strong> A mensagem deve ser preservada em sua totalidade.</li>
-            <li><strong>Respeito à Intensidade:</strong> Trocar "importante" por "essencial" pode ser considerado erro por aumentar a intensidade original.</li>
-            <li><strong>Adequação Gramatical:</strong> A nova estrutura deve respeitar as normas da gramática normativa.</li>
-        </ul>
-
-        <div class="footer">Lauda 1/3 - Significação e Paráfrase UNEAL 2026</div>
+        <div class="footer">Estratégia Final UNEAL 2026 - Legislação Educacional - Técnico em Assuntos Educacionais</div>
     </div>
-
-    <div class="lauda">
-        <h1>Língua Portuguesa: Módulo II</h1>
-        
-        <h2>3. O Que Mais Cai no CEBRASPE</h2>
-        <p>A banca não cobra decoreba, mas a percepção de nuances textuais:</p>
-        <div class="box" style="background: #fdfcf0; border-color: #fef08a;">
-            <p>1. <strong>Sinônimos em Contexto:</strong> Uma palavra pode ser sinônimo de outra em um texto, mas não em outro.</p>
-            <p>2. <strong>Manutenção de Sentido:</strong> Itens que afirmam: "A substituição de X por Y preserva o sentido original".</p>
-            <p>3. <strong>Equivalência de Conectivos:</strong> Trocar conjunções adversativas ou conclusivas mantendo a lógica.</p>
-            <p>4. <strong>Análise de Substituição:</strong> Quando a banca propõe uma troca que parece correta, mas altera a <u>ênfase</u> do texto.</p>
-        </div>
-
-        <h2>4. Radar de Pegadinhas</h2>
-        <div class="box-perigo">
-            <p><strong>❌ Mudança de Intensidade:</strong> Trocar uma ideia neutra por uma extrema (ex: "gosta" por "adora").</p>
-            <p><strong>❌ Falsos Sinônimos:</strong> Palavras que pertencem ao mesmo campo, mas não cabem na frase proposta.</p>
-            <p><strong>❌ Relação Lógica Alterada:</strong> Trocar uma causa por uma consequência na reescrita.</p>
-            <p><strong>❌ Gramática vs. Sentido:</strong> O item pode estar gramaticalmente certo, mas dizer algo diferente do texto original.</p>
-        </div>
-
-        <h2>5. Exemplos Estilo Certo ou Errado</h2>
-        <div class="exemplo">
-            "A leitura amplia o conhecimento."
-        </div>
-        <p><strong>Item 1:</strong> A substituição de "amplia" por "expande" mantém o sentido do texto. <span class="badge badge-certo">✔ CERTO</span></p>
-
-        <div class="exemplo">
-            "O estudo é importante para o aprendizado."
-        </div>
-        <p><strong>Item 2:</strong> A troca de "importante" por "irrelevante" preserva a coerência. <span class="badge badge-errado">❌ ERRADO</span></p>
-
-        <div class="exemplo">
-            "Estudou muito, portanto passou."
-        </div>
-        <p><strong>Item 3:</strong> "Logo" poderia substituir "portanto" sem prejuízo ao sentido. <span class="badge badge-certo">✔ CERTO</span></p>
-
-        <div class="footer">Lauda 2/3 - Significação e Paráfrase UNEAL 2026</div>
-    </div>
-
-    <div class="lauda">
-        <h1>Língua Portuguesa: Módulo III</h1>
-
-        <h2>6. Método Rápido: S.E.R.</h2>
-        <p>Para julgar rapidamente itens de paráfrase e significação:</p>
-        <div class="box-metodo">
-            <p><strong>S — SENTIDO:</strong> A "alma" da frase continua a mesma? A intenção do autor mudou?</p>
-            <p><strong>E — EQUIVALÊNCIA:</strong> Os termos trocados ocupam o mesmo espaço semântico no dicionário mental do texto?</p>
-            <p><strong>R — RELAÇÃO LÓGICA:</strong> A ordem das ideias ou os conectivos continuam apontando para a mesma direção?</p>
-        </div>
-
-        <h2>7. Checklist Mental para a Questão</h2>
-        <ul>
-            <li>O sinônimo proposto é adequado para **este** contexto?</li>
-            <li>Houve acréscimo de opinião ou julgamento de valor que não existia antes?</li>
-            <li>A intensidade do termo foi alterada (ficou mais forte ou mais fraca)?</li>
-            <li>A correção gramatical foi mantida na nova estrutura?</li>
-        </ul>
-
-        <h2>8. Erros Comuns (Fuja deles!)</h2>
-        <div class="box" style="border-color: #cbd5e1;">
-            <p>• Aceitar sinônimos de dicionário que não cabem na frase.</p>
-            <p>• Ignorar a troca de conectivos (conjunções).</p>
-            <li>Focar apenas na correção gramatical e esquecer de comparar com o texto original.</li>
-        </div>
-
-        <div class="box" style="margin-top: 20px; background: #fffbeb; border: 2px dashed #f59e0b;">
-            <h3 style="color: #b45309; text-align: center;">🧠 RESUMO DE VÉSPERA (REGRA DE OURO)</h3>
-            <p style="text-align: center; font-weight: bold;">"PARÁFRASE CEBRASPE = MESMA IDEIA + MESMA LÓGICA."</p>
-            <div class="grid-2" style="font-size: 9pt;">
-                <div>
-                    <strong>Pode substituir:</strong><br>• Ampliar = Expandir<br>• Importante = Relevante<br>• Portanto = Logo
-                </div>
-                <div>
-                    <strong>Cuidado com:</strong><br>• Importante vs Essencial<br>• Talvez vs Certamente<br>• Mas vs Embora
-                </div>
-            </div>
-        </div>
-
-        <div class="footer">Lauda 3/3 - Significação e Paráfrase UNEAL 2026</div>
-    </div>
-
 </body>
 </html>
