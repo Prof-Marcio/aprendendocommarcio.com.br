@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estudo Integral - Crase - UNEAL</title>
+    <style>
+        /* Configurações Visuais do Navegador */
+        body {
+            background-color: #525659;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-family: "Times New Roman", Times, serif;
+        }
+
+        .page {
+            background: white;
+            width: 210mm;
+            min-height: 297mm;
+            padding: 25mm;
+            margin-bottom: 20px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.5);
+            box-sizing: border-box;
+            position: relative;
+            color: #000;
+            line-height: 1.5;
+        }
+
+        /* Configurações de Impressão */
+        @media print {
+            body { background: none; padding: 0; }
+            .page { 
+                margin: 0; 
+                box-shadow: none; 
+                page-break-after: always; 
+            }
+        }
+
+        /* Estilização do Conteúdo Fiel */
+        header {
+            text-align: center;
+            border-bottom: 3px solid #000;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+        }
+
+        h1 { font-size: 16pt; margin: 5px 0; text-transform: uppercase; }
+        h2 { font-size: 14pt; border-bottom: 1px solid #000; margin-top: 25px; padding-bottom: 5px; }
+        h3 { font-size: 12pt; margin-top: 15px; margin-bottom: 5px; text-decoration: underline; }
+        
+        p, li { font-size: 11pt; margin: 8px 0; text-align: justify; }
+        ul { padding-left: 20px; }
+
+        .item-exemplo {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin: 10px 0;
+            background-color: #f9f9f9;
+        }
+
+        .certo { font-weight: bold; color: #28a745; }
+        .errado { font-weight: bold; color: #dc3545; }
+
+        .metodo-box {
+            border: 2px dashed #000;
+            padding: 15px;
+            margin: 15px 0;
+            background-color: #fcfcfc;
+        }
+
+        .footer-page {
+            position: absolute;
+            bottom: 15mm;
+            right: 25mm;
+            font-size: 9pt;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="page">
+        <header>
+            <h1>📚 Estudo Estratégico – Crase</h1>
+            <p><strong>Disciplina:</strong> Língua Portuguesa | <strong>Concurso:</strong> UNEAL | <strong>Banca:</strong> CEBRASPE</p>
+            <p><strong>Cargo:</strong> Técnico em Assuntos Educacionais</p>
+        </header>
+
+        <h2>1️⃣ Conceito essencial (o que é)</h2>
+        <p>Crase é a fusão de dois sons iguais representados pelo acento grave (à). Ocorre quando há:</p>
+        <ul>
+            <li>preposição “a” + artigo feminino “a/as”</li>
+        </ul>
+        <div class="item-exemplo">
+            <strong>Exemplo:</strong> Vou à escola.<br>
+            Preposição exigida pelo verbo ir + artigo feminino a.
+        </div>
+
+        <h2>2️⃣ Estrutura e regras fundamentais cobradas em prova</h2>
+        <p>Para ocorrer crase é necessário:</p>
+        <ol>
+            <li>1️⃣ termo anterior que exija preposição “a”</li>
+            <li>2️⃣ termo seguinte que admita artigo feminino</li>
+        </ol>
+        <p><strong>Estrutura:</strong> a (preposição) + a/as (artigo feminino) = à / às</p>
+
+        <h3>Casos mais comuns de crase</h3>
+        <ul>
+            <li>✔ antes de palavras femininas (Ex: Vou à reunião.)</li>
+            <li>✔ em locuções femininas (Ex: à tarde, à medida que)</li>
+            <li>✔ antes de “aquele(s), aquela(s), aquilo” (Ex: Refiro-me àquele assunto.)</li>
+        </ul>
+
+        <h3>Casos em que NÃO ocorre crase</h3>
+        <ul>
+            <li>❌ antes de palavras masculinas (Ex: Vou a pé.)</li>
+            <li>❌ antes de verbos (Ex: Começou a estudar.)</li>
+            <li>❌ antes de pronomes pessoais (Ex: Entreguei a ela.)</li>
+        </ul>
+
+        <h2>3️⃣ O que mais cai na CEBRASPE</h2>
+        <ul>
+            <li>✔ verificação da existência de preposição</li>
+            <li>✔ identificação de artigo feminino</li>
+            <li>✔ uso em locuções femininas</li>
+            <li>✔ crase antes de pronomes demonstrativos</li>
+            <li>✔ análise de manutenção ou retirada do acento</li>
+        </ul>
+
+        <div class="footer-page">Página 1</div>
+    </div>
+
+    <div class="page">
+        <h2>4️⃣ Como a CEBRASPE formula as questões</h2>
+        <p>Modelo comum: frase + análise da ocorrência da crase.</p>
+        <div class="item-exemplo">
+            <strong>Exemplo:</strong> Dirigiu-se à escola.<br>
+            <strong>Item:</strong> O acento indicativo de crase resulta da fusão da preposição “a” com o artigo feminino.<br>
+            <span class="certo">✔ CERTO.</span>
+        </div>
+
+        <h2>5️⃣ Pegadinhas mais comuns da banca</h2>
+        <p><strong>Confundir preposição com artigo:</strong> Às vezes há apenas uma preposição, sem artigo.</p>
+        <p><strong>Palavras masculinas:</strong> Nunca ocorre crase.</p>
+        <p><strong>Substituição por palavra masculina:</strong> Teste usado para verificar crase.</p>
+
+        <h2>6️⃣ Como a banca constrói itens ERRADOS</h2>
+        <ul>
+            <li>❌ afirmam crase antes de verbo</li>
+            <li>❌ colocam crase antes de palavra masculina</li>
+            <li>❌ ignoram a ausência de artigo</li>
+            <li>❌ confundem locução feminina</li>
+        </ul>
+
+        <h2>7️⃣ Exemplos estilo CERTO ou ERRADO</h2>
+        <div class="item-exemplo">
+            <strong>Frase:</strong> Vou à escola.<br>
+            <strong>Item:</strong> O uso do acento indicativo de crase está correto. <span class="certo">✔ CERTO.</span>
+        </div>
+        <div class="item-exemplo">
+            <strong>Frase:</strong> Ele começou à estudar.<br>
+            <strong>Item:</strong> O uso da crase está correto. <span class="errado">❌ ERRADO.</span>
+        </div>
+        <div class="item-exemplo">
+            <strong>Frase:</strong> Cheguei àquela cidade.<br>
+            <strong>Item:</strong> O acento ocorre pela fusão da preposição com pronome demonstrativo. <span class="certo">✔ CERTO.</span>
+        </div>
+
+        <div class="footer-page">Página 2</div>
+    </div>
+
+    <div class="page">
+        <h2>8️⃣ Método rápido para resolver questões</h2>
+        <div class="metodo-box">
+            <p><strong>Use o método P.A.F</strong></p>
+            <ul>
+                <li><strong>P — Preposição:</strong> o termo anterior exige “a”?</li>
+                <li><strong>A — Artigo:</strong> a palavra aceita artigo feminino?</li>
+                <li><strong>F — Fusão:</strong> se houver ambos → ocorre crase.</li>
+            </ul>
+        </div>
+
+        <h2>9️⃣ Checklist mental para a questão</h2>
+        <ul>
+            <li>✔ o verbo exige preposição “a”?</li>
+            <li>✔ a palavra seguinte aceita artigo feminino?</li>
+            <li>✔ é locução feminina?</li>
+            <li>✔ a palavra é masculina ou verbo?</li>
+        </ul>
+
+        <h2>🔟 Erros mais comuns dos candidatos</h2>
+        <ul>
+            <li>❌ usar crase antes de verbo</li>
+            <li>❌ usar crase antes de palavra masculina</li>
+            <li>❌ não verificar a preposição</li>
+            <li>❌ ignorar locuções femininas</li>
+        </ul>
+
+        <div class="metodo-box" style="margin-top: 20px; border-style: solid;">
+            <h2>🧠 RESUMO ESTRATÉGICO DE PROVA (1 folha A4 manuscrita)</h2>
+            <p><strong>Crase:</strong> fusão de a (preposição) + a/as (artigo). Estrutura: a + a = à | a + as = às.</p>
+            <p><strong>Quando ocorre:</strong> antes de palavras femininas, locuções femininas, antes de aquele(s), aquela(s), aquilo.</p>
+            <p><strong>Exemplos:</strong> vou à escola; cheguei àquela cidade; estudo à tarde.</p>
+            <p><strong>Quando NÃO ocorre:</strong> antes de palavra masculina, antes de verbo, antes de pronome pessoal.</p>
+            <p><strong>Exemplos:</strong> vou a pé; começou a estudar; entreguei a ela.</p>
+            <p><strong>Teste prático:</strong> troque por palavra masculina. Se aparecer "ao" → ocorre crase.</p>
+            <p><strong>Pegadinhas da banca:</strong> verbo depois da crase, palavra masculina, ausência de artigo.</p>
+            <p><strong>Regra de prova:</strong> 👉 crase = preposição + artigo feminino.</p>
+        </div>
+        
+        <div class="footer-page">Página 3</div>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estudo Integral - Pontuação - UNEAL</title>
+    <style>
+        /* Configurações Visuais do Navegador */
+        body {
+            background-color: #525659;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-family: "Times New Roman", Times, serif;
+        }
+
+        .page {
+            background: white;
+            width: 210mm;
+            min-height: 297mm;
+            padding: 25mm;
+            margin-bottom: 20px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.5);
+            box-sizing: border-box;
+            position: relative;
+            color: #000;
+            line-height: 1.5;
+        }
+
+        /* Configurações de Impressão */
+        @media print {
+            body { background: none; padding: 0; }
+            .page { 
+                margin: 0; 
+                box-shadow: none; 
+                page-break-after: always; 
+            }
+        }
+
+        /* Estilização do Conteúdo Fiel */
+        header {
+            text-align: center;
+            border-bottom: 3px solid #000;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+        }
+
+        h1 { font-size: 16pt; margin: 5px 0; text-transform: uppercase; }
+        h2 { font-size: 14pt; border-bottom: 1px solid #000; margin-top: 25px; padding-bottom: 5px; }
+        h3 { font-size: 12pt; margin-top: 15px; margin-bottom: 5px; text-decoration: underline; }
+        
+        p, li { font-size: 11pt; margin: 8px 0; text-align: justify; }
+        ul { padding-left: 20px; }
+
+        .item-exemplo {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin: 10px 0;
+            background-color: #f9f9f9;
+        }
+
+        .certo { font-weight: bold; color: #28a745; }
+        .errado { font-weight: bold; color: #dc3545; }
+
+        .metodo-box {
+            border: 2px dashed #000;
+            padding: 15px;
+            margin: 15px 0;
+            background-color: #fcfcfc;
+        }
+
+        .footer-page {
+            position: absolute;
+            bottom: 15mm;
+            right: 25mm;
+            font-size: 9pt;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="page">
+        <header>
+            <h1>📚 Estudo Estratégico – Pontuação</h1>
+            <p><strong>Disciplina:</strong> Língua Portuguesa | <strong>Concurso:</strong> UNEAL | <strong>Banca:</strong> CEBRASPE</p>
+            <p><strong>Cargo:</strong> Técnico em Assuntos Educacionais</p>
+        </header>
+
+        <h2>1️⃣ Conceito essencial (o que é)</h2>
+        <p>Pontuação é o uso de sinais gráficos na escrita para organizar o texto, indicar pausas, separar elementos e esclarecer relações sintáticas entre termos da frase.</p>
+        <p>A pontuação está diretamente ligada à estrutura sintática da oração, não apenas à pausa na leitura.</p>
+
+        <h2>2️⃣ Estrutura e regras fundamentais cobrados em prova</h2>
+        <h3>Vírgula</h3>
+        <p>Usada para separar termos ou orações em determinadas estruturas. Principais usos cobrados:</p>
+        <ul>
+            <li>✔ separar elementos de uma enumeração</li>
+            <li>✔ separar vocativo</li>
+            <li>✔ separar aposto explicativo</li>
+            <li>✔ separar adjunto adverbial deslocado</li>
+            <li>✔ separar orações coordenadas</li>
+        </ul>
+
+        <h3>Casos em que NÃO se usa vírgula</h3>
+        <p>Não separar:</p>
+        <ul>
+            <li>sujeito e verbo</li>
+            <li>verbo e complemento</li>
+            <li>nome e complemento nominal</li>
+        </ul>
+        <div class="item-exemplo">
+            <strong>Exemplo errado:</strong> Os alunos, estudaram muito.
+        </div>
+
+        <h3>Aposto</h3>
+        <p>Elemento explicativo separado por vírgulas.</p>
+        <div class="item-exemplo">
+            <strong>Exemplo:</strong> João, diretor da escola, participou da reunião.
+        </div>
+
+        <h3>Vocativo</h3>
+        <p>Termo de chamamento.</p>
+        <div class="item-exemplo">
+            <strong>Exemplo:</strong> Professor, explique novamente.
+        </div>
+
+        <h3>Orações explicativas</h3>
+        <p>Devem ser separadas por vírgulas.</p>
+        <div class="item-exemplo">
+            <strong>Exemplo:</strong> Os alunos, que estudaram, passaram.
+        </div>
+
+        <div class="footer-page">Página 1</div>
+    </div>
+
+    <div class="page">
+        <h2>3️⃣ O que mais cai na CEBRASPE</h2>
+        <ul>
+            <li>✔ uso da vírgula em adjunto adverbial deslocado</li>
+            <li>✔ vírgula em aposto e vocativo</li>
+            <li>✔ vírgula em oração explicativa</li>
+            <li>✔ proibição de vírgula entre sujeito e verbo</li>
+            <li>✔ análise de alteração de sentido</li>
+        </ul>
+
+        <h2>4️⃣ Como a CEBRASPE formula as questões</h2>
+        <p>Modelo comum: frase + análise do uso da vírgula.</p>
+        <div class="item-exemplo">
+            <strong>Exemplo:</strong> João, diretor da escola, participou da reunião.<br>
+            <strong>Item:</strong> As vírgulas isolam um aposto explicativo.<br>
+            <span class="certo">✔ CERTO.</span>
+        </div>
+
+        <h2>5️⃣ Pegadinhas mais comuns da banca</h2>
+        <p><strong>Separação entre sujeito e verbo:</strong> Erro clássico cobrado.</p>
+        <p><strong>Vírgula em adjunto adverbial:</strong> Dependendo da posição, pode ser opcional.</p>
+        <p><strong>Mudança de sentido:</strong> Inserção ou retirada da vírgula pode alterar o significado.</p>
+
+        <h2>6️⃣ Como a banca constrói itens ERRADOS</h2>
+        <ul>
+            <li>❌ colocam vírgula entre sujeito e verbo</li>
+            <li>❌ interpretam errado aposto ou vocativo</li>
+            <li>❌ ignoram estrutura sintática da frase</li>
+            <li>❌ afirmam que vírgula altera sentido quando não altera</li>
+        </ul>
+
+        <h2>7️⃣ Exemplos estilo CERTO ou ERRADO</h2>
+        <div class="item-exemplo">
+            <strong>Frase:</strong> João, diretor da escola, participou da reunião.<br>
+            <strong>Item:</strong> As vírgulas isolam um aposto explicativo. <span class="certo">✔ CERTO.</span>
+        </div>
+        <div class="item-exemplo">
+            <strong>Frase:</strong> Ontem, os alunos realizaram a prova.<br>
+            <strong>Item:</strong> A vírgula separa adjunto adverbial deslocado. <span class="certo">✔ CERTO.</span>
+        </div>
+        <div class="item-exemplo">
+            <strong>Frase:</strong> Os alunos, realizaram a prova.<br>
+            <strong>Item:</strong> O uso da vírgula está correto. <span class="errado">❌ ERRADO.</span>
+        </div>
+
+        <div class="footer-page">Página 2</div>
+    </div>
+
+    <div class="page">
+        <h2>8️⃣ Método rápido para resolver questões</h2>
+        <div class="metodo-box">
+            <p><strong>Use o método S.E.V</strong></p>
+            <ul>
+                <li><strong>S — Sujeito:</strong> há separação entre sujeito e verbo?</li>
+                <li><strong>E — Elemento explicativo:</strong> há aposto ou oração explicativa?</li>
+                <li><strong>V — Vocativo:</strong> existe termo de chamamento?</li>
+            </ul>
+        </div>
+
+        <h2>9️⃣ Checklist mental para a questão</h2>
+        <ul>
+            <li>✔ há separação indevida entre sujeito e verbo?</li>
+            <li>✔ a vírgula isola aposto ou vocativo?</li>
+            <li>✔ existe adjunto adverbial deslocado?</li>
+            <li>✔ houve alteração de sentido?</li>
+        </ul>
+
+        <h2>🔟 Erros mais comuns dos candidatos</h2>
+        <ul>
+            <li>❌ colocar vírgula entre sujeito e verbo</li>
+            <li>❌ confundir aposto com adjunto adverbial</li>
+            <li>❌ não reconhecer vocativo</li>
+            <li>❌ ignorar relação sintática da frase</li>
+        </ul>
+
+        <div class="metodo-box" style="margin-top: 20px; border-style: solid;">
+            <h2>🧠 RESUMO ESTRATÉGICO DE PROVA (1 folha A4 manuscrita)</h2>
+            <p><strong>Pontuação:</strong> organiza o texto e indica relações sintáticas.</p>
+            <p><strong>Vírgula – principais usos:</strong> enumeração, vocativo, aposto explicativo, adjunto adverbial deslocado, orações explicativas.</p>
+            <p><strong>Vocativo:</strong> termo de chamamento (Ex: Professor, explique).</p>
+            <p><strong>Aposto:</strong> explica o termo anterior (Ex: João, diretor da escola, participou).</p>
+            <p><strong>Adjunto adverbial deslocado:</strong> (Ex: Ontem, os alunos estudaram).</p>
+            <p><strong>Regra importante:</strong> ❌ NÃO separar sujeito e verbo, verbo e complemento.</p>
+            <p><strong>Pegadinhas:</strong> vírgula entre sujeito e verbo, confusão entre aposto e vocativo, análise de alteração de sentido.</p>
+            <p><strong>Regra de prova:</strong> Verifique a estrutura sintática da frase. Se a vírgula separar elementos obrigatórios → item errado.</p>
+        </div>
+        
+        <div class="footer-page">Página 3</div>
+    </div>
+
+</body>
+</html>

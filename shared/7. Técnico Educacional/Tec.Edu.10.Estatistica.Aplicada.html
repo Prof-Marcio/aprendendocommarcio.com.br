@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estudo Estratégico - Estatística Aplicada - UNEAL</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        body {
+            background-color: #525659;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-family: "Times New Roman", Times, serif;
+        }
+
+        .page {
+            background: white;
+            width: 210mm;
+            min-height: 297mm;
+            padding: 25mm;
+            margin-bottom: 20px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.5);
+            box-sizing: border-box;
+            position: relative;
+            color: #000;
+            line-height: 1.5;
+        }
+
+        @media print {
+            body { background: none; padding: 0; }
+            .page { margin: 0; box-shadow: none; page-break-after: always; }
+        }
+
+        header {
+            text-align: center;
+            border-bottom: 3px solid #000;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+        }
+
+        h1 { font-size: 16pt; margin: 5px 0; text-transform: uppercase; }
+        h2 { font-size: 14pt; border-bottom: 1px solid #000; margin-top: 25px; padding-bottom: 5px; }
+        h3 { font-size: 12pt; margin-top: 15px; margin-bottom: 5px; text-decoration: underline; }
+        
+        p, li { font-size: 11pt; margin: 8px 0; text-align: justify; }
+        ul { padding-left: 20px; }
+
+        .item-exemplo {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin: 10px 0;
+            background-color: #f9f9f9;
+        }
+
+        .certo { font-weight: bold; color: #28a745; }
+        .errado { font-weight: bold; color: #dc3545; }
+
+        .metodo-box {
+            border: 2px dashed #000;
+            padding: 15px;
+            margin: 15px 0;
+            background-color: #fcfcfc;
+        }
+
+        .formula-box {
+            text-align: center;
+            padding: 10px;
+            background: #eee;
+            margin: 10px 0;
+            font-size: 1.2em;
+        }
+
+        .footer-page {
+            position: absolute;
+            bottom: 15mm;
+            right: 25mm;
+            font-size: 9pt;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="page">
+        <header>
+            <h1>📚 Estudo Estratégico – Estatística Aplicada</h1>
+            <p><strong>Disciplina:</strong> Técnico Educacional | <strong>Concurso:</strong> UNEAL | <strong>Banca:</strong> CEBRASPE</p>
+            <p><strong>Cargo:</strong> Técnico em Assuntos Educacionais</p>
+        </header>
+
+        <h2>1️⃣ Conceito essencial (o que é)</h2>
+        <p>Estatística aplicada é o conjunto de métodos utilizados para coletar, organizar, analisar e interpretar dados, permitindo compreender informações e apoiar a tomada de decisões.</p>
+        <p>Na área educacional, a estatística é utilizada para analisar desempenho escolar, indicadores educacionais e resultados de avaliações (como o IDEB ou ENADE).</p>
+
+        <h2>2️⃣ Estrutura e elementos fundamentais</h2>
+        <p>A estatística básica envolve três etapas principais:</p>
+        <ul>
+            <li><strong>Coleta de dados:</strong> Obtida por pesquisas, questionários ou registros institucionais.</li>
+            <li><strong>Organização:</strong> Apresentação em tabelas, gráficos ou distribuições de frequência.</li>
+            <li><strong>Análise:</strong> Uso de medidas estatísticas para interpretar os resultados.</li>
+        </ul>
+
+        <h3>Medidas estatísticas mais cobradas</h3>
+        <p><strong>Média (Média Aritmética):</strong> Valor obtido pela soma dos dados dividida pela quantidade de observações.</p>
+        <div class="formula-box">
+            $$\bar{x} = \frac{\sum_{i=1}^{n} x_i}{n}$$
+        </div>
+        
+        <p><strong>Mediana:</strong> É o valor central de um conjunto de dados <strong>ordenados</strong> (em rol). Se o número de elementos for par, é a média dos dois centrais.</p>
+        
+        <p><strong>Moda:</strong> É o valor que aparece com maior frequência no conjunto de dados.</p>
+
+        <h2>3️⃣ O que mais cai na CEBRASPE</h2>
+        <ul>
+            <li>✔ Diferença conceitual entre média, mediana e moda.</li>
+            <li>✔ Interpretação de tabelas e leitura de diferentes tipos de gráficos.</li>
+            <li>✔ Conceitos de <strong>População</strong> (universo total) e <strong>Amostra</strong> (parte do universo).</li>
+            <li>✔ Análise de dados estatísticos em contextos educacionais.</li>
+        </ul>
+
+        <div class="footer-page">Página 1</div>
+    </div>
+
+    <div class="page">
+        <h2>4️⃣ Como a CEBRASPE formula as questões</h2>
+        <p>Modelo comum: afirmações para julgamento ou interpretação de gráficos.</p>
+        <div class="item-exemplo">
+            <strong>Exemplo:</strong> A mediana corresponde ao valor central de um conjunto de dados ordenados.<br>
+            <span class="certo">✔ CERTO.</span>
+        </div>
+
+        <h2>5️⃣ Pegadinhas mais comuns da banca</h2>
+        <ul>
+            <li><strong>Média vs Mediana:</strong> A banca troca as definições. Lembre-se: Média = cálculo; Mediana = posição.</li>
+            <li><strong>Moda vs Mediana:</strong> Trocar frequência por valor central.</li>
+            <li><strong>Dados não ordenados:</strong> Fornecer uma lista bagunçada e pedir a mediana. O candidato esquece de colocar em ordem crescente (ROL) e erra.</li>
+            <li><strong>Leitura de Eixos:</strong> Induzir erro na leitura de escalas de gráficos de barras ou setores.</li>
+        </ul>
+
+        <h2>6️⃣ Como a banca constrói itens ERRADOS</h2>
+        <ul>
+            <li>❌ trocam conceitos de média, mediana e moda.</li>
+            <li>❌ interpretam incorretamente dados visuais (gráficos).</li>
+            <li>❌ confundem população com amostra.</li>
+            <li>❌ apresentam cálculos de média propositalmente errados.</li>
+        </ul>
+
+        <h2>7️⃣ Exemplos estilo CERTO ou ERRADO</h2>
+        <div class="item-exemplo">
+            <strong>Item 1:</strong> A média aritmética é obtida pela soma dos valores dividida pela quantidade de dados. <span class="certo">✔ CERTO.</span>
+        </div>
+        <div class="item-exemplo">
+            <strong>Item 2:</strong> A mediana corresponde ao valor mais frequente em um conjunto de dados. <span class="errado">❌ ERRADO.</span> (Isso é a Moda)
+        </div>
+        <div class="item-exemplo">
+            <strong>Item 3:</strong> A moda corresponde ao valor que aparece com maior frequência. <span class="certo">✔ CERTO.</span>
+        </div>
+
+        <div class="footer-page">Página 2</div>
+    </div>
+
+    <div class="page">
+        <h2>8️⃣ Método rápido: M.M.M.</h2>
+        <div class="metodo-box">
+            <ul>
+                <li><strong>M — Média:</strong> some tudo e divida pelo total de itens.</li>
+                <li><strong>M — Mediana:</strong> coloque em ordem e pegue o do meio.</li>
+                <li><strong>M — Moda:</strong> veja qual se repete mais.</li>
+            </ul>
+        </div>
+
+        <h2>9️⃣ Checklist mental para a questão</h2>
+        <ul>
+            <li>✔ O item pede cálculo ou conceito?</li>
+            <li>✔ Para mediana, eu já organizei os dados em ordem crescente?</li>
+            <li>✔ A interpretação do gráfico condiz com os eixos X e Y?</li>
+            <li>✔ O valor médio está coerente com os dados apresentados?</li>
+        </ul>
+
+        <div class="metodo-box" style="margin-top: 20px; border-style: solid;">
+            <h2>🧠 RESUMO ESTRATÉGICO DE PROVA</h2>
+            <p><strong>Estatística:</strong> Coleta, organização e análise de dados.</p>
+            <p><strong>População:</strong> Todos. | <strong>Amostra:</strong> Parte representativa.</p>
+            <p><strong>Medidas de Tendência Central:</strong></p>
+            <ul>
+                <li><strong>Média:</strong> Cálculo aritmético (soma/n).</li>
+                <li><strong>Mediana:</strong> Valor do meio (exige <strong>ORDEM</strong>).</li>
+                <li><strong>Moda:</strong> Mais frequente (pode não existir ou ter mais de uma).</li>
+            </ul>
+            <p><strong>Dica de Prova:</strong> Mediana separa o conjunto em duas partes iguais (50% acima, 50% abaixo).</p>
+            <p><strong>Regra:</strong> Média (Cálculo) | Mediana (Posição) | Moda (Frequência).</p>
+        </div>
+        
+        <div class="footer-page">Página 3</div>
+    </div>
+
+</body>
+</html>

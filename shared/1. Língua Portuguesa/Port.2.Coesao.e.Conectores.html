@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estudo Integral - Coesão e Conectores - UNEAL</title>
+    <style>
+        /* Configurações Visuais do Navegador */
+        body {
+            background-color: #525659;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-family: "Times New Roman", Times, serif;
+        }
+
+        .page {
+            background: white;
+            width: 210mm;
+            min-height: 297mm;
+            padding: 25mm;
+            margin-bottom: 20px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.5);
+            box-sizing: border-box;
+            position: relative;
+            color: #000;
+            line-height: 1.5;
+        }
+
+        /* Configurações de Impressão */
+        @media print {
+            body { background: none; padding: 0; }
+            .page { 
+                margin: 0; 
+                box-shadow: none; 
+                page-break-after: always; 
+            }
+        }
+
+        /* Estilização do Conteúdo Fiel */
+        header {
+            text-align: center;
+            border-bottom: 3px solid #000;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+        }
+
+        h1 { font-size: 16pt; margin: 5px 0; text-transform: uppercase; }
+        h2 { font-size: 14pt; border-bottom: 1px solid #000; margin-top: 25px; padding-bottom: 5px; }
+        h3 { font-size: 12pt; margin-top: 15px; margin-bottom: 5px; text-decoration: underline; }
+        
+        p, li { font-size: 11pt; margin: 8px 0; text-align: justify; }
+        ul { padding-left: 20px; }
+
+        .item-exemplo {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin: 10px 0;
+            background-color: #f9f9f9;
+        }
+
+        .certo { font-weight: bold; color: #28a745; }
+        .errado { font-weight: bold; color: #dc3545; }
+
+        .metodo-box {
+            border: 2px dashed #000;
+            padding: 15px;
+            margin: 15px 0;
+            background-color: #fcfcfc;
+        }
+
+        .footer-page {
+            position: absolute;
+            bottom: 15mm;
+            right: 25mm;
+            font-size: 9pt;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="page">
+        <header>
+            <h1>📚 Estudo Estratégico – Coesão e Conectores</h1>
+            <p><strong>Disciplina:</strong> Língua Portuguesa | <strong>Concurso:</strong> UNEAL | <strong>Banca:</strong> CEBRASPE</p>
+            <p><strong>Cargo:</strong> Técnico em Assuntos Educacionais</p>
+        </header>
+
+        <h2>1️⃣ Conceito essencial (o que é)</h2>
+        <p>Coesão textual é o conjunto de mecanismos linguísticos que ligam palavras, frases e parágrafos, garantindo a continuidade e a organização do texto.</p>
+        <p>Os principais instrumentos de coesão são os conectores, que estabelecem relações lógicas entre as ideias. Essas relações ajudam o leitor a entender como uma informação se conecta com a outra.</p>
+
+        <h2>2️⃣ Estrutura e elementos fundamentais cobrados em prova</h2>
+        <h3>Tipos de coesão</h3>
+        <p><strong>Coesão referencial:</strong> Ocorre quando um termo retoma ou substitui outro.</p>
+        <div class="item-exemplo">
+            Exemplo: João estudou muito. <strong>Ele</strong> passou no concurso. (“Ele” retoma “João”).
+        </div>
+        
+        <p><strong>Coesão sequencial:</strong> Relaciona ideias por meio de conectores ou conjunções.</p>
+        <div class="item-exemplo">
+            Exemplo: Estudou muito, <strong>portanto</strong> passou.
+        </div>
+
+        <h3>Conectores (relações lógicas)</h3>
+        <p>Principais relações cobradas:</p>
+        <ul>
+            <li><strong>Adição:</strong> e, também, além disso</li>
+            <li><strong>Causa:</strong> porque, pois, já que</li>
+            <li><strong>Consequência:</strong> portanto, assim, logo</li>
+            <li><strong>Oposição:</strong> mas, porém, entretanto</li>
+            <li><strong>Conclusão:</strong> portanto, logo, assim</li>
+            <li><strong>Explicação:</strong> porque, pois</li>
+        </ul>
+
+        <h2>3️⃣ O que mais cai na CEBRASPE</h2>
+        <ul>
+            <li>✔ identificação da relação lógica entre ideias</li>
+            <li>✔ substituição de conectores sem alterar o sentido</li>
+            <li>✔ interpretação da função do conector no texto</li>
+            <li>✔ análise de coesão entre frases ou parágrafos</li>
+            <li>✔ verificação de manutenção do sentido textual</li>
+        </ul>
+
+        <div class="footer-page">Página 1</div>
+    </div>
+
+    <div class="page">
+        <h2>4️⃣ Como a CEBRASPE formula as questões</h2>
+        <p>Modelo comum: Texto + afirmação sobre o conector.</p>
+        <div class="item-exemplo">
+            <strong>Exemplo:</strong> Estudou bastante, portanto conseguiu aprovação.<br>
+            <strong>Item:</strong> O termo “portanto” expressa ideia de conclusão.<br>
+            <span class="certo">✔ CERTO.</span>
+        </div>
+
+        <h2>5️⃣ Pegadinhas mais comuns da banca</h2>
+        <p><strong>Troca de conectores:</strong> Substituir conectores que mudam a relação lógica. Exemplo: portanto (conclusão) → porém (posição).</p>
+        
+        <p><strong>Conectores com mais de uma função:</strong> Exemplo: <strong>pois</strong> (pode indicar causa, explicação ou conclusão).</p>
+        
+        <p><strong>Substituição aparentemente equivalente:</strong> nem sempre dois conectores mantêm o mesmo sentido.</p>
+
+        <h2>6️⃣ Como a banca constrói itens ERRADOS</h2>
+        <ul>
+            <li>❌ atribuem relação lógica incorreta ao conector</li>
+            <li>❌ substituem conectores alterando o sentido</li>
+            <li>❌ interpretam equivocadamente a função da conjunção</li>
+            <li>❌ ignoram o contexto do período</li>
+        </ul>
+
+        <h2>7️⃣ Exemplos estilo CERTO ou ERRADO</h2>
+        <div class="item-exemplo">
+            <strong>Frase:</strong> Ele estudou muito, portanto conseguiu aprovação.<br>
+            <strong>Item:</strong> O conector “portanto” expressa ideia de conclusão. <span class="certo">✔ CERTO.</span>
+        </div>
+        <div class="item-exemplo">
+            <strong>Frase:</strong> Ele estudou muito, mas não passou.<br>
+            <strong>Item:</strong> O termo “mas” indica relação de causa. <span class="errado">❌ ERRADO (indica oposição).</span>
+        </div>
+        <div class="item-exemplo">
+            <strong>Frase:</strong> Estava cansado, porém continuou estudando.<br>
+            <strong>Item:</strong> O termo “porém” expressa oposição. <span class="certo">✔ CERTO.</span>
+        </div>
+
+        <div class="footer-page">Página 2</div>
+    </div>
+
+    <div class="page">
+        <h2>8️⃣ Método rápido para resolver questões</h2>
+        <div class="metodo-box">
+            <p><strong>Use o método R.C.S</strong></p>
+            <ul>
+                <li><strong>R — Relação:</strong> Qual relação lógica o conector expressa?</li>
+                <li><strong>C — Contexto:</strong> A relação faz sentido no contexto?</li>
+                <li><strong>S — Substituição:</strong> Se trocar o conector, o sentido muda?</li>
+            </ul>
+            <p>Se mudar → item errado.</p>
+        </div>
+
+        <h2>9️⃣ Checklist mental para a questão</h2>
+        <ul>
+            <li>✔ qual relação lógica aparece?</li>
+            <li>✔ o conector mantém o sentido do texto?</li>
+            <li>✔ a substituição altera a ideia?</li>
+            <li>✔ o conector foi interpretado corretamente?</li>
+        </ul>
+
+        <h2>🔟 Erros mais comuns dos candidatos</h2>
+        <ul>
+            <li>❌ confundir oposição com conclusão</li>
+            <li>❌ ignorar o contexto da frase</li>
+            <li>❌ não perceber mudança de sentido na substituição</li>
+            <li>❌ memorizar conectores sem entender a relação lógica</li>
+        </ul>
+
+        <div class="metodo-box" style="margin-top: 20px; border-style: solid;">
+            <h2>🧠 RESUMO ESTRATÉGICO DE PROVA (1 folha A4 manuscrita)</h2>
+            <p><strong>Coesão textual:</strong> ligação entre partes do texto.</p>
+            <p><strong>Tipos:</strong> Referencial (retoma termos) e Sequencial (liga ideias por conectores).</p>
+            <p><strong>Relações lógicas:</strong> Adição (e, além disso), Causa (porque, pois), Consequência (portanto, assim), Oposição (mas, porém, entretanto), Conclusão (logo, portanto), Explicação (porque, pois).</p>
+            <p><strong>O que a banca cobra:</strong> relação lógica, função do conector, substituição sem mudar sentido.</p>
+            <p><strong>Pegadinhas:</strong> troca de conectores, funções múltiplas do “pois”, mudança de sentido na substituição.</p>
+            <p><strong>Item CERTO:</strong> relação lógica correta, conector interpretado corretamente, substituição mantém sentido.</p>
+            <p><strong>Item ERRADO:</strong> relação lógica incorreta, troca altera sentido, função do conector mal interpretada.</p>
+            <p><strong>Regra de prova (CEBRASPE):</strong> identifique a relação lógica entre as ideias. Se a relação estiver errada → item errado.</p>
+        </div>
+        
+        <div class="footer-page">Página 3</div>
+    </div>
+
+</body>
+</html>
