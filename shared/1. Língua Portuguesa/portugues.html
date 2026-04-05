@@ -2,122 +2,97 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <title>Port.(UNEAL)</title>
+    <title>Edital Verticalizado: Língua Portuguesa (UNEAL)</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { background-color: #f1f5f9; font-family: 'Segoe UI', sans-serif; }
+        body { background-color: #f1f5f9; font-family: 'Segoe UI', sans-serif; color: #1e293b; }
         @page { size: A4; margin: 0; }
         .lauda {
             background: white; width: 210mm; height: 297mm; padding: 1.2cm;
-            margin: 0 auto; display: flex; flex-direction: column;
-            border-top: 12px solid #1e3a8a; position: relative;
+            margin: 20px auto; display: flex; flex-direction: column;
+            border-top: 12px solid #2b4c99; position: relative;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
         }
-        h1 { color: #1e3a8a; font-size: 18pt; text-align: center; border-bottom: 2px solid #1e3a8a; padding-bottom: 8px; margin-bottom: 15px; text-transform: uppercase; }
-        .edital-table { width: 100%; border-collapse: collapse; margin-bottom: 15px; }
-        .edital-table th { background: #1e3a8a; color: white; padding: 8px; font-size: 9pt; border: 1px solid #1e3a8a; }
-        .edital-table td { border: 1px solid #e2e8f0; padding: 6px 8px; font-size: 8.2pt; vertical-align: middle; line-height: 1.2; text-align: left; }
+        h1 { color: #2b4c99; font-size: 18pt; text-align: center; border-bottom: 2px solid #2b4c99; padding-bottom: 8px; margin-bottom: 15px; text-transform: uppercase; }
         
-        /* Centralizar a coluna de status */
-        .td-status { text-align: center !important; }
+        .edital-table { width: 100%; border-collapse: collapse; margin-bottom: 15px; }
+        .edital-table th { background: #2b4c99; color: white; padding: 10px; font-size: 9pt; border: 1px solid #2b4c99; text-transform: uppercase; }
+        .edital-table td { border: 1px solid #e2e8f0; padding: 8px; font-size: 8.5pt; vertical-align: middle; line-height: 1.3; }
+        
+        .col-num { width: 60px; text-align: center; font-weight: bold; color: #2b4c99; }
+        .col-pri { width: 100px; text-align: center; font-weight: bold; }
+        .col-status { width: 60px; text-align: center; }
 
-        /* Estilização dos Links */
-        .edital-table td a {
-            color: #1e3a8a;
-            text-decoration: none;
-            font-weight: 500;
+        .pri-critica { color: #dc2626; }
+        .pri-maxima { color: #991b1b; }
+        .pri-alta { color: #2563eb; }
+
+        .cb { width: 18px; height: 18px; border: 2px solid #cbd5e1; border-radius: 4px; display: inline-block; cursor: pointer; position: relative; }
+        .cb.checked { background: #10b981; border-color: #10b981; }
+        .cb.checked::after { content: '✓'; color: white; position: absolute; left: 3px; top: -3px; font-weight: bold; font-size: 14px; }
+
+        .box-estrategia { background: #eff6ff; border: 1px solid #dbeaffe6; padding: 15px; border-radius: 6px; margin-top: auto; border-left: 6px solid #2563eb; }
+        .box-estrategia h3 { color: #1e3a8a; font-size: 10pt; text-transform: uppercase; margin-bottom: 8px; }
+        .box-estrategia p { font-size: 8.5pt; color: #1e40af; line-height: 1.5; margin-bottom: 8px; }
+        
+        .footer { text-align: center; font-size: 8pt; color: #94a3b8; border-top: 1px solid #e2e8f0; padding-top: 10px; margin-top: 15px; }
+        
+        .no-print { text-align: center; padding: 20px; }
+        .btn-print { padding: 12px 30px; cursor: pointer; background: #2b4c99; color: white; border: none; border-radius: 5px; font-weight: bold; text-transform: uppercase; }
+
+        @media print { 
+            .no-print { display: none; } 
+            .lauda { margin: 0; box-shadow: none; width: 210mm; height: 297mm; } 
+            body { background: white; }
         }
-        .edital-table td a:hover { text-decoration: underline; }
-
-        /* Estilização do Checkbox (Marcação) */
-        .input-status {
-            width: 18px;
-            height: 18px;
-            cursor: pointer;
-            accent-color: #1e3a8a; /* Define a cor do check quando marcado */
-        }
-
-        .pri-critica { color: #dc2626; font-weight: bold; }
-        .box-estrategia { background: #f0f4ff; border: 1px solid #c7d2fe; padding: 12px; border-radius: 6px; margin-top: auto; border-left: 6px solid #3f51b5; }
-        .box-estrategia h3 { color: #1e3a8a; font-size: 10pt; text-transform: uppercase; margin-bottom: 4px; }
-        .box-estrategia p { font-size: 8.5pt; color: #374151; line-height: 1.4; }
-        .footer { text-align: center; font-size: 8pt; color: #94a3b8; border-top: 1px solid #e2e8f0; padding-top: 8px; margin-top: 10px; }
-        .no-print { text-align: center; padding: 15px; }
-        button { padding: 10px 25px; cursor: pointer; background: #1e3a8a; color: white; border: none; border-radius: 5px; font-weight: bold; }
-        @media print { .no-print { display: none; } .lauda { margin: 0; box-shadow: none; width: 210mm; height: 297mm; } }
     </style>
 </head>
 <body>
+
     <div class="no-print">
-        <button onclick="window.print()">IMPRIMIR EDITAL VERTICALIZADO PORTUGUÊS</button>
+        <button class="btn-print" onclick="window.print()">🖨️ IMPRIMIR MÓDULO LÍNGUA PORTUGUESA</button>
     </div>
+
     <div class="lauda">
-        <h1>📑 Língua Portuguesa (UNEAL)</h1>
+        <h1>📚 Edital Verticalizado: Língua Portuguesa</h1>
+        
         <table class="edital-table">
             <thead>
                 <tr>
-                    <th style="width: 32%;">Tópico / Subtópico</th>
-                    <th style="width: 15%;">Prioridade</th>
-                    <th style="width: 43%;">Gatilhos CEBRASPE (O que focar)</th>
-                    <th style="width: 10%;">Status</th>
+                    <th class="col-num">Item</th>
+                    <th>Subtópico Atômico (Gramática → Estrutura → Sentido → Texto)</th>
+                    <th class="col-pri">Prioridade</th>
+                    <th class="col-status">Status</th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td><a href="Port.1.Intepretacao.Generos.html" target="_blank">1 e 2 Interpretação / Gêneros</a></td>
-                    <td class="pri-critica">MÁXIMA</td>
-                    <td>Diferença entre "Afirma" (Explícito) e "Depreende" (Lógico).</td>
-                    <td class="td-status"><input type="checkbox" class="input-status"></td>
-                </tr>
-                <tr>
-                    <td><a href="Port.2.Coesao.e.Conectores.html" target="_blank">4 Coesão e Conectores</a></td>
-                    <td class="pri-critica">CRÍTICA</td>
-                    <td>Troca de conjunções (Conquanto/Embora/Apesar de).</td>
-                    <td class="td-status"><input type="checkbox" class="input-status"></td>
-                </tr>
-                <tr>
-                    <td><a href="Port.3.Oracoes.Adjetivas.html" target="_blank">5.3 Orações Adjetivas</a></td>
-                    <td class="pri-critica">CRÍTICA</td>
-                    <td>Com vírgula (Explicativa) vs Sem vírgula (Restritiva).</td>
-                    <td class="td-status"><input type="checkbox" class="input-status"></td>
-                </tr>
-                <tr>
-                    <td><a href="Port.4.Pontuacao.html" target="_blank">5.4 Pontuação</a></td>
-                    <td class="pri-critica">MÁXIMA</td>
-                    <td>Vírgula em Adjuntos Adverbiais e deslocamentos.</td>
-                    <td class="td-status"><input type="checkbox" class="input-status"></td>
-                </tr>
-                <tr>
-                    <td><a href="Port.5.Concordancia.Particula.SE.html" target="_blank">5.5 Concordância (Partícula SE)</a></td>
-                    <td>ALTA</td>
-                    <td>Alugam-se casas (Voz Passiva) vs Precisa-se de (Índice).</td>
-                    <td class="td-status"><input type="checkbox" class="input-status"></td>
-                </tr>
-                <tr>
-                    <td><a href="Port.6.Crase.html" target="_blank">5.7 Crase</a></td>
-                    <td>ALTA</td>
-                    <td>Casos proibitivos (Verbos/Masculinos) e facultativos.</td>
-                    <td class="td-status"><input type="checkbox" class="input-status"></td>
-                </tr>
-                <tr>
-                    <td><a href="Port.7.Reescrita.de.Textos.html" target="_blank">6 Reescrita de Textos</a></td>
-                    <td class="pri-critica">CRÍTICA</td>
-                    <td>Manutenção da Correção Gramatical + Sentido Original.</td>
-                    <td class="td-status"><input type="checkbox" class="input-status"></td>
-                </tr>
-                <tr>
-                    <td><a href="Port.8.Significacao.Parafrase.html" target="_blank">6.1 Significação / Paráfrase</a></td>
-                    <td>ALTA</td>
-                    <td>Troca de palavras por sinônimos contextuais (ex: Óbice).</td>
-                    <td class="td-status"><input type="checkbox" class="input-status"></td>
-                </tr>
+                <tr><td class="col-num">1.1</td><td>Concordância Verbal: Sujeito e Verbo em Sintonia.</td><td class="col-pri pri-critica">CRÍTICA</td><td class="col-status"><div class="cb" onclick="this.classList.toggle('checked')"></div></td></tr>
+                <tr><td class="col-num">1.1</td><td>Concordância Nominal: Adjetivos, Pronomes e Substantivos.</td><td class="col-pri pri-alta">ALTA</td><td class="col-status"><div class="cb" onclick="this.classList.toggle('checked')"></div></td></tr>
+                <tr><td class="col-num">1.2</td><td>Regência Verbal e Nominal: Emprego de Preposições.</td><td class="col-pri pri-critica">CRÍTICA</td><td class="col-status"><div class="cb" onclick="this.classList.toggle('checked')"></div></td></tr>
+                <tr><td class="col-num">1.2</td><td>Crase: Regras Gerais e Casos Proibitivos.</td><td class="col-pri pri-maxima">MÁXIMA</td><td class="col-status"><div class="cb" onclick="this.classList.toggle('checked')"></div></td></tr>
+                <tr><td class="col-num">1.3</td><td>Pontuação: Emprego da Vírgula (Sintaxe da Oração).</td><td class="col-pri pri-maxima">MÁXIMA</td><td class="col-status"><div class="cb" onclick="this.classList.toggle('checked')"></div></td></tr>
+                <tr><td class="col-num">1.3</td><td>Pontuação: Dois-pontos, Ponto e Vírgula e Travessão.</td><td class="col-pri pri-alta">ALTA</td><td class="col-status"><div class="cb" onclick="this.classList.toggle('checked')"></div></td></tr>
+                <tr><td class="col-num">2.1</td><td>Orações Adjetivas (Restritivas e Explicativas).</td><td class="col-pri pri-alta">ALTA</td><td class="col-status"><div class="cb" onclick="this.classList.toggle('checked')"></div></td></tr>
+                <tr><td class="col-num">2.2</td><td>Conectores: Conjunções Coordenativas e Subordinativas.</td><td class="col-pri pri-critica">CRÍTICA</td><td class="col-status"><div class="cb" onclick="this.classList.toggle('checked')"></div></td></tr>
+                <tr><td class="col-num">2.3</td><td>Coesão Textual: Referenciação, Substituição e Conectivos.</td><td class="col-pri pri-maxima">MÁXIMA</td><td class="col-status"><div class="cb" onclick="this.classList.toggle('checked')"></div></td></tr>
+                <tr><td class="col-num">3.1</td><td>Significação das Palavras: Sinônimos, Antônimos e Homônimos.</td><td class="col-pri pri-alta">ALTA</td><td class="col-status"><div class="cb" onclick="this.classList.toggle('checked')"></div></td></tr>
+                <tr><td class="col-num">3.1</td><td>Sentido Denotativo (Literal) e Conotativo (Figurado).</td><td class="col-pri pri-alta">ALTA</td><td class="col-status"><div class="cb" onclick="this.classList.toggle('checked')"></div></td></tr>
+                <tr><td class="col-num">3.2</td><td>Reescrita de Frases: Mantendo a Correção e o Sentido.</td><td class="col-pri pri-critica">CRÍTICA</td><td class="col-status"><div class="cb" onclick="this.classList.toggle('checked')"></div></td></tr>
+                <tr><td class="col-num">3.3</td><td>Paráfrase: Tradução de Ideias com Novas Palavras.</td><td class="col-pri pri-alta">ALTA</td><td class="col-status"><div class="cb" onclick="this.classList.toggle('checked')"></div></td></tr>
+                <tr><td class="col-num">4.1</td><td>Gêneros Textuais: Características de Crônicas, Editais e Relatos.</td><td class="col-pri pri-alta">ALTA</td><td class="col-status"><div class="cb" onclick="this.classList.toggle('checked')"></div></td></tr>
+                <tr><td class="col-num">4.2</td><td>Interpretação: Compreensão de Textos e Intencionalidade.</td><td class="col-pri pri-maxima">MÁXIMA</td><td class="col-status"><div class="cb" onclick="this.classList.toggle('checked')"></div></td></tr>
+                <tr><td class="col-num">4.2</td><td>Análise de Inferências e Pressupostos Textuais.</td><td class="col-pri pri-maxima">MÁXIMA</td><td class="col-status"><div class="cb" onclick="this.classList.toggle('checked')"></div></td></tr>
             </tbody>
         </table>
+
         <div class="box-estrategia">
-            <h3>🛡️ Estratégia do Especialista (Português)</h3>
-            <p><strong>A Regra do "Mantém":</strong> O CEBRASPE ama perguntar se a substituição de X por Y mantém a correção E o sentido. Quase sempre a gramática está certa, mas o sentido mudou de "causa" para "concessão". Fique atento!</p>
-            <p style="margin-top:5px;"><strong>A Vírgula Semântica:</strong> Mudar a vírgula de lugar em orações adjetivas quase sempre <u>altera o sentido</u>, mas mantém a <u>correção gramatical</u>. A banca adora esse detalhe.</p>
+            <h3>💡 DICA DO COACH: O PODER DO SINAL</h3>
+            <p><b>Atenção à Vírgula:</b> A pontuação não serve para "respirar", mas para organizar a sintaxe. Lembre-se: <i>"Não queremos saber"</i> é negação total. <i>"Não, queremos saber"</i> é afirmação. Um sinal muda o destino da sua questão!</p>
+            <p><b>Conexão:</b> Dominar os <b>Conectores (2.2)</b> é o segredo para gabaritar <b>Reescrita (3.2)</b> e <b>Coesão (2.3)</b>. Se você sabe o valor semântico de uma conjunção, você entende a lógica de qualquer autor.</p>
         </div>
-        <div class="footer">Planejamento UNEAL 2026 - Língua Portuguesa - Técnico em Assuntos Educacionais</div>
+
+        <div class="footer">Organização Atômica UNEAL 2026 - Língua Portuguesa - Cargo 9</div>
     </div>
+
 </body>
 </html>

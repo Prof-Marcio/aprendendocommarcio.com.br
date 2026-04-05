@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estudo Estratégico – Tabelas-verdade (Conectivos Lógicos)</title>
+    <style>
+        body {
+            background-color: #525659;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-family: "Segoe UI", Roboto, Arial, sans-serif;
+        }
+
+        .page {
+            background: white;
+            width: 210mm;
+            min-height: 297mm;
+            padding: 20mm;
+            margin-bottom: 30px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.6);
+            box-sizing: border-box;
+            position: relative;
+            color: #1a1a1a;
+            line-height: 1.5;
+        }
+
+        @media print {
+            body { background: none; padding: 0; }
+            .page { margin: 0; box-shadow: none; page-break-after: always; }
+            .no-print { display: none; }
+        }
+
+        header {
+            text-align: center;
+            border-bottom: 4px solid #2E86C1;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+        }
+
+        .cargo-tag {
+            background-color: #2E86C1;
+            color: #fff;
+            padding: 6px 12px;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            font-size: 10pt;
+            border-radius: 4px;
+        }
+
+        h1 { font-size: 18pt; margin: 5px 0; color: #1b4f72; letter-spacing: -0.5px; }
+        h2 { font-size: 14pt; border-bottom: 2px solid #2E86C1; margin-top: 20px; padding-bottom: 5px; background-color: #ebf5fb; padding-left: 10px; color: #2E86C1; }
+        h3 { font-size: 11pt; margin-top: 15px; color: #1b4f72; border-left: 4px solid #2E86C1; padding-left: 8px; }
+        
+        p, li { font-size: 10.5pt; margin: 8px 0; text-align: justify; }
+        ul { padding-left: 25px; }
+        strong { color: #000; }
+
+        table { width: 100%; border-collapse: collapse; margin: 15px 0; font-size: 10pt; }
+        th, td { border: 1px solid #bdc3c7; padding: 8px; text-align: center; }
+        th { background-color: #ebf5fb; color: #1b4f72; }
+        .v-color { color: #219142; font-weight: bold; }
+        .f-color { color: #cb4335; font-weight: bold; }
+
+        .item-exemplo {
+            border-left: 5px solid #2E86C1;
+            padding: 12px;
+            margin: 15px 0;
+            background-color: #f4faff;
+            font-size: 10pt;
+            box-shadow: 2px 2px 5px rgba(0,0,0,0.05);
+        }
+
+        .certo { font-weight: bold; color: #219142; }
+        .errado { font-weight: bold; color: #cb4335; }
+
+        .metodo-box {
+            border: 2px dashed #2E86C1;
+            padding: 15px;
+            margin: 20px 0;
+            background-color: #ffffff;
+            border-radius: 8px;
+        }
+
+        .footer-page {
+            position: absolute;
+            bottom: 10mm;
+            right: 20mm;
+            font-size: 9pt;
+            color: #7f8c8d;
+            font-weight: bold;
+            border-top: 1px solid #bdc3c7;
+            padding-top: 5px;
+        }
+
+        .check-v { color: #2E86C1; font-weight: bold; }
+        .check-x { color: #cb4335; font-weight: bold; }
+
+        .no-print { margin-bottom: 20px; }
+        button { background: #2E86C1; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+    <div class="no-print">
+        <button onclick="window.print()">🖨️ IMPRIMIR MATERIAL COMPLETO</button>
+    </div>
+
+    <div class="page">
+        <header>
+            <div class="cargo-tag">Concurso: UNEAL – Técnico em Assuntos Educacionais</div>
+            <h1>📚 Estudo Estratégico – Tabelas-verdade e Conectivos</h1>
+            <p><strong>Banca:</strong> CEBRASPE | <strong>Disciplina:</strong> Raciocínio Lógico | <strong>Tema:</strong> Operadores Lógicos</p>
+        </header>
+
+        <h2>1️⃣ Conceito essencial (o que é)</h2>
+        <p>A <strong>Tabela-verdade</strong> é um instrumento lógico usado para determinar o valor de uma proposição composta a partir de todas as combinações possíveis de valores lógicos das proposições simples que a compõem. Ela serve para validar argumentos e identificar tautologias, contradições ou contingências.</p>
+
+        <h2>2️⃣ Estrutura e Regras Fundamentais</h2>
+        <h3>Número de Linhas da Tabela</h3>
+        <p>A quantidade de linhas segue a fórmula matemática exponencial 2<sup>n</sup>, onde <strong>n</strong> representa o número de proposições simples distintas.</p>
+        <ul>
+            <li><strong>2 proposições:</strong> 2<sup>2</sup> = 4 linhas.</li>
+            <li><strong>3 proposições:</strong> 2<sup>3</sup> = 8 linhas.</li>
+            <li><strong>4 proposições:</strong> 2<sup>4</sup> = 16 linhas.</li>
+        </ul>
+
+        <h3>Operadores Lógicos (Tabela de Referência)</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>P</th>
+                    <th>Q</th>
+                    <th>P ∧ Q (E)</th>
+                    <th>P ∨ Q (OU)</th>
+                    <th>P → Q (Se...então)</th>
+                    <th>P ↔ Q (Se e somente se)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>V</td><td>V</td><td class="v-color">V</td><td>V</td><td>V</td><td class="v-color">V</td></tr>
+                <tr><td>V</td><td>F</td><td class="f-color">F</td><td>V</td><td class="f-color">F</td><td class="f-color">F</td></tr>
+                <tr><td>F</td><td>V</td><td class="f-color">F</td><td>V</td><td>V</td><td class="f-color">F</td></tr>
+                <tr><td>F</td><td>F</td><td class="f-color">F</td><td class="f-color">F</td><td>V</td><td class="v-color">V</td></tr>
+            </tbody>
+        </table>
+
+        <h3>Regras Práticas de Memorização</h3>
+        <ul>
+            <li><strong>Conjunção (∧):</strong> Exigente. Só resulta em Verdade se <strong>ambas</strong> forem V.</li>
+            <li><strong>Disjunção (∨):</strong> Flexível. Só resulta em Falso se <strong>ambas</strong> forem F.</li>
+            <li><strong>Condicional (→):</strong> A "Vera Fischer". Só é Falsa se a 1ª for V e a 2ª for F.</li>
+            <li><strong>Bicondicional (↔):</strong> Simétrica. Só é Verdade se os valores forem <strong>iguais</strong>.</li>
+        </ul>
+
+        <div class="footer-page">RACIOCÍNIO LÓGICO - PÁGINA 1</div>
+    </div>
+
+    <div class="page">
+        <h2>3️⃣ O que realmente mais cai na CEBRASPE</h2>
+        <p>A banca CEBRASPE foca exaustivamente na <strong>Condicional (Se... então)</strong> e na contagem de linhas. Frequentemente cobram a percepção de que, se o antecedente (a primeira parte) for falso, a proposição condicional será obrigatoriamente verdadeira, independentemente da segunda parte.</p>
+
+        <h2>4️⃣ Como a banca formula as questões</h2>
+        <div class="item-exemplo">
+            <strong>Exemplo CEBRASPE:</strong><br>
+            "A tabela-verdade da proposição composta representada por (P ∧ Q) → (R ∨ S) possui 16 linhas."<br>
+            ➔ <span class="certo">✔ CERTO.</span> (Existem 4 proposições distintas: P, Q, R, S. Logo, 2<sup>4</sup> = 16).
+        </div>
+
+        <h2>5️⃣ Pegadinhas mais comuns da banca</h2>
+        <p><strong>Número de Linhas:</strong> A banca pode colocar proposições repetidas (ex: P ∧ Q → P) para induzir o candidato a contar 3 proposições, quando na verdade são apenas 2 (P e Q).</p>
+        <p><strong>Falso Antecedente:</strong> Afirmar que se P é falso, então P → Q é falso. Lembre-se: se começa com Falso, a condicional já é <strong>Verdadeira</strong>.</p>
+
+        <h2>6️⃣ Como a banca constrói itens ERRADOS</h2>
+        <ul>
+            <li><span class="check-x">❌</span> Afirmam que a disjunção inclusiva (OU) é falsa quando apenas uma proposição é verdadeira.</li>
+            <li><span class="check-x">❌</span> Sugerem que a bicondicional é verdadeira apenas quando ambas são verdadeiras (ignoram o caso F ↔ F).</li>
+            <li><span class="check-x">❌</span> Propõem fórmulas de linhas incorretas, como n<sup>2</sup> ou 2 x n.</li>
+        </ul>
+
+        <div class="footer-page">RACIOCÍNIO LÓGICO - PÁGINA 2</div>
+    </div>
+
+    <div class="page">
+        <h2>7️⃣ Exemplos estilo CERTO ou ERRADO</h2>
+        <div class="item-exemplo">
+            <strong>Item 1:</strong> A proposição "Se 2+2=5, então o céu é azul" possui valor lógico verdadeiro. <span class="certo">✔ CERTO.</span> (Antecedente Falso torna a condicional V).
+        </div>
+        <div class="item-exemplo">
+            <strong>Item 2:</strong> Uma proposição composta por 3 proposições simples conectadas pelo operador "e" terá 6 linhas em sua tabela-verdade. <span class="errado">❌ ERRADO.</span> (Serão 2<sup>3</sup> = 8 linhas).
+        </div>
+
+        <h2>8️⃣ Método rápido: Regra LCD</h2>
+        <div class="metodo-box">
+            <ul>
+                <li><strong>L — Linhas:</strong> Conte as letras <u>distintas</u>. Aplique 2<sup>n</sup>.</li>
+                <li><strong>C — Conectivo:</strong> Identifique o operador principal (o último a ser resolvido).</li>
+                <li><strong>D — Definição:</strong> Aplique a regra de "exceção" (ex: Vera Fischer na condicional).</li>
+            </ul>
+        </div>
+
+        <h2>9️⃣ Checklist mental de identificação</h2>
+        <ul>
+            <li><span class="check-v">✔</span> Identifiquei quantas proposições simples existem?</li>
+            <li><span class="check-v">✔</span> Verifiquei se há repetição de letras?</li>
+            <li><span class="check-v">✔</span> Localizei o conectivo principal da sentença?</li>
+        </ul>
+
+        <div class="metodo-box" style="background-color: #f4faff; border-style: solid;">
+            <h2 style="margin-top: 0; background: none; border: none; color: #1b4f72;">🧠 RESUMO ESTRATÉGICO</h2>
+            <p><strong>TABELA-VERDADE</strong></p>
+            <p><strong>Fórmula:</strong> Linhas = 2<sup>nº de proposições simples</sup>.</p>
+            <p><strong>Conjunção (E):</strong> Só V se <strong>V e V</strong>.</p>
+            <p><strong>Disjunção (OU):</strong> Só F se <strong>F e F</strong>.</p>
+            <p><strong>Condicional (→):</strong> Só F se <strong>V → F</strong> (Vera Fischer).</p>
+            <p><strong>Bicondicional (↔):</strong> Só V se <strong>Iguais</strong>.</p>
+            <p><strong>Disjunção Exclusiva (Ou...ou):</strong> Só V se <strong>Diferentes</strong>.</p>
+            <p style="text-align: center; font-weight: bold; color: #1b4f72; margin-top: 10px;">Regra rápida: Condicional com início Falso é sempre Verdade!</p>
+        </div>
+
+        <div class="footer-page">RACIOCÍNIO LÓGICO - PÁGINA 3</div>
+    </div>
+
+</body>
+</html>

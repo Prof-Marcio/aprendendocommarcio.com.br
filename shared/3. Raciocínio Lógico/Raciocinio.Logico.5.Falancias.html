@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estudo Estratégico – Falácias Lógicas</title>
+    <style>
+        body {
+            background-color: #525659;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-family: "Segoe UI", Roboto, Arial, sans-serif;
+        }
+
+        .page {
+            background: white;
+            width: 210mm;
+            min-height: 297mm;
+            padding: 20mm;
+            margin-bottom: 30px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.6);
+            box-sizing: border-box;
+            position: relative;
+            color: #1a1a1a;
+            line-height: 1.5;
+        }
+
+        @media print {
+            body { background: none; padding: 0; }
+            .page { margin: 0; box-shadow: none; page-break-after: always; }
+            .no-print { display: none; }
+        }
+
+        header {
+            text-align: center;
+            border-bottom: 4px solid #E67E22;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+        }
+
+        .cargo-tag {
+            background-color: #E67E22;
+            color: #fff;
+            padding: 6px 12px;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            font-size: 10pt;
+            border-radius: 4px;
+        }
+
+        h1 { font-size: 18pt; margin: 5px 0; color: #7e5109; letter-spacing: -0.5px; }
+        h2 { font-size: 14pt; border-bottom: 2px solid #E67E22; margin-top: 20px; padding-bottom: 5px; background-color: #fef5e7; padding-left: 10px; color: #E67E22; }
+        h3 { font-size: 11pt; margin-top: 15px; color: #7e5109; border-left: 4px solid #E67E22; padding-left: 8px; }
+        
+        p, li { font-size: 10.5pt; margin: 8px 0; text-align: justify; }
+        ul { padding-left: 25px; }
+        strong { color: #000; }
+
+        .item-exemplo {
+            border-left: 5px solid #E67E22;
+            padding: 12px;
+            margin: 15px 0;
+            background-color: #fffaf0;
+            font-size: 10pt;
+            box-shadow: 2px 2px 5px rgba(0,0,0,0.05);
+        }
+
+        .certo { font-weight: bold; color: #219142; }
+        .errado { font-weight: bold; color: #cb4335; }
+
+        .metodo-box {
+            border: 2px dashed #E67E22;
+            padding: 15px;
+            margin: 20px 0;
+            background-color: #ffffff;
+            border-radius: 8px;
+        }
+
+        .footer-page {
+            position: absolute;
+            bottom: 10mm;
+            right: 20mm;
+            font-size: 9pt;
+            color: #7f8c8d;
+            font-weight: bold;
+            border-top: 1px solid #bdc3c7;
+            padding-top: 5px;
+        }
+
+        .check-v { color: #E67E22; font-weight: bold; }
+        .check-x { color: #cb4335; font-weight: bold; }
+        
+        .no-print { margin-bottom: 20px; }
+        button { background: #E67E22; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+    <div class="no-print">
+        <button onclick="window.print()">🖨️ IMPRIMIR MATERIAL DE FALÁCIAS</button>
+    </div>
+
+    <div class="page">
+        <header>
+            <div class="cargo-tag">Concurso: UNEAL – Técnico em Assuntos Educacionais</div>
+            <h1>📚 Estudo Estratégico – Falácias Lógicas</h1>
+            <p><strong>Banca:</strong> CEBRASPE | <strong>Disciplina:</strong> Raciocínio Lógico | <strong>Tema:</strong> Falácias</p>
+        </header>
+
+        <h2>1️⃣ Conceito essencial (o que é)</h2>
+        <p><strong>Falácia</strong> é um erro de raciocínio ou argumento aparentemente válido que leva a uma conclusão incorreta. O argumento parece lógico, mas possui falha na estrutura ou na interpretação. Falácias são comuns em argumentação, textos, debates e interpretação lógica.</p>
+
+        <h2>2️⃣ Estrutura e Regras Fundamentais</h2>
+        <p>As falácias mais cobradas envolvem erros em inferências lógicas (estruturas de argumentos).</p>
+
+        <h3>Falácia da Afirmação do Consequente</h3>
+        <p><strong>Estrutura:</strong> Se P &rarr; Q; ocorre Q; logo, conclui-se P.</p>
+        <div class="item-exemplo">
+            <strong>Exemplo:</strong> "Se chove, a rua fica molhada. A rua está molhada. Logo, choveu."<br>
+            <span class="errado">❌ Inválido:</span> A rua pode estar molhada por outro motivo (lavagem, cano estourado).
+        </div>
+
+        <h3>Falácia da Negação do Antecedente</h3>
+        <p><strong>Estrutura:</strong> Se P &rarr; Q; ocorre &not;P (não P); logo, conclui-se &not;Q (não Q).</p>
+        <div class="item-exemplo">
+            <strong>Exemplo:</strong> "Se estudo, passo na prova. Não estudei. Logo, não passarei."<br>
+            <span class="errado">❌ Inválido:</span> O candidato pode passar por outros motivos (conhecimento prévio, sorte).
+        </div>
+
+        <h3>Generalização Precipitada</h3>
+        <p>Conclusão geral baseada em poucos exemplos ou amostra insuficiente.</p>
+        <div class="item-exemplo">
+            <strong>Exemplo:</strong> "Conheci dois alunos ruins. Logo, todos os alunos são ruins."
+        </div>
+
+        <h3>Argumento de Autoridade Inválido</h3>
+        <p>Conclusão baseada apenas na opinião de alguém considerado autoridade em uma área, sem apresentação de evidências lógicas ou fatos.</p>
+
+        <div class="footer-page">RACIOCÍNIO LÓGICO - PÁGINA 1</div>
+    </div>
+
+    <div class="page">
+        <h2>3️⃣ O que realmente mais cai na CEBRASPE</h2>
+        <ul>
+            <li><span class="check-v">✔</span> Identificação de erro lógico em argumentos textuais.</li>
+            <li><span class="check-v">✔</span> Falácia da afirmação do consequente (Inversão da condicional).</li>
+            <li><span class="check-v">✔</span> Falácia da negação do antecedente.</li>
+            <li><span class="check-v">✔</span> Análise de validade de argumentos complexos em textos de prova.</li>
+        </ul>
+
+        <h2>4️⃣ Como a banca CEBRASPE formula as questões</h2>
+        <p>A banca apresenta um argumento completo e pergunta se ele é válido ou se apresenta uma falácia.</p>
+        <div class="item-exemplo">
+            <strong>Exemplo típico:</strong><br>
+            "Se um aluno estuda, ele aprende. O aluno aprendeu. Logo, ele estudou. Esse argumento apresenta falácia."<br>
+            ➔ <span class="certo">✔ CERTO.</span> (O aprendizado pode ter ocorrido por outra via).
+        </div>
+
+        <h2>5️⃣ Pegadinhas mais comuns da banca</h2>
+        <p><strong>Argumento plausível &ne; Válido:</strong> Um argumento pode "fazer sentido" no dia a dia, mas ser logicamente inválido pela sua estrutura formal.</p>
+        <p><strong>Falácia &ne; Falsidade:</strong> Uma conclusão pode ser verdadeira por coincidência, mesmo que o argumento seja falacioso.</p>
+
+        <h2>6️⃣ Como a banca constrói itens ERRADOS</h2>
+        <ul>
+            <li><span class="check-x">❌</span> Afirmam que a afirmação do consequente é uma dedução válida.</li>
+            <li><span class="check-x">❌</span> Tratam a negação do antecedente como uma decorrência lógica necessária.</li>
+            <li><span class="check-x">❌</span> Sugerem que a validade depende da verdade das premissas (Validade &ne; Verdade).</li>
+        </ul>
+
+        <div class="footer-page">RACIOCÍNIO LÓGICO - PÁGINA 2</div>
+    </div>
+
+    <div class="page">
+        <h2>7️⃣ Exemplos estilo CERTO ou ERRADO</h2>
+        <div class="item-exemplo">
+            <strong>Item 1:</strong> "Se P então Q; Q; logo P" é um argumento válido. <span class="errado">❌ ERRADO.</span>
+        </div>
+        <div class="item-exemplo">
+            <strong>Item 2:</strong> A negação do antecedente em uma condicional constitui falácia lógica. <span class="certo">✔ CERTO.</span>
+        </div>
+        <div class="item-exemplo">
+            <strong>Item 3:</strong> Um argumento pode ter conclusão verdadeira mesmo sendo falacioso. <span class="certo">✔ CERTO.</span>
+        </div>
+
+        <h2>8️⃣ Método rápido: Regra PAC</h2>
+        <div class="metodo-box">
+            <ul>
+                <li><strong>P — Premissas:</strong> Identifique claramente as premissas iniciais.</li>
+                <li><strong>A — Argumento:</strong> Analise a estrutura lógica (desenhe as setas).</li>
+                <li><strong>C — Conclusão:</strong> Verifique se a conclusão decorre obrigatoriamente das premissas.</li>
+            </ul>
+        </div>
+
+        <h2>9️⃣ Checklist mental</h2>
+        <ul>
+            <li><span class="check-v">✔</span> Existe uma condicional sendo invertida?</li>
+            <li><span class="check-v">✔</span> A conclusão decorre necessariamente em 100% dos casos?</li>
+            <li><span class="check-v">✔</span> Houve generalização a partir de um exemplo isolado?</li>
+        </ul>
+
+        <div class="metodo-box" style="background-color: #fef5e7; border-style: solid;">
+            <h2 style="margin-top: 0; background: none; border: none; color: #7e5109;">🧠 RESUMO ESTRATÉGICO</h2>
+            <p><strong>Afirmação do Consequente:</strong> Se P &rarr; Q; Q; logo P. <span class="errado">❌ Inválido</span>.</p>
+            <p><strong>Negação do Antecedente:</strong> Se P &rarr; Q; &not;P; logo &not;Q. <span class="errado">❌ Inválido</span>.</p>
+            <p style="text-align: center; font-weight: bold; color: #7e5109; margin-top: 10px;">Regra rápida: Analise sempre a estrutura, não a plausibilidade!</p>
+        </div>
+
+        <div class="footer-page">RACIOCÍNIO LÓGICO - PÁGINA 3</div>
+    </div>
+
+</body>
+</html>

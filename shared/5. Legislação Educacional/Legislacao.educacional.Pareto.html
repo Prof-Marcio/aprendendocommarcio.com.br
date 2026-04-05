@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Pareto: Legislação Educacional (UNEAL)</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background-color: #f1f5f9; font-family: 'Segoe UI', sans-serif; }
+        @page { size: A4; margin: 0; }
+        .lauda {
+            background: white; width: 210mm; height: 297mm; padding: 1.2cm;
+            margin: 0 auto; display: flex; flex-direction: column;
+            border-top: 12px solid #1e3a8a; position: relative;
+        }
+        h1 { color: #1e3a8a; font-size: 18pt; text-align: center; border-bottom: 2px solid #1e3a8a; padding-bottom: 8px; margin-bottom: 15px; text-transform: uppercase; }
+        h2 { color: #1e40af; font-size: 11pt; margin: 15px 0 8px 0; text-transform: uppercase; border-left: 4px solid #1e3a8a; padding-left: 8px; background: #eff6ff; }
+        
+        .edital-table { width: 100%; border-collapse: collapse; margin-bottom: 15px; }
+        .edital-table th { background: #1e3a8a; color: white; padding: 8px; font-size: 8pt; border: 1px solid #1e3a8a; }
+        .edital-table td { border: 1px solid #dbeafe; padding: 6px 8px; font-size: 8pt; vertical-align: middle; line-height: 1.2; }
+        
+        .alto { background-color: #dbeafe; color: #1e40af; font-weight: bold; text-align: center; }
+        .medio { color: #6b7280; text-align: center; }
+
+        .td-status { text-align: center !important; }
+        .input-status { width: 14px; height: 14px; cursor: pointer; accent-color: #1e3a8a; }
+
+        .box-estrategia { background: #f8fafc; border: 1px solid #e2e8f0; padding: 12px; border-radius: 8px; margin-top: auto; border-left: 6px solid #1e3a8a; }
+        .box-estrategia h3 { color: #1e3a8a; font-size: 10pt; margin-bottom: 5px; text-transform: uppercase; }
+        .box-estrategia p { font-size: 8.5pt; color: #334155; line-height: 1.4; }
+        
+        .footer { text-align: center; font-size: 7.5pt; color: #94a3b8; border-top: 1px solid #e2e8f0; padding-top: 8px; margin-top: 10px; }
+        .no-print { text-align: center; padding: 10px; }
+        button { padding: 10px 25px; cursor: pointer; background: #1e3a8a; color: white; border: none; border-radius: 5px; font-weight: bold; }
+        @media print { .no-print { display: none; } .lauda { margin: 0; box-shadow: none; width: 210mm; height: 297mm; } }
+    </style>
+</head>
+<body>
+    <div class="no-print">
+        <button onclick="window.print()">IMPRIMIR PARETO LEGISLAÇÃO (TERMOS LITERAIS)</button>
+    </div>
+    <div class="lauda">
+        <h1>📊 Análise Pareto: Legislação Educacional</h1>
+        
+        <h2>TABELA – ANÁLISE PARETO (TERMOS EXATOS DO EDITAL)</h2>
+        <table class="edital-table">
+            <thead>
+                <tr>
+                    <th style="width: 8%;">Nº</th>
+                    <th style="width: 42%;">Termo exatamente como está no edital</th>
+                    <th style="width: 34%;">Como a banca CEBRASPE costuma cobrar</th>
+                    <th style="width: 10%;">Pareto</th>
+                    <th style="width: 6%;">OK?</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>Constituição da República Federativa do Brasil de 1988.</td>
+                    <td>Fundamentos, princípios e garantias constitucionais.</td>
+                    <td class="alto">ALTO</td>
+                    <td class="td-status"><input type="checkbox" class="input-status"></td>
+                </tr>
+                <tr>
+                    <td>1.1</td>
+                    <td>Direitos sociais (Capítulo II).</td>
+                    <td>Educação como direito social primário (Art. 6º).</td>
+                    <td class="medio">MÉDIO</td>
+                    <td class="td-status"><input type="checkbox" class="input-status"></td>
+                </tr>
+                <tr>
+                    <td>1.2</td>
+                    <td>Educação (Capítulo III).</td>
+                    <td>Dever do Estado, princípios e ensino superior (Art. 205 a 214).</td>
+                    <td class="alto">ALTO</td>
+                    <td class="td-status"><input type="checkbox" class="input-status"></td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Lei nº 9.394/1996 e suas alterações (Lei de Diretrizes e Bases da Educação Nacional – LDB).</td>
+                    <td>Organização da educação superior, níveis e modalidades.</td>
+                    <td class="alto">ALTO</td>
+                    <td class="td-status"><input type="checkbox" class="input-status"></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>🎯 PARETO REAL DA PROVA (FOCO CEBRASPE)</h2>
+        <table class="edital-table">
+            <thead>
+                <tr>
+                    <th style="width: 30%;">Item Crítico</th>
+                    <th style="width: 70%;">Aposta de Cobrança (Lei Seca Aplicada)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><b>LDB (Educação Superior)</b></td>
+                    <td>Foco nos Artigos 43 a 57. A banca adora a finalidade da graduação e a autonomia universitária (Art. 53).</td>
+                </tr>
+                <tr>
+                    <td><b>CF/88 (Art. 206)</b></td>
+                    <td>Decore os Princípios do Ensino. O CEBRASPE costuma trocar "Gestão Democrática" por "Gestão Meritocrática" para te induzir ao erro.</td>
+                </tr>
+                <tr>
+                    <td><b>LDB (Alterações)</b></td>
+                    <td>Atenção às mudanças de 2023/2024 na LDB (Educação Digital e Inclusão).</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="box-estrategia">
+            <h3>🛡️ OBSERVAÇÃO ESTRATÉGICA PARA A UNEAL</h3>
+            <p><strong>Fidelidade à Lei:</strong> Em legislações curtas como esta, o CEBRASPE tende a cobrar a literalidade (Lei Seca). Atente-se aos verbos "Deverá" vs "Poderá".</p>
+            <p><strong>Dica de Ouro:</strong> Como o edital cita especificamente "e suas alterações" na LDB, estude pelo site do Planalto para não ler artigos revogados.</p>
+        </div>
+        
+        <div class="footer">Análise Pareto UNEAL 2026 - Legislação Educacional - Técnico em Assuntos Educacionais</div>
+    </div>
+</body>
+</html>

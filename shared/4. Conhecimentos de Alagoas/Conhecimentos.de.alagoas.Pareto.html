@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Pareto Integral: Conhecimentos de Alagoas (UNEAL)</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background-color: #f1f5f9; font-family: 'Segoe UI', sans-serif; }
+        @page { size: A4; margin: 0; }
+        .lauda {
+            background: white; width: 210mm; height: 297mm; padding: 1.2cm;
+            margin: 0 auto; display: flex; flex-direction: column;
+            border-top: 12px solid #059669; position: relative;
+        }
+        h1 { color: #065f46; font-size: 18pt; text-align: center; border-bottom: 2px solid #059669; padding-bottom: 8px; margin-bottom: 15px; text-transform: uppercase; }
+        h2 { color: #047857; font-size: 11pt; margin: 12px 0 8px 0; text-transform: uppercase; border-left: 4px solid #059669; padding-left: 8px; background: #ecfdf5; }
+        
+        .edital-table { width: 100%; border-collapse: collapse; margin-bottom: 12px; }
+        .edital-table th { background: #059669; color: white; padding: 6px; font-size: 7.5pt; border: 1px solid #047857; }
+        .edital-table td { border: 1px solid #d1fae5; padding: 4px 6px; font-size: 7.2pt; vertical-align: middle; line-height: 1.1; }
+        
+        /* Links Estilizados */
+        .edital-table td a { color: #065f46; text-decoration: none; font-weight: bold; }
+        .edital-table td a:hover { text-decoration: underline; }
+
+        /* Prioridades */
+        .alto { background-color: #d1fae5; color: #065f46; font-weight: bold; text-align: center; }
+        .medio { color: #4b5563; text-align: center; }
+        .baixo { color: #9ca3af; text-align: center; }
+
+        /* Checkbox */
+        .td-status { text-align: center !important; }
+        .input-status { width: 13px; height: 13px; cursor: pointer; accent-color: #059669; }
+
+        .box-estrategia { background: #f0fdf4; border: 1px solid #dcfce7; padding: 10px; border-radius: 8px; margin-top: auto; border-left: 6px solid #059669; }
+        .box-estrategia h3 { color: #065f46; font-size: 9pt; margin-bottom: 4px; text-transform: uppercase; }
+        .box-estrategia p { font-size: 8pt; color: #064e3b; line-height: 1.3; margin-bottom: 3px; }
+        
+        .footer { text-align: center; font-size: 7pt; color: #94a3b8; border-top: 1px solid #e2e8f0; padding-top: 5px; margin-top: 8px; }
+        .no-print { text-align: center; padding: 10px; }
+        button { padding: 8px 20px; cursor: pointer; background: #059669; color: white; border: none; border-radius: 5px; font-weight: bold; }
+        @media print { .no-print { display: none; } .lauda { margin: 0; box-shadow: none; width: 210mm; height: 297mm; } }
+    </style>
+</head>
+<body>
+    <div class="no-print">
+        <button onclick="window.print()">IMPRIMIR ANÁLISE PARETO ALAGOAS (INTEGRAL)</button>
+    </div>
+    <div class="lauda">
+        <h1>📊 Análise Pareto: Conhecimentos de Alagoas</h1>
+        
+        <h2>PARTE 1: Mapeamento Completo do Edital</h2>
+        <table class="edital-table">
+            <thead>
+                <tr>
+                    <th style="width: 5%;">Nº</th>
+                    <th style="width: 25%;">Termo do Edital (Link)</th>
+                    <th style="width: 50%;">Como o CEBRASPE cobra</th>
+                    <th style="width: 12%;">Pareto</th>
+                    <th style="width: 8%;">Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>1</td><td><a href="https://www.google.com/search?q=formação+histórica+alagoas+evolução+política+econômica" target="_blank">Formação histórica</a></td><td>Evolução política e econômica do estado.</td><td class="medio">Médio</td><td class="td-status"><input type="checkbox" class="input-status"></td></tr>
+                <tr><td>1.1</td><td><a href="https://www.google.com/search?q=colonização+portuguesa+alagoas+ocupação+territorial" target="_blank">Colonização portuguesa</a></td><td>Ocupação territorial e primeiras vilas.</td><td class="medio">Médio</td><td class="td-status"><input type="checkbox" class="input-status"></td></tr>
+                <tr><td>1.2</td><td><a href="https://www.google.com/search?q=economia+açucareira+alagoas+história" target="_blank">Economia açucareira</a></td><td>Impacto do açúcar na formação econômica.</td><td class="medio">Médio</td><td class="td-status"><input type="checkbox" class="input-status"></td></tr>
+                <tr><td>1.3</td><td><a href="https://www.google.com/search?q=emancipação+política+alagoas+1817+pernambuco" target="_blank">Emancipação 1817</a></td><td>Separação de Pernambuco (Cai muito!).</td><td class="alto">Alto</td><td class="td-status"><input type="checkbox" class="input-status"></td></tr>
+                <tr><td>1.4</td><td><a href="https://www.google.com/search?q=elevação+alagoas+província+1821" target="_blank">Elev. à Província 1821</a></td><td>Transformação política no Império.</td><td class="medio">Médio</td><td class="td-status"><input type="checkbox" class="input-status"></td></tr>
+                <tr><td>2</td><td><a href="https://www.google.com/search?q=quilombo+dos+palmares+relevância+histórica" target="_blank">Quilombo dos Palmares</a></td><td>Relevância social, política e histórica.</td><td class="alto">Alto</td><td class="td-status"><input type="checkbox" class="input-status"></td></tr>
+                <tr><td>2.1</td><td><a href="https://www.google.com/search?q=origem+organização+quilombo+dos+palmares" target="_blank">Formação colonial</a></td><td>Origem e organização interna do quilombo.</td><td class="medio">Médio</td><td class="td-status"><input type="checkbox" class="input-status"></td></tr>
+                <tr><td>2.2</td><td><a href="https://www.google.com/search?q=resistência+escravidão+quilombo+palmares+alagoas" target="_blank">Resistência</a></td><td>Movimentos de luta contra a escravidão.</td><td class="alto">Alto</td><td class="td-status"><input type="checkbox" class="input-status"></td></tr>
+                <tr><td>2.3</td><td><a href="https://www.google.com/search?q=zumbi+dos+palmares+líder+quilombola+história" target="_blank">Liderança de Zumbi</a></td><td>Papel de Zumbi como símbolo de resistência.</td><td class="alto">Alto</td><td class="td-status"><input type="checkbox" class="input-status"></td></tr>
+                <tr><td>3</td><td><a href="https://www.google.com/search?q=aspectos+geográficos+alagoas+características" target="_blank">Aspectos geográficos</a></td><td>Características ambientais e geográficas.</td><td class="medio">Médio</td><td class="td-status"><input type="checkbox" class="input-status"></td></tr>
+                <tr><td>3.1</td><td><a href="https://www.google.com/search?q=mesorregiões+alagoas+litoral+mata+agreste+sertão" target="_blank">Mesorregiões</a></td><td>Divisão: Litoral, Mata, Agreste e Sertão.</td><td class="medio">Médio</td><td class="td-status"><input type="checkbox" class="input-status"></td></tr>
+                <tr><td>3.2</td><td><a href="https://www.google.com/search?q=importância+rio+são+francisco+alagoas" target="_blank">Rio São Francisco</a></td><td>Importância econômica e histórica do rio.</td><td class="medio">Médio</td><td class="td-status"><input type="checkbox" class="input-status"></td></tr>
+                <tr><td>4</td><td><a href="https://www.google.com/search?q=organização+político+administrativa+estado+alagoas" target="_blank">Org. Político-Adm</a></td><td>Estrutura e funcionamento do Estado.</td><td class="alto">Alto</td><td class="td-status"><input type="checkbox" class="input-status"></td></tr>
+                <tr><td>4.1</td><td><a href="https://www.google.com/search?q=maceió+capital+alagoas+história+economia" target="_blank">Maceió (Capital)</a></td><td>Papel administrativo e econômico.</td><td class="medio">Médio</td><td class="td-status"><input type="checkbox" class="input-status"></td></tr>
+                <tr><td>4.2</td><td><a href="https://www.google.com/search?q=municípios+alagoas+divisão+administrativa" target="_blank">Municípios</a></td><td>Divisão administrativa municipal.</td><td class="medio">Médio</td><td class="td-status"><input type="checkbox" class="input-status"></td></tr>
+                <tr><td>4.3</td><td><a href="https://www.google.com/search?q=poderes+executivo+legislativo+judiciário+alagoas" target="_blank">Poderes estaduais</a></td><td>Funcionamento dos Três Poderes.</td><td class="alto">Alto</td><td class="td-status"><input type="checkbox" class="input-status"></td></tr>
+                <tr><td>5</td><td><a href="https://www.google.com/search?q=economia+alagoas+setores+agroindústria+turismo" target="_blank">Economia estadual</a></td><td>Principais setores produtivos.</td><td class="medio">Médio</td><td class="td-status"><input type="checkbox" class="input-status"></td></tr>
+                <tr><td>5.1</td><td><a href="https://www.google.com/search?q=agroindústria+canavieira+alagoas+economia" target="_blank">Agroindústria</a></td><td>Peso da cana-de-açúcar na economia.</td><td class="medio">Médio</td><td class="td-status"><input type="checkbox" class="input-status"></td></tr>
+                <tr><td>5.2</td><td><a href="https://www.google.com/search?q=turismo+alagoas+importância+econômica" target="_blank">Turismo</a></td><td>Relevância econômica do setor turístico.</td><td class="medio">Médio</td><td class="td-status"><input type="checkbox" class="input-status"></td></tr>
+                <tr><td>5.3</td><td><a href="https://www.google.com/search?q=setor+serviços+alagoas+participação+pib" target="_blank">Setor de serviços</a></td><td>Participação no PIB estadual.</td><td class="baixo">Baixo</td><td class="td-status"><input type="checkbox" class="input-status"></td></tr>
+                <tr><td>6</td><td><a href="https://www.google.com/search?q=cultura+patrimônio+alagoas+manifestações" target="_blank">Cultura e Patrimônio</a></td><td>Identidade e patrimônio histórico.</td><td class="medio">Médio</td><td class="td-status"><input type="checkbox" class="input-status"></td></tr>
+                <tr><td>6.1</td><td><a href="https://www.google.com/search?q=manifestações+culturais+populares+alagoas" target="_blank">Manifestações pop.</a></td><td>Tradições folclóricas e populares.</td><td class="medio">Médio</td><td class="td-status"><input type="checkbox" class="input-status"></td></tr>
+                <tr><td>6.2</td><td><a href="https://www.google.com/search?q=patrimônio+histórico+cultural+alagoas+preservação" target="_blank">Patrimônio Histórico</a></td><td>Preservação e valorização cultural.</td><td class="medio">Médio</td><td class="td-status"><input type="checkbox" class="input-status"></td></tr>
+            </tbody>
+        </table>
+
+        <h2>PARTE 2: 🎯 Pareto Real (Foco na Aprovação)</h2>
+        <table class="edital-table">
+            <thead>
+                <tr>
+                    <th style="width: 25%;">Termo do Edital</th>
+                    <th style="width: 65%;">Foco na Prática (O que o CEBRASPE quer)</th>
+                    <th style="width: 10%;">OK?</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td><b>1.3 Emancipação</b></td><td>Processo histórico de separação de Pernambuco em 1817.</td><td class="td-status"><input type="checkbox" class="input-status"></td></tr>
+                <tr><td><b>2 Quilombo Palmares</b></td><td>Importância histórica, social e resistência escrava colonial.</td><td class="td-status"><input type="checkbox" class="input-status"></td></tr>
+                <tr><td><b>2.3 Zumbi</b></td><td>O papel da liderança de Zumbi na história de Alagoas.</td><td class="td-status"><input type="checkbox" class="input-status"></td></tr>
+                <tr><td><b>4 e 4.3 Poderes</b></td><td>Estrutura administrativa e funcionamento dos Três Poderes.</td><td class="td-status"><input type="checkbox" class="input-status"></td></tr>
+            </tbody>
+        </table>
+
+        <div class="box-estrategia">
+            <h3>🛡️ Observação Estratégica CEBRASPE</h3>
+            <p><strong>Relações Históricas:</strong> Palmares + Resistência (Itens 2, 2.2 e 2.3) formam o eixo mais forte da banca. Estude como um bloco único.</p>
+            <p><strong>Organização:</strong> O funcionamento dos Poderes (Item 4.3) costuma vir em questões literais sobre a Constituição Estadual.</p>
+            <p><strong>Contexto:</strong> A formação histórica (Item 1) é a base para entender a emancipação e a economia açucareira.</p>
+        </div>
+        <div class="footer">Análise Pareto UNEAL 2026 - Conhecimentos de Alagoas - Técnico em Assuntos Educacionais</div>
+    </div>
+</body>
+</html>

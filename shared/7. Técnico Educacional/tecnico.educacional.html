@@ -2,135 +2,95 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <title>Edital Verticalizado: Conhecimentos Específicos (UNEAL)</title>
+    <title>Edital Verticalizado: Educação e Gestão (UNEAL)</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { background-color: #f1f5f9; font-family: 'Segoe UI', sans-serif; }
+        body { background-color: #f1f5f9; font-family: 'Segoe UI', sans-serif; color: #1e293b; }
         @page { size: A4; margin: 0; }
         .lauda {
             background: white; width: 210mm; height: 297mm; padding: 1.2cm;
-            margin: 0 auto; display: flex; flex-direction: column;
-            border-top: 12px solid #1e3a8a; position: relative;
+            margin: 20px auto; display: flex; flex-direction: column;
+            border-top: 12px solid #2b4c99; position: relative;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
         }
-        h1 { color: #1e3a8a; font-size: 18pt; text-align: center; border-bottom: 2px solid #1e3a8a; padding-bottom: 8px; margin-bottom: 15px; text-transform: uppercase; }
-        .edital-table { width: 100%; border-collapse: collapse; margin-bottom: 15px; }
-        .edital-table th { background: #1e3a8a; color: white; padding: 8px; font-size: 9pt; border: 1px solid #1e3a8a; }
-        .edital-table td { border: 1px solid #e2e8f0; padding: 6px 8px; font-size: 8.2pt; vertical-align: middle; line-height: 1.2; }
+        h1 { color: #2b4c99; font-size: 18pt; text-align: center; border-bottom: 2px solid #2b4c99; padding-bottom: 8px; margin-bottom: 15px; text-transform: uppercase; }
         
-        /* Estilização dos Links */
-        .edital-table td a {
-            color: #1e3a8a;
-            text-decoration: none;
-            font-weight: 500;
-        }
-        .edital-table td a:hover {
-            text-decoration: underline;
-        }
+        .edital-table { width: 100%; border-collapse: collapse; margin-bottom: 15px; }
+        .edital-table th { background: #2b4c99; color: white; padding: 10px; font-size: 9pt; border: 1px solid #2b4c99; text-transform: uppercase; }
+        .edital-table td { border: 1px solid #e2e8f0; padding: 8px; font-size: 8.5pt; vertical-align: middle; line-height: 1.3; }
+        
+        .col-num { width: 60px; text-align: center; font-weight: bold; color: #2b4c99; }
+        .col-pri { width: 100px; text-align: center; font-weight: bold; }
+        .col-status { width: 60px; text-align: center; }
 
-        /* Estilização do Checkbox de Status */
-        .td-status { text-align: center !important; }
-        .input-status {
-            width: 16px;
-            height: 16px;
-            cursor: pointer;
-            accent-color: #1e3a8a;
-        }
+        .pri-critica { color: #dc2626; }
+        .pri-maxima { color: #991b1b; }
+        .pri-alta { color: #2563eb; }
 
-        .pri-critica { color: #dc2626; font-weight: bold; }
-        .box-estrategia { background: #f0f4ff; border: 1px solid #c7d2fe; padding: 10px; border-radius: 6px; margin-top: auto; border-left: 6px solid #3f51b5; }
-        .box-estrategia h3 { color: #1e3a8a; font-size: 10pt; text-transform: uppercase; margin-bottom: 4px; }
-        .box-estrategia p { font-size: 8.5pt; color: #374151; line-height: 1.4; }
-        .footer { text-align: center; font-size: 8pt; color: #94a3b8; border-top: 1px solid #e2e8f0; padding-top: 8px; margin-top: 10px; }
-        .no-print { text-align: center; padding: 15px; }
-        button { padding: 10px 25px; cursor: pointer; background: #1e3a8a; color: white; border: none; border-radius: 5px; font-weight: bold; }
-        @media print { .no-print { display: none; } .lauda { margin: 0; box-shadow: none; width: 210mm; height: 297mm; } }
+        .cb { width: 18px; height: 18px; border: 2px solid #cbd5e1; border-radius: 4px; display: inline-block; cursor: pointer; position: relative; }
+        .cb.checked { background: #10b981; border-color: #10b981; }
+        .cb.checked::after { content: '✓'; color: white; position: absolute; left: 3px; top: -3px; font-weight: bold; font-size: 14px; }
+
+        .box-estrategia { background: #eff6ff; border: 1px solid #dbeaffe6; padding: 15px; border-radius: 6px; margin-top: auto; border-left: 6px solid #2563eb; }
+        .box-estrategia h3 { color: #1e3a8a; font-size: 10pt; text-transform: uppercase; margin-bottom: 8px; }
+        .box-estrategia p { font-size: 8.5pt; color: #1e40af; line-height: 1.5; margin-bottom: 8px; }
+        
+        .footer { text-align: center; font-size: 8pt; color: #94a3b8; border-top: 1px solid #e2e8f0; padding-top: 10px; margin-top: 15px; }
+        
+        .no-print { text-align: center; padding: 20px; }
+        .btn-print { padding: 12px 30px; cursor: pointer; background: #2b4c99; color: white; border: none; border-radius: 5px; font-weight: bold; text-transform: uppercase; }
+
+        @media print { 
+            .no-print { display: none; } 
+            .lauda { margin: 0; box-shadow: none; width: 210mm; height: 297mm; } 
+            body { background: white; }
+        }
     </style>
 </head>
 <body>
+
     <div class="no-print">
-        <button onclick="window.print()">IMPRIMIR EDITAL VERTICALIZADO ESPECÍFICO</button>
+        <button class="btn-print" onclick="window.print()">🖨️ IMPRIMIR MÓDULO EDUCAÇÃO E GESTÃO</button>
     </div>
+
     <div class="lauda">
-        <h1>📑 Conhecimentos Específicos (UNEAL)</h1>
+        <h1>🎓 Edital Verticalizado: Educação e Gestão</h1>
+        
         <table class="edital-table">
             <thead>
                 <tr>
-                    <th style="width: 30%;">Tópico / Subtópico</th>
-                    <th style="width: 15%;">Prioridade</th>
-                    <th style="width: 45%;">Foco Estratégico (CEBRASPE)</th>
-                    <th style="width: 10%;">Status</th>
+                    <th class="col-num">Item</th>
+                    <th>Subtópico Atômico (Base → Teorias → Prática → Avaliação)</th>
+                    <th class="col-pri">Prioridade</th>
+                    <th class="col-status">Status</th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td><a href="Tec.Edu.1.Base.Legais.e.LDB.html" target="_blank">1. Bases Legais e LDB</a></td>
-                    <td class="pri-critica">MÁXIMA</td>
-                    <td>Art. 207 CF (Autonomia). LDB focada no Ensino Superior.</td>
-                    <td class="td-status"><input type="checkbox" class="input-status"></td>
-                </tr>
-                <tr>
-                    <td><a href="Tec.Edu.2.Projeto.Politico-Pedagogico.html" target="_blank">2. Projeto Político-Pedagógico</a></td>
-                    <td>ALTA</td>
-                    <td>Concepção democrática e participativa. PPP como processo.</td>
-                    <td class="td-status"><input type="checkbox" class="input-status"></td>
-                </tr>
-                <tr>
-                    <td><a href="Tec.Edu.3.Pedagogia.e.Andragogia.html" target="_blank">3.3 Pedagogia e Andragogia</a></td>
-                    <td class="pri-critica">CRÍTICA</td>
-                    <td>Adulto aprende por utilidade e experiência. Facilitador vs Aluno.</td>
-                    <td class="td-status"><input type="checkbox" class="input-status"></td>
-                </tr>
-                <tr>
-                    <td><a href="Tec.Edu.4.Gestao.do.Conhecimento.html" target="_blank">3.4 Gestão do Conhecimento</a></td>
-                    <td>ALTA</td>
-                    <td>Conhecimento Tácito vs Explícito. Capital intelectual.</td>
-                    <td class="td-status"><input type="checkbox" class="input-status"></td>
-                </tr>
-                <tr>
-                    <td><a href="Tec.Edu.5.Avaliacao.Modalidades.html" target="_blank">Avaliação (Modalidades)</a></td>
-                    <td class="pri-critica">CRÍTICA</td>
-                    <td>Formativa (processo) vs Somativa (final/nota).</td>
-                    <td class="td-status"><input type="checkbox" class="input-status"></td>
-                </tr>
-                <tr>
-                    <td><a href="Tec.Edu.6.Lideranca.e.Relacoes.html" target="_blank">5. Liderança e Relações</a></td>
-                    <td>ALTA</td>
-                    <td>Estilos: Autocrática, Democrática e Liberal. Clima Org.</td>
-                    <td class="td-status"><input type="checkbox" class="input-status"></td>
-                </tr>
-                <tr>
-                    <td><a href="Tec.Edu.7.Planejamento.Participativo.html" target="_blank">6. Planejamento Participativo</a></td>
-                    <td>ALTA</td>
-                    <td>Rejeição ao "Top-Down". Construção coletiva de metas.</td>
-                    <td class="td-status"><input type="checkbox" class="input-status"></td>
-                </tr>
-                <tr>
-                    <td><a href="Tec.Edu.8.Curriculo.e.Construcao.html" target="_blank">8. Currículo e Construção</a></td>
-                    <td>ALTA</td>
-                    <td>Tradicional, Crítica e Pós-Crítica. Currículo oculto.</td>
-                    <td class="td-status"><input type="checkbox" class="input-status"></td>
-                </tr>
-                <tr>
-                    <td><a href="Tec.Edu.9.SINAES.Superior.html" target="_blank">11 a 13. SINAES (Superior)</a></td>
-                    <td class="pri-critica">CRÍTICA</td>
-                    <td>Lei 10.861/2004. CPA, ENADE, CPC e IGC.</td>
-                    <td class="td-status"><input type="checkbox" class="input-status"></td>
-                </tr>
-                <tr>
-                    <td><a href="Tec.Edu.10.Estatistica.Aplicada.html" target="_blank">14. Estatística Aplicada</a></td>
-                    <td>ALTA</td>
-                    <td>Interpretação de Média e Desvio Padrão em indicadores.</td>
-                    <td class="td-status"><input type="checkbox" class="input-status"></td>
-                </tr>
+                <tr><td class="col-num">1.1</td><td>Bases Legais da Educação Nacional (Constituição e LDB).</td><td class="col-pri pri-critica">CRÍTICA</td><td class="col-status"><div class="cb" onclick="this.classList.toggle('checked')"></div></td></tr>
+                <tr><td class="col-num">1.2</td><td>SINAES: Avaliação das Instituições de Ensino Superior.</td><td class="col-pri pri-maxima">MÁXIMA</td><td class="col-status"><div class="cb" onclick="this.classList.toggle('checked')"></div></td></tr>
+                <tr><td class="col-num">1.2</td><td>SINAES: Avaliação de Cursos e Desempenho de Estudantes (ENADE).</td><td class="col-pri pri-maxima">MÁXIMA</td><td class="col-status"><div class="cb" onclick="this.classList.toggle('checked')"></div></td></tr>
+                <tr><td class="col-num">2.1</td><td>Pedagogia: Teorias de Ensino e Aprendizagem para Crianças.</td><td class="col-pri pri-alta">ALTA</td><td class="col-status"><div class="cb" onclick="this.classList.toggle('checked')"></div></td></tr>
+                <tr><td class="col-num">2.1</td><td>Andragogia: Princípios da Educação de Jovens e Adultos.</td><td class="col-pri pri-maxima">MÁXIMA</td><td class="col-status"><div class="cb" onclick="this.classList.toggle('checked')"></div></td></tr>
+                <tr><td class="col-num">2.2</td><td>Gestão do Conhecimento: Fluxos de Informação e Saberes.</td><td class="col-pri pri-alta">ALTA</td><td class="col-status"><div class="cb" onclick="this.classList.toggle('checked')"></div></td></tr>
+                <tr><td class="col-num">3.1</td><td>Projeto Político-Pedagógico (PPP): Concepção e Identidade.</td><td class="col-pri pri-critica">CRÍTICA</td><td class="col-status"><div class="cb" onclick="this.classList.toggle('checked')"></div></td></tr>
+                <tr><td class="col-num">3.2</td><td>Currículo: Seleção de Conteúdos e Construção do Conhecimento.</td><td class="col-pri pri-alta">ALTA</td><td class="col-status"><div class="cb" onclick="this.classList.toggle('checked')"></div></td></tr>
+                <tr><td class="col-num">3.3</td><td>Planejamento Participativo e Gestão Democrática.</td><td class="col-pri pri-maxima">MÁXIMA</td><td class="col-status"><div class="cb" onclick="this.classList.toggle('checked')"></div></td></tr>
+                <tr><td class="col-num">4.1</td><td>Liderança: Estilos de Gestão em Ambientes Educacionais.</td><td class="col-pri pri-alta">ALTA</td><td class="col-status"><div class="cb" onclick="this.classList.toggle('checked')"></div></td></tr>
+                <tr><td class="col-num">4.1</td><td>Relações Interpessoais e Mediação de Conflitos na Escola.</td><td class="col-pri pri-alta">ALTA</td><td class="col-status"><div class="cb" onclick="this.classList.toggle('checked')"></div></td></tr>
+                <tr><td class="col-num">5.1</td><td>Modalidades de Avaliação: Diagnóstica, Formativa e Somativa.</td><td class="col-pri pri-critica">CRÍTICA</td><td class="col-status"><div class="cb" onclick="this.classList.toggle('checked')"></div></td></tr>
+                <tr><td class="col-num">5.2</td><td>Estatística Aplicada: Análise de Dados e Indicadores Educacionais.</td><td class="col-pri pri-alta">ALTA</td><td class="col-status"><div class="cb" onclick="this.classList.toggle('checked')"></div></td></tr>
+                <tr><td class="col-num">5.2</td><td>Métricas de Desempenho e Taxas de Aprovação/Evasão.</td><td class="col-pri pri-alta">ALTA</td><td class="col-status"><div class="cb" onclick="this.classList.toggle('checked')"></div></td></tr>
             </tbody>
         </table>
+
         <div class="box-estrategia">
-            <h3>🛡️ Mantra do Gestor Educacional (UNEAL)</h3>
-            <p><strong>Visão Andragógica:</strong> O aprendizado do adulto na universidade deve ser prático. O CEBRASPE tentará impor métodos infantis para adultos; marque como Errado.</p>
-            <p style="margin-top:4px;"><strong>SINAES e CPA:</strong> Lembre-se que a CPA é o coração da autoavaliação institucional. Ela deve ser obrigatoriamente tripartite (Docentes, Técnicos e Discentes).</p>
-            <p style="margin-top:4px;"><strong>Estatística:</strong> Não é conta, é lógica. Desvio Padrão alto = Heterogeneidade (muita dispersão entre os alunos/cursos avaliados).</p>
+            <h3>🧠 DICA METACOGNITIVA: DA LEI À PRÁTICA</h3>
+            <p><b>Conexão Vital:</b> Ao estudar a <b>LDB (1.1)</b> e o <b>PPP (3.1)</b>, não decore apenas as palavras. Imagine como a lei se materializa no "RG" da escola. O PPP é o documento onde a liberdade legal da LDB encontra a realidade da comunidade escolar.</p>
+            <p><b>Avaliação:</b> Lembre-se que para o CEBRASPE, a avaliação <b>Formativa (5.1)</b> é muito valorizada por ser processual e democrática. Relacione-a sempre ao <b>Planejamento Participativo (3.3)</b>.</p>
         </div>
-        <div class="footer">Estratégia UNEAL 2026 - Técnico em Assuntos Educacionais - Cargo 9</div>
+
+        <div class="footer">Organização Atômica UNEAL 2026 - Educação e Gestão - Cargo 9</div>
     </div>
+
 </body>
 </html>

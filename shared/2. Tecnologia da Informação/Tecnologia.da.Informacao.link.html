@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Rota Integral Exaustiva: T.I. (UNEAL)</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background-color: #f1f5f9; font-family: 'Segoe UI', sans-serif; }
+        @page { size: A4; margin: 0; }
+        .lauda {
+            background: white; width: 210mm; height: 297mm; padding: 1.0cm;
+            margin: 0 auto; display: flex; flex-direction: column;
+            border-top: 12px solid #1e3a8a; position: relative;
+        }
+        h1 { color: #1e3a8a; font-size: 16pt; text-align: center; border-bottom: 2px solid #1e3a8a; padding-bottom: 5px; margin-bottom: 10px; text-transform: uppercase; }
+        h2 { color: #1e40af; font-size: 10pt; margin: 8px 0 4px 0; text-transform: uppercase; border-left: 4px solid #1e3a8a; padding-left: 8px; background: #eff6ff; }
+        
+        .edital-table { width: 100%; border-collapse: collapse; margin-bottom: 8px; }
+        .edital-table th { background: #1e3a8a; color: white; padding: 4px; font-size: 7.5pt; border: 1px solid #1e3a8a; text-align: left; }
+        .edital-table td { border: 1px solid #dbeafe; padding: 3px 6px; font-size: 6.8pt; vertical-align: middle; line-height: 1.1; }
+        
+        .edital-table td a { color: #1e3a8a; text-decoration: none; font-weight: 600; }
+        .edital-table td a:hover { color: #2563eb; text-decoration: underline; }
+
+        .td-status { text-align: center !important; width: 40px; }
+        .input-status { width: 11px; height: 11px; cursor: pointer; accent-color: #1e3a8a; }
+
+        .box-estrategia { background: #f8fafc; border: 1px solid #e2e8f0; padding: 8px; border-radius: 6px; margin-top: auto; border-left: 5px solid #1e3a8a; }
+        .box-estrategia h3 { color: #1e3a8a; font-size: 8.5pt; margin-bottom: 3px; text-transform: uppercase; }
+        .box-estrategia p { font-size: 7.5pt; color: #334155; line-height: 1.2; }
+        
+        .footer { text-align: center; font-size: 6.5pt; color: #94a3b8; border-top: 1px solid #e2e8f0; padding-top: 4px; margin-top: 5px; }
+        .no-print { text-align: center; padding: 5px; }
+        button { padding: 6px 15px; cursor: pointer; background: #1e3a8a; color: white; border: none; border-radius: 4px; font-weight: bold; font-size: 8pt; }
+        @media print { .no-print { display: none; } .lauda { margin: 0; box-shadow: none; width: 210mm; height: 297mm; } }
+    </style>
+</head>
+<body>
+    <div class="no-print">
+        <button onclick="window.print()">IMPRIMIR ROTA INTEGRAL T.I. (EXAUSTIVA)</button>
+    </div>
+    <div class="lauda">
+        <h1>📑 Rota Exaustiva: Tecnologia da Informação</h1>
+        
+        <h2>NÍVEL 1: O SISTEMA E A GESTÃO LOCAL (A BASE)</h2>
+        <table class="edital-table">
+            <thead><tr><th style="width: 8%;">Nº</th><th>Tópico do Edital (Link p/ estudo focado CEBRASPE)</th><th class="td-status">OK</th></tr></thead>
+            <tbody>
+                <tr><td>1</td><td><a href="Tec.da.Informacao.1.Sist.op.ambiente.Windows.html"_blank">Noções de sistema operacional (ambiente Windows).</a></td><td class="td-status"><input type="checkbox" class="input-status"></td></tr>
+                <tr><td>4</td><td><a href="Tec.da.Informacao.4.Organizacao.e.gerenciamento.arquivos.pastas.e.programas.html" target="_blank">Noções de organização e de gerenciamento de informações, arquivos, pastas e programas.</a></td><td class="td-status"><input type="checkbox" class="input-status"></td></tr>
+                <tr><td>2</td><td><a href="Tec.da.Informacao.2.Office.html" target="_blank">Edição de textos, planilhas e apresentações (ambiente Microsoft Office).</a></td><td class="td-status"><input type="checkbox" class="input-status"></td></tr>
+            </tbody>
+        </table>
+
+        <h2>NÍVEL 2: REDES E COMUNICAÇÃO DIGITAL</h2>
+        <table class="edital-table">
+            <tbody>
+                <tr><td style="width: 8%;">3</td><td><a href="https://www.google.com/search?q=Redes+de+computadores+questões+CEBRASPE" target="_blank">Redes de computadores.</a></td><td class="td-status"><input type="checkbox" class="input-status"></td></tr>
+                <tr><td>3.1</td><td><a href="https://www.google.com/search?q=Conceitos+básicos+ferramentas+Internet+e+intranet+CEBRASPE" target="_blank">Conceitos básicos, ferramentas, aplicativos e procedimentos de Internet e intranet.</a></td><td class="td-status"><input type="checkbox" class="input-status"></td></tr>
+                <tr><td>3.2</td><td><a href="https://www.google.com/search?q=Programas+navegação+Edge+Firefox+Chrome+CEBRASPE" target="_blank">Programas de navegação (Microsoft Edge, Mozilla Firefox e Google Chrome e similares).</a></td><td class="td-status"><input type="checkbox" class="input-status"></td></tr>
+                <tr><td>3.4</td><td><a href="https://www.google.com/search?q=Sítios+de+busca+e+pesquisa+na+Internet+CEBRASPE" target="_blank">Sítios de busca e pesquisa na Internet.</a></td><td class="td-status"><input type="checkbox" class="input-status"></td></tr>
+                <tr><td>3.3</td><td><a href="https://www.google.com/search?q=Programas+correio+eletrônico+Microsoft+Outlook+CEBRASPE" target="_blank">Programas de correio eletrônico (Microsoft Outlook).</a></td><td class="td-status"><input type="checkbox" class="input-status"></td></tr>
+                <tr><td>3.5</td><td><a href="https://www.google.com/search?q=Grupos+de+discussão+informática+questões+CEBRASPE" target="_blank">Grupos de discussão.</a></td><td class="td-status"><input type="checkbox" class="input-status"></td></tr>
+                <tr><td>3.6</td><td><a href="https://www.google.com/search?q=Redes+sociais+informática+questões+CEBRASPE" target="_blank">Redes sociais.</a></td><td class="td-status"><input type="checkbox" class="input-status"></td></tr>
+            </tbody>
+        </table>
+
+        <h2>NÍVEL 3: COMPUTAÇÃO E ARMAZENAMENTO EM NUVEM</h2>
+        <table class="edital-table">
+            <tbody>
+                <tr><td style="width: 8%;">3.7</td><td><a href="https://www.google.com/search?q=Computação+na+nuvem+cloud+computing+CEBRASPE" target="_blank">Computação na nuvem (cloud computing).</a></td><td class="td-status"><input type="checkbox" class="input-status"></td></tr>
+                <tr><td>5.5</td><td><a href="https://www.google.com/search?q=Armazenamento+de+dados+na+nuvem+cloud+storage+CEBRASPE" target="_blank">Armazenamento de dados na nuvem (cloud storage).</a></td><td class="td-status"><input type="checkbox" class="input-status"></td></tr>
+            </tbody>
+        </table>
+
+        <h2>NÍVEL 4: SEGURANÇA DA INFORMAÇÃO (O TOPO)</h2>
+        <table class="edital-table">
+            <tbody>
+                <tr><td style="width: 8%;">5</td><td><a href="https://www.google.com/search?q=Segurança+da+informação+principios+fundamentais+CEBRASPE" target="_blank">Segurança da informação (Conceitos Gerais).</a></td><td class="td-status"><input type="checkbox" class="input-status"></td></tr>
+                <tr><td>5.1</td><td><a href="https://www.google.com/search?q=Procedimentos+de+segurança+informática+CEBRASPE" target="_blank">Procedimentos de segurança.</a></td><td class="td-status"><input type="checkbox" class="input-status"></td></tr>
+                <tr><td>5.2</td><td><a href="https://www.google.com/search?q=Noções+de+malware+vírus+worms+pragas+virtuais+CEBRASPE" target="_blank">Noções de malware, vírus, worms e pragas virtuais.</a></td><td class="td-status"><input type="checkbox" class="input-status"></td></tr>
+                <tr><td>5.3</td><td><a href="https://www.google.com/search?q=Aplicativos+segurança+firewall+anti-spyware+antivírus+CEBRASPE" target="_blank">Aplicativos para segurança (antivírus, firewall, anti‐spyware etc.).</a></td><td class="td-status"><input type="checkbox" class="input-status"></td></tr>
+                <tr><td>5.4</td><td><a href="https://www.google.com/search?q=Procedimentos+de+backup+backup+incremental+completo+CEBRASPE" target="_blank">Procedimentos de backup.</a></td><td class="td-status"><input type="checkbox" class="input-status"></td></tr>
+            </tbody>
+        </table>
+
+        <div class="box-estrategia">
+            <h3>🛡️ ESTRATÉGIA INTEGRAL</h3>
+            <p>Os níveis refletem a evolução técnica. <b>Nível 1</b> é o hardware e o office local. <b>Nível 2 e 3</b> tratam do dado em trânsito e na nuvem. O <b>Nível 4</b> é o tema mais recorrente do CEBRASPE e exige domínio absoluto das diferenças técnicas entre <i>Virus</i> e <i>Worms</i>.</p>
+        </div>
+        <div class="footer">Documento de Controle Integral - UNEAL 2026 - T.I. Cronológico</div>
+    </div>
+</body>
+</html>

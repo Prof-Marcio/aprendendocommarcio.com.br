@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estudo Estratégico – Gerenciamento de Arquivos e Pastas</title>
+    <style>
+        body {
+            background-color: #525659;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-family: "Segoe UI", Roboto, Arial, sans-serif;
+        }
+
+        .page {
+            background: white;
+            width: 210mm;
+            min-height: 297mm;
+            padding: 20mm;
+            margin-bottom: 30px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.6);
+            box-sizing: border-box;
+            position: relative;
+            color: #1a1a1a;
+            line-height: 1.5;
+        }
+
+        @media print {
+            body { background: none; padding: 0; }
+            .page { margin: 0; box-shadow: none; page-break-after: always; }
+        }
+
+        header {
+            text-align: center;
+            border-bottom: 4px solid #F39C12;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+        }
+
+        .cargo-tag {
+            background-color: #F39C12;
+            color: #fff;
+            padding: 6px 12px;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            font-size: 10pt;
+            border-radius: 4px;
+        }
+
+        h1 { font-size: 18pt; margin: 5px 0; color: #7E5109; letter-spacing: -0.5px; }
+        h2 { font-size: 14pt; border-bottom: 2px solid #F39C12; margin-top: 20px; padding-bottom: 5px; background-color: #FEF5E7; padding-left: 10px; color: #F39C12; }
+        h3 { font-size: 11pt; margin-top: 15px; color: #7E5109; border-left: 4px solid #F39C12; padding-left: 8px; }
+        
+        p, li { font-size: 10.5pt; margin: 8px 0; text-align: justify; }
+        ul { padding-left: 25px; }
+        strong { color: #000; }
+
+        .item-exemplo {
+            border-left: 5px solid #F39C12;
+            padding: 12px;
+            margin: 15px 0;
+            background-color: #FFFAF0;
+            font-size: 10pt;
+            box-shadow: 2px 2px 5px rgba(0,0,0,0.05);
+        }
+
+        .certo { font-weight: bold; color: #219142; }
+        .errado { font-weight: bold; color: #cb4335; }
+
+        .metodo-box {
+            border: 2px dashed #F39C12;
+            padding: 15px;
+            margin: 20px 0;
+            background-color: #ffffff;
+            border-radius: 8px;
+        }
+
+        .footer-page {
+            position: absolute;
+            bottom: 10mm;
+            right: 20mm;
+            font-size: 9pt;
+            color: #7f8c8d;
+            font-weight: bold;
+            border-top: 1px solid #bdc3c7;
+            padding-top: 5px;
+        }
+
+        .check-v { color: #F39C12; font-weight: bold; }
+        .check-x { color: #cb4335; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+    <div class="page">
+        <header>
+            <div class="cargo-tag">Concurso: UNEAL – Técnico em Assuntos Educacionais</div>
+            <h1>📚 Estudo Estratégico – Gerenciamento de Arquivos e Pastas</h1>
+            <p><strong>Banca:</strong> CEBRASPE | <strong>Disciplina:</strong> TI | <strong>Tema:</strong> Organização no Windows</p>
+        </header>
+
+        <h2>1️⃣ Conceito essencial (o que é)</h2>
+        <p>O <strong>gerenciamento de arquivos e pastas</strong> é o conjunto de operações que permite organizar, armazenar, localizar e manipular informações no computador. Essas operações são feitas principalmente pelo <strong>Explorador de Arquivos</strong> do Windows, permitindo criar pastas, copiar, mover, renomear e excluir itens.</p>
+
+        <h2>2️⃣ Estrutura completa e regras fundamentais</h2>
+        <h3>Arquivo</h3>
+        <p>Unidade de informação armazenada no computador (documentos, imagens, vídeos, planilhas). Cada arquivo possui um <strong>nome + extensão</strong> (ex: documento.docx, imagem.jpg).</p>
+
+        <h3>Pasta (diretório)</h3>
+        <p>Local usado para armazenar arquivos ou outras pastas, servindo para organizar informações em uma <strong>estrutura hierárquica</strong> (computador → pasta → subpasta → arquivos).</p>
+
+        <h3>Operações básicas</h3>
+        <ul>
+            <li><strong>Copiar:</strong> Cria uma duplicata do arquivo em outro local.</li>
+            <li><strong>Mover:</strong> Transfere o arquivo, removendo-o do local original.</li>
+            <li><strong>Renomear:</strong> Altera apenas o nome, mantendo o conteúdo intacto.</li>
+            <li><strong>Excluir:</strong> Remove o arquivo do sistema; no Windows, normalmente vai para a Lixeira.</li>
+        </ul>
+
+        <h3>Programas</h3>
+        <p>Softwares executáveis que realizam tarefas específicas, como editores de texto, navegadores e planilhas.</p>
+
+        <div class="footer-page">TECNOLOGIA DA INFORMAÇÃO - PÁGINA 1</div>
+    </div>
+
+    <div class="page">
+        <h2>3️⃣ O que realmente mais cai na CEBRASPE</h2>
+        <ul>
+            <li><span class="check-v">✔</span> Diferença técnica entre arquivo e pasta.</li>
+            <li><span class="check-v">✔</span> Funções e limitações da Lixeira.</li>
+            <li><span class="check-v">✔</span> Operações de copiar, mover e excluir.</li>
+            <li><span class="check-v">✔</span> Estrutura hierárquica de pastas e extensões de arquivos.</li>
+        </ul>
+
+        <h2>4️⃣ Como a banca CEBRASPE formula as questões</h2>
+        <div class="item-exemplo">
+            <strong>Exemplo típico:</strong><br>
+            "Copiar um arquivo gera outra cópia do arquivo no destino."<br>
+            ➔ <span class="certo">✔ CERTO.</span>
+        </div>
+
+        <h2>5️⃣ Pegadinhas mais comuns da banca</h2>
+        <p><strong>Confundir copiar e mover:</strong> Copiar gera duplicata; mover apenas transfere o item original.</p>
+        <p><strong>Excluir vs. Apagar permanentemente:</strong> A banca sugere que excluir remove de imediato, mas o arquivo passa pela Lixeira primeiro.</p>
+        <p><strong>Pasta vs. Arquivo:</strong> Afirmar que uma pasta executa programas, quando ela apenas os organiza.</p>
+
+        <h2>6️⃣ Como a banca constrói itens ERRADOS</h2>
+        <ul>
+            <li><span class="check-x">❌</span> Afirmam que a operação de mover cria uma cópia no destino.</li>
+            <li><span class="check-x">❌</span> Dizem que copiar remove o arquivo do local original.</li>
+            <li><span class="check-x">❌</span> Confundem o conceito de pasta com o de arquivo executável.</li>
+            <li><span class="check-x">❌</span> Dizem que excluir remove permanentemente sem passar pela Lixeira.</li>
+        </ul>
+
+        <div class="footer-page">TECNOLOGIA DA INFORMAÇÃO - PÁGINA 2</div>
+    </div>
+
+    <div class="page">
+        <h2>7️⃣ Exemplos estilo CERTO ou ERRADO</h2>
+        <div class="item-exemplo">
+            <strong>Item 1:</strong> Pastas são usadas para organizar arquivos no computador. <span class="certo">✔ CERTO.</span>
+        </div>
+        <div class="item-exemplo">
+            <strong>Item 2:</strong> Ao mover um arquivo, cria-se uma cópia dele no destino. <span class="errado">❌ ERRADO.</span>
+        </div>
+        <div class="item-exemplo">
+            <strong>Item 3:</strong> Arquivos excluídos podem ser enviados para a Lixeira. <span class="certo">✔ CERTO.</span>
+        </div>
+        <div class="item-exemplo">
+            <strong>Item 4:</strong> Um arquivo pode conter outros arquivos em seu interior. <span class="errado">❌ ERRADO.</span> (Apenas pastas contêm arquivos).
+        </div>
+
+        <h2>8️⃣ Método rápido: Regra ACM</h2>
+        <div class="metodo-box">
+            <ul>
+                <li><strong>A — Arquivo:</strong> Pense como a unidade de informação (o conteúdo).</li>
+                <li><strong>C — Copiar:</strong> Pense em duplicação (1 vira 2).</li>
+                <li><strong>M — Mover:</strong> Pense em transferência (sai de um lado, vai para o outro).</li>
+            </ul>
+        </div>
+
+        <h2>9️⃣ Checklist mental de identificação</h2>
+        <ul>
+            <li><span class="check-v">✔</span> Está falando de arquivo ou pasta?</li>
+            <li><span class="check-v">✔</span> A operação cria duplicata (copiar) ou transfere (mover)?</li>
+            <li><span class="check-v">✔</span> O item menciona a Lixeira ou remoção permanente?</li>
+        </ul>
+
+        <h2>🔟 Erros mais comuns dos candidatos</h2>
+        <ul>
+            <li><span class="check-x">❌</span> Esquecer que a extensão define o tipo do arquivo.</li>
+            <li><span class="check-x">❌</span> Confundir pastas com programas executáveis.</li>
+        </ul>
+
+        <div class="metodo-box" style="background-color: #FEF5E7; border-style: solid;">
+            <h2 style="margin-top: 0; background: none; border: none; color: #7E5109;">🧠 RESUMO ESTRATÉGICO (Arquivos e Pastas)</h2>
+            <p><strong>Arquivo:</strong> unidade de informação com nome + extensão (ex: arquivo.docx).</p>
+            <p><strong>Pasta:</strong> organiza arquivos e subpastas. Estrutura hierárquica.</p>
+            <p><strong>Operações:</strong> 
+                <br>• Copiar = duplicata. 
+                <br>• Mover = transferência. 
+                <br>• Excluir = Lixeira.
+            </p>
+            <p><strong>Programas:</strong> arquivos executáveis que realizam tarefas.</p>
+            <p style="text-align: center; font-weight: bold; color: #7E5109; margin-top: 10px;">Regra rápida: Arquivo = Informação | Pasta = Organização.</p>
+        </div>
+
+        <div class="footer-page">TECNOLOGIA DA INFORMAÇÃO - PÁGINA 3</div>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estudo Estratégico – Sistema Operacional (Ambiente Windows)</title>
+    <style>
+        body {
+            background-color: #525659;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-family: "Segoe UI", Roboto, Arial, sans-serif;
+        }
+
+        .page {
+            background: white;
+            width: 210mm;
+            min-height: 297mm;
+            padding: 20mm;
+            margin-bottom: 30px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.6);
+            box-sizing: border-box;
+            position: relative;
+            color: #1a1a1a;
+            line-height: 1.5;
+        }
+
+        @media print {
+            body { background: none; padding: 0; }
+            .page { margin: 0; box-shadow: none; page-break-after: always; }
+        }
+
+        header {
+            text-align: center;
+            border-bottom: 4px solid #27AE60;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+        }
+
+        .cargo-tag {
+            background-color: #27AE60;
+            color: #fff;
+            padding: 6px 12px;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            font-size: 10pt;
+            border-radius: 4px;
+        }
+
+        h1 { font-size: 18pt; margin: 5px 0; color: #145A32; letter-spacing: -0.5px; }
+        h2 { font-size: 14pt; border-bottom: 2px solid #27AE60; margin-top: 20px; padding-bottom: 5px; background-color: #E9F7EF; padding-left: 10px; color: #27AE60; }
+        h3 { font-size: 11pt; margin-top: 15px; color: #145A32; border-left: 4px solid #27AE60; padding-left: 8px; }
+        
+        p, li { font-size: 10.5pt; margin: 8px 0; text-align: justify; }
+        ul { padding-left: 25px; }
+        strong { color: #000; }
+
+        .item-exemplo {
+            border-left: 5px solid #27AE60;
+            padding: 12px;
+            margin: 15px 0;
+            background-color: #F1F9F5;
+            font-size: 10pt;
+            box-shadow: 2px 2px 5px rgba(0,0,0,0.05);
+        }
+
+        .certo { font-weight: bold; color: #219142; }
+        .errado { font-weight: bold; color: #cb4335; }
+
+        .metodo-box {
+            border: 2px dashed #27AE60;
+            padding: 15px;
+            margin: 20px 0;
+            background-color: #ffffff;
+            border-radius: 8px;
+        }
+
+        .footer-page {
+            position: absolute;
+            bottom: 10mm;
+            right: 20mm;
+            font-size: 9pt;
+            color: #7f8c8d;
+            font-weight: bold;
+            border-top: 1px solid #bdc3c7;
+            padding-top: 5px;
+        }
+
+        .check-v { color: #27AE60; font-weight: bold; }
+        .check-x { color: #cb4335; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+    <div class="page">
+        <header>
+            <div class="cargo-tag">Concurso: UNEAL – Técnico em Assuntos Educacionais</div>
+            <h1>📚 Estudo Estratégico – Ambiente Microsoft Windows</h1>
+            <p><strong>Banca:</strong> CEBRASPE | <strong>Disciplina:</strong> Tecnologia da Informação | <strong>Tema:</strong> Sistema Operacional</p>
+        </header>
+
+        <h2>1️⃣ Conceito essencial (o que é)</h2>
+        <p>O <strong>sistema operacional</strong> é o software responsável por gerenciar os recursos do computador e permitir a interação entre usuário, hardware e programas. No caso do Windows, ele fornece uma <strong>interface gráfica (GUI)</strong> que permite executar tarefas como abrir programas, organizar arquivos e configurar dispositivos de forma intuitiva.</p>
+
+        <h2>2️⃣ Estrutura completa e elementos fundamentais</h2>
+        <h3>Área de Trabalho (Desktop)</h3>
+        <p>Tela inicial do Windows onde ficam localizados os ícones, atalhos, arquivos e pastas. É o ponto de partida para o acesso rápido aos programas.</p>
+
+        <h3>Menu Iniciar</h3>
+        <p>Principal centro de acesso do sistema. Por meio dele, é possível abrir programas, acessar as configurações do sistema e desligar ou reiniciar o computador.</p>
+
+        <h3>Barra de Tarefas</h3>
+        <p>Geralmente localizada na parte inferior da tela, possui funções essenciais:</p>
+        <ul>
+            <li>Mostrar programas que estão abertos no momento.</li>
+            <li>Acesso rápido ao Menu Iniciar e à Área de Notificação (relógio, rede, bateria).</li>
+            <li>Fixar atalhos de programas usados com frequência.</li>
+        </ul>
+
+        <h3>Explorador de Arquivos</h3>
+        <p>Ferramenta de gerenciamento para navegar em pastas, copiar, mover, renomear ou excluir arquivos e itens do sistema.</p>
+
+        <h3>Manipulação de Janelas</h3>
+        <p>Cada programa aberto aparece em uma janela individual com os botões:</p>
+        <ul>
+            <li><strong>Minimizar:</strong> Oculta a janela na barra de tarefas (não fecha o programa).</li>
+            <li><strong>Maximizar/Restaurar:</strong> Ajusta o tamanho da janela à tela.</li>
+            <li><strong>Fechar:</strong> Encerra a execução do programa.</li>
+        </ul>
+
+        <div class="footer-page">TECNOLOGIA DA INFORMAÇÃO - PÁGINA 1</div>
+    </div>
+
+    <div class="page">
+        <h2>3️⃣ O que realmente mais cai na CEBRASPE</h2>
+        <p>A banca foca em conhecimentos práticos e operacionais do sistema:</p>
+        <ul>
+            <li><span class="check-v">✔</span> Funções específicas da barra de tarefas (como alternar entre janelas).</li>
+            <li><span class="check-v">✔</span> Organização e hierarquia no Menu Iniciar.</li>
+            <li><span class="check-v">✔</span> Uso do Explorador de Arquivos para movimentação de dados.</li>
+            <li><span class="check-v">✔</span> Comportamento das janelas e atalhos básicos (ex: Win+D, Alt+Tab).</li>
+        </ul>
+
+        <h2>4️⃣ Como a banca CEBRASPE formula as questões</h2>
+        <p>A banca costuma apresentar afirmações diretas sobre as funcionalidades do Windows para que o candidato julgue como certo ou errado.</p>
+        <div class="item-exemplo">
+            <strong>Exemplo típico:</strong><br>
+            "A barra de tarefas permite alternar entre programas abertos."<br>
+            ➔ <span class="certo">✔ CERTO.</span>
+        </div>
+
+        <h2>5️⃣ Pegadinhas mais comuns da banca</h2>
+        <p><strong>Confundir barra de tarefas com área de trabalho:</strong> Lembre-se que a barra de tarefas é o componente fixo de controle, enquanto o desktop é o plano de fundo com os ícones.</p>
+        <p><strong>Confundir pasta com arquivo:</strong> Pastas são contêineres que armazenam arquivos; elas não executam funções sozinhas.</p>
+        <p><strong>Confundir minimizar com fechar:</strong> Minimizar apenas retira a janela da visão do usuário, mas o processo continua ativo na memória RAM.</p>
+
+        <h2>6️⃣ Como a banca constrói itens ERRADOS</h2>
+        <ul>
+            <li><span class="check-x">❌</span> Afirmam que minimizar uma janela encerra o programa em execução.</li>
+            <li><span class="check-x">❌</span> Dizem que arquivos comuns executam funções vitais do sistema.</li>
+            <li><span class="check-x">❌</span> Confundem o menu iniciar com a barra de tarefas em descrições técnicas.</li>
+            <li><span class="check-x">❌</span> Afirmam que uma pasta pode executar aplicativos diretamente.</li>
+        </ul>
+
+        <div class="footer-page">TECNOLOGIA DA INFORMAÇÃO - PÁGINA 2</div>
+    </div>
+
+    <div class="page">
+        <h2>7️⃣ Exemplos estilo CERTO ou ERRADO</h2>
+        <div class="item-exemplo">
+            <strong>Item 1:</strong> O Menu Iniciar permite acessar programas instalados no Windows. <span class="certo">✔ CERTO.</span>
+        </div>
+        <div class="item-exemplo">
+            <strong>Item 2:</strong> Minimizar uma janela encerra o programa em execução. <span class="errado">❌ ERRADO.</span>
+        </div>
+        <div class="item-exemplo">
+            <strong>Item 3:</strong> O Explorador de Arquivos permite copiar e mover arquivos. <span class="certo">✔ CERTO.</span>
+        </div>
+        <div class="item-exemplo">
+            <strong>Item 4:</strong> A barra de tarefas serve apenas para desligar o computador. <span class="errado">❌ ERRADO.</span>
+        </div>
+
+        <h2>8️⃣ Método rápido: Regra MEB</h2>
+        <div class="metodo-box">
+            <ul>
+                <li><strong>M — Menu Iniciar:</strong> Seu foco é o acesso rápido a programas e configurações.</li>
+                <li><strong>E — Explorador:</strong> Foco no gerenciamento de pastas e arquivos.</li>
+                <li><strong>B — Barra de tarefas:</strong> Foco no controle operacional de janelas abertas.</li>
+            </ul>
+        </div>
+
+        <h2>9️⃣ Checklist mental de identificação</h2>
+        <ul>
+            <li><span class="check-v">✔</span> A questão trata de programas (Menu Iniciar)?</li>
+            <li><span class="check-v">✔</span> A questão trata de arquivos (Explorador)?</li>
+            <li><span class="check-v">✔</span> Refere-se ao estado da janela (Barra de Tarefas)?</li>
+        </ul>
+
+        <h2>🔟 Erros mais comuns dos candidatos</h2>
+        <ul>
+            <li><span class="check-x">❌</span> Ignorar que a barra de tarefas também possui a área de notificação.</li>
+            <li><span class="check-x">❌</span> Esquecer que o Explorador de Arquivos é a ferramenta central de organização.</li>
+        </ul>
+
+        <div class="metodo-box" style="background-color: #E9F7EF; border-style: solid;">
+            <h2 style="margin-top: 0; background: none; border: none; color: #145A32;">🧠 RESUMO ESTRATÉGICO (Microsoft Windows)</h2>
+            <p><strong>Windows:</strong> Software que gerencia hardware + programas + usuário.</p>
+            <p><strong>Elementos Principais:</strong>
+                <br>• <strong>Área de Trabalho:</strong> Desktop com ícones.
+                <br>• <strong>Menu Iniciar:</strong> Programas, configurações e desligamento.
+                <br>• <strong>Barra de Tarefas:</strong> Controle de janelas abertas e alternância.
+                <br>• <strong>Explorador de Arquivos:</strong> Cópia, movimentação e pastas.
+            </p>
+            <p><strong>Janelas:</strong> Minimizar (esconde), Maximizar (amplia), Fechar (encerra).</p>
+            <p style="text-align: center; font-weight: bold; color: #145A32; margin-top: 10px;">Regra rápida: Menu = Programas | Explorador = Arquivos | Barra = Controle!</p>
+        </div>
+
+        <div class="footer-page">TECNOLOGIA DA INFORMAÇÃO - PÁGINA 3</div>
+    </div>
+
+</body>
+</html>

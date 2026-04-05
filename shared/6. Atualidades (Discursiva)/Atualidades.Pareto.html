@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Pareto: Atualidades Discursiva (UNEAL)</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background-color: #f1f5f9; font-family: 'Segoe UI', sans-serif; }
+        @page { size: A4; margin: 0; }
+        .lauda {
+            background: white; width: 210mm; height: 297mm; padding: 1.2cm;
+            margin: 0 auto; display: flex; flex-direction: column;
+            border-top: 12px solid #f97316; position: relative;
+        }
+        h1 { color: #9a3412; font-size: 18pt; text-align: center; border-bottom: 2px solid #f97316; padding-bottom: 8px; margin-bottom: 15px; text-transform: uppercase; }
+        h2 { color: #c2410c; font-size: 11pt; margin: 15px 0 8px 0; text-transform: uppercase; border-left: 4px solid #f97316; padding-left: 8px; background: #fff7ed; }
+        
+        .edital-table { width: 100%; border-collapse: collapse; margin-bottom: 15px; }
+        .edital-table th { background: #f97316; color: white; padding: 8px; font-size: 8pt; border: 1px solid #ea580c; }
+        .edital-table td { border: 1px solid #fed7aa; padding: 5px 8px; font-size: 7.8pt; vertical-align: middle; line-height: 1.2; }
+        
+        /* Links Estilizados */
+        .edital-table td a { color: #1e3a8a; text-decoration: none; font-weight: bold; }
+        .edital-table td a:hover { text-decoration: underline; }
+
+        /* Cores de Prioridade Pareto */
+        .alto { background-color: #ffedd5; color: #9a3412; font-weight: bold; text-align: center; }
+        .medio { color: #6b7280; text-align: center; }
+        .baixo { color: #9ca3af; text-align: center; }
+
+        /* Checkbox */
+        .td-status { text-align: center !important; }
+        .input-status { width: 14px; height: 14px; cursor: pointer; accent-color: #f97316; }
+
+        .box-estrategia { background: #fff7ed; border: 1px solid #ffedd5; padding: 12px; border-radius: 8px; margin-top: auto; border-left: 6px solid #f97316; }
+        .box-estrategia h3 { color: #9a3412; font-size: 10pt; margin-bottom: 5px; text-transform: uppercase; }
+        .box-estrategia p { font-size: 8.5pt; color: #431407; line-height: 1.4; margin-bottom: 4px; }
+        
+        .footer { text-align: center; font-size: 7.5pt; color: #94a3b8; border-top: 1px solid #e2e8f0; padding-top: 8px; margin-top: 10px; }
+        .no-print { text-align: center; padding: 10px; }
+        button { padding: 10px 25px; cursor: pointer; background: #f97316; color: white; border: none; border-radius: 5px; font-weight: bold; }
+        @media print { .no-print { display: none; } .lauda { margin: 0; box-shadow: none; width: 210mm; height: 297mm; } }
+    </style>
+</head>
+<body>
+    <div class="no-print">
+        <button onclick="window.print()">IMPRIMIR TABELA PARETO INTEGRAL</button>
+    </div>
+    <div class="lauda">
+        <h1>📊 Análise Pareto: Atualidades (Discursiva)</h1>
+        
+        <h2>PARTE 1: Mapeamento Geral de Conteúdos</h2>
+        <table class="edital-table">
+            <thead>
+                <tr>
+                    <th style="width: 8%;">Item</th>
+                    <th style="width: 25%;">Termo do Edital (Link)</th>
+                    <th style="width: 47%;">Como o CEBRASPE cobra</th>
+                    <th style="width: 12%;">Prioridade</th>
+                    <th style="width: 8%;">Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>1.1</td><td><a href="https://www.google.com/search?q=cebraspe+discursiva+segurança+pública+violência+prevenção" target="_blank">Segurança</a></td><td>Violência, segurança pública e impactos sociais.</td><td class="medio">MÉDIO</td><td class="td-status"><input type="checkbox" class="input-status"></td></tr>
+                <tr><td>1.2</td><td><a href="https://www.google.com/search?q=cebraspe+discursiva+mobilidade+urbana+transporte+sustentável" target="_blank">Transportes</a></td><td>Mobilidade urbana e sustentabilidade.</td><td class="baixo">BAIXO</td><td class="td-status"><input type="checkbox" class="input-status"></td></tr>
+                <tr><td>1.3</td><td><a href="https://www.google.com/search?q=cebraspe+discursiva+conjuntura+política+governança+democracia" target="_blank">Política</a></td><td>Conjuntura nacional/internacional e democracia.</td><td class="alto">ALTO</td><td class="td-status"><input type="checkbox" class="input-status"></td></tr>
+                <tr><td>1.4</td><td><a href="https://www.google.com/search?q=cebraspe+discursiva+economia+desigualdade+inflação" target="_blank">Economia</a></td><td>Inflação, desigualdade e mercado de trabalho.</td><td class="alto">ALTO</td><td class="td-status"><input type="checkbox" class="input-status"></td></tr>
+                <tr><td>1.5</td><td><a href="https://www.google.com/search?q=cebraspe+discursiva+sociedade+direitos+humanos+inclusão" target="_blank">Sociedade</a></td><td>Desigualdade, inclusão e direitos humanos.</td><td class="alto">ALTO</td><td class="td-status"><input type="checkbox" class="input-status"></td></tr>
+                <tr><td>1.6</td><td><a href="https://www.google.com/search?q=cebraspe+discursiva+políticas+educacionais+desafios+educação" target="_blank">Educação</a></td><td>Políticas públicas e acesso à qualidade.</td><td class="alto">ALTO</td><td class="td-status"><input type="checkbox" class="input-status"></td></tr>
+                <tr><td>1.7</td><td><a href="https://www.google.com/search?q=cebraspe+discursiva+saúde+pública+SUS+pandemias" target="_blank">Saúde</a></td><td>SUS e desafios da saúde pública.</td><td class="medio">MÉDIO</td><td class="td-status"><input type="checkbox" class="input-status"></td></tr>
+                <tr><td>1.8</td><td><a href="https://www.google.com/search?q=cebraspe+discursiva+diversidade+cultural+identidade+nacional" target="_blank">Cultura</a></td><td>Diversidade e políticas culturais.</td><td class="baixo">BAIXO</td><td class="td-status"><input type="checkbox" class="input-status"></td></tr>
+                <tr><td>1.9</td><td><a href="https://www.google.com/search?q=cebraspe+discursiva+tecnologia+inteligência+artificial+inovação" target="_blank">Tecnologia</a></td><td>IA e impactos da transformação digital.</td><td class="alto">ALTO</td><td class="td-status"><input type="checkbox" class="input-status"></td></tr>
+                <tr><td>1.10</td><td><a href="https://www.google.com/search?q=cebraspe+discursiva+matriz+energética+transição+sustentabilidade" target="_blank">Energia</a></td><td>Transição energética e sustentabilidade.</td><td class="medio">MÉDIO</td><td class="td-status"><input type="checkbox" class="input-status"></td></tr>
+                <tr><td>1.11</td><td><a href="https://www.google.com/search?q=cebraspe+discursiva+relações+internacionais+geopolítica+G20" target="_blank">Relações Int.</a></td><td>Conflitos, geopolítica e cooperação global.</td><td class="medio">MÉDIO</td><td class="td-status"><input type="checkbox" class="input-status"></td></tr>
+                <tr><td>1.12</td><td><a href="https://www.google.com/search?q=cebraspe+discursiva+agenda+2030+sustentabilidade+clima" target="_blank">Desenv. Sustentável</a></td><td>Agenda 2030 e mudanças climáticas.</td><td class="alto">ALTO</td><td class="td-status"><input type="checkbox" class="input-status"></td></tr>
+                <tr><td>1.13</td><td><a href="https://www.google.com/search?q=cebraspe+discursiva+ecologia+biodiversidade+impactos+ambientais" target="_blank">Ecologia</a></td><td>Preservação e biodiversidade.</td><td class="medio">MÉDIO</td><td class="td-status"><input type="checkbox" class="input-status"></td></tr>
+            </tbody>
+        </table>
+
+        <h2>PARTE 2: 🎯 Pareto Real (Alta Probabilidade)</h2>
+        <table class="edital-table">
+            <thead>
+                <tr>
+                    <th style="width: 20%;">Termo Chave</th>
+                    <th style="width: 70%;">Abordagem Prática (Treine este argumento)</th>
+                    <th style="width: 10%;">Pronto?</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td><b>Política</b></td><td>Impactos das decisões políticas na garantia da cidadania.</td><td class="td-status"><input type="checkbox" class="input-status"></td></tr>
+                <tr><td><b>Economia</b></td><td>Relação entre crescimento econômico e redução da pobreza.</td><td class="td-status"><input type="checkbox" class="input-status"></td></tr>
+                <tr><td><b>Sociedade</b></td><td>O papel das instituições na proteção de minorias e Direitos Humanos.</td><td class="td-status"><input type="checkbox" class="input-status"></td></tr>
+                <tr><td><b>Educação</b></td><td>A educação como ferramenta de inclusão digital e social.</td><td class="td-status"><input type="checkbox" class="input-status"></td></tr>
+                <tr><td><b>Tecnologia</b></td><td>Desafios éticos da IA e a proteção de dados no setor público.</td><td class="td-status"><input type="checkbox" class="input-status"></td></tr>
+                <tr><td><b>Sustentabilidade</b></td><td>A urgência da Agenda 2030 frente a desastres ambientais.</td><td class="td-status"><input type="checkbox" class="input-status"></td></tr>
+            </tbody>
+        </table>
+
+        <div class="box-estrategia">
+            <h3>💡 OBSERVAÇÃO ESTRATÉGICA CEBRASPE</h3>
+            <p><strong>Dissertação Integrada:</strong> A banca costuma pedir um texto que relacione dois ou mais eixos. Exemplo: <i>"Os impactos da Inteligência Artificial (Tecnologia) nos desafios da Educação contemporânea (Educação)."</i></p>
+            
+
+[Image of the Pareto principle 80-20 rule diagram]
+
+            <p><strong>Foco Discursivo:</strong> Para os itens marcados como <strong>ALTO</strong>, tenha pelo menos dois dados estatísticos ou leis de suporte na memória (ex: Constituição Federal, Marco Civil da Internet, Agenda 2030).</p>
+        </div>
+        
+        <div class="footer">Análise Pareto UNEAL 2026 - Guia de Excelência Discursiva</div>
+    </div>
+</body>
+</html>

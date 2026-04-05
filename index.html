@@ -3,169 +3,130 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UNEAL 2026 | Painel de Controle Pareto</title>
+    <title>Master Plan: UNEAL 2026</title>
     <style>
         :root {
-            --uneal-blue: #1e3a8a; /* Azul Escuro Institucional */
-            --uneal-light-blue: #3b82f6;
-            --cebraspe-orange: #f59e0b;
-            --alagoas-red: #dc2626;
-            --edu-green: #10b981;
-            --dark: #1e293b;
-            --bg: #f8fafc;
-            --white: #ffffff;
+            --primary: #1e293b;
+            --accent: #3b82f6;
+            --bg: #f1f5f9;
         }
-
-        body { font-family: 'Segoe UI', Tahoma, sans-serif; background: var(--bg); margin: 0; padding: 20px; color: var(--dark); }
-        .container { max-width: 1200px; margin: 0 auto; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            background-color: var(--bg); 
+            font-family: 'Segoe UI', system-ui, sans-serif; 
+            color: var(--primary);
+            line-height: 1.6;
+        }
+        .container { max-width: 1000px; margin: 40px auto; padding: 20px; }
         
-        header { 
-            text-align: center; 
-            padding: 40px 0; 
-            background: var(--white);
-            border-radius: 15px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            margin-bottom: 40px; 
-            border-bottom: 5px solid var(--uneal-blue);
-        }
-        header h1 { margin: 0; font-size: 24pt; color: var(--uneal-blue); letter-spacing: -1px; }
-        header p { color: #64748b; margin-top: 10px; font-weight: 600; text-transform: uppercase; font-size: 9pt; letter-spacing: 2px; }
+        header { text-align: center; margin-bottom: 40px; }
+        header h1 { font-size: 2.5rem; letter-spacing: -1px; color: #0f172a; }
+        header p { color: #64748b; font-size: 1.1rem; }
 
         .grid-disciplinas {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 20px;
         }
 
         .card {
-            background: var(--white);
+            background: white;
+            padding: 25px;
             border-radius: 12px;
-            padding: 20px;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+            transition: transform 0.2s, border-color 0.2s;
             text-decoration: none;
             color: inherit;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.03);
-            border-top: 6px solid #ccc;
-            transition: all 0.3s ease;
             display: flex;
             flex-direction: column;
-            position: relative;
+            border: 2px solid transparent;
         }
 
-        .card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.08); }
-        .card h3 { margin: 10px 0; font-size: 14pt; color: var(--uneal-blue); }
-        .card p { font-size: 9pt; color: #475569; line-height: 1.4; margin-bottom: 15px; flex-grow: 1; }
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent);
+        }
+
+        .card h3 { font-size: 1.2rem; margin-bottom: 10px; display: flex; align-items: center; gap: 10px; }
+        .card p { font-size: 0.85rem; color: #64748b; margin-bottom: 15px; }
         
-        .card-footer {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-top: 1px solid #f1f5f9;
-            padding-top: 12px;
+        .badge {
+            font-size: 0.7rem;
+            font-weight: bold;
+            padding: 4px 10px;
+            border-radius: 20px;
+            text-transform: uppercase;
+            align-self: flex-start;
         }
 
-        .badge-status { 
-            font-size: 7pt; 
-            font-weight: 800; 
-            text-transform: uppercase; 
-            padding: 3px 10px;
-            border-radius: 4px;
-        }
+        /* Cores das Badges por Disciplina */
+        .bg-port { background: #e2e8f0; color: #1e293b; }
+        .bg-ti { background: #dbeafe; color: #1e3a8a; }
+        .bg-rlm { background: #fee2e2; color: #991b1b; }
+        .bg-al { background: #d1fae5; color: #065f46; }
+        .bg-leg { background: #ddd6fe; color: #5b21b6; }
+        .bg-at { background: #fef3c7; color: #b45309; }
+        .bg-esp { background: #e0f2fe; color: #0369a1; }
 
-        .btn-abrir { font-size: 8pt; font-weight: bold; color: var(--uneal-blue); text-transform: uppercase; }
-
-        /* Estilos por Matéria */
-        .c-basica { border-top-color: var(--uneal-light-blue); }
-        .c-alagoas { border-top-color: var(--alagoas-red); }
-        .c-especifica { border-top-color: var(--edu-green); }
-        .c-atualidades { border-top-color: var(--cebraspe-orange); }
-
-        .section-header { 
-            grid-column: 1 / -1; 
-            display: flex; 
-            align-items: center; 
-            margin: 30px 0 10px 0;
-        }
-        .section-header h2 { font-size: 11pt; color: #94a3b8; text-transform: uppercase; letter-spacing: 2px; margin-right: 15px; font-weight: 900; }
-        .line { flex-grow: 1; height: 1px; background: #e2e8f0; }
-
-        footer { text-align: center; margin-top: 60px; padding: 20px; color: #94a3b8; font-size: 8pt; border-top: 1px solid #e2e8f0; }
+        .footer { text-align: center; margin-top: 50px; color: #94a3b8; font-size: 0.8rem; }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <header>
-            <h1>UNEAL 2026 | HUB PARETO</h1>
-            <p>Técnico em Assuntos Educacionais • Foco CEBRASPE</p>
-        </header>
+<div class="container">
+    <header>
+        <h1>🎯 Alvo: UNEAL 2026</h1>
+        <p>Técnico em Assuntos Educacionais | Gestão de Estudos Exaustiva</p>
+    </header>
 
-        <div class="grid-disciplinas">
-            
-            <div class="section-header">
-                <h2>Conhecimentos Básicos</h2>
-                <div class="line"></div>
-            </div>
-            
-            <a href="shared/1. Língua Portuguesa/portugues.html" class="card c-basica">
-                <span class="badge-status" style="background:#dbeafe; color:#1e40af;">Reescrita • Coesão • Tipologia</span>
-                <h3>1. Língua Portuguesa</h3>
-                <p>Foco em inferências, substituição de conectivos e manutenção do sentido original (Padrão CEBRASPE).</p>
-                <div class="card-footer"><span class="btn-abrir">Ver Tópicos →</span></div>
-            </a>
+    <div class="grid-disciplinas">
+        <a href="shared/1. Língua Portuguesa/portugues.link.html" class="card">
+            <span class="badge bg-port">Base</span>
+            <h3>📚 Língua Portuguesa</h3>
+            <p>Morfossintaxe, Coesão, Reescrita e Interpretação de Textos.</p>
+        </a>
 
-            <a href="shared/2. Tecnologia da Infrmação/Tecnologia.da.Informacao.html" class="card c-basica">
-                <span class="badge-status" style="background:#dbeafe; color:#1e40af;">Segurança • Suíte Office • Nuvem</span>
-                <h3>2. Tecnologia da Informação</h3>
-                <p>Conceitos de Internet, ferramentas de busca e segurança da informação.</p>
-                <div class="card-footer"><span class="btn-abrir">Ver Tópicos →</span></div>
-            </a>
+        <a href="shared/2. Tecnologia da Informação/Tecnologia.da.Informacao.link.html" class="card">
+            <span class="badge bg-ti">Geral</span>
+            <h3>💻 Tecnologia da Informação</h3>
+            <p>Windows, Office, Redes, Nuvem e Segurança da Informação.</p>
+        </a>
 
-            <a href="shared/3. Raciocínio Lógico/Raciocinio.Logico.html" class="card c-basica">
-                <span class="badge-status" style="background:#dbeafe; color:#1e40af;">Proposições • Equivalência • Análise</span>
-                <h3>3. Raciocínio Lógico</h3>
-                <p>Lógica sentencial, diagramas lógicos e análise de argumentos complexos.</p>
-                <div class="card-footer"><span class="btn-abrir">Ver Tópicos →</span></div>
-            </a>
+        <a href="shared/3. Raciocínio Lógico/Raciocinio.Logico.link.html" class="card">
+            <span class="badge bg-rlm">Geral</span>
+            <h3>🧠 Raciocínio Lógico</h3>
+            <p>Lógica Sentencial, Dedução, Probabilidade e Estatística.</p>
+        </a>
 
-            <a href="shared/4. Conhecimentos de Alagoas/Conhecimentos.de.alagoas.html" class="card c-alagoas">
-                <span class="badge-status" style="background:#fee2e2; color:#991b1b;">História • Geografia • Constituição</span>
-                <h3>4. Conhecimentos Alagoas</h3>
-                <p>Aspectos históricos e geográficos do Estado e a Constituição Estadual de Alagoas.</p>
-                <div class="card-footer"><span class="btn-abrir">Ver Tópicos →</span></div>
-            </a>
+        <a href="shared/4. Conhecimentos de Alagoas/Conhecimentos.de.alagoas.link.html" class="card">
+            <span class="badge bg-al">Regional</span>
+            <h3>🌴 Conhecimentos de Alagoas</h3>
+            <p>História, Geografia, Economia e Cultura Alagoana.</p>
+        </a>
 
-            <a href="shared/5. Legislação Educacional/Legislacao.educacional.html" class="card c-especifica">
-                <span class="badge-status" style="background:#d1fae5; color:#065f46;">LDB • PNE • CF/88 Art. 205</span>
-                <h3>5. Legislação Educacional</h3>
-                <p>Leis fundamentais da educação nacional e diretrizes para o ensino superior.</p>
-                <div class="card-footer"><span class="btn-abrir">Ver Tópicos →</span></div>
-            </a>
+        <a href="shared/5. Legislação Educacional/Legislacao.educacional.link.html" class="card">
+            <span class="badge bg-leg">Normativa</span>
+            <h3>⚖️ Legislação Educacional</h3>
+            <p>Constituição Federal (Educação) e LDB 9.394/96 atualizada.</p>
+        </a>
 
-            <a href="shared/6. Atualidades (Discursiva)/Atualidades.html" class="card c-atualidades">
-                <span class="badge-status" style="background:#fef3c7; color:#92400e;">Prova Discursiva • Temas 2026</span>
-                <h3>6. Atualidades</h3>
-                <p>Específico para a prova discursiva: Tópicos de relevância política, econômica e social.</p>
-                <div class="card-footer"><span class="btn-abrir">Ver Temas →</span></div>
-            </a>
+        <a href="shared/6. Atualidades (Discursiva)/Atualidades.link.html" class="card">
+            <span class="badge bg-at">Geral</span>
+            <h3>🌍 Atualidades</h3>
+            <p>Política, Economia, Ecologia e Relações Internacionais.</p>
+        </a>
 
-            <div class="section-header">
-                <h2>Conhecimentos Específicos</h2>
-                <div class="line"></div>
-            </div>
-
-            <a href="shared/7. Técnico Educacional/tecnico.educacional.html" class="card c-especifica">
-                <span class="badge-status" style="background:#d1fae5; color:#065f46;">Pedagogia • Gestão • Processos</span>
-                <h3>7. Técnico Educacional</h3>
-                <p>Fundamentos da educação, gestão democrática e rotinas do técnico administrativo educacional.</p>
-                <div class="card-footer"><span class="btn-abrir">Acesso Completo →</span></div>
-            </a>
-
-        </div>
-
-        <footer>
-            Sincronizado com: Edital UNEAL Nº 1-2026 • Foco Total na Aprovação.
-        </footer>
+        <a href="shared/7. Técnico Educacional/tecnico.educacional.link.html" class="card">
+            <span class="badge bg-esp">Específica</span>
+            <h3>🎓 Técnico Educacional</h3>
+            <p>PPP, Gestão, T&D, Andragogia e Avaliação Institucional.</p>
+        </a>
     </div>
+
+    <div class="footer">
+        © 2026 - Sistema de Planejamento de Estudo Exaustivo para a UNEAL.
+    </div>
+</div>
 
 </body>
 </html>
