@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UNEAL - Legislação Educacional</title>
+    <style>
+        :root {
+            /* 5. LEGISLAÇÃO EDUCACIONAL - AZUL BEBÊ */
+            --discipline-color: #E3F2FD;
+            --discipline-accent: #1976D2;
+            --bg-page: #FAFAFA;
+            --text-neutral: #37474F;
+            
+            --bg-conceito: #E8F5E9;
+            --border-conceito: #4CAF50;
+            --bg-exemplo: #E3F2FD;
+            --border-exemplo: #2196F3;
+            --bg-alerta: #FFFDE7;
+            --border-alerta: #FBC02D;
+            --bg-erro: #FFEBEE;
+            --border-erro: #EF9A9A;
+        }
+
+        * { box-sizing: border-box; -webkit-print-color-adjust: exact; }
+
+        body {
+            background-color: #D6D6D6;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .page {
+            width: 210mm;
+            min-height: 297mm;
+            padding: 20mm 25mm;
+            margin-bottom: 30px;
+            background: var(--bg-page);
+            box-shadow: 0 0 10px rgba(0,0,0,0.15);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            page-break-after: always;
+        }
+
+        .page::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 8mm;
+            height: 100%;
+            background-color: var(--discipline-color);
+        }
+
+        header {
+            margin-left: 5mm;
+            border-bottom: 2px solid var(--discipline-color);
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .discipline-header {
+            background: var(--discipline-color);
+            color: var(--discipline-accent);
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-size: 10pt;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+        }
+
+        .header-meta h1 { font-size: 15pt; margin: 5px 0; color: var(--discipline-accent); }
+        .header-meta p { font-size: 8pt; margin: 2px 0; text-transform: uppercase; color: #666; font-weight: bold; }
+
+        .revision-table { border-collapse: collapse; font-size: 8pt; }
+        .revision-table td { border: 1px solid #ddd; padding: 4px 8px; text-align: center; background: #fff; }
+
+        h2 { font-size: 14pt; color: var(--discipline-accent); border-bottom: 2px solid var(--discipline-color); padding-bottom: 5px; margin-top: 25px; }
+        h3 { font-size: 12pt; color: #444; margin-top: 15px; border-left: 4px solid var(--discipline-accent); padding-left: 10px; }
+        p, li { font-size: 11pt; line-height: 1.6; text-align: justify; color: var(--text-neutral); margin-bottom: 10px; }
+        ul { margin-bottom: 15px; }
+
+        .box { padding: 15px; margin: 15px 0; border-radius: 4px; page-break-inside: avoid; }
+        .box-conceito { background: var(--bg-conceito); border-left: 6px solid var(--border-conceito); }
+        .box-exemplo { background: var(--bg-exemplo); border-left: 6px solid var(--border-exemplo); }
+        .box-alerta { background: var(--bg-alerta); border-left: 6px solid var(--border-alerta); }
+        .box-erro { background: var(--bg-erro); border: 2px dashed var(--border-erro); }
+
+        .item-questao { border-bottom: 1px dashed #DDD; padding: 12px 0; page-break-inside: avoid; }
+        .badge { font-weight: bold; padding: 2px 6px; border-radius: 3px; font-size: 9pt; }
+        .certo { background: #C8E6C9; color: #2E7D32; }
+        .errado { background: #FFCDD2; color: #C62828; }
+
+        footer { margin-top: auto; border-top: 1px solid #eee; padding-top: 10px; font-size: 8pt; color: #999; display: flex; justify-content: space-between; }
+
+        @media print { body { background: none; padding: 0; } .page { margin: 0; box-shadow: none; } }
+    </style>
+</head>
+<body>
+
+    <div class="page">
+        <header>
+            <div class="header-meta">
+                <div class="discipline-header">5. LEGISLAÇÃO EDUCACIONAL</div>
+                <p>UNEAL | TÉCNICO EM ASSUNTOS EDUCACIONAIS | BANCA: CEBRASPE</p>
+                <h1>Direitos Sociais (Capítulo II)</h1>
+                <p>CONSTITUIÇÃO DA REPÚBLICA FEDERATIVA DO BRASIL DE 1988</p>
+            </div>
+            <table class="revision-table">
+                <tr><td>REVISÃO</td><td>24h</td><td>7d</td><td>30d</td></tr>
+                <tr><td>STATUS</td><td>☐</td><td>☐</td><td>☐</td></tr>
+                <tr><td colspan="4">Acertos: ____ / Erros: ____</td></tr>
+            </table>
+        </header>
+
+        <h2>1️⃣ Conceito fundamental</h2>
+        <div class="box box-conceito">
+            Os Direitos Sociais são direitos fundamentais previstos na Constituição Federal de 1988 que têm como objetivo garantir condições mínimas de dignidade, igualdade material e bem-estar social à população, exigindo atuação positiva do Estado por meio de políticas públicas.
+            <br><br>
+            Eles estão previstos no Capítulo II do Título II da Constituição Federal, abrangendo os arts. 6º a 11.
+            <br><br>
+            📌 <strong>Ideia central para prova:</strong> Direitos sociais são direitos fundamentais que exigem atuação do Estado para garantir condições dignas de vida e reduzir desigualdades sociais.
+        </div>
+
+        <p>O texto constitucional estabelece que são direitos sociais:</p>
+        <ul style="columns: 2;">
+            <li>Educação</li>
+            <li>Saúde</li>
+            <li>Alimentação</li>
+            <li>Trabalho</li>
+            <li>Moradia</li>
+            <li>Transporte</li>
+            <li>Lazer</li>
+            <li>Segurança</li>
+            <li>Previdência social</li>
+            <li>Proteção à maternidade</li>
+            <li>Proteção à infância</li>
+            <li>Assistência aos desamparados</li>
+        </ul>
+
+        <h2>2️⃣ Estrutura completa do conteúdo</h2>
+        <p>O Capítulo II – Dos Direitos Sociais está organizado nos seguintes artigos:</p>
+        <ul>
+            <li><strong>Art. 6º</strong> → Direitos sociais</li>
+            <li><strong>Art. 7º</strong> → Direitos dos trabalhadores urbanos e rurais</li>
+            <li><strong>Art. 8º</strong> → Liberdade sindical</li>
+            <li><strong>Art. 9º</strong> → Direito de greve</li>
+            <li><strong>Art. 10</strong> → Participação dos trabalhadores e empregadores</li>
+            <li><strong>Art. 11</strong> → Representação dos trabalhadores na empresa</li>
+        </ul>
+
+        <h3>2.1 Direitos sociais (Art. 6º)</h3>
+        <p>O art. 6º apresenta o rol constitucional de direitos sociais, que são garantias fundamentais voltadas à promoção do bem-estar social. (Ver rol acima).</p>
+        
+        <div class="box box-alerta">
+            📌 <strong>Observação importante:</strong> Alguns direitos foram incluídos posteriormente por Emendas Constitucionais:
+            <ul>
+                <li><strong>Alimentação</strong> → EC 64/2010</li>
+                <li><strong>Transporte</strong> → EC 90/2015</li>
+            </ul>
+        </div>
+
+        <footer>
+            <span>Legislação Educacional - Direitos Sociais</span>
+            <span>Página 1</span>
+        </footer>
+    </div>
+
+    <div class="page">
+        <header>
+            <div class="header-meta">
+                <div class="discipline-header">5. LEGISLAÇÃO EDUCACIONAL</div>
+                <h1>2.2 Direitos dos trabalhadores (Art. 7º)</h1>
+            </div>
+        </header>
+
+        <p>O art. 7º estabelece direitos trabalhistas fundamentais para melhorar as condições sociais dos trabalhadores urbanos e rurais:</p>
+        <ul style="columns: 2;">
+            <li>Salário mínimo</li>
+            <li>Irredutibilidade salarial</li>
+            <li>Décimo terceiro salário</li>
+            <li>Jornada de trabalho limitada</li>
+            <li>Repouso semanal remunerado</li>
+            <li>Férias anuais remuneradas</li>
+            <li>Licença-maternidade</li>
+            <li>Licença-paternidade</li>
+            <li>Adicional noturno</li>
+            <li>FGTS</li>
+            <li>Seguro-desemprego</li>
+            <li>Proteção contra despedida arbitrária</li>
+            <li>Insalubridade/Periculosidade</li>
+        </ul>
+
+        <h3>2.3 Direitos dos trabalhadores domésticos</h3>
+        <p>O art. 7º, parágrafo único prevê direitos aplicáveis aos domésticos, ampliados pela 📌 <strong>Emenda Constitucional nº 72/2013</strong> (PEC das Domésticas).</p>
+
+        <h3>2.4 Liberdade sindical (Art. 8º)</h3>
+        <div class="box box-conceito">
+            <ul>
+                <li>Livre associação profissional ou sindical;</li>
+                <li>Vedada interferência do Estado na organização sindical;</li>
+                <li>Sindicato representa a categoria;</li>
+                <li><strong>Unicidade sindical:</strong> Vedada a criação de mais de um sindicato na mesma base territorial.</li>
+            </ul>
+            📌 <strong>Regra importante:</strong> A base territorial mínima do sindicato é o <strong>município</strong>.
+        </div>
+
+        <h3>2.5 Direito de greve (Art. 9º)</h3>
+        <ul>
+            <li>Os trabalhadores decidem sobre a greve e interesses profissionais.</li>
+            <li>A lei estabelece limites para serviços essenciais.</li>
+        </ul>
+
+        <h3>2.6 e 2.7 Participação e Representação (Arts. 10 e 11)</h3>
+        <p><strong>Art. 10:</strong> Participação em colegiados públicos de interesses profissionais/previdenciários.</p>
+        <p><strong>Art. 11:</strong> Empresas com <strong>mais de 200 empregados</strong>, assegurada eleição de um representante para entendimento direto com o empregador.</p>
+
+        <footer>
+            <span>Legislação Educacional - Direitos Sociais</span>
+            <span>Página 2</span>
+        </footer>
+    </div>
+
+    <div class="page">
+        <header>
+            <div class="header-meta">
+                <div class="discipline-header">5. LEGISLAÇÃO EDUCACIONAL</div>
+                <h1>3️⃣ Como o tema aparece em provas (CEBRASPE)</h1>
+            </div>
+        </header>
+
+        <ol>
+            <li><strong>Identificação do rol do art. 6º:</strong> Quais direitos são sociais.</li>
+            <li><strong>Direitos trabalhistas (Art. 7º):</strong> Salário, jornada, férias, FGTS.</li>
+            <li><strong>Liberdade sindical:</strong> Unicidade e não interferência estatal.</li>
+            <li><strong>Direito de greve:</strong> Quem decide e limites legais.</li>
+        </ol>
+
+        <h2>4️⃣ Padrões de cobrança</h2>
+        <div class="box box-exemplo">
+            <strong>Padrão 1:</strong> "A saúde e a educação são direitos sociais previstos na Constituição."<br>
+            <strong>Padrão 2:</strong> "O décimo terceiro salário é direito constitucional dos trabalhadores."<br>
+            <strong>Padrão 3:</strong> "A Constituição veda a interferência estatal na organização sindical."
+        </div>
+
+        <h2>5️⃣ Pegadinhas de prova</h2>
+        <div class="box box-alerta">
+            ⚠️ <strong>Pegadinha 1:</strong> Excluir transporte ou alimentação do rol.<br>
+            ⚠️ <strong>Pegadinha 2:</strong> Trocar unicidade por pluralidade obrigatória. <span class="badge errado">❌ Errado</span><br>
+            ⚠️ <strong>Pegadinha 3:</strong> Dizer que greve depende de autorização estatal. <span class="badge errado">❌ Errado</span><br>
+            ⚠️ <strong>Pegadinha 4:</strong> Alterar base sindical para Estado/União (Base mínima: <strong>município</strong>).
+        </div>
+
+        <h2>6️⃣ Como as bancas constroem itens errados</h2>
+        <div class="box box-erro">
+            - "Propriedade é direito social" (É individual).<br>
+            - "O Estado pode interferir na organização sindical".<br>
+            - "A base territorial mínima do sindicato é o estado".
+        </div>
+
+        <h2>7️⃣ Exemplos de questões</h2>
+        <div class="item-questao">Q1: Educação e saúde são direitos sociais. <span class="badge certo">✔ CERTO</span></div>
+        <div class="item-questao">Q2: Moradia não é direito social pela Constituição. <span class="badge errado">❌ ERRADO</span></div>
+        <div class="item-questao">Q3: 13º salário é direito de urbanos e rurais. <span class="badge certo">✔ CERTO</span></div>
+        <div class="item-questao">Q4: CF permite interferência do Estado no sindicato. <span class="badge errado">❌ ERRADO</span></div>
+        <div class="item-questao">Q5: CF assegura aos trabalhadores o direito de greve. <span class="badge certo">✔ CERTO</span></div>
+        <div class="item-questao">Q6: Base territorial mínima do sindicato é o município. <span class="badge certo">✔ CERTO</span></div>
+
+        <footer>
+            <span>Legislação Educacional - Direitos Sociais</span>
+            <span>Página 3</span>
+        </footer>
+    </div>
+
+    <div class="page">
+        <header>
+            <div class="header-meta">
+                <div class="discipline-header">5. LEGISLAÇÃO EDUCACIONAL</div>
+                <h1>8️⃣ Método RSG e Resumo Final</h1>
+            </div>
+        </header>
+
+        <h2>8️⃣ Método rápido de resolução (RSG)</h2>
+        <ul>
+            <li><strong>R – Rol:</strong> Verifique se o direito está no art. 6º.</li>
+            <li><strong>S – Sindicato:</strong> Analise as regras de liberdade sindical.</li>
+            <li><strong>G – Greve:</strong> Verifique regras e limites do direito de greve.</li>
+        </ul>
+
+        <h2>9️⃣ Checklist mental de prova</h2>
+        <ul>
+            <li>Esse direito está no art. 6º?</li>
+            <li>Trata-se de direito trabalhista do art. 7º?</li>
+            <li>Existe liberdade sindical e vedação de interferência?</li>
+            <li>A base sindical é o município?</li>
+        </ul>
+
+        <h2>🔟 Erros mais comuns dos candidatos</h2>
+        <p>1. Esquecer direitos do art. 6º; 2. Confundir direitos sociais com individuais; 3. Errar regras da liberdade sindical; 4. Confundir greve com autorização estatal; 5. Não lembrar das emendas (EC 64 e EC 90).</p>
+
+        <h2>11️⃣ Resumo estratégico final</h2>
+        <div class="box box-conceito">
+            <strong>Direitos sociais:</strong> Promoção da justiça social e dignidade. (Arts. 6º a 11).<br>
+            <strong>Rol (Art. 6º):</strong> Edu, Saú, Ali, Trab, Mor, Trans, Laz, Seg, Prev, Mat, Inf, Assis.<br>
+            <strong>Trabalho (Art. 7º):</strong> Salário, 13º, Férias, FGTS, Jornada.<br>
+            <strong>Sindicato (Art. 8º):</strong> Livre associação, Sem interferência, Unicidade (Base: Município).<br>
+            <strong>Greve (Art. 9º):</strong> Assegurado aos trabalhadores; limites em lei para essenciais.
+        </div>
+
+        <footer>
+            <span>Legislação Educacional - Direitos Sociais</span>
+            <span>Página 4</span>
+        </footer>
+    </div>
+</body>
+</html>

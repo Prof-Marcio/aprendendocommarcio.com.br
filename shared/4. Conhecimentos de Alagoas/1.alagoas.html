@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plano Mestre UNEAL - História e Geografia de Alagoas</title>
+    <style>
+        :root {
+            /* IDENTIDADE VISUAL: ALAGOAS - AZUL E VERMELHO (ESTADUAL) */
+            --discipline-color: #FFEBEE;
+            --discipline-accent: #C62828;
+            --bg-page: #FFFFFF;
+            --text-main: #1A1A1A;
+            --text-secondary: #424242;
+            --bg-box-step: #FFF8F8;
+            --border-step: #E53935;
+            --bg-box-highlight: #E3F2FD;
+            --border-highlight: #1565C0;
+        }
+
+        * { box-sizing: border-box; -webkit-print-color-adjust: exact; }
+
+        body {
+            background-color: #BDC3C7;
+            font-family: 'Georgia', serif;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .page {
+            width: 210mm;
+            min-height: 297mm;
+            padding: 15mm 20mm;
+            margin-bottom: 30px;
+            background: var(--bg-page);
+            box-shadow: 0 0 15px rgba(0,0,0,0.3);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            page-break-after: always;
+        }
+
+        .page::before {
+            content: "";
+            position: absolute;
+            left: 0; top: 0; width: 12mm; height: 100%;
+            background-color: var(--discipline-color);
+            border-right: 2px solid var(--discipline-accent);
+        }
+
+        header {
+            margin-left: 12mm;
+            border-bottom: 4px double var(--discipline-accent);
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        .discipline-tag {
+            background: var(--discipline-accent);
+            color: #FFF;
+            padding: 5px 12px;
+            font-size: 10pt;
+            font-weight: bold;
+            text-transform: uppercase;
+            display: inline-block;
+            margin-bottom: 5px;
+        }
+
+        .header-info p { font-size: 9pt; margin: 2px 0; color: var(--text-secondary); font-weight: bold; text-transform: uppercase; }
+        h1 { font-size: 16pt; margin: 10px 0; color: var(--discipline-accent); text-transform: uppercase; text-align: center; }
+
+        .step-container { margin-bottom: 15px; page-break-inside: avoid; }
+        .step-header { display: flex; align-items: center; background: var(--discipline-accent); color: white; padding: 8px 15px; font-weight: bold; font-size: 11pt; }
+        .step-content { border: 1px solid var(--discipline-accent); padding: 15px; background: var(--bg-box-step); }
+        
+        .edital-ref { font-style: italic; color: #B71C1C; font-weight: bold; font-size: 9.5pt; display: block; margin-bottom: 8px; }
+        .logic-note { background: #FFFDE7; border-left: 5px solid #FBC02D; padding: 8px; margin: 10px 0; font-size: 10pt; }
+        
+        ul { margin: 5px 0; padding-left: 20px; }
+        li { font-size: 10.5pt; line-height: 1.5; color: var(--text-main); margin-bottom: 4px; }
+
+        .summary-box { background: var(--bg-box-highlight); border: 2px solid var(--border-highlight); padding: 15px; margin-top: 10px; }
+        h2 { font-size: 13pt; color: var(--border-highlight); margin-top: 0; text-transform: uppercase; border-bottom: 1px solid var(--border-highlight); padding-bottom: 5px; }
+
+        footer { margin-top: auto; border-top: 2px solid var(--discipline-accent); padding-top: 8px; font-size: 8.5pt; color: #666; display: flex; justify-content: space-between; font-weight: bold; }
+
+        @media print { body { background: none; padding: 0; } .page { margin: 0; box-shadow: none; border: 1px solid #000; } }
+    </style>
+</head>
+<body>
+
+    <div class="page">
+        <header>
+            <div class="discipline-tag">HISTÓRIA E GEOGRAFIA DE ALAGOAS</div>
+            <div class="header-info">
+                <p>CONCURSO: UNIVERSIDADE ESTADUAL DE ALAGOAS (UNEAL)</p>
+                <p>CARGO: TÉCNICO EM ASSUNTOS EDUCACIONAIS</p>
+                <p>MÉTODO: ORDEM PEDAGÓGICA CORRETA</p>
+            </div>
+            <h1>Roteiro de Estudos Regional</h1>
+        </header>
+
+        <div class="step-container">
+            <div class="step-header">1️⃣ Aspectos geográficos de Alagoas</div>
+            <div class="step-content">
+                <span class="edital-ref">Edital: 3 Aspectos geográficos (3.1 Litoral, Zona da Mata, Agreste e Sertão | 3.2 Rio São Francisco).</span>
+                <p class="logic-note">📌 O primeiro passo é entender onde o estado está e como é seu território. Isso ajuda a compreender a ocupação, economia histórica e formação da população.</p>
+                <strong>Subtópicos:</strong>
+                <ul>
+                    <li>Localização de Alagoas no Brasil e no Nordeste.</li>
+                    <li>Divisão natural: Litoral, Zona da Mata, Agreste e Sertão.</li>
+                    <li>Importância estratégica e econômica do Rio São Francisco.</li>
+                </ul>
+            </div>
+        </div>
+        
+
+        <div class="step-container">
+            <div class="step-header">2️⃣ Formação histórica de Alagoas (processo colonial)</div>
+            <div class="step-content">
+                <span class="edital-ref">Edital: 1 Formação histórica (1.1 Colonização portuguesa | 1.2 Economia açucareira).</span>
+                <p class="logic-note">📌 Depois de conhecer o território, estudamos como ele foi ocupado. Explica a forte tradição canavieira.</p>
+                <strong>Ordem interna:</strong>
+                <ul>
+                    <li>Colonização portuguesa e implantação dos engenhos.</li>
+                    <li>Formação da economia açucareira e sociedade colonial (senhores e escravizados).</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="step-container">
+            <div class="step-header">3️⃣ Quilombo dos Palmares</div>
+            <div class="step-content">
+                <span class="edital-ref">Edital: 2 Quilombo dos Palmares (2.1 Formação | 2.2 Resistência | 2.3 Liderança de Zumbi).</span>
+                <p class="logic-note">📌 Este tema só faz sentido após entender a escravidão e a economia colonial.</p>
+                <strong>Ordem ideal:</strong>
+                <ul>
+                    <li>Surgimento e organização social/resistência.</li>
+                    <li>Liderança de Zumbi e conflitos com forças coloniais.</li>
+                </ul>
+            </div>
+        </div>
+
+        <footer>
+            <span>Técnico em Assuntos Educacionais - UNEAL</span>
+            <span>Página 1</span>
+        </footer>
+    </div>
+
+    <div class="page">
+        <header>
+            <div class="discipline-tag">HISTÓRIA E GEOGRAFIA DE ALAGOAS</div>
+            <h1>POLÍTICA E ADMINISTRAÇÃO (ETAPAS 4 E 5)</h1>
+        </header>
+
+        <div class="step-container">
+            <div class="step-header">4️⃣ Formação político-administrativa de Alagoas</div>
+            <div class="step-content">
+                <span class="edital-ref">Edital: 1.3 Emancipação política (1817) | 1.4 Elevação à Província (1821).</span>
+                <p class="logic-note">📌 Estudamos a criação do estado como unidade política separada de Pernambuco.</p>
+                <strong>Ordem ideal:</strong>
+                <ul>
+                    <li>Alagoas como parte da Capitania de Pernambuco.</li>
+                    <li>Processo de emancipação (1817) e elevação à Província (1821).</li>
+                    <li>Evolução administrativa até o período republicano.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="step-container">
+            <div class="step-header">5️⃣ Organização político-administrativa atual</div>
+            <div class="step-content">
+                <span class="edital-ref">Edital: 4 Organização político‐administrativa (4.1 Maceió | 4.2 Municípios | 4.3 Poderes).</span>
+                <p class="logic-note">📌 Depois da história política, estudamos como o estado funciona hoje.</p>
+                <strong>Subtópicos:</strong>
+                <ul>
+                    <li>Capital (Maceió) e divisão em municípios.</li>
+                    <li>Estrutura dos poderes: Executivo, Legislativo e Judiciário estaduais.</li>
+                </ul>
+            </div>
+        </div>
+
+        <footer>
+            <span>Técnico em Assuntos Educacionais - UNEAL</span>
+            <span>Página 2</span>
+        </footer>
+    </div>
+
+    <div class="page">
+        <header>
+            <div class="discipline-tag">HISTÓRIA E GEOGRAFIA DE ALAGOAS</div>
+            <h1>ECONOMIA E IDENTIDADE (ETAPAS 6 E 7)</h1>
+        </header>
+
+        <div class="step-container">
+            <div class="step-header">6️⃣ Economia do estado de Alagoas</div>
+            <div class="step-content">
+                <span class="edital-ref">Edital: 5 Economia estadual (5.1 Agroindústria | 5.2 Turismo | 5.3 Serviços).</span>
+                <p class="logic-note">📌 Conecta história + geografia + realidade econômica atual.</p>
+                <strong>Ordem ideal:</strong>
+                <ul>
+                    <li>Agroindústria da cana-de-açúcar (herança histórica).</li>
+                    <li>Turismo (principal atividade recente) e Setor de serviços.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="step-container">
+            <div class="step-header">7️⃣ Cultura e patrimônio de Alagoas</div>
+            <div class="step-content">
+                <span class="edital-ref">Edital: 6 Cultura e patrimônio (6.1 Manifestações populares | 6.2 Patrimônio histórico-cultural).</span>
+                <p class="logic-note">📌 Conteúdo final: a cultura resulta de todo o processo histórico e social anterior.</p>
+                <strong>Subtópicos:</strong>
+                <ul>
+                    <li>Influências: Indígena, Africana e Portuguesa.</li>
+                    <li>Folguedos, festas populares e monumentos históricos.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="summary-box">
+            <h2>✅ RESUMO DA SEQUÊNCIA (PALAVRAS-CHAVE)</h2>
+            <p>geografia → colonização → açúcar → escravidão → Palmares → emancipação política → estrutura do estado → economia atual → cultura</p>
+            <p><strong>Lógica:</strong> Território → Ocupação → História → Organização Política → Realidade Atual → Identidade Cultural.</p>
+        </div>
+
+        <footer>
+            <span>Técnico em Assuntos Educacionais - UNEAL</span>
+            <span>Página 3</span>
+        </footer>
+    </div>
+
+</body>
+</html>

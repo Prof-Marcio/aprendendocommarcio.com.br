@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plano Mestre UNEAL - Informática (Do Zero Absoluto)</title>
+    <style>
+        :root {
+            /* IDENTIDADE VISUAL: INFORMÁTICA - AZUL TECNOLÓGICO */
+            --discipline-color: #E3F2FD;
+            --discipline-accent: #0D47A1;
+            --bg-page: #FFFFFF;
+            --text-main: #1A1A1A;
+            --text-secondary: #424242;
+            --bg-box-step: #F5F9FF;
+            --border-step: #1976D2;
+            --bg-box-highlight: #E8F5E9;
+            --border-highlight: #2E7D32;
+        }
+
+        * { box-sizing: border-box; -webkit-print-color-adjust: exact; }
+
+        body {
+            background-color: #BDC3C7;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .page {
+            width: 210mm;
+            min-height: 297mm;
+            padding: 15mm 20mm;
+            margin-bottom: 30px;
+            background: var(--bg-page);
+            box-shadow: 0 0 15px rgba(0,0,0,0.3);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            page-break-after: always;
+        }
+
+        .page::before {
+            content: "";
+            position: absolute;
+            left: 0; top: 0; width: 12mm; height: 100%;
+            background-color: var(--discipline-color);
+            border-right: 2px solid var(--discipline-accent);
+        }
+
+        header {
+            margin-left: 12mm;
+            border-bottom: 4px double var(--discipline-accent);
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        .discipline-tag {
+            background: var(--discipline-accent);
+            color: #FFF;
+            padding: 5px 12px;
+            font-size: 10pt;
+            font-weight: bold;
+            text-transform: uppercase;
+            display: inline-block;
+            margin-bottom: 5px;
+        }
+
+        .header-info p { font-size: 9pt; margin: 2px 0; color: var(--text-secondary); font-weight: bold; text-transform: uppercase; }
+        h1 { font-size: 16pt; margin: 10px 0; color: var(--discipline-accent); text-transform: uppercase; text-align: center; }
+
+        .step-container { margin-bottom: 15px; page-break-inside: avoid; }
+        .step-header { display: flex; align-items: center; background: var(--discipline-accent); color: white; padding: 8px 15px; font-weight: bold; font-size: 11pt; }
+        .step-content { border: 1px solid var(--discipline-accent); padding: 15px; background: var(--bg-box-step); }
+        
+        .edital-ref { font-style: italic; color: #0D47A1; font-weight: bold; font-size: 9.5pt; display: block; margin-bottom: 8px; }
+        .logic-note { background: #FFFDE7; border-left: 5px solid #FBC02D; padding: 8px; margin: 10px 0; font-size: 10pt; }
+        
+        ul { margin: 5px 0; padding-left: 20px; }
+        li { font-size: 10pt; line-height: 1.4; color: var(--text-main); margin-bottom: 4px; }
+
+        .summary-box { background: var(--bg-box-highlight); border: 2px solid var(--border-highlight); padding: 15px; margin-top: 10px; }
+        h2 { font-size: 12pt; color: var(--border-highlight); margin-top: 0; text-transform: uppercase; }
+
+        footer { margin-top: auto; border-top: 2px solid var(--discipline-accent); padding-top: 8px; font-size: 8.5pt; color: #666; display: flex; justify-content: space-between; font-weight: bold; }
+
+        @media print { body { background: none; padding: 0; } .page { margin: 0; box-shadow: none; border: 1px solid #000; } }
+    </style>
+</head>
+<body>
+
+    <div class="page">
+        <header>
+            <div class="discipline-tag">INFORMÁTICA</div>
+            <div class="header-info">
+                <p>CONCURSO: UNIVERSIDADE ESTADUAL DE ALAGOAS (UNEAL)</p>
+                <p>CARGO: TÉCNICO EM ASSUNTOS EDUCACIONAIS</p>
+                <p>MÉTODO: ORDEM CRONOLÓGICA (DO ZERO ABSOLUTO)</p>
+            </div>
+            <h1>Roteiro de Aprendizagem de Informática</h1>
+        </header>
+
+        <div class="step-container">
+            <div class="step-header">1️⃣ Noções de sistema operacional (ambiente Windows)</div>
+            <div class="step-content">
+                <span class="edital-ref">Edital: 1 Noções de sistema operacional (ambiente Windows).</span>
+                <p class="logic-note">📌 Este é o ponto de partida, porque todo o resto acontece dentro do sistema operacional. Sem entender o Windows, o aluno não consegue usar programas nem gerenciar arquivos.</p>
+                <strong>Conteúdos:</strong>
+                <ul>
+                    <li>Área de trabalho (desktop), Menu Iniciar, Barra de tarefas, Janelas</li>
+                    <li>Configurações do sistema, Abrir e fechar programas, Manipulação básica</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="step-container">
+            <div class="step-header">2️⃣ Organização e gerenciamento de arquivos, pastas e programas</div>
+            <div class="step-content">
+                <span class="edital-ref">Edital: 4 Noções de organização e de gerenciamento de informações, arquivos, pastas e programas.</span>
+                <p class="logic-note">📌 Depois de entender o sistema operacional, o aluno precisa aprender como os arquivos são organizados dentro dele. Este conteúdo depende diretamente do Windows.</p>
+                <strong>Subtópicos:</strong>
+                <ul>
+                    <li>Arquivo, Pasta (diretório), Estrutura de diretórios</li>
+                    <li>Criar, renomear, copiar, mover e excluir arquivos (Lixeira)</li>
+                    <li>Tipos de arquivos, Programas e aplicativos</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="step-container">
+            <div class="step-header">3️⃣ Edição de textos, planilhas e apresentações (Microsoft Office)</div>
+            <div class="step-content">
+                <span class="edital-ref">Edital: 2 Edição de textos, planilhas e apresentações (ambiente Microsoft Office).</span>
+                <p class="logic-note">📌 Agora o aluno aprende a produzir documentos, função principal do computador no trabalho.</p>
+                <strong>3.1 Editor de texto (Word):</strong> Formatação, salvar documentos, inserir imagens, tabelas, revisão.<br>
+                <strong>3.2 Planilhas (Excel):</strong> Células, linhas/colunas, fórmulas, funções básicas, gráficos.<br>
+                <strong>3.3 Apresentações (PowerPoint):</strong> Slides, layouts, animações, inserção de mídia.
+            </div>
+        </div>
+
+        <footer>
+            <span>Técnico em Assuntos Educacionais - UNEAL</span>
+            <span>Página 1</span>
+        </footer>
+    </div>
+
+    <div class="page">
+        <header>
+            <div class="discipline-tag">INFORMÁTICA</div>
+            <h1>CONECTIVIDADE E WEB (ETAPAS 4 A 8)</h1>
+        </header>
+
+        <div class="step-container">
+            <div class="step-header">4️⃣ Redes de computadores (conceitos básicos)</div>
+            <div class="step-content">
+                <span class="edital-ref">Edital: 3 Redes de computadores.</span>
+                <p class="logic-note">📌 Depois que o aluno sabe usar o computador, aprende como eles se conectam. Base para tudo que vem depois.</p>
+                <strong>Conceitos:</strong> Rede, internet, intranet, servidores, clientes, comunicação de dados.
+            </div>
+        </div>
+
+        <div class="step-container">
+            <div class="step-header">5️⃣ Internet: ferramentas e aplicativos</div>
+            <div class="step-content">
+                <span class="edital-ref">Edital: 3.1 Conceitos básicos, ferramentas, aplicativos e procedimentos.</span>
+                <p class="logic-note">📌 Agora o aluno aprende como usar a internet na prática.</p>
+                <strong>Conteúdos:</strong> Acesso à internet, páginas web, serviços online, downloads e uploads.
+            </div>
+        </div>
+
+        <div class="step-container">
+            <div class="step-header">6️⃣ Navegadores de internet</div>
+            <div class="step-content">
+                <span class="edital-ref">Edital: 3.2 Programas de navegação.</span>
+                <p class="logic-note">📌 O navegador é a principal ferramenta de acesso à internet.</p>
+                <strong>Ferramentas:</strong> Barra de endereço, abas, favoritos, histórico, downloads. (Edge, Firefox, Chrome).
+            </div>
+        </div>
+
+        <div class="step-container">
+            <div class="step-header">7️⃣ Pesquisa na internet</div>
+            <div class="step-content">
+                <span class="edital-ref">Edital: 3.4 Sítios de busca e pesquisa na Internet.</span>
+                <p class="logic-note">📌 Aprende a encontrar informação utilizando mecanismos de busca e operadores de pesquisa.</p>
+            </div>
+        </div>
+
+        <div class="step-container">
+            <div class="step-header">8️⃣ Comunicação na internet</div>
+            <div class="step-content">
+                <strong>8.1 Correio eletrônico (Edital 3.3):</strong> Microsoft Outlook, anexos, CC/CCO.<br>
+                <strong>8.2 Grupos de discussão (Edital 3.5):</strong> Fóruns e listas de discussão.<br>
+                <strong>8.3 Redes sociais (Edital 3.6):</strong> Interação e compartilhamento.
+            </div>
+        </div>
+
+        <footer>
+            <span>Técnico em Assuntos Educacionais - UNEAL</span>
+            <span>Página 2</span>
+        </footer>
+    </div>
+
+    <div class="page">
+        <header>
+            <div class="discipline-tag">INFORMÁTICA</div>
+            <h1>NUVEM E SEGURANÇA (ETAPAS 9 A 11)</h1>
+        </header>
+
+        <div class="step-container">
+            <div class="step-header">9️⃣ Computação em nuvem (Cloud Computing)</div>
+            <div class="step-content">
+                <span class="edital-ref">Edital: 3.7 Computação na nuvem.</span>
+                <p class="logic-note">📌 Entendimento de serviços online avançados, armazenamento remoto e softwares online.</p>
+            </div>
+        </div>
+
+        <div class="step-container">
+            <div class="step-header">🔟 Armazenamento em nuvem</div>
+            <div class="step-content">
+                <span class="edital-ref">Edital: 5.5 Armazenamento de dados na nuvem.</span>
+                <p class="logic-note">📌 Foco prático no armazenamento de arquivos online (Google Drive, OneDrive, Dropbox).</p>
+            </div>
+        </div>
+
+        <div class="step-container">
+            <div class="step-header">1️⃣1️⃣ Segurança da informação</div>
+            <div class="step-content">
+                <span class="edital-ref">Edital: 5 Segurança da informação.</span>
+                <p class="logic-note">📌 Segurança vem depois que o aluno entende como os sistemas funcionam.</p>
+                <strong>11.1 Malware (Edital 5.2):</strong> Vírus, worms e pragas virtuais.<br>
+                <strong>11.2 Procedimentos (Edital 5.1):</strong> Senhas fortes, atualizações.<br>
+                <strong>11.3 Aplicativos (Edital 5.3):</strong> Antivírus, firewall, antispyware.<br>
+                <strong>11.4 Backup (Edital 5.4):</strong> Proteção e recuperação de dados.
+            </div>
+        </div>
+
+        <div class="summary-box">
+            <h2>✅ RESUMO DA LÓGICA (PALAVRAS-CHAVE)</h2>
+            <p><strong>Fluxo:</strong> Windows → arquivos → Word → Excel → PowerPoint → redes → internet → navegador → busca → email → redes sociais → cloud computing → armazenamento em nuvem → segurança → malware → antivírus → backup</p>
+            <p><strong>Síntese:</strong> Computador → Arquivos → Office → Internet → Comunicação → Cloud → Segurança</p>
+        </div>
+
+        <footer>
+            <span>Técnico em Assuntos Educacionais - UNEAL</span>
+            <span>Página 3</span>
+        </footer>
+    </div>
+
+</body>
+</html>

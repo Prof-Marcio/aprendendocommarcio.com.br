@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apostila UNEAL - Direitos Sociais (Arts. 6º ao 11)</title>
+    <style>
+        :root {
+            /* TEMA: 5. LEGISLAÇÃO - AZUL */
+            --discipline-color: #E3F2FD;
+            --discipline-accent: #1565C0;
+            --bg-page: #FAFAFA;
+            --text-neutral: #263238;
+            
+            --bg-conceito: #E1F5FE;
+            --border-conceito: #039BE5;
+            --bg-exemplo: #F1F8E9;
+            --border-exemplo: #7CB342;
+            --bg-alerta: #FFFDE7;
+            --border-alerta: #FBC02D;
+            --bg-erro: #FFEBEE;
+            --border-erro: #E53935;
+        }
+
+        * { box-sizing: border-box; -webkit-print-color-adjust: exact; }
+
+        body {
+            background-color: #D6D6D6;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .page {
+            width: 210mm;
+            min-height: 297mm;
+            padding: 20mm 25mm;
+            margin-bottom: 30px;
+            background: var(--bg-page);
+            box-shadow: 0 0 10px rgba(0,0,0,0.15);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            page-break-after: always;
+        }
+
+        .page::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 8mm;
+            height: 100%;
+            background-color: var(--discipline-color);
+        }
+
+        header {
+            margin-left: 5mm;
+            border-bottom: 2px solid var(--discipline-color);
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .discipline-header {
+            background: var(--discipline-color);
+            color: var(--discipline-accent);
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-size: 10pt;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+        }
+
+        .header-meta h1 { font-size: 14pt; margin: 5px 0; color: var(--discipline-accent); text-transform: uppercase; }
+        .header-meta p { font-size: 8pt; margin: 2px 0; text-transform: uppercase; color: #666; font-weight: bold; }
+
+        .revision-table { border-collapse: collapse; font-size: 8pt; }
+        .revision-table td { border: 1px solid #ddd; padding: 4px 8px; text-align: center; background: #fff; }
+
+        h2 { font-size: 14pt; color: var(--discipline-accent); border-bottom: 2px solid var(--discipline-color); padding-bottom: 5px; margin-top: 25px; }
+        h3 { font-size: 12pt; color: #444; margin-top: 15px; border-left: 4px solid var(--discipline-accent); padding-left: 10px; }
+        p, li { font-size: 11pt; line-height: 1.6; text-align: justify; color: var(--text-neutral); margin-bottom: 8px; }
+        
+        .box { padding: 15px; margin: 15px 0; border-radius: 4px; page-break-inside: avoid; }
+        .box-conceito { background: var(--bg-conceito); border-left: 6px solid var(--border-conceito); }
+        .box-exemplo { background: var(--bg-exemplo); border-left: 6px solid var(--border-exemplo); }
+        .box-alerta { background: var(--bg-alerta); border-left: 6px solid var(--border-alerta); }
+        .box-erro { background: var(--bg-erro); border-left: 6px solid var(--border-erro); }
+
+        .questoes { list-style: none; padding: 0; }
+        .questoes li { margin-bottom: 15px; padding-bottom: 10px; border-bottom: 1px dashed #DDD; }
+        .tag-questao { font-weight: bold; color: var(--discipline-accent); margin-right: 5px; }
+
+        footer { margin-top: auto; border-top: 1px solid #eee; padding-top: 10px; font-size: 8pt; color: #999; display: flex; justify-content: space-between; }
+
+        @media print { body { background: none; padding: 0; } .page { margin: 0; box-shadow: none; } }
+    </style>
+</head>
+<body>
+
+    <div class="page">
+        <header>
+            <div class="header-meta">
+                <div class="discipline-header">5. LEGISLAÇÃO</div>
+                <p>UNEAL | TÉCNICO EM ASSUNTOS EDUCACIONAIS | BANCA: CEBRASPE</p>
+                <h1>Direitos Sociais (Art. 6º ao 11)</h1>
+                <p>CONSTITUIÇÃO FEDERAL DE 1988</p>
+            </div>
+            <table class="revision-table">
+                <tr><td>REVISÃO</td><td>24h</td><td>7d</td><td>30d</td></tr>
+                <tr><td>STATUS</td><td>☐</td><td>☐</td><td>☐</td></tr>
+            </table>
+        </header>
+
+        <h2>1. Conceito do Tema</h2>
+        <div class="box box-conceito">
+            Direitos de <strong>segunda dimensão (ou geração)</strong>. Exigem uma <strong>prestação positiva</strong> do Estado (<i>facere</i>). Enquanto direitos civis pedem abstenção, os sociais exigem que o Estado invista, crie políticas e construa instituições — como a própria <strong>UNEAL</strong>.
+        </div>
+
+        <h2>2. Explicação Clara e Objetiva</h2>
+        <p>O Art. 6º funciona como o "cardápio" do bem-estar social brasileiro. Compõem este rol:</p>
+        <ul>
+            <li>Educação, Saúde e Alimentação;</li>
+            <li>Trabalho, Moradia e Transporte;</li>
+            <li>Lazer, Segurança e Previdência Social;</li>
+            <li>Proteção à Maternidade/Infância e Assistência aos Desamparados.</li>
+        </ul>
+
+        <div class="box box-alerta">
+            💡 <strong>Dica de Memorização:</strong> "Edu mora lá, saú trabalha ali, assiste pros seg transporta."<br>
+            ⚠️ <strong>Histórico:</strong> Transporte (EC 90/2015) e Alimentação (EC 64/2010) foram inclusões posteriores.
+        </div>
+
+        <h2>3. Relação com a UNEAL e Educação Pública</h2>
+        <div class="box box-exemplo">
+            Como <strong>Técnico em Assuntos Educacionais</strong>, você operacionaliza o direito social à Educação. Na UNEAL, isso reflete na garantia de permanência estudantil (assistência/alimentação) e na organização do ensino. O direito social é a base da sua função pública.
+        </div>
+
+        <footer>
+            <span>Direitos Sociais - CF/88</span>
+            <span>Página 1</span>
+        </footer>
+    </div>
+
+    <div class="page">
+        <header>
+            <div class="header-meta">
+                <div class="discipline-header">5. LEGISLAÇÃO</div>
+                <h1>Foco CEBRASPE e Simulado</h1>
+            </div>
+        </header>
+
+        <h2>4. Pontos que mais caem (CEBRASPE)</h2>
+        <ul>
+            <li><strong>Troca de Direitos:</strong> A banca substitui direitos sociais por individuais (ex: propriedade).</li>
+            <li><strong>Caráter Prestacional:</strong> A ideia de que o Estado deve "gastar/agir".</li>
+            <li><strong>Eficácia Limitada/Programática:</strong> Muitos direitos dependem de leis para o pleno exercício.</li>
+        </ul>
+
+        <h2>5. Pegadinhas Comuns</h2>
+        <div class="box box-erro">
+            ❌ <strong>Segurança Pública:</strong> O Art. 6º fala apenas em "Segurança" (sentido amplo).<br>
+            ❌ <strong>Direito de Greve:</strong> O CEBRASPE cobra que a greve é um direito social (Art. 9º).<br>
+            ❌ <strong>Natureza do Rol:</strong> O rol do Art. 6º é <strong>exemplificativo</strong> (admite novos direitos via tratados).
+        </div>
+
+        <h2>Atividade de Aprendizagem (Simulado)</h2>
+        <ul class="questoes">
+            <li><span class="tag-questao">Q1.</span> A educação e o lazer são considerados direitos sociais expressamente previstos no texto constitucional vigente.</li>
+            <li><span class="tag-questao">Q2.</span> Diferentemente dos direitos individuais, os direitos sociais são classificados como direitos de primeira geração.</li>
+            <li><span class="tag-questao">Q3.</span> No âmbito da UNEAL, a assistência aos desamparados alinha-se aos direitos sociais previstos na CF/88.</li>
+            <li><span class="tag-questao">Q4.</span> O direito à alimentação foi incluído como direito social desde a promulgação original em 1988.</li>
+            <li><span class="tag-questao">Q5.</span> A proteção à maternidade e à infância é um direito social que independe de contribuição prévia à previdência social.</li>
+        </ul>
+
+        <h2>6. Gabarito Comentado</h2>
+        <p><strong>Q1: Certo.</strong> Estão ambos no Art. 6.º.<br>
+        <strong>Q2: Errado.</strong> São de segunda geração (Igualdade).<br>
+        <strong>Q3: Certo.</strong> Fundamenta programas de assistência estudantil.<br>
+        <strong>Q4: Errado.</strong> Incluído pela EC 64/2010.<br>
+        <strong>Q5: Certo.</strong> A assistência e proteção são garantidas a quem necessitar (não contributivo).</p>
+
+        <footer>
+            <span>Direitos Sociais - CF/88</span>
+            <span>Página 2</span>
+        </footer>
+    </div>
+
+</body>
+</html>

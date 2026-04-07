@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plano Mestre UNEAL - Língua Portuguesa (Do Zero Absoluto)</title>
+    <style>
+        :root {
+            /* IDENTIDADE VISUAL: LÍNGUA PORTUGUESA - ROXO ACADÊMICO */
+            --discipline-color: #F3E5F5;
+            --discipline-accent: #4A148C;
+            --bg-page: #FFFFFF;
+            --text-main: #1A1A1A;
+            --text-secondary: #424242;
+            --bg-box-step: #F9F4FB;
+            --border-step: #7B1FA2;
+            --bg-box-highlight: #E8F5E9;
+            --border-highlight: #2E7D32;
+        }
+
+        * { box-sizing: border-box; -webkit-print-color-adjust: exact; }
+
+        body {
+            background-color: #BDC3C7;
+            font-family: 'Times New Roman', Times, serif;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .page {
+            width: 210mm;
+            min-height: 297mm;
+            padding: 15mm 20mm;
+            margin-bottom: 30px;
+            background: var(--bg-page);
+            box-shadow: 0 0 15px rgba(0,0,0,0.3);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            page-break-after: always;
+        }
+
+        .page::before {
+            content: "";
+            position: absolute;
+            left: 0; top: 0; width: 12mm; height: 100%;
+            background-color: var(--discipline-color);
+            border-right: 2px solid var(--discipline-accent);
+        }
+
+        header {
+            margin-left: 12mm;
+            border-bottom: 4px double var(--discipline-accent);
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        .discipline-tag {
+            background: var(--discipline-accent);
+            color: #FFF;
+            padding: 5px 12px;
+            font-size: 10pt;
+            font-weight: bold;
+            text-transform: uppercase;
+            display: inline-block;
+            margin-bottom: 5px;
+        }
+
+        .header-info p { font-size: 9pt; margin: 2px 0; color: var(--text-secondary); font-weight: bold; text-transform: uppercase; }
+        h1 { font-size: 16pt; margin: 10px 0; color: var(--discipline-accent); text-transform: uppercase; text-align: center; }
+
+        h2 { font-size: 13pt; color: var(--discipline-accent); border-bottom: 1px solid #DDD; margin-top: 20px; padding-bottom: 5px; text-transform: uppercase; }
+        
+        .step-container { margin-bottom: 15px; page-break-inside: avoid; }
+        .step-header { display: flex; align-items: center; background: var(--discipline-accent); color: white; padding: 8px 15px; font-weight: bold; font-size: 11pt; }
+        .step-content { border: 1px solid var(--discipline-accent); padding: 15px; background: var(--bg-box-step); }
+        
+        .edital-ref { font-style: italic; color: #7B1FA2; font-weight: bold; font-size: 9.5pt; display: block; margin-bottom: 8px; }
+        .logic-note { background: #FFFDE7; border-left: 5px solid #FBC02D; padding: 8px; margin: 10px 0; font-size: 10pt; }
+        
+        ul { margin: 5px 0; padding-left: 20px; }
+        li { font-size: 10.5pt; line-height: 1.5; color: var(--text-main); margin-bottom: 4px; }
+
+        .summary-box { background: var(--bg-box-highlight); border: 2px solid var(--border-highlight); padding: 15px; margin-top: 20px; }
+
+        footer { margin-top: auto; border-top: 2px solid var(--discipline-accent); padding-top: 8px; font-size: 8.5pt; color: #666; display: flex; justify-content: space-between; font-weight: bold; }
+
+        @media print { body { background: none; padding: 0; } .page { margin: 0; box-shadow: none; border: 1px solid #000; } }
+    </style>
+</head>
+<body>
+
+    <div class="page">
+        <header>
+            <div class="discipline-tag">LÍNGUA PORTUGUESA</div>
+            <div class="header-info">
+                <p>CONCURSO: UNIVERSIDADE ESTADUAL DE ALAGOAS (UNEAL)</p>
+                <p>CARGO: TÉCNICO EM ASSUNTOS EDUCACIONAIS</p>
+                <p>MÉTODO: ORDEM CRONOLÓGICA (DO ZERO ABSOLUTO)</p>
+            </div>
+            <h1>Roteiro de Aprendizagem Integral</h1>
+        </header>
+
+        <div class="step-container">
+            <div class="step-header">1️⃣ Ortografia oficial</div>
+            <div class="step-content">
+                <span class="edital-ref">Edital: 3 Domínio da ortografia oficial.</span>
+                <p class="logic-note">📌 Primeiro aprende-se como as palavras são escritas.</p>
+                <strong>Conteúdos:</strong>
+                <ul>
+                    <li>Alfabeto</li>
+                    <li>Uso de letras</li>
+                    <li>Acentuação</li>
+                    <li>Hífen</li>
+                    <li>Grafia correta</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="step-container">
+            <div class="step-header">2️⃣ Classes de palavras (morfologia)</div>
+            <div class="step-content">
+                <span class="edital-ref">Edital: 5.1 Emprego das classes de palavras.</span>
+                <p class="logic-note">📌 Depois aprende-se que tipos de palavras existem. Aqui o aluno aprende o papel das palavras na frase.</p>
+                <strong>Ordem correta interna:</strong>
+                <ul>
+                    <li>Substantivo, Artigo, Adjetivo, Numeral, Pronome, Verbo, Advérbio, Preposição, Conjunção, Interjeição.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="step-container">
+            <div class="step-header">3️⃣ Estrutura da oração (sintaxe básica)</div>
+            <div class="step-content">
+                <span class="edital-ref">Edital: 5 Domínio da estrutura morfossintática do período.</span>
+                <p class="logic-note">📌 Agora que ele conhece as palavras, aprende como formar frases.</p>
+                <strong>Conteúdos:</strong>
+                <ul>
+                    <li>Sujeito e Predicado</li>
+                    <li>Objeto direto e indireto</li>
+                    <li>Complementos e Adjuntos</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="step-container">
+            <div class="step-header">4️⃣ Concordância</div>
+            <div class="step-content">
+                <span class="edital-ref">Edital: 5.5 Concordância verbal e nominal.</span>
+                <p class="logic-note">📌 Depois aprende como as palavras combinam entre si.</p>
+                <strong>Exemplos:</strong> Os alunos chegaram; A casa bonita.
+            </div>
+        </div>
+
+        <footer>
+            <span>Técnico em Assuntos Educacionais - UNEAL</span>
+            <span>Página 1</span>
+        </footer>
+    </div>
+
+    <div class="page">
+        <header>
+            <div class="discipline-tag">LÍNGUA PORTUGUESA</div>
+            <h1>SEQUÊNCIA CRONOLÓGICA (CONTINUAÇÃO)</h1>
+        </header>
+
+        <div class="step-container">
+            <div class="step-header">5️⃣ Regência</div>
+            <div class="step-content">
+                <span class="edital-ref">Edital: 5.6 Regência verbal e nominal.</span>
+                <p class="logic-note">📌 Aqui aprende quais preposições os verbos exigem.</p>
+                <strong>Exemplos:</strong> Gostar <b>de</b>; Assistir <b>a</b>.
+            </div>
+        </div>
+
+        <div class="step-container">
+            <div class="step-header">6️⃣ Crase</div>
+            <div class="step-content">
+                <span class="edital-ref">Edital: 5.7 Emprego do sinal indicativo de crase.</span>
+                <p class="logic-note">📌 Depende de: artigo + preposição. Por isso vem depois.</p>
+            </div>
+        </div>
+
+        <div class="step-container">
+            <div class="step-header">7️⃣ Colocação pronominal</div>
+            <div class="step-content">
+                <span class="edital-ref">Edital: 5.8 Colocação dos pronomes átonos.</span>
+                <strong>Conteúdo:</strong> Próclise, Mesóclise e Ênclise.
+            </div>
+        </div>
+
+        <div class="step-container">
+            <div class="step-header">8️⃣ Coordenação e subordinação (orações)</div>
+            <div class="step-content">
+                <span class="edital-ref">Edital: 5.2 Relações de coordenação | 5.3 Relações de subordinação</span>
+                <p class="logic-note">📌 Agora o aluno aprende como juntar frases.</p>
+                <strong>Exemplos:</strong> Ele chegou e saiu; Eu sei que ele veio.
+            </div>
+        </div>
+
+        <div class="step-container">
+            <div class="step-header">9️⃣ Pontuação</div>
+            <div class="step-content">
+                <span class="edital-ref">Edital: 5.4 Emprego dos sinais de pontuação.</span>
+                <p class="logic-note">📌 Depende de: estrutura da frase e orações.</p>
+            </div>
+        </div>
+
+        <footer>
+            <span>Técnico em Assuntos Educacionais - UNEAL</span>
+            <span>Página 2</span>
+        </footer>
+    </div>
+
+    <div class="page">
+        <header>
+            <div class="discipline-tag">LÍNGUA PORTUGUESA</div>
+            <h1>FINALIZAÇÃO DO MÉTODO E RESUMO</h1>
+        </header>
+
+        <div class="step-container">
+            <div class="step-header">🔟 Significação das palavras</div>
+            <div class="step-content">
+                <span class="edital-ref">Edital: 6.1 Significação das palavras.</span>
+                <p class="logic-note">📌 Agora o aluno entende os sentidos das palavras.</p>
+                <strong>Conteúdos:</strong> Sinonímia, antonímia, polissemia, ambiguidade, denotação e conotação.
+            </div>
+        </div>
+
+        <div class="step-container">
+            <div class="step-header">1️⃣1️⃣ Coesão textual</div>
+            <div class="step-content">
+                <span class="edital-ref">Edital: 4 Coesão textual.</span>
+                <p class="logic-note">📌 Agora ele aprende como conectar frases em um texto.</p>
+                <strong>Conteúdos:</strong> Conectivos, referenciação, substituição, progressão textual.
+            </div>
+        </div>
+
+        <div class="step-container">
+            <div class="step-header">1️⃣2️⃣ Tipos e gêneros textuais</div>
+            <div class="step-content">
+                <span class="edital-ref">Edital: 2 Reconhecimento de tipos e gêneros.</span>
+                <p class="logic-note">📌 Aqui ele aprende formas de texto.</p>
+            </div>
+        </div>
+
+        <div class="step-container">
+            <div class="step-header">1️⃣3️⃣ Interpretação de texto</div>
+            <div class="step-content">
+                <span class="edital-ref">Edital: 1 Compreensão e interpretação de textos.</span>
+                <p class="logic-note">📌 Agora ele já tem toda a base gramatical para interpretar profundamente.</p>
+            </div>
+        </div>
+
+        <div class="step-container">
+            <div class="step-header">1️⃣4️⃣ Reescrita de frases e textos</div>
+            <div class="step-content">
+                <span class="edital-ref">Edital: 6 Reescrita de frases e parágrafos.</span>
+                <p class="logic-note">📌 Conteúdo final porque depende de toda a gramática.</p>
+            </div>
+        </div>
+
+        <div class="summary-box">
+            <h2>✅ RESUMO (PALAVRAS-CHAVE)</h2>
+            <p><strong>Fluxo Lógico:</strong> ortografia → palavras → frase → concordância → regência → crase → pronomes → orações → pontuação → semântica → coesão → gêneros → interpretação → reescrita</p>
+        </div>
+
+        <footer>
+            <span>Técnico em Assuntos Educacionais - UNEAL</span>
+            <span>Página 3</span>
+        </footer>
+    </div>
+
+</body>
+</html>

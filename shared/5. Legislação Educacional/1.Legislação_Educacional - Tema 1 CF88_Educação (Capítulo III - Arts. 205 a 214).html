@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apostila UNEAL - Legislação Educacional (Educação)</title>
+    <style>
+        :root {
+            /* 5. LEGISLAÇÃO EDUCACIONAL - AZUL BEBÊ */
+            --discipline-color: #E3F2FD;
+            --discipline-accent: #1976D2;
+            --bg-page: #FAFAFA;
+            --text-neutral: #37474F;
+            
+            --bg-conceito: #E8F5E9;
+            --border-conceito: #4CAF50;
+            --bg-exemplo: #E3F2FD;
+            --border-exemplo: #2196F3;
+            --bg-alerta: #FFFDE7;
+            --border-alerta: #FBC02D;
+            --bg-erro: #FFEBEE;
+            --border-erro: #EF9A9A;
+        }
+
+        * { box-sizing: border-box; -webkit-print-color-adjust: exact; }
+
+        body {
+            background-color: #D6D6D6;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .page {
+            width: 210mm;
+            min-height: 297mm;
+            padding: 20mm 25mm;
+            margin-bottom: 30px;
+            background: var(--bg-page);
+            box-shadow: 0 0 10px rgba(0,0,0,0.15);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            page-break-after: always;
+        }
+
+        .page::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 8mm;
+            height: 100%;
+            background-color: var(--discipline-color);
+        }
+
+        header {
+            margin-left: 5mm;
+            border-bottom: 2px solid var(--discipline-color);
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .discipline-header {
+            background: var(--discipline-color);
+            color: var(--discipline-accent);
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-size: 10pt;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+        }
+
+        .header-meta h1 { font-size: 15pt; margin: 5px 0; color: var(--discipline-accent); }
+        .header-meta p { font-size: 8pt; margin: 2px 0; text-transform: uppercase; color: #666; font-weight: bold; }
+
+        .revision-table { border-collapse: collapse; font-size: 8pt; }
+        .revision-table td { border: 1px solid #ddd; padding: 4px 8px; text-align: center; background: #fff; }
+
+        h2 { font-size: 14pt; color: var(--discipline-accent); border-bottom: 2px solid var(--discipline-color); padding-bottom: 5px; margin-top: 25px; }
+        h3 { font-size: 12pt; color: #444; margin-top: 15px; border-left: 4px solid var(--discipline-accent); padding-left: 10px; }
+        p, li { font-size: 11pt; line-height: 1.6; text-align: justify; color: var(--text-neutral); margin-bottom: 8px; }
+        ul { margin-bottom: 15px; }
+
+        .box { padding: 15px; margin: 15px 0; border-radius: 4px; page-break-inside: avoid; }
+        .box-conceito { background: var(--bg-conceito); border-left: 6px solid var(--border-conceito); }
+        .box-exemplo { background: var(--bg-exemplo); border-left: 6px solid var(--border-exemplo); }
+        .box-alerta { background: var(--bg-alerta); border-left: 6px solid var(--border-alerta); }
+        .box-erro { background: var(--bg-erro); border: 2px dashed var(--border-erro); }
+
+        .item-questao { border-bottom: 1px dashed #DDD; padding: 12px 0; page-break-inside: avoid; }
+        .badge { font-weight: bold; padding: 2px 6px; border-radius: 3px; font-size: 9pt; }
+        .certo { background: #C8E6C9; color: #2E7D32; }
+        .errado { background: #FFCDD2; color: #C62828; }
+
+        footer { margin-top: auto; border-top: 1px solid #eee; padding-top: 10px; font-size: 8pt; color: #999; display: flex; justify-content: space-between; }
+
+        @media print { body { background: none; padding: 0; } .page { margin: 0; box-shadow: none; } }
+    </style>
+</head>
+<body>
+
+    <div class="page">
+        <header>
+            <div class="header-meta">
+                <div class="discipline-header">5. LEGISLAÇÃO EDUCACIONAL</div>
+                <p>UNEAL | TÉCNICO EM ASSUNTOS EDUCACIONAIS | BANCA: CEBRASPE</p>
+                <h1>Educação (Capítulo III)</h1>
+                <p>CONSTITUIÇÃO DA REPÚBLICA FEDERATIVA DO BRASIL DE 1988</p>
+            </div>
+            <table class="revision-table">
+                <tr><td>REVISÃO</td><td>24h</td><td>7d</td><td>30d</td></tr>
+                <tr><td>STATUS</td><td>☐</td><td>☐</td><td>☐</td></tr>
+                <tr><td colspan="4">Acertos: ____ / Erros: ____</td></tr>
+            </table>
+        </header>
+
+        <h2>1️⃣ Conceito fundamental</h2>
+        <div class="box box-conceito">
+            A educação, na Constituição Federal de 1988, é um direito social fundamental e dever compartilhado entre Estado, família e sociedade, voltado ao desenvolvimento integral da pessoa, à formação para a cidadania e à qualificação para o trabalho.
+            <br><br>
+            O tema está previsto no Capítulo III – Da Educação, da Cultura e do Desporto, especificamente na Seção I – Da Educação (arts. 205 a 214).
+            <br><br>
+            📌 <strong>Ideia central para prova:</strong> A educação é um direito fundamental que visa ao desenvolvimento da pessoa, ao exercício da cidadania e à qualificação para o trabalho.
+        </div>
+
+        <p>A Constituição estabelece que:</p>
+        <ul>
+            <li>A educação é direito de todos;</li>
+            <li>É dever do Estado e da família;</li>
+            <li>Deve ser promovida com colaboração da sociedade;</li>
+            <li>Tem finalidades educacionais e sociais.</li>
+        </ul>
+
+        <h2>2️⃣ Estrutura completa do conteúdo</h2>
+        <p>A Constituição organiza o tema da educação principalmente nos arts. 205 a 214. Pontos principais:</p>
+        <ul>
+            <li>Finalidade da educação; Princípios do ensino; Dever do Estado; Organização do sistema; Financiamento; Plano Nacional de Educação (PNE).</li>
+        </ul>
+
+        <h3>2.1 Finalidade da educação (Art. 205)</h3>
+        <p>Três finalidades constitucionais:</p>
+        <ol>
+            <li><strong>Pleno desenvolvimento da pessoa;</strong></li>
+            <li><strong>Preparo para o exercício da cidadania;</strong></li>
+            <li><strong>Qualificação para o trabalho.</strong></li>
+        </ol>
+
+        <h3>2.2 Princípios do ensino (Art. 206)</h3>
+        <p>O ensino será ministrado com base em:</p>
+        <ul>
+            <li>Igualdade de acesso e permanência;</li>
+            <li>Liberdade de aprender, ensinar e divulgar o pensamento;</li>
+            <li>Pluralismo de ideias e concepções pedagógicas;</li>
+            <li>Gratuidade do ensino público em estabelecimentos oficiais;</li>
+            <li>Valorização dos profissionais e <strong>Piso Salarial Nacional</strong>;</li>
+            <li><strong>Gestão democrática do ensino público</strong>;</li>
+            <li>Garantia de padrão de qualidade;</li>
+            <li>Educação ao longo da vida.</li>
+        </ul>
+
+        <footer>
+            <span>Legislação Educacional - Educação (Arts. 205-214)</span>
+            <span>Página 1</span>
+        </footer>
+    </div>
+
+    <div class="page">
+        <header>
+            <div class="header-meta">
+                <div class="discipline-header">5. LEGISLAÇÃO EDUCACIONAL</div>
+                <h1>2.3 Dever do Estado com a educação (Art. 208)</h1>
+            </div>
+        </header>
+
+        <p>O Estado deve garantir obrigatoriamente:</p>
+        <ul>
+            <li><strong>Educação básica obrigatória e gratuita:</strong> dos 4 aos 17 anos;</li>
+            <li>Educação infantil (creche e pré-escola);</li>
+            <li>Atendimento educacional especializado (AEE) às pessoas com deficiência;</li>
+            <li>Ensino noturno adequado;</li>
+            <li><strong>Programas suplementares:</strong> material didático, transporte, alimentação e saúde.</li>
+        </ul>
+
+        <div class="box box-alerta">
+            📌 <strong>Ponto muito cobrado:</strong> O acesso ao ensino obrigatório é <strong>direito público subjetivo</strong>. O cidadão pode exigir judicialmente esse direito.
+        </div>
+
+        <h3>2.4 Ensino privado (Art. 209)</h3>
+        <p>Livre à iniciativa privada, desde que: cumpra normas gerais da educação nacional e tenha autorização/avaliação do poder público.</p>
+
+        <h3>2.5 Conteúdos e Ensino Religioso (Art. 210)</h3>
+        <p>Fixação de conteúdos mínimos para o ensino fundamental, respeitando valores culturais e regionais.</p>
+        <div class="box box-exemplo">
+            📌 <strong>Ensino religioso:</strong> Matrícula <strong>facultativa</strong> nas escolas públicas de ensino fundamental.
+        </div>
+
+        <h3>2.6 Educação indígena (Art. 210, §2º)</h3>
+        <p>Garantido o ensino em língua materna e processos próprios de aprendizagem.</p>
+
+        <h3>2.7 Financiamento da educação (Art. 212)</h3>
+        <p>Percentuais mínimos anuais da receita de impostos:</p>
+        <div class="box box-conceito">
+            <ul>
+                <li><strong>União:</strong> mínimo de 18%.</li>
+                <li><strong>Estados, DF e Municípios:</strong> mínimo de 25%.</li>
+            </ul>
+        </div>
+
+        <h3>2.8 Plano Nacional de Educação (Art. 214)</h3>
+        <p>Plano plurianual para erradicação do analfabetismo, universalização do atendimento, melhoria da qualidade e promoção tecnológica.</p>
+
+        <footer>
+            <span>Legislação Educacional - Educação (Arts. 205-214)</span>
+            <span>Página 2</span>
+        </footer>
+    </div>
+
+    <div class="page">
+        <header>
+            <div class="header-meta">
+                <div class="discipline-header">5. LEGISLAÇÃO EDUCACIONAL</div>
+                <h1>3️⃣ Como o tema aparece em provas (CEBRASPE)</h1>
+            </div>
+        </header>
+
+        <ul>
+            <li><strong>Literalidade:</strong> Reprodução fiel ou alteração sutil do texto (Arts. 205-214).</li>
+            <li><strong>Princípios (Art. 206):</strong> Identificação correta dos princípios.</li>
+            <li><strong>Dever do Estado (Art. 208):</strong> Foco na idade obrigatória e programas suplementares.</li>
+            <li><strong>Financiamento:</strong> Troca proposital dos percentuais entre entes.</li>
+        </ul>
+
+        <h2>4️⃣ Padrões de cobrança</h2>
+        <div class="box box-exemplo">
+            <strong>Padrão 1:</strong> "A educação visa ao pleno desenvolvimento da pessoa."<br>
+            <strong>Padrão 2:</strong> "A gestão democrática é princípio do ensino público."<br>
+            <strong>Padrão 3:</strong> "A União aplicará anualmente no mínimo 18% da receita de impostos na educação."
+        </div>
+
+        <h2>5️⃣ Pegadinhas de prova</h2>
+        <div class="box box-alerta">
+            ⚠️ <strong>Pegadinha 1:</strong> Dizer que a educação é dever <strong>exclusivo</strong> do Estado (É também da família).<br>
+            ⚠️ <strong>Pegadinha 2:</strong> Trocar os percentuais (União 18% / Estados e Municípios 25%).<br>
+            ⚠️ <strong>Pegadinha 3:</strong> Dizer que ensino religioso é obrigatório (É facultativo).<br>
+            ⚠️ <strong>Pegadinha 4:</strong> Confundir a idade obrigatória (É de 4 a 17 anos).
+        </div>
+
+        <h2>6️⃣ Como as bancas constroem itens errados</h2>
+        <div class="box box-erro">
+            - "A União aplicará 25% na educação" (Incorreto, é 18%).<br>
+            - "A gestão democrática é facultativa no ensino público" (Incorreto, é princípio).<br>
+            - "O acesso ao ensino médio é a única obrigação do Estado" (Incorreto, abrange dos 4 aos 17).
+        </div>
+
+        <h2>7️⃣ Exemplos de questões</h2>
+        <div class="item-questao">Q1: Educação é direito de todos e dever do Estado e da família. <span class="badge certo">✔ CERTO</span></div>
+        <div class="item-questao">Q2: Educação visa apenas à qualificação para o trabalho. <span class="badge errado">❌ ERRADO</span></div>
+        <div class="item-questao">Q3: A gestão democrática do ensino público é princípio constitucional. <span class="badge certo">✔ CERTO</span></div>
+        <div class="item-questao">Q4: O ensino religioso nas escolas públicas é obrigatório. <span class="badge errado">❌ ERRADO</span></div>
+        <div class="item-questao">Q5: União deve aplicar no mínimo 18% da receita em educação. <span class="badge certo">✔ CERTO</span></div>
+
+        <footer>
+            <span>Legislação Educacional - Educação (Arts. 205-214)</span>
+            <span>Página 3</span>
+        </footer>
+    </div>
+
+    <div class="page">
+        <header>
+            <div class="header-meta">
+                <div class="discipline-header">5. LEGISLAÇÃO EDUCACIONAL</div>
+                <h1>8️⃣ Método FPD e Resumo Final</h1>
+            </div>
+        </header>
+
+        <h2>8️⃣ Método rápido de resolução (FPD)</h2>
+        <ul>
+            <li><strong>F – Finalidades:</strong> Desenvolvimento, Cidadania, Trabalho.</li>
+            <li><strong>P – Princípios:</strong> Art. 206 (Igualdade, Liberdade, Gratuidade, Gestão Democrática).</li>
+            <li><strong>D – Dever do Estado:</strong> Art. 208 (4-17 anos, AEE, Programas Suplementares).</li>
+        </ul>
+
+        <h2>9️⃣ Checklist mental de prova</h2>
+        <p>A educação é direito de quem? Quem tem o dever? Quais as finalidades? Quais os princípios? Qual percentual? Religioso é facultativo?</p>
+
+        <h2>🔟 Erros mais comuns</h2>
+        <div class="box box-erro">
+            Confundir princípios com finalidades; Errar percentuais; Achar que é dever apenas do Estado; Confundir a idade obrigatória (4-17).
+        </div>
+
+        <h2>11️⃣ Resumo estratégico final</h2>
+        <div class="box box-conceito">
+            <strong>Educação (Arts. 205-214):</strong><br>
+            • <strong>Finalidades:</strong> Pessoa, Cidadania, Trabalho.<br>
+            • <strong>Dever do Estado:</strong> 4 a 17 anos (Obrigatória). Ensino Infantil, AEE, Programas Suplementares.<br>
+            • <strong>Financiamento:</strong> União 18% | Estados/Municípios 25% (Mínimos).<br>
+            • <strong>Princípios:</strong> Gestão democrática do ensino público, gratuidade em escolas oficiais e padrão de qualidade.
+        </div>
+
+        <footer>
+            <span>Legislação Educacional - Educação (Arts. 205-214)</span>
+            <span>Página 4</span>
+        </footer>
+    </div>
+
+</body>
+</html>

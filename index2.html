@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard UNEAL - Técnico em Assuntos Educacionais</title>
+    <style>
+        :root {
+            --bg-body: #F0F2F5;
+            --primary-blue: #0D47A1;
+            --card-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-body);
+            margin: 0;
+            padding: 40px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        header h1 {
+            color: var(--primary-blue);
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        header p {
+            color: #555;
+            font-size: 1.1rem;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            width: 100%;
+            max-width: 1200px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            text-align: center;
+            text-decoration: none;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: var(--card-shadow);
+            border-top: 6px solid #ccc;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+        .card h2 {
+            margin: 15px 0;
+            font-size: 1.3rem;
+            color: #333;
+        }
+
+        .card p {
+            font-size: 0.9rem;
+            color: #777;
+            margin-bottom: 20px;
+        }
+
+        /* CORES POR DISCIPLINA (Fiel aos roteiros anteriores) */
+        .portugues { border-color: #4A148C; }
+        .informatica { border-color: #1976D2; }
+        .raciocinio { border-color: #1B5E20; }
+        .alagoas { border-color: #C62828; }
+        .legislacao { border-color: #F57F17; }
+        .atualidades { border-color: #E65100; }
+        .especificos { border-color: #006064; }
+
+        .btn {
+            background: #f8f9fa;
+            border: 1px solid #ddd;
+            padding: 8px 15px;
+            border-radius: 5px;
+            font-weight: bold;
+            color: #333;
+            transition: all 0.2s;
+        }
+
+        .card:hover .btn {
+            background: var(--primary-blue);
+            color: white;
+            border-color: var(--primary-blue);
+        }
+
+        footer {
+            margin-top: 60px;
+            color: #888;
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Plano de Estudos - UNEAL 2026</h1>
+        <p>Técnico em Assuntos Educacionais | Ordem Pedagógica de Aprendizagem</p>
+    </header>
+
+    <div class="grid-container">
+        
+        <a href="portugues.html" class="card portugues">
+            <div>
+                <span style="font-size: 2.5rem;">📚</span>
+                <h2>Língua Portuguesa</h2>
+                <p>Ortografia até Reescrita de Frases.</p>
+            </div>
+            <div class="btn">Acessar Conteúdo</div>
+        </a>
+
+        <a href="informatica.html" class="card informatica">
+            <div>
+                <span style="font-size: 2.5rem;">💻</span>
+                <h2>Informática</h2>
+                <p>Windows, Office, Nuvem e Segurança.</p>
+            </div>
+            <div class="btn">Acessar Conteúdo</div>
+        </a>
+
+        <a href="raciocinio.html" class="card raciocinio">
+            <div>
+                <span style="font-size: 2.5rem;">🧠</span>
+                <h2>Raciocínio Lógico</h2>
+                <p>Lógica, Probabilidade e Estatística.</p>
+            </div>
+            <div class="btn">Acessar Conteúdo</div>
+        </a>
+
+        <a href="alagoas.html" class="card alagoas">
+            <div>
+                <span style="font-size: 2.5rem;">📍</span>
+                <h2>História e Geo/AL</h2>
+                <p>Geografia, Palmares e Evolução Política.</p>
+            </div>
+            <div class="btn">Acessar Conteúdo</div>
+        </a>
+
+        <a href="legislacao.html" class="card legislacao">
+            <div>
+                <span style="font-size: 2.5rem;">⚖️</span>
+                <h2>Legislação Educacional</h2>
+                <p>Constituição Federal e LDB 9.394/96.</p>
+            </div>
+            <div class="btn">Acessar Conteúdo</div>
+        </a>
+
+        <a href="atualidades.html" class="card atualidades">
+            <div>
+                <span style="font-size: 2.5rem;">🌍</span>
+                <h2>Atualidades</h2>
+                <p>Sociedade, Política e Desafios Globais.</p>
+            </div>
+            <div class="btn">Acessar Conteúdo</div>
+        </a>
+
+        <a href="especificos.html" class="card especificos">
+            <div>
+                <span style="font-size: 2.5rem;">🎓</span>
+                <h2>Conhecimentos Específicos</h2>
+                <p>Pedagogia, Gestão e Avaliação Superior.</p>
+            </div>
+            <div class="btn">Acessar Conteúdo</div>
+        </a>
+
+    </div>
+
+    <footer>
+        © 2026 - Preparatório UNEAL | Foco em Fidelidade Absoluta ao Edital
+    </footer>
+
+</body>
+</html>

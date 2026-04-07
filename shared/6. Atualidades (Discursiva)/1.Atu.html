@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plano Mestre UNEAL - Atualidades (Do Zero Absoluto)</title>
+    <style>
+        :root {
+            /* IDENTIDADE VISUAL: ATUALIDADES - LARANJA DINÂMICO */
+            --discipline-color: #FFF3E0;
+            --discipline-accent: #E65100;
+            --bg-page: #FFFFFF;
+            --text-main: #1A1A1A;
+            --text-secondary: #424242;
+            --bg-box-step: #FFF9F2;
+            --border-step: #FF9800;
+            --bg-box-highlight: #E0F2F1;
+            --border-highlight: #00796B;
+        }
+
+        * { box-sizing: border-box; -webkit-print-color-adjust: exact; }
+
+        body {
+            background-color: #BDC3C7;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .page {
+            width: 210mm;
+            min-height: 297mm;
+            padding: 15mm 20mm;
+            margin-bottom: 30px;
+            background: var(--bg-page);
+            box-shadow: 0 0 15px rgba(0,0,0,0.3);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            page-break-after: always;
+        }
+
+        .page::before {
+            content: "";
+            position: absolute;
+            left: 0; top: 0; width: 12mm; height: 100%;
+            background-color: var(--discipline-color);
+            border-right: 2px solid var(--discipline-accent);
+        }
+
+        header {
+            margin-left: 12mm;
+            border-bottom: 4px double var(--discipline-accent);
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        .discipline-tag {
+            background: var(--discipline-accent);
+            color: #FFF;
+            padding: 5px 12px;
+            font-size: 10pt;
+            font-weight: bold;
+            text-transform: uppercase;
+            display: inline-block;
+            margin-bottom: 5px;
+        }
+
+        .header-info p { font-size: 9pt; margin: 2px 0; color: var(--text-secondary); font-weight: bold; text-transform: uppercase; }
+        h1 { font-size: 16pt; margin: 10px 0; color: var(--discipline-accent); text-transform: uppercase; text-align: center; }
+
+        .step-container { margin-bottom: 12px; page-break-inside: avoid; }
+        .step-header { display: flex; align-items: center; background: var(--discipline-accent); color: white; padding: 8px 15px; font-weight: bold; font-size: 11pt; }
+        .step-content { border: 1px solid var(--discipline-accent); padding: 12px; background: var(--bg-box-step); }
+        
+        .edital-ref { font-style: italic; color: #BF360C; font-weight: bold; font-size: 9.5pt; display: block; margin-bottom: 5px; }
+        .logic-note { background: #FFFDE7; border-left: 5px solid #FBC02D; padding: 8px; margin: 8px 0; font-size: 10pt; }
+        
+        ul { margin: 5px 0; padding-left: 20px; }
+        li { font-size: 10pt; line-height: 1.4; color: var(--text-main); margin-bottom: 3px; }
+
+        .summary-box { background: var(--bg-box-highlight); border: 2px solid var(--border-highlight); padding: 15px; margin-top: auto; }
+        h2 { font-size: 12pt; color: var(--border-highlight); margin-top: 0; text-transform: uppercase; border-bottom: 1px solid var(--border-highlight); padding-bottom: 5px; }
+
+        footer { margin-top: auto; border-top: 2px solid var(--discipline-accent); padding-top: 8px; font-size: 8.5pt; color: #666; display: flex; justify-content: space-between; font-weight: bold; }
+
+        @media print { body { background: none; padding: 0; } .page { margin: 0; box-shadow: none; border: 1px solid #000; } }
+    </style>
+</head>
+<body>
+
+    <div class="page">
+        <header>
+            <div class="discipline-tag">ATUALIDADES</div>
+            <div class="header-info">
+                <p>CONCURSO: UNIVERSIDADE ESTADUAL DE ALAGOAS (UNEAL)</p>
+                <p>CARGO: TÉCNICO EM ASSUNTOS EDUCACIONAIS</p>
+                <p>MÉTODO: ORDEM PEDAGÓGICA (DO ZERO ABSOLUTO)</p>
+            </div>
+            <h1>Roteiro de Estudos de Atualidades</h1>
+        </header>
+
+        <div class="step-container">
+            <div class="step-header">1️⃣ Sociedade contemporânea</div>
+            <div class="step-content">
+                <span class="edital-ref">Edital: Sociedade</span>
+                <p class="logic-note">📌 Ponto de partida: entender como a sociedade atual está organizada. Cria a base para todos os outros problemas atuais.</p>
+                <strong>Conteúdos:</strong> Organização social, desigualdade, urbanização, globalização e mudanças demográficas.
+            </div>
+        </div>
+
+        <div class="step-container">
+            <div class="step-header">2️⃣ Política</div>
+            <div class="step-content">
+                <span class="edital-ref">Edital: Política</span>
+                <p class="logic-note">📌 Estudo da organização e exercício do poder. Influencia diretamente educação, saúde e economia.</p>
+                <strong>Conteúdos:</strong> Funcionamento do Estado, democracia, políticas públicas, governança e instituições.
+            </div>
+        </div>
+
+        <div class="step-container">
+            <div class="step-header">3️⃣ Economia</div>
+            <div class="step-content">
+                <span class="edital-ref">Edital: Economia</span>
+                <p class="logic-note">📌 Compreensão de produção, emprego e desenvolvimento. A economia influencia quase todos os debates atuais.</p>
+                <strong>Subtópicos:</strong> Crescimento econômico, inflação, mercado de trabalho, globalização econômica e desenvolvimento.
+            </div>
+        </div>
+
+        <div class="step-container">
+            <div class="step-header">4️⃣ Infraestrutura e desenvolvimento</div>
+            <div class="step-content">
+                <span class="edital-ref">Edital: Transportes e Energia</span>
+                <p class="logic-note">📌 Sistemas que permitem o funcionamento da economia e sociedade.</p>
+                <strong>Transportes:</strong> Mobilidade urbana, logística, transporte público.<br>
+                <strong>Energia:</strong> Matriz energética, renováveis, segurança energética.
+            </div>
+        </div>
+
+        <footer>
+            <span>Técnico em Assuntos Educacionais - UNEAL</span>
+            <span>Página 1</span>
+        </footer>
+    </div>
+
+    <div class="page">
+        <header>
+            <div class="discipline-tag">ATUALIDADES</div>
+            <h1>TRANSFORMAÇÕES E QUALIDADE DE VIDA (ETAPAS 5 A 7)</h1>
+        </header>
+
+        <div class="step-container">
+            <div class="step-header">5️⃣ Políticas sociais</div>
+            <div class="step-content">
+                <span class="edital-ref">Edital: Educação, Saúde e Segurança</span>
+                <p class="logic-note">📌 Análise das áreas que afetam diretamente a qualidade de vida da população.</p>
+                <strong>Educação:</strong> Acesso, qualidade e desigualdade educacional.<br>
+                <strong>Saúde:</strong> Sistemas públicos, políticas de saúde, epidemias e pandemias.<br>
+                <strong>Segurança:</strong> Violência urbana, políticas de segurança, crime organizado.
+            </div>
+        </div>
+
+        <div class="step-container">
+            <div class="step-header">6️⃣ Cultura e transformações sociais</div>
+            <div class="step-content">
+                <span class="edital-ref">Edital: Cultura</span>
+                <p class="logic-note">📌 Mudanças culturais, comportamento e valores na sociedade contemporânea.</p>
+                <strong>Conteúdos:</strong> Diversidade e identidade cultural, indústria cultural e cultura digital.
+            </div>
+        </div>
+
+        <div class="step-container">
+            <div class="step-header">7️⃣ Tecnologia e inovação</div>
+            <div class="step-content">
+                <span class="edital-ref">Edital: Tecnologia</span>
+                <p class="logic-note">📌 Impacto da tecnologia em todas as áreas anteriores.</p>
+                <strong>Subtópicos:</strong> Transformação digital, inteligência artificial, redes sociais e economia digital.
+            </div>
+        </div>
+
+        <footer>
+            <span>Técnico em Assuntos Educacionais - UNEAL</span>
+            <span>Página 2</span>
+        </footer>
+    </div>
+
+    <div class="page">
+        <header>
+            <div class="discipline-tag">ATUALIDADES</div>
+            <h1>DESAFIOS GLOBAIS (ETAPAS 8 E 9)</h1>
+        </header>
+
+        <div class="step-container">
+            <div class="step-header">8️⃣ Meio ambiente e desenvolvimento sustentável</div>
+            <div class="step-content">
+                <span class="edital-ref">Edital: Desenvolvimento sustentável e Ecologia</span>
+                <p class="logic-note">📌 Tema dependente da economia, sociedade e tecnologia.</p>
+                <strong>Subtópicos:</strong> Mudanças climáticas, sustentabilidade, preservação, políticas ambientais e economia verde.
+            </div>
+        </div>
+
+        <div class="step-container">
+            <div class="step-header">9️⃣ Relações internacionais</div>
+            <div class="step-content">
+                <span class="edital-ref">Edital: Relações internacionais</span>
+                <p class="logic-note">📌 Integração de todas as áreas em escala global. Grandes acontecimentos do mundo.</p>
+                <strong>Subtópicos:</strong> Geopolítica mundial, conflitos, organismos internacionais e cooperação internacional.
+            </div>
+        </div>
+
+        <div class="summary-box">
+            <h2>✅ RESUMO DA SEQUÊNCIA (PALAVRAS-CHAVE)</h2>
+            <p><strong>Fluxo:</strong> sociedade → política → economia → infraestrutura → políticas sociais → cultura → tecnologia → sustentabilidade → geopolítica</p>
+            <p><strong>Lógica:</strong> Estrutura da sociedade → Funcionamento do Estado → Economia → Serviços → Transformações sociais → Inovação → Desafios globais.</p>
+        </div>
+
+        <footer>
+            <span>Técnico em Assuntos Educacionais - UNEAL</span>
+            <span>Página 3</span>
+        </footer>
+    </div>
+
+</body>
+</html>

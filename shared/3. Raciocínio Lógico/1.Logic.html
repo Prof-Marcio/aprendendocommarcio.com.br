@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plano Mestre UNEAL - Raciocínio Lógico (Mapeamento de Edital)</title>
+    <style>
+        :root {
+            /* IDENTIDADE VISUAL: RACIOCÍNIO LÓGICO - VERDE ANALÍTICO */
+            --discipline-color: #E8F5E9;
+            --discipline-accent: #1B5E20;
+            --bg-page: #FFFFFF;
+            --text-main: #1A1A1A;
+            --text-secondary: #424242;
+            --bg-box-topic: #F1F8E9;
+            --border-topic: #4CAF50;
+        }
+
+        * { box-sizing: border-box; -webkit-print-color-adjust: exact; }
+
+        body {
+            background-color: #BDC3C7;
+            font-family: 'Courier New', Courier, monospace; /* Toque analítico */
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .page {
+            width: 210mm;
+            min-height: 297mm;
+            padding: 15mm 20mm;
+            margin-bottom: 30px;
+            background: var(--bg-page);
+            box-shadow: 0 0 15px rgba(0,0,0,0.3);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            page-break-after: always;
+        }
+
+        .page::before {
+            content: "";
+            position: absolute;
+            left: 0; top: 0; width: 12mm; height: 100%;
+            background-color: var(--discipline-color);
+            border-right: 2px solid var(--discipline-accent);
+        }
+
+        header {
+            margin-left: 12mm;
+            border-bottom: 4px double var(--discipline-accent);
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        .discipline-tag {
+            background: var(--discipline-accent);
+            color: #FFF;
+            padding: 5px 12px;
+            font-size: 10pt;
+            font-weight: bold;
+            text-transform: uppercase;
+            display: inline-block;
+            margin-bottom: 5px;
+        }
+
+        .header-info p { font-size: 9pt; margin: 2px 0; color: var(--text-secondary); font-weight: bold; text-transform: uppercase; }
+        h1 { font-size: 15pt; margin: 10px 0; color: var(--discipline-accent); text-transform: uppercase; text-align: center; }
+
+        .section-title {
+            background: var(--discipline-accent);
+            color: white;
+            padding: 8px 15px;
+            font-weight: bold;
+            font-size: 11pt;
+            margin-top: 20px;
+            text-transform: uppercase;
+        }
+
+        .topic-content {
+            border: 1px solid var(--discipline-accent);
+            padding: 12px;
+            background: var(--bg-box-topic);
+            margin-bottom: 2px;
+        }
+
+        .edital-item {
+            font-weight: bold;
+            color: #1B5E20;
+            float: right;
+            font-size: 9pt;
+        }
+
+        ul { margin: 5px 0; padding-left: 20px; }
+        li { font-size: 10pt; line-height: 1.4; color: var(--text-main); }
+
+        table.map-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            font-size: 9.5pt;
+        }
+        table.map-table th, table.map-table td {
+            border: 1px solid #333;
+            padding: 8px;
+            text-align: left;
+        }
+        table.map-table th {
+            background: var(--discipline-accent);
+            color: white;
+            text-transform: uppercase;
+        }
+        table.map-table tr:nth-child(even) { background: #F9F9F9; }
+
+        footer { margin-top: auto; border-top: 2px solid var(--discipline-accent); padding-top: 8px; font-size: 8.5pt; color: #666; display: flex; justify-content: space-between; font-weight: bold; }
+
+        @media print { body { background: none; padding: 0; } .page { margin: 0; box-shadow: none; border: 1px solid #000; } }
+    </style>
+</head>
+<body>
+
+    <div class="page">
+        <header>
+            <div class="discipline-tag">RACIOCÍNIO LÓGICO</div>
+            <div class="header-info">
+                <p>CONCURSO: UNIVERSIDADE ESTADUAL DE ALAGOAS (UNEAL)</p>
+                <p>CARGO: TÉCNICO EM ASSUNTOS EDUCACIONAIS</p>
+                <p>DOCUMENTO: CORRESPONDÊNCIA TÓPICOS × EDITAL</p>
+            </div>
+            <h1>Mapeamento Analítico de Conteúdo</h1>
+        </header>
+
+        <div class="section-title">1. Lógica proposicional</div>
+        <div class="topic-content">
+            <strong>Proposições e Conectivos lógicos</strong>
+            <span class="edital-item">Edital: 1.1</span>
+        </div>
+        <div class="topic-content">
+            <strong>Tabelas-verdade</strong>
+            <span class="edital-item">Edital: 1.2</span>
+        </div>
+        <div class="topic-content">
+            <strong>Equivalências lógicas e Leis de De Morgan</strong>
+            <span class="edital-item">Edital: 1.3</span>
+            <p style="font-size: 8pt; margin: 5px 0 0 0;">(As leis de De Morgan são um caso específico de equivalência lógica.)</p>
+        </div>
+
+        <div class="section-title">2. Estruturas de raciocínio</div>
+        <div class="topic-content">
+            <strong>Relações lógicas (entre pessoas, lugares, objetos etc.)</strong>
+            <span class="edital-item">Edital: 2</span>
+            <ul>
+                <li>Associação lógica; Dedução de informações; Análise de condições.</li>
+            </ul>
+        </div>
+        <div class="topic-content">
+            <strong>Sequências e Padrões</strong>
+            <span class="edital-item">Edital: 3</span>
+            <ul>
+                <li>Raciocínio sequencial; Reconhecimento de padrões.</li>
+            </ul>
+        </div>
+        <div class="topic-content">
+            <strong>Orientação espacial e temporal</strong>
+            <span class="edital-item">Edital: 3</span>
+        </div>
+
+        <div class="section-title">3. Problemas lógicos</div>
+        <div class="topic-content">
+            <strong>Dedução e Associação</strong>
+            <span class="edital-item">Edital: 2 e 4</span>
+        </div>
+        <div class="topic-content">
+            <strong>Interpretação de gráficos e tabelas</strong>
+            <span class="edital-item">Edital: 3 (Subparte)</span>
+        </div>
+
+        <footer>
+            <span>Técnico em Assuntos Educacionais - UNEAL</span>
+            <span>Página 1</span>
+        </footer>
+    </div>
+
+    <div class="page">
+        <header>
+            <div class="discipline-tag">RACIOCÍNIO LÓGICO</div>
+            <h1>CONTAGEM, ESTATÍSTICA E FALÁCIAS</h1>
+        </header>
+
+        <div class="section-title">4. Contagem e Probabilidade</div>
+        <div class="topic-content">
+            <strong>Princípio fundamental, Arranjos e Combinações</strong>
+            <span class="edital-item">Edital: 4.1</span>
+        </div>
+        <div class="topic-content">
+            <strong>Noções de Probabilidade</strong>
+            <span class="edital-item">Edital: 4.1</span>
+        </div>
+
+        <div class="section-title">5. Falácias</div>
+        <div class="topic-content">
+            <strong>Afirmação do consequente e Negação do antecedente</strong>
+            <span class="edital-item">Edital: 5</span>
+        </div>
+
+        <div class="section-title">6. Estatística</div>
+        <div class="topic-content">
+            <strong>Média, Moda, Mediana e Desvio padrão</strong>
+            <span class="edital-item">Edital: 6</span>
+        </div>
+
+        <h2 style="margin-top: 30px; color: var(--discipline-accent);">Mapa Final Resumido (Revisão)</h2>
+        
+        <table class="map-table">
+            <thead>
+                <tr>
+                    <th>Tema</th>
+                    <th>Numeração do Edital</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>Proposições e Conectivos</td><td>1.1</td></tr>
+                <tr><td>Tabela-verdade</td><td>1.2</td></tr>
+                <tr><td>Equivalências / De Morgan</td><td>1.3</td></tr>
+                <tr><td>Relações lógicas / Associação / Dedução</td><td>2</td></tr>
+                <tr><td>Sequências / Padrões / Orientação</td><td>3</td></tr>
+                <tr><td>Gráficos e tabelas</td><td>3</td></tr>
+                <tr><td>Princípio da contagem / Arranjos / Combinações</td><td>4.1</td></tr>
+                <tr><td>Probabilidade</td><td>4.1</td></tr>
+                <tr><td>Falácias</td><td>5</td></tr>
+                <tr><td>Estatística (Média, Moda, Mediana, Desvio)</td><td>6</td></tr>
+            </tbody>
+        </table>
+
+        <footer>
+            <span>Técnico em Assuntos Educacionais - UNEAL</span>
+            <span>Página 2</span>
+        </footer>
+    </div>
+
+</body>
+</html>

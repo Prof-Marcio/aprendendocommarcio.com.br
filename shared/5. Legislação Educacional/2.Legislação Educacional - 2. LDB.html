@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apostila UNEAL - LDB (Lei 9.394/96) - Integral</title>
+    <style>
+        :root {
+            /* 5. LEGISLAÇÃO EDUCACIONAL - AZUL BEBÊ */
+            --discipline-color: #E3F2FD;
+            --discipline-accent: #1976D2;
+            --bg-page: #FAFAFA;
+            --text-neutral: #37474F;
+            
+            --bg-conceito: #E8F5E9;
+            --border-conceito: #4CAF50;
+            --bg-exemplo: #E3F2FD;
+            --border-exemplo: #2196F3;
+            --bg-alerta: #FFFDE7;
+            --border-alerta: #FBC02D;
+            --bg-erro: #FFEBEE;
+            --border-erro: #EF9A9A;
+        }
+
+        * { box-sizing: border-box; -webkit-print-color-adjust: exact; }
+
+        body {
+            background-color: #D6D6D6;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .page {
+            width: 210mm;
+            min-height: 297mm;
+            padding: 20mm 25mm;
+            margin-bottom: 30px;
+            background: var(--bg-page);
+            box-shadow: 0 0 10px rgba(0,0,0,0.15);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            page-break-after: always;
+        }
+
+        .page::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 8mm;
+            height: 100%;
+            background-color: var(--discipline-color);
+        }
+
+        header {
+            margin-left: 5mm;
+            border-bottom: 2px solid var(--discipline-color);
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .discipline-header {
+            background: var(--discipline-color);
+            color: var(--discipline-accent);
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-size: 10pt;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+        }
+
+        .header-meta h1 { font-size: 14pt; margin: 5px 0; color: var(--discipline-accent); text-transform: uppercase; }
+        .header-meta p { font-size: 8pt; margin: 2px 0; text-transform: uppercase; color: #666; font-weight: bold; }
+
+        .revision-table { border-collapse: collapse; font-size: 8pt; }
+        .revision-table td { border: 1px solid #ddd; padding: 4px 8px; text-align: center; background: #fff; }
+
+        h2 { font-size: 14pt; color: var(--discipline-accent); border-bottom: 2px solid var(--discipline-color); padding-bottom: 5px; margin-top: 25px; }
+        h3 { font-size: 12pt; color: #444; margin-top: 15px; border-left: 4px solid var(--discipline-accent); padding-left: 10px; }
+        p, li { font-size: 11pt; line-height: 1.6; text-align: justify; color: var(--text-neutral); margin-bottom: 8px; }
+        ul { margin-bottom: 15px; }
+
+        .box { padding: 15px; margin: 15px 0; border-radius: 4px; page-break-inside: avoid; }
+        .box-conceito { background: var(--bg-conceito); border-left: 6px solid var(--border-conceito); }
+        .box-exemplo { background: var(--bg-exemplo); border-left: 6px solid var(--border-exemplo); }
+        .box-alerta { background: var(--bg-alerta); border-left: 6px solid var(--border-alerta); }
+        .box-erro { background: var(--bg-erro); border: 2px dashed var(--border-erro); }
+
+        .item-questao { border-bottom: 1px dashed #DDD; padding: 12px 0; page-break-inside: avoid; }
+        .badge { font-weight: bold; padding: 2px 6px; border-radius: 3px; font-size: 9pt; }
+        .certo { background: #C8E6C9; color: #2E7D32; }
+        .errado { background: #FFCDD2; color: #C62828; }
+
+        table.incidencia { width: 100%; border-collapse: collapse; margin: 15px 0; }
+        table.incidencia th, table.incidencia td { border: 1px solid #ddd; padding: 8px; text-align: left; font-size: 10pt; }
+        table.incidencia th { background-color: var(--discipline-color); color: var(--discipline-accent); }
+
+        footer { margin-top: auto; border-top: 1px solid #eee; padding-top: 10px; font-size: 8pt; color: #999; display: flex; justify-content: space-between; }
+
+        @media print { body { background: none; padding: 0; } .page { margin: 0; box-shadow: none; } }
+    </style>
+</head>
+<body>
+
+    <div class="page">
+        <header>
+            <div class="header-meta">
+                <div class="discipline-header">5. LEGISLAÇÃO EDUCACIONAL</div>
+                <p>UNEAL | TÉCNICO EM ASSUNTOS EDUCACIONAIS | BANCA: CEBRASPE</p>
+                <h1>Lei de Diretrizes e Bases (LDB)</h1>
+                <p>TEMA: LEI Nº 9.394/1996 E SUAS ALTERAÇÕES</p>
+            </div>
+            <table class="revision-table">
+                <tr><td>REVISÃO</td><td>24h</td><td>7d</td><td>30d</td></tr>
+                <tr><td>STATUS</td><td>☐</td><td>☐</td><td>☐</td></tr>
+                <tr><td colspan="4">Acertos: ____ / Erros: ____</td></tr>
+            </table>
+        </header>
+
+        <h2>1️⃣ Conceito fundamental</h2>
+        <div class="box box-conceito">
+            A Lei nº 9.394/1996 (LDB) é a principal norma que organiza o sistema educacional brasileiro. Ela estabelece princípios, estrutura da educação nacional, competências federativas, organização da educação básica e superior, além de normas de gestão e financiamento.
+            <br><br>
+            📌 <strong>Conceito central:</strong> A LDB estrutura todo o sistema educacional brasileiro, regulando desde a educação infantil até o ensino superior, definindo diretrizes gerais e competências institucionais.
+        </div>
+
+        <h2>2️⃣ Estrutura completa do conteúdo</h2>
+        <h3>Título I — Da Educação (Art. 1º)</h3>
+        <p>Abrange processos formativos na vida familiar, convivência humana, trabalho, instituições de ensino, movimentos sociais, organizações civis e manifestações culturais.</p>
+        <div class="box box-alerta">
+            ⚠️ <strong>Atenção:</strong> A LDB disciplina especificamente a <strong>educação escolar</strong>, desenvolvida predominantemente em instituições de ensino.
+        </div>
+
+        <h3>Título II — Dos Princípios e Fins da Educação (Art. 3º)</h3>
+        <ul>
+            <li>Igualdade de condições para acesso e permanência;</li>
+            <li>Liberdade de aprender, ensinar e pesquisar;</li>
+            <li>Pluralismo de ideias e coexistência público/privado;</li>
+            <li>Gratuidade do ensino público;</li>
+            <li>Gestão democrática do ensino público;</li>
+            <li>Garantia de padrão de qualidade;</li>
+            <li>Vinculação entre educação, trabalho e práticas sociais.</li>
+        </ul>
+
+        <h3>Título III — Do Direito à Educação e do Dever de Educar (Art. 4º)</h3>
+        <p>O dever do Estado inclui garantir:</p>
+        <ul>
+            <li><strong>Educação básica obrigatória e gratuita:</strong> dos 4 aos 17 anos;</li>
+            <li>Educação infantil em creches e pré-escolas;</li>
+            <li>Atendimento educacional especializado;</li>
+            <li>Programas suplementares (transporte, alimentação, material).</li>
+        </ul>
+
+        <footer>
+            <span>Legislação Educacional - LDB Integral</span>
+            <span>Página 1</span>
+        </footer>
+    </div>
+
+    <div class="page">
+        <header>
+            <div class="header-meta">
+                <div class="discipline-header">5. LEGISLAÇÃO EDUCACIONAL</div>
+                <h1>Organização e Níveis de Ensino</h1>
+            </div>
+        </header>
+
+        <h3>Título IV — Da Organização da Educação Nacional</h3>
+        <p>Organizada em <strong>regime de colaboração</strong>:</p>
+        <ul>
+            <li><strong>União:</strong> Elaborar PNE e estabelecer diretrizes nacionais.</li>
+            <li><strong>Estados:</strong> Atuar principalmente no ensino médio.</li>
+            <li><strong>Municípios:</strong> Atuar prioritariamente no ensino fundamental e educação infantil.</li>
+        </ul>
+
+        <h3>Título V — Dos Níveis e Modalidades</h3>
+        <p><strong>Educação Escolar:</strong></p>
+        <ol>
+            <li><strong>Educação Básica:</strong> Infantil (0-3 creche / 4-5 pré-escola), Fundamental (9 anos, inicia aos 6) e Médio.</li>
+            <li><strong>Educação Superior:</strong> Finalidades (Art. 43) incluem estimular criação cultural, formar profissionais, desenvolver pesquisa e extensão. Instituições: Universidades, Centros Universitários, Faculdades e Institutos.</li>
+        </ol>
+
+        <div class="box box-exemplo">
+            <strong>Modalidades Específicas:</strong> EJA, Educação Especial, Profissional, Do Campo, Indígena e EAD.
+        </div>
+
+        <h2>3️⃣ Contextualização UNEAL e Cargo</h2>
+        <p>A LDB tem aplicação direta na <strong>UNEAL</strong>, regulando a autonomia universitária (didático-científica, administrativa e financeira), a criação de cursos e a avaliação institucional.</p>
+        <div class="box box-conceito">
+            <strong>Relação com Técnico em Assuntos Educacionais:</strong> Atua na análise de projetos pedagógicos, apoio à gestão acadêmica, implementação de diretrizes da LDB e avaliação institucional.
+        </div>
+
+        <h2>4️⃣ Como o tema aparece em provas (CEBRASPE)</h2>
+        <p>Foco na interpretação literal, princípios, finalidades da educação superior e autonomia universitária. Itens de Certo ou Errado costumam inverter conceitos ou trocar competências federativas.</p>
+
+        <footer>
+            <span>Legislação Educacional - LDB Integral</span>
+            <span>Página 2</span>
+        </footer>
+    </div>
+
+    <div class="page">
+        <header>
+            <div class="header-meta">
+                <div class="discipline-header">5. LEGISLAÇÃO EDUCACIONAL</div>
+                <h1>5️⃣ Padrões e Pegadinhas</h1>
+            </div>
+        </header>
+
+        <h2>5️⃣ Padrões de cobrança</h2>
+        <div class="box box-exemplo">
+            <strong>Ex 1:</strong> "A educação básica é composta por infantil, fundamental e médio."<br>
+            <strong>Ex 2:</strong> "As universidades possuem autonomia didático-científica."
+        </div>
+
+        <h2>6️⃣ Pegadinhas de prova</h2>
+        <div class="box box-alerta">
+            ⚠️ <strong>Trocar níveis:</strong> Dizer que ensino médio é educação superior.<br>
+            ⚠️ <strong>Confundir Modalidade x Nível:</strong> EJA e Especial são modalidades.<br>
+            ⚠️ <strong>Responsabilidades:</strong> Atribuir ensino médio prioritariamente aos municípios.
+        </div>
+
+        <h2>7️⃣ Construção de Itens Errados</h2>
+        <div class="box box-erro">
+            - Troca de "Igualdade de acesso" por "Igualdade de resultados".<br>
+            - Alteração da idade obrigatória de 4-17 para 0-17 anos.<br>
+            - Atribuição de funções da União aos municípios.
+        </div>
+
+        <h2>8️⃣ Exemplos de questões</h2>
+        <div class="item-questao">Q1: Educação básica tem 3 etapas. <span class="badge certo">✔ CERTO</span></div>
+        <div class="item-questao">Q2: Infantil compreende creche e fundamental inicial. <span class="badge errado">❌ ERRADO</span></div>
+        <div class="item-questao">Q3: Faixa etária obrigatória é de 4 a 17 anos. <span class="badge certo">✔ CERTO</span></div>
+        <div class="item-questao">Q4: União organiza diretamente todos os sistemas. <span class="badge errado">❌ ERRADO</span></div>
+        <div class="item-questao">Q5: Educação superior estimula criação cultural e pesquisa. <span class="badge certo">✔ CERTO</span></div>
+
+        <h2>9️⃣ Método rápido de resolução (PEOCA)</h2>
+        <p><strong>P</strong>rincípios | <strong>E</strong>strutura | <strong>O</strong>rganização federativa | <strong>C</strong>omposição básica | <strong>A</strong>utonomia universitária.</p>
+
+        <footer>
+            <span>Legislação Educacional - LDB Integral</span>
+            <span>Página 3</span>
+        </footer>
+    </div>
+
+    <div class="page">
+        <header>
+            <div class="header-meta">
+                <div class="discipline-header">5. LEGISLAÇÃO EDUCACIONAL</div>
+                <h1>🔟 Revisão e Resumo Estratégico</h1>
+            </div>
+        </header>
+
+        <h3>🔟 Checklist mental</h3>
+        <p>Educação básica tem 3 etapas? Idade é 4-17? Existe colaboração? Universidades são autônomas? É nível ou modalidade?</p>
+
+        <h3>1️⃣1️⃣ Erros mais comuns</h3>
+        <p>Esquecer a idade obrigatória, trocar competências federativas e misturar modalidades com níveis.</p>
+
+        <h3>1️⃣3️⃣ Tabela de incidência</h3>
+        <table class="incidencia">
+            <tr><th>Tópico</th><th>Frequência</th></tr>
+            <tr><td>Princípios da Educação / Educação Básica</td><td>ALTA</td></tr>
+            <tr><td>Competências Federativas</td><td>ALTA</td></tr>
+            <tr><td>Educação Superior / Modalidades</td><td>MÉDIA</td></tr>
+        </table>
+
+        <h3>1️⃣4️⃣ Mapa mental textual</h3>
+        <p>LDB → Educação Escolar → Básica (Infantil, Fund, Médio) e Superior. → Modalidades (EJA, Especial, etc.) → Organização (União, Est, Mun).</p>
+
+        <h3>1️⃣5️⃣ Bloco de memorização rápida</h3>
+        <div class="box box-conceito">
+            <strong>Básica:</strong> Infantil, Fundamental, Médio. <br>
+            <strong>Obrigatória:</strong> 4 a 17 anos. <br>
+            <strong>Princípios:</strong> Igualdade, Liberdade, Pluralismo, Gestão Democrática. <br>
+            <strong>Superior:</strong> Ensino, Pesquisa, Extensão + Autonomia Universitária.
+        </div>
+
+        <footer>
+            <span>Legislação Educacional - LDB Integral</span>
+            <span>Página 4</span>
+        </footer>
+    </div>
+
+</body>
+</html>
